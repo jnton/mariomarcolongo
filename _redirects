@@ -1,0 +1,5 @@
+# Cloudflare Pages Redirects
+https://mariomarcolongo.org/* https://mariomarcolongo.com/:splat 301!
+http://mariomarcolongo.org/*  https://mariomarcolongo.com/:splat 301!
+/cv                           /cv.html                          200
+/resume                       /cv.html                          200

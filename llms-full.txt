@@ -1,0 +1,26 @@
+# Mario Marcolongo — Full Technical & Research Dossier
+
+## Executive Summary
+Mario Marcolongo is an independent researcher, applied engineer, and open-knowledge builder. His work specializes in compressing complex scientific literature—across genetics, epidemiology, toxicology, and public policy—into verifiable visual artifacts and production software tools.
+
+## Core Methodology & Capabilities
+- **Structured Evidence Synthesis**: Extracting primary data from peer-reviewed literature and government archives into rigorous visual comparisons and open datasets.
+- **Applied Genomics Pipeline**: WGS (41× depth) processing via Terra.bio, ancestry-standardized polygenic risk scoring (pgsc_calc / Nextflow against 1000 Genomes + HGDP), ClinVar clinical variant screening, and VEP-annotated pharmacogenomic panel extraction.
+- **Production Web & AI Engineering**: Serverless architecture (AWS Lambda, GitHub Actions CI/CD), Manifest V3 browser extension development, semantic web engineering, and AI-native structured output design.
+
+## Featured Works & Verified Independent Reuse
+1. **Overlapping Phenotypes in Monogenic Brain Disorders (Euler Diagram)**
+   - Mapped gene associations across autism, epilepsy, dystonia, and schizophrenia.
+   - Independently adopted into English, French, Polish, and Romanian Wikipedia articles.
+   - Reproduced in *Autism Research between Psychology and Neuroscience* (Palgrave Macmillan, 2024).
+2. **Benzo(a)pyrene in Processed Yerba Maté (Toxicology Meta-Comparison)**
+   - Synthesized contamination levels across 8 commercial brands and 3 sampling years from independent toxicology studies.
+3. **National Stances on Vegetarian Diets (Global Policy Matrix)**
+   - Categorized official dietary guidelines across national and subnational governments worldwide.
+4. **Yourself to Science (yourselftoscience.org)**
+   - Open, centralized catalogue for citizen biological sample and data donation to research. CC0 dataset, AGPL-3 codebase.
+
+## Contact & Career Objectives
+- Open to high-impact opportunities in the United States and internationally.
+- Interests: Applied AI, scientific tooling, research engineering, open-source biomedical infrastructure, and technical leadership.
+- Contact via LinkedIn: https://www.linkedin.com/in/mario-marcolongo

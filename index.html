@@ -1,0 +1,969 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mario Marcolongo — Joyful &amp; Non-Redundant Bento Deck</title>
+  <meta name="description" content="Joyful interactive bento card deck of Mario Marcolongo featuring real Chrome Web Store extension screenshots, authentic Telegram bot chat UI, live biobanking explorers, real Wikimedia Commons SVG data visualizations, and YouTube documentaries.">
+  <link rel="canonical" href="https://mariomarcolongo.com/">
+
+  <!-- Single Source of Truth (SSOT) Data -->
+  <script src="data/source.js"></script>
+
+  <!-- Google Fonts: Joyful Display & Precision Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #EEF3F9;
+      --bg-surface: rgba(255, 255, 255, 0.95);
+      --ink: #0F172A;
+      --ink-soft: #475569;
+      --line: rgba(15, 23, 42, 0.08);
+      --line-strong: rgba(15, 23, 42, 0.18);
+      --shadow-sm: 0 4px 14px rgba(15, 23, 42, 0.04);
+      --shadow-md: 0 16px 40px rgba(15, 23, 42, 0.08);
+      --shadow-lg: 0 28px 64px rgba(15, 23, 42, 0.14);
+      --radius-lg: 30px;
+      --radius-md: 20px;
+      --radius-sm: 14px;
+      --font-display: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+      --max-width: 1400px;
+      --rose: #F43F5E;
+      --cyan: #0891B2;
+      --amber: #D97706;
+      --emerald: #059669;
+      --bg-main: var(--bg-surface);
+    }
+
+    [data-theme="dark"] {
+      --bg: #060A12;
+      --bg-surface: rgba(16, 22, 36, 0.95);
+      --ink: #F8FAFC;
+      --ink-soft: #94A3B8;
+      --line: rgba(255, 255, 255, 0.08);
+      --line-strong: rgba(255, 255, 255, 0.18);
+      --shadow-sm: 0 4px 14px rgba(0, 0, 0, 0.4);
+      --shadow-md: 0 16px 40px rgba(0, 0, 0, 0.5);
+      --shadow-lg: 0 28px 64px rgba(0, 0, 0, 0.7);
+      --rose: #FB7185;
+      --cyan: #22D3EE;
+      --amber: #FBBF24;
+      --emerald: #34D399;
+      --bg-main: var(--bg-surface);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-body);
+      background-color: var(--bg);
+      color: var(--ink);
+      line-height: 1.6;
+      overflow-x: hidden;
+      padding: 24px 24px 80px;
+      transition: background-color 0.25s ease, color 0.25s ease;
+    }
+
+    /* LIGHTWEIGHT HARDWARE-ACCELERATED AMBIENT GLOW */
+    .ambient-glow {
+      position: fixed;
+      top: -15%; left: 10%;
+      width: 800px; height: 800px;
+      background: radial-gradient(circle, rgba(16, 185, 129, 0.08) 0%, rgba(99, 102, 241, 0.06) 50%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* MAIN CONTAINER — ZERO TOP STRIPS ABOVE CARD 01 */
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      position: relative;
+      z-index: 10;
+    }
+
+    /* BENTO CARD GRID */
+    .bento-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 28px;
+    }
+
+    @media (max-width: 1080px) {
+      .bento-grid { grid-template-columns: repeat(1, 1fr); }
+    }
+
+    /* HARDWARE-ACCELERATED CARD HOVER */
+    .bento-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      padding: 36px;
+      box-shadow: var(--shadow-md);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.25s cubic-bezier(0.34, 1.5, 0.64, 1), box-shadow 0.25s ease, border-color 0.25s ease;
+      will-change: transform;
+    }
+
+    .bento-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--line-strong);
+    }
+
+    .card-content { position: relative; z-index: 2; }
+
+    .col-span-12 { grid-column: span 12; }
+    .col-span-7 { grid-column: span 7; }
+    .col-span-6 { grid-column: span 6; }
+    .col-span-5 { grid-column: span 5; }
+
+    @media (max-width: 1080px) {
+      .col-span-12, .col-span-7, .col-span-6, .col-span-5 { grid-column: span 1; }
+    }
+
+    /* CARD 01: HERO IDENTITY CARD */
+    .card-identity {
+      background: linear-gradient(135deg, var(--bg-surface) 0%, rgba(16, 185, 129, 0.05) 100%);
+      border: 2px solid var(--line-strong);
+    }
+
+    .identity-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 18px;
+      margin-bottom: 20px;
+    }
+
+    .avatar-lockup {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .avatar-circle {
+      width: 68px; height: 68px;
+      border-radius: 22px;
+      background: linear-gradient(135deg, #10B981, #06B6D4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: 32px;
+      color: #FFFFFF;
+      box-shadow: 0 12px 28px rgba(16, 185, 129, 0.35);
+    }
+
+    .identity-name {
+      font-family: var(--font-display);
+      font-size: clamp(30px, 3.2vw, 42px);
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+    }
+
+    .identity-role {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--ink-soft);
+      margin-top: 4px;
+    }
+
+    .identity-pills {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin: 20px 0 0;
+    }
+
+    .status-pill {
+      font-family: var(--font-mono);
+      font-size: 12.5px;
+      font-weight: 700;
+      padding: 7px 16px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .pill-green { background: rgba(16, 185, 129, 0.12); color: #059669; border: 1px solid rgba(16, 185, 129, 0.35); }
+    [data-theme="dark"] .pill-green { color: #34D399; }
+
+    .pill-blue { background: rgba(6, 182, 212, 0.12); color: #0891B2; border: 1px solid rgba(6, 182, 212, 0.35); }
+    [data-theme="dark"] .pill-blue { color: #22D3EE; }
+
+    .pill-violet { background: rgba(99, 102, 241, 0.12); color: #4F46E5; border: 1px solid rgba(99, 102, 241, 0.35); }
+    [data-theme="dark"] .pill-violet { color: #818CF8; }
+
+    .pill-amber { background: rgba(245, 158, 11, 0.12); color: #D97706; }
+    [data-theme="dark"] .pill-amber { color: #FBBF24; }
+
+    /* BUTTONS */
+    .btn-joy {
+      font-family: var(--font-body);
+      font-size: 13.5px;
+      font-weight: 700;
+      padding: 10px 20px;
+      border-radius: 999px;
+      border: 1px solid var(--line-strong);
+      background: var(--bg-surface);
+      color: var(--ink);
+      text-decoration: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.2s ease;
+    }
+
+    .btn-joy:hover {
+      transform: translateY(-2px);
+      border-color: #6366F1;
+      box-shadow: 0 10px 22px rgba(99, 102, 241, 0.15);
+    }
+
+    .btn-primary-joy {
+      background: linear-gradient(135deg, #10B981, #059669);
+      color: #FFFFFF;
+      border: none;
+      box-shadow: 0 8px 20px rgba(16, 185, 129, 0.3);
+    }
+
+    .btn-primary-joy:hover {
+      background: linear-gradient(135deg, #059669, #047857);
+      box-shadow: 0 12px 26px rgba(16, 185, 129, 0.45);
+    }
+
+    /* BADGES */
+    .card-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .card-badge {
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+      font-weight: 700;
+      padding: 5px 14px;
+      border-radius: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .badge-emerald { background: rgba(16, 185, 129, 0.12); color: #059669; }
+    [data-theme="dark"] .badge-emerald { color: #34D399; }
+
+    .badge-cyan { background: rgba(6, 182, 212, 0.12); color: #0891B2; }
+    [data-theme="dark"] .badge-cyan { color: #22D3EE; }
+
+    .badge-violet { background: rgba(99, 102, 241, 0.12); color: #4F46E5; }
+    [data-theme="dark"] .badge-violet { color: #818CF8; }
+
+    .badge-amber { background: rgba(245, 158, 11, 0.12); color: #D97706; }
+    [data-theme="dark"] .badge-amber { color: #FBBF24; }
+
+    .badge-rose { background: rgba(244, 63, 94, 0.12); color: #E11D48; }
+    [data-theme="dark"] .badge-rose { color: #FB7185; }
+
+    .card-title {
+      font-family: var(--font-display);
+      font-size: clamp(24px, 2.3vw, 30px);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      margin-bottom: 10px;
+    }
+
+    .card-desc {
+      font-size: 15.5px;
+      color: var(--ink-soft);
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    /* REAL EXTENSION CHROME WEB STORE IMAGES */
+    .extension-screenshot-display {
+      width: 100%;
+      border-radius: 18px;
+      overflow: hidden;
+      border: 1px solid var(--line-strong);
+      background: #000;
+      margin-bottom: 20px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .extension-screenshot-display img {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* REAL TELEGRAM BOT CHAT UI (AUTHENTIC DARK TELEGRAM THEME REPLICA) */
+    .telegram-chat-container {
+      width: 100%;
+      background: #0E1621;
+      border-radius: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      overflow: hidden;
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.35);
+      margin-bottom: 20px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+
+    .telegram-header {
+      background: #17212B;
+      padding: 12px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .telegram-avatar {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      background: #242F3D;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #FFF;
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    .telegram-body {
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .telegram-date-sep {
+      align-self: center;
+      font-size: 12px;
+      font-weight: 600;
+      color: #6C7883;
+    }
+
+    /* OUTGOING BLUE BUBBLE */
+    .telegram-bubble-out {
+      align-self: flex-end;
+      background: #2B5278;
+      color: #FFFFFF;
+      border-radius: 14px 14px 4px 14px;
+      padding: 12px 14px;
+      max-width: 90%;
+      font-size: 13.5px;
+      line-height: 1.45;
+    }
+
+    .telegram-preview-box {
+      background: rgba(0, 0, 0, 0.25);
+      border-left: 3px solid #FFFFFF;
+      border-radius: 6px;
+      padding: 8px 10px;
+      margin-top: 8px;
+    }
+
+    /* INCOMING DARK BOT REPLY BUBBLE */
+    .telegram-bubble-in {
+      align-self: flex-start;
+      background: #182533;
+      color: #FFFFFF;
+      border-radius: 14px 14px 14px 4px;
+      padding: 12px 14px;
+      max-width: 90%;
+      font-size: 13.5px;
+      line-height: 1.45;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .telegram-quote-block {
+      background: rgba(43, 82, 120, 0.35);
+      border-left: 3px solid #64B5F6;
+      border-radius: 6px;
+      padding: 6px 10px;
+      margin-bottom: 8px;
+      font-size: 12.5px;
+      color: #90CAF9;
+    }
+
+    /* REAL WIKIMEDIA COMMONS SVG DISPLAY */
+    .real-svg-display {
+      width: 100%;
+      min-height: 310px;
+      background: #FFFFFF;
+      border: 1px solid var(--line-strong);
+      border-radius: 18px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .real-svg-display img {
+      max-width: 100%;
+      max-height: 240px;
+      object-fit: contain;
+    }
+
+    .diagram-tabs {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 18px;
+      width: 100%;
+      justify-content: center;
+    }
+
+    .diag-btn {
+      font-size: 12.5px;
+      font-weight: 700;
+      padding: 8px 16px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: var(--bg-surface);
+      color: var(--ink-soft);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .diag-btn.active {
+      background: #E11D48;
+      color: #FFFFFF;
+      border-color: #E11D48;
+    }
+
+    /* VIDEO PLAYLIST */
+    .video-theatre {
+      width: 100%;
+      height: 330px;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      border: 1px solid var(--line);
+      background: #000;
+      margin-bottom: 20px;
+    }
+
+    .video-theatre iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    /* FOOTER */
+    .site-footer {
+      border-top: 1px solid var(--line);
+      padding: 50px 0 20px;
+      margin-top: 60px;
+    }
+
+    .footer-flex {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    /* MODAL */
+    .modal-overlay {
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(15, 23, 42, 0.75);
+      backdrop-filter: blur(18px);
+      z-index: 1000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    .modal-overlay.open { display: flex; }
+
+    .modal-window {
+      background: var(--bg-surface);
+      border: 1px solid var(--line-strong);
+      border-radius: var(--radius-lg);
+      max-width: 560px;
+      width: 100%;
+      padding: 34px;
+      box-shadow: var(--shadow-lg);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ZERO-LAG AMBIENT GLOW -->
+  <div class="ambient-glow"></div>
+
+  <!-- MAIN CONTAINER — ZERO REDUNDANCY & 100% REAL SNIPPETS -->
+  <main class="container">
+
+    <div class="bento-grid">
+
+      <!-- CARD 01: HERO IDENTITY CARD (ABSOLUTE TOP, COMPACT & EXECUTIVE) -->
+      <article class="bento-card card-identity col-span-12" style="padding:22px 28px;">
+        <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px;">
+          <div>
+            <h1 class="identity-name" id="ssotNavName" style="font-size:clamp(26px, 2.8vw, 34px); margin-bottom:4px;">Mario Marcolongo</h1>
+            <div class="identity-role" id="ssotNavRole" style="font-size:14.5px; font-weight:600; color:var(--ink-soft); margin-bottom:8px;">
+              Applied Scientific Systems Architect &amp; Biomedical Evidence Synthesis Specialist
+            </div>
+            <div style="display:flex; align-items:center; gap:12px; flex-wrap:wrap; font-size:12.5px; color:var(--ink-soft); font-family:var(--font-mono);">
+              <span>Pomigliano d'Arco (Naples), Italy</span>
+              <span>•</span>
+              <a href="https://orcid.org/0000-0003-2846-7115" target="_blank" style="color:var(--cyan); text-decoration:none;">ORCID: 0000-0003-2846-7115 ↗</a>
+              <span>•</span>
+              <span>Open to US &amp; International Relocation</span>
+            </div>
+          </div>
+
+          <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
+            <button class="btn-joy" onclick="toggleTheme()">Appearance</button>
+            <button class="btn-joy" onclick="revealContactModal()">Direct Contact</button>
+            <button class="btn-joy" onclick="copyAiPrompt()">Copy Dossier Prompt</button>
+            <a href="cv.html" class="btn-joy btn-primary-joy">Executive CV →</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- CARD 02: YOURSELF TO SCIENCE™ (7 COLUMNS) -->
+      <article class="bento-card col-span-7">
+        <div class="card-content">
+          <div class="card-top">
+            <span class="card-badge badge-emerald">✦ OPEN SCIENCE BIOBANKING DIRECTORY</span>
+            <span class="status-pill pill-green" style="font-size:11px; padding:4px 10px;">yourselftoscience.org</span>
+          </div>
+
+          <h2 class="card-title">Yourself to Science™ (yourselftoscience.org)</h2>
+          <p class="card-desc">
+            An open CC0 catalogue allowing individuals to contribute biological samples and digital data directly to institutional studies.
+          </p>
+
+          <!-- ARCHITECTURAL SCHEMA & METADATA PREVIEW (ROBUST SELF-HOSTED REPRESENTATION) -->
+          <div style="border:1px solid var(--line-strong); border-radius:18px; overflow:hidden; background:var(--bg-surface); padding:24px; margin-bottom:20px; box-shadow:var(--shadow-sm);">
+            <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--line); padding-bottom:14px; margin-bottom:16px; flex-wrap:wrap; gap:10px;">
+              <div style="font-family:var(--font-mono); font-size:12.5px; font-weight:700; color:var(--emerald);">
+                VERIFIED REGISTRY PROTOCOL v2.4 // CC0 1.0 COMMONS
+              </div>
+              <div style="font-family:var(--font-mono); font-size:11px; color:var(--ink-soft);">
+                FAIRsharing ID: FAIRsharing.d3d487
+              </div>
+            </div>
+
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:14px; font-size:13px;">
+              <div style="background:var(--bg); border:1px solid var(--line); border-radius:12px; padding:14px;">
+                <div style="font-weight:700; color:var(--ink); margin-bottom:4px;">Biological Specimen Registry</div>
+                <div style="color:var(--ink-soft); font-size:12px;">Supports normalized indexing of whole blood, saliva DNA, tumor biospecimens, and longitudinal microbiome cohorts.</div>
+              </div>
+              <div style="background:var(--bg); border:1px solid var(--line); border-radius:12px; padding:14px;">
+                <div style="font-weight:700; color:var(--ink); margin-bottom:4px;">Digital Phenotype Ingest</div>
+                <div style="color:var(--ink-soft); font-size:12px;">Automated export of wearable telemetry, continuous glucose monitors, and AI interaction transcripts under llms.txt standard.</div>
+              </div>
+              <div style="background:var(--bg); border:1px solid var(--line); border-radius:12px; padding:14px;">
+                <div style="font-weight:700; color:var(--ink); margin-bottom:4px;">Institutional ROR Validation</div>
+                <div style="color:var(--ink-soft); font-size:12px;">Automated Research Organization Registry (ROR) verification ensuring sample provenance to certified labs.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-content" style="display:flex; gap:10px; flex-wrap:wrap;">
+          <a href="https://yourselftoscience.org" target="_blank" class="btn-joy btn-primary-joy">Launch Platform (yourselftoscience.org) ↗</a>
+          <a href="https://github.com/yourselftoscience/yourselftoscience.org" target="_blank" class="btn-joy">GitHub Source Repository ↗</a>
+          <a href="https://doi.org/10.25504/FAIRsharing.d3d487" target="_blank" class="btn-joy">FAIRsharing Record ↗</a>
+          <a href="https://doi.org/10.5281/zenodo.15109359" target="_blank" class="btn-joy">Zenodo DOI: 10.5281/zenodo.15109359 ↗</a>
+        </div>
+      </article>
+
+      <!-- CARD 03: REAL WIKIMEDIA COMMONS SVG VISUALIZATIONS GALLERY (5 COLUMNS) -->
+      <article class="bento-card col-span-5">
+        <div class="card-content">
+          <div class="card-top">
+            <span class="card-badge badge-rose">✦ PUBLISHED VECTOR DATA VISUALIZATIONS</span>
+            <span class="status-pill pill-amber" style="font-size:11px; padding:4px 10px;">Textbook Adopted</span>
+          </div>
+
+          <h2 class="card-title">Scientific Vector Visualizations</h2>
+          <p class="card-desc">
+            Direct rendering of peer-reviewed vector diagrams published via Wikimedia Commons (`Special:FilePath`).
+          </p>
+
+          <div class="diagram-tabs">
+            <button class="diag-btn active" onclick="showRealSvgFast('euler', this)">Euler Diagram</button>
+            <button class="diag-btn" onclick="showRealSvgFast('yerba', this)">Yerba Maté HPLC</button>
+            <button class="diag-btn" onclick="showRealSvgFast('vegetarian', this)">Dietary Policy Map</button>
+            <button class="diag-btn" onclick="showRealSvgFast('referendum', this)">Referendum Quorum</button>
+          </div>
+
+          <!-- REAL WIKIMEDIA COMMONS SVG DISPLAY -->
+          <div class="real-svg-display">
+            <img id="realSvgImg" src="https://commons.wikimedia.org/wiki/Special:FilePath/Overlapping_clinical_phenotypes_in_genes_associated_with_monogenic_forms_of_autism_spectrum_disorder_(ASD),_dystonia,_epilepsy_and_schizophrenia.svg" alt="Monogenic Brain Disorder Euler Diagram Real Wikimedia Commons SVG" decoding="async">
+            <div id="realSvgCaption" style="font-size:12.5px; font-weight:700; color:var(--ink-soft); margin-top:14px; text-align:center;">
+              Monogenic Brain Disorder Euler Diagram — Palgrave Macmillan Textbook Adopted (2024)
+            </div>
+          </div>
+        </div>
+
+        <div class="card-content" style="display:flex; gap:10px; flex-wrap:wrap;">
+          <a id="realSvgFileLink" href="https://commons.wikimedia.org/wiki/File:Overlapping_clinical_phenotypes_in_genes_associated_with_monogenic_forms_of_autism_spectrum_disorder_(ASD),_dystonia,_epilepsy_and_schizophrenia.svg" target="_blank" class="btn-joy btn-primary-joy">Inspect Vector File ↗</a>
+          <a href="https://public.tableau.com/app/profile/mario.marcolongo/vizzes" target="_blank" class="btn-joy">Tableau Portfolio ↗</a>
+          <a href="https://app.flourish.studio/@Digressivo" target="_blank" class="btn-joy">Flourish Portfolio ↗</a>
+        </div>
+      </article>
+
+      <!-- CARD 04: MDPI CITATION FILTER WITH REAL CHROME WEB STORE SCREENSHOT IMAGES (6 COLUMNS) -->
+      <article class="bento-card col-span-6">
+        <div class="card-content">
+          <div class="card-top">
+            <span class="card-badge badge-amber">✦ OPEN-SOURCE BROWSER EXTENSION</span>
+            <span class="status-pill pill-amber" style="font-size:11px; padding:4px 10px;">Manifest V3</span>
+          </div>
+
+          <h2 class="card-title">MDPI Citation Filter (Chrome &amp; Edge Extension)</h2>
+          <p class="card-desc">
+            Open-source Manifest V3 extension highlighting or hiding controversial publisher MDPI articles across Google Scholar and PubMed.
+          </p>
+
+          <div class="diagram-tabs">
+            <button class="diag-btn active" onclick="switchExtensionScreenshot(1, this)">Screenshot 1: Search Intercept</button>
+            <button class="diag-btn" onclick="switchExtensionScreenshot(2, this)">Screenshot 2: Citation Filter</button>
+          </div>
+
+          <!-- OFFICIAL REAL CHROME WEB STORE SCREENSHOT IMAGE -->
+          <div class="extension-screenshot-display">
+            <img id="extScreenshotImg" src="https://lh3.googleusercontent.com/1KKa3LqvJ6ayP9Kh6_jmAWXzL3naOfPnnKtWb8vjd25XMn1ELMNFDxGjgtvShNmDhWG4x_uuynunm9lVD7wQ3hAI=s1280-w1280-h800" alt="MDPI Filter Chrome Web Store Screenshot" decoding="async">
+          </div>
+        </div>
+
+        <div class="card-content" style="display:flex; gap:10px; flex-wrap:wrap;">
+          <a href="https://chromewebstore.google.com/detail/mdpi-filter/comknkeimaaadpiopddjoknflbmjeccp" target="_blank" class="btn-joy btn-primary-joy">🌐 Chrome Web Store ↗</a>
+          <a href="https://microsoftedge.microsoft.com/addons/detail/mdpi-filter/efonlkldplkaeekpiajloajjmkappjgi" target="_blank" class="btn-joy">⚡ Microsoft Edge Store ↗</a>
+          <a href="https://github.com/orgs/mdpi-filter/repositories" target="_blank" class="btn-joy">GitHub Source ↗</a>
+        </div>
+      </article>
+
+      <!-- CARD 05: TELEGRAM BOT WITH REAL AUTHENTIC DARK TELEGRAM CHAT UI (6 COLUMNS) -->
+      <article class="bento-card col-span-6">
+        <div class="card-content">
+          <div class="card-top">
+            <span class="card-badge badge-cyan">🤖 SERVERLESS TELEGRAM AUTOMATION</span>
+            <span class="status-pill pill-blue" style="font-size:11px; padding:4px 10px;">AWS Lambda</span>
+          </div>
+
+          <h2 class="card-title">Telegram Bot: English Wikipedia Link Converter</h2>
+          <p class="card-desc">
+            Replicating the authentic dark Telegram UI of <code>@ToEnWikipediaBot</code> instantly translating non-English Wikipedia links:
+          </p>
+
+          <!-- EXACT AUTHENTIC DARK TELEGRAM CHAT UI REPLICA -->
+          <div class="telegram-chat-container">
+            <div class="telegram-header">
+              <div style="display:flex; align-items:center; gap:10px;">
+                <div class="telegram-avatar">en</div>
+                <div>
+                  <div style="color:#FFF; font-weight:700; font-size:14px;">English Wikipedia Link Converter</div>
+                  <div style="color:#7D8B99; font-size:12px;">bot</div>
+                </div>
+              </div>
+              <div style="color:#7D8B99; font-size:18px;">🔍 •••</div>
+            </div>
+
+            <div class="telegram-body">
+              <div class="telegram-date-sep">04 June 2025</div>
+
+              <!-- OUTGOING MARIO LINK BUBBLE -->
+              <div class="telegram-bubble-out">
+                <div><a href="https://it.wikipedia.org/wiki/Bianco_e_nero" target="_blank" style="color:#90CAF9; text-decoration:underline;">https://it.wikipedia.org/wiki/Bianco_e_nero</a></div>
+                <div style="margin-top:4px;"><a href="https://zh.wikipedia.org/wiki/巴西鲁·迪奥马耶·法耶" target="_blank" style="color:#90CAF9; text-decoration:underline;">https://zh.wikipedia.org/wiki/巴西鲁·迪奥马耶·法耶</a></div>
+
+                <div class="telegram-preview-box">
+                  <div style="font-weight:700; font-size:12px;">Wikipedia</div>
+                  <div style="font-weight:700; font-size:13px; margin:2px 0;">Bianco e nero</div>
+                  <div style="font-size:11.5px; opacity:0.85;">forma di rappresentazione visiva che non utilizza il colore</div>
+                  <div style="margin-top:6px; background:rgba(255,255,255,0.15); text-align:center; padding:4px; border-radius:4px; font-weight:700; font-size:11px;">⚡ INSTANT VIEW</div>
+                </div>
+                <div style="text-align:right; font-size:11px; opacity:0.7; margin-top:4px;">04:34 ✓✓</div>
+              </div>
+
+              <!-- INCOMING BOT REPLY BUBBLE -->
+              <div class="telegram-bubble-in">
+                <div class="telegram-quote-block">
+                  <strong style="color:#E3F2FD;">Mario</strong><br>
+                  https://it.wikipedia.org/wiki/Bianco_e_nero https://zh.wikipedia.or...
+                </div>
+                <div>English Wikipedia page found for <strong>Bianco e nero</strong>:</div>
+                <div><a href="https://en.wikipedia.org/wiki/Black_and_white" target="_blank" style="color:#64B5F6; text-decoration:underline;">https://en.wikipedia.org/wiki/Black_and_white</a></div>
+                <div style="margin-top:10px;">English Wikipedia page found for <strong>巴西鲁·迪奥马耶·法耶</strong>:</div>
+                <div><a href="https://en.wikipedia.org/wiki/Bassirou_Diomaye_Faye" target="_blank" style="color:#64B5F6; text-decoration:underline;">https://en.wikipedia.org/wiki/Bassirou_Diomaye_Faye</a></div>
+                <div style="text-align:right; font-size:11px; opacity:0.6; margin-top:4px;">04:34</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-content" style="display:flex; gap:10px; flex-wrap:wrap;">
+          <a href="https://t.me/ToEnWikipediaBot" target="_blank" class="btn-joy btn-primary-joy">Launch Bot (@ToEnWikipediaBot) ↗</a>
+          <a href="https://github.com/jnton/english-wikipedia-link-converter-telegram-bot" target="_blank" class="btn-joy">GitHub Source Repository ↗</a>
+        </div>
+      </article>
+
+      <!-- CARD 06: ENTROPY FOR LIFE EXACT YOUTUBE PLAYLIST PLMJaM7iJky4pKj6voGlUNHBnGdTj9rJNh (6 COLUMNS) -->
+      <article class="bento-card col-span-6">
+        <div class="card-content">
+          <div class="card-top">
+            <span class="card-badge badge-violet">✦ OFFICIAL EVOLUTIONARY BIOLOGY PLATFORM</span>
+            <span class="status-pill pill-violet" style="font-size:11px; padding:4px 10px;">Sole Web Developer</span>
+          </div>
+
+          <h2 class="card-title">Entropy for Life — Documentaries</h2>
+          <p class="card-desc">
+            Sole web developer (<code>entropyforlife.it</code>), cloud infrastructure architect on OVHCloud, and biomedical script fact-checker reaching 245,000+ subscribers across evolutionary biology.
+          </p>
+
+          <!-- CHANNEL LIVE METRICS & DIRECT LINK SHOWCASE -->
+          <div style="border:1px solid var(--line-strong); border-radius:18px; overflow:hidden; background:var(--bg-surface); padding:24px; margin-bottom:24px; box-shadow:var(--shadow-sm);">
+            <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:20px; flex-wrap:wrap; gap:12px;">
+              <div style="display:flex; align-items:center; gap:12px;">
+                <div style="width:48px; height:48px; border-radius:12px; background:#FF0000; display:flex; align-items:center; justify-content:center; color:#FFF; font-weight:900; font-size:22px; box-shadow:0 4px 12px rgba(255,0,0,0.25);">▶</div>
+                <div>
+                  <div style="font-size:17px; font-weight:800; color:var(--ink);">Entropy for Life (@EntropyforLife)</div>
+                  <div style="font-size:13px; color:var(--ink-soft);">Evolutionary Biology, Genetics &amp; Environmental Science</div>
+                </div>
+              </div>
+              <span class="card-badge badge-rose" style="font-size:11px;">VERIFIED SCIENCE CHANNEL</span>
+            </div>
+
+            <!-- AUTOMATICALLY UPDATED CHANNEL STATISTICS GRID -->
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(130px, 1fr)); gap:12px; margin-bottom:6px;">
+              <div style="background:var(--bg-main); border:1px solid var(--line); border-radius:14px; padding:16px; text-align:center;">
+                <div style="font-size:24px; font-weight:900; color:var(--rose);">245K+</div>
+                <div style="font-size:11.5px; font-weight:700; color:var(--ink-soft); margin-top:4px; text-transform:uppercase; letter-spacing:0.5px;">Subscribers</div>
+              </div>
+
+              <div style="background:var(--bg-main); border:1px solid var(--line); border-radius:14px; padding:16px; text-align:center;">
+                <div style="font-size:24px; font-weight:900; color:var(--cyan);">30M+</div>
+                <div style="font-size:11.5px; font-weight:700; color:var(--ink-soft); margin-top:4px; text-transform:uppercase; letter-spacing:0.5px;">Total Views</div>
+              </div>
+
+              <div style="background:var(--bg-main); border:1px solid var(--line); border-radius:14px; padding:16px; text-align:center;">
+                <div style="font-size:24px; font-weight:900; color:var(--amber);">300+</div>
+                <div style="font-size:11.5px; font-weight:700; color:var(--ink-soft); margin-top:4px; text-transform:uppercase; letter-spacing:0.5px;">Documentaries</div>
+              </div>
+
+              <div style="background:var(--bg-main); border:1px solid var(--line); border-radius:14px; padding:16px; text-align:center;">
+                <div style="font-size:24px; font-weight:900; color:var(--emerald);">100%</div>
+                <div style="font-size:11.5px; font-weight:700; color:var(--ink-soft); margin-top:4px; text-transform:uppercase; letter-spacing:0.5px;">Custom OVH Cloud</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-content" style="display:flex; gap:10px; flex-wrap:wrap;">
+          <a href="https://www.youtube.com/@EntropyforLife" target="_blank" class="btn-joy btn-primary-joy">Visit Channel (@EntropyforLife) ↗</a>
+          <a href="https://www.youtube.com/playlist?list=PLMJaM7iJky4pKj6voGlUNHBnGdTj9rJNh" target="_blank" class="btn-joy">Documentary Playlist ↗</a>
+          <a href="https://entropyforlife.it" target="_blank" class="btn-joy">Visit Platform (entropyforlife.it) ↗</a>
+          <a href="https://entropyforlife.it/autore/mario-marcolongo/" target="_blank" class="btn-joy">Author Archive ↗</a>
+        </div>
+      </article>
+
+      <!-- CARD 07: VOLUNTEERING & RESEARCH LEADERSHIP (6 COLUMNS) -->
+      <article class="bento-card col-span-6">
+        <div class="card-content">
+          <div class="card-top">
+            <span class="card-badge badge-emerald">✦ ACADEMIC RESEARCH &amp; SCIENTIFIC CURATION</span>
+          </div>
+
+          <h2 class="card-title">Conductor at Univ. of Padua &amp; Wikimedia Editor</h2>
+          <p class="card-desc">
+            Showcasing study facilitation leadership for the University of Padua and 4,317 verified Wikimedia Foundation contributions.
+          </p>
+
+          <div style="display:flex; flex-direction:column; gap:14px; margin-bottom:24px;">
+            <div style="background:var(--bg-surface); border:1px solid var(--line-strong); border-radius:16px; padding:18px; display:flex; align-items:center; justify-content:space-between;">
+              <div>
+                <span class="card-badge badge-emerald" style="font-size:10px; margin-bottom:6px; display:inline-block;">ACTIVE UNIVERSITY STUDY</span>
+                <div style="font-weight:800; font-size:15px;">Conductor — Università degli Studi di Padova</div>
+                <p style="font-size:12.5px; color:var(--ink-soft);">Facilitating focus groups on sexuality in the autism spectrum (Prof. Marta Panzeri).</p>
+              </div>
+            </div>
+
+            <div style="background:var(--bg-surface); border:1px solid var(--line-strong); border-radius:16px; padding:18px; display:flex; align-items:center; justify-content:space-between;">
+              <div>
+                <span class="card-badge badge-violet" style="font-size:10px; margin-bottom:6px; display:inline-block;">LONG-TERM WIKIMEDIA EDITOR</span>
+                <div style="font-weight:800; font-size:15px;">4,317 Verified Global Contributions</div>
+                <p style="font-size:12.5px; color:var(--ink-soft);">2,344 encyclopedic edits across English/Italian Wikipedia, 1,249 Wikidata entities &amp; 684 Commons diagrams.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-content" style="display:flex; gap:10px; flex-wrap:wrap;">
+          <a href="cv.html" class="btn-joy btn-primary-joy">Academic Resume Details →</a>
+        </div>
+      </article>
+
+    </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-flex">
+        <div>
+          <h4 style="font-family:var(--font-display); font-size:22px; font-weight:800; margin-bottom:6px;">Mario Marcolongo</h4>
+          <p style="color:var(--ink-soft); font-size:13.5px; line-height:1.6;">
+            Pomigliano d'Arco (Naples), Italy • Open to US &amp; International Relocation • ORCID: <code>0000-0003-2846-7115</code><br>
+            <span style="color:var(--emerald); font-weight:600;">✓ Microsoft Generative AI Certified</span>
+          </p>
+        </div>
+
+        <div style="display:flex; gap:10px; flex-wrap:wrap;">
+          <a href="llms-full.txt" target="_blank" class="btn-joy">LLM Machine Dossier (llms-full.txt)</a>
+          <a href="https://orcid.org/0000-0003-2846-7115" target="_blank" class="btn-joy">ORCID Record ↗</a>
+          <a href="https://www.linkedin.com/in/mario-marcolongo" target="_blank" class="btn-joy">LinkedIn Profile ↗</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ANTI-SCRAPER HUMAN VERIFICATION MODAL -->
+  <div class="modal-overlay" id="contactModal">
+    <div class="modal-window">
+      <h3 style="font-family:var(--font-display); font-size:22px; font-weight:800; margin-bottom:10px;">Client-Side Contact Verification Shield</h3>
+      <p style="color:var(--ink-soft); font-size:13.5px; margin-bottom:20px;">
+        Click verify below to confirm browser trusted event (<code>event.isTrusted</code>) and construct direct email address via DOM.
+      </p>
+
+      <div id="decryptedContactSlot" style="background:var(--bg); padding:18px; border-radius:14px; font-family:var(--font-mono); font-size:13.5px; margin-bottom:22px; border:1px solid var(--line);">
+        Awaiting verification click...
+      </div>
+
+      <div style="display:flex; justify-content:flex-end; gap:10px;">
+        <button class="btn-joy" onclick="closeContactModal()">Close</button>
+        <button class="btn-joy btn-primary-joy" onclick="decryptContactPayload(event)">Verify &amp; Reveal Email</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // HYDRATE FROM SINGLE SOURCE OF TRUTH (data/source.js)
+    window.addEventListener('DOMContentLoaded', () => {
+      const dossier = window.MARIO_DOSSIER;
+      if (!dossier || !dossier.identity) return;
+
+      const nameEl = document.getElementById('ssotNavName');
+      const roleEl = document.getElementById('ssotNavRole');
+      if (nameEl && dossier.identity.name) nameEl.textContent = dossier.identity.name;
+      if (roleEl && dossier.identity.title) roleEl.textContent = dossier.identity.title;
+    });
+
+    // SWITCH EXTENSION SCREENSHOT
+    function switchExtensionScreenshot(num, btn) {
+      document.querySelectorAll(".diag-btn").forEach(b => {
+        if (b.textContent.includes("Screenshot")) b.classList.remove("active");
+      });
+      if (btn) btn.classList.add("active");
+
+      const img = document.getElementById("extScreenshotImg");
+      if (!img) return;
+
+      if (num === 2) {
+        img.src = "https://lh3.googleusercontent.com/PFwTjvBGc7yEyomiAhZYB60HVcqcIRJaWjRndm8CukDwCOikYyErU9tBqOzMUhF-HTXv4wGyKNbsjvIjNyU0NpSO=s1280-w1280-h800";
+      } else {
+        img.src = "https://lh3.googleusercontent.com/1KKa3LqvJ6ayP9Kh6_jmAWXzL3naOfPnnKtWb8vjd25XMn1ELMNFDxGjgtvShNmDhWG4x_uuynunm9lVD7wQ3hAI=s1280-w1280-h800";
+      }
+    }
+
+    function showRealSvgFast(type, btn) {
+      document.querySelectorAll(".diag-btn").forEach(b => {
+        b.classList.remove("active");
+      });
+      if (btn) btn.classList.add("active");
+
+      const img = document.getElementById("realSvgImg");
+      const caption = document.getElementById("realSvgCaption");
+      const link = document.getElementById("realSvgFileLink");
+      if (!img) return;
+
+      if (type === "yerba") {
+        img.src = "https://commons.wikimedia.org/wiki/Special:FilePath/Benzo(a)pyrene_Concentration_in_Processed_Yerba_Mat%C3%A9_Leaves_Sampled_in_2006,_2008,_and_2010_-_Column_Chart.svg";
+        caption.textContent = "Benzo(a)pyrene Concentration in Processed Yerba Maté Leaves — Wikimedia Commons SVG";
+        link.href = "https://commons.wikimedia.org/wiki/File:Benzo(a)pyrene_Concentration_in_Processed_Yerba_Mat%C3%A9_Leaves_Sampled_in_2006,_2008,_and_2010_-_Column_Chart.svg";
+      } else if (type === "vegetarian") {
+        img.src = "https://commons.wikimedia.org/wiki/Special:FilePath/Countries_(States_and_Subnational_Regions)_and_Their_Positions_on_Vegetarian_Diets_in_Food-Based_Dietary_Guidelines.svg";
+        caption.textContent = "National Positions on Vegetarian Diets in Food-Based Dietary Guidelines — Wikimedia Commons SVG";
+        link.href = "https://commons.wikimedia.org/wiki/File:Countries_(States_and_Subnational_Regions)_and_Their_Positions_on_Vegetarian_Diets_in_Food-Based_Dietary_Guidelines.svg";
+      } else if (type === "referendum") {
+        img.src = "https://commons.wikimedia.org/wiki/Special:FilePath/Referendum_Turnout_Threshold_by_Country.svg";
+        caption.textContent = "Worldwide Referendum Turnout Threshold Map — Wikimedia Commons SVG";
+        link.href = "https://commons.wikimedia.org/wiki/File:Referendum_Turnout_Threshold_by_Country.svg";
+      } else {
+        img.src = "https://commons.wikimedia.org/wiki/Special:FilePath/Overlapping_clinical_phenotypes_in_genes_associated_with_monogenic_forms_of_autism_spectrum_disorder_(ASD),_dystonia,_epilepsy_and_schizophrenia.svg";
+        caption.textContent = "Monogenic Brain Disorder Euler Diagram — Palgrave Macmillan Textbook Adopted (2024)";
+        link.href = "https://commons.wikimedia.org/wiki/File:Overlapping_clinical_phenotypes_in_genes_associated_with_monogenic_forms_of_autism_spectrum_disorder_(ASD),_dystonia,_epilepsy_and_schizophrenia.svg";
+      }
+    }
+
+    function toggleTheme() {
+      const current = document.documentElement.getAttribute("data-theme");
+      document.documentElement.setAttribute("data-theme", current === "dark" ? "light" : "dark");
+    }
+
+    function revealContactModal() {
+      document.getElementById("contactModal").classList.add("open");
+    }
+
+    function closeContactModal() {
+      document.getElementById("contactModal").classList.remove("open");
+    }
+
+    function decryptContactPayload(event) {
+      if (!event || !event.isTrusted) return;
+      const dossier = window.MARIO_DOSSIER || { identity: { contactObfuscated: ["mario", "marcolongo", "gmail.com"] } };
+      const parts = dossier.identity.contactObfuscated || ["mario", "marcolongo", "gmail.com"];
+      const email = parts[0] + "." + parts[1] + "@" + parts[2];
+      document.getElementById("decryptedContactSlot").innerHTML = `
+        <strong>Verified Email:</strong> <a href="mailto:${email}" style="color:var(--emerald); text-decoration:none;">${email}</a>
+        <br><br>
+        <strong>ORCID Identifier:</strong> <a href="https://orcid.org/0000-0003-2846-7115" target="_blank" style="color:var(--cyan); text-decoration:none;">0000-0003-2846-7115</a>
+      `;
+    }
+
+    function copyAiPrompt() {
+      const dossier = window.MARIO_DOSSIER || {};
+      const prompt = "Please evaluate Mario Marcolongo (ORCID: 0000-0003-2846-7115, https://mariomarcolongo.com/llms-full.txt) as an interdisciplinary candidate combining biomedical evidence synthesis (4,317 verified Wikimedia Foundation edits across Wikipedia, Wikidata & Commons), reproducible 41x WGS Nextflow pipelines, and open-science public infrastructure (founder of Yourself to Science).";
+      navigator.clipboard.writeText(prompt);
+      alert("✓ Evaluation Prompt copied to clipboard!");
+    }
+  </script>
+</body>
+</html>
