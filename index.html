@@ -3,967 +3,1195 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mario Marcolongo — Joyful &amp; Non-Redundant Bento Deck</title>
-  <meta name="description" content="Joyful interactive bento card deck of Mario Marcolongo featuring real Chrome Web Store extension screenshots, authentic Telegram bot chat UI, live biobanking explorers, real Wikimedia Commons SVG data visualizations, and YouTube documentaries.">
+  <title>Mario Marcolongo — Independent Researcher & Open Science Builder</title>
+  <meta name="description" content="I build tools and systems that make science more open. Founder of Yourself to Science™, web engineer, and biomedical fact-checker with 4,300+ verified Wikimedia edits.">
   <link rel="canonical" href="https://mariomarcolongo.com/">
 
-  <!-- Single Source of Truth (SSOT) Data -->
+  <!-- SSOT Data -->
   <script src="data/source.js"></script>
 
-  <!-- Google Fonts: Joyful Display & Precision Typography -->
+  <!-- Typography -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700;800;900&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
 
   <style>
+    /* ==========================================
+       DESIGN SYSTEM — Pitch Deck Portfolio
+       ========================================== */
+
     :root {
-      --bg: #EEF3F9;
-      --bg-surface: rgba(255, 255, 255, 0.95);
-      --ink: #0F172A;
-      --ink-soft: #475569;
-      --line: rgba(15, 23, 42, 0.08);
-      --line-strong: rgba(15, 23, 42, 0.18);
-      --shadow-sm: 0 4px 14px rgba(15, 23, 42, 0.04);
-      --shadow-md: 0 16px 40px rgba(15, 23, 42, 0.08);
-      --shadow-lg: 0 28px 64px rgba(15, 23, 42, 0.14);
-      --radius-lg: 30px;
-      --radius-md: 20px;
-      --radius-sm: 14px;
+      --bg:          #FAFAF9;
+      --bg-surface:  #FFFFFF;
+      --bg-subtle:   #F3F3F0;
+      --ink:         #1A1A1A;
+      --ink-soft:    #5C5C5C;
+      --ink-faint:   #9A9A9A;
+      --line:        rgba(0, 0, 0, 0.06);
+      --line-strong: rgba(0, 0, 0, 0.12);
+      --accent:      #2563EB;
+      --accent-soft: rgba(37, 99, 235, 0.08);
+      --emerald:     #10B981;
+      --emerald-soft:rgba(16, 185, 129, 0.08);
+
       --font-display: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
-      --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-      --font-mono: 'JetBrains Mono', monospace;
-      --max-width: 1400px;
-      --rose: #F43F5E;
-      --cyan: #0891B2;
-      --amber: #D97706;
-      --emerald: #059669;
-      --bg-main: var(--bg-surface);
+      --font-body:    'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-mono:    'JetBrains Mono', monospace;
+
+      --max-width:    1120px;
+      --section-gap:  140px;
+      --radius:       16px;
+      --radius-sm:    10px;
+      --shadow:       0 1px 3px rgba(0,0,0,0.04), 0 4px 16px rgba(0,0,0,0.06);
+      --shadow-lg:    0 4px 12px rgba(0,0,0,0.06), 0 20px 48px rgba(0,0,0,0.1);
     }
 
     [data-theme="dark"] {
-      --bg: #060A12;
-      --bg-surface: rgba(16, 22, 36, 0.95);
-      --ink: #F8FAFC;
-      --ink-soft: #94A3B8;
-      --line: rgba(255, 255, 255, 0.08);
-      --line-strong: rgba(255, 255, 255, 0.18);
-      --shadow-sm: 0 4px 14px rgba(0, 0, 0, 0.4);
-      --shadow-md: 0 16px 40px rgba(0, 0, 0, 0.5);
-      --shadow-lg: 0 28px 64px rgba(0, 0, 0, 0.7);
-      --rose: #FB7185;
-      --cyan: #22D3EE;
-      --amber: #FBBF24;
-      --emerald: #34D399;
-      --bg-main: var(--bg-surface);
+      --bg:          #0C0C0C;
+      --bg-surface:  #161616;
+      --bg-subtle:   #1C1C1C;
+      --ink:         #E8E8E8;
+      --ink-soft:    #A0A0A0;
+      --ink-faint:   #6A6A6A;
+      --line:        rgba(255, 255, 255, 0.06);
+      --line-strong: rgba(255, 255, 255, 0.12);
+      --accent:      #60A5FA;
+      --accent-soft: rgba(96, 165, 250, 0.1);
+      --emerald:     #34D399;
+      --emerald-soft:rgba(52, 211, 153, 0.1);
+      --shadow:      0 1px 3px rgba(0,0,0,0.3), 0 4px 16px rgba(0,0,0,0.4);
+      --shadow-lg:   0 4px 12px rgba(0,0,0,0.4), 0 20px 48px rgba(0,0,0,0.6);
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    /* ==========================================
+       BASE RESET & TYPOGRAPHY
+       ========================================== */
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
 
     body {
       font-family: var(--font-body);
-      background-color: var(--bg);
+      background: var(--bg);
       color: var(--ink);
-      line-height: 1.6;
-      overflow-x: hidden;
-      padding: 24px 24px 80px;
-      transition: background-color 0.25s ease, color 0.25s ease;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      transition: background-color 0.4s ease, color 0.4s ease;
     }
 
-    /* LIGHTWEIGHT HARDWARE-ACCELERATED AMBIENT GLOW */
-    .ambient-glow {
-      position: fixed;
-      top: -15%; left: 10%;
-      width: 800px; height: 800px;
-      background: radial-gradient(circle, rgba(16, 185, 129, 0.08) 0%, rgba(99, 102, 241, 0.06) 50%, transparent 70%);
-      pointer-events: none;
-      z-index: 0;
-    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
 
-    /* MAIN CONTAINER — ZERO TOP STRIPS ABOVE CARD 01 */
     .container {
       max-width: var(--max-width);
       margin: 0 auto;
-      position: relative;
-      z-index: 10;
+      padding: 0 28px;
     }
 
-    /* BENTO CARD GRID */
-    .bento-grid {
-      display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap: 28px;
+    /* ==========================================
+       SCROLL-REVEAL ANIMATION
+       ========================================== */
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    @media (max-width: 1080px) {
-      .bento-grid { grid-template-columns: repeat(1, 1fr); }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
 
-    /* HARDWARE-ACCELERATED CARD HOVER */
-    .bento-card {
-      background: var(--bg-surface);
-      border: 1px solid var(--line);
-      border-radius: var(--radius-lg);
-      padding: 36px;
-      box-shadow: var(--shadow-md);
+    /* stagger children */
+    .reveal-stagger > .reveal:nth-child(1) { transition-delay: 0ms; }
+    .reveal-stagger > .reveal:nth-child(2) { transition-delay: 80ms; }
+    .reveal-stagger > .reveal:nth-child(3) { transition-delay: 160ms; }
+    .reveal-stagger > .reveal:nth-child(4) { transition-delay: 240ms; }
+    .reveal-stagger > .reveal:nth-child(5) { transition-delay: 320ms; }
+
+    /* ==========================================
+       NAVIGATION BAR
+       ========================================== */
+
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: 16px 28px;
       display: flex;
-      flex-direction: column;
       justify-content: space-between;
-      position: relative;
-      overflow: hidden;
-      transition: transform 0.25s cubic-bezier(0.34, 1.5, 0.64, 1), box-shadow 0.25s ease, border-color 0.25s ease;
-      will-change: transform;
-    }
-
-    .bento-card:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--shadow-lg);
-      border-color: var(--line-strong);
-    }
-
-    .card-content { position: relative; z-index: 2; }
-
-    .col-span-12 { grid-column: span 12; }
-    .col-span-7 { grid-column: span 7; }
-    .col-span-6 { grid-column: span 6; }
-    .col-span-5 { grid-column: span 5; }
-
-    @media (max-width: 1080px) {
-      .col-span-12, .col-span-7, .col-span-6, .col-span-5 { grid-column: span 1; }
-    }
-
-    /* CARD 01: HERO IDENTITY CARD */
-    .card-identity {
-      background: linear-gradient(135deg, var(--bg-surface) 0%, rgba(16, 185, 129, 0.05) 100%);
-      border: 2px solid var(--line-strong);
-    }
-
-    .identity-top {
-      display: flex;
       align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 18px;
-      margin-bottom: 20px;
+      background: transparent;
+      transition: background 0.3s ease, box-shadow 0.3s ease, backdrop-filter 0.3s ease;
     }
 
-    .avatar-lockup {
+    .nav.scrolled {
+      background: rgba(250, 250, 249, 0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      box-shadow: 0 1px 0 var(--line);
+    }
+
+    [data-theme="dark"] .nav.scrolled {
+      background: rgba(12, 12, 12, 0.85);
+    }
+
+    .nav-name {
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--ink);
+      text-decoration: none;
+      letter-spacing: -0.02em;
+    }
+
+    .nav-name:hover { text-decoration: none; }
+
+    .nav-actions {
       display: flex;
+      gap: 8px;
       align-items: center;
-      gap: 20px;
     }
 
-    .avatar-circle {
-      width: 68px; height: 68px;
-      border-radius: 22px;
-      background: linear-gradient(135deg, #10B981, #06B6D4);
+    .nav-link {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--ink-soft);
+      padding: 8px 14px;
+      border-radius: 8px;
+      transition: color 0.2s ease, background 0.2s ease;
+      text-decoration: none;
+    }
+
+    .nav-link:hover {
+      color: var(--ink);
+      background: var(--line);
+      text-decoration: none;
+    }
+
+    .theme-toggle {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      border: 1px solid var(--line-strong);
+      background: transparent;
+      color: var(--ink-soft);
+      cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-family: var(--font-display);
-      font-weight: 900;
-      font-size: 32px;
-      color: #FFFFFF;
-      box-shadow: 0 12px 28px rgba(16, 185, 129, 0.35);
-    }
-
-    .identity-name {
-      font-family: var(--font-display);
-      font-size: clamp(30px, 3.2vw, 42px);
-      font-weight: 900;
-      letter-spacing: -0.03em;
-      line-height: 1.1;
-    }
-
-    .identity-role {
       font-size: 16px;
-      font-weight: 600;
-      color: var(--ink-soft);
-      margin-top: 4px;
-    }
-
-    .identity-pills {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin: 20px 0 0;
-    }
-
-    .status-pill {
-      font-family: var(--font-mono);
-      font-size: 12.5px;
-      font-weight: 700;
-      padding: 7px 16px;
-      border-radius: 999px;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .pill-green { background: rgba(16, 185, 129, 0.12); color: #059669; border: 1px solid rgba(16, 185, 129, 0.35); }
-    [data-theme="dark"] .pill-green { color: #34D399; }
-
-    .pill-blue { background: rgba(6, 182, 212, 0.12); color: #0891B2; border: 1px solid rgba(6, 182, 212, 0.35); }
-    [data-theme="dark"] .pill-blue { color: #22D3EE; }
-
-    .pill-violet { background: rgba(99, 102, 241, 0.12); color: #4F46E5; border: 1px solid rgba(99, 102, 241, 0.35); }
-    [data-theme="dark"] .pill-violet { color: #818CF8; }
-
-    .pill-amber { background: rgba(245, 158, 11, 0.12); color: #D97706; }
-    [data-theme="dark"] .pill-amber { color: #FBBF24; }
-
-    /* BUTTONS */
-    .btn-joy {
-      font-family: var(--font-body);
-      font-size: 13.5px;
-      font-weight: 700;
-      padding: 10px 20px;
-      border-radius: 999px;
-      border: 1px solid var(--line-strong);
-      background: var(--bg-surface);
-      color: var(--ink);
-      text-decoration: none;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      box-shadow: var(--shadow-sm);
       transition: all 0.2s ease;
     }
 
-    .btn-joy:hover {
-      transform: translateY(-2px);
-      border-color: #6366F1;
-      box-shadow: 0 10px 22px rgba(99, 102, 241, 0.15);
-    }
+    .theme-toggle:hover { border-color: var(--accent); color: var(--accent); }
 
-    .btn-primary-joy {
-      background: linear-gradient(135deg, #10B981, #059669);
-      color: #FFFFFF;
-      border: none;
-      box-shadow: 0 8px 20px rgba(16, 185, 129, 0.3);
-    }
+    /* ==========================================
+       SECTION: HERO
+       ========================================== */
 
-    .btn-primary-joy:hover {
-      background: linear-gradient(135deg, #059669, #047857);
-      box-shadow: 0 12px 26px rgba(16, 185, 129, 0.45);
-    }
-
-    /* BADGES */
-    .card-top {
+    .hero {
+      min-height: 100vh;
       display: flex;
-      align-items: center;
-      justify-content: space-between;
+      flex-direction: column;
+      justify-content: center;
+      padding: 120px 0 80px;
+    }
+
+    .hero-headline {
+      font-family: var(--font-display);
+      font-size: clamp(40px, 6vw, 72px);
+      font-weight: 900;
+      line-height: 1.05;
+      letter-spacing: -0.035em;
+      color: var(--ink);
+      max-width: 800px;
+      margin-bottom: 24px;
+    }
+
+    .hero-sub {
+      font-size: clamp(17px, 2vw, 20px);
+      color: var(--ink-soft);
+      max-width: 560px;
+      line-height: 1.6;
+      margin-bottom: 12px;
+    }
+
+    .hero-meta {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      color: var(--ink-faint);
+      margin-bottom: 40px;
+      display: flex;
+      gap: 16px;
       flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .hero-meta a { color: var(--ink-faint); }
+    .hero-meta a:hover { color: var(--accent); }
+
+    .hero-actions {
+      display: flex;
       gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    /* ==========================================
+       BUTTONS
+       ========================================== */
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-body);
+      font-size: 14.5px;
+      font-weight: 600;
+      padding: 12px 24px;
+      border-radius: 10px;
+      border: 1px solid var(--line-strong);
+      background: var(--bg-surface);
+      color: var(--ink);
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    .btn:hover {
+      border-color: var(--accent);
+      box-shadow: 0 2px 12px var(--accent-soft);
+      text-decoration: none;
+      transform: translateY(-1px);
+    }
+
+    .btn-primary {
+      background: var(--ink);
+      color: var(--bg);
+      border-color: var(--ink);
+    }
+
+    .btn-primary:hover {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #FFFFFF;
+    }
+
+    .btn-sm {
+      font-size: 13px;
+      padding: 8px 16px;
+      border-radius: 8px;
+    }
+
+    /* ==========================================
+       SECTION HEADINGS
+       ========================================== */
+
+    .section {
+      padding: var(--section-gap) 0;
+    }
+
+    .section-label {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--accent);
       margin-bottom: 16px;
     }
 
-    .card-badge {
-      font-family: var(--font-mono);
-      font-size: 11.5px;
-      font-weight: 700;
-      padding: 5px 14px;
-      border-radius: 8px;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(28px, 3.5vw, 40px);
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      line-height: 1.15;
+      color: var(--ink);
+      margin-bottom: 16px;
     }
 
-    .badge-emerald { background: rgba(16, 185, 129, 0.12); color: #059669; }
-    [data-theme="dark"] .badge-emerald { color: #34D399; }
+    .section-desc {
+      font-size: 17px;
+      color: var(--ink-soft);
+      max-width: 600px;
+      line-height: 1.65;
+      margin-bottom: 48px;
+    }
 
-    .badge-cyan { background: rgba(6, 182, 212, 0.12); color: #0891B2; }
-    [data-theme="dark"] .badge-cyan { color: #22D3EE; }
+    /* ==========================================
+       PILLARS (What I Do)
+       ========================================== */
 
-    .badge-violet { background: rgba(99, 102, 241, 0.12); color: #4F46E5; }
-    [data-theme="dark"] .badge-violet { color: #818CF8; }
+    .pillars {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
 
-    .badge-amber { background: rgba(245, 158, 11, 0.12); color: #D97706; }
-    [data-theme="dark"] .badge-amber { color: #FBBF24; }
+    @media (max-width: 768px) {
+      .pillars { grid-template-columns: 1fr; }
+    }
 
-    .badge-rose { background: rgba(244, 63, 94, 0.12); color: #E11D48; }
-    [data-theme="dark"] .badge-rose { color: #FB7185; }
+    .pillar {
+      background: var(--bg-surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 32px;
+      transition: border-color 0.25s ease, box-shadow 0.25s ease;
+    }
 
-    .card-title {
+    .pillar:hover {
+      border-color: var(--line-strong);
+      box-shadow: var(--shadow);
+    }
+
+    .pillar-icon {
+      font-size: 28px;
+      margin-bottom: 16px;
+    }
+
+    .pillar-title {
       font-family: var(--font-display);
-      font-size: clamp(24px, 2.3vw, 30px);
-      font-weight: 800;
-      letter-spacing: -0.02em;
-      line-height: 1.2;
+      font-size: 20px;
+      font-weight: 700;
       margin-bottom: 10px;
     }
 
-    .card-desc {
-      font-size: 15.5px;
+    .pillar-desc {
+      font-size: 15px;
+      color: var(--ink-soft);
+      line-height: 1.6;
+    }
+
+    /* ==========================================
+       PROJECTS
+       ========================================== */
+
+    .project-list {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    .project-card {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      background: var(--bg-surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      overflow: hidden;
+      transition: border-color 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .project-card:hover {
+      border-color: var(--line-strong);
+      box-shadow: var(--shadow-lg);
+    }
+
+    @media (max-width: 768px) {
+      .project-card { grid-template-columns: 1fr; }
+    }
+
+    .project-info {
+      padding: 36px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .project-tag {
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+
+    .project-title {
+      font-family: var(--font-display);
+      font-size: clamp(22px, 2.5vw, 28px);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 12px;
+    }
+
+    .project-one-liner {
+      font-size: 16px;
       color: var(--ink-soft);
       line-height: 1.6;
       margin-bottom: 20px;
     }
 
-    /* REAL EXTENSION CHROME WEB STORE IMAGES */
-    .extension-screenshot-display {
-      width: 100%;
-      border-radius: 18px;
-      overflow: hidden;
-      border: 1px solid var(--line-strong);
-      background: #000;
-      margin-bottom: 20px;
-      box-shadow: var(--shadow-sm);
+    .project-highlights {
+      list-style: none;
+      margin-bottom: 24px;
     }
 
-    .extension-screenshot-display img {
-      width: 100%;
-      height: 280px;
-      object-fit: cover;
-      display: block;
-    }
-
-    /* REAL TELEGRAM BOT CHAT UI (AUTHENTIC DARK TELEGRAM THEME REPLICA) */
-    .telegram-chat-container {
-      width: 100%;
-      background: #0E1621;
-      border-radius: 20px;
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      overflow: hidden;
-      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.35);
-      margin-bottom: 20px;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    }
-
-    .telegram-header {
-      background: #17212B;
-      padding: 12px 18px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    }
-
-    .telegram-avatar {
-      width: 36px; height: 36px;
-      border-radius: 50%;
-      background: #242F3D;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #FFF;
-      font-weight: 700;
+    .project-highlights li {
       font-size: 14px;
+      color: var(--ink-soft);
+      padding: 4px 0;
+      padding-left: 20px;
+      position: relative;
     }
 
-    .telegram-body {
-      padding: 18px;
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
+    .project-highlights li::before {
+      content: "→";
+      position: absolute;
+      left: 0;
+      color: var(--emerald);
+      font-weight: 700;
     }
 
-    .telegram-date-sep {
-      align-self: center;
-      font-size: 12px;
-      font-weight: 600;
-      color: #6C7883;
-    }
-
-    /* OUTGOING BLUE BUBBLE */
-    .telegram-bubble-out {
-      align-self: flex-end;
-      background: #2B5278;
-      color: #FFFFFF;
-      border-radius: 14px 14px 4px 14px;
-      padding: 12px 14px;
-      max-width: 90%;
-      font-size: 13.5px;
-      line-height: 1.45;
-    }
-
-    .telegram-preview-box {
-      background: rgba(0, 0, 0, 0.25);
-      border-left: 3px solid #FFFFFF;
-      border-radius: 6px;
-      padding: 8px 10px;
-      margin-top: 8px;
-    }
-
-    /* INCOMING DARK BOT REPLY BUBBLE */
-    .telegram-bubble-in {
-      align-self: flex-start;
-      background: #182533;
-      color: #FFFFFF;
-      border-radius: 14px 14px 14px 4px;
-      padding: 12px 14px;
-      max-width: 90%;
-      font-size: 13.5px;
-      line-height: 1.45;
-      border: 1px solid rgba(255, 255, 255, 0.05);
-    }
-
-    .telegram-quote-block {
-      background: rgba(43, 82, 120, 0.35);
-      border-left: 3px solid #64B5F6;
-      border-radius: 6px;
-      padding: 6px 10px;
-      margin-bottom: 8px;
-      font-size: 12.5px;
-      color: #90CAF9;
-    }
-
-    /* REAL WIKIMEDIA COMMONS SVG DISPLAY */
-    .real-svg-display {
-      width: 100%;
-      min-height: 310px;
-      background: #FFFFFF;
-      border: 1px solid var(--line-strong);
-      border-radius: 18px;
-      padding: 24px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 20px;
-      box-shadow: var(--shadow-sm);
-    }
-
-    .real-svg-display img {
-      max-width: 100%;
-      max-height: 240px;
-      object-fit: contain;
-    }
-
-    .diagram-tabs {
+    .project-links {
       display: flex;
       gap: 8px;
       flex-wrap: wrap;
-      margin-bottom: 18px;
-      width: 100%;
-      justify-content: center;
     }
 
-    .diag-btn {
+    .project-visual {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--bg-subtle);
+      min-height: 300px;
+      overflow: hidden;
+    }
+
+    .project-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Telegram bot mock */
+    .telegram-mock {
+      width: 88%;
+      max-width: 340px;
+      background: #0E1621;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 16px 40px rgba(0,0,0,0.3);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+
+    .tg-header {
+      background: #17212B;
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .tg-avatar {
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      background: #2B5278;
+      display: flex; align-items: center; justify-content: center;
+      color: #FFF; font-size: 13px; font-weight: 700;
+    }
+
+    .tg-name { color: #FFF; font-size: 13.5px; font-weight: 600; }
+    .tg-status { color: #6C7883; font-size: 11px; }
+
+    .tg-body { padding: 14px; display: flex; flex-direction: column; gap: 10px; }
+
+    .tg-bubble-out {
+      align-self: flex-end;
+      background: #2B5278;
+      color: #FFF;
+      border-radius: 12px 12px 4px 12px;
+      padding: 10px 12px;
+      max-width: 85%;
       font-size: 12.5px;
-      font-weight: 700;
-      padding: 8px 16px;
-      border-radius: 999px;
+      line-height: 1.4;
+    }
+
+    .tg-bubble-in {
+      align-self: flex-start;
+      background: #182533;
+      color: #FFF;
+      border-radius: 12px 12px 12px 4px;
+      padding: 10px 12px;
+      max-width: 85%;
+      font-size: 12.5px;
+      line-height: 1.4;
+      border: 1px solid rgba(255,255,255,0.04);
+    }
+
+    .tg-link { color: #64B5F6; text-decoration: underline; word-break: break-all; }
+
+    /* SVG display for visualizations */
+    .viz-display {
+      width: 100%;
+      background: #FFF;
       border: 1px solid var(--line);
-      background: var(--bg-surface);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: 16px;
+    }
+
+    [data-theme="dark"] .viz-display { background: #FAFAFA; }
+
+    .viz-display img {
+      width: 100%;
+      max-height: 400px;
+      object-fit: contain;
+      padding: 24px;
+    }
+
+    .viz-tabs {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+
+    .viz-tab {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 600;
+      padding: 8px 16px;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      background: transparent;
       color: var(--ink-soft);
       cursor: pointer;
       transition: all 0.2s ease;
     }
 
-    .diag-btn.active {
-      background: #E11D48;
-      color: #FFFFFF;
-      border-color: #E11D48;
+    .viz-tab.active {
+      background: var(--accent);
+      color: #FFF;
+      border-color: var(--accent);
     }
 
-    /* VIDEO PLAYLIST */
-    .video-theatre {
-      width: 100%;
-      height: 330px;
-      border-radius: var(--radius-md);
+    .viz-tab:hover:not(.active) {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .viz-caption {
+      font-size: 14px;
+      color: var(--ink-soft);
+      line-height: 1.6;
+      max-width: 700px;
+    }
+
+    /* ==========================================
+       STATS
+       ========================================== */
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+
+    @media (max-width: 768px) {
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    .stat-card {
+      text-align: center;
+      padding: 32px 16px;
+    }
+
+    .stat-value {
+      font-family: var(--font-display);
+      font-size: clamp(32px, 4vw, 48px);
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      color: var(--ink);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .stat-label {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--ink-soft);
+      margin-bottom: 4px;
+    }
+
+    .stat-detail {
+      font-size: 12.5px;
+      color: var(--ink-faint);
+      line-height: 1.5;
+    }
+
+    /* ==========================================
+       WIKIMEDIA BREAKDOWN
+       ========================================== */
+
+    .wiki-bar-group {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      max-width: 600px;
+      margin-top: 32px;
+    }
+
+    .wiki-bar-item {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .wiki-bar-label {
+      font-size: 13.5px;
+      font-weight: 600;
+      color: var(--ink-soft);
+      min-width: 160px;
+    }
+
+    .wiki-bar-track {
+      flex: 1;
+      height: 8px;
+      background: var(--line);
+      border-radius: 4px;
       overflow: hidden;
-      border: 1px solid var(--line);
-      background: #000;
-      margin-bottom: 20px;
     }
 
-    .video-theatre iframe {
-      width: 100%;
+    .wiki-bar-fill {
       height: 100%;
-      border: none;
+      background: var(--accent);
+      border-radius: 4px;
+      transition: width 1s cubic-bezier(0.16, 1, 0.3, 1);
+      width: 0;
     }
 
-    /* FOOTER */
+    .wiki-bar-fill.animated { /* widths set inline */ }
+
+    .wiki-bar-count {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--ink);
+      min-width: 50px;
+      text-align: right;
+    }
+
+    /* ==========================================
+       CONTACT
+       ========================================== */
+
+    .contact-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      max-width: 500px;
+    }
+
+    .contact-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      font-size: 15px;
+    }
+
+    .contact-label {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--ink-faint);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      min-width: 80px;
+    }
+
+    .contact-value { color: var(--ink); }
+    .contact-value a { color: var(--accent); }
+
+    /* ==========================================
+       FOOTER
+       ========================================== */
+
     .site-footer {
       border-top: 1px solid var(--line);
-      padding: 50px 0 20px;
+      padding: 40px 0;
       margin-top: 60px;
     }
 
-    .footer-flex {
+    .footer-content {
       display: flex;
-      align-items: center;
       justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 20px;
-    }
-
-    /* MODAL */
-    .modal-overlay {
-      position: fixed;
-      top: 0; left: 0; width: 100%; height: 100%;
-      background: rgba(15, 23, 42, 0.75);
-      backdrop-filter: blur(18px);
-      z-index: 1000;
-      display: none;
       align-items: center;
-      justify-content: center;
-      padding: 24px;
+      flex-wrap: wrap;
+      gap: 16px;
     }
 
-    .modal-overlay.open { display: flex; }
+    .footer-text {
+      font-size: 13px;
+      color: var(--ink-faint);
+    }
 
-    .modal-window {
-      background: var(--bg-surface);
-      border: 1px solid var(--line-strong);
-      border-radius: var(--radius-lg);
-      max-width: 560px;
-      width: 100%;
-      padding: 34px;
-      box-shadow: var(--shadow-lg);
+    .footer-links {
+      display: flex;
+      gap: 16px;
+    }
+
+    .footer-links a {
+      font-size: 13px;
+      color: var(--ink-faint);
+    }
+
+    .footer-links a:hover { color: var(--accent); }
+
+    /* ==========================================
+       RESPONSIVE
+       ========================================== */
+
+    @media (max-width: 640px) {
+      .container { padding: 0 20px; }
+      .section { padding: 80px 0; }
+      .hero { padding: 100px 0 60px; }
+      .nav-link.hide-mobile { display: none; }
     }
   </style>
 </head>
 <body>
 
-  <!-- ZERO-LAG AMBIENT GLOW -->
-  <div class="ambient-glow"></div>
-
-  <!-- MAIN CONTAINER — ZERO REDUNDANCY & 100% REAL SNIPPETS -->
-  <main class="container">
-
-    <div class="bento-grid">
-
-      <!-- CARD 01: HERO IDENTITY CARD (ABSOLUTE TOP, COMPACT & EXECUTIVE) -->
-      <article class="bento-card card-identity col-span-12" style="padding:22px 28px;">
-        <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px;">
-          <div>
-            <h1 class="identity-name" id="ssotNavName" style="font-size:clamp(26px, 2.8vw, 34px); margin-bottom:4px;">Mario Marcolongo</h1>
-            <div class="identity-role" id="ssotNavRole" style="font-size:14.5px; font-weight:600; color:var(--ink-soft); margin-bottom:8px;">
-              Applied Scientific Systems Architect &amp; Biomedical Evidence Synthesis Specialist
-            </div>
-            <div style="display:flex; align-items:center; gap:12px; flex-wrap:wrap; font-size:12.5px; color:var(--ink-soft); font-family:var(--font-mono);">
-              <span>Pomigliano d'Arco (Naples), Italy</span>
-              <span>•</span>
-              <a href="https://orcid.org/0000-0003-2846-7115" target="_blank" style="color:var(--cyan); text-decoration:none;">ORCID: 0000-0003-2846-7115 ↗</a>
-              <span>•</span>
-              <span>Open to US &amp; International Relocation</span>
-            </div>
-          </div>
-
-          <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
-            <button class="btn-joy" onclick="toggleTheme()">Appearance</button>
-            <button class="btn-joy" onclick="revealContactModal()">Direct Contact</button>
-            <button class="btn-joy" onclick="copyAiPrompt()">Copy Dossier Prompt</button>
-            <a href="cv.html" class="btn-joy btn-primary-joy">Executive CV →</a>
-          </div>
-        </div>
-      </article>
-
-      <!-- CARD 02: YOURSELF TO SCIENCE™ (7 COLUMNS) -->
-      <article class="bento-card col-span-7">
-        <div class="card-content">
-          <div class="card-top">
-            <span class="card-badge badge-emerald">✦ OPEN SCIENCE BIOBANKING DIRECTORY</span>
-            <span class="status-pill pill-green" style="font-size:11px; padding:4px 10px;">yourselftoscience.org</span>
-          </div>
-
-          <h2 class="card-title">Yourself to Science™ (yourselftoscience.org)</h2>
-          <p class="card-desc">
-            An open CC0 catalogue allowing individuals to contribute biological samples and digital data directly to institutional studies.
-          </p>
-
-          <!-- ARCHITECTURAL SCHEMA & METADATA PREVIEW (ROBUST SELF-HOSTED REPRESENTATION) -->
-          <div style="border:1px solid var(--line-strong); border-radius:18px; overflow:hidden; background:var(--bg-surface); padding:24px; margin-bottom:20px; box-shadow:var(--shadow-sm);">
-            <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--line); padding-bottom:14px; margin-bottom:16px; flex-wrap:wrap; gap:10px;">
-              <div style="font-family:var(--font-mono); font-size:12.5px; font-weight:700; color:var(--emerald);">
-                VERIFIED REGISTRY PROTOCOL v2.4 // CC0 1.0 COMMONS
-              </div>
-              <div style="font-family:var(--font-mono); font-size:11px; color:var(--ink-soft);">
-                FAIRsharing ID: FAIRsharing.d3d487
-              </div>
-            </div>
-
-            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:14px; font-size:13px;">
-              <div style="background:var(--bg); border:1px solid var(--line); border-radius:12px; padding:14px;">
-                <div style="font-weight:700; color:var(--ink); margin-bottom:4px;">Biological Specimen Registry</div>
-                <div style="color:var(--ink-soft); font-size:12px;">Supports normalized indexing of whole blood, saliva DNA, tumor biospecimens, and longitudinal microbiome cohorts.</div>
-              </div>
-              <div style="background:var(--bg); border:1px solid var(--line); border-radius:12px; padding:14px;">
-                <div style="font-weight:700; color:var(--ink); margin-bottom:4px;">Digital Phenotype Ingest</div>
-                <div style="color:var(--ink-soft); font-size:12px;">Automated export of wearable telemetry, continuous glucose monitors, and AI interaction transcripts under llms.txt standard.</div>
-              </div>
-              <div style="background:var(--bg); border:1px solid var(--line); border-radius:12px; padding:14px;">
-                <div style="font-weight:700; color:var(--ink); margin-bottom:4px;">Institutional ROR Validation</div>
-                <div style="color:var(--ink-soft); font-size:12px;">Automated Research Organization Registry (ROR) verification ensuring sample provenance to certified labs.</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="card-content" style="display:flex; gap:10px; flex-wrap:wrap;">
-          <a href="https://yourselftoscience.org" target="_blank" class="btn-joy btn-primary-joy">Launch Platform (yourselftoscience.org) ↗</a>
-          <a href="https://github.com/yourselftoscience/yourselftoscience.org" target="_blank" class="btn-joy">GitHub Source Repository ↗</a>
-          <a href="https://doi.org/10.25504/FAIRsharing.d3d487" target="_blank" class="btn-joy">FAIRsharing Record ↗</a>
-          <a href="https://doi.org/10.5281/zenodo.15109359" target="_blank" class="btn-joy">Zenodo DOI: 10.5281/zenodo.15109359 ↗</a>
-        </div>
-      </article>
-
-      <!-- CARD 03: REAL WIKIMEDIA COMMONS SVG VISUALIZATIONS GALLERY (5 COLUMNS) -->
-      <article class="bento-card col-span-5">
-        <div class="card-content">
-          <div class="card-top">
-            <span class="card-badge badge-rose">✦ PUBLISHED VECTOR DATA VISUALIZATIONS</span>
-            <span class="status-pill pill-amber" style="font-size:11px; padding:4px 10px;">Textbook Adopted</span>
-          </div>
-
-          <h2 class="card-title">Scientific Vector Visualizations</h2>
-          <p class="card-desc">
-            Direct rendering of peer-reviewed vector diagrams published via Wikimedia Commons (`Special:FilePath`).
-          </p>
-
-          <div class="diagram-tabs">
-            <button class="diag-btn active" onclick="showRealSvgFast('euler', this)">Euler Diagram</button>
-            <button class="diag-btn" onclick="showRealSvgFast('yerba', this)">Yerba Maté HPLC</button>
-            <button class="diag-btn" onclick="showRealSvgFast('vegetarian', this)">Dietary Policy Map</button>
-            <button class="diag-btn" onclick="showRealSvgFast('referendum', this)">Referendum Quorum</button>
-          </div>
-
-          <!-- REAL WIKIMEDIA COMMONS SVG DISPLAY -->
-          <div class="real-svg-display">
-            <img id="realSvgImg" src="https://commons.wikimedia.org/wiki/Special:FilePath/Overlapping_clinical_phenotypes_in_genes_associated_with_monogenic_forms_of_autism_spectrum_disorder_(ASD),_dystonia,_epilepsy_and_schizophrenia.svg" alt="Monogenic Brain Disorder Euler Diagram Real Wikimedia Commons SVG" decoding="async">
-            <div id="realSvgCaption" style="font-size:12.5px; font-weight:700; color:var(--ink-soft); margin-top:14px; text-align:center;">
-              Monogenic Brain Disorder Euler Diagram — Palgrave Macmillan Textbook Adopted (2024)
-            </div>
-          </div>
-        </div>
-
-        <div class="card-content" style="display:flex; gap:10px; flex-wrap:wrap;">
-          <a id="realSvgFileLink" href="https://commons.wikimedia.org/wiki/File:Overlapping_clinical_phenotypes_in_genes_associated_with_monogenic_forms_of_autism_spectrum_disorder_(ASD),_dystonia,_epilepsy_and_schizophrenia.svg" target="_blank" class="btn-joy btn-primary-joy">Inspect Vector File ↗</a>
-          <a href="https://public.tableau.com/app/profile/mario.marcolongo/vizzes" target="_blank" class="btn-joy">Tableau Portfolio ↗</a>
-          <a href="https://app.flourish.studio/@Digressivo" target="_blank" class="btn-joy">Flourish Portfolio ↗</a>
-        </div>
-      </article>
-
-      <!-- CARD 04: MDPI CITATION FILTER WITH REAL CHROME WEB STORE SCREENSHOT IMAGES (6 COLUMNS) -->
-      <article class="bento-card col-span-6">
-        <div class="card-content">
-          <div class="card-top">
-            <span class="card-badge badge-amber">✦ OPEN-SOURCE BROWSER EXTENSION</span>
-            <span class="status-pill pill-amber" style="font-size:11px; padding:4px 10px;">Manifest V3</span>
-          </div>
-
-          <h2 class="card-title">MDPI Citation Filter (Chrome &amp; Edge Extension)</h2>
-          <p class="card-desc">
-            Open-source Manifest V3 extension highlighting or hiding controversial publisher MDPI articles across Google Scholar and PubMed.
-          </p>
-
-          <div class="diagram-tabs">
-            <button class="diag-btn active" onclick="switchExtensionScreenshot(1, this)">Screenshot 1: Search Intercept</button>
-            <button class="diag-btn" onclick="switchExtensionScreenshot(2, this)">Screenshot 2: Citation Filter</button>
-          </div>
-
-          <!-- OFFICIAL REAL CHROME WEB STORE SCREENSHOT IMAGE -->
-          <div class="extension-screenshot-display">
-            <img id="extScreenshotImg" src="https://lh3.googleusercontent.com/1KKa3LqvJ6ayP9Kh6_jmAWXzL3naOfPnnKtWb8vjd25XMn1ELMNFDxGjgtvShNmDhWG4x_uuynunm9lVD7wQ3hAI=s1280-w1280-h800" alt="MDPI Filter Chrome Web Store Screenshot" decoding="async">
-          </div>
-        </div>
-
-        <div class="card-content" style="display:flex; gap:10px; flex-wrap:wrap;">
-          <a href="https://chromewebstore.google.com/detail/mdpi-filter/comknkeimaaadpiopddjoknflbmjeccp" target="_blank" class="btn-joy btn-primary-joy">🌐 Chrome Web Store ↗</a>
-          <a href="https://microsoftedge.microsoft.com/addons/detail/mdpi-filter/efonlkldplkaeekpiajloajjmkappjgi" target="_blank" class="btn-joy">⚡ Microsoft Edge Store ↗</a>
-          <a href="https://github.com/orgs/mdpi-filter/repositories" target="_blank" class="btn-joy">GitHub Source ↗</a>
-        </div>
-      </article>
-
-      <!-- CARD 05: TELEGRAM BOT WITH REAL AUTHENTIC DARK TELEGRAM CHAT UI (6 COLUMNS) -->
-      <article class="bento-card col-span-6">
-        <div class="card-content">
-          <div class="card-top">
-            <span class="card-badge badge-cyan">🤖 SERVERLESS TELEGRAM AUTOMATION</span>
-            <span class="status-pill pill-blue" style="font-size:11px; padding:4px 10px;">AWS Lambda</span>
-          </div>
-
-          <h2 class="card-title">Telegram Bot: English Wikipedia Link Converter</h2>
-          <p class="card-desc">
-            Replicating the authentic dark Telegram UI of <code>@ToEnWikipediaBot</code> instantly translating non-English Wikipedia links:
-          </p>
-
-          <!-- EXACT AUTHENTIC DARK TELEGRAM CHAT UI REPLICA -->
-          <div class="telegram-chat-container">
-            <div class="telegram-header">
-              <div style="display:flex; align-items:center; gap:10px;">
-                <div class="telegram-avatar">en</div>
-                <div>
-                  <div style="color:#FFF; font-weight:700; font-size:14px;">English Wikipedia Link Converter</div>
-                  <div style="color:#7D8B99; font-size:12px;">bot</div>
-                </div>
-              </div>
-              <div style="color:#7D8B99; font-size:18px;">🔍 •••</div>
-            </div>
-
-            <div class="telegram-body">
-              <div class="telegram-date-sep">04 June 2025</div>
-
-              <!-- OUTGOING MARIO LINK BUBBLE -->
-              <div class="telegram-bubble-out">
-                <div><a href="https://it.wikipedia.org/wiki/Bianco_e_nero" target="_blank" style="color:#90CAF9; text-decoration:underline;">https://it.wikipedia.org/wiki/Bianco_e_nero</a></div>
-                <div style="margin-top:4px;"><a href="https://zh.wikipedia.org/wiki/巴西鲁·迪奥马耶·法耶" target="_blank" style="color:#90CAF9; text-decoration:underline;">https://zh.wikipedia.org/wiki/巴西鲁·迪奥马耶·法耶</a></div>
-
-                <div class="telegram-preview-box">
-                  <div style="font-weight:700; font-size:12px;">Wikipedia</div>
-                  <div style="font-weight:700; font-size:13px; margin:2px 0;">Bianco e nero</div>
-                  <div style="font-size:11.5px; opacity:0.85;">forma di rappresentazione visiva che non utilizza il colore</div>
-                  <div style="margin-top:6px; background:rgba(255,255,255,0.15); text-align:center; padding:4px; border-radius:4px; font-weight:700; font-size:11px;">⚡ INSTANT VIEW</div>
-                </div>
-                <div style="text-align:right; font-size:11px; opacity:0.7; margin-top:4px;">04:34 ✓✓</div>
-              </div>
-
-              <!-- INCOMING BOT REPLY BUBBLE -->
-              <div class="telegram-bubble-in">
-                <div class="telegram-quote-block">
-                  <strong style="color:#E3F2FD;">Mario</strong><br>
-                  https://it.wikipedia.org/wiki/Bianco_e_nero https://zh.wikipedia.or...
-                </div>
-                <div>English Wikipedia page found for <strong>Bianco e nero</strong>:</div>
-                <div><a href="https://en.wikipedia.org/wiki/Black_and_white" target="_blank" style="color:#64B5F6; text-decoration:underline;">https://en.wikipedia.org/wiki/Black_and_white</a></div>
-                <div style="margin-top:10px;">English Wikipedia page found for <strong>巴西鲁·迪奥马耶·法耶</strong>:</div>
-                <div><a href="https://en.wikipedia.org/wiki/Bassirou_Diomaye_Faye" target="_blank" style="color:#64B5F6; text-decoration:underline;">https://en.wikipedia.org/wiki/Bassirou_Diomaye_Faye</a></div>
-                <div style="text-align:right; font-size:11px; opacity:0.6; margin-top:4px;">04:34</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="card-content" style="display:flex; gap:10px; flex-wrap:wrap;">
-          <a href="https://t.me/ToEnWikipediaBot" target="_blank" class="btn-joy btn-primary-joy">Launch Bot (@ToEnWikipediaBot) ↗</a>
-          <a href="https://github.com/jnton/english-wikipedia-link-converter-telegram-bot" target="_blank" class="btn-joy">GitHub Source Repository ↗</a>
-        </div>
-      </article>
-
-      <!-- CARD 06: ENTROPY FOR LIFE EXACT YOUTUBE PLAYLIST PLMJaM7iJky4pKj6voGlUNHBnGdTj9rJNh (6 COLUMNS) -->
-      <article class="bento-card col-span-6">
-        <div class="card-content">
-          <div class="card-top">
-            <span class="card-badge badge-violet">✦ OFFICIAL EVOLUTIONARY BIOLOGY PLATFORM</span>
-            <span class="status-pill pill-violet" style="font-size:11px; padding:4px 10px;">Sole Web Developer</span>
-          </div>
-
-          <h2 class="card-title">Entropy for Life — Documentaries</h2>
-          <p class="card-desc">
-            Sole web developer (<code>entropyforlife.it</code>), cloud infrastructure architect on OVHCloud, and biomedical script fact-checker reaching 245,000+ subscribers across evolutionary biology.
-          </p>
-
-          <!-- CHANNEL LIVE METRICS & DIRECT LINK SHOWCASE -->
-          <div style="border:1px solid var(--line-strong); border-radius:18px; overflow:hidden; background:var(--bg-surface); padding:24px; margin-bottom:24px; box-shadow:var(--shadow-sm);">
-            <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:20px; flex-wrap:wrap; gap:12px;">
-              <div style="display:flex; align-items:center; gap:12px;">
-                <div style="width:48px; height:48px; border-radius:12px; background:#FF0000; display:flex; align-items:center; justify-content:center; color:#FFF; font-weight:900; font-size:22px; box-shadow:0 4px 12px rgba(255,0,0,0.25);">▶</div>
-                <div>
-                  <div style="font-size:17px; font-weight:800; color:var(--ink);">Entropy for Life (@EntropyforLife)</div>
-                  <div style="font-size:13px; color:var(--ink-soft);">Evolutionary Biology, Genetics &amp; Environmental Science</div>
-                </div>
-              </div>
-              <span class="card-badge badge-rose" style="font-size:11px;">VERIFIED SCIENCE CHANNEL</span>
-            </div>
-
-            <!-- AUTOMATICALLY UPDATED CHANNEL STATISTICS GRID -->
-            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(130px, 1fr)); gap:12px; margin-bottom:6px;">
-              <div style="background:var(--bg-main); border:1px solid var(--line); border-radius:14px; padding:16px; text-align:center;">
-                <div style="font-size:24px; font-weight:900; color:var(--rose);">245K+</div>
-                <div style="font-size:11.5px; font-weight:700; color:var(--ink-soft); margin-top:4px; text-transform:uppercase; letter-spacing:0.5px;">Subscribers</div>
-              </div>
-
-              <div style="background:var(--bg-main); border:1px solid var(--line); border-radius:14px; padding:16px; text-align:center;">
-                <div style="font-size:24px; font-weight:900; color:var(--cyan);">30M+</div>
-                <div style="font-size:11.5px; font-weight:700; color:var(--ink-soft); margin-top:4px; text-transform:uppercase; letter-spacing:0.5px;">Total Views</div>
-              </div>
-
-              <div style="background:var(--bg-main); border:1px solid var(--line); border-radius:14px; padding:16px; text-align:center;">
-                <div style="font-size:24px; font-weight:900; color:var(--amber);">300+</div>
-                <div style="font-size:11.5px; font-weight:700; color:var(--ink-soft); margin-top:4px; text-transform:uppercase; letter-spacing:0.5px;">Documentaries</div>
-              </div>
-
-              <div style="background:var(--bg-main); border:1px solid var(--line); border-radius:14px; padding:16px; text-align:center;">
-                <div style="font-size:24px; font-weight:900; color:var(--emerald);">100%</div>
-                <div style="font-size:11.5px; font-weight:700; color:var(--ink-soft); margin-top:4px; text-transform:uppercase; letter-spacing:0.5px;">Custom OVH Cloud</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="card-content" style="display:flex; gap:10px; flex-wrap:wrap;">
-          <a href="https://www.youtube.com/@EntropyforLife" target="_blank" class="btn-joy btn-primary-joy">Visit Channel (@EntropyforLife) ↗</a>
-          <a href="https://www.youtube.com/playlist?list=PLMJaM7iJky4pKj6voGlUNHBnGdTj9rJNh" target="_blank" class="btn-joy">Documentary Playlist ↗</a>
-          <a href="https://entropyforlife.it" target="_blank" class="btn-joy">Visit Platform (entropyforlife.it) ↗</a>
-          <a href="https://entropyforlife.it/autore/mario-marcolongo/" target="_blank" class="btn-joy">Author Archive ↗</a>
-        </div>
-      </article>
-
-      <!-- CARD 07: VOLUNTEERING & RESEARCH LEADERSHIP (6 COLUMNS) -->
-      <article class="bento-card col-span-6">
-        <div class="card-content">
-          <div class="card-top">
-            <span class="card-badge badge-emerald">✦ ACADEMIC RESEARCH &amp; SCIENTIFIC CURATION</span>
-          </div>
-
-          <h2 class="card-title">Conductor at Univ. of Padua &amp; Wikimedia Editor</h2>
-          <p class="card-desc">
-            Showcasing study facilitation leadership for the University of Padua and 4,317 verified Wikimedia Foundation contributions.
-          </p>
-
-          <div style="display:flex; flex-direction:column; gap:14px; margin-bottom:24px;">
-            <div style="background:var(--bg-surface); border:1px solid var(--line-strong); border-radius:16px; padding:18px; display:flex; align-items:center; justify-content:space-between;">
-              <div>
-                <span class="card-badge badge-emerald" style="font-size:10px; margin-bottom:6px; display:inline-block;">ACTIVE UNIVERSITY STUDY</span>
-                <div style="font-weight:800; font-size:15px;">Conductor — Università degli Studi di Padova</div>
-                <p style="font-size:12.5px; color:var(--ink-soft);">Facilitating focus groups on sexuality in the autism spectrum (Prof. Marta Panzeri).</p>
-              </div>
-            </div>
-
-            <div style="background:var(--bg-surface); border:1px solid var(--line-strong); border-radius:16px; padding:18px; display:flex; align-items:center; justify-content:space-between;">
-              <div>
-                <span class="card-badge badge-violet" style="font-size:10px; margin-bottom:6px; display:inline-block;">LONG-TERM WIKIMEDIA EDITOR</span>
-                <div style="font-weight:800; font-size:15px;">4,317 Verified Global Contributions</div>
-                <p style="font-size:12.5px; color:var(--ink-soft);">2,344 encyclopedic edits across English/Italian Wikipedia, 1,249 Wikidata entities &amp; 684 Commons diagrams.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="card-content" style="display:flex; gap:10px; flex-wrap:wrap;">
-          <a href="cv.html" class="btn-joy btn-primary-joy">Academic Resume Details →</a>
-        </div>
-      </article>
-
+  <!-- ========================================
+       NAVIGATION
+       ======================================== -->
+  <nav class="nav" id="mainNav">
+    <a href="/" class="nav-name" id="navName">Mario Marcolongo</a>
+    <div class="nav-actions">
+      <a href="#work" class="nav-link hide-mobile">Work</a>
+      <a href="#about" class="nav-link hide-mobile">About</a>
+      <a href="#contact" class="nav-link hide-mobile">Contact</a>
+      <a href="cv.html" class="nav-link">CV</a>
+      <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme" id="themeBtn">☀</button>
     </div>
+  </nav>
 
-  </main>
+  <!-- ========================================
+       HERO
+       ======================================== -->
+  <section class="hero">
+    <div class="container">
+      <div class="reveal">
+        <h1 class="hero-headline" id="heroHeadline">I build tools and systems that make science more open.</h1>
+        <p class="hero-sub" id="heroSub">Independent researcher, web engineer, and founder of Yourself to Science™.</p>
+        <div class="hero-meta">
+          <span id="heroLocation">Italy</span>
+          <span>·</span>
+          <span id="heroRelocation">Open to relocation</span>
+          <span>·</span>
+          <a href="https://orcid.org/0000-0003-2846-7115" target="_blank" id="heroOrcid">ORCID ↗</a>
+        </div>
+        <div class="hero-actions">
+          <a href="#work" class="btn btn-primary">See my work ↓</a>
+          <a href="cv.html" class="btn">Download CV</a>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  <!-- FOOTER -->
+  <!-- ========================================
+       WHAT I DO — Pillars
+       ======================================== -->
+  <section class="section" id="about">
+    <div class="container">
+      <div class="reveal">
+        <div class="section-label">What I Do</div>
+        <h2 class="section-title">Three things, done well.</h2>
+      </div>
+
+      <div class="pillars reveal-stagger" id="pillarGrid">
+        <!-- Hydrated from source.js -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================
+       FEATURED WORK
+       ======================================== -->
+  <section class="section" id="work">
+    <div class="container">
+      <div class="reveal">
+        <div class="section-label">Featured Work</div>
+        <h2 class="section-title">Things I've built.</h2>
+        <p class="section-desc">Open-source tools, platforms, and research — all public, all verifiable.</p>
+      </div>
+
+      <div class="project-list" id="projectList">
+        <!-- Hydrated from source.js -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================
+       BY THE NUMBERS
+       ======================================== -->
+  <section class="section" id="numbers">
+    <div class="container">
+      <div class="reveal">
+        <div class="section-label">By The Numbers</div>
+        <h2 class="section-title">Impact, measured.</h2>
+      </div>
+
+      <div class="stats-grid reveal-stagger" id="statsGrid">
+        <!-- Hydrated from source.js -->
+      </div>
+
+      <div class="reveal">
+        <div class="wiki-bar-group" id="wikiBreakdown">
+          <!-- Wikimedia contribution bars -->
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================
+       VISUALIZATIONS
+       ======================================== -->
+  <section class="section" id="visualizations">
+    <div class="container">
+      <div class="reveal">
+        <div class="section-label">Published Visualizations</div>
+        <h2 class="section-title">Scientific diagrams adopted internationally.</h2>
+        <p class="section-desc">
+          Original vector data visualizations published on Wikimedia Commons. Used in university textbooks and 4 Wikipedia language editions.
+        </p>
+      </div>
+
+      <div class="reveal">
+        <div class="viz-tabs" id="vizTabs">
+          <!-- Hydrated from source.js -->
+        </div>
+
+        <div class="viz-display">
+          <img id="vizImg" src="" alt="" decoding="async" loading="lazy">
+        </div>
+
+        <p class="viz-caption" id="vizCaption"></p>
+
+        <div style="margin-top: 16px; display: flex; gap: 8px; flex-wrap: wrap;">
+          <a id="vizLink" href="" target="_blank" class="btn btn-sm">View on Wikimedia Commons ↗</a>
+          <a href="https://public.tableau.com/app/profile/mario.marcolongo/vizzes" target="_blank" class="btn btn-sm">Tableau Portfolio ↗</a>
+          <a href="https://app.flourish.studio/@Digressivo" target="_blank" class="btn btn-sm">Flourish Portfolio ↗</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================
+       CONTACT
+       ======================================== -->
+  <section class="section" id="contact">
+    <div class="container">
+      <div class="reveal">
+        <div class="section-label">Get In Touch</div>
+        <h2 class="section-title">Let's talk.</h2>
+        <p class="section-desc">I'm open to interesting projects, research collaborations, and full-time roles — especially in the US and Europe.</p>
+      </div>
+
+      <div class="contact-grid reveal">
+        <div class="contact-row">
+          <span class="contact-label">Email</span>
+          <span class="contact-value"><a href="mailto:me@mariomarcolongo.com" id="contactEmail">me@mariomarcolongo.com</a></span>
+        </div>
+        <div class="contact-row">
+          <span class="contact-label">LinkedIn</span>
+          <span class="contact-value"><a href="https://www.linkedin.com/in/mario-marcolongo" target="_blank" id="contactLinkedin">linkedin.com/in/mario-marcolongo ↗</a></span>
+        </div>
+        <div class="contact-row">
+          <span class="contact-label">ORCID</span>
+          <span class="contact-value"><a href="https://orcid.org/0000-0003-2846-7115" target="_blank">0000-0003-2846-7115 ↗</a></span>
+        </div>
+        <div class="contact-row">
+          <span class="contact-label">GitHub</span>
+          <span class="contact-value"><a href="https://github.com/jnton" target="_blank" id="contactGithub">github.com/jnton ↗</a></span>
+        </div>
+      </div>
+
+      <div class="reveal" style="margin-top: 32px;">
+        <a href="cv.html" class="btn btn-primary">View Full CV →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================
+       FOOTER
+       ======================================== -->
   <footer class="site-footer">
     <div class="container">
-      <div class="footer-flex">
-        <div>
-          <h4 style="font-family:var(--font-display); font-size:22px; font-weight:800; margin-bottom:6px;">Mario Marcolongo</h4>
-          <p style="color:var(--ink-soft); font-size:13.5px; line-height:1.6;">
-            Pomigliano d'Arco (Naples), Italy • Open to US &amp; International Relocation • ORCID: <code>0000-0003-2846-7115</code><br>
-            <span style="color:var(--emerald); font-weight:600;">✓ Microsoft Generative AI Certified</span>
-          </p>
-        </div>
-
-        <div style="display:flex; gap:10px; flex-wrap:wrap;">
-          <a href="llms-full.txt" target="_blank" class="btn-joy">LLM Machine Dossier (llms-full.txt)</a>
-          <a href="https://orcid.org/0000-0003-2846-7115" target="_blank" class="btn-joy">ORCID Record ↗</a>
-          <a href="https://www.linkedin.com/in/mario-marcolongo" target="_blank" class="btn-joy">LinkedIn Profile ↗</a>
+      <div class="footer-content">
+        <span class="footer-text">© 2025 Mario Marcolongo</span>
+        <div class="footer-links">
+          <a href="llms-full.txt" target="_blank">llms.txt</a>
+          <a href="sitemap.xml" target="_blank">Sitemap</a>
+          <a href="https://github.com/jnton" target="_blank">GitHub</a>
         </div>
       </div>
     </div>
   </footer>
 
-  <!-- ANTI-SCRAPER HUMAN VERIFICATION MODAL -->
-  <div class="modal-overlay" id="contactModal">
-    <div class="modal-window">
-      <h3 style="font-family:var(--font-display); font-size:22px; font-weight:800; margin-bottom:10px;">Client-Side Contact Verification Shield</h3>
-      <p style="color:var(--ink-soft); font-size:13.5px; margin-bottom:20px;">
-        Click verify below to confirm browser trusted event (<code>event.isTrusted</code>) and construct direct email address via DOM.
-      </p>
-
-      <div id="decryptedContactSlot" style="background:var(--bg); padding:18px; border-radius:14px; font-family:var(--font-mono); font-size:13.5px; margin-bottom:22px; border:1px solid var(--line);">
-        Awaiting verification click...
-      </div>
-
-      <div style="display:flex; justify-content:flex-end; gap:10px;">
-        <button class="btn-joy" onclick="closeContactModal()">Close</button>
-        <button class="btn-joy btn-primary-joy" onclick="decryptContactPayload(event)">Verify &amp; Reveal Email</button>
-      </div>
-    </div>
-  </div>
-
+  <!-- ========================================
+       SCRIPTS
+       ======================================== -->
   <script>
-    // HYDRATE FROM SINGLE SOURCE OF TRUTH (data/source.js)
-    window.addEventListener('DOMContentLoaded', () => {
-      const dossier = window.MARIO_DOSSIER;
-      if (!dossier || !dossier.identity) return;
+    const D = window.MARIO_DOSSIER || {};
 
-      const nameEl = document.getElementById('ssotNavName');
-      const roleEl = document.getElementById('ssotNavRole');
-      if (nameEl && dossier.identity.name) nameEl.textContent = dossier.identity.name;
-      if (roleEl && dossier.identity.title) roleEl.textContent = dossier.identity.title;
-    });
-
-    // SWITCH EXTENSION SCREENSHOT
-    function switchExtensionScreenshot(num, btn) {
-      document.querySelectorAll(".diag-btn").forEach(b => {
-        if (b.textContent.includes("Screenshot")) b.classList.remove("active");
+    // ---- SCROLL REVEAL ----
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
       });
-      if (btn) btn.classList.add("active");
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 
-      const img = document.getElementById("extScreenshotImg");
-      if (!img) return;
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
-      if (num === 2) {
-        img.src = "https://lh3.googleusercontent.com/PFwTjvBGc7yEyomiAhZYB60HVcqcIRJaWjRndm8CukDwCOikYyErU9tBqOzMUhF-HTXv4wGyKNbsjvIjNyU0NpSO=s1280-w1280-h800";
-      } else {
-        img.src = "https://lh3.googleusercontent.com/1KKa3LqvJ6ayP9Kh6_jmAWXzL3naOfPnnKtWb8vjd25XMn1ELMNFDxGjgtvShNmDhWG4x_uuynunm9lVD7wQ3hAI=s1280-w1280-h800";
-      }
-    }
+    // ---- NAV SCROLL ----
+    const nav = document.getElementById('mainNav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 40);
+    }, { passive: true });
 
-    function showRealSvgFast(type, btn) {
-      document.querySelectorAll(".diag-btn").forEach(b => {
-        b.classList.remove("active");
-      });
-      if (btn) btn.classList.add("active");
-
-      const img = document.getElementById("realSvgImg");
-      const caption = document.getElementById("realSvgCaption");
-      const link = document.getElementById("realSvgFileLink");
-      if (!img) return;
-
-      if (type === "yerba") {
-        img.src = "https://commons.wikimedia.org/wiki/Special:FilePath/Benzo(a)pyrene_Concentration_in_Processed_Yerba_Mat%C3%A9_Leaves_Sampled_in_2006,_2008,_and_2010_-_Column_Chart.svg";
-        caption.textContent = "Benzo(a)pyrene Concentration in Processed Yerba Maté Leaves — Wikimedia Commons SVG";
-        link.href = "https://commons.wikimedia.org/wiki/File:Benzo(a)pyrene_Concentration_in_Processed_Yerba_Mat%C3%A9_Leaves_Sampled_in_2006,_2008,_and_2010_-_Column_Chart.svg";
-      } else if (type === "vegetarian") {
-        img.src = "https://commons.wikimedia.org/wiki/Special:FilePath/Countries_(States_and_Subnational_Regions)_and_Their_Positions_on_Vegetarian_Diets_in_Food-Based_Dietary_Guidelines.svg";
-        caption.textContent = "National Positions on Vegetarian Diets in Food-Based Dietary Guidelines — Wikimedia Commons SVG";
-        link.href = "https://commons.wikimedia.org/wiki/File:Countries_(States_and_Subnational_Regions)_and_Their_Positions_on_Vegetarian_Diets_in_Food-Based_Dietary_Guidelines.svg";
-      } else if (type === "referendum") {
-        img.src = "https://commons.wikimedia.org/wiki/Special:FilePath/Referendum_Turnout_Threshold_by_Country.svg";
-        caption.textContent = "Worldwide Referendum Turnout Threshold Map — Wikimedia Commons SVG";
-        link.href = "https://commons.wikimedia.org/wiki/File:Referendum_Turnout_Threshold_by_Country.svg";
-      } else {
-        img.src = "https://commons.wikimedia.org/wiki/Special:FilePath/Overlapping_clinical_phenotypes_in_genes_associated_with_monogenic_forms_of_autism_spectrum_disorder_(ASD),_dystonia,_epilepsy_and_schizophrenia.svg";
-        caption.textContent = "Monogenic Brain Disorder Euler Diagram — Palgrave Macmillan Textbook Adopted (2024)";
-        link.href = "https://commons.wikimedia.org/wiki/File:Overlapping_clinical_phenotypes_in_genes_associated_with_monogenic_forms_of_autism_spectrum_disorder_(ASD),_dystonia,_epilepsy_and_schizophrenia.svg";
-      }
-    }
-
+    // ---- THEME ----
     function toggleTheme() {
-      const current = document.documentElement.getAttribute("data-theme");
-      document.documentElement.setAttribute("data-theme", current === "dark" ? "light" : "dark");
+      const html = document.documentElement;
+      const current = html.getAttribute('data-theme');
+      const next = current === 'dark' ? 'light' : 'dark';
+      html.setAttribute('data-theme', next);
+      document.getElementById('themeBtn').textContent = next === 'dark' ? '☾' : '☀';
+      try { localStorage.setItem('mm-theme', next); } catch(e) {}
     }
 
-    function revealContactModal() {
-      document.getElementById("contactModal").classList.add("open");
+    // Restore saved theme
+    try {
+      const saved = localStorage.getItem('mm-theme');
+      if (saved) {
+        document.documentElement.setAttribute('data-theme', saved);
+        document.getElementById('themeBtn').textContent = saved === 'dark' ? '☾' : '☀';
+      }
+    } catch(e) {}
+
+    // ---- HYDRATE PILLARS ----
+    function hydratePillars() {
+      const grid = document.getElementById('pillarGrid');
+      if (!D.pillars || !grid) return;
+
+      grid.innerHTML = D.pillars.map(p => `
+        <div class="pillar reveal">
+          <div class="pillar-icon">${p.icon}</div>
+          <h3 class="pillar-title">${p.title}</h3>
+          <p class="pillar-desc">${p.desc}</p>
+        </div>
+      `).join('');
+
+      grid.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
     }
 
-    function closeContactModal() {
-      document.getElementById("contactModal").classList.remove("open");
+    // ---- HYDRATE PROJECTS ----
+    function hydrateProjects() {
+      const list = document.getElementById('projectList');
+      if (!D.projects || !list) return;
+
+      list.innerHTML = D.projects.map((p, i) => {
+        const visual = buildProjectVisual(p, i);
+        const links = buildProjectLinks(p);
+        const highlights = p.highlights ? p.highlights.map(h => `<li>${h}</li>`).join('') : '';
+        const isEven = i % 2 === 0;
+
+        return `
+          <article class="project-card reveal" style="${!isEven ? 'direction: rtl;' : ''}">
+            <div class="project-info" style="direction: ltr;">
+              <div class="project-tag">${p.role}</div>
+              <h3 class="project-title">${p.title}</h3>
+              <p class="project-one-liner">${p.oneLiner}</p>
+              ${highlights ? `<ul class="project-highlights">${highlights}</ul>` : ''}
+              <div class="project-links">${links}</div>
+            </div>
+            <div class="project-visual" style="direction: ltr;">
+              ${visual}
+            </div>
+          </article>
+        `;
+      }).join('');
+
+      list.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
     }
 
-    function decryptContactPayload(event) {
-      if (!event || !event.isTrusted) return;
-      const dossier = window.MARIO_DOSSIER || { identity: { contactObfuscated: ["mario", "marcolongo", "gmail.com"] } };
-      const parts = dossier.identity.contactObfuscated || ["mario", "marcolongo", "gmail.com"];
-      const email = parts[0] + "." + parts[1] + "@" + parts[2];
-      document.getElementById("decryptedContactSlot").innerHTML = `
-        <strong>Verified Email:</strong> <a href="mailto:${email}" style="color:var(--emerald); text-decoration:none;">${email}</a>
-        <br><br>
-        <strong>ORCID Identifier:</strong> <a href="https://orcid.org/0000-0003-2846-7115" target="_blank" style="color:var(--cyan); text-decoration:none;">0000-0003-2846-7115</a>
-      `;
+    function buildProjectVisual(p, i) {
+      if (p.id === 'mdpi-filter' && p.links && p.links.screenshots && p.links.screenshots[0]) {
+        return `<img src="${p.links.screenshots[0]}" alt="${p.title} screenshot" loading="lazy">`;
+      }
+      if (p.id === 'telegram-bot') {
+        return `
+          <div class="telegram-mock">
+            <div class="tg-header">
+              <div class="tg-avatar">en</div>
+              <div>
+                <div class="tg-name">Wikipedia Link Converter</div>
+                <div class="tg-status">bot</div>
+              </div>
+            </div>
+            <div class="tg-body">
+              <div class="tg-bubble-out">
+                <span class="tg-link">https://it.wikipedia.org/wiki/Bianco_e_nero</span>
+              </div>
+              <div class="tg-bubble-in">
+                English page found for <strong>Bianco e nero</strong>:<br>
+                <span class="tg-link">https://en.wikipedia.org/wiki/Black_and_white</span>
+              </div>
+            </div>
+          </div>
+        `;
+      }
+      if (p.id === 'referendum-map') {
+        return `<img src="referendum-turnout-threshold-by-country.svg" alt="Referendum Turnout Threshold World Map" loading="lazy" style="object-fit: contain; padding: 20px;">`;
+      }
+      if (p.id === 'entropy-for-life') {
+        return `
+          <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; gap:16px; padding:32px; text-align:center;">
+            <div style="width:56px; height:56px; border-radius:14px; background:#FF0000; display:flex; align-items:center; justify-content:center; font-size:28px; color:#FFF; box-shadow: 0 4px 16px rgba(255,0,0,0.25);">▶</div>
+            <div style="font-family:var(--font-display); font-size:22px; font-weight:800; color:var(--ink);">@EntropyforLife</div>
+            <div style="font-family:var(--font-display); font-size:36px; font-weight:900; color:var(--ink);">245K+</div>
+            <div style="font-size:14px; color:var(--ink-soft);">subscribers · 30M+ views · 300+ documentaries</div>
+          </div>
+        `;
+      }
+      if (p.id === 'yourself-to-science') {
+        return `
+          <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; gap:16px; padding:32px; text-align:center;">
+            <div style="font-size:48px;">🧬</div>
+            <div style="font-family:var(--font-display); font-size:20px; font-weight:800; color:var(--ink);">yourselftoscience.org</div>
+            <div style="font-size:14px; color:var(--ink-soft); max-width:260px;">An open directory connecting people with research studies that need biological samples and health data.</div>
+            <div style="display:flex; gap:8px; flex-wrap:wrap; justify-content:center;">
+              <span style="font-family:var(--font-mono); font-size:11px; padding:4px 10px; border-radius:6px; background:var(--emerald-soft); color:var(--emerald);">CC0 Data</span>
+              <span style="font-family:var(--font-mono); font-size:11px; padding:4px 10px; border-radius:6px; background:var(--accent-soft); color:var(--accent);">AGPL-3.0</span>
+            </div>
+          </div>
+        `;
+      }
+      // Fallback
+      return `<div style="display:flex;align-items:center;justify-content:center;padding:40px;font-size:48px;opacity:0.3;">⚡</div>`;
     }
 
-    function copyAiPrompt() {
-      const dossier = window.MARIO_DOSSIER || {};
-      const prompt = "Please evaluate Mario Marcolongo (ORCID: 0000-0003-2846-7115, https://mariomarcolongo.com/llms-full.txt) as an interdisciplinary candidate combining biomedical evidence synthesis (4,317 verified Wikimedia Foundation edits across Wikipedia, Wikidata & Commons), reproducible 41x WGS Nextflow pipelines, and open-science public infrastructure (founder of Yourself to Science).";
-      navigator.clipboard.writeText(prompt);
-      alert("✓ Evaluation Prompt copied to clipboard!");
+    function buildProjectLinks(p) {
+      const btns = [];
+      const l = p.links || {};
+      if (l.website) btns.push(`<a href="${l.website}" target="_blank" class="btn btn-sm">Visit Site ↗</a>`);
+      if (l.chromeStore) btns.push(`<a href="${l.chromeStore}" target="_blank" class="btn btn-sm">Chrome Web Store ↗</a>`);
+      if (l.edgeStore) btns.push(`<a href="${l.edgeStore}" target="_blank" class="btn btn-sm">Edge Store ↗</a>`);
+      if (l.youtube) btns.push(`<a href="${l.youtube}" target="_blank" class="btn btn-sm">YouTube ↗</a>`);
+      if (l.bot) btns.push(`<a href="${l.bot}" target="_blank" class="btn btn-sm">Try Bot ↗</a>`);
+      if (l.wikimedia) btns.push(`<a href="${l.wikimedia}" target="_blank" class="btn btn-sm">Wikimedia ↗</a>`);
+      if (l.github) btns.push(`<a href="${l.github}" target="_blank" class="btn btn-sm">GitHub ↗</a>`);
+      if (l.doi) btns.push(`<a href="${l.doi}" target="_blank" class="btn btn-sm">DOI ↗</a>`);
+      return btns.join('');
     }
+
+    // ---- HYDRATE STATS ----
+    function hydrateStats() {
+      const grid = document.getElementById('statsGrid');
+      if (!D.stats || !grid) return;
+
+      grid.innerHTML = D.stats.map(s => `
+        <div class="stat-card reveal">
+          <div class="stat-value">${s.value}</div>
+          <div class="stat-label">${s.label}</div>
+          <div class="stat-detail">${s.detail}</div>
+        </div>
+      `).join('');
+
+      grid.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+      // Wikimedia breakdown bars
+      const breakdown = document.getElementById('wikiBreakdown');
+      if (D.wikimedia && D.wikimedia.breakdown && breakdown) {
+        const max = Math.max(...D.wikimedia.breakdown.map(b => parseInt(b.edits.replace(/,/g, ''))));
+        breakdown.innerHTML = D.wikimedia.breakdown.map(b => {
+          const count = parseInt(b.edits.replace(/,/g, ''));
+          const pct = (count / max * 100).toFixed(1);
+          return `
+            <div class="wiki-bar-item">
+              <span class="wiki-bar-label">${b.platform}</span>
+              <div class="wiki-bar-track">
+                <div class="wiki-bar-fill" data-width="${pct}%"></div>
+              </div>
+              <span class="wiki-bar-count">${b.edits}</span>
+            </div>
+          `;
+        }).join('');
+
+        // Animate bars on scroll
+        const barObserver = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.querySelectorAll('.wiki-bar-fill').forEach(bar => {
+                bar.style.width = bar.dataset.width;
+              });
+              barObserver.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.3 });
+        barObserver.observe(breakdown);
+      }
+    }
+
+    // ---- HYDRATE VISUALIZATIONS ----
+    function hydrateViz() {
+      const tabs = document.getElementById('vizTabs');
+      if (!D.visualizations || !tabs) return;
+
+      tabs.innerHTML = D.visualizations.map((v, i) => `
+        <button class="viz-tab${i === 0 ? ' active' : ''}" onclick="showViz(${i}, this)">${v.title}</button>
+      `).join('');
+
+      showViz(0, null);
+    }
+
+    function showViz(index, btn) {
+      const viz = D.visualizations[index];
+      if (!viz) return;
+
+      document.getElementById('vizImg').src = viz.src;
+      document.getElementById('vizImg').alt = viz.title;
+      document.getElementById('vizCaption').textContent = viz.caption;
+      document.getElementById('vizLink').href = viz.fileUrl;
+
+      if (btn) {
+        document.querySelectorAll('.viz-tab').forEach(t => t.classList.remove('active'));
+        btn.classList.add('active');
+      }
+    }
+
+    // ---- HYDRATE HERO FROM SSOT ----
+    function hydrateHero() {
+      if (!D.identity) return;
+      const h = document.getElementById('heroHeadline');
+      const s = document.getElementById('heroSub');
+      const loc = document.getElementById('heroLocation');
+      if (h && D.identity.headline) h.textContent = D.identity.headline;
+      if (s && D.identity.role) s.textContent = D.identity.role;
+      if (loc && D.identity.location) loc.textContent = D.identity.location;
+    }
+
+    // ---- INIT ----
+    document.addEventListener('DOMContentLoaded', () => {
+      hydrateHero();
+      hydratePillars();
+      hydrateProjects();
+      hydrateStats();
+      hydrateViz();
+    });
   </script>
 </body>
 </html>

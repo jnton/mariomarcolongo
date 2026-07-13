@@ -1,0 +1,11 @@
+# Local-only private config (phone number, etc.)
+data/private.local.js
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+*.swp
+*.swo

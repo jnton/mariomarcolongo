@@ -1,26 +1,47 @@
-# Mario Marcolongo — Full Technical & Research Dossier
+# Mario Marcolongo — Full Profile
 
-## Executive Summary
-Mario Marcolongo is an independent researcher, applied engineer, and open-knowledge builder. His work specializes in compressing complex scientific literature—across genetics, epidemiology, toxicology, and public policy—into verifiable visual artifacts and production software tools.
+## Who I Am
+Mario Marcolongo is an independent researcher, web engineer, and open science builder based in Italy. He works at the intersection of biomedical evidence synthesis, software engineering, and public knowledge infrastructure.
 
-## Core Methodology & Capabilities
-- **Structured Evidence Synthesis**: Extracting primary data from peer-reviewed literature and government archives into rigorous visual comparisons and open datasets.
-- **Applied Genomics Pipeline**: WGS (41× depth) processing via Terra.bio, ancestry-standardized polygenic risk scoring (pgsc_calc / Nextflow against 1000 Genomes + HGDP), ClinVar clinical variant screening, and VEP-annotated pharmacogenomic panel extraction.
-- **Production Web & AI Engineering**: Serverless architecture (AWS Lambda, GitHub Actions CI/CD), Manifest V3 browser extension development, semantic web engineering, and AI-native structured output design.
+## What I Do
+- **Biomedical fact-checking**: 9+ years verifying scientific claims on Wikipedia — 4,317 total Wikimedia Foundation contributions (1,592 English Wikipedia, 1,249 Wikidata, 752 Italian Wikipedia, 684 Commons).
+- **Engineering**: Browser extensions, serverless bots, genomic data pipelines, and cloud infrastructure — all open-source.
+- **Open science platforms**: Founded Yourself to Science™ (yourselftoscience.org) — an open directory connecting people with research studies that need biological samples and health data.
 
-## Featured Works & Verified Independent Reuse
-1. **Overlapping Phenotypes in Monogenic Brain Disorders (Euler Diagram)**
-   - Mapped gene associations across autism, epilepsy, dystonia, and schizophrenia.
-   - Independently adopted into English, French, Polish, and Romanian Wikipedia articles.
-   - Reproduced in *Autism Research between Psychology and Neuroscience* (Palgrave Macmillan, 2024).
-2. **Benzo(a)pyrene in Processed Yerba Maté (Toxicology Meta-Comparison)**
-   - Synthesized contamination levels across 8 commercial brands and 3 sampling years from independent toxicology studies.
-3. **National Stances on Vegetarian Diets (Global Policy Matrix)**
-   - Categorized official dietary guidelines across national and subnational governments worldwide.
-4. **Yourself to Science (yourselftoscience.org)**
-   - Open, centralized catalogue for citizen biological sample and data donation to research. CC0 dataset, AGPL-3 codebase.
+## Key Projects
 
-## Contact & Career Objectives
-- Open to high-impact opportunities in the United States and internationally.
-- Interests: Applied AI, scientific tooling, research engineering, open-source biomedical infrastructure, and technical leadership.
-- Contact via LinkedIn: https://www.linkedin.com/in/mario-marcolongo
+### Yourself to Science™ (yourselftoscience.org)
+An open directory where anyone can find research studies that accept biological samples (DNA, tissue, blood) or digital health data (wearables, AI chat history). All data is CC0 public domain. Indexed in FAIRsharing and Zenodo.
+
+### MDPI Citation Filter
+A browser extension (Chrome & Edge) that flags papers from controversial publisher MDPI across Google Scholar and PubMed in real time. Open-source, Manifest V3.
+
+### Entropy for Life (entropyforlife.it)
+Sole web developer and biomedical fact-checker for one of Italy's biggest science YouTube channels — 245,000+ subscribers, 30M+ views, 300+ documentaries on evolutionary biology and genetics.
+
+### Worldwide Referendum Quorum Map
+Python pipeline that classifies referendum turnout requirements in 100+ countries and generates a publication-grade vector map. Published on Wikimedia Commons.
+
+### 41× WGS Genomic Pipeline
+Complete whole-genome sequencing analysis — alignment, ancestry correction via PCA, polygenic risk scoring (pgsc_calc/Nextflow), and pharmacogenomic variant screening against ClinVar.
+
+### Wikipedia Link Converter Telegram Bot
+Serverless bot on AWS Lambda that converts non-English Wikipedia links to English. Zero idle cost, automated CI/CD.
+
+## Scientific Visualizations
+Original vector diagrams published on Wikimedia Commons:
+- Euler diagram of overlapping brain disorder gene mutations — adopted in 4 Wikipedia language editions and a Palgrave Macmillan textbook (2024)
+- Benzo(a)pyrene contamination levels in processed yerba maté
+- Global national positions on vegetarian diets in dietary guidelines
+- Worldwide referendum turnout threshold map
+
+## Research
+- Focus Group Moderator & Research Facilitator at the University of Padua — clinical research on sexuality in the autism spectrum (Prof. Marta Panzeri), Nov 2022 – present.
+
+## Contact & Availability
+- Open to roles in the US, Europe, and remote.
+- Interests: applied AI, research engineering, scientific tooling, open-source biomedical infrastructure.
+- Email: me@mariomarcolongo.com
+- Website: https://mariomarcolongo.com
+- LinkedIn: https://www.linkedin.com/in/mario-marcolongo
+- ORCID: https://orcid.org/0000-0003-2846-7115
