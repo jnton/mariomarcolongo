@@ -512,15 +512,18 @@ import Layout from '../layouts/Layout.astro';
     }
 
     function buildProjectVisual(p, i) {
-      if (p.id === 'mdpi-filter' && p.links && p.links.screenshots && p.links.screenshots[0]) {
-        return `<img src="${p.links.screenshots[0]}" alt="${p.title} screenshot" loading="lazy">`;
+      if (p.id === 'mdpi-filter') {
+        const imgSrc = (p.links && p.links.screenshots && p.links.screenshots[0])
+          ? p.links.screenshots[0]
+          : 'https://lh3.googleusercontent.com/1KKa3LqvJ6ayP9Kh6_jmAWXzL3naOfPnnKtWb8vjd25XMn1ELMNFDxGjgtvShNmDhWG4x_uuynunm9lVD7wQ3hAI=s1280-w1280-h800';
+        return `<div style="width:100%; height:100%; display:flex; align-items:center; justify-content:center; overflow:hidden; border-radius:14px; background:#F8FAFC; border:1px solid #E2E8F0;"><img src="${imgSrc}" alt="${p.title} screenshot" loading="lazy" style="width:100%; height:100%; object-fit:cover;"></div>`;
       }
       if (p.id === 'telegram-bot') {
         return `
           <div class="telegram-mock">
             <div class="tg-header">
               <div class="tg-avatar">
-                <img src="telegram-bot-icon.svg" alt="Wikipedia Link Converter Bot Icon" style="width: 100%; height: 100%; object-fit: contain;">
+                <img src="/telegram-bot-icon.svg" alt="Wikipedia Link Converter Bot Icon" style="width: 100%; height: 100%; object-fit: contain;">
               </div>
               <div>
                 <div class="tg-name">Wikipedia Link Converter</div>
@@ -540,7 +543,7 @@ import Layout from '../layouts/Layout.astro';
         `;
       }
       if (p.id === 'referendum-map') {
-        return `<img src="referendum-turnout-threshold-by-country.svg" alt="Referendum Turnout Threshold World Map" loading="lazy" style="object-fit: contain; padding: 20px;">`;
+        return `<img src="/referendum-turnout-threshold-by-country.svg" alt="Referendum Turnout Threshold World Map" loading="lazy" style="object-fit: contain; padding: 20px;">`;
       }
       if (p.id === 'entropy-for-life') {
         return `
@@ -592,8 +595,8 @@ import Layout from '../layouts/Layout.astro';
             <!-- Top Nav -->
             <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #F1F5F9; padding-bottom: 12px; margin-bottom: 16px;">
               <div style="display: flex; align-items: center; gap: 8px;">
-                <img src="y2s-logo.svg" alt="Yourself to Science Logo" style="width: 28px; height: 28px; object-fit: contain;">
-                <img src="y2s-title.svg" alt="Yourself to Science™" style="height: 16px; object-fit: contain;">
+                <img src="/y2s-logo.svg" alt="Yourself to Science Logo" style="width: 28px; height: 28px; object-fit: contain;">
+                <img src="/y2s-title.svg" alt="Yourself to Science™" style="height: 16px; object-fit: contain;">
               </div>
               <div style="display: flex; align-items: center; gap: 14px; font-size: 11px; color: #475569; font-weight: 500;">
                 <span>Stats</span>
@@ -688,10 +691,11 @@ import Layout from '../layouts/Layout.astro';
       if (l.chromeStore) btns.push(`<a href="${l.chromeStore}" target="_blank" rel="noopener noreferrer" class="btn btn-sm">Chrome Store ↗</a>`);
       if (l.edgeStore) btns.push(`<a href="${l.edgeStore}" target="_blank" rel="noopener noreferrer" class="btn btn-sm">Edge Store ↗</a>`);
       if (l.youtube) btns.push(`<a href="${l.youtube}" target="_blank" rel="noopener noreferrer" class="btn btn-sm">YouTube ↗</a>`);
-      if (l.bot) btns.push(`<a href="${l.bot}" target="_blank" rel="noopener noreferrer" class="btn btn-sm">Try Bot ↗</a>`);
+      if (l.bot || l.telegramBot) btns.push(`<a href="${l.bot || l.telegramBot}" target="_blank" rel="noopener noreferrer" class="btn btn-sm">Try Bot ↗</a>`);
       if (l.wikimedia) btns.push(`<a href="${l.wikimedia}" target="_blank" rel="noopener noreferrer" class="btn btn-sm">Wikimedia ↗</a>`);
-      if (l.github) btns.push(`<a href="${l.github}" target="_blank" rel="noopener noreferrer" class="btn btn-sm">GitHub ↗</a>`);
+      if (l.github || l.githubOrg) btns.push(`<a href="${l.github || l.githubOrg}" target="_blank" rel="noopener noreferrer" class="btn btn-sm">GitHub ↗</a>`);
       if (l.doi) btns.push(`<a href="${l.doi}" target="_blank" rel="noopener noreferrer" class="btn btn-sm">DOI ↗</a>`);
+      if (l.fairsharing) btns.push(`<a href="${l.fairsharing}" target="_blank" rel="noopener noreferrer" class="btn btn-sm">FAIRsharing ↗</a>`);
       return btns.join('');
     }
 

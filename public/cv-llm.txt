@@ -72,6 +72,11 @@ AI-native software developer, open science builder, and scientific fact-checker 
 
 ## Key Production Projects
 
+### Yourself to Science™ | Open Science Catalogue & Directory
+**Founder & Lead Builder** | https://yourselftoscience.org
+
+Founded and engineered a FAIRsharing-indexed open directory cataloging 55+ clinical trials, biobanks, tissue/blood donation programs, and digital health registries. Architected with AI-native Linked Data (JSON-LD, RDF Turtle/VoID graphs, live MCP Server, standard llms.txt, OpenAPI spec) and published as a 100% Open Science stack dedicated to the public domain (CC0 1.0 Universal dataset, CC BY-SA 4.0 content, AGPL-3.0 codebase).
+
 ### MDPI Filter | Browser Extension
 **Creator & Maintainer** | https://github.com/orgs/mdpi-filter/repositories
 

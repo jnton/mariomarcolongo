@@ -72,6 +72,25 @@ const MARIO_DOSSIER = {
 
   projects: [
     {
+      id: "yourself-to-science",
+      title: "Yourself to Science™ | Open Science Catalogue & Directory",
+      oneLiner: "An open-source catalogue and unified directory indexing 55+ initiatives where people can contribute their biological and digital self to scientific research.",
+      description: "Founded and engineered a FAIRsharing-indexed open directory cataloging 55+ clinical trials, biobanks, tissue/blood donation programs, and digital health registries. Architected with AI-native Linked Data (JSON-LD, RDF Turtle/VoID graphs, live MCP Server, standard llms.txt, OpenAPI spec) and published as a 100% Open Science stack dedicated to the public domain (CC0 1.0 Universal dataset, CC BY-SA 4.0 content, AGPL-3.0 codebase).",
+      role: "Founder & Lead Builder",
+      tech: ["MCP Server", "Linked Data / JSON-LD", "FAIRsharing Registry", "Open Science", "CC0 / AGPL-3.0"],
+      links: {
+        website: "https://yourselftoscience.org",
+        github: "https://github.com/yourselftoscience/yourselftoscience.org",
+        doi: "https://doi.org/10.5281/zenodo.15109359",
+        fairsharing: "https://doi.org/10.25504/FAIRsharing.d3d487"
+      },
+      highlights: [
+        "FAIRsharing & Zenodo Indexed: Standardized Linked Data infrastructure with live MCP Server & OpenAPI spec",
+        "55+ Research Initiatives Cataloged: Unified directory for genomic data, biobanking, and clinical trial participation",
+        "100% Open Science stack: CC0 public domain dataset with AGPL-3.0 open-source platform architecture"
+      ]
+    },
+    {
       id: "mdpi-filter",
       title: "MDPI Filter | Browser Extension",
       oneLiner: "An open-source browser extension that streamlines literature search by highlighting, hiding, or visually styling publications from the controversial publisher MDPI.",
@@ -81,7 +100,11 @@ const MARIO_DOSSIER = {
       links: {
         chromeStore: "https://chromewebstore.google.com/detail/mdpi-filter/comknkeimaaadpiopddjoknflbmjeccp",
         edgeStore: "https://microsoftedge.microsoft.com/addons/detail/mdpi-filter/efonlkldplkaeekpiajloajjmkappjgi",
-        github: "https://github.com/orgs/mdpi-filter/repositories"
+        github: "https://github.com/orgs/mdpi-filter/repositories",
+        screenshots: [
+          "https://lh3.googleusercontent.com/1KKa3LqvJ6ayP9Kh6_jmAWXzL3naOfPnnKtWb8vjd25XMn1ELMNFDxGjgtvShNmDhWG4x_uuynunm9lVD7wQ3hAI=s1280-w1280-h800",
+          "https://lh3.googleusercontent.com/PFwTjvBGc7yEyomiAhZYB60HVcqcIRJaWjRndm8CukDwCOikYyErU9tBqOzMUhF-HTXv4wGyKNbsjvIjNyU0NpSO=s1280-w1280-h800"
+        ]
       },
       highlights: [
         "Smart Search Filtering: Highlights or hides MDPI papers across Google Scholar, PubMed & Europe PMC integrating NCBI API",
@@ -130,35 +153,35 @@ const MARIO_DOSSIER = {
       id: "euler",
       title: "Brain Disorder Gene Overlap",
       caption: "Original vector Euler diagram illustrating shared monogenic mutations across autism spectrum disorder (ASD), epilepsy, dystonia, and schizophrenia. Published under CC BY-SA 4.0 and independently adopted across 4 Wikipedia language editions.",
-      src: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Overlapping_clinical_phenotypes_in_genes_associated_with_monogenic_forms_of_autism_spectrum_disorder_%28ASD%29%2C_dystonia%2C_epilepsy_and_schizophrenia.svg/800px-Overlapping_clinical_phenotypes_in_genes_associated_with_monogenic_forms_of_autism_spectrum_disorder_%28ASD%29%2C_dystonia%2C_epilepsy_and_schizophrenia.svg.png",
+      src: "https://upload.wikimedia.org/wikipedia/commons/6/69/Overlapping_clinical_phenotypes_in_genes_associated_with_monogenic_forms_of_autism_spectrum_disorder_%28ASD%29%2C_dystonia%2C_epilepsy_and_schizophrenia.svg",
       fileUrl: "https://commons.wikimedia.org/wiki/File:Overlapping_clinical_phenotypes_in_genes_associated_with_monogenic_forms_of_autism_spectrum_disorder_(ASD),_dystonia,_epilepsy_and_schizophrenia.svg"
     },
     {
       id: "yerba",
       title: "Carcinogen Levels in Yerba Maté",
       caption: "Benzo(a)pyrene contamination measured across commercial brands and sampling years, synthesized from published HPLC/GC-MS toxicology literature.",
-      src: "https://commons.wikimedia.org/wiki/Special:FilePath/Benzo(a)pyrene_Concentration_in_Processed_Yerba_Mat%C3%A9_Leaves_Sampled_in_2006,_2008,_and_2010_-_Column_Chart.svg",
+      src: "https://upload.wikimedia.org/wikipedia/commons/e/e0/Benzo%28a%29pyrene_Concentration_in_Processed_Yerba_Mat%C3%A9_Leaves_Sampled_in_2006%2C_2008%2C_and_2010_-_Column_Chart.svg",
       fileUrl: "https://commons.wikimedia.org/wiki/File:Benzo(a)pyrene_Concentration_in_Processed_Yerba_Mat%C3%A9_Leaves_Sampled_in_2006,_2008,_and_2010_-_Column_Chart.svg"
     },
     {
       id: "vegetarian",
       title: "Global Vegetarian Diet Policies",
       caption: "Comparative policy mapping of national food-based dietary guidelines regarding vegetarian and plant-based nutrition.",
-      src: "https://commons.wikimedia.org/wiki/Special:FilePath/Countries_(States_and_Subnational_Regions)_and_Their_Positions_on_Vegetarian_Diets_in_Food-Based_Dietary_Guidelines.svg",
+      src: "https://upload.wikimedia.org/wikipedia/commons/4/45/Countries_%28States_and_Subnational_Regions%29_and_Their_Positions_on_Vegetarian_Diets_in_Food-Based_Dietary_Guidelines.svg",
       fileUrl: "https://commons.wikimedia.org/wiki/File:Countries_(States_and_Subnational_Regions)_and_Their_Positions_on_Vegetarian_Diets_in_Food-Based_Dietary_Guidelines.svg"
     },
     {
       id: "naturalization",
       title: "Global Naturalization Residence Requirements",
       caption: "Programmatically generated world choropleth map illustrating statutory residence requirements for citizenship across 190+ countries. Generated via automated SVG pipeline and active across English, Italian, Russian, and Chinese Wikipedia.",
-      src: "https://commons.wikimedia.org/wiki/Special:FilePath/Naturalization_Residence_Requirements_by_Country_(Years_of_Residence).svg",
+      src: "https://upload.wikimedia.org/wikipedia/commons/0/05/Naturalization_Residence_Requirements_by_Country_%28Years_of_Residence%29.svg",
       fileUrl: "https://commons.wikimedia.org/wiki/File:Naturalization_Residence_Requirements_by_Country_(Years_of_Residence).svg"
     },
     {
       id: "oesophageal",
       title: "Global Oesophageal Cancer Incidence (IARC 2022)",
       caption: "Age-standardized global incidence rate (world) per 100,000 synthesized from Globocan 2022 / International Agency for Research on Cancer data. Modeled in Flourish and published as open vector data.",
-      src: "https://commons.wikimedia.org/wiki/Special:FilePath/Oesophageal_Cancer,_Age-Standardized_Rate_(World)_per_100.000_of_Incidence_Cases,_Both_sexes,_Worldwide_in_2022.svg",
+      src: "https://upload.wikimedia.org/wikipedia/commons/5/53/Oesophageal_Cancer%2C_Age-Standardized_Rate_%28World%29_per_100.000_of_Incidence_Cases%2C_Both_sexes%2C_Worldwide_in_2022.svg",
       fileUrl: "https://commons.wikimedia.org/wiki/File:Oesophageal_Cancer,_Age-Standardized_Rate_(World)_per_100.000_of_Incidence_Cases,_Both_sexes,_Worldwide_in_2022.svg"
     }
   ],

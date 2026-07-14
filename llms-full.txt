@@ -60,6 +60,16 @@ Leveraging psychological study facilitation to design standardized protocols, co
 
 ## Key Projects & Production Systems
 
+### Yourself to Science™ | Open Science Catalogue & Directory (https://yourselftoscience.org)
+**Role**: Founder & Lead Builder
+**Tech Stack**: MCP Server, Linked Data / JSON-LD, FAIRsharing Registry, Open Science, CC0 / AGPL-3.0
+
+Founded and engineered a FAIRsharing-indexed open directory cataloging 55+ clinical trials, biobanks, tissue/blood donation programs, and digital health registries. Architected with AI-native Linked Data (JSON-LD, RDF Turtle/VoID graphs, live MCP Server, standard llms.txt, OpenAPI spec) and published as a 100% Open Science stack dedicated to the public domain (CC0 1.0 Universal dataset, CC BY-SA 4.0 content, AGPL-3.0 codebase).
+
+- FAIRsharing & Zenodo Indexed: Standardized Linked Data infrastructure with live MCP Server & OpenAPI spec
+- 55+ Research Initiatives Cataloged: Unified directory for genomic data, biobanking, and clinical trial participation
+- 100% Open Science stack: CC0 public domain dataset with AGPL-3.0 open-source platform architecture
+
 ### MDPI Filter | Browser Extension (https://github.com/orgs/mdpi-filter/repositories)
 **Role**: Creator & Maintainer
 **Tech Stack**: Manifest V3, Chrome & Edge, NCBI E-utilities API, Universal DOM Citation Styling, AGPL-3.0
