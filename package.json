@@ -7,7 +7,8 @@
     "dev": "npm run generate:llms && astro dev",
     "build": "npm run generate:llms && astro build",
     "preview": "astro preview",
-    "generate:llms": "node scripts/generate-llm-dossiers.js"
+    "generate:llms": "node scripts/generate-llm-dossiers.js",
+    "cv:custom": "node scripts/generate-custom-cv.js"
   },
   "author": "Mario Marcolongo <me@mariomarcolongo.com>",
   "devDependencies": {

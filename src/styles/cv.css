@@ -372,7 +372,12 @@
       margin: 15mm;
       @bottom-right { content: "Page " counter(page) " of " counter(pages); }
     }
-    body { background: #FFF !important; color: #111 !important; padding: 0 !important; font-size: 10pt !important; }
+    * {
+      color: #000000 !important;
+      text-shadow: none !important;
+      opacity: 1 !important;
+    }
+    body { background: #FFF !important; color: #000000 !important; padding: 0 !important; font-size: 10pt !important; }
     .toolbar, .print-hide { display: none !important; }
     .cv-stamp-row { display: flex !important; page-break-inside: avoid; break-inside: avoid; }
 
@@ -385,29 +390,30 @@
     }
 
     .cv-header {
-      border-bottom: 1.5pt solid #111 !important;
+      border-bottom: 1.5pt solid #000000 !important;
       padding-bottom: 12pt !important;
       margin-bottom: 14pt !important;
     }
 
     .cv-name { font-size: 24pt !important; color: #000000 !important; }
-    .cv-tagline { font-size: 11pt !important; color: #1A1A1A !important; font-weight: 500 !important; }
-    .cv-contact { font-size: 9pt !important; color: #1A1A1A !important; font-weight: 500 !important; }
-    .cv-contact span, .cv-contact a { color: #1A1A1A !important; }
+    .cv-tagline { font-size: 11pt !important; color: #000000 !important; font-weight: 600 !important; }
+    .cv-contact { font-size: 9.5pt !important; color: #000000 !important; font-weight: 600 !important; }
+    .cv-contact span, .cv-contact a { color: #000000 !important; }
 
     .cv-section { margin-bottom: 16pt !important; }
     .cv-section-heading {
-      color: #1D4ED8 !important;
-      border-bottom: 0.5pt solid #CBD5E1 !important;
+      color: #000000 !important;
+      border-bottom: 1pt solid #000000 !important;
       margin-bottom: 8pt !important;
     }
 
     .cv-item { page-break-inside: avoid; margin-bottom: 12pt !important; }
-    .cv-item-title { font-size: 11pt !important; color: #000000 !important; }
-    .cv-item-org { font-size: 9.5pt !important; color: #222222 !important; }
-    .cv-item-bullets li { font-size: 9.5pt !important; color: #1E1E1E !important; }
+    .cv-item-title { font-size: 11pt !important; color: #000000 !important; font-weight: 700 !important; }
+    .cv-item-org { font-size: 9.5pt !important; color: #000000 !important; font-weight: 600 !important; }
+    .cv-item-bullets li { font-size: 9.5pt !important; color: #000000 !important; }
+    .edu-title, .edu-detail, .edu-period, .skill-group { color: #000000 !important; }
 
-    a { color: #111 !important; text-decoration: none !important; }
+    a { color: #000000 !important; text-decoration: none !important; }
 
     .cv-phone.has-phone { display: inline !important; }
   }

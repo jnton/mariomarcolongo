@@ -1,22 +1,22 @@
 # Mario Marcolongo
 
-> My core strength combines radical epistemic skepticism and primary source verification with empathetic clinical facilitation and cross-functional team collaboration. Characterized by independent empirical verification over authority deference and high-agency operational execution, I consistently solve complex information challenges while fostering trust and psychological safety. Over the past 9 years, I have verified thousands of scientific claims across Wikipedia (4,317 documented edits), shipped open-source automation, and founded Yourself to Science™ (yourselftoscience.org). Alongside deep technical rigor, I bring empathetic facilitation and ethical sensitivity—volunteering as an independent researcher to moderate sensitive clinical psychology focus groups with neurodivergent participants and collaborating within fast-paced science communication teams where every editorial decision balances scientific precision, relationships with diverse commercial and institutional sponsors, and public perception.
+> I operate at the intersection of AI-native engineering, rigorous evidence synthesis, and bridging epistemic rigor with public comprehension. Characterized by independent empirical verification over authority deference and high-agency operational execution, I consistently solve complex information challenges while fostering trust and psychological safety. Over the past 9 years, I have verified thousands of scientific claims across Wikimedia projects (4,317 documented edits across English/Italian Wikipedia, Wikidata, and Wikimedia Commons), shipped production AI automation, and founded Yourself to Science™ (yourselftoscience.org). At Entropy for Life (480,000+ cross-platform community), I serve as technical operations and literature researcher—fact-checking primary literature across 55+ videos and co-authoring 4 epidemiological articles. Alongside deep technical rigor and Cochrane Crowd / GALENOS screening methodology certifications, I bring lived neurodivergent experience (Autism Spectrum) and ethical sensitivity—volunteering as an independent researcher to co-facilitate remote Zoom focus groups with neurodivergent participants under Prof. Marta Panzeri (University of Padua Department of Developmental Psychology and Socialisation) and collaborating within fast-paced science communication teams where every editorial decision balances scientific precision, relationships with diverse institutional sponsors, and public comprehension.
 
 ## Quick Facts & Key Metrics
 - **100 / 100** (Production Web & AI Readiness): Perfect 100 Lighthouse (Performance/a11y/SEO) & 3/3 Agentic Browsing score on Yourself to Science™
 - **70+ Vizzes** (Empirical Data Visualizations): Published 55+ Flourish & 15 Tableau Public epidemiological, demographic & ISTAT workbooks analyzing ~80+ datasets
-- **300+ Documentaries** (Science Scripting & Verification): Fact-checked literature across 300+ documentaries & co-authored scripts for Giacomo Moro Mauretto's Entropy for Life (480K+ community across YT/IG/TikTok); acknowledged in Mondadori book Italiani Veri
-- **4,317** (Knowledge Graph & Ontology Edits): Verifiable structured data and reference citations across Wikidata, English/Italian Wikipedia, and Wikimedia Commons
+- **55+ Videos & 4 Articles** (Science Verification & Editorial Acceleration): Fact-checked primary literature across 55+ YouTube videos (long & short), co-authored 4 articles, designed data visualizations & Reels, and managed A/B tested thumbnails/titles for Giacomo Moro Mauretto's Entropy for Life (480K+ community); acknowledged in Mondadori book Italiani Veri
+- **4,317 Edits** (Wikimedia & Knowledge Graph Curation): Verifiable contributions across English Wikipedia (1,592), Wikidata (1,249), Italian Wikipedia (752), and Wikimedia Commons (684)
 - Native Italian speaker & C1 Advanced English proficiency
 
 ## Core Competencies
-- AI Systems & Prototyping: Antigravity IDE, Cursor, Copilot, LLM API Orchestration (Gemini, OpenRouter, Claude, OpenAI), Rapid Automation
+- AI Systems Engineering & Optimization: Assisted Agentic AI Pipelines, Continuous Frontier Benchmarking (ArtificialAnalysis.ai, LiveBench), Token & Context Window Efficiency, Memory/Command Execution, Prompt Hardening & Indirect Injection Mitigation, Antigravity IDE, Cursor, LLM API Orchestration
 - Web & Cloud Infrastructure: AWS Lambda, Serverless API Gateway, GitHub Actions CI/CD, Next.js, Edge Rendering, OVHCloud, Cloudflare, Technical SEO
-- Open Biobanking & Genomics: Citizen Genomic Curation (ENA / NCBI), Phenotypic & Disease Ontology Mapping (HPO, MONDO), Open-Access CC0 Data Stewardship
+- Open Biobanking & Genomics: Citizen Genomic Curation (ENA / NCBI), Assisted Agentic AI Bioinformatic Execution, Phenotypic & Disease Ontology Mapping (HPO, MONDO), Open-Access CC0 Data Stewardship
 - Epistemic Rigor & Biomedical Synthesis: Radical Primary Source Verification, Zero Deference to Authority, NCBI E-utilities, Wikimedia Curation (4,317 edits), Vector Visualization
-- Clinical Research & Empathetic Facilitation: Standardized Protocol & Script Development, Neurodivergent Participant Recruitment, Primary & Co-Conductor Focus Group Moderation (Autism Spectrum), Psychological Safety Frameworks
-- Cross-Functional Media Team & Stakeholder Management: Collaborative Editorial Review, De-escalating Scientific Complexity, Balancing Epistemic Rigor with Public Perception & Diverse Commercial/Institutional Sponsors
-- Languages: Italian (Native / Mother Tongue) · English (C1 Advanced Proficiency)
+- Clinical Research & Empathetic Facilitation: Standardized Protocol & Script Development, Remote Zoom Focus Group Moderation (Autism Spectrum), Psychological Safety Frameworks
+- Public Science Communication & Institutional Collaboration: Collaborative Editorial Review, De-escalating Scientific Complexity, Balancing Epistemic Rigor with Public Comprehension & Institutional Sponsors
+- Languages: Italian (Native / Mother Tongue) · English (Full Professional Proficiency / Certified C1 Advanced)
 
 ## Links
 - Website: https://mariomarcolongo.com

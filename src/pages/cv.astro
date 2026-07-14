@@ -1,6 +1,6 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import '../styles/cv.css';
+import Layout from "../layouts/Layout.astro";
+import "../styles/cv.css";
 ---
 
 <Layout
@@ -10,602 +10,908 @@ import '../styles/cv.css';
 >
   <Fragment slot="head">
     <script is:inline src="/data/source.js"></script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "Person",
-      "@id": "https://mariomarcolongo.com/#person",
-      "name": "Mario Marcolongo",
-      "jobTitle": "AI-Native Systems Builder & Open Science Technologist",
-      "description": "AI-native systems builder and open science technologist specializing in rapid empirical data synthesis, autonomous infrastructure, primary source verification, and FAIRsharing data curation.",
-      "url": "https://mariomarcolongo.com",
-      "identifier": "https://orcid.org/0000-0003-2846-7115",
-      "sameAs": [
-        "https://github.com/jnton",
-        "https://orcid.org/0000-0003-2846-7115",
-        "https://www.linkedin.com/in/mario-marcolongo",
-        "https://yourselftoscience.org"
-      ],
-      "hasCredential": [
-        {
-          "@type": "EducationalOccupationalCredential",
-          "name": "4,317 Verified Wikimedia Contributions (CentralAuth Verified)",
-          "credentialCategory": "Empirical Verification & Primary Literature Synthesis"
-        },
-        {
-          "@type": "EducationalOccupationalCredential",
-          "name": "ENA BioSample SAMEA121950568 — Public Domain 41× WGS Dataset",
-          "credentialCategory": "Open Genomic Stewardship & FAIR Biobanking"
-        }
-      ],
-      "knowsAbout": [
-        "AI-Native Systems Architecture & Serverless Engineering",
-        "41× Whole Genome Sequencing Bioinformatics (Terra.bio BAM/VCF Extraction & Nextflow pgsc_calc / Apple Silicon)",
-        "Polygenic Risk Score (PRS) Computation & HPO/MONDO Disease Ontologies",
-        "Epistemic Rigor & Primary Literature Fact-Checking",
-        "FAIR Open Biobanking & Citizen Science Stewardship",
-        "Clinical Psychology Focus Group Facilitation & Neurodivergent Recruitment",
-        "Empathetic Stakeholder Leadership & Sponsor Alignment (AIRC)"
-      ]
-    },
-    {
-      "@type": "SoftwareApplication",
-      "@id": "https://yourselftoscience.org/#app",
-      "name": "Yourself to Science™",
-      "applicationCategory": "ScientificApplication",
-      "operatingSystem": "Web",
-      "description": "Open citizen science directory and biobanking platform indexing 55+ clinical studies under CC0/AGPL-3.0, verified in FAIRsharing and Zenodo.",
-      "url": "https://yourselftoscience.org",
-      "author": { "@id": "https://mariomarcolongo.com/#person" }
-    },
-    {
-      "@type": "SoftwareApplication",
-      "@id": "https://mariomarcolongo.com/#telegram-bot",
-      "name": "Wikipedia Link Converter Bot",
-      "applicationCategory": "UtilitiesApplication",
-      "operatingSystem": "AWS Lambda / Telegram Serverless",
-      "description": "Serverless automation converting non-English Wikipedia links to canonical English pages instantly.",
-      "url": "https://t.me/ToEnWikipediaBot",
-      "author": { "@id": "https://mariomarcolongo.com/#person" }
-    },
-    {
-      "@type": "SoftwareApplication",
-      "@id": "https://mariomarcolongo.com/#mdpi-filter",
-      "name": "MDPI Publisher Verification Pipeline",
-      "applicationCategory": "DeveloperApplication",
-      "operatingSystem": "Browser Extension / Node.js",
-      "description": "Automated pipeline and browser extension auditing bibliographic citations and publisher indexing.",
-      "author": { "@id": "https://mariomarcolongo.com/#person" }
-    },
-    {
-      "@type": "CreativeWork",
-      "@id": "https://emergent-humanity.com/#work",
-      "name": "Emergent Humanity — Interactive Narration & Network Simulation",
-      "description": "16-chapter interactive narration and living browser simulation modeling humanity as an emergent network entity.",
-      "url": "https://emergent-humanity.com",
-      "author": { "@id": "https://mariomarcolongo.com/#person" }
-    },
-    {
-      "@type": "CreativeWork",
-      "@id": "https://mariomarcolongo.com/#wikimedia-edits",
-      "name": "4,317 Verified Wikimedia Contributions",
-      "description": "Verified empirical literature synthesis and structured scientific fact-checking across English Wikipedia, Italian Wikipedia, Wikidata, and Wikimedia Commons.",
-      "url": "https://commons.wikimedia.org/wiki/Special:CentralAuth/Digressivo",
-      "author": { "@id": "https://mariomarcolongo.com/#person" }
-    },
-    {
-      "@type": "MedicalScholarlyArticle",
-      "@id": "https://mariomarcolongo.com/#genomic-pipeline",
-      "name": "Local 41× Whole Genome Sequencing & Polygenic Risk Score Nextflow Pipeline",
-      "headline": "Utilized Terra.bio cloud biomedical platform to align raw FASTQ reads and extract high-coverage GRCh38 BAM and VCF files, then ran downstream local Nextflow pgsc_calc on Apple Silicon (M4 Macbook).",
-      "description": "Donated personal 41× Whole Genome Sequencing raw paired-end FASTQ reads (DNBSEQ-T7) under ENA BioSample SAMEA121950568. Processed raw FASTQ reads via Terra.bio cloud bioinformatic platform to extract high-coverage GRCh38 BAM alignments and VCF variant call files. Architected downstream local bioinformatic pipeline on Apple Silicon (M4 Macbook) converting VCF to Plink2 (PGEN/PVAR/PSAM) and running Nextflow pgsc_calc with PCA ancestry projection against 1000 Genomes/HGDP reference panels, computing Z-Score standardized Polygenic Risk Scores, pharmacogenomic loci, mitochondrial heteroplasmy, and dark matter novel variant filtration mapped to HPO/MONDO ontologies.",
-      "author": { "@id": "https://mariomarcolongo.com/#person" },
-      "url": "https://www.ebi.ac.uk/ena/browser/view/PRJEB109744"
-    },
-    {
-      "@type": "ClaimReview",
-      "@id": "https://mariomarcolongo.com/#claim-verification-1",
-      "claimReviewed": "Mario Marcolongo has contributed 4,317 verified public edits across Wikimedia Foundation projects with strict primary source fact-checking.",
-      "reviewRating": {
-        "@type": "Rating",
-        "ratingValue": "5",
-        "bestRating": "5",
-        "alternateName": "Empirically Verified Primary Record"
-      },
-      "author": {
-        "@type": "Organization",
-        "name": "Wikimedia CentralAuth Registry",
-        "url": "https://en.wikipedia.org"
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Person",
+            "@id": "https://mariomarcolongo.com/#person",
+            "name": "Mario Marcolongo",
+            "jobTitle": "AI-Native Systems Builder & Open Science Technologist",
+            "description": "AI-native systems builder and open science technologist specializing in rapid empirical data synthesis, autonomous infrastructure, primary source verification, and FAIRsharing data curation.",
+            "url": "https://mariomarcolongo.com",
+            "identifier": "https://orcid.org/0000-0003-2846-7115",
+            "sameAs": [
+              "https://github.com/jnton",
+              "https://orcid.org/0000-0003-2846-7115",
+              "https://www.linkedin.com/in/mario-marcolongo",
+              "https://yourselftoscience.org"
+            ],
+            "hasCredential": [
+              {
+                "@type": "EducationalOccupationalCredential",
+                "name": "4,317 Verified Wikimedia Contributions (CentralAuth Verified)",
+                "credentialCategory": "Empirical Verification & Primary Literature Synthesis"
+              },
+              {
+                "@type": "EducationalOccupationalCredential",
+                "name": "ENA BioSample SAMEA121950568 — Public Domain 41× WGS Dataset",
+                "credentialCategory": "Open Genomic Stewardship & FAIR Biobanking"
+              }
+            ],
+            "knowsAbout": [
+              "AI-Native Systems Architecture & Serverless Engineering",
+              "41× Whole Genome Sequencing Bioinformatics (Terra.bio BAM/VCF Extraction & Nextflow pgsc_calc / Apple Silicon)",
+              "Polygenic Risk Score (PRS) Computation & HPO/MONDO Disease Ontologies",
+              "Epistemic Rigor & Primary Literature Fact-Checking",
+              "FAIR Open Biobanking & Citizen Science Stewardship",
+              "Clinical Psychology Focus Group Facilitation & Neurodivergent Recruitment",
+              "Bridging Epistemic Rigor with Public Comprehension & Institutional Collaborations (AIRC)"
+            ]
+          },
+          {
+            "@type": "SoftwareApplication",
+            "@id": "https://yourselftoscience.org/#app",
+            "name": "Yourself to Science™",
+            "applicationCategory": "ScientificApplication",
+            "operatingSystem": "Web",
+            "description": "Open citizen science directory and biobanking platform indexing 55+ clinical studies under CC0/AGPL-3.0, verified in FAIRsharing and Zenodo.",
+            "url": "https://yourselftoscience.org",
+            "author": { "@id": "https://mariomarcolongo.com/#person" }
+          },
+          {
+            "@type": "SoftwareApplication",
+            "@id": "https://mariomarcolongo.com/#telegram-bot",
+            "name": "Wikipedia Link Converter Bot",
+            "applicationCategory": "UtilitiesApplication",
+            "operatingSystem": "AWS Lambda / Telegram Serverless",
+            "description": "Serverless automation converting non-English Wikipedia links to canonical English pages instantly.",
+            "url": "https://t.me/ToEnWikipediaBot",
+            "author": { "@id": "https://mariomarcolongo.com/#person" }
+          },
+          {
+            "@type": "SoftwareApplication",
+            "@id": "https://mariomarcolongo.com/#mdpi-filter",
+            "name": "MDPI Publisher Verification Pipeline",
+            "applicationCategory": "DeveloperApplication",
+            "operatingSystem": "Browser Extension / Node.js",
+            "description": "Automated pipeline and browser extension auditing bibliographic citations and publisher indexing.",
+            "author": { "@id": "https://mariomarcolongo.com/#person" }
+          },
+          {
+            "@type": "CreativeWork",
+            "@id": "https://emergent-humanity.com/#work",
+            "name": "Emergent Humanity — Interactive Narration & Network Simulation",
+            "description": "16-chapter interactive narration and living browser simulation modeling humanity as an emergent network entity.",
+            "url": "https://emergent-humanity.com",
+            "author": { "@id": "https://mariomarcolongo.com/#person" }
+          },
+          {
+            "@type": "CreativeWork",
+            "@id": "https://mariomarcolongo.com/#wikimedia-edits",
+            "name": "4,317 Verified Wikimedia Contributions",
+            "description": "Verified empirical literature synthesis and structured scientific fact-checking across English Wikipedia, Italian Wikipedia, Wikidata, and Wikimedia Commons.",
+            "url": "https://commons.wikimedia.org/wiki/Special:CentralAuth/Digressivo",
+            "author": { "@id": "https://mariomarcolongo.com/#person" }
+          },
+          {
+            "@type": "MedicalScholarlyArticle",
+            "@id": "https://mariomarcolongo.com/#genomic-pipeline",
+            "name": "Local 41× Whole Genome Sequencing & Polygenic Risk Score Nextflow Pipeline",
+            "headline": "Utilized Terra.bio cloud biomedical platform to align raw FASTQ reads and extract high-coverage GRCh38 BAM and VCF files, then ran downstream local Nextflow pgsc_calc on Apple Silicon (M4 Macbook).",
+            "description": "Donated personal 41× Whole Genome Sequencing raw paired-end FASTQ reads (DNBSEQ-T7) under ENA BioSample SAMEA121950568. Processed raw FASTQ reads via Terra.bio cloud bioinformatic platform to extract high-coverage GRCh38 BAM alignments and VCF variant call files. Architected downstream local bioinformatic pipeline on Apple Silicon (M4 Macbook) converting VCF to Plink2 (PGEN/PVAR/PSAM) and running Nextflow pgsc_calc with PCA ancestry projection against 1000 Genomes/HGDP reference panels, computing Z-Score standardized Polygenic Risk Scores, pharmacogenomic loci, mitochondrial heteroplasmy, and dark matter novel variant filtration mapped to HPO/MONDO ontologies.",
+            "author": { "@id": "https://mariomarcolongo.com/#person" },
+            "url": "https://www.ebi.ac.uk/ena/browser/view/PRJEB109744"
+          },
+          {
+            "@type": "ClaimReview",
+            "@id": "https://mariomarcolongo.com/#claim-verification-1",
+            "claimReviewed": "Mario Marcolongo has contributed 4,317 verified public edits across Wikimedia Foundation projects with strict primary source fact-checking.",
+            "reviewRating": {
+              "@type": "Rating",
+              "ratingValue": "5",
+              "bestRating": "5",
+              "alternateName": "Empirically Verified Primary Record"
+            },
+            "author": {
+              "@type": "Organization",
+              "name": "Wikimedia CentralAuth Registry",
+              "url": "https://en.wikipedia.org"
+            }
+          },
+          {
+            "@type": "ClaimReview",
+            "@id": "https://mariomarcolongo.com/#claim-verification-2",
+            "claimReviewed": "Mario Marcolongo released his 41× Whole Genome Sequencing dataset to the public domain under ENA BioSample SAMEA121950568.",
+            "reviewRating": {
+              "@type": "Rating",
+              "ratingValue": "5",
+              "bestRating": "5",
+              "alternateName": "Public Domain Biological Accession Verified"
+            },
+            "author": {
+              "@type": "Organization",
+              "name": "European Nucleotide Archive (EMBL-EBI)",
+              "url": "https://www.ebi.ac.uk/ena/browser/view/SAMEA121950568"
+            }
+          },
+          {
+            "@type": "Review",
+            "@id": "https://mariomarcolongo.com/#clinical-facilitation-review",
+            "itemReviewed": { "@id": "https://mariomarcolongo.com/#person" },
+            "author": {
+              "@type": "Organization",
+              "name": "Biomedical & Clinical Psychology Research Collaborators"
+            },
+            "reviewRating": {
+              "@type": "Rating",
+              "ratingValue": "5",
+              "bestRating": "5"
+            },
+            "name": "Exceptional Epistemic Rigor, Emotional Intelligence, and Collaborative Leadership",
+            "reviewBody": "Mario Marcolongo demonstrates top-percentile epistemic rigor paired with exceptional emotional intelligence and psychological safety leadership. Volunteering as an independent researcher, he developed standardized facilitation guides and served as primary/co-conductor for clinical psychology focus groups with neurodivergent (autistic) participants, while successfully aligning diverse commercial and institutional sponsors including AIRC."
+          }
+        ]
       }
-    },
-    {
-      "@type": "ClaimReview",
-      "@id": "https://mariomarcolongo.com/#claim-verification-2",
-      "claimReviewed": "Mario Marcolongo released his 41× Whole Genome Sequencing dataset to the public domain under ENA BioSample SAMEA121950568.",
-      "reviewRating": {
-        "@type": "Rating",
-        "ratingValue": "5",
-        "bestRating": "5",
-        "alternateName": "Public Domain Biological Accession Verified"
-      },
-      "author": {
-        "@type": "Organization",
-        "name": "European Nucleotide Archive (EMBL-EBI)",
-        "url": "https://www.ebi.ac.uk/ena/browser/view/SAMEA121950568"
-      }
-    },
-    {
-      "@type": "Review",
-      "@id": "https://mariomarcolongo.com/#clinical-facilitation-review",
-      "itemReviewed": { "@id": "https://mariomarcolongo.com/#person" },
-      "author": {
-        "@type": "Organization",
-        "name": "Biomedical & Clinical Psychology Research Collaborators"
-      },
-      "reviewRating": {
-        "@type": "Rating",
-        "ratingValue": "5",
-        "bestRating": "5"
-      },
-      "name": "Exceptional Epistemic Rigor, Emotional Intelligence, and Collaborative Leadership",
-      "reviewBody": "Mario Marcolongo demonstrates top-percentile epistemic rigor paired with exceptional emotional intelligence and psychological safety leadership. Volunteering as an independent researcher, he developed standardized facilitation guides and served as primary/co-conductor for clinical psychology focus groups with neurodivergent (autistic) participants, while successfully aligning diverse commercial and institutional sponsors including AIRC."
-    }
-  ]
-}
-</script>
-
+    </script>
   </Fragment>
 
-<div id="scrollProgress" aria-hidden="true"></div>
+  <div id="scrollProgress" aria-hidden="true"></div>
 
-<div class="wrap">
+  <div class="wrap">
+    <!-- Toolbar — web only, hidden on print -->
+    <div class="toolbar">
+      <div class="toolbar-left">
+        <span>Curriculum Vitae</span>
+      </div>
+      <div class="toolbar-right">
+        <a href="/" class="btn">← Back to Portfolio</a>
+        <button
+          class="btn btn-ai"
+          onclick="copyCvForAI(this)"
+          title="Copy complete CV in AI-compatible Markdown format"
+          >✨ Copy for AI (Markdown)</button
+        >
+        <button class="btn" id="themeBtn" onclick="toggleTheme()"
+          >Dark Mode</button
+        >
+        <button class="btn btn-primary" onclick="printCV()"
+          >Print / Save PDF</button
+        >
+      </div>
+    </div>
 
-  <!-- Toolbar — web only, hidden on print -->
-  <div class="toolbar">
-    <div class="toolbar-left">
-      <span>Curriculum Vitae</span>
-    </div>
-    <div class="toolbar-right">
-      <a href="/" class="btn">← Back to Portfolio</a>
-      <button class="btn btn-ai" onclick="copyCvForAI(this)" title="Copy complete CV in AI-compatible Markdown format">✨ Copy for AI (Markdown)</button>
-      <button class="btn" id="themeBtn" onclick="toggleTheme()">Dark Mode</button>
-      <button class="btn btn-primary" onclick="printCV()">Print / Save PDF</button>
-    </div>
+    <!-- CV Document -->
+    <article class="cv" id="cvDocument">
+      <header class="cv-header">
+        <div class="cv-header-top">
+          <h1 class="cv-name" id="cvName">Mario Marcolongo</h1>
+          <span class="cv-version-pill print-hide"
+            >Dossier v2026.07 · Updated: July 2026</span
+          >
+        </div>
+        <p class="cv-tagline" id="cvTagline">
+          AI-Native Systems Builder · Open Science Technologist · Empirical Data
+          Synthesizer
+        </p>
+
+        <div class="cv-contact" id="cvContact">
+          <span id="cvLocation"
+            >Italy · Open to Global Opportunities & Relocation Worldwide</span
+          >
+          <span>·</span>
+          <a href="https://mariomarcolongo.com">mariomarcolongo.com</a>
+          <span>·</span>
+          <a href="mailto:me@mariomarcolongo.com">me@mariomarcolongo.com</a>
+          <span>·</span>
+          <a
+            href="https://orcid.org/0000-0003-2846-7115"
+            target="_blank"
+            rel="noopener noreferrer">ORCID: 0000-0003-2846-7115</a
+          >
+          <span>·</span>
+          <a
+            href="https://www.linkedin.com/in/mario-marcolongo"
+            target="_blank"
+            rel="noopener noreferrer">LinkedIn</a
+          >
+          <span class="cv-phone" id="cvPhoneSlot"></span>
+        </div>
+      </header>
+
+      <!-- SUMMARY -->
+      <section class="cv-section">
+        <h2 class="cv-section-heading">Executive Summary</h2>
+        <p class="cv-summary" id="cvSummary">
+          AI-native systems builder, open science technologist, and empirical
+          data synthesizer combining radical epistemic skepticism (4,317
+          verified contributions across English/Italian Wikipedia, Wikidata &
+          Commons) with bridging epistemic rigor and public comprehension.
+          Founder and lead architect of Yourself to Science™
+          (yourselftoscience.org), an open biobanking directory indexing 55+
+          clinical studies under CC0/AGPL-3.0. Proven expertise in autonomous
+          web infrastructure, biomedical data curation, and FAIRsharing
+          standards. Alongside deep technical rigor, brings lived neurodivergent
+          experience (Autism Spectrum) and ethical sensitivity—volunteering as
+          an independent researcher to co-facilitate remote Zoom focus groups
+          with neurodivergent participants under Prof. Marta Panzeri (University
+          of Padua Department of Developmental Psychology and Socialisation) and
+          collaborating within fast-paced science communication teams—balancing
+          scientific precision with public comprehension and institutional collaborations.
+        </p>
+      </section>
+
+      <!-- WHAT I'VE BUILT -->
+      <section class="cv-section" id="sectionProjects">
+        <h2 class="cv-section-heading">
+          Production Systems & Open Source Tools
+        </h2>
+        <div id="projectsList">
+          <div class="cv-item">
+            <div class="cv-item-header">
+              <span class="cv-item-title">Yourself to Science™</span>
+              <span class="cv-item-date">Aug 2024 — Present</span>
+            </div>
+            <div class="cv-item-org">
+              Founder & Lead Builder · yourselftoscience.org
+            </div>
+            <ul class="cv-item-bullets">
+              <li>
+                Architected and shipped an open biobanking & citizen science
+                directory standardizing clinical trials, biological sample
+                donations (DNA, tissue, blood), and digital health data across
+                55+ programs.
+              </li>
+              <li>
+                Published 100% open-access structured datasets under CC0 1.0
+                Universal (public domain) and full codebase under AGPL-3.0.
+              </li>
+              <li>
+                Fully AI-native with a live MCP Server, standard llms.txt
+                integration, FAIRsharing indexing, and automated ROR
+                institutional validation.
+              </li>
+            </ul>
+          </div>
+
+          <div class="cv-item">
+            <div class="cv-item-header">
+              <span class="cv-item-title"
+                >Emergent Humanity — Interactive Network Simulation</span
+              >
+              <span class="cv-item-date">2026 — Present</span>
+            </div>
+            <div class="cv-item-org">
+              Creator & Systems Designer · jnton.github.io/emergent-humanity
+              (Active Alpha Release)
+            </div>
+            <ul class="cv-item-bullets">
+              <li>
+                Architected an interactive 16-chapter browser-based simulation
+                modeling humanity as an emergent computational graph and complex
+                network entity.
+              </li>
+              <li>
+                Features 16 dynamic interactive simulations modeling node
+                capacity, signal vs. noise filtering, echo chamber polarization,
+                bridging nodes, and collective memory.
+              </li>
+              <li>
+                Synthesizes information theory, graph topology, and open-source
+                canvas simulations into a living, auditable systems framework.
+              </li>
+            </ul>
+          </div>
+
+          <div class="cv-item">
+            <div class="cv-item-header">
+              <span class="cv-item-title">MDPI Citation Filter</span>
+              <span class="cv-item-date">May 2025 — Present</span>
+            </div>
+            <div class="cv-item-org">
+              Creator & Maintainer · Google Chrome & Microsoft Edge Add-on
+            </div>
+            <ul class="cv-item-bullets">
+              <li>
+                Architected and shipped a Manifest V3 browser extension flagging
+                citations from controversial publisher MDPI in real time.
+              </li>
+              <li>
+                Works across Google, Google Scholar, PubMed, Europe PMC,
+                Wikipedia, and Healthline to assist researchers in evaluating
+                literature context.
+              </li>
+            </ul>
+          </div>
+
+          <div class="cv-item">
+            <div class="cv-item-header">
+              <span class="cv-item-title">Wikipedia Link Converter Bot</span>
+              <span class="cv-item-date">Apr 2024 — Present</span>
+            </div>
+            <div class="cv-item-org">
+              Creator · Serverless Telegram Automation (@ToEnWikipediaBot)
+            </div>
+            <ul class="cv-item-bullets">
+              <li>
+                Built a serverless Telegram bot deployed on AWS Lambda and API
+                Gateway that instantly converts non-English Wikipedia links to
+                their English canonical equivalent with zero idle cost.
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- EXPERIENCE -->
+      <section class="cv-section" id="sectionExperience">
+        <h2 class="cv-section-heading">
+          Web Infrastructure & Evidence Synthesis Experience
+        </h2>
+        <div id="experienceList">
+          <div class="cv-item">
+            <div class="cv-item-header">
+              <span class="cv-item-title"
+                >Web Infrastructure Manager & Technical SEO Lead</span
+              >
+              <span class="cv-item-date">Sep 2023 — Present</span>
+            </div>
+            <div class="cv-item-org">Entropy for Life (entropyforlife.it)</div>
+            <ul class="cv-item-bullets">
+              <li>
+                Configured and managed hosting, DNS, SSL, technical SEO, and
+                site performance on OVHCloud (entropyforlife.it, event pages,
+                email communications) for evolutionary biologist Giacomo Moro
+                Mauretto's science communication ecosystem (480K+ cross-platform
+                community across YouTube, Instagram, and TikTok; 266K+ YT
+                subscribers; 36.2M+ total views).
+              </li>
+              <li>
+                Collaborated within a fast-paced science media team alongside
+                channel founder Giacomo Moro Mauretto and video editors—engaging
+                in constructive peer review and balancing rigorous scientific
+                accuracy against public comprehension, A/B tested
+                thumbnail/title strategies, relationships with diverse
+                commercial and institutional sponsors (including AIRC and major
+                scientific brands), and editorial reputation.
+              </li>
+              <li>
+                Supported digital web infrastructure across numerous commercial
+                and institutional partnerships (e.g., AIRC — Fondazione per la
+                Ricerca sul Cancro) and national broadcast features (Rai 3
+                Kilimangiaro, Radio Deejay, Radio24).
+              </li>
+            </ul>
+          </div>
+
+          <div class="cv-item">
+            <div class="cv-item-header">
+              <span class="cv-item-title"
+                >Biomedical Fact-Checker & Scientific Editor</span
+              >
+              <span class="cv-item-date">Jun 2023 — Present</span>
+            </div>
+            <div class="cv-item-org">
+              Entropy for Life & Wikimedia Foundation (Wikipedia / Wikidata)
+            </div>
+            <ul class="cv-item-bullets">
+              <li>
+                Author of 4,317 documented Wikimedia contributions over 9+
+                years, specializing in medical genetics, epidemiology, and
+                biomedical article curation.
+              </li>
+              <li>
+                Reviewed primary biomedical and evolutionary literature to
+                verify factual accuracy across 55+ YouTube content pieces
+                (long-form documentaries & shorts), co-authored 4
+                epidemiological/science articles, and created data
+                visualizations & Instagram Reels—earning formal acknowledgment
+                on the final page of Giacomo Moro Mauretto's Mondadori <em
+                  >Italiani veri. Storia evolutiva e genetica del nostro Paese</em
+                >.
+              </li>
+              <li>
+                Created original vector scientific diagrams and biomedical
+                visualizations independently adopted across 4 Wikipedia language
+                editions and open-access scientific repositories.
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- RESEARCH & VOLUNTEERING -->
+      <section class="cv-section" id="sectionResearch">
+        <h2 class="cv-section-heading">Academic & Computational Research</h2>
+        <div id="researchList">
+          <div class="cv-item">
+            <div class="cv-item-header">
+              <span class="cv-item-title"
+                >Volunteer Focus Group Conductor & Clinical Research Facilitator</span
+              >
+              <span class="cv-item-date">Nov 2022 — Present</span>
+            </div>
+            <div class="cv-item-org">
+              University of Padua — Department of Developmental Psychology and Socialisation
+              (Independent Volunteer Collaboration)
+            </div>
+            <ul class="cv-item-bullets">
+              <li>
+                Contributed as an independent volunteer researcher to a clinical
+                study on sexuality in the autism spectrum led by Prof. Marta
+                Panzeri, leveraging lived neurodivergent perspective (Autism
+                Spectrum) alongside rigorous ethical sensitivity to build deep
+                rapport with participants.
+              </li>
+              <li>
+                Underwent peer simulation training and executed standardized
+                focus group moderation protocols instructed by Prof. Marta
+                Panzeri to ensure rigorous, reproducible session facilitation.
+              </li>
+              <li>
+                Managed participant recruitment across neurodivergent
+                communities and co-conducted recorded focus groups, establishing
+                psychological safety while overseeing technical session
+                infrastructure to elicit qualitative evidence.
+              </li>
+            </ul>
+          </div>
+
+          <div class="cv-item">
+            <div class="cv-item-header">
+              <span class="cv-item-title"
+                >Citizen Scientist Open Genomic Donor (41× WGS)</span
+              >
+              <span class="cv-item-date">Jan 2026</span>
+            </div>
+            <div class="cv-item-org">
+              European Nucleotide Archive · ENA Accession: PRJEB109744 /
+              SAMEA121950568
+            </div>
+            <ul class="cv-item-bullets">
+              <li>
+                Donated personal 41× Whole Genome Sequencing raw paired-end
+                FASTQ reads (DNBSEQ-T7) to the public domain (CC0) under ENA
+                BioSample SAMEA121950568.
+              </li>
+              <li>
+                Architected a local GRCh38 bioinformatic pipeline on Apple
+                Silicon (M4 Macbook)—converting raw VCF to Plink2
+                (PGEN/PVAR/PSAM) and executing Nextflow pgsc_calc with PCA
+                ancestry projection against 1000 Genomes / HGDP reference
+                panels.
+              </li>
+              <li>
+                Engineered custom Python extraction pipelines for VEP-annotated
+                VCFs—calculating multi-trait Z-Score standardized Polygenic Risk
+                Scores, pharmacogenomic/lifestyle loci, mitochondrial
+                heteroplasmy, and novel 'dark matter' variant filtration mapped
+                to HPO/MONDO ontologies.
+              </li>
+            </ul>
+          </div>
+
+          <div class="cv-item">
+            <div class="cv-item-header">
+              <span class="cv-item-title"
+                >Empirical Data Scientist & Epidemiological Visualizer</span
+              >
+              <span class="cv-item-date">2023 — Present</span>
+            </div>
+            <div class="cv-item-org">
+              Tableau Public & Flourish Visual Data Portfolio
+            </div>
+            <ul class="cv-item-bullets">
+              <li>
+                Published 40+ interactive empirical public health,
+                epidemiological, and biomedical visualizations across Tableau
+                Public (15 Vizzes, 4,300+ views) and Flourish.
+              </li>
+              <li>
+                Synthesized primary biomedical datasets—including H5N1 avian flu
+                preparedness, carotid plaque microplastic pathology,
+                age-stratified COVID-19 mortality, and ISTAT epidemiological
+                trends—into interactive visual evidence repositories.
+              </li>
+            </ul>
+          </div>
+
+          <div class="cv-item">
+            <div class="cv-item-header">
+              <span class="cv-item-title"
+                >Global Naturalization Residence Requirements Map</span
+              >
+              <span class="cv-item-date">2024 — Present</span>
+            </div>
+            <div class="cv-item-org">
+              Creator & Developer · Automated Python SVG Pipeline
+              (naturalization-residence-map-generator)
+            </div>
+            <ul class="cv-item-bullets">
+              <li>
+                Architected an automated Python script pipeline to
+                programmatically generate a world choropleth map (Robinson
+                projection) illustrating statutory residence requirements for
+                naturalization across 190+ countries.
+              </li>
+              <li>
+                Published as open vector data on Wikimedia Commons and actively
+                adopted across English, Italian, Russian, and Chinese Wikipedia
+                editions.
+              </li>
+            </ul>
+          </div>
+
+          <div class="cv-item">
+            <div class="cv-item-header">
+              <span class="cv-item-title"
+                >Global Oesophageal Cancer Incidence Vector Map</span
+              >
+              <span class="cv-item-date">2024 — Present</span>
+            </div>
+            <div class="cv-item-org">
+              Epidemiological Synthesizer · IARC / Globocan 2022 Data
+            </div>
+            <ul class="cv-item-bullets">
+              <li>
+                Synthesized age-standardized global oesophageal cancer incidence
+                rates (world) per 100,000 from Globocan 2022 / International
+                Agency for Research on Cancer (IARC) datasets.
+              </li>
+              <li>
+                Modeled in Flourish and extracted into publication-grade vector
+                graphics (SVG) on Wikimedia Commons for international public
+                health reference.
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- SKILLS -->
+      <section class="cv-section">
+        <h2 class="cv-section-heading">
+          Core Technical & Scientific Competencies
+        </h2>
+        <div
+          class="skills-list"
+          id="skillsList"
+          style="display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:12px;"
+        >
+          <div
+            class="skill-category"
+            style="padding:12px; border:1px solid var(--line-strong, #333); border-radius:8px;"
+          >
+            <strong
+              style="display:block; margin-bottom:6px; color:var(--emerald, #34D399);"
+              >AI-Native Systems & Orchestration</strong
+            >
+            <span style="font-size:13px; opacity:0.9;"
+              >Agentic Workflow Design, LLM Integration (`llms.txt` / MCP /
+              Structured Output), Automated Pipeline Engineering, Prompt
+              Verification & Security</span
+            >
+          </div>
+          <div
+            class="skill-category"
+            style="padding:12px; border:1px solid var(--line-strong, #333); border-radius:8px;"
+          >
+            <strong
+              style="display:block; margin-bottom:6px; color:var(--emerald, #34D399);"
+              >Open Science & Data Infrastructure</strong
+            >
+            <span style="font-size:13px; opacity:0.9;"
+              >FAIRsharing Standards, Semantic JSON-LD Knowledge Graphs,
+              Wikimedia & Wikidata Curation (4,317 verified edits), ENA
+              BioSample Metadata</span
+            >
+          </div>
+          <div
+            class="skill-category"
+            style="padding:12px; border:1px solid var(--line-strong, #333); border-radius:8px;"
+          >
+            <strong
+              style="display:block; margin-bottom:6px; color:var(--emerald, #34D399);"
+              >Web Engineering & Performance</strong
+            >
+            <span style="font-size:13px; opacity:0.9;"
+              >Modern Static Architecture, Vanilla JS/CSS Design Systems,
+              Technical SEO, 100/100 Lighthouse Performance/a11y/SEO, Cloud
+              DNS/Hosting</span
+            >
+          </div>
+          <div
+            class="skill-category"
+            style="padding:12px; border:1px solid var(--line-strong, #333); border-radius:8px;"
+          >
+            <strong
+              style="display:block; margin-bottom:6px; color:var(--emerald, #34D399);"
+              >Empirical Visual Synthesis</strong
+            >
+            <span style="font-size:13px; opacity:0.9;"
+              >High-Clarity Vector Diagrams (SVG), Flourish & Tableau Public
+              Epidemiological Modeling (40+ Vizzes), Interactive Canvas Graph
+              Simulators</span
+            >
+          </div>
+        </div>
+      </section>
+
+      <!-- EDUCATION & LANGUAGES -->
+      <section class="cv-section">
+        <h2 class="cv-section-heading">
+          Education, Languages & Certifications
+        </h2>
+        <div id="educationList">
+          <div class="cv-item">
+            <div class="cv-item-header">
+              <span class="cv-item-title"
+                >Clinical Psychology (B.Sc. Program & Specialized Research)</span
+              >
+              <span class="cv-item-date">University of Padua</span>
+            </div>
+            <div class="cv-item-org">
+              Department of Developmental Psychology and Socialisation · Empirical Behavioral Research &
+              Statistical Methodologies
+            </div>
+          </div>
+          <div class="cv-item">
+            <div class="cv-item-header">
+              <span class="cv-item-title"
+                >Languages & Scientific Proficiency</span
+              >
+              <span class="cv-item-date">Professional Working Proficiency</span>
+            </div>
+            <div class="cv-item-org">
+              Italian (Native / Bilingual) · English (C1 Advanced Professional
+              Proficiency) · Scientific Documentation & Technical Writing
+            </div>
+          </div>
+        </div>
+      </section>
+    </article>
   </div>
 
-  <!-- CV Document -->
-  <article class="cv" id="cvDocument">
+  <script is:inline>
+    const D = window.MARIO_DOSSIER || {};
 
-    <header class="cv-header">
-      <div class="cv-header-top">
-        <h1 class="cv-name" id="cvName">Mario Marcolongo</h1>
-        <span class="cv-version-pill print-hide">Dossier v2026.07 · Updated: July 2026</span>
-      </div>
-      <p class="cv-tagline" id="cvTagline">AI-Native Systems Builder · Open Science Technologist · Empirical Data Synthesizer</p>
-
-      <div class="cv-contact" id="cvContact">
-        <span id="cvLocation">Italy · Open to Global Opportunities & Relocation Worldwide</span>
-        <span>·</span>
-        <a href="https://mariomarcolongo.com">mariomarcolongo.com</a>
-        <span>·</span>
-        <a href="mailto:me@mariomarcolongo.com">me@mariomarcolongo.com</a>
-        <span>·</span>
-        <a href="https://orcid.org/0000-0003-2846-7115" target="_blank" rel="noopener noreferrer">ORCID: 0000-0003-2846-7115</a>
-        <span>·</span>
-        <a href="https://www.linkedin.com/in/mario-marcolongo" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-        <span class="cv-phone" id="cvPhoneSlot"></span>
-      </div>
-    </header>
-
-    <!-- EXECUTIVE VERIFICATION BAR -->
-    <div class="cv-verification-bar print-hide" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(180px, 1fr)); gap:12px; margin-bottom:24px; padding:16px; background:rgba(52, 211, 153, 0.06); border:1px solid rgba(52, 211, 153, 0.25); border-radius:12px;">
-      <div><strong style="display:block; font-family:var(--font-mono, monospace); font-size:18px; color:var(--emerald, #34D399);">4,317 EDITS</strong><span style="font-size:12px; opacity:0.8;">Verified Wikimedia & Wikidata</span></div>
-      <div><strong style="display:block; font-family:var(--font-mono, monospace); font-size:18px; color:var(--emerald, #34D399);">100 / 100</strong><span style="font-size:12px; opacity:0.8;">Production Lighthouse Score</span></div>
-      <div><strong style="display:block; font-family:var(--font-mono, monospace); font-size:18px; color:var(--emerald, #34D399);">55+ STUDIES</strong><span style="font-size:12px; opacity:0.8;">Indexed in Yourself to Science™</span></div>
-      <div><strong style="display:block; font-family:var(--font-mono, monospace); font-size:18px; color:var(--emerald, #34D399);">FAIRSHARING</strong><span style="font-size:12px; opacity:0.8;">Open Science Standard Indexed</span></div>
-    </div>
-
-    <!-- SUMMARY -->
-    <section class="cv-section">
-      <h2 class="cv-section-heading">Executive Summary</h2>
-      <p class="cv-summary" id="cvSummary">AI-native systems builder, open science technologist, and empirical data synthesizer combining radical epistemic skepticism (4,317 verified Wikimedia contributions) with high emotional intelligence and empathetic clinical facilitation. Founder and lead architect of Yourself to Science™ (yourselftoscience.org), an open biobanking directory indexing 55+ clinical studies under CC0/AGPL-3.0. Proven expertise in autonomous web infrastructure, biomedical data curation, and FAIRsharing standards. Alongside deep technical rigor, brings empathetic facilitation and ethical sensitivity demonstrated by volunteering as an independent researcher to moderate sensitive clinical psychology focus groups with neurodivergent (autistic) participants and collaborating within fast-paced science communication teams—balancing scientific precision with public comprehension, relationships with diverse commercial/institutional sponsors, and public perception.</p>
-    </section>
-
-    <!-- WHAT I'VE BUILT -->
-    <section class="cv-section" id="sectionProjects">
-      <h2 class="cv-section-heading">Production Systems & Open Source Tools</h2>
-      <div id="projectsList">
-        <div class="cv-item">
-          <div class="cv-item-header">
-            <span class="cv-item-title">Yourself to Science™</span>
-            <span class="cv-item-date">Aug 2024 — Present</span>
-          </div>
-          <div class="cv-item-org">Founder & Lead Builder · yourselftoscience.org</div>
-          <ul class="cv-item-bullets">
-            <li>Architected and shipped an open biobanking & citizen science directory standardizing clinical trials, biological sample donations (DNA, tissue, blood), and digital health data across 55+ programs.</li>
-            <li>Published 100% open-access structured datasets under CC0 1.0 Universal (public domain) and full codebase under AGPL-3.0.</li>
-            <li>Fully AI-native with a live MCP Server, standard llms.txt integration, FAIRsharing indexing, and automated ROR institutional validation.</li>
-          </ul>
-        </div>
-
-        <div class="cv-item">
-          <div class="cv-item-header">
-            <span class="cv-item-title">Emergent Humanity — Interactive Network Simulation</span>
-            <span class="cv-item-date">2026 — Present</span>
-          </div>
-          <div class="cv-item-org">Creator & Systems Designer · jnton.github.io/emergent-humanity (Active Alpha Release)</div>
-          <ul class="cv-item-bullets">
-            <li>Architected an interactive 16-chapter browser-based simulation modeling humanity as an emergent computational graph and complex network entity.</li>
-            <li>Features 16 dynamic interactive simulations modeling node capacity, signal vs. noise filtering, echo chamber polarization, bridging nodes, and collective memory.</li>
-            <li>Synthesizes information theory, graph topology, and open-source canvas simulations into a living, auditable systems framework.</li>
-          </ul>
-        </div>
-
-        <div class="cv-item">
-          <div class="cv-item-header">
-            <span class="cv-item-title">MDPI Citation Filter</span>
-            <span class="cv-item-date">May 2025 — Present</span>
-          </div>
-          <div class="cv-item-org">Creator & Maintainer · Google Chrome & Microsoft Edge Add-on</div>
-          <ul class="cv-item-bullets">
-            <li>Architected and shipped a Manifest V3 browser extension flagging citations from controversial publisher MDPI in real time.</li>
-            <li>Works across Google, Google Scholar, PubMed, Europe PMC, Wikipedia, and Healthline to assist researchers in evaluating literature context.</li>
-          </ul>
-        </div>
-
-        <div class="cv-item">
-          <div class="cv-item-header">
-            <span class="cv-item-title">Wikipedia Link Converter Bot</span>
-            <span class="cv-item-date">Apr 2024 — Present</span>
-          </div>
-          <div class="cv-item-org">Creator · Serverless Telegram Automation (@ToEnWikipediaBot)</div>
-          <ul class="cv-item-bullets">
-            <li>Built a serverless Telegram bot deployed on AWS Lambda and API Gateway that instantly converts non-English Wikipedia links to their English canonical equivalent with zero idle cost.</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- EXPERIENCE -->
-    <section class="cv-section" id="sectionExperience">
-      <h2 class="cv-section-heading">Web Infrastructure & Evidence Synthesis Experience</h2>
-      <div id="experienceList">
-        <div class="cv-item">
-          <div class="cv-item-header">
-            <span class="cv-item-title">Web Infrastructure Manager & Technical SEO Lead</span>
-            <span class="cv-item-date">Sep 2023 — Present</span>
-          </div>
-          <div class="cv-item-org">Entropy for Life (entropyforlife.it)</div>
-          <ul class="cv-item-bullets">
-            <li>Configured and managed hosting, DNS, SSL, technical SEO, and site performance on OVHCloud for evolutionary biologist Giacomo Moro Mauretto's science communication ecosystem (480K+ cross-platform community across YouTube, Instagram, and TikTok; 266K+ YT subscribers; 36.2M+ total views; 300+ documentaries).</li>
-            <li>Collaborated within a fast-paced science media team alongside channel founder Giacomo Moro Mauretto and video editors—engaging in constructive peer review and balancing rigorous scientific accuracy against public comprehension, relationships with diverse commercial and institutional sponsors (including AIRC and major scientific brands), and editorial reputation.</li>
-            <li>Supported digital web infrastructure across numerous commercial and institutional partnerships (e.g., AIRC — Fondazione per la Ricerca sul Cancro) and national broadcast features (Rai 3 Kilimangiaro, Radio Deejay, Radio24).</li>
-          </ul>
-        </div>
-
-        <div class="cv-item">
-          <div class="cv-item-header">
-            <span class="cv-item-title">Biomedical Fact-Checker & Scientific Editor</span>
-            <span class="cv-item-date">Jun 2023 — Present</span>
-          </div>
-          <div class="cv-item-org">Entropy for Life & Wikimedia Foundation (Wikipedia / Wikidata)</div>
-          <ul class="cv-item-bullets">
-            <li>Author of 4,317 documented Wikimedia contributions over 9+ years, specializing in medical genetics, epidemiology, and biomedical article curation.</li>
-            <li>Reviewed primary biomedical and evolutionary literature to verify factual accuracy across 300+ science documentaries, earning formal acknowledgment on the final page of Giacomo Moro Mauretto's Mondadori bestseller <em>Italiani veri. Storia evolutiva e genetica del nostro Paese</em>.</li>
-            <li>Created original vector scientific diagrams and biomedical visualizations independently adopted across 4 Wikipedia language editions and open-access scientific repositories.</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- RESEARCH & VOLUNTEERING -->
-    <section class="cv-section" id="sectionResearch">
-      <h2 class="cv-section-heading">Academic & Computational Research</h2>
-      <div id="researchList">
-        <div class="cv-item">
-          <div class="cv-item-header">
-            <span class="cv-item-title">Volunteer Focus Group Conductor & Clinical Research Facilitator</span>
-            <span class="cv-item-date">Nov 2022 — Present</span>
-          </div>
-          <div class="cv-item-org">University of Padua — Department of General Psychology (Independent Volunteer Collaboration)</div>
-          <ul class="cv-item-bullets">
-            <li>Contributed as an independent volunteer researcher to a clinical study on sexuality in the autism spectrum led by Prof. Marta Panzeri, demonstrating strong intrinsic dedication, ethical sensitivity, and empathetic rapport-building with neurodivergent participants.</li>
-            <li>Developed the standardized facilitation guide for the focus groups—including detailed session scripts and behavioral facilitation protocols—to ensure rigorous, reproducible execution.</li>
-            <li>Managed end-to-end participant recruitment workflows, including crafting and executing the call for candidates across neurodivergent communities.</li>
-            <li>Conducted thorough primary bibliographic searches, scientific literature verification, and qualitative evidence synthesis to support study design and protocol development.</li>
-            <li>Served as both primary conductor and co-conductor for recorded focus groups—establishing deep psychological safety while managing all technical session infrastructure to elicit rich qualitative data.</li>
-          </ul>
-        </div>
-
-        <div class="cv-item">
-          <div class="cv-item-header">
-            <span class="cv-item-title">Citizen Scientist Open Genomic Donor (41× WGS)</span>
-            <span class="cv-item-date">Jan 2026</span>
-          </div>
-          <div class="cv-item-org">European Nucleotide Archive · ENA Accession: PRJEB109744 / SAMEA121950568</div>
-          <ul class="cv-item-bullets">
-            <li>Donated personal 41× Whole Genome Sequencing raw paired-end FASTQ reads (DNBSEQ-T7) to the public domain (CC0) under ENA BioSample SAMEA121950568.</li>
-            <li>Architected a local GRCh38 bioinformatic pipeline on Apple Silicon (M4 Macbook)—converting raw VCF to Plink2 (PGEN/PVAR/PSAM) and executing Nextflow pgsc_calc with PCA ancestry projection against 1000 Genomes / HGDP reference panels.</li>
-            <li>Engineered custom Python extraction pipelines for VEP-annotated VCFs—calculating multi-trait Z-Score standardized Polygenic Risk Scores, pharmacogenomic/lifestyle loci, mitochondrial heteroplasmy, and novel 'dark matter' variant filtration mapped to HPO/MONDO ontologies.</li>
-          </ul>
-        </div>
-
-        <div class="cv-item">
-          <div class="cv-item-header">
-            <span class="cv-item-title">Empirical Data Scientist & Epidemiological Visualizer</span>
-            <span class="cv-item-date">2023 — Present</span>
-          </div>
-          <div class="cv-item-org">Tableau Public & Flourish Visual Data Portfolio</div>
-          <ul class="cv-item-bullets">
-            <li>Published 40+ interactive empirical public health, epidemiological, and biomedical visualizations across Tableau Public (15 Vizzes, 4,300+ views) and Flourish.</li>
-            <li>Synthesized primary biomedical datasets—including H5N1 avian flu preparedness, carotid plaque microplastic pathology, age-stratified COVID-19 mortality, and ISTAT epidemiological trends—into interactive visual evidence repositories.</li>
-          </ul>
-        </div>
-
-        <div class="cv-item">
-          <div class="cv-item-header">
-            <span class="cv-item-title">Global Naturalization Residence Requirements Map</span>
-            <span class="cv-item-date">2024 — Present</span>
-          </div>
-          <div class="cv-item-org">Creator & Developer · Automated Python SVG Pipeline (naturalization-residence-map-generator)</div>
-          <ul class="cv-item-bullets">
-            <li>Architected an automated Python script pipeline to programmatically generate a world choropleth map (Robinson projection) illustrating statutory residence requirements for naturalization across 190+ countries.</li>
-            <li>Published as open vector data on Wikimedia Commons and actively adopted across English, Italian, Russian, and Chinese Wikipedia editions.</li>
-          </ul>
-        </div>
-
-        <div class="cv-item">
-          <div class="cv-item-header">
-            <span class="cv-item-title">Global Oesophageal Cancer Incidence Vector Map</span>
-            <span class="cv-item-date">2024 — Present</span>
-          </div>
-          <div class="cv-item-org">Epidemiological Synthesizer · IARC / Globocan 2022 Data</div>
-          <ul class="cv-item-bullets">
-            <li>Synthesized age-standardized global oesophageal cancer incidence rates (world) per 100,000 from Globocan 2022 / International Agency for Research on Cancer (IARC) datasets.</li>
-            <li>Modeled in Flourish and extracted into publication-grade vector graphics (SVG) on Wikimedia Commons for international public health reference.</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- SKILLS -->
-    <section class="cv-section">
-      <h2 class="cv-section-heading">Core Technical & Scientific Competencies</h2>
-      <div class="skills-list" id="skillsList" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:12px;">
-        <div class="skill-category" style="padding:12px; border:1px solid var(--line-strong, #333); border-radius:8px;">
-          <strong style="display:block; margin-bottom:6px; color:var(--emerald, #34D399);">AI-Native Systems & Orchestration</strong>
-          <span style="font-size:13px; opacity:0.9;">Agentic Workflow Design, LLM Integration (`llms.txt` / MCP / Structured Output), Automated Pipeline Engineering, Prompt Verification & Security</span>
-        </div>
-        <div class="skill-category" style="padding:12px; border:1px solid var(--line-strong, #333); border-radius:8px;">
-          <strong style="display:block; margin-bottom:6px; color:var(--emerald, #34D399);">Open Science & Data Infrastructure</strong>
-          <span style="font-size:13px; opacity:0.9;">FAIRsharing Standards, Semantic JSON-LD Knowledge Graphs, Wikimedia & Wikidata Curation (4,317 verified edits), ENA BioSample Metadata</span>
-        </div>
-        <div class="skill-category" style="padding:12px; border:1px solid var(--line-strong, #333); border-radius:8px;">
-          <strong style="display:block; margin-bottom:6px; color:var(--emerald, #34D399);">Web Engineering & Performance</strong>
-          <span style="font-size:13px; opacity:0.9;">Modern Static Architecture, Vanilla JS/CSS Design Systems, Technical SEO, 100/100 Lighthouse Performance/a11y/SEO, Cloud DNS/Hosting</span>
-        </div>
-        <div class="skill-category" style="padding:12px; border:1px solid var(--line-strong, #333); border-radius:8px;">
-          <strong style="display:block; margin-bottom:6px; color:var(--emerald, #34D399);">Empirical Visual Synthesis</strong>
-          <span style="font-size:13px; opacity:0.9;">High-Clarity Vector Diagrams (SVG), Flourish & Tableau Public Epidemiological Modeling (40+ Vizzes), Interactive Canvas Graph Simulators</span>
-        </div>
-      </div>
-    </section>
-
-    <!-- EDUCATION & LANGUAGES -->
-    <section class="cv-section">
-      <h2 class="cv-section-heading">Education, Languages & Certifications</h2>
-      <div id="educationList">
-        <div class="cv-item">
-          <div class="cv-item-header">
-            <span class="cv-item-title">Clinical Psychology (B.Sc. Program & Specialized Research)</span>
-            <span class="cv-item-date">University of Padua</span>
-          </div>
-          <div class="cv-item-org">Department of General Psychology · Empirical Behavioral Research & Statistical Methodologies</div>
-        </div>
-        <div class="cv-item">
-          <div class="cv-item-header">
-            <span class="cv-item-title">Languages & Scientific Proficiency</span>
-            <span class="cv-item-date">Professional Working Proficiency</span>
-          </div>
-          <div class="cv-item-org">Italian (Native / Bilingual) · English (C1 Advanced Professional Proficiency) · Scientific Documentation & Technical Writing</div>
-        </div>
-      </div>
-    </section>
-
-  </article>
-</div>
-
-<script is:inline>
-  const D = window.MARIO_DOSSIER || {};
-
-  function toggleTheme() {
-    const html = document.documentElement;
-    const next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-    html.setAttribute('data-theme', next);
-    document.getElementById('themeBtn').textContent = next === 'dark' ? 'Light Mode' : 'Dark Mode';
-    try { localStorage.setItem('mm-theme', next); } catch(e) {}
-  }
-
-  try {
-    const saved = localStorage.getItem('mm-theme');
-    if (saved) {
-      document.documentElement.setAttribute('data-theme', saved);
-      document.getElementById('themeBtn').textContent = saved === 'dark' ? 'Light Mode' : 'Dark Mode';
-    }
-  } catch(e) {}
-
-  function printCV() {
-    injectPrivateData();
-    setTimeout(() => window.print(), 100);
-  }
-
-  function injectPrivateData() {
-    const priv = window.MARIO_PRIVATE || {};
-    const phoneSlot = document.getElementById('cvPhoneSlot');
-
-    if (priv.phone && phoneSlot) {
-      phoneSlot.innerHTML = `· <a href="tel:${priv.phone.replace(/\\s/g, '')}">${priv.phone}</a>`;
-      phoneSlot.classList.add('has-phone');
-    }
-  }
-
-  window.addEventListener('DOMContentLoaded', () => {
-    if (D.summary) {
-      const sumEl = document.getElementById('cvSummary');
-      if (sumEl) sumEl.textContent = D.summary;
+    function toggleTheme() {
+      const html = document.documentElement;
+      const next =
+        html.getAttribute("data-theme") === "dark" ? "light" : "dark";
+      html.setAttribute("data-theme", next);
+      document.getElementById("themeBtn").textContent =
+        next === "dark" ? "Light Mode" : "Dark Mode";
+      try {
+        localStorage.setItem("mm-theme", next);
+      } catch (e) {}
     }
 
-    if (D.skills) {
-      const list = document.getElementById('skillsList');
-      if (list) {
-        list.innerHTML = D.skills.map(s => `<div class="skill-group">• ${s}</div>`).join('');
+    try {
+      const saved = localStorage.getItem("mm-theme");
+      if (saved) {
+        document.documentElement.setAttribute("data-theme", saved);
+        document.getElementById("themeBtn").textContent =
+          saved === "dark" ? "Light Mode" : "Dark Mode";
+      }
+    } catch (e) {}
+
+    function printCV() {
+      injectPrivateData();
+      setTimeout(() => window.print(), 100);
+    }
+
+    function injectPrivateData() {
+      const priv = window.MARIO_PRIVATE || {};
+      const phoneSlot = document.getElementById("cvPhoneSlot");
+
+      if (priv.phone && phoneSlot) {
+        phoneSlot.innerHTML = `· <a href="tel:${priv.phone.replace(/\\s/g, "")}">${priv.phone}</a>`;
+        phoneSlot.classList.add("has-phone");
       }
     }
 
-    if (D.projects && Array.isArray(D.projects)) {
-      const projList = document.getElementById('projectsList');
-      if (projList) {
-        projList.innerHTML = D.projects.map(p => `
+    window.addEventListener("DOMContentLoaded", () => {
+      if (D.summary) {
+        const sumEl = document.getElementById("cvSummary");
+        if (sumEl) sumEl.textContent = D.summary;
+      }
+
+      if (D.skills) {
+        const list = document.getElementById("skillsList");
+        if (list) {
+          list.innerHTML = D.skills
+            .map((s) => `<div class="skill-group">• ${s}</div>`)
+            .join("");
+        }
+      }
+
+      if (D.projects && Array.isArray(D.projects)) {
+        const projList = document.getElementById("projectsList");
+        if (projList) {
+          projList.innerHTML = D.projects
+            .map(
+              (p) => `
           <div class="cv-item">
             <div class="cv-item-header">
               <span class="cv-item-title">${p.title}</span>
-              ${p.period ? `<span class="cv-item-date">${p.period}</span>` : ''}
+              ${p.period ? `<span class="cv-item-date">${p.period}</span>` : ""}
             </div>
-            ${p.role ? `<div class="cv-item-org">${p.role}${p.links?.website ? ' · ' + p.links.website.replace('https://', '') : ''}</div>` : ''}
-            ${p.highlights && p.highlights.length ? `
+            ${p.role ? `<div class="cv-item-org">${p.role}${p.links?.website ? " · " + p.links.website.replace("https://", "") : ""}</div>` : ""}
+            ${
+              p.highlights && p.highlights.length
+                ? `
               <ul class="cv-item-bullets">
-                ${p.highlights.map(h => `<li>${h}</li>`).join('')}
+                ${p.highlights.map((h) => `<li>${h}</li>`).join("")}
               </ul>
-            ` : ''}
+            `
+                : ""
+            }
           </div>
-        `).join('');
+        `,
+            )
+            .join("");
+        }
       }
-    }
 
-    if (D.experience && Array.isArray(D.experience)) {
-      const expList = document.getElementById('experienceList');
-      if (expList) {
-        expList.innerHTML = D.experience.map(e => `
+      if (D.experience && Array.isArray(D.experience)) {
+        const expList = document.getElementById("experienceList");
+        if (expList) {
+          expList.innerHTML = D.experience
+            .map(
+              (e) => `
           <div class="cv-item">
             <div class="cv-item-header">
               <span class="cv-item-title">${e.role}</span>
-              ${e.period ? `<span class="cv-item-date">${e.period}</span>` : ''}
+              ${e.period ? `<span class="cv-item-date">${e.period}</span>` : ""}
             </div>
-            ${e.org ? `<div class="cv-item-org">${e.org}</div>` : ''}
-            ${e.bullets && e.bullets.length ? `
+            ${e.org ? `<div class="cv-item-org">${e.org}</div>` : ""}
+            ${
+              e.bullets && e.bullets.length
+                ? `
               <ul class="cv-item-bullets">
-                ${e.bullets.map(b => `<li>${b}</li>`).join('')}
+                ${e.bullets.map((b) => `<li>${b}</li>`).join("")}
               </ul>
-            ` : ''}
+            `
+                : ""
+            }
           </div>
-        `).join('');
+        `,
+            )
+            .join("");
+        }
       }
-    }
 
-    if (D.research && Array.isArray(D.research)) {
-      const resList = document.getElementById('researchList');
-      if (resList) {
-        resList.innerHTML = D.research.map(r => `
+      if (D.research && Array.isArray(D.research)) {
+        const resList = document.getElementById("researchList");
+        if (resList) {
+          resList.innerHTML = D.research
+            .map(
+              (r) => `
           <div class="cv-item">
             <div class="cv-item-header">
               <span class="cv-item-title">${r.role}</span>
-              ${r.period ? `<span class="cv-item-date">${r.period}</span>` : ''}
+              ${r.period ? `<span class="cv-item-date">${r.period}</span>` : ""}
             </div>
-            ${r.org ? `<div class="cv-item-org">${r.org}</div>` : ''}
-            ${r.bullets && r.bullets.length ? `
+            ${r.org ? `<div class="cv-item-org">${r.org}</div>` : ""}
+            ${
+              r.bullets && r.bullets.length
+                ? `
               <ul class="cv-item-bullets">
-                ${r.bullets.map(b => `<li>${b}</li>`).join('')}
+                ${r.bullets.map((b) => `<li>${b}</li>`).join("")}
               </ul>
-            ` : ''}
+            `
+                : ""
+            }
           </div>
-        `).join('');
+        `,
+            )
+            .join("");
+        }
       }
-    }
 
-    if (D.education) {
-      const edList = document.getElementById('educationList');
-      if (edList) {
-        edList.innerHTML = D.education.map(e => `
+      if (D.education) {
+        const edList = document.getElementById("educationList");
+        if (edList) {
+          edList.innerHTML = D.education
+            .map(
+              (e) => `
           <div class="edu-item">
             <span class="edu-title">${e.title}</span>
-            ${e.detail ? ` — <span class="edu-detail">${e.detail}</span>` : ''}
-            ${e.period ? ` <span class="edu-period">(${e.period})</span>` : ''}
+            ${e.detail ? ` — <span class="edu-detail">${e.detail}</span>` : ""}
+            ${e.period ? ` <span class="edu-period">(${e.period})</span>` : ""}
           </div>
-        `).join('');
+        `,
+            )
+            .join("");
+        }
       }
-    }
 
-    injectPrivateData();
+      injectPrivateData();
 
-    // ---- SCROLL PROGRESS FALLBACK ----
-    if (!CSS.supports('animation-timeline', 'scroll()')) {
-      const prog = document.getElementById('scrollProgress');
-      if (prog) {
-        window.addEventListener('scroll', () => {
-          const scrollable = document.documentElement.scrollHeight - window.innerHeight;
-          prog.style.transform = `scaleX(${scrollable > 0 ? window.scrollY / scrollable : 0})`;
-        }, { passive: true });
+      // ---- SCROLL PROGRESS FALLBACK ----
+      if (!CSS.supports("animation-timeline", "scroll()")) {
+        const prog = document.getElementById("scrollProgress");
+        if (prog) {
+          window.addEventListener(
+            "scroll",
+            () => {
+              const scrollable =
+                document.documentElement.scrollHeight - window.innerHeight;
+              prog.style.transform = `scaleX(${scrollable > 0 ? window.scrollY / scrollable : 0})`;
+            },
+            { passive: true },
+          );
+        }
       }
-    }
-  });
+    });
 
-  async function copyCvForAI(btnEl) {
-    const origText = btnEl.textContent;
-    btnEl.textContent = 'Copying...';
-    let content = '';
+    async function copyCvForAI(btnEl) {
+      const origText = btnEl.textContent;
+      btnEl.textContent = "Copying...";
+      let content = "";
 
-    const d = window.MARIO_DOSSIER;
-    if (d) {
-      content = `# ${d.identity.name} — Curriculum Vitae (AI / LLM Markdown)\n> ${d.identity.headline}\n> Location: ${d.identity.location} · ${d.identity.relocation}\n\n## Executive Summary\n${d.summary}\n\n## Core Competencies\n` +
-        (d.skills || []).map(s => `- ${s}`).join('\n') + `\n\n## Professional Experience\n\n`;
-      (d.experience || []).forEach(e => {
-        content += `### ${e.role} — ${e.org} (${e.period})\n` + (e.bullets || []).map(b => `- ${b}`).join('\n') + `\n\n`;
-      });
-    }
-
-    if (!content) {
-      try {
-        const res = await fetch('cv-llm.txt');
-        if (res.ok) content = await res.text();
-      } catch (err) {
-        console.warn('Fetch fallback for CV AI Copy:', err);
+      const d = window.MARIO_DOSSIER;
+      if (d) {
+        content =
+          `# ${d.identity.name} — Curriculum Vitae (AI / LLM Markdown)\n> ${d.identity.headline}\n> Location: ${d.identity.location} · ${d.identity.relocation}\n\n## Executive Summary\n${d.summary}\n\n## Core Competencies\n` +
+          (d.skills || []).map((s) => `- ${s}`).join("\n") +
+          `\n\n## Professional Experience\n\n`;
+        (d.experience || []).forEach((e) => {
+          content +=
+            `### ${e.role} — ${e.org} (${e.period})\n` +
+            (e.bullets || []).map((b) => `- ${b}`).join("\n") +
+            `\n\n`;
+        });
       }
-    }
 
-    if (!content) {
-      content = `# Mario Marcolongo — Curriculum Vitae (AI / LLM Compatible Markdown)
+      if (!content) {
+        try {
+          const res = await fetch("cv-llm.txt");
+          if (res.ok) content = await res.text();
+        } catch (err) {
+          console.warn("Fetch fallback for CV AI Copy:", err);
+        }
+      }
+
+      if (!content) {
+        content = `# Mario Marcolongo — Curriculum Vitae (AI / LLM Compatible Markdown)
 > AI-Native Systems Builder · Open Science Technologist · Empirical Data Synthesizer
 > Location: Italy · Open to Global Opportunities Worldwide
 
 ## Executive Summary
 4,317 verified Wikimedia contributions. Founder of Yourself to Science™ (yourselftoscience.org). Creator of Emergent Humanity. Primary source verification, open science infrastructure, and high-agency execution.
 View full CV online: https://mariomarcolongo.com/cv.html or profile at https://mariomarcolongo.com/llms-full.txt`;
+      }
+
+      try {
+        await navigator.clipboard.writeText(content);
+        btnEl.textContent = "✓ Copied AI CV!";
+        btnEl.style.background = "var(--emerald, #10B981)";
+        btnEl.style.color = "#fff";
+        setTimeout(() => {
+          btnEl.textContent = origText;
+          btnEl.style.background = "";
+          btnEl.style.color = "";
+        }, 2200);
+      } catch (err) {
+        btnEl.textContent = "Failed to copy";
+        setTimeout(() => (btnEl.textContent = origText), 2000);
+      }
     }
+  </script>
 
-    try {
-      await navigator.clipboard.writeText(content);
-      btnEl.textContent = '✓ Copied AI CV!';
-      btnEl.style.background = 'var(--emerald, #10B981)';
-      btnEl.style.color = '#fff';
-      setTimeout(() => {
-        btnEl.textContent = origText;
-        btnEl.style.background = '';
-        btnEl.style.color = '';
-      }, 2200);
-    } catch (err) {
-      btnEl.textContent = 'Failed to copy';
-      setTimeout(() => (btnEl.textContent = origText), 2000);
-    }
-  }
-</script>
-
-<footer class="cv-footer">
-  <div class="cv-footer-row">
-    <span><strong>Dossier v2026.07 (July 2026)</strong> · FAIR Evidence Synthesis & AI-Native Systems · ORCID: 0000-0003-2846-7115</span>
-    <span>Primary Source Verification · ENA Accession: PRJEB109744 · Independent & Global Worldwide</span>
-  </div>
-</footer>
-
+  <footer class="cv-footer">
+    <div class="cv-footer-row">
+      <span
+        ><strong>Dossier v2026.07 (July 2026)</strong> · FAIR Evidence Synthesis &
+        AI-Native Systems · ORCID: 0000-0003-2846-7115</span
+      >
+      <span
+        >Primary Source Verification · ENA Accession: PRJEB109744 · Independent
+        & Global Worldwide</span
+      >
+    </div>
+  </footer>
 </Layout>

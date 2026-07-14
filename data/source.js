@@ -25,40 +25,40 @@ const MARIO_DOSSIER = {
     contactObfuscated: ["me", "mariomarcolongo", "com"]
   },
 
-  summary: "My core strength combines radical epistemic skepticism and primary source verification with empathetic clinical facilitation and cross-functional team collaboration. Characterized by independent empirical verification over authority deference and high-agency operational execution, I consistently solve complex information challenges while fostering trust and psychological safety. Over the past 9 years, I have verified thousands of scientific claims across Wikipedia (4,317 documented edits), shipped open-source automation, and founded Yourself to Science™ (yourselftoscience.org). Alongside deep technical rigor, I bring empathetic facilitation and ethical sensitivity—volunteering as an independent researcher to moderate sensitive clinical psychology focus groups with neurodivergent participants and collaborating within fast-paced science communication teams where every editorial decision balances scientific precision, relationships with diverse commercial and institutional sponsors, and public perception.",
+  summary: "I operate at the intersection of AI-native engineering, rigorous evidence synthesis, and bridging epistemic rigor with public comprehension. Characterized by independent empirical verification over authority deference and high-agency operational execution, I consistently solve complex information challenges while fostering trust and psychological safety. Over the past 9 years, I have verified thousands of scientific claims across Wikimedia projects (4,317 documented edits across English/Italian Wikipedia, Wikidata, and Wikimedia Commons), shipped production AI automation, and founded Yourself to Science™ (yourselftoscience.org). At Entropy for Life (480,000+ cross-platform community), I serve as technical operations and literature researcher—fact-checking primary literature across 55+ videos and co-authoring 4 epidemiological articles. Alongside deep technical rigor and Cochrane Crowd / GALENOS screening methodology certifications, I bring lived neurodivergent experience (Autism Spectrum) and ethical sensitivity—volunteering as an independent researcher to co-facilitate remote Zoom focus groups with neurodivergent participants under Prof. Marta Panzeri (University of Padua Department of Developmental Psychology and Socialisation) and collaborating within fast-paced science communication teams where every editorial decision balances scientific precision, relationships with diverse institutional sponsors, and public comprehension.",
 
   pillars: [
     {
-      category: "SYSTEMS & EXECUTION",
-      icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>`,
-      title: "AI-Native Product & Workflow Engineering",
-      lead: "Architecting and shipping production software, browser extensions, and data pipelines from zero using advanced AI tooling—turning domain expertise directly into working systems.",
-      desc: "End-to-end product execution using advanced AI agentic tooling (Antigravity IDE, Cursor, LLM APIs)—empowering domain specialists to architect and ship production web apps, browser extensions, and automated pipelines from scratch.",
-      highlights: [
-        { label: "Advanced AI Stack", detail: "Antigravity IDE, Cursor, LLM APIs & agentic orchestration" },
-        { label: "Shipped Production", detail: "Browser extensions, serverless bots & automated data pipelines" }
-      ]
-    },
-    {
-      category: "BIOINFORMATICS & OPEN DATA",
-      icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 15c6.667-6 13.333 0 20-6"></path><path d="M9 22c1.798-1.998 2.518-3.995 2.807-5.993"></path><path d="M15 2c-1.798 1.998-2.518 3.995-2.807 5.993"></path><path d="M17 6l-2.5-2.5"></path><path d="M14 8l-1-1"></path><path d="M7 18l2.5 2.5"></path><path d="M9.5 15.5l1 1"></path></svg>`,
-      title: "Open Science Infrastructure & Genomics",
-      lead: "Architecting open biomedical data directories and executing rigorous cloud & local computational genomic pipelines.",
-      desc: "Founder of Yourself to Science™ (CC0 open biobanking directory indexed in FAIRsharing & Zenodo). Architected cloud & local 41× WGS bioinformatic pipelines—using Terra.bio to align raw FASTQ reads and extract high-coverage GRCh38 BAM and VCF files, then running downstream local analysis on Apple Silicon (M4 Macbook) with Nextflow pgsc_calc, 1000 Genomes PCA ancestry projection, and custom Python VEP-VCF extractors.",
-      highlights: [
-        { label: "Yourself to Science™", detail: "CC0 open biobanking registry indexed in FAIRsharing & Zenodo" },
-        { label: "Genomic Pipelines", detail: "Terra.bio cloud BAM/VCF extraction from FASTQ & local M4 Macbook bioinformatic pipeline (Nextflow pgsc_calc, Plink2 & Python VEP-VCF multi-trait analysis)" }
-      ]
-    },
-    {
-      category: "EVIDENCE & FACT-CHECKING",
+      category: "EVIDENCE SYNTHESIS & EDITORIAL",
       icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><path d="M11 8v6"></path><path d="M8 11h6"></path></svg>`,
-      title: "Biomedical Evidence & Visual Synthesis",
-      lead: "9+ years verifying scientific claims across public ecosystems and creating standard vector diagrams.",
-      desc: "9+ years verifying biomedical literature across Wikimedia (4,300+ edits). Creating high-clarity open-access scientific vector diagrams and reference visualizations.",
+      title: "Biomedical Verification & Editorial Velocity",
+      lead: "9+ years verifying scientific claims across public ecosystems, managing editorial workflows, and synthesizing complex literature for academic and public audiences.",
+      desc: "Verified 4,300+ biomedical contributions across Wikimedia holding up under scrutiny. Fact-checked primary literature across 55+ YouTube videos (long & short), co-authored 4 articles, and created data visualizations for a 480K+ community, earning formal acknowledgment in a Mondadori bestseller. Completed formal Cochrane Crowd & GALENOS systematic review screening training and certification.",
       highlights: [
-        { label: "4,300+ Verified Edits", detail: "Rigorous biomedical literature synthesis across Wikimedia & Wikidata" },
-        { label: "Open-Access Diagrams", detail: "Authored high-clarity vector scientific diagrams on Wikimedia Commons" }
+        { label: "Editorial & Fact-Checking", detail: "55+ videos & 4 articles verified; Cochrane Crowd / GALENOS screening methodology certification" },
+        { label: "Knowledge Graph & Article Curation", detail: "4,317 auditable edits across Wikimedia projects (English/Italian Wikipedia, Wikidata & Commons)" }
+      ]
+    },
+    {
+      category: "AI SYSTEMS & INFRASTRUCTURE",
+      icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>`,
+      title: "AI-Native Engineering & Open Science Data",
+      lead: "Architecting autonomous link converters, citizen science metadata registries, and computational genomic pipelines with frontier LLM benchmarks.",
+      desc: "Founded Yourself to Science™ (yourselftoscience.org) open FAIRsharing directory with live MCP Server. Architected serverless Wikipedia Link Converter Bot on AWS Lambda. Donated personal 41× WGS genomic data to European Nucleotide Archive (ENA), engineering GRCh38-aligned BAM/VCF pipelines.",
+      highlights: [
+        { label: "AI & Serverless Automation", detail: "AWS Lambda Telegram bots, live MCP Servers & continuous LLM benchmarking" },
+        { label: "Open Genomic Infrastructure", detail: "Yourself to Science™ registry & assisted Agentic AI 41× WGS pipeline (GRCh38-aligned BAM & VCF)" }
+      ]
+    },
+    {
+      category: "COMMUNITY ENGAGEMENT & SCIENCE COMMUNICATION",
+      icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>`,
+      title: "Bridging Epistemic Rigor with Public Comprehension",
+      lead: "Leveraging clinical psychology study facilitation to navigate neurodivergent communication, coordinate public science outreach, and build psychological safety across diverse communities.",
+      desc: "Co-facilitated remote Zoom clinical psychology focus groups (autism spectrum) at the University of Padua with standardized facilitation protocols and neurodivergent recruitment. Managed technical web infrastructure and institutional collaborations (AIRC Foundation, RAI Public TV, Mondadori) for a 480K+ cross-platform science ecosystem.",
+      highlights: [
+        { label: "Clinical & Neurodivergent UX", detail: "Standardized remote Zoom focus group protocol engineering & empathetic facilitation" },
+        { label: "Public Science & Sponsor Engagement", detail: "Balancing epistemic rigor with public comprehension across 480K+ community" }
       ]
     }
   ],
@@ -66,8 +66,8 @@ const MARIO_DOSSIER = {
   stats: [
     { value: "100 / 100", label: "Production Web & AI Readiness", detail: "Perfect 100 Lighthouse (Performance/a11y/SEO) & 3/3 Agentic Browsing score on Yourself to Science™" },
     { value: "70+ Vizzes", label: "Empirical Data Visualizations", detail: "Published 55+ Flourish & 15 Tableau Public epidemiological, demographic & ISTAT workbooks analyzing ~80+ datasets" },
-    { value: "300+ Documentaries", label: "Science Scripting & Verification", detail: "Fact-checked literature across 300+ documentaries & co-authored scripts for Giacomo Moro Mauretto's Entropy for Life (480K+ community across YT/IG/TikTok); acknowledged in Mondadori book Italiani Veri" },
-    { value: "4,317", label: "Knowledge Graph & Ontology Edits", detail: "Verifiable structured data and reference citations across Wikidata, English/Italian Wikipedia, and Wikimedia Commons" }
+    { value: "55+ Videos & 4 Articles", label: "Science Verification & Editorial Acceleration", detail: "Fact-checked primary literature across 55+ YouTube videos (long & short), co-authored 4 articles, designed data visualizations & Reels, and managed A/B tested thumbnails/titles for Giacomo Moro Mauretto's Entropy for Life (480K+ community); acknowledged in Mondadori book Italiani Veri" },
+    { value: "4,317 Edits", label: "Wikimedia & Knowledge Graph Curation", detail: "Verifiable contributions across English Wikipedia (1,592), Wikidata (1,249), Italian Wikipedia (752), and Wikimedia Commons (684)" }
   ],
 
   projects: [
@@ -92,11 +92,11 @@ const MARIO_DOSSIER = {
     },
     {
       id: "mdpi-filter",
-      title: "MDPI Citation Filter",
-      oneLiner: "A browser extension that flags papers from controversial publisher MDPI across academic platforms.",
-      description: "MDPI operates high-volume open-access journals with debated peer-review turnaround times. This open-source Manifest V3 extension flags MDPI citations in real time across search results so researchers can assess literature context immediately.",
+      title: "MDPI Filter",
+      oneLiner: "A versatile browser extension that highlights, hides, or styles MDPI publications across academic search engines and any publisher article online.",
+      description: "Enhances research workflows by giving researchers granular control over how publications from MDPI appear in the browser. Features smart search engine result filtering (highlight or hide MDPI papers directly within search results across Google, Google Scholar, PubMed, and Europe PMC via NCBI API integration), universal in-page citation styling on any publisher article online (outlining reference lists, styling inline numerical/author-year footnotes in red, and marking 'Cited By'/'Similar Articles'), and an interactive popup with instant scroll-to-reference navigation—all executed locally with privacy in mind.",
       role: "Creator & Maintainer",
-      tech: ["Manifest V3", "Chrome & Edge", "NCBI E-utilities API", "AGPL-3.0"],
+      tech: ["Manifest V3", "Chrome & Edge", "NCBI E-utilities API", "Universal DOM Citation Styling", "AGPL-3.0"],
       links: {
         chromeStore: "https://chromewebstore.google.com/detail/mdpi-filter/comknkeimaaadpiopddjoknflbmjeccp",
         edgeStore: "https://microsoftedge.microsoft.com/addons/detail/mdpi-filter/efonlkldplkaeekpiajloajjmkappjgi",
@@ -107,18 +107,18 @@ const MARIO_DOSSIER = {
         ]
       },
       highlights: [
-        "Live on Google Chrome Web Store and Microsoft Edge Add-ons",
-        "Flags citations across Google Scholar, PubMed, Europe PMC, Wikipedia, and Healthline",
-        "Real-time DOM inspection with non-intrusive visual tagging"
+        "Smart Search Filtering: Highlight or hide MDPI papers directly within search engine results (Google, Google Scholar, PubMed & Europe PMC)",
+        "Universal In-Page Styling: Automatically styles reference lists, inline numerical/author-year footnotes & 'Cited By' sections on any publisher article online",
+        "Interactive Popup & Scroll-to-Reference: Real-time badge count and one-click scrolling directly to detected citations within documents"
       ]
     },
     {
       id: "entropy-for-life",
       title: "Entropy for Life — Technical Operations, Scriptwriting & Editorial Acceleration",
-      oneLiner: "Technical web infrastructure, scriptwriting, bibliographic research, and editorial acceleration for Giacomo Moro Mauretto's premier Italian science communication ecosystem (480K+ cross-platform community, 300+ documentaries, 36.2M+ views).",
-      description: "Authored long-form documentary scripts and verified primary scientific literature across 300+ science documentaries and videos for evolutionary biologist Giacomo Moro Mauretto's Entropy for Life ecosystem (480,000+ cross-platform community across YouTube, Instagram, and TikTok; 266,000+ YouTube subscribers; 36,276,295+ views). Co-authored epidemiological articles on entropyforlife.it, conducted primary bibliographic verification (formally acknowledged on the final page of the Mondadori bestseller 'Italiani veri. Storia evolutiva e genetica del nostro Paese'), supported technical web infrastructure on OVHCloud across institutional collaborations (AIRC - Fondazione per la Ricerca sul Cancro) and national broadcast appearances (Rai 3 Kilimangiaro, Radio Deejay, Radio24), designed high-CTR visual thumbnails via Nanobana AI, and executed targeted video editing in DaVinci Resolve.",
+      oneLiner: "Technical web infrastructure, primary literature verification, data visualization, and editorial acceleration for Giacomo Moro Mauretto's premier Italian science communication ecosystem (480K+ cross-platform community, 36.2M+ views).",
+      description: "Verified primary scientific literature across 55+ YouTube content pieces (both long-form documentaries and shorts) and co-authored 4 epidemiological/science articles for evolutionary biologist Giacomo Moro Mauretto's Entropy for Life ecosystem (480,000+ cross-platform community across YouTube, Instagram, and TikTok; 266,000+ YouTube subscribers; 36,276,295+ views). Formally acknowledged as a trusted primary literature researcher on the final page of the Mondadori 'Italiani veri. Storia evolutiva e genetica del nostro Paese' (Mondadori is Italy's largest trade publishing house). Created empirical data visualizations and Instagram Reels, configured and managed technical web infrastructure on OVHCloud (including event pages, email communications, and SSL/DNS) across institutional collaborations including AIRC (Italian Foundation for Cancer Research) and national broadcast appearances on RAI Public Television (Rai 3 Kilimangiaro, Radio Deejay, Radio24), and designed high-CTR visual thumbnails and video titles with structured A/B testing strategies.",
       role: "Technical Operations, Scriptwriter & Editorial Specialist",
-      tech: ["Science Scriptwriting (Long/Short Form)", "Web Infrastructure (OVHCloud)", "Bibliographic Research & Fact-Checking", "AI Thumbnail Design (Nanobana)", "DaVinci Resolve"],
+      tech: ["Literature Verification (55+ Videos & 4 Articles)", "Web Infrastructure & Event/Email Ops (OVHCloud)", "A/B Testing Thumbnails/Titles", "Data Visualization & Reels", "DaVinci Resolve"],
       links: {
         website: "https://entropyforlife.it",
         youtube: "https://www.youtube.com/@EntropyforLife",
@@ -126,9 +126,9 @@ const MARIO_DOSSIER = {
         playlist: "https://www.youtube.com/playlist?list=PLMJaM7iJky4pKj6voGlUNHBnGdTj9rJNh"
       },
       highlights: [
-        "Formally acknowledged in Giacomo Moro Mauretto's Mondadori bestseller 'Italiani Veri' as trusted literature researcher and scientific fact-checker",
-        "Fact-checked literature across 300+ documentaries and co-authored scripts for a 480K+ cross-platform community (266K+ YT, 158K+ IG, 54K+ TikTok)",
-        "Architected entropyforlife.it web infrastructure on OVHCloud supporting institutional AIRC initiatives and national broadcast appearances"
+        "Formally acknowledged in Giacomo Moro Mauretto's Mondadori 'Italiani Veri' (major European publishing house) as trusted literature researcher and scientific fact-checker",
+        "Fact-checked primary literature across 55+ YouTube videos (long & short), co-authored 4 articles, and created data visualizations & Instagram Reels for a 480K+ community",
+        "Managed entropyforlife.it web infrastructure (OVHCloud), event pages, email communications, and A/B tested thumbnail/title strategies across institutional initiatives (AIRC Foundation & RAI Public TV)"
       ]
     },
     {
@@ -236,9 +236,9 @@ const MARIO_DOSSIER = {
       org: "Entropy for Life (entropyforlife.it)",
       period: "Jun 2023 — Present",
       bullets: [
-        "Configured and managed web infrastructure, DNS, SSL, and technical SEO on OVHCloud for Giacomo Moro Mauretto's multi-platform science ecosystem (480K+ cross-platform community across YouTube, Instagram, and TikTok; 266K+ YT subscribers; 36.2M+ views).",
-        "Collaborated within a fast-paced, multidisciplinary science media team alongside channel founder Giacomo Moro Mauretto and video editors—engaging in constructive peer debate, dynamic editorial review, and carefully balancing rigorous scientific accuracy against public comprehension, thumbnail/title perception, and relationships with diverse commercial and institutional sponsors (including AIRC and major brand partners).",
-        "Reviewed primary biomedical and evolutionary literature to verify factual accuracy across 300+ science documentaries and publications, earning formal acknowledgment in the Mondadori book 'Italiani Veri'."
+        "Configured and managed web infrastructure on OVHCloud (entropyforlife.it, event pages, email communications, SSL/DNS) for Giacomo Moro Mauretto's science ecosystem (480K+ cross-platform community across YouTube, Instagram, and TikTok; 36.2M+ views).",
+        "Reviewed primary biomedical and evolutionary literature to verify factual accuracy across 55+ YouTube content pieces (both long-form documentaries and shorts), co-authored 4 articles, and created empirical data visualizations and Instagram Reels—earning formal acknowledgment in the Mondadori 'Italiani Veri'.",
+        "Designed high-CTR YouTube thumbnails and titles using structured A/B testing strategies while balancing strict scientific accuracy against public comprehension and institutional sponsor relationships (including AIRC and major brand partners)."
       ]
     },
     {
@@ -255,14 +255,14 @@ const MARIO_DOSSIER = {
   research: [
     {
       role: "Volunteer Focus Group Conductor & Clinical Research Facilitator",
-      org: "University of Padua — Department of General Psychology (Independent Volunteer Collaboration)",
+      org: "University of Padua — Department of Developmental Psychology and Socialisation (Independent Volunteer Collaboration)",
       period: "Nov 2022 — Present",
       bullets: [
-        "Contributed as an independent volunteer researcher to a clinical study on sexuality in the autism spectrum led by Prof. Marta Panzeri, demonstrating strong intrinsic dedication, ethical sensitivity, and empathetic rapport-building with neurodivergent participants.",
-        "Developed the standardized facilitation guide for the focus groups—including detailed session scripts and behavioral facilitation protocols—to ensure rigorous, reproducible execution.",
+        "Contributed as an independent volunteer researcher to a clinical study on sexuality in the autism spectrum led by Prof. Marta Panzeri, demonstrating strong intrinsic dedication, ethical sensitivity, and empathetic rapport-building with neurodivergent participants enriched by lived neurodivergent perspective (Autism Spectrum).",
+        "Developed the standardized facilitation guide for remote video focus groups—undergoing peer simulation training and following detailed session scripts and behavioral facilitation protocols instructed by Prof. Marta Panzeri to ensure rigorous, reproducible execution.",
         "Managed end-to-end participant recruitment workflows, including crafting and executing the call for candidates across neurodivergent communities.",
         "Conducted thorough primary bibliographic searches, scientific literature verification, and qualitative evidence synthesis to support study design and protocol development.",
-        "Served as both primary conductor and co-conductor for recorded focus groups—establishing deep psychological safety while managing all technical session infrastructure to elicit rich qualitative data."
+        "Served as both primary conductor and co-conductor for recorded remote Zoom focus groups—establishing deep psychological safety while managing all remote video and technical session infrastructure to elicit rich qualitative data."
       ]
     },
     {
@@ -271,37 +271,37 @@ const MARIO_DOSSIER = {
       period: "2026",
       bullets: [
         "Donated personal 41× Whole Genome Sequencing raw paired-end FASTQ reads (DNBSEQ-T7) to the public domain (CC0) under ENA BioSample SAMEA121950568.",
-        "Utilized Terra.bio cloud biomedical platform to process raw FASTQ reads, aligning against the GRCh38 human reference genome to extract high-coverage BAM alignments and VCF variant call files.",
+        "Leveraged assisted Agentic AI workflows to develop, debug, and execute complex bioinformatic pipelines—utilizing Terra.bio cloud biomedical platform to process raw FASTQ reads aligned against the GRCh38 human reference genome to extract high-coverage GRCh38-aligned BAM and VCF variant call files.",
         "Architected downstream local bioinformatic pipeline on Apple Silicon (M4 Macbook)—converting VCF to Plink2 (PGEN/PVAR/PSAM) and executing Nextflow pgsc_calc with PCA ancestry projection against 1000 Genomes / HGDP reference panels.",
         "Engineered custom Python extraction pipelines for VEP-annotated VCFs—calculating multi-trait Z-Score standardized Polygenic Risk Scores, pharmacogenomic/lifestyle loci, mitochondrial heteroplasmy, and novel 'dark matter' variant filtration mapped to HPO/MONDO ontologies."
       ]
     },
     {
-      role: "Empirical Data Scientist & Epidemiological Visualizer",
-      org: "Tableau Public & Flourish Visual Data Portfolio",
+      role: "Empirical Data Scientist & Scientific Visualizer",
+      org: "Wikimedia Commons, Tableau Public & Flourish Visual Data Portfolio",
       period: "2023 — Present",
       bullets: [
-        "Published 40+ interactive empirical public health, epidemiological, and biomedical visualizations across Tableau Public (15 Vizzes, 4,300+ views) and Flourish.",
-        "Synthesized primary biomedical datasets—including H5N1 avian flu preparedness, carotid plaque microplastic pathology, age-stratified COVID-19 mortality, and ISTAT epidemiological trends—into interactive visual evidence repositories."
+        "Published 40+ interactive empirical public health, epidemiological, and biomedical visualizations across Wikimedia Commons, Tableau Public (15 Vizzes, 4,300+ views), and Flourish.",
+        "Synthesized primary biomedical datasets—including H5N1 avian flu preparedness, carotid plaque microplastic pathology, age-stratified COVID-19 mortality, and ISTAT epidemiological trends—into open-access visual evidence repositories and vector charts."
       ]
     }
   ],
 
   education: [
-    { title: "Studies in Medicine & Surgery", detail: "Università degli Studi della Campania 'Luigi Vanvitelli' — Enrolled (2020); foundational coursework completed with primary focus shifted to independent open science & computational systems", period: "2020 — Present" },
-    { title: "EF SET English Certificate", detail: "C1 Advanced Proficiency (68/100) · Bilingual Native Italian", period: "" },
-    { title: "GALENOS Crowd Training", detail: "Cochrane Crowd & GALENOS Evidence Synthesis Certification", period: "May 2026" },
+    { title: "Studies in Medicine & Surgery", detail: "Università degli Studi della Campania 'Luigi Vanvitelli' — Enrolled 2020 (completed initial coursework before dedicating full-time focus to open science & computational systems)", period: "2020" },
+    { title: "EF SET English Certificate", detail: "Advanced / Full Professional Proficiency (certified C1 Advanced EF SET 68/100; native Italian)", period: "" },
+    { title: "GALENOS Crowd Training", detail: "Cochrane Crowd & GALENOS Systematic Review Screening Certification", period: "May 2026" },
     { title: "Career Essentials in Generative AI", detail: "Microsoft & LinkedIn Certification", period: "Mar 2024" }
   ],
 
   skills: [
-    "AI Systems & Prototyping: Antigravity IDE, Cursor, Copilot, LLM API Orchestration (Gemini, OpenRouter, Claude, OpenAI), Rapid Automation",
+    "AI Systems Engineering & Optimization: Assisted Agentic AI Pipelines, Continuous Frontier Benchmarking (ArtificialAnalysis.ai, LiveBench), Token & Context Window Efficiency, Memory/Command Execution, Prompt Hardening & Indirect Injection Mitigation, Antigravity IDE, Cursor, LLM API Orchestration",
     "Web & Cloud Infrastructure: AWS Lambda, Serverless API Gateway, GitHub Actions CI/CD, Next.js, Edge Rendering, OVHCloud, Cloudflare, Technical SEO",
-    "Open Biobanking & Genomics: Citizen Genomic Curation (ENA / NCBI), Phenotypic & Disease Ontology Mapping (HPO, MONDO), Open-Access CC0 Data Stewardship",
+    "Open Biobanking & Genomics: Citizen Genomic Curation (ENA / NCBI), Assisted Agentic AI Bioinformatic Execution, Phenotypic & Disease Ontology Mapping (HPO, MONDO), Open-Access CC0 Data Stewardship",
     "Epistemic Rigor & Biomedical Synthesis: Radical Primary Source Verification, Zero Deference to Authority, NCBI E-utilities, Wikimedia Curation (4,317 edits), Vector Visualization",
-    "Clinical Research & Empathetic Facilitation: Standardized Protocol & Script Development, Neurodivergent Participant Recruitment, Primary & Co-Conductor Focus Group Moderation (Autism Spectrum), Psychological Safety Frameworks",
-    "Cross-Functional Media Team & Stakeholder Management: Collaborative Editorial Review, De-escalating Scientific Complexity, Balancing Epistemic Rigor with Public Perception & Diverse Commercial/Institutional Sponsors",
-    "Languages: Italian (Native / Mother Tongue) · English (C1 Advanced Proficiency)"
+    "Clinical Research & Empathetic Facilitation: Standardized Protocol & Script Development, Remote Zoom Focus Group Moderation (Autism Spectrum), Psychological Safety Frameworks",
+    "Public Science Communication & Institutional Collaboration: Collaborative Editorial Review, De-escalating Scientific Complexity, Balancing Epistemic Rigor with Public Comprehension & Institutional Sponsors",
+    "Languages: Italian (Native / Mother Tongue) · English (Full Professional Proficiency / Certified C1 Advanced)"
   ]
 };
 
