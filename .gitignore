@@ -17,3 +17,8 @@ Thumbs.db
 .vscode/
 *.swp
 *.swo
+
+# Private tailored applications & cover letters
+*campbell*
+*Campbell*
+*Assistant Editor*
