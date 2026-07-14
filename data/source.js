@@ -51,13 +51,13 @@ const MARIO_DOSSIER = {
       ]
     },
     {
-      category: "CLINICAL RESEARCH & SCIENCE COMMUNICATION",
+      category: "PSYCHOLOGICAL RESEARCH & SCIENCE COMMUNICATION",
       icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>`,
       title: "Structured Research Protocols & Public Outreach",
-      lead: "Leveraging clinical psychology study facilitation to design standardized protocols, coordinate public science outreach, and build trust across diverse communities.",
-      desc: "Co-facilitated remote Zoom clinical psychology focus groups (autism spectrum) at the University of Padua with standardized facilitation protocols and neurodivergent recruitment. Managed technical web infrastructure and institutional collaborations (AIRC Foundation, RAI Public TV, Mondadori) for a 480K+ cross-platform science ecosystem.",
+      lead: "Leveraging psychological study facilitation to design standardized protocols, coordinate public science outreach, and build trust across diverse communities.",
+      desc: "Co-facilitated remote Zoom psychological focus groups (autism spectrum) at the University of Padua with standardized facilitation protocols and neurodivergent recruitment. Managed technical web infrastructure and institutional collaborations (AIRC Foundation, RAI Public TV, Mondadori) for a 480K+ cross-platform science ecosystem.",
       highlights: [
-        { label: "Clinical Study Facilitation", detail: "Standardized remote Zoom focus group protocol engineering & structured study moderation" },
+        { label: "Psychological Study Facilitation", detail: "Standardized remote Zoom focus group protocol engineering & structured study moderation" },
         { label: "Public Science Communication", detail: "Rigorous scientific fact-checking & web infrastructure across a 480K+ community" }
       ]
     }
@@ -265,7 +265,7 @@ const MARIO_DOSSIER = {
   ],
 
   education: [
-    { title: "Studies in Medicine & Surgery / Clinical Psychology Coursework", detail: "University of Padua / Università degli Studi della Campania 'Luigi Vanvitelli' — Foundational biomedical and clinical psychology coursework completed", period: "2020 — 2025" },
+    { title: "Studies in Medicine & Surgery", detail: "Università degli Studi della Campania 'Luigi Vanvitelli' — Foundational biomedical and scientific coursework completed (no formal degree conferred)", period: "2020" },
     { title: "EF SET English Certificate 68/100 (C1 Advanced)", detail: "EF Standard English Test (EF SET) · https://cert.efset.org/jHk84h", period: "Mar 2024" },
     { title: "Career Essentials in Generative AI", detail: "Microsoft and LinkedIn · Certificate: https://www.linkedin.com/learning/certificates/c4f1f59578e3ac2567787e262e3b2ec55debf96bbbced4d34d5edaa821d9e6d9", period: "Mar 2024" },
     { title: "GALENOS Crowd Evidence Synthesis Training", detail: "Cochrane Crowd & GALENOS Systematic Review Screening Certification", period: "May 2026" }

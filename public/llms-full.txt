@@ -18,9 +18,9 @@ Architecting autonomous link converters, citizen science metadata registries, an
 - **Open Genomic Infrastructure**: Yourself to Science™ registry & assisted Agentic AI 41× WGS pipeline (GRCh38-aligned BAM & VCF)
 
 ### 3. Structured Research Protocols & Public Outreach
-Leveraging clinical psychology study facilitation to design standardized protocols, coordinate public science outreach, and build trust across diverse communities.
+Leveraging psychological study facilitation to design standardized protocols, coordinate public science outreach, and build trust across diverse communities.
 
-- **Clinical Study Facilitation**: Standardized remote Zoom focus group protocol engineering & structured study moderation
+- **Psychological Study Facilitation**: Standardized remote Zoom focus group protocol engineering & structured study moderation
 - **Public Science Communication**: Rigorous scientific fact-checking & web infrastructure across a 480K+ community
 
 ## Experience & Leadership
@@ -114,7 +114,7 @@ Source: https://commons.wikimedia.org/wiki/File:Oesophageal_Cancer,_Age-Standard
 
 ## Education & Training
 
-- **Studies in Medicine & Surgery / Clinical Psychology Coursework** (2020 — 2025): University of Padua / Università degli Studi della Campania 'Luigi Vanvitelli' — Foundational biomedical and clinical psychology coursework completed
+- **Studies in Medicine & Surgery** (2020): Università degli Studi della Campania 'Luigi Vanvitelli' — Foundational biomedical and scientific coursework completed (no formal degree conferred)
 - **EF SET English Certificate 68/100 (C1 Advanced)** (Mar 2024): EF Standard English Test (EF SET) · https://cert.efset.org/jHk84h
 - **Career Essentials in Generative AI** (Mar 2024): Microsoft and LinkedIn · Certificate: https://www.linkedin.com/learning/certificates/c4f1f59578e3ac2567787e262e3b2ec55debf96bbbced4d34d5edaa821d9e6d9
 - **GALENOS Crowd Evidence Synthesis Training** (May 2026): Cochrane Crowd & GALENOS Systematic Review Screening Certification
