@@ -1,0 +1,108 @@
+# Mario Marcolongo — Curriculum Vitae (AI / LLM Compatible Markdown)
+> I check the claims other people don't.
+> Location: Italy · Open to Global Opportunities Worldwide (Full-Time, Remote, B2B / Consulting)
+> Email: me@mariomarcolongo.com | Web: https://mariomarcolongo.com | ORCID: 0000-0003-2846-7115
+
+---
+
+## Executive Summary
+My core strength combines radical epistemic skepticism and primary source verification with empathetic clinical facilitation and cross-functional team collaboration. Characterized by independent empirical verification over authority deference and high-agency operational execution, I consistently solve complex information challenges while fostering trust and psychological safety. Over the past 9 years, I have verified thousands of scientific claims across Wikipedia (4,317 documented edits), shipped open-source automation, and founded Yourself to Science™ (yourselftoscience.org). Alongside deep technical rigor, I bring empathetic facilitation and ethical sensitivity—volunteering as an independent researcher to moderate sensitive clinical psychology focus groups with neurodivergent participants and collaborating within fast-paced science communication teams where every editorial decision balances scientific precision, relationships with diverse commercial and institutional sponsors, and public perception.
+
+---
+
+## Core Competencies & Technical Skills
+- AI Systems & Prototyping: Antigravity IDE, Cursor, Copilot, LLM API Orchestration (Gemini, OpenRouter, Claude, OpenAI), Rapid Automation
+- Web & Cloud Infrastructure: AWS Lambda, Serverless API Gateway, GitHub Actions CI/CD, Next.js, Edge Rendering, OVHCloud, Cloudflare, Technical SEO
+- Open Biobanking & Genomics: Citizen Genomic Curation (ENA / NCBI), Phenotypic & Disease Ontology Mapping (HPO, MONDO), Open-Access CC0 Data Stewardship
+- Epistemic Rigor & Biomedical Synthesis: Radical Primary Source Verification, Zero Deference to Authority, NCBI E-utilities, Wikimedia Curation (4,317 edits), Vector Visualization
+- Clinical Research & Empathetic Facilitation: Standardized Protocol & Script Development, Neurodivergent Participant Recruitment, Primary & Co-Conductor Focus Group Moderation (Autism Spectrum), Psychological Safety Frameworks
+- Cross-Functional Media Team & Stakeholder Management: Collaborative Editorial Review, De-escalating Scientific Complexity, Balancing Epistemic Rigor with Public Perception & Diverse Commercial/Institutional Sponsors
+- Languages: Italian (Native / Mother Tongue) · English (C1 Advanced Proficiency)
+
+---
+
+## Professional Experience
+
+### Founder & Lead Builder — Yourself to Science™ (yourselftoscience.org)
+*Aug 2024 — Present*
+
+- Founded an open biobanking directory connecting volunteers with institutional studies needing biological samples (DNA, tissue) or digital health data.
+- Architected open-source AGPL-3.0 platform with CC0 public domain data, indexed in FAIRsharing and Zenodo.
+
+### Web Infrastructure Manager & Biomedical Fact-Checker — Entropy for Life (entropyforlife.it)
+*Jun 2023 — Present*
+
+- Configured and managed web infrastructure, DNS, SSL, and technical SEO on OVHCloud for Giacomo Moro Mauretto's multi-platform science ecosystem (480K+ cross-platform community across YouTube, Instagram, and TikTok; 266K+ YT subscribers; 36.2M+ views).
+- Collaborated within a fast-paced, multidisciplinary science media team alongside channel founder Giacomo Moro Mauretto and video editors—engaging in constructive peer debate, dynamic editorial review, and carefully balancing rigorous scientific accuracy against public comprehension, thumbnail/title perception, and relationships with diverse commercial and institutional sponsors (including AIRC and major brand partners).
+- Reviewed primary biomedical and evolutionary literature to verify factual accuracy across 300+ science documentaries and publications, earning formal acknowledgment in the Mondadori book 'Italiani Veri'.
+
+### Scientific Editor & Biomedical Curation Specialist — Wikimedia Foundation (English & Italian Wikipedia, Wikidata)
+*2017 — Present*
+
+- Author of 4,317 verified contributions across Wikimedia platforms, specializing in genetics, epidemiology, and medical literature.
+- Created original vector scientific visualizations and biomedical diagrams independently adopted across international Wikipedia editions and open-access scientific repositories.
+
+---
+
+## Research & Open Science Infrastructure
+
+### Volunteer Focus Group Conductor & Clinical Research Facilitator — University of Padua — Department of General Psychology (Independent Volunteer Collaboration)
+*Nov 2022 — Present*
+
+- Contributed as an independent volunteer researcher to a clinical study on sexuality in the autism spectrum led by Prof. Marta Panzeri, demonstrating strong intrinsic dedication, ethical sensitivity, and empathetic rapport-building with neurodivergent participants.
+- Developed the standardized facilitation guide for the focus groups—including detailed session scripts and behavioral facilitation protocols—to ensure rigorous, reproducible execution.
+- Managed end-to-end participant recruitment workflows, including crafting and executing the call for candidates across neurodivergent communities.
+- Conducted thorough primary bibliographic searches, scientific literature verification, and qualitative evidence synthesis to support study design and protocol development.
+- Served as both primary conductor and co-conductor for recorded focus groups—establishing deep psychological safety while managing all technical session infrastructure to elicit rich qualitative data.
+
+### Citizen Scientist Open Genomic Donor (41× WGS) — European Nucleotide Archive — ENA PRJEB109744 / SAMEA121950568
+*2026*
+
+- Donated personal 41× Whole Genome Sequencing raw paired-end FASTQ reads (DNBSEQ-T7) to the public domain (CC0) under ENA BioSample SAMEA121950568.
+- Architected a local GRCh38 bioinformatic pipeline on Apple Silicon (M4 Macbook)—converting raw VCF to Plink2 (PGEN/PVAR/PSAM) and executing Nextflow pgsc_calc with PCA ancestry projection against 1000 Genomes / HGDP reference panels.
+- Engineered custom Python extraction pipelines for VEP-annotated VCFs—calculating multi-trait Z-Score standardized Polygenic Risk Scores, pharmacogenomic/lifestyle loci, mitochondrial heteroplasmy, and novel 'dark matter' variant filtration mapped to HPO/MONDO ontologies.
+
+### Empirical Data Scientist & Epidemiological Visualizer — Tableau Public & Flourish Visual Data Portfolio
+*2023 — Present*
+
+- Published 40+ interactive empirical public health, epidemiological, and biomedical visualizations across Tableau Public (15 Vizzes, 4,300+ views) and Flourish.
+- Synthesized primary biomedical datasets—including H5N1 avian flu preparedness, carotid plaque microplastic pathology, age-stratified COVID-19 mortality, and ISTAT epidemiological trends—into interactive visual evidence repositories.
+
+---
+
+## Key Production Projects
+
+### Yourself to Science™
+**Founder & Lead Builder** | https://yourselftoscience.org
+
+Architected and shipped 100% end-to-end via AI-native engineering orchestration. Standardizes clinical trials, registries, and donation programs across biological samples, digital health data, and multi-modal studies. Fully AI-ready with a live MCP Server, standard llms.txt integration, FAIRsharing indexing, and automated ROR institutional validation.
+
+### MDPI Citation Filter
+**Creator & Maintainer** | https://github.com/orgs/mdpi-filter/repositories
+
+MDPI operates high-volume open-access journals with debated peer-review turnaround times. This open-source Manifest V3 extension flags MDPI citations in real time across search results so researchers can assess literature context immediately.
+
+### Entropy for Life — Technical Operations, Scriptwriting & Editorial Acceleration
+**Technical Operations, Scriptwriter & Editorial Specialist** | https://entropyforlife.it
+
+Authored long-form documentary scripts and verified primary scientific literature across 300+ science documentaries and videos for evolutionary biologist Giacomo Moro Mauretto's Entropy for Life ecosystem (480,000+ cross-platform community across YouTube, Instagram, and TikTok; 266,000+ YouTube subscribers; 36,276,295+ views). Co-authored epidemiological articles on entropyforlife.it, conducted primary bibliographic verification (formally acknowledged on the final page of the Mondadori bestseller 'Italiani veri. Storia evolutiva e genetica del nostro Paese'), supported technical web infrastructure on OVHCloud across institutional collaborations (AIRC - Fondazione per la Ricerca sul Cancro) and national broadcast appearances (Rai 3 Kilimangiaro, Radio Deejay, Radio24), designed high-CTR visual thumbnails via Nanobana AI, and executed targeted video editing in DaVinci Resolve.
+
+### Wikipedia Link Converter Bot
+**Creator** | https://t.me/ToEnWikipediaBot
+
+Paste a Wikipedia link in any language and instantly receive the English canonical equivalent. Architected on AWS Lambda and API Gateway for zero idle cloud cost, automated via GitHub Actions CI/CD.
+
+### Emergent Humanity — Interactive Narration & Network Simulation
+**Creator & Systems Designer** | https://jnton.github.io/emergent-humanity/
+
+A personal, evolving interactive narration and simulation modeling humanity as a network: nodes with hard cognitive limits, connections that carry signal or carry noise, echo chambers that need deliberate bridging, and collective memory that outlives whoever built it. Sixteen interactive chapters written and simulated — active alpha release.
+
+---
+
+## Education & Certifications
+
+- **Studies in Medicine & Surgery** (2020 — Present) — Università degli Studi della Campania 'Luigi Vanvitelli' — Enrolled (2020); foundational coursework completed with primary focus shifted to independent open science & computational systems
+- **EF SET English Certificate**  — C1 Advanced Proficiency (68/100) · Bilingual Native Italian
+- **GALENOS Crowd Training** (May 2026) — Cochrane Crowd & GALENOS Evidence Synthesis Certification
+- **Career Essentials in Generative AI** (Mar 2024) — Microsoft & LinkedIn Certification
+

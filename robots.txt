@@ -19,3 +19,7 @@ Allow: /
 
 # Sitemaps and AI Dossiers
 Sitemap: https://mariomarcolongo.com/sitemap.xml
+Allow: /llms.txt
+Allow: /llms-full.txt
+Allow: /data/source.js
+

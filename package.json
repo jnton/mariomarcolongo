@@ -1,0 +1,11 @@
+{
+  "name": "mariomarcolongo.com",
+  "version": "2026.07.0",
+  "private": true,
+  "description": "AI-Native Systems Builder, Open Science Technologist & Empirical Data Synthesizer portfolio and CV SSOT",
+  "scripts": {
+    "generate:llms": "node scripts/generate-llm-dossiers.js",
+    "build": "node scripts/generate-llm-dossiers.js"
+  },
+  "author": "Mario Marcolongo <me@mariomarcolongo.com>",
+}
