@@ -4,8 +4,8 @@
   "private": true,
   "description": "AI-Native Systems Builder, Open Science Technologist & Empirical Data Synthesizer portfolio and CV SSOT",
   "scripts": {
-    "dev": "npm run generate:llms && astro dev",
-    "build": "npm run generate:llms && astro build",
+    "dev": "node scripts/generate-llm-dossiers.js && astro dev",
+    "build": "node scripts/generate-llm-dossiers.js && astro build",
     "preview": "astro preview",
     "generate:llms": "node scripts/generate-llm-dossiers.js",
     "cv:custom": "node scripts/generate-custom-cv.js"
