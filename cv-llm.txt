@@ -59,7 +59,8 @@ My core strength combines radical epistemic skepticism and primary source verifi
 *2026*
 
 - Donated personal 41× Whole Genome Sequencing raw paired-end FASTQ reads (DNBSEQ-T7) to the public domain (CC0) under ENA BioSample SAMEA121950568.
-- Architected a local GRCh38 bioinformatic pipeline on Apple Silicon (M4 Macbook)—converting raw VCF to Plink2 (PGEN/PVAR/PSAM) and executing Nextflow pgsc_calc with PCA ancestry projection against 1000 Genomes / HGDP reference panels.
+- Utilized Terra.bio cloud biomedical platform to process raw FASTQ reads, aligning against the GRCh38 human reference genome to extract high-coverage BAM alignments and VCF variant call files.
+- Architected downstream local bioinformatic pipeline on Apple Silicon (M4 Macbook)—converting VCF to Plink2 (PGEN/PVAR/PSAM) and executing Nextflow pgsc_calc with PCA ancestry projection against 1000 Genomes / HGDP reference panels.
 - Engineered custom Python extraction pipelines for VEP-annotated VCFs—calculating multi-trait Z-Score standardized Polygenic Risk Scores, pharmacogenomic/lifestyle loci, mitochondrial heteroplasmy, and novel 'dark matter' variant filtration mapped to HPO/MONDO ontologies.
 
 ### Empirical Data Scientist & Epidemiological Visualizer — Tableau Public & Flourish Visual Data Portfolio

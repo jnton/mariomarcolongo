@@ -43,11 +43,11 @@ const MARIO_DOSSIER = {
       category: "BIOINFORMATICS & OPEN DATA",
       icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 15c6.667-6 13.333 0 20-6"></path><path d="M9 22c1.798-1.998 2.518-3.995 2.807-5.993"></path><path d="M15 2c-1.798 1.998-2.518 3.995-2.807 5.993"></path><path d="M17 6l-2.5-2.5"></path><path d="M14 8l-1-1"></path><path d="M7 18l2.5 2.5"></path><path d="M9.5 15.5l1 1"></path></svg>`,
       title: "Open Science Infrastructure & Genomics",
-      lead: "Architecting open biomedical data directories and executing rigorous computational genomic pipelines.",
-      desc: "Founder of Yourself to Science™ (CC0 open biobanking directory indexed in FAIRsharing & Zenodo). Architected local 41× WGS bioinformatic pipelines on Apple Silicon (M4 Macbook)—running Nextflow pgsc_calc with 1000 Genomes PCA ancestry projection and custom Python VEP-VCF extractors.",
+      lead: "Architecting open biomedical data directories and executing rigorous cloud & local computational genomic pipelines.",
+      desc: "Founder of Yourself to Science™ (CC0 open biobanking directory indexed in FAIRsharing & Zenodo). Architected cloud & local 41× WGS bioinformatic pipelines—using Terra.bio to align raw FASTQ reads and extract high-coverage GRCh38 BAM and VCF files, then running downstream local analysis on Apple Silicon (M4 Macbook) with Nextflow pgsc_calc, 1000 Genomes PCA ancestry projection, and custom Python VEP-VCF extractors.",
       highlights: [
         { label: "Yourself to Science™", detail: "CC0 open biobanking registry indexed in FAIRsharing & Zenodo" },
-        { label: "Genomic Pipelines", detail: "Local M4 Macbook bioinformatic pipeline: Nextflow pgsc_calc, Plink2 GRCh38 mapping & Python VEP-VCF multi-trait extraction" }
+        { label: "Genomic Pipelines", detail: "Terra.bio cloud BAM/VCF extraction from FASTQ & local M4 Macbook bioinformatic pipeline (Nextflow pgsc_calc, Plink2 & Python VEP-VCF multi-trait analysis)" }
       ]
     },
     {
@@ -271,7 +271,8 @@ const MARIO_DOSSIER = {
       period: "2026",
       bullets: [
         "Donated personal 41× Whole Genome Sequencing raw paired-end FASTQ reads (DNBSEQ-T7) to the public domain (CC0) under ENA BioSample SAMEA121950568.",
-        "Architected a local GRCh38 bioinformatic pipeline on Apple Silicon (M4 Macbook)—converting raw VCF to Plink2 (PGEN/PVAR/PSAM) and executing Nextflow pgsc_calc with PCA ancestry projection against 1000 Genomes / HGDP reference panels.",
+        "Utilized Terra.bio cloud biomedical platform to process raw FASTQ reads, aligning against the GRCh38 human reference genome to extract high-coverage BAM alignments and VCF variant call files.",
+        "Architected downstream local bioinformatic pipeline on Apple Silicon (M4 Macbook)—converting VCF to Plink2 (PGEN/PVAR/PSAM) and executing Nextflow pgsc_calc with PCA ancestry projection against 1000 Genomes / HGDP reference panels.",
         "Engineered custom Python extraction pipelines for VEP-annotated VCFs—calculating multi-trait Z-Score standardized Polygenic Risk Scores, pharmacogenomic/lifestyle loci, mitochondrial heteroplasmy, and novel 'dark matter' variant filtration mapped to HPO/MONDO ontologies."
       ]
     },
