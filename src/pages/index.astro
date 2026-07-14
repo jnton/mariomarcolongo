@@ -171,7 +171,7 @@ import Layout from '../layouts/Layout.astro';
       <a href="#numbers" class="nav-link hide-mobile">Impact</a>
       <a href="#contact" class="nav-link hide-mobile">Contact</a>
       <a href="/cv" class="nav-link">Full CV</a>
-      <button class="btn btn-ai hide-mobile" onclick="copyAiContent('unified', this)" title="1-Click copy complete AI-compatible Markdown dossier & CV" style="padding: 6px 12px; font-size: 13px;">✨ Copy for AI</button>
+      <button class="btn btn-ai hide-mobile" onclick="copyAiContent('unified', this)" title="1-Click copy complete AI-compatible Markdown Curriculum Vitae" style="padding: 6px 12px; font-size: 13px;">✨ Copy for AI</button>
       <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme" id="themeBtn">☀</button>
     </div>
   </nav>
@@ -200,7 +200,7 @@ import Layout from '../layouts/Layout.astro';
         <div class="hero-actions hero-animate" style="--delay: 0.45s;">
           <a href="#work" class="btn btn-primary">Explore My Work ↓</a>
           <a href="#proof" class="btn">Verified Proof</a>
-          <button class="btn btn-ai" onclick="copyAiContent('unified', this)" title="1-Click copy complete AI-compatible Markdown dossier & CV">✨ Copy for AI (LLMs)</button>
+          <button class="btn btn-ai" onclick="copyAiContent('unified', this)" title="1-Click copy complete AI-compatible Markdown Curriculum Vitae">✨ Copy for AI (LLMs)</button>
         </div>
       </div>
     </div>
@@ -1050,7 +1050,7 @@ import Layout from '../layouts/Layout.astro';
           `\n\n## Links\n- Website: ${d.identity.domain}\n- Full profile: ${d.identity.domain}/llms-full.txt\n- Full CV: ${d.identity.domain}/cv-llm.txt\n- Email: ${d.identity.email}\n`;
       }
       if (type === 'llms-full.txt' || type === 'unified') {
-        let out = `# ${d.identity.name} — Comprehensive Profile & Technical Dossier\n\n## Overview\n${d.summary}\n\n## Core Pillars\n\n`;
+        let out = `# ${d.identity.name} — Comprehensive Profile & Curriculum Vitae\n\n## Overview\n${d.summary}\n\n## Core Pillars\n\n`;
         (d.pillars || []).forEach((p, i) => {
           out += `### ${i + 1}. ${p.title}\n${p.lead}\n\n` +
             (p.highlights || []).map(h => `- **${h.label}**: ${h.detail}`).join('\n') + `\n\n`;
@@ -1096,7 +1096,7 @@ import Layout from '../layouts/Layout.astro';
             ]);
             const pText = pRes.ok ? await pRes.text() : '';
             const cText = cRes.ok ? await cRes.text() : '';
-            content = `# MARIO MARCOLONGO — UNIFIED AI TECHNICAL DOSSIER & CV\n\n${pText}\n\n---\n\n${cText}`;
+            content = `# MARIO MARCOLONGO — UNIFIED AI CURRICULUM VITAE\n\n${pText}\n\n---\n\n${cText}`;
           } else {
             const res = await fetch(fileType);
             if (res.ok) content = await res.text();
@@ -1107,7 +1107,7 @@ import Layout from '../layouts/Layout.astro';
       }
 
       if (!content) {
-        content = `# Mario Marcolongo — AI Technical Dossier\nAI-Native Systems Builder, Open Science Technologist & Empirical Data Synthesizer.\n4,317 verified Wikimedia contributions. Founder of Yourself to Science™ (yourselftoscience.org).\nView full profile online at https://mariomarcolongo.com/llms-full.txt`;
+        content = `# Mario Marcolongo — AI Curriculum Vitae\nAI-Native Systems Builder, Open Science Technologist & Empirical Data Synthesizer.\n4,317 verified Wikimedia contributions. Founder of Yourself to Science™ (yourselftoscience.org).\nView full profile online at https://mariomarcolongo.com/llms-full.txt`;
       }
 
       try {

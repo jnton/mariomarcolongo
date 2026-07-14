@@ -51,7 +51,7 @@ function generateLlmsTxt(d) {
 }
 
 function generateLlmsFullTxt(d) {
-  let out = `# ${d.identity.name} — Comprehensive Profile & Technical Dossier\n\n`;
+  let out = `# ${d.identity.name} — Comprehensive Profile & Curriculum Vitae\n\n`;
   out += `## Overview\n${d.summary}\n\n`;
 
   out += `## Core Pillars & Expertise\n\n`;
@@ -65,6 +65,32 @@ function generateLlmsFullTxt(d) {
         });
         out += `\n`;
       }
+    });
+  }
+
+  out += `## Experience & Leadership\n\n`;
+  if (d.experience) {
+    d.experience.forEach(exp => {
+      out += `### ${exp.role} — ${exp.org} (${exp.period})\n`;
+      if (exp.bullets) {
+        exp.bullets.forEach(b => {
+          out += `- ${b}\n`;
+        });
+      }
+      out += `\n`;
+    });
+  }
+
+  out += `## Research & Open Science Contributions\n\n`;
+  if (d.research) {
+    d.research.forEach(r => {
+      out += `### ${r.role} — ${r.org} (${r.period})\n`;
+      if (r.bullets) {
+        r.bullets.forEach(b => {
+          out += `- ${b}\n`;
+        });
+      }
+      out += `\n`;
     });
   }
 
@@ -93,32 +119,6 @@ function generateLlmsFullTxt(d) {
       out += `### ${v.title}\n`;
       out += `${v.caption}\n`;
       if (v.fileUrl) out += `Source: ${v.fileUrl}\n`;
-      out += `\n`;
-    });
-  }
-
-  out += `## Experience & Leadership\n\n`;
-  if (d.experience) {
-    d.experience.forEach(exp => {
-      out += `### ${exp.role} — ${exp.org} (${exp.period})\n`;
-      if (exp.bullets) {
-        exp.bullets.forEach(b => {
-          out += `- ${b}\n`;
-        });
-      }
-      out += `\n`;
-    });
-  }
-
-  out += `## Research & Open Science Contributions\n\n`;
-  if (d.research) {
-    d.research.forEach(r => {
-      out += `### ${r.role} — ${r.org} (${r.period})\n`;
-      if (r.bullets) {
-        r.bullets.forEach(b => {
-          out += `- ${b}\n`;
-        });
-      }
       out += `\n`;
     });
   }
@@ -227,6 +227,12 @@ function buildDossiers() {
   fs.writeFileSync(path.join(publicDir, 'llms.txt'), llmsTxt, 'utf8');
   fs.writeFileSync(path.join(publicDir, 'llms-full.txt'), llmsFullTxt, 'utf8');
   fs.writeFileSync(path.join(publicDir, 'cv-llm.txt'), cvLlmTxt, 'utf8');
+
+  const publicDataDir = path.join(publicDir, 'data');
+  if (!fs.existsSync(publicDataDir)) {
+    fs.mkdirSync(publicDataDir, { recursive: true });
+  }
+  fs.copyFileSync(path.join(ROOT_DIR, 'data/source.js'), path.join(publicDataDir, 'source.js'));
 
   console.log(`✓ Generated llms.txt (${llmsTxt.length} bytes)`);
   console.log(`✓ Generated llms-full.txt (${llmsFullTxt.length} bytes)`);
