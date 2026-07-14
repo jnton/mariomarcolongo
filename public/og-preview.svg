@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#141812"/>
+      <stop offset="50%" stop-color="#191E16"/>
+      <stop offset="100%" stop-color="#11140E"/>
+    </linearGradient>
+    <linearGradient id="cardBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1E241B"/>
+      <stop offset="100%" stop-color="#161A13"/>
+    </linearGradient>
+    <linearGradient id="amber" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F59E0B"/>
+      <stop offset="100%" stop-color="#D97706"/>
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="30" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bg)"/>
+
+  <!-- Subtle Network Nodes / Grid Lines -->
+  <g stroke="#2F5233" stroke-width="1" opacity="0.25">
+    <line x1="100" y1="0" x2="100" y2="630"/>
+    <line x1="300" y1="0" x2="300" y2="630"/>
+    <line x1="500" y1="0" x2="500" y2="630"/>
+    <line x1="700" y1="0" x2="700" y2="630"/>
+    <line x1="900" y1="0" x2="900" y2="630"/>
+    <line x1="1100" y1="0" x2="1100" y2="630"/>
+    <line x1="0" y1="150" x2="1200" y2="150"/>
+    <line x1="0" y1="315" x2="1200" y2="315"/>
+    <line x1="0" y1="480" x2="1200" y2="480"/>
+  </g>
+
+  <!-- Decorative Network Simulation Nodes on Right -->
+  <g opacity="0.45">
+    <line x1="880" y1="180" x2="1020" y2="240" stroke="#F59E0B" stroke-width="2"/>
+    <line x1="1020" y1="240" x2="960" y2="380" stroke="#F59E0B" stroke-width="2"/>
+    <line x1="880" y1="180" x2="960" y2="380" stroke="#2F5233" stroke-width="2"/>
+    <line x1="1020" y1="240" x2="1080" y2="160" stroke="#2F5233" stroke-width="2"/>
+    <circle cx="880" cy="180" r="8" fill="#EFEEE6"/>
+    <circle cx="1020" cy="240" r="11" fill="#F59E0B"/>
+    <circle cx="960" cy="380" r="7" fill="#EFEEE6"/>
+    <circle cx="1080" cy="160" r="6" fill="#2F5233"/>
+  </g>
+
+  <!-- Main Content Card Frame -->
+  <rect x="80" y="80" width="1040" height="470" rx="24" fill="url(#cardBg)" stroke="#2F5233" stroke-width="2"/>
+
+  <!-- Eyebrow Badge -->
+  <rect x="140" y="140" width="230" height="34" rx="17" fill="#2F5233" opacity="0.3"/>
+  <text x="160" y="162" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="700" fill="#A3E6B2" letter-spacing="2">VERIFIED PROOF · OPEN SCIENCE</text>
+
+  <!-- Headline -->
+  <text x="140" y="245" font-family="-apple-system, BlinkMacSystemFont, Georgia, serif" font-size="54" font-weight="700" fill="#EFEEE6" letter-spacing="-1">I check the claims</text>
+  <text x="140" y="315" font-family="-apple-system, BlinkMacSystemFont, Georgia, serif" font-size="54" font-weight="700" fill="#F59E0B" letter-spacing="-1">other people don't.</text>
+
+  <!-- Description -->
+  <text x="140" y="380" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="22" fill="#C2C9BD">Primary source verification · FAIRsharing Biobanking Registry (yourselftoscience.org)</text>
+  <text x="140" y="415" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="22" fill="#C2C9BD">Interactive Network Graph Simulations · Public Domain Genome Accession PRJEB109744</text>
+
+  <!-- Footer Identity -->
+  <line x1="140" y1="465" x2="1000" y2="465" stroke="#2F5233" stroke-width="1"/>
+  <text x="140" y="505" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="24" font-weight="700" fill="#EFEEE6">Mario Marcolongo</text>
+  <text x="365" y="504" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="18" fill="#889380">mariomarcolongo.com · ORCID 0000-0003-2846-7115</text>
+</svg>

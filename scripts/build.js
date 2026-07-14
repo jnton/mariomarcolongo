@@ -220,6 +220,14 @@ function buildDossiers() {
   fs.writeFileSync(path.join(ROOT_DIR, 'llms-full.txt'), llmsFullTxt, 'utf8');
   fs.writeFileSync(path.join(ROOT_DIR, 'cv-llm.txt'), cvLlmTxt, 'utf8');
 
+  const publicDir = path.join(ROOT_DIR, 'public');
+  if (!fs.existsSync(publicDir)) {
+    fs.mkdirSync(publicDir, { recursive: true });
+  }
+  fs.writeFileSync(path.join(publicDir, 'llms.txt'), llmsTxt, 'utf8');
+  fs.writeFileSync(path.join(publicDir, 'llms-full.txt'), llmsFullTxt, 'utf8');
+  fs.writeFileSync(path.join(publicDir, 'cv-llm.txt'), cvLlmTxt, 'utf8');
+
   console.log(`✓ Generated llms.txt (${llmsTxt.length} bytes)`);
   console.log(`✓ Generated llms-full.txt (${llmsFullTxt.length} bytes)`);
   console.log(`✓ Generated cv-llm.txt (${cvLlmTxt.length} bytes)`);

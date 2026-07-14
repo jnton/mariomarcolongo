@@ -1,0 +1,25 @@
+User-agent: *
+Allow: /
+
+# AI Crawlers & LLM Discovery (Benign & Welcome)
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+# Sitemaps and AI Dossiers
+Sitemap: https://mariomarcolongo.com/sitemap.xml
+Allow: /llms.txt
+Allow: /llms-full.txt
+Allow: /data/source.js
+

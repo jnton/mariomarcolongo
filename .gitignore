@@ -1,4 +1,12 @@
-# Local-only private config (phone number, etc.)
+# Dependencies
+node_modules/
+package-lock.json
+
+# Build outputs
+dist/
+.astro/
+
+# Local-only private config
 data/private.local.js
 
 # OS files

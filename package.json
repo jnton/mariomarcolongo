@@ -4,8 +4,13 @@
   "private": true,
   "description": "AI-Native Systems Builder, Open Science Technologist & Empirical Data Synthesizer portfolio and CV SSOT",
   "scripts": {
-    "generate:llms": "node scripts/generate-llm-dossiers.js",
-    "build": "node scripts/generate-llm-dossiers.js"
+    "dev": "npm run generate:llms && astro dev",
+    "build": "npm run generate:llms && astro build",
+    "preview": "astro preview",
+    "generate:llms": "node scripts/generate-llm-dossiers.js"
   },
   "author": "Mario Marcolongo <me@mariomarcolongo.com>",
+  "devDependencies": {
+    "astro": "^7.0.9"
+  }
 }

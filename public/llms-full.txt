@@ -1,0 +1,145 @@
+# Mario Marcolongo — Comprehensive Profile & Technical Dossier
+
+## Overview
+My core strength combines radical epistemic skepticism and primary source verification with empathetic clinical facilitation and cross-functional team collaboration. Characterized by independent empirical verification over authority deference and high-agency operational execution, I consistently solve complex information challenges while fostering trust and psychological safety. Over the past 9 years, I have verified thousands of scientific claims across Wikipedia (4,317 documented edits), shipped open-source automation, and founded Yourself to Science™ (yourselftoscience.org). Alongside deep technical rigor, I bring empathetic facilitation and ethical sensitivity—volunteering as an independent researcher to moderate sensitive clinical psychology focus groups with neurodivergent participants and collaborating within fast-paced science communication teams where every editorial decision balances scientific precision, relationships with diverse commercial and institutional sponsors, and public perception.
+
+## Core Pillars & Expertise
+
+### 1. AI-Native Product & Workflow Engineering
+Architecting and shipping production software, browser extensions, and data pipelines from zero using advanced AI tooling—turning domain expertise directly into working systems.
+
+- **Advanced AI Stack**: Antigravity IDE, Cursor, LLM APIs & agentic orchestration
+- **Shipped Production**: Browser extensions, serverless bots & automated data pipelines
+
+### 2. Open Science Infrastructure & Genomics
+Architecting open biomedical data directories and executing rigorous computational genomic pipelines.
+
+- **Yourself to Science™**: CC0 open biobanking registry indexed in FAIRsharing & Zenodo
+- **Genomic Pipelines**: Local M4 Macbook bioinformatic pipeline: Nextflow pgsc_calc, Plink2 GRCh38 mapping & Python VEP-VCF multi-trait extraction
+
+### 3. Biomedical Evidence & Visual Synthesis
+9+ years verifying scientific claims across public ecosystems and creating standard vector diagrams.
+
+- **4,300+ Verified Edits**: Rigorous biomedical literature synthesis across Wikimedia & Wikidata
+- **Open-Access Diagrams**: Authored high-clarity vector scientific diagrams on Wikimedia Commons
+
+## Key Projects & Production Systems
+
+### Yourself to Science™ (https://yourselftoscience.org)
+**Role**: Founder & Lead Builder
+**Tech Stack**: AI-Native Architecture, Live MCP Server, CC0 Public Domain Dataset, AGPL-3.0, Wikidata & ROR Integration
+
+Architected and shipped 100% end-to-end via AI-native engineering orchestration. Standardizes clinical trials, registries, and donation programs across biological samples, digital health data, and multi-modal studies. Fully AI-ready with a live MCP Server, standard llms.txt integration, FAIRsharing indexing, and automated ROR institutional validation.
+
+- Unified open catalogue normalizing clinical trials, bio-donations, and digital health data across 55+ programs and multi-modal datasets
+- Semantic Linked Data & AI infrastructure: Frictionless Data packages, RDF Turtle (.ttl)/VoID graphs, OpenAPI spec, live MCP Server, and llms.txt
+- 100% Open Science stack: CC0 1.0 Universal dataset (verifiable P854 reference source for growing Wikidata entities), CC BY-SA 4.0 content, and AGPL-3.0 codebase
+
+### MDPI Citation Filter (https://github.com/orgs/mdpi-filter/repositories)
+**Role**: Creator & Maintainer
+**Tech Stack**: Manifest V3, Chrome & Edge, NCBI E-utilities API, AGPL-3.0
+
+MDPI operates high-volume open-access journals with debated peer-review turnaround times. This open-source Manifest V3 extension flags MDPI citations in real time across search results so researchers can assess literature context immediately.
+
+- Live on Google Chrome Web Store and Microsoft Edge Add-ons
+- Flags citations across Google Scholar, PubMed, Europe PMC, Wikipedia, and Healthline
+- Real-time DOM inspection with non-intrusive visual tagging
+
+### Entropy for Life — Technical Operations, Scriptwriting & Editorial Acceleration (https://entropyforlife.it)
+**Role**: Technical Operations, Scriptwriter & Editorial Specialist
+**Tech Stack**: Science Scriptwriting (Long/Short Form), Web Infrastructure (OVHCloud), Bibliographic Research & Fact-Checking, AI Thumbnail Design (Nanobana), DaVinci Resolve
+
+Authored long-form documentary scripts and verified primary scientific literature across 300+ science documentaries and videos for evolutionary biologist Giacomo Moro Mauretto's Entropy for Life ecosystem (480,000+ cross-platform community across YouTube, Instagram, and TikTok; 266,000+ YouTube subscribers; 36,276,295+ views). Co-authored epidemiological articles on entropyforlife.it, conducted primary bibliographic verification (formally acknowledged on the final page of the Mondadori bestseller 'Italiani veri. Storia evolutiva e genetica del nostro Paese'), supported technical web infrastructure on OVHCloud across institutional collaborations (AIRC - Fondazione per la Ricerca sul Cancro) and national broadcast appearances (Rai 3 Kilimangiaro, Radio Deejay, Radio24), designed high-CTR visual thumbnails via Nanobana AI, and executed targeted video editing in DaVinci Resolve.
+
+- Formally acknowledged in Giacomo Moro Mauretto's Mondadori bestseller 'Italiani Veri' as trusted literature researcher and scientific fact-checker
+- Fact-checked literature across 300+ documentaries and co-authored scripts for a 480K+ cross-platform community (266K+ YT, 158K+ IG, 54K+ TikTok)
+- Architected entropyforlife.it web infrastructure on OVHCloud supporting institutional AIRC initiatives and national broadcast appearances
+
+### Wikipedia Link Converter Bot (https://t.me/ToEnWikipediaBot)
+**Role**: Creator
+**Tech Stack**: AWS Lambda, API Gateway, GitHub Actions CI/CD, Serverless
+
+Paste a Wikipedia link in any language and instantly receive the English canonical equivalent. Architected on AWS Lambda and API Gateway for zero idle cloud cost, automated via GitHub Actions CI/CD.
+
+- 100% serverless cloud execution with zero baseline operating cost
+- Supports real-time interlanguage link resolution across all Wikipedia language editions
+- Automated continuous deployment via GitHub Actions
+
+### Emergent Humanity — Interactive Narration & Network Simulation (https://jnton.github.io/emergent-humanity/)
+**Role**: Creator & Systems Designer
+**Tech Stack**: Interactive Narration, Network Simulation, Complex Systems Modeling, Canvas UI
+
+A personal, evolving interactive narration and simulation modeling humanity as a network: nodes with hard cognitive limits, connections that carry signal or carry noise, echo chambers that need deliberate bridging, and collective memory that outlives whoever built it. Sixteen interactive chapters written and simulated — active alpha release.
+
+- 16 interactive chapters blending essay narration with live network simulations
+- Models cognitive node limits, signal vs. noise filtering, and bridging nodes across echo chambers
+- Synthesizes information theory, network graph topology, and emergent collective memory
+
+## Empirical Visualizations & Open Data
+
+### Brain Disorder Gene Overlap
+Original vector Euler diagram illustrating shared monogenic mutations across autism spectrum disorder (ASD), epilepsy, dystonia, and schizophrenia. Published under CC BY-SA and independently adopted across 4 Wikipedia language editions.
+Source: https://commons.wikimedia.org/wiki/File:Overlapping_clinical_phenotypes_in_genes_associated_with_monogenic_forms_of_autism_spectrum_disorder_(ASD),_dystonia,_epilepsy_and_schizophrenia.svg
+
+### Carcinogen Levels in Yerba Maté
+Benzo(a)pyrene contamination measured across commercial brands and sampling years, synthesized from published HPLC/GC-MS toxicology literature.
+Source: https://commons.wikimedia.org/wiki/File:Benzo(a)pyrene_Concentration_in_Processed_Yerba_Mat%C3%A9_Leaves_Sampled_in_2006,_2008,_and_2010_-_Column_Chart.svg
+
+### Global Vegetarian Diet Policies
+Comparative policy mapping of national food-based dietary guidelines regarding vegetarian and plant-based nutrition.
+Source: https://commons.wikimedia.org/wiki/File:Countries_(States_and_Subnational_Regions)_and_Their_Positions_on_Vegetarian_Diets_in_Food-Based_Dietary_Guidelines.svg
+
+### Global Naturalization Residence Requirements
+Programmatically generated world choropleth map illustrating statutory residence requirements for citizenship across 190+ countries. Generated via automated SVG pipeline and active across English, Italian, Russian, and Chinese Wikipedia.
+Source: https://commons.wikimedia.org/wiki/File:Naturalization_Residence_Requirements_by_Country_(Years_of_Residence).svg
+
+### Global Oesophageal Cancer Incidence (IARC 2022)
+Age-standardized global incidence rate (world) per 100,000 synthesized from Globocan 2022 / International Agency for Research on Cancer data. Modeled in Flourish and published as open vector data.
+Source: https://commons.wikimedia.org/wiki/File:Oesophageal_Cancer,_Age-Standardized_Rate_(World)_per_100.000_of_Incidence_Cases,_Both_sexes,_Worldwide_in_2022.svg
+
+## Experience & Leadership
+
+### Founder & Lead Builder — Yourself to Science™ (yourselftoscience.org) (Aug 2024 — Present)
+- Founded an open biobanking directory connecting volunteers with institutional studies needing biological samples (DNA, tissue) or digital health data.
+- Architected open-source AGPL-3.0 platform with CC0 public domain data, indexed in FAIRsharing and Zenodo.
+
+### Web Infrastructure Manager & Biomedical Fact-Checker — Entropy for Life (entropyforlife.it) (Jun 2023 — Present)
+- Configured and managed web infrastructure, DNS, SSL, and technical SEO on OVHCloud for Giacomo Moro Mauretto's multi-platform science ecosystem (480K+ cross-platform community across YouTube, Instagram, and TikTok; 266K+ YT subscribers; 36.2M+ views).
+- Collaborated within a fast-paced, multidisciplinary science media team alongside channel founder Giacomo Moro Mauretto and video editors—engaging in constructive peer debate, dynamic editorial review, and carefully balancing rigorous scientific accuracy against public comprehension, thumbnail/title perception, and relationships with diverse commercial and institutional sponsors (including AIRC and major brand partners).
+- Reviewed primary biomedical and evolutionary literature to verify factual accuracy across 300+ science documentaries and publications, earning formal acknowledgment in the Mondadori book 'Italiani Veri'.
+
+### Scientific Editor & Biomedical Curation Specialist — Wikimedia Foundation (English & Italian Wikipedia, Wikidata) (2017 — Present)
+- Author of 4,317 verified contributions across Wikimedia platforms, specializing in genetics, epidemiology, and medical literature.
+- Created original vector scientific visualizations and biomedical diagrams independently adopted across international Wikipedia editions and open-access scientific repositories.
+
+## Research & Open Science Contributions
+
+### Volunteer Focus Group Conductor & Clinical Research Facilitator — University of Padua — Department of General Psychology (Independent Volunteer Collaboration) (Nov 2022 — Present)
+- Contributed as an independent volunteer researcher to a clinical study on sexuality in the autism spectrum led by Prof. Marta Panzeri, demonstrating strong intrinsic dedication, ethical sensitivity, and empathetic rapport-building with neurodivergent participants.
+- Developed the standardized facilitation guide for the focus groups—including detailed session scripts and behavioral facilitation protocols—to ensure rigorous, reproducible execution.
+- Managed end-to-end participant recruitment workflows, including crafting and executing the call for candidates across neurodivergent communities.
+- Conducted thorough primary bibliographic searches, scientific literature verification, and qualitative evidence synthesis to support study design and protocol development.
+- Served as both primary conductor and co-conductor for recorded focus groups—establishing deep psychological safety while managing all technical session infrastructure to elicit rich qualitative data.
+
+### Citizen Scientist Open Genomic Donor (41× WGS) — European Nucleotide Archive — ENA PRJEB109744 / SAMEA121950568 (2026)
+- Donated personal 41× Whole Genome Sequencing raw paired-end FASTQ reads (DNBSEQ-T7) to the public domain (CC0) under ENA BioSample SAMEA121950568.
+- Architected a local GRCh38 bioinformatic pipeline on Apple Silicon (M4 Macbook)—converting raw VCF to Plink2 (PGEN/PVAR/PSAM) and executing Nextflow pgsc_calc with PCA ancestry projection against 1000 Genomes / HGDP reference panels.
+- Engineered custom Python extraction pipelines for VEP-annotated VCFs—calculating multi-trait Z-Score standardized Polygenic Risk Scores, pharmacogenomic/lifestyle loci, mitochondrial heteroplasmy, and novel 'dark matter' variant filtration mapped to HPO/MONDO ontologies.
+
+### Empirical Data Scientist & Epidemiological Visualizer — Tableau Public & Flourish Visual Data Portfolio (2023 — Present)
+- Published 40+ interactive empirical public health, epidemiological, and biomedical visualizations across Tableau Public (15 Vizzes, 4,300+ views) and Flourish.
+- Synthesized primary biomedical datasets—including H5N1 avian flu preparedness, carotid plaque microplastic pathology, age-stratified COVID-19 mortality, and ISTAT epidemiological trends—into interactive visual evidence repositories.
+
+## Education & Training
+
+- **Studies in Medicine & Surgery** (2020 — Present): Università degli Studi della Campania 'Luigi Vanvitelli' — Enrolled (2020); foundational coursework completed with primary focus shifted to independent open science & computational systems
+- **EF SET English Certificate** : C1 Advanced Proficiency (68/100) · Bilingual Native Italian
+- **GALENOS Crowd Training** (May 2026): Cochrane Crowd & GALENOS Evidence Synthesis Certification
+- **Career Essentials in Generative AI** (Mar 2024): Microsoft & LinkedIn Certification
+
+## Contact & Identifiers
+- Email: me@mariomarcolongo.com
+- Website: https://mariomarcolongo.com
+- ORCID: https://orcid.org/0000-0003-2846-7115
+- LinkedIn: https://www.linkedin.com/in/mario-marcolongo
+- GitHub: https://github.com/jnton
