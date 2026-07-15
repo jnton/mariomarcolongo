@@ -2,14 +2,5 @@
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "mariomarcolongo",
   "compatibility_date": "2026-07-14",
-  "main": "src/_worker.js",
-  "assets": {
-    "directory": "dist"
-  },
-  "routes": [
-    {
-      "pattern": "mariomarcolongo.com/*",
-      "custom_domain": true
-    }
-  ]
+  "pages_build_output_dir": "dist"
 }
