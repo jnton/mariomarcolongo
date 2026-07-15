@@ -1,0 +1,19 @@
+{
+  "name": "Mario Marcolongo — AI-Native Systems Builder & Scientific Fact-Checker",
+  "short_name": "Mario Marcolongo",
+  "icons": [
+    {
+      "src": "/favicon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#12160F",
+  "background_color": "#12160F",
+  "display": "standalone"
+}

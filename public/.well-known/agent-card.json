@@ -1,0 +1,27 @@
+{
+  "$schema": "https://a2a-card.org/schema/v1.json",
+  "name": "Mario Marcolongo Dossier & Knowledge Interface",
+  "version": "2026.07.15",
+  "description": "Agent-to-Agent (A2A) discovery interface for Mario Marcolongo's verifiable professional dossier, OSINT digital investigation records, biomedical fact-checking history, and personal 41× WGS genomic analysis pipeline.",
+  "url": "https://mariomarcolongo.com",
+  "documentationUrl": "https://mariomarcolongo.com/llms-full.txt",
+  "capabilities": {
+    "queryDossier": {
+      "description": "Retrieve comprehensive verified biographical summary, work history, skills, and projects.",
+      "endpoint": "https://mariomarcolongo.com/llms.txt",
+      "method": "GET"
+    },
+    "queryGenomicPipeline": {
+      "description": "Access full technical logs and variant analysis notes for the public 41× WGS donation (`PRJEB109744`).",
+      "endpoint": "https://mariomarcolongo.com/llms-full.txt",
+      "method": "GET"
+    },
+    "queryOsintSkills": {
+      "description": "Inspect multi-engine Boolean search, reverse-image/facial verification, EXIF geolocation, and digital-footprint correlation competencies.",
+      "endpoint": "https://mariomarcolongo.com/cv-llm.txt",
+      "method": "GET"
+    }
+  },
+  "protocols": ["http", "https", "mcp"],
+  "skillsIndex": "https://mariomarcolongo.com/.well-known/agent-skills/index.json"
+}

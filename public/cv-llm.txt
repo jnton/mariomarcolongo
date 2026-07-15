@@ -13,6 +13,7 @@ AI-native software developer, open science builder, and scientific fact-checker 
 ## Core Competencies & Technical Skills
 - Web Engineering & Architecture: JavaScript, Node.js, Static & Serverless Architecture, WordPress Development & Customization, HTML/CSS Design Systems, Cloud DNS / SSL / OVHCloud / AWS Lambda / API Gateway
 - Scientific Verification & Methodologies: Bibliographic Research Methodology, Primary Source Fact-Checking, Psychological Focus Group Facilitation & Standardized Protocols, Epidemiological Data Synthesis, Cochrane/Galenos Screening
+- Open-Source Intelligence (OSINT) & Digital Investigation: Multi-engine Boolean search (Google, DuckDuckGo, Yandex) and academic/gray-literature querying (Google Scholar, PubMed, Europe PMC); reverse-image and facial-recognition verification (PimEyes, Yandex Images, Google Lens, TinEye); EXIF/metadata extraction and file provenance verification; archival/provenance research (Wayback Machine, Archive.today); WHOIS/DNS history and certificate-transparency lookups for tracing site ownership and technical infrastructure; cross-platform digital-footprint correlation for claim verification, source attribution, and coordinated-inauthentic-behavior detection
 - Open Science & AI Infrastructure: FAIRsharing Standards, Semantic Linked Data (JSON-LD, RDF Turtle, llms.txt, live MCP Servers), Public Knowledge Bases (Wikidata, ENA BioSample)
 - Data Visualization & Tools: High-Clarity SVG Vector Diagramming, Tableau Public, Flourish, Git / GitHub, GitHub Actions CI/CD
 - Languages: Italian (Mother tongue / Native) · English (C1 Advanced: Listening C2, Reading C2, Writing C1, Spoken Production C1, Spoken Interaction C1) · French (Basic A2/A1) · Spanish (Basic A2/A1)
@@ -73,22 +74,27 @@ AI-native software developer, open science builder, and scientific fact-checker 
 ## Key Production Projects
 
 ### Yourself to Science™ | Open Science Catalogue & Directory
-**Founder & Lead Builder** | https://yourselftoscience.org
+**Founder & Lead Builder** | Website: https://yourselftoscience.org | GitHub: https://github.com/yourselftoscience/yourselftoscience.org | DOI: https://doi.org/10.5281/zenodo.15109359 | FAIRsharing: https://doi.org/10.25504/FAIRsharing.d3d487
 
 Founded and engineered a FAIRsharing-indexed open directory cataloging 55+ clinical trials, biobanks, tissue/blood donation programs, and digital health registries. Architected with AI-native Linked Data (JSON-LD, RDF Turtle/VoID graphs, live MCP Server, standard llms.txt, OpenAPI spec) and published as a 100% Open Science stack dedicated to the public domain (CC0 1.0 Universal dataset, CC BY-SA 4.0 content, AGPL-3.0 codebase).
 
+### Entropy for Life — Official Science Platform
+**Scientific Fact-Checker, Writer & Web Developer** | Website: https://entropyforlife.it | Videos & Documentaries: https://www.youtube.com/playlist?list=PLMJaM7iJky4pKj6voGlUNHBnGdTj9rJNh | Author Page: https://entropyforlife.it/autore/mario-marcolongo/
+
+Sole web developer and scientific fact-checker for Giacomo Moro Mauretto's Entropy for Life. Managed full technical lifecycle on OVHCloud (hosting, DNS, SSL, sub-second TTFB), custom WordPress layout/functionality, and technical SEO strategies. Conducted in-depth primary bibliographic research, verified biomedical scripts across 55+ documentaries/videos and 4 articles, designed data visualizations and Reels, and managed A/B tested thumbnails/titles. Formally acknowledged on the final page of Giacomo Moro Mauretto's Mondadori book 'Italiani veri. Storia evolutiva e genetica del nostro Paese'.
+
 ### MDPI Filter | Browser Extension
-**Creator & Maintainer** | https://github.com/orgs/mdpi-filter/repositories
+**Creator & Maintainer** | Chrome Store: https://chromewebstore.google.com/detail/mdpi-filter/comknkeimaaadpiopddjoknflbmjeccp | Edge Store: https://microsoftedge.microsoft.com/addons/detail/mdpi-filter/efonlkldplkaeekpiajloajjmkappjgi | GitHub: https://github.com/orgs/mdpi-filter/repositories
 
 Enhances research workflows by giving researchers granular control over how publications from MDPI appear online. Highlights or hides MDPI articles directly within search results across Google, Google Scholar, PubMed, and Europe PMC via NCBI API integration. Visually distinguishes citations both in reference lists and inline numerical/author-year footnotes on any publisher article online, and features an interactive popup with real-time badge counts and instant scroll-to-reference navigation.
 
 ### English Wikipedia Link Converter | Telegram Bot
-**Creator** | https://t.me/ToEnWikipediaBot
+**Creator** | GitHub: https://github.com/jnton/english-wikipedia-link-converter-telegram-bot | Bot: https://t.me/ToEnWikipediaBot
 
 Paste a Wikipedia link in any language and instantly receive the English canonical equivalent. Architected on AWS Lambda and API Gateway for zero idle cloud cost, automated via GitHub Actions CI/CD.
 
 ### Emergent Humanity | Interactive Network Simulation
-**Creator & Systems Designer** | https://jnton.github.io/emergent-humanity/
+**Creator & Systems Designer** | Website: https://jnton.github.io/emergent-humanity/ | GitHub: https://github.com/jnton/emergent-humanity
 
 A personal, evolving interactive narration and simulation modeling humanity as a network: nodes with hard cognitive limits, connections that carry signal or carry noise, echo chambers that need deliberate bridging, and collective memory that outlives whoever built it. Sixteen interactive chapters written and simulated — active alpha release.
 

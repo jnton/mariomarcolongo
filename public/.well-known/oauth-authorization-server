@@ -1,0 +1,16 @@
+{
+  "issuer": "https://mariomarcolongo.com",
+  "authorization_endpoint": "https://mariomarcolongo.com/auth.md",
+  "token_endpoint": "https://mariomarcolongo.com/auth.md",
+  "scopes_supported": [
+    "read:dossier",
+    "read:cv",
+    "read:genomics",
+    "read:projects"
+  ],
+  "response_types_supported": ["token"],
+  "grant_types_supported": ["client_credentials"],
+  "service_documentation": "https://mariomarcolongo.com/auth.md",
+  "policy_uri": "https://mariomarcolongo.com/auth.md",
+  "ui_locales_supported": ["en", "it"]
+}

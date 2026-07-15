@@ -91,6 +91,24 @@ const MARIO_DOSSIER = {
       ]
     },
     {
+      id: "entropy-for-life",
+      title: "Entropy for Life — Official Science Platform",
+      oneLiner: "Technical ownership, cloud hosting architecture, and scientific fact-checking for one of Italy's premier science communication channels (480,000+ community).",
+      description: "Sole web developer and scientific fact-checker for Giacomo Moro Mauretto's Entropy for Life. Managed full technical lifecycle on OVHCloud (hosting, DNS, SSL, sub-second TTFB), custom WordPress layout/functionality, and technical SEO strategies. Conducted in-depth primary bibliographic research, verified biomedical scripts across 55+ documentaries/videos and 4 articles, designed data visualizations and Reels, and managed A/B tested thumbnails/titles. Formally acknowledged on the final page of Giacomo Moro Mauretto's Mondadori book 'Italiani veri. Storia evolutiva e genetica del nostro Paese'.",
+      role: "Scientific Fact-Checker, Writer & Web Developer",
+      tech: ["Primary Source Fact-Checking", "Bibliographic Research", "OVHCloud DNS/SSL", "Custom WordPress & Technical SEO", "Data Visualization"],
+      links: {
+        website: "https://entropyforlife.it",
+        playlist: "https://www.youtube.com/playlist?list=PLMJaM7iJky4pKj6voGlUNHBnGdTj9rJNh",
+        authorPage: "https://entropyforlife.it/autore/mario-marcolongo/"
+      },
+      highlights: [
+        "Fact-Checked 55+ Documentaries & Co-Authored 4 Articles: Verified primary biomedical literature and scripts for a 480,000+ cross-platform community",
+        "Full Technical Lifecycle & Cloud Architecture: Engineered official web platform on OVHCloud with zero downtime and technical SEO optimization",
+        "Mondadori Book Acknowledgment: Formally recognized as a trusted researcher and contributor in the national bestseller 'Italiani veri'"
+      ]
+    },
+    {
       id: "mdpi-filter",
       title: "MDPI Filter | Browser Extension",
       oneLiner: "An open-source browser extension that streamlines literature search by highlighting, hiding, or visually styling publications from the controversial publisher MDPI.",
@@ -297,6 +315,7 @@ const MARIO_DOSSIER = {
   skills: [
     "Web Engineering & Architecture: JavaScript, Node.js, Static & Serverless Architecture, WordPress Development & Customization, HTML/CSS Design Systems, Cloud DNS / SSL / OVHCloud / AWS Lambda / API Gateway",
     "Scientific Verification & Methodologies: Bibliographic Research Methodology, Primary Source Fact-Checking, Psychological Focus Group Facilitation & Standardized Protocols, Epidemiological Data Synthesis, Cochrane/Galenos Screening",
+    "Open-Source Intelligence (OSINT) & Digital Investigation: Multi-engine Boolean search (Google, DuckDuckGo, Yandex) and academic/gray-literature querying (Google Scholar, PubMed, Europe PMC); reverse-image and facial-recognition verification (PimEyes, Yandex Images, Google Lens, TinEye); EXIF/metadata extraction and file provenance verification; archival/provenance research (Wayback Machine, Archive.today); WHOIS/DNS history and certificate-transparency lookups for tracing site ownership and technical infrastructure; cross-platform digital-footprint correlation for claim verification, source attribution, and coordinated-inauthentic-behavior detection",
     "Open Science & AI Infrastructure: FAIRsharing Standards, Semantic Linked Data (JSON-LD, RDF Turtle, llms.txt, live MCP Servers), Public Knowledge Bases (Wikidata, ENA BioSample)",
     "Data Visualization & Tools: High-Clarity SVG Vector Diagramming, Tableau Public, Flourish, Git / GitHub, GitHub Actions CI/CD",
     "Languages: Italian (Mother tongue / Native) · English (C1 Advanced: Listening C2, Reading C2, Writing C1, Spoken Production C1, Spoken Interaction C1) · French (Basic A2/A1) · Spanish (Basic A2/A1)"

@@ -18,6 +18,25 @@ const ROOT_DIR = path.resolve(__dirname, '..');
 // 1. AI DOSSIER & CV MARKDOWN GENERATORS
 // ==========================================
 
+function formatProjectLinksText(p) {
+  if (!p.links) return '';
+  const parts = [];
+  if (p.links.website) parts.push(`Website: ${p.links.website}`);
+  if (p.links.playlist) parts.push(`Videos & Documentaries: ${p.links.playlist}`);
+  if (p.links.authorPage) parts.push(`Author Page: ${p.links.authorPage}`);
+  if (p.links.chromeStore) parts.push(`Chrome Store: ${p.links.chromeStore}`);
+  if (p.links.edgeStore) parts.push(`Edge Store: ${p.links.edgeStore}`);
+  if (p.links.github || p.links.githubOrg) parts.push(`GitHub: ${p.links.github || p.links.githubOrg}`);
+  if (p.links.bot || p.links.telegramBot) parts.push(`Bot: ${p.links.bot || p.links.telegramBot}`);
+  if (p.links.youtube) parts.push(`YouTube: ${p.links.youtube}`);
+  if (p.links.wikimedia) parts.push(`Wikimedia: ${p.links.wikimedia}`);
+  if (p.links.doi) parts.push(`DOI: ${p.links.doi}`);
+  if (p.links.fairsharing) parts.push(`FAIRsharing: ${p.links.fairsharing}`);
+  if (p.links.tableau) parts.push(`Tableau: ${p.links.tableau}`);
+  if (p.links.flourish) parts.push(`Flourish: ${p.links.flourish}`);
+  return parts.join(' | ');
+}
+
 function generateLlmsTxt(d) {
   let out = `# ${d.identity.name}\n\n`;
   out += `> ${d.summary}\n\n`;
@@ -97,8 +116,8 @@ function generateLlmsFullTxt(d) {
   out += `## Key Projects & Production Systems\n\n`;
   if (d.projects) {
     d.projects.forEach(p => {
-      const linkUrl = p.links && (p.links.website || p.links.bot || p.links.github || p.links.chromeStore) ? (p.links.website || p.links.bot || p.links.github || p.links.chromeStore) : '';
-      out += `### ${p.title} (${linkUrl})\n`;
+      const linkUrl = formatProjectLinksText(p);
+      out += `### ${p.title}${linkUrl ? ` (${linkUrl})` : ''}\n`;
       out += `**Role**: ${p.role}\n`;
       if (p.tech && p.tech.length) {
         out += `**Tech Stack**: ${p.tech.join(', ')}\n\n`;
@@ -191,9 +210,9 @@ function generateCvLlmTxt(d) {
   out += `## Key Production Projects\n\n`;
   if (d.projects) {
     d.projects.forEach(p => {
-      const linkUrl = p.links && (p.links.website || p.links.bot || p.links.github || p.links.chromeStore) ? (p.links.website || p.links.bot || p.links.github || p.links.chromeStore) : '';
+      const linkUrl = formatProjectLinksText(p);
       out += `### ${p.title}\n`;
-      out += `**${p.role}** | ${linkUrl}\n\n`;
+      out += `**${p.role}**${linkUrl ? ` | ${linkUrl}` : ''}\n\n`;
       out += `${p.description}\n\n`;
     });
   }

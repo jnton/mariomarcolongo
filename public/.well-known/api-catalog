@@ -1,0 +1,48 @@
+{
+  "linkset": [
+    {
+      "anchor": "https://mariomarcolongo.com/",
+      "describedby": [
+        {
+          "href": "https://mariomarcolongo.com/llms.txt",
+          "type": "text/markdown",
+          "title": "Mario Marcolongo — Standard AI Dossier & Overview"
+        },
+        {
+          "href": "https://mariomarcolongo.com/llms-full.txt",
+          "type": "text/markdown",
+          "title": "Mario Marcolongo — Comprehensive Verified Dossier & Empirical Logs"
+        },
+        {
+          "href": "https://mariomarcolongo.com/cv-llm.txt",
+          "type": "text/markdown",
+          "title": "Mario Marcolongo — Machine-Actionable Curriculum Vitae"
+        }
+      ],
+      "item": [
+        {
+          "href": "https://mariomarcolongo.com/.well-known/agent-card.json",
+          "type": "application/json",
+          "title": "Agent-to-Agent (A2A) Discovery Card"
+        },
+        {
+          "href": "https://mariomarcolongo.com/.well-known/mcp/server-card.json",
+          "type": "application/json",
+          "title": "Model Context Protocol (MCP) Server Card"
+        },
+        {
+          "href": "https://mariomarcolongo.com/.well-known/agent-skills/index.json",
+          "type": "application/json",
+          "title": "Agent Skills Discovery Index v0.2.0"
+        }
+      ],
+      "service-doc": [
+        {
+          "href": "https://mariomarcolongo.com/auth.md",
+          "type": "text/markdown",
+          "title": "Agent Authentication & Open-Access Policy"
+        }
+      ]
+    }
+  ]
+}

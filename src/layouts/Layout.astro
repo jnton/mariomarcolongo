@@ -23,9 +23,19 @@ const {
   <meta name="description" content={description} />
   <link rel="canonical" href={canonical} />
 
-  <!-- Favicon -->
+  <!-- Favicon & PWA Manifest -->
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-  <link rel="alternate icon" href="/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+
+  <!-- WebMCP & Agent-to-Agent Discovery Links -->
+  <link rel="api-catalog" href="https://mariomarcolongo.com/.well-known/api-catalog" />
+  <link rel="describedby" type="text/plain" href="https://mariomarcolongo.com/llms.txt" />
+  <link rel="describedby" type="text/plain" href="https://mariomarcolongo.com/llms-full.txt" />
+  <link rel="agent-card" href="https://mariomarcolongo.com/.well-known/agent-card.json" />
+  <link rel="mcp-server-card" href="https://mariomarcolongo.com/.well-known/mcp/server-card.json" />
 
   <!-- Open Graph / Social Previews -->
   <meta property="og:type" content="website" />

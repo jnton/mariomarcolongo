@@ -60,7 +60,7 @@ Leveraging psychological study facilitation to design standardized protocols, co
 
 ## Key Projects & Production Systems
 
-### Yourself to Science™ | Open Science Catalogue & Directory (https://yourselftoscience.org)
+### Yourself to Science™ | Open Science Catalogue & Directory (Website: https://yourselftoscience.org | GitHub: https://github.com/yourselftoscience/yourselftoscience.org | DOI: https://doi.org/10.5281/zenodo.15109359 | FAIRsharing: https://doi.org/10.25504/FAIRsharing.d3d487)
 **Role**: Founder & Lead Builder
 **Tech Stack**: MCP Server, Linked Data / JSON-LD, FAIRsharing Registry, Open Science, CC0 / AGPL-3.0
 
@@ -70,7 +70,17 @@ Founded and engineered a FAIRsharing-indexed open directory cataloging 55+ clini
 - 55+ Research Initiatives Cataloged: Unified directory for genomic data, biobanking, and clinical trial participation
 - 100% Open Science stack: CC0 public domain dataset with AGPL-3.0 open-source platform architecture
 
-### MDPI Filter | Browser Extension (https://github.com/orgs/mdpi-filter/repositories)
+### Entropy for Life — Official Science Platform (Website: https://entropyforlife.it | Videos & Documentaries: https://www.youtube.com/playlist?list=PLMJaM7iJky4pKj6voGlUNHBnGdTj9rJNh | Author Page: https://entropyforlife.it/autore/mario-marcolongo/)
+**Role**: Scientific Fact-Checker, Writer & Web Developer
+**Tech Stack**: Primary Source Fact-Checking, Bibliographic Research, OVHCloud DNS/SSL, Custom WordPress & Technical SEO, Data Visualization
+
+Sole web developer and scientific fact-checker for Giacomo Moro Mauretto's Entropy for Life. Managed full technical lifecycle on OVHCloud (hosting, DNS, SSL, sub-second TTFB), custom WordPress layout/functionality, and technical SEO strategies. Conducted in-depth primary bibliographic research, verified biomedical scripts across 55+ documentaries/videos and 4 articles, designed data visualizations and Reels, and managed A/B tested thumbnails/titles. Formally acknowledged on the final page of Giacomo Moro Mauretto's Mondadori book 'Italiani veri. Storia evolutiva e genetica del nostro Paese'.
+
+- Fact-Checked 55+ Documentaries & Co-Authored 4 Articles: Verified primary biomedical literature and scripts for a 480,000+ cross-platform community
+- Full Technical Lifecycle & Cloud Architecture: Engineered official web platform on OVHCloud with zero downtime and technical SEO optimization
+- Mondadori Book Acknowledgment: Formally recognized as a trusted researcher and contributor in the national bestseller 'Italiani veri'
+
+### MDPI Filter | Browser Extension (Chrome Store: https://chromewebstore.google.com/detail/mdpi-filter/comknkeimaaadpiopddjoknflbmjeccp | Edge Store: https://microsoftedge.microsoft.com/addons/detail/mdpi-filter/efonlkldplkaeekpiajloajjmkappjgi | GitHub: https://github.com/orgs/mdpi-filter/repositories)
 **Role**: Creator & Maintainer
 **Tech Stack**: Manifest V3, Chrome & Edge, NCBI E-utilities API, Universal DOM Citation Styling, AGPL-3.0
 
@@ -80,7 +90,7 @@ Enhances research workflows by giving researchers granular control over how publ
 - Universal Citation Styling: Automatically distinguishes reference lists & inline footnotes on any publisher article online
 - Interactive Overview: Live toolbar badge count and one-click scrolling directly to detected citations
 
-### English Wikipedia Link Converter | Telegram Bot (https://t.me/ToEnWikipediaBot)
+### English Wikipedia Link Converter | Telegram Bot (GitHub: https://github.com/jnton/english-wikipedia-link-converter-telegram-bot | Bot: https://t.me/ToEnWikipediaBot)
 **Role**: Creator
 **Tech Stack**: AWS Lambda, API Gateway, GitHub Actions CI/CD, Serverless
 
@@ -90,7 +100,7 @@ Paste a Wikipedia link in any language and instantly receive the English canonic
 - Supports real-time interlanguage link resolution across all Wikipedia language editions
 - Automated continuous deployment via GitHub Actions workflow
 
-### Emergent Humanity | Interactive Network Simulation (https://jnton.github.io/emergent-humanity/)
+### Emergent Humanity | Interactive Network Simulation (Website: https://jnton.github.io/emergent-humanity/ | GitHub: https://github.com/jnton/emergent-humanity)
 **Role**: Creator & Systems Designer
 **Tech Stack**: Interactive Narration, Network Simulation, Complex Systems Modeling, Canvas UI
 
