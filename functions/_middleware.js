@@ -10,21 +10,32 @@ export async function onRequest(context) {
   const acceptHeader = (request.headers.get("Accept") || "").toLowerCase();
   const userAgent = (request.headers.get("User-Agent") || "").toLowerCase();
 
-  // 1. Content Negotiation: If requesting root (/) or (/cv) with `Accept: text/markdown`, return llms-full.txt or cv-llm.txt directly
-  if (acceptHeader.includes("text/markdown") && !acceptHeader.includes("text/html")) {
+  // 1. Content Negotiation: Check if `Accept: text/markdown` is requested (and not superseded by HTML preference)
+  const wantsMarkdown = acceptHeader.includes("text/markdown") &&
+    (!acceptHeader.includes("text/html") || acceptHeader.indexOf("text/markdown") <= acceptHeader.indexOf("text/html"));
+
+  if (wantsMarkdown) {
     if (url.pathname === "/" || url.pathname === "" || url.pathname === "/index.html") {
       const response = await context.env.ASSETS.fetch(new URL("/llms-full.txt", request.url));
+      const textBody = await response.text();
+      const tokens = Math.ceil(textBody.length / 4);
       const newHeaders = new Headers(response.headers);
       newHeaders.set("Content-Type", "text/markdown; charset=utf-8");
+      newHeaders.set("x-markdown-tokens", String(tokens));
+      newHeaders.set("Vary", "Accept");
       newHeaders.set("X-Content-Negotiated-By", "Cloudflare-Pages-Agent-Middleware");
-      return new Response(response.body, { status: 200, headers: newHeaders });
+      return new Response(textBody, { status: 200, headers: newHeaders });
     }
     if (url.pathname === "/cv" || url.pathname === "/cv/" || url.pathname === "/cv.html") {
       const response = await context.env.ASSETS.fetch(new URL("/cv-llm.txt", request.url));
+      const textBody = await response.text();
+      const tokens = Math.ceil(textBody.length / 4);
       const newHeaders = new Headers(response.headers);
       newHeaders.set("Content-Type", "text/markdown; charset=utf-8");
+      newHeaders.set("x-markdown-tokens", String(tokens));
+      newHeaders.set("Vary", "Accept");
       newHeaders.set("X-Content-Negotiated-By", "Cloudflare-Pages-Agent-Middleware");
-      return new Response(response.body, { status: 200, headers: newHeaders });
+      return new Response(textBody, { status: 200, headers: newHeaders });
     }
   }
 

@@ -1,4 +1,4 @@
-# Authentication & Agent Access Policy
+# Auth.md — Authentication & Agent Access Policy
 
 **Domain:** `mariomarcolongo.com`  
 **Owner:** Mario Marcolongo (<me@mariomarcolongo.com>)  

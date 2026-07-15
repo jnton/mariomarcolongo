@@ -64,5 +64,69 @@ const {
 <body>
   <div id="scrollProgress"></div>
   <slot />
+  <script is:inline>
+    (function initWebMCP() {
+      function registerTools() {
+        if (typeof navigator !== 'undefined' && navigator.modelContext && typeof navigator.modelContext.provideContext === 'function') {
+          try {
+            navigator.modelContext.provideContext({
+              tools: [
+                {
+                  name: "query_dossier",
+                  description: "Retrieve comprehensive verified biographical summary, work history, skills, and open science projects.",
+                  inputSchema: {
+                    type: "object",
+                    properties: {
+                      format: { type: "string", description: "Format option: 'summary' or 'full'", default: "full" }
+                    }
+                  },
+                  execute: async (args = {}) => {
+                    const url = args.format === 'summary' ? '/llms.txt' : '/llms-full.txt';
+                    const res = await fetch(url);
+                    const text = await res.text();
+                    return { content: text };
+                  }
+                },
+                {
+                  name: "query_cv",
+                  description: "Access Mario Marcolongo's machine-actionable Curriculum Vitae.",
+                  inputSchema: {
+                    type: "object",
+                    properties: {}
+                  },
+                  execute: async () => {
+                    const res = await fetch('/cv-llm.txt');
+                    const text = await res.text();
+                    return { content: text };
+                  }
+                },
+                {
+                  name: "query_genomic_pipeline",
+                  description: "Access full technical logs and variant analysis notes for the public 41x WGS genomic donation (ENA PRJEB109744).",
+                  inputSchema: {
+                    type: "object",
+                    properties: {}
+                  },
+                  execute: async () => {
+                    const res = await fetch('/llms-full.txt');
+                    const text = await res.text();
+                    return { content: text };
+                  }
+                }
+              ]
+            });
+          } catch (e) {
+            console.warn("WebMCP registration error:", e);
+          }
+        }
+      }
+
+      registerTools();
+      if (typeof window !== 'undefined') {
+        window.addEventListener('DOMContentLoaded', registerTools);
+        window.addEventListener('load', registerTools);
+      }
+    })();
+  </script>
 </body>
 </html>

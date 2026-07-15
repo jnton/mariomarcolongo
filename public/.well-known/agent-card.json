@@ -22,6 +22,37 @@
       "method": "GET"
     }
   },
+  "supportedInterfaces": [
+    {
+      "url": "https://mariomarcolongo.com",
+      "protocolBinding": "HTTP+JSON",
+      "protocol": "HTTP/HTTPS",
+      "description": "RESTful & Markdown Dossier Interface"
+    },
+    {
+      "url": "https://mariomarcolongo.com/.well-known/mcp/server-card.json",
+      "protocolBinding": "MCP",
+      "protocol": "MCP",
+      "description": "Model Context Protocol Server Interface"
+    }
+  ],
+  "skills": [
+    {
+      "id": "osint-digital-investigation",
+      "name": "OSINT & Digital Investigation Verification",
+      "description": "Performs multi-engine Boolean queries, reverse-image/facial verification (`PimEyes`, `TinEye`, `Google Lens`), EXIF/metadata geolocation, archival provenance (`Wayback Machine`, `Archive.today`), and WHOIS/certificate transparency lookups."
+    },
+    {
+      "id": "biomedical-fact-checking",
+      "name": "Biomedical & Epidemiological Fact-Checking",
+      "description": "Synthesizes primary medical literature (`PubMed`, `Cochrane`, `Europe PMC`), executes systematic screening workflows (`GALENOS`), and cross-references public knowledge graphs (`Wikidata`, `English/Italian Wikipedia`)."
+    },
+    {
+      "id": "genomic-pipeline-analysis",
+      "name": "41× WGS Open Genomic Analysis",
+      "description": "Inspects GRCh38-aligned BAM/VCF pipelines, runs `pgsc_calc` polygenic risk scores, and screens variants against `NCBI ClinVar` and `Ensembl VEP` (`ENA PRJEB109744`)."
+    }
+  ],
   "protocols": ["http", "https", "mcp"],
   "skillsIndex": "https://mariomarcolongo.com/.well-known/agent-skills/index.json"
 }
