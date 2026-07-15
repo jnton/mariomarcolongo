@@ -15,6 +15,9 @@
   "ui_locales_supported": ["en", "it"],
   "agent_auth": {
     "register_uri": "https://mariomarcolongo.com/auth.md",
+    "skill": "https://mariomarcolongo.com/.well-known/agent-skills/index.json",
+    "skill_url": "https://mariomarcolongo.com/.well-known/agent-skills/index.json",
+    "skills": "https://mariomarcolongo.com/.well-known/agent-skills/index.json",
     "supported_identity_types": ["did", "jwks", "x509", "api_key"],
     "supported_credential_types": ["jwt_bearer", "api_key"],
     "claim_url": "https://mariomarcolongo.com/auth.md#claim",

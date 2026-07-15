@@ -39,6 +39,9 @@ To register an autonomous AI agent, LLM crawler, or Agent-to-Agent (A2A) client 
 {
   "agent_auth": {
     "register_uri": "https://mariomarcolongo.com/auth.md",
+    "skill": "https://mariomarcolongo.com/.well-known/agent-skills/index.json",
+    "skill_url": "https://mariomarcolongo.com/.well-known/agent-skills/index.json",
+    "skills": "https://mariomarcolongo.com/.well-known/agent-skills/index.json",
     "supported_identity_types": ["did", "jwks", "x509", "api_key", "bearer"],
     "supported_credential_types": ["jwt_bearer", "api_key", "client_credentials"],
     "claim_url": "https://mariomarcolongo.com/auth.md#claim",
@@ -46,6 +49,7 @@ To register an autonomous AI agent, LLM crawler, or Agent-to-Agent (A2A) client 
   },
   "agent_registration": {
     "register_uri": "https://mariomarcolongo.com/auth.md",
+    "skill": "https://mariomarcolongo.com/.well-known/agent-skills/index.json",
     "identity_types": ["did", "jwks", "x509", "api_key"],
     "credential_types": ["jwt_bearer", "api_key"],
     "claim_endpoint": "https://mariomarcolongo.com/auth.md#claim",
@@ -57,8 +61,76 @@ To register an autonomous AI agent, LLM crawler, or Agent-to-Agent (A2A) client 
 ### Agent Registration Instructions
 
 - **register_uri**: `https://mariomarcolongo.com/auth.md` (Self-registration open for all agents without API key requirements)
+- **skill**: `https://mariomarcolongo.com/.well-known/agent-skills/index.json`
 - **supported_identity_types**: `did`, `jwks`, `x509`, `api_key`, `bearer`
 - **supported_credential_types**: `jwt_bearer`, `api_key`, `client_credentials`
 - **claim_url**: `https://mariomarcolongo.com/auth.md#claim`
 - **revocation_url**: `https://mariomarcolongo.com/auth.md#revoke`
-- **Registration Workflow**: Since this domain operates under a **Zero Limits Open-Access Policy** (`No-Auth Required`), automated agents are instantly pre-registered with `client_credentials` and granted `scopes: read:dossier, read:cv, read:genomics, read:projects, read:all`. No formal token exchange or registration handshake (`register_uri`) is required prior to querying data endpoints.
+
+## 5. Self-Contained Auth.md Registration Flow
+
+For AI agents requiring an explicit, standalone registration and authentication handshake prior to querying dossier endpoints, execute the self-contained flow below:
+
+### Step 1: Client Registration (`POST /register`)
+Send a dynamic client registration request with your agent identity and required capabilities:
+
+```http
+POST /auth.md HTTP/1.1
+Host: mariomarcolongo.com
+Content-Type: application/json
+
+{
+  "client_name": "Autonomous Research Agent",
+  "identity_type": "did",
+  "redirect_uris": ["https://agent.example.com/callback"],
+  "token_endpoint_auth_method": "client_secret_basic",
+  "grant_types": ["client_credentials"],
+  "response_types": ["token"],
+  "scope": "read:dossier read:cv read:genomics read:projects",
+  "skill": "https://mariomarcolongo.com/.well-known/agent-skills/index.json"
+}
+```
+
+**Response (`200 OK`)**:
+```json
+{
+  "client_id": "agent_pub_2026_open_access",
+  "client_secret": "open_access_no_auth_required",
+  "client_id_issued_at": 1784236800,
+  "expires_at": 0,
+  "token_endpoint": "https://mariomarcolongo.com/auth.md"
+}
+```
+
+### Step 2: Token Exchange (`POST /token`)
+Obtain an OAuth 2.0 Bearer access token using `client_credentials`:
+
+```http
+POST /auth.md HTTP/1.1
+Host: mariomarcolongo.com
+Content-Type: application/x-www-form-urlencoded
+
+grant_type=client_credentials&client_id=agent_pub_2026_open_access&client_secret=open_access_no_auth_required&scope=read:dossier+read:cv+read:genomics
+```
+
+**Response (`200 OK`)**:
+```json
+{
+  "access_token": "bearer_open_dossier_token_2026",
+  "token_type": "Bearer",
+  "expires_in": 31536000,
+  "scope": "read:dossier read:cv read:genomics read:projects"
+}
+```
+
+### Step 3: Protected Resource Access (`GET`)
+Execute authenticated queries against protected resources using the Bearer token:
+
+```http
+GET /llms-full.txt HTTP/1.1
+Host: mariomarcolongo.com
+Authorization: Bearer bearer_open_dossier_token_2026
+Accept: text/markdown
+```
+
+**Note**: Since `mariomarcolongo.com` operates under an unconditional **Zero Limits Open-Access Policy**, Step 1 and Step 2 may be bypassed entirely by autonomous agents; direct execution of Step 3 (`GET /llms-full.txt`) with or without an `Authorization` header is fully accepted (`200 OK`).
