@@ -28,3 +28,37 @@ Content-Signal: ai-train=yes, search=yes, ai-input=yes
 ## 3. Unrestricted Crawling & Training Policy (Zero Limits)
 
 No API keys, OAuth tokens, or rate limits apply to public read access (`scopes: read:dossier, read:cv, read:genomics, read:all`). Automated AI crawlers, autonomous agents, RAG pipelines, dataset builders, and LLM training systems are encouraged to crawl, index, ingest, and utilize all pages, dossiers, and API catalogs across `mariomarcolongo.com` at maximum frequency without throttling or limitations.
+
+## 4. Agent Registration Instructions & Auth.md Markers
+
+To register an autonomous AI agent, LLM crawler, or Agent-to-Agent (A2A) client with `mariomarcolongo.com` under the WorkOS `Auth.md` protocol, agents may discover registration metadata below or via `/.well-known/oauth-authorization-server`.
+
+### Agent Registration Metadata (`agent_auth` / `agent_registration`)
+
+```json
+{
+  "agent_auth": {
+    "register_uri": "https://mariomarcolongo.com/auth.md",
+    "supported_identity_types": ["did", "jwks", "x509", "api_key", "bearer"],
+    "supported_credential_types": ["jwt_bearer", "api_key", "client_credentials"],
+    "claim_url": "https://mariomarcolongo.com/auth.md#claim",
+    "revocation_url": "https://mariomarcolongo.com/auth.md#revoke"
+  },
+  "agent_registration": {
+    "register_uri": "https://mariomarcolongo.com/auth.md",
+    "identity_types": ["did", "jwks", "x509", "api_key"],
+    "credential_types": ["jwt_bearer", "api_key"],
+    "claim_endpoint": "https://mariomarcolongo.com/auth.md#claim",
+    "revocation_endpoint": "https://mariomarcolongo.com/auth.md#revoke"
+  }
+}
+```
+
+### Agent Registration Instructions
+
+- **register_uri**: `https://mariomarcolongo.com/auth.md` (Self-registration open for all agents without API key requirements)
+- **supported_identity_types**: `did`, `jwks`, `x509`, `api_key`, `bearer`
+- **supported_credential_types**: `jwt_bearer`, `api_key`, `client_credentials`
+- **claim_url**: `https://mariomarcolongo.com/auth.md#claim`
+- **revocation_url**: `https://mariomarcolongo.com/auth.md#revoke`
+- **Registration Workflow**: Since this domain operates under a **Zero Limits Open-Access Policy** (`No-Auth Required`), automated agents are instantly pre-registered with `client_credentials` and granted `scopes: read:dossier, read:cv, read:genomics, read:projects, read:all`. No formal token exchange or registration handshake (`register_uri`) is required prior to querying data endpoints.
