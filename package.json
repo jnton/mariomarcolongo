@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "node scripts/generate-llm-dossiers.js && astro dev",
     "build": "node scripts/generate-llm-dossiers.js && astro build && cp dist/index.html index.html 2>/dev/null || true",
+    "deploy": "npx wrangler pages deploy dist --project-name=mariomarcolongo",
     "preview": "astro preview",
     "generate:llms": "node scripts/generate-llm-dossiers.js",
     "generate:favicons": "node scripts/generate-favicons.js",
