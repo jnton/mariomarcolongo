@@ -23,10 +23,33 @@ async function generateFavicons() {
   }
 
   const svgContent = fs.readFileSync(svgPath, 'utf8');
-  const browser = await puppeteer.launch({
-    headless: 'new',
-    args: ['--no-sandbox', '--disable-setuid-sandbox']
-  });
+  let browser;
+  try {
+    browser = await puppeteer.launch({
+      headless: 'new',
+      args: ['--no-sandbox', '--disable-setuid-sandbox']
+    });
+  } catch (launchErr) {
+    console.warn('⚠️  Skipping live favicon generation: headless browser/shared libraries unavailable in serverless environment.');
+    console.warn('   Using existing pre-generated static favicons from /public.');
+    
+    // Ensure site.webmanifest is generated even if screenshots are skipped
+    const manifestPath = path.join(publicDir, 'site.webmanifest');
+    const manifest = {
+      name: "Mario Marcolongo — AI-Native Systems Builder & Scientific Fact-Checker",
+      short_name: "Mario Marcolongo",
+      icons: [
+        { src: "/favicon-192x192.png", sizes: "192x192", type: "image/png" },
+        { src: "/favicon-512x512.png", sizes: "512x512", type: "image/png" }
+      ],
+      theme_color: "#12160F",
+      background_color: "#12160F",
+      display: "standalone"
+    };
+    fs.writeFileSync(manifestPath, JSON.stringify(manifest, null, 2), 'utf8');
+    console.log('✓ Verified/Generated site.webmanifest');
+    return;
+  }
 
   try {
     const page = await browser.newPage();
@@ -71,7 +94,7 @@ async function generateFavicons() {
     console.log('✓ Generated site.webmanifest');
 
   } finally {
-    await browser.close();
+    if (browser) await browser.close();
   }
 }
 
