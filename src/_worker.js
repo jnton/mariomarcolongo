@@ -9,8 +9,14 @@ export default {
         // 1. Content Negotiation
         const wantsMarkdown = acceptHeader.includes("text/markdown");
 
+        const url = new URL(request.url);
+        if (url.searchParams.has("_fmt")) {
+            url.searchParams.delete("_fmt");
+        }
+
+        let debugLog = [];
+
         if (wantsMarkdown) {
-            const url = new URL(request.url);
             let pathname = url.pathname;
             let candidatePaths = [];
 
@@ -29,12 +35,23 @@ export default {
             for (const candidatePath of candidatePaths) {
                 const assetUrl = new URL(url.toString());
                 assetUrl.pathname = candidatePath;
-                // Strip search params so ASSETS looks for the exact static file
                 assetUrl.search = "";
 
                 try {
-                    // Fetch the static .md file cleanly without copying client cache headers
-                    const assetResponse = await env.ASSETS.fetch(new Request(assetUrl));
+                    // Clone request headers to satisfy Cloudflare internal routing
+                    const assetHeaders = new Headers(request.headers);
+
+                    // CRITICAL: Strip conditional cache headers to force a 200 response instead of 304
+                    assetHeaders.delete('if-none-match');
+                    assetHeaders.delete('if-modified-since');
+
+                    const assetRequest = new Request(assetUrl.toString(), {
+                        method: request.method,
+                        headers: assetHeaders
+                    });
+
+                    const assetResponse = await env.ASSETS.fetch(assetRequest);
+                    debugLog.push(`${candidatePath}:${assetResponse.status}`);
 
                     if (assetResponse.status === 200) {
                         const newHeaders = new Headers(assetResponse.headers);
@@ -43,8 +60,8 @@ export default {
                         newHeaders.set("Vary", "Accept");
                         newHeaders.set("Cache-Control", "public, max-age=3600, s-maxage=86400");
 
-                        // Debug header to prove negotiation succeeded
-                        newHeaders.set("X-Markdown-Negotiation", "Success");
+                        // Inject telemetry for debugging
+                        newHeaders.set("X-MD-Debug", debugLog.join(","));
 
                         return new Response(assetResponse.body, {
                             status: 200,
@@ -52,22 +69,23 @@ export default {
                         });
                     }
                 } catch (e) {
-                    // Silently continue to next candidate path
+                    debugLog.push(`${candidatePath}:ERR`);
                 }
             }
         }
 
-        // 2. Fallback: Fetch original HTML. Clean the URL so _fmt=md doesn't break Astro routing.
+        // 2. Fallback
         const cleanUrl = new URL(request.url);
         cleanUrl.searchParams.delete("_fmt");
-
-        // Pass original request method and headers to the fallback HTML
         const cleanRequest = new Request(cleanUrl.toString(), request);
+
         const response = await env.ASSETS.fetch(cleanRequest);
         const newHeaders = new Headers(response.headers);
 
         newHeaders.set("X-Content-Type-Options", "nosniff");
-        newHeaders.set("X-Markdown-Negotiation", "Fallback");
+
+        // Output the telemetry even if it fails, so we can see why
+        newHeaders.set("X-MD-Debug", debugLog.length > 0 ? debugLog.join(",") : "No-MD-Requested");
 
         const contentType = newHeaders.get("Content-Type") || "";
         if (contentType.includes("text/html")) {
