@@ -1,13 +1,17 @@
 export default {
     async fetch(request, env) {
-        const acceptHeader = request.headers.get("Accept")?.toLowerCase() || "";
+        const acceptHeader = (request.headers.get("Accept") || "").toLowerCase();
         const wantsMarkdown = acceptHeader.includes("text/markdown");
+
+        // Debugging information
+        const debugHeaders = {
+            "X-Worker-Active": "true",
+            "X-Wants-Markdown": String(wantsMarkdown),
+            "X-Accept-Header": acceptHeader
+        };
 
         if (wantsMarkdown) {
             const url = new URL(request.url);
-            url.searchParams.delete("_fmt");
-
-            // Map URL path to .md replica path
             let path = url.pathname;
             if (path === "/" || path === "/index.html") path = "/index.md";
             else if (path.endsWith(".html")) path = path.replace(/\.html$/, ".md");
@@ -16,35 +20,23 @@ export default {
 
             try {
                 const assetResponse = await env.ASSETS.fetch(new Request(new URL(path, url.origin)));
+
                 if (assetResponse.status === 200) {
                     const headers = new Headers(assetResponse.headers);
                     headers.set("Content-Type", "text/markdown; charset=utf-8");
-                    headers.set("Content-Signal", "ai-train=yes, search=yes, ai-input=yes");
-                    headers.set("Vary", "Accept");
-                    headers.set("Cache-Control", "public, max-age=3600, s-maxage=86400");
+                    // Add debug headers
+                    Object.entries(debugHeaders).forEach(([k, v]) => headers.set(k, v));
                     return new Response(assetResponse.body, { status: 200, headers });
                 }
             } catch (e) {
-                // Fall through to HTML
+                // Fall through
             }
         }
 
-        // Standard fallback: Fetch the HTML asset
+        // Default HTML Fallback
         const response = await env.ASSETS.fetch(request);
         const headers = new Headers(response.headers);
-        headers.set("X-Content-Type-Options", "nosniff");
-
-        // Inject discovery links
-        if (headers.get("Content-Type")?.includes("text/html")) {
-            const discoveryLinks = [
-                '<https://mariomarcolongo.com/.well-known/api-catalog>; rel="api-catalog"',
-                '<https://mariomarcolongo.com/llms.txt>; rel="describedby"; type="text/plain"',
-                '<https://mariomarcolongo.com/llms-full.txt>; rel="describedby"; type="text/plain"',
-                '<https://mariomarcolongo.com/.well-known/agent-card.json>; rel="agent-card"',
-                '<https://mariomarcolongo.com/.well-known/mcp/server-card.json>; rel="mcp-server-card"'
-            ].join(", ");
-            headers.append("Link", discoveryLinks);
-        }
+        Object.entries(debugHeaders).forEach(([k, v]) => headers.set(k, v));
 
         return new Response(response.body, { status: response.status, headers });
     }
