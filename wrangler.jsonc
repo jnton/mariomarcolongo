@@ -2,9 +2,11 @@
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "mariomarcolongo",
   "compatibility_date": "2026-07-14",
+  "main": "src/worker.js",
   "assets": {
-    "directory": "./dist"
-  },
-  "html_handling": "drop-trailing-slash",
-  "not_found_handling": "404.html"
+    "directory": "./dist",
+    "binding": "ASSETS",
+    "html_handling": "drop-trailing-slash",
+    "not_found_handling": "404-page"
+  }
 }
