@@ -1,9 +1,5 @@
 /**
  * Cloudflare Pages Middleware for Agent-Ready HTTP Negotiation & Discovery
- * 
- * Intercepts requests where `Accept: text/markdown` is requested, stripping `_fmt`
- * cache-key splitting query parameters and mapping routes to pristine `.md` replicas
- * generated during build time.
  */
 
 interface Env {
@@ -59,8 +55,16 @@ export async function onRequest(context: EventContext<Env, any, any>): Promise<R
       assetUrl.pathname = candidatePath;
 
       try {
-        const assetResponse = await env.ASSETS.fetch(assetUrl, request);
-        if (assetResponse && assetResponse.status === 200) {
+        // FIX: Construct a clean Request object for the ASSETS binding
+        const assetRequest = new Request(assetUrl.toString(), {
+          method: request.method,
+          headers: request.headers
+        });
+
+        const assetResponse = await env.ASSETS.fetch(assetRequest);
+
+        // Use .ok to gracefully catch 200-299 responses
+        if (assetResponse && assetResponse.ok) {
           const newHeaders = new Headers(assetResponse.headers);
           newHeaders.set("Content-Type", "text/markdown; charset=utf-8");
           newHeaders.set("Content-Signal", "ai-train=yes, search=yes, ai-input=yes");
@@ -68,13 +72,13 @@ export async function onRequest(context: EventContext<Env, any, any>): Promise<R
           newHeaders.set("Cache-Control", "public, max-age=3600, s-maxage=86400");
 
           return new Response(assetResponse.body, {
-            status: 200,
-            statusText: "OK",
+            status: assetResponse.status,
+            statusText: assetResponse.statusText,
             headers: newHeaders
           });
         }
       } catch (e) {
-        // Continue checking next candidate path
+        // Silently continue to the next candidate path
       }
     }
   }
