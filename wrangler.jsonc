@@ -5,5 +5,11 @@
   "main": "src/_worker.js",
   "assets": {
     "directory": "dist"
-  }
+  },
+  "routes": [
+    {
+      "pattern": "mariomarcolongo.com/*",
+      "custom_domain": true
+    }
+  ]
 }

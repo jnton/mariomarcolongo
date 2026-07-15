@@ -1,17 +1,11 @@
 export default {
     async fetch(request, env) {
+        const url = new URL(request.url);
         const acceptHeader = (request.headers.get("Accept") || "").toLowerCase();
         const wantsMarkdown = acceptHeader.includes("text/markdown");
 
-        // Debugging information
-        const debugHeaders = {
-            "X-Worker-Active": "true",
-            "X-Wants-Markdown": String(wantsMarkdown),
-            "X-Accept-Header": acceptHeader
-        };
-
+        // 1. Markdown Negotiation Logic
         if (wantsMarkdown) {
-            const url = new URL(request.url);
             let path = url.pathname;
             if (path === "/" || path === "/index.html") path = "/index.md";
             else if (path.endsWith(".html")) path = path.replace(/\.html$/, ".md");
@@ -24,8 +18,8 @@ export default {
                 if (assetResponse.status === 200) {
                     const headers = new Headers(assetResponse.headers);
                     headers.set("Content-Type", "text/markdown; charset=utf-8");
-                    // Add debug headers
-                    Object.entries(debugHeaders).forEach(([k, v]) => headers.set(k, v));
+                    headers.set("X-Worker-Active", "true"); // Debugging
+                    headers.set("X-Wants-Markdown", "true"); // Debugging
                     return new Response(assetResponse.body, { status: 200, headers });
                 }
             } catch (e) {
@@ -33,10 +27,23 @@ export default {
             }
         }
 
-        // Default HTML Fallback
+        // 2. Default Fallback
         const response = await env.ASSETS.fetch(request);
         const headers = new Headers(response.headers);
-        Object.entries(debugHeaders).forEach(([k, v]) => headers.set(k, v));
+        headers.set("X-Worker-Active", "true");
+        headers.set("X-Wants-Markdown", "false");
+
+        // Inject discovery links
+        if (headers.get("Content-Type")?.includes("text/html")) {
+            const discoveryLinks = [
+                '<https://mariomarcolongo.com/.well-known/api-catalog>; rel="api-catalog"',
+                '<https://mariomarcolongo.com/llms.txt>; rel="describedby"; type="text/plain"',
+                '<https://mariomarcolongo.com/llms-full.txt>; rel="describedby"; type="text/plain"',
+                '<https://mariomarcolongo.com/.well-known/agent-card.json>; rel="agent-card"',
+                '<https://mariomarcolongo.com/.well-known/mcp/server-card.json>; rel="mcp-server-card"'
+            ].join(", ");
+            headers.append("Link", discoveryLinks);
+        }
 
         return new Response(response.body, { status: response.status, headers });
     }
