@@ -1,38 +1,47 @@
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
-    
-    // Check if ASSETS is actually bound
-    if (!env.ASSETS) {
-        return new Response("Error: env.ASSETS is undefined. The Worker is not correctly bound to your static assets.", {
-            status: 500,
-            headers: { "X-Worker-Error": "binding-missing" }
+    const acceptHeader = (request.headers.get("Accept") || "").toLowerCase();
+    const wantsMarkdown = acceptHeader.includes("text/markdown");
+
+    // 1. Diagnostic/Test Trigger (Keep this to prove the Worker is running)
+    if (url.pathname.includes("test-worker")) {
+        return new Response("Worker is alive!", { 
+            headers: { "X-Worker-Active": "true" } 
         });
     }
 
-    const accept = (request.headers.get("Accept") || "").toLowerCase();
-    const wantsMarkdown = accept.includes("text/markdown");
-
+    // 2. Markdown Negotiation
     if (wantsMarkdown) {
         let path = url.pathname === "/" ? "/index.md" : url.pathname.replace(".html", ".md");
         try {
             const assetResponse = await env.ASSETS.fetch(new Request(new URL(path, url.origin)));
             if (assetResponse.status === 200) {
-                return new Response(assetResponse.body, {
-                    headers: {
-                        "Content-Type": "text/markdown; charset=utf-8",
-                        "X-Worker-Active": "true"
-                    }
-                });
+                const headers = new Headers(assetResponse.headers);
+                headers.set("Content-Type", "text/markdown; charset=utf-8");
+                headers.set("X-Worker-Active", "true");
+                return new Response(assetResponse.body, { status: 200, headers });
             }
-        } catch (e) {
-            return new Response("Markdown fetch error: " + e.message, { status: 500 });
-        }
+        } catch (e) {}
     }
 
+    // 3. HTML Fallback
     const response = await env.ASSETS.fetch(request);
     const headers = new Headers(response.headers);
-    headers.set("X-Worker-Active", "true");
+    headers.set("X-Worker-Active", "true"); // Confirmation header
+    
+    // Inject discovery links
+    if (headers.get("Content-Type")?.includes("text/html")) {
+        const links = [
+            '<https://mariomarcolongo.com/.well-known/api-catalog>; rel="api-catalog"',
+            '<https://mariomarcolongo.com/llms.txt>; rel="describedby"; type="text/plain"',
+            '<https://mariomarcolongo.com/llms-full.txt>; rel="describedby"; type="text/plain"',
+            '<https://mariomarcolongo.com/.well-known/agent-card.json>; rel="agent-card"',
+            '<https://mariomarcolongo.com/.well-known/mcp/server-card.json>; rel="mcp-server-card"'
+        ].join(", ");
+        headers.append("Link", links);
+    }
+
     return new Response(response.body, { status: response.status, headers });
   }
 };
