@@ -5,5 +5,14 @@
   "main": "src/_worker.js",
   "assets": {
     "directory": "dist"
+  },
+  "observability": {
+    "logs": {
+      "enabled": true,
+      "invocation_logs": true
+    },
+    "traces": {
+      "enabled": false
+    }
   }
 }
