@@ -51,13 +51,13 @@ Leveraging psychological study facilitation to design standardized protocols, co
 
 ## Research & Open Science Contributions
 
-### Whole-Genome Sequencing Pipeline & Polygenic Risk Scoring (41×) — European Nucleotide Archive — ENA PRJEB109744 / SAMEA121950568 (Jan 2026) [Independent / Personal Project, unpaid]
+### Whole-Genome Sequencing Pipeline & Polygenic Risk Scoring (41×) — European Nucleotide Archive — ENA PRJEB109744 / SAMEA121950568 (Jan 2026) [Independent / Personal Project, unpaid] | Website: https://www.ebi.ac.uk/ena/browser/view/PRJEB109744 | GitHub: https://github.com/jnton/git-nome
 - Utilized Terra.bio cloud platform to process raw FASTQ reads aligned against the GRCh38 human reference genome to extract high-coverage GRCh38 BAM and VCF files.
 - Architected downstream local bioinformatic pipeline on Apple Silicon (M4 Macbook)—converting VCF to Plink2 (PGEN/PVAR/PSAM) and executing Nextflow pgsc_calc with PCA ancestry projection against 1000 Genomes / HGDP reference panels.
 - Engineered custom Python extraction pipelines for VEP-annotated VCFs—calculating multi-trait Z-Score standardized Polygenic Risk Scores, pharmacogenomic/lifestyle loci, mitochondrial heteroplasmy, and novel 'dark matter' variant filtration mapped to HPO/MONDO ontologies.
 - Pipeline output — FASTQ, GRCh38-aligned BAM, VEP-annotated VCF, and multi-trait PRS — released to the public domain (CC0) under ENA accession PRJEB109744 / BioSample SAMEA121950568, as an open-science reference implementation.
 
-### Empirical Data Scientist & Scientific Visualizer — Wikimedia Commons, Tableau Public & Flourish Visual Data Portfolio (2023 — Present) [Independent / Self-Funded]
+### Empirical Data Scientist & Scientific Visualizer — Wikimedia Commons, Tableau Public & Flourish Visual Data Portfolio (2023 — Present) [Independent / Self-Funded] | Tableau: https://public.tableau.com/app/profile/mario.marcolongo/vizzes | Flourish: https://app.flourish.studio/@Digressivo
 - Published 70+ interactive empirical public health, epidemiological, and biomedical visualizations across Wikimedia Commons, Tableau Public (15 Vizzes, 4,300+ views), and Flourish.
 - Created original vector Euler diagram illustrating overlapping clinical phenotypes across autism spectrum disorder (ASD), dystonia, epilepsy, and schizophrenia (CC BY-SA 4.0, adopted across 4 Wikipedia language editions).
 - Synthesized primary biomedical datasets—including H5N1 avian flu preparedness, carotid plaque microplastic pathology, age-stratified COVID-19 mortality, and ISTAT epidemiological trends—into open-access visual evidence repositories and vector charts.
@@ -136,12 +136,12 @@ Source: https://commons.wikimedia.org/wiki/File:Naturalization_Residence_Require
 Age-standardized global incidence rate (world) per 100,000 synthesized from Globocan 2022 / International Agency for Research on Cancer data. Modeled in Flourish and published as open vector data.
 Source: https://commons.wikimedia.org/wiki/File:Oesophageal_Cancer,_Age-Standardized_Rate_(World)_per_100.000_of_Incidence_Cases,_Both_sexes,_Worldwide_in_2022.svg
 
-## Education & Training
+## Education & Certifications
 
-- **Studies in Medicine & Surgery** (2020): Università degli Studi della Campania 'Luigi Vanvitelli' — Foundational biomedical and scientific coursework completed (no formal degree conferred)
-- **EF SET English Certificate 68/100 (C1 Advanced)** (Mar 2024): EF Standard English Test (EF SET) · https://cert.efset.org/jHk84h
-- **Career Essentials in Generative AI** (Mar 2024): Microsoft and LinkedIn · Certificate: https://www.linkedin.com/learning/certificates/c4f1f59578e3ac2567787e262e3b2ec55debf96bbbced4d34d5edaa821d9e6d9
-- **GALENOS Crowd Evidence Synthesis Training** (May 2026): Cochrane Crowd & GALENOS Systematic Review Screening Certification
+- **Studies in Medicine & Surgery** (2020) — Università degli Studi della Campania 'Luigi Vanvitelli' — Foundational biomedical and scientific coursework completed (no formal degree conferred)
+- **EF SET English Certificate 68/100 (C1 Advanced)** (Mar 2024) — EF Standard English Test (EF SET) · https://cert.efset.org/jHk84h
+- **Career Essentials in Generative AI** (Mar 2024) — Microsoft and LinkedIn · Certificate: https://www.linkedin.com/learning/certificates/c4f1f59578e3ac2567787e262e3b2ec55debf96bbbced4d34d5edaa821d9e6d9
+- **GALENOS Crowd Evidence Synthesis Training** (May 2026) — Cochrane Crowd & GALENOS Systematic Review Screening Certification
 
 ## Verification & Identifiers
 - Email: me@mariomarcolongo.com
@@ -151,4 +151,5 @@ Source: https://commons.wikimedia.org/wiki/File:Oesophageal_Cancer,_Age-Standard
 - GitHub: https://github.com/jnton
 - Agent-Readiness Audit (16/16 Checks): https://isitagentready.com/mariomarcolongo.com?checks=robotsTxt%2Csitemap%2ClinkHeaders%2CdnsAid%2CmarkdownNegotiation%2CrobotsTxtAiRules%2CcontentSignals%2CwebBotAuth%2CapiCatalog%2CoauthDiscovery%2CoauthProtectedResource%2CauthMd%2CmcpServerCard%2Ca2aAgentCard%2CagentSkills%2CwebMcp%2Cx402%2Cmpp%2Cucp%2Cacp
 - A2A Agent Card: https://mariomarcolongo.com/.well-known/agent-card.json
+- Genomic Pipeline Codebase: https://github.com/jnton/git-nome
 

@@ -300,7 +300,8 @@ const MARIO_DOSSIER = {
       tag: "Independent / Personal Project, unpaid",
       period: "Jan 2026",
       links: {
-        website: "https://www.ebi.ac.uk/ena/browser/view/PRJEB109744"
+        website: "https://www.ebi.ac.uk/ena/browser/view/PRJEB109744",
+        github: "https://github.com/jnton/git-nome"
       },
       bullets: [
         "Utilized Terra.bio cloud platform to process raw FASTQ reads aligned against the GRCh38 human reference genome to extract high-coverage GRCh38 BAM and VCF files.",

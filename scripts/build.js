@@ -69,6 +69,7 @@ function generateLlmsTxt(d) {
     out += `- Agent-Readiness Audit (16/16 Checks): ${d.identity.agentReadyUrl}\n`;
     out += `- A2A Agent Card: ${d.identity.domain}/.well-known/agent-card.json\n`;
   }
+  out += `- Genomic Pipeline Codebase: https://github.com/jnton/git-nome\n`;
 
   return out;
 }
@@ -107,7 +108,8 @@ function generateLlmsFullTxt(d) {
   out += `## Research & Open Science Contributions\n\n`;
   if (d.research) {
     d.research.forEach(r => {
-      out += `### ${r.role} — ${r.org} (${r.period})${r.tag ? ` [${r.tag}]` : ''}\n`;
+      const linkUrl = formatProjectLinksText(r);
+      out += `### ${r.role} — ${r.org} (${r.period})${r.tag ? ` [${r.tag}]` : ''}${linkUrl ? ` | ${linkUrl}` : ''}\n`;
       if (r.bullets) {
         r.bullets.forEach(b => {
           out += `- ${b}\n`;
@@ -146,10 +148,10 @@ function generateLlmsFullTxt(d) {
     });
   }
 
-  out += `## Education & Training\n\n`;
+  out += `## Education & Certifications\n\n`;
   if (d.education) {
     d.education.forEach(e => {
-      out += `- **${e.title}** ${e.period ? `(${e.period})` : ''}: ${e.detail}\n`;
+      out += `- **${e.title}** ${e.period ? `(${e.period})` : ''} — ${e.detail}\n`;
     });
     out += `\n`;
   }
@@ -164,6 +166,7 @@ function generateLlmsFullTxt(d) {
     out += `- Agent-Readiness Audit (16/16 Checks): ${d.identity.agentReadyUrl}\n`;
     out += `- A2A Agent Card: ${d.identity.domain}/.well-known/agent-card.json\n`;
   }
+  out += `- Genomic Pipeline Codebase: https://github.com/jnton/git-nome\n`;
   out += `\n`;
 
   return out;
@@ -204,8 +207,9 @@ function generateCvLlmTxt(d) {
   out += `## Research & Open Science Infrastructure\n\n`;
   if (d.research) {
     d.research.forEach(r => {
+      const linkUrl = formatProjectLinksText(r);
       out += `### ${r.role} — ${r.org}\n`;
-      out += `*${r.period}*${r.tag ? ` · **[${r.tag}]**` : ''}\n\n`;
+      out += `*${r.period}*${r.tag ? ` · **[${r.tag}]**` : ''}${linkUrl ? ` | ${linkUrl}` : ''}\n\n`;
       if (r.bullets) {
         r.bullets.forEach(b => {
           out += `- ${b}\n`;
@@ -245,6 +249,7 @@ function generateCvLlmTxt(d) {
     out += `- Agent-Readiness Audit (16/16 Checks): ${d.identity.agentReadyUrl}\n`;
     out += `- A2A Agent Card: ${d.identity.domain}/.well-known/agent-card.json\n`;
   }
+  out += `- Genomic Pipeline Codebase: https://github.com/jnton/git-nome\n`;
   out += `\n`;
 
   return out;

@@ -62,7 +62,7 @@ Scientific fact-checker, systems developer, and open science technologist with 9
 ## Research & Open Science Infrastructure
 
 ### Whole-Genome Sequencing Pipeline & Polygenic Risk Scoring (41×) — European Nucleotide Archive — ENA PRJEB109744 / SAMEA121950568
-*Jan 2026* · **[Independent / Personal Project, unpaid]**
+*Jan 2026* · **[Independent / Personal Project, unpaid]** | Website: https://www.ebi.ac.uk/ena/browser/view/PRJEB109744 | GitHub: https://github.com/jnton/git-nome
 
 - Utilized Terra.bio cloud platform to process raw FASTQ reads aligned against the GRCh38 human reference genome to extract high-coverage GRCh38 BAM and VCF files.
 - Architected downstream local bioinformatic pipeline on Apple Silicon (M4 Macbook)—converting VCF to Plink2 (PGEN/PVAR/PSAM) and executing Nextflow pgsc_calc with PCA ancestry projection against 1000 Genomes / HGDP reference panels.
@@ -70,7 +70,7 @@ Scientific fact-checker, systems developer, and open science technologist with 9
 - Pipeline output — FASTQ, GRCh38-aligned BAM, VEP-annotated VCF, and multi-trait PRS — released to the public domain (CC0) under ENA accession PRJEB109744 / BioSample SAMEA121950568, as an open-science reference implementation.
 
 ### Empirical Data Scientist & Scientific Visualizer — Wikimedia Commons, Tableau Public & Flourish Visual Data Portfolio
-*2023 — Present* · **[Independent / Self-Funded]**
+*2023 — Present* · **[Independent / Self-Funded]** | Tableau: https://public.tableau.com/app/profile/mario.marcolongo/vizzes | Flourish: https://app.flourish.studio/@Digressivo
 
 - Published 70+ interactive empirical public health, epidemiological, and biomedical visualizations across Wikimedia Commons, Tableau Public (15 Vizzes, 4,300+ views), and Flourish.
 - Created original vector Euler diagram illustrating overlapping clinical phenotypes across autism spectrum disorder (ASD), dystonia, epilepsy, and schizophrenia (CC BY-SA 4.0, adopted across 4 Wikipedia language editions).
@@ -122,4 +122,5 @@ A personal, evolving interactive narration and simulation modeling humanity as a
 - GitHub: https://github.com/jnton
 - Agent-Readiness Audit (16/16 Checks): https://isitagentready.com/mariomarcolongo.com?checks=robotsTxt%2Csitemap%2ClinkHeaders%2CdnsAid%2CmarkdownNegotiation%2CrobotsTxtAiRules%2CcontentSignals%2CwebBotAuth%2CapiCatalog%2CoauthDiscovery%2CoauthProtectedResource%2CauthMd%2CmcpServerCard%2Ca2aAgentCard%2CagentSkills%2CwebMcp%2Cx402%2Cmpp%2Cucp%2Cacp
 - A2A Agent Card: https://mariomarcolongo.com/.well-known/agent-card.json
+- Genomic Pipeline Codebase: https://github.com/jnton/git-nome
 
