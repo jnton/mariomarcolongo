@@ -246,8 +246,8 @@ const MARIO_DOSSIER = {
         website: "https://app.grayswan.ai/arena/user/6a57be70d15e123775a1e9cf"
       },
       bullets: [
-        "Independently exploring LLM safety boundaries, jailbreak dynamics, and policy enforcement across emergent models since 2023, developing deep hands-on intuition for model vulnerabilities.",
-        "Ranked in the top 8% globally on the Gray Swan AI Proving Ground (official record established July 2026) across 75+ confirmed model breaks spanning chat, multimodal/image, agentic tool-use, and indirect prompt injection categories."
+        "Informally exploring LLM alignment boundaries and policy robustness since early 2023 — initially through self-directed testing of early ChatGPT releases — developing hands-on intuition for how models interpret instructions, handle edge cases, and maintain safety constraints across different prompting contexts.",
+        "Formally benchmarked on the Gray Swan AI Proving Ground (July 2026): ranked top 8% globally across 75+ confirmed model breaks spanning chat, multimodal/image, agentic tool-use, and indirect prompt injection categories."
       ]
     },
     {
@@ -335,7 +335,7 @@ const MARIO_DOSSIER = {
   ],
 
   skills: [
-    "AI Red-Teaming & Adversarial Evaluation: Top 8% globally, Gray Swan AI Proving Ground (https://app.grayswan.ai/arena/user/6a57be70d15e123775a1e9cf) — 75+ confirmed breaks across Chat, Image, Agent, and Indirect-Injection categories.",
+    "AI Red-Teaming & Adversarial Evaluation: Top 8% globally, Gray Swan AI Proving Ground — July 2026 (https://app.grayswan.ai/arena/user/6a57be70d15e123775a1e9cf) — 75+ confirmed breaks across Chat, Image, Agent, and Indirect-Injection categories.",
     "Web Engineering & Architecture: JavaScript, Node.js, Static & Serverless Architecture, WordPress Development & Customization, HTML/CSS Design Systems, Cloud DNS / SSL / OVHCloud / AWS Lambda / API Gateway",
     "Scientific Verification & Methodologies: Bibliographic Research Methodology, Primary Source Fact-Checking, Psychological Focus Group Facilitation & Standardized Protocols, Epidemiological Data Synthesis, Cochrane/Galenos Screening",
     "Open-Source Intelligence (OSINT) & Digital Investigation: Multi-engine Boolean search (Google, DuckDuckGo, Yandex) and academic/gray-literature querying (Google Scholar, PubMed, Europe PMC); reverse-image and facial-recognition verification (PimEyes, Yandex Images, Google Lens, TinEye); EXIF/metadata extraction and file provenance verification; archival/provenance research (Wayback Machine, Archive.today); WHOIS/DNS history and certificate-transparency lookups for tracing site ownership and technical infrastructure; cross-platform digital-footprint correlation for claim verification, source attribution, and coordinated-inauthentic-behavior detection",

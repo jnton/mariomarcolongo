@@ -31,8 +31,8 @@ Leveraging psychological study facilitation to design standardized protocols, co
 - Published as a 100% Open Science stack: catalogue dataset dedicated to the public domain (CC0 1.0 Universal), website content under CC BY-SA 4.0, and platform codebase under AGPL-3.0.
 
 ### AI Red-Teaming Practitioner — Gray Swan AI Proving Ground (2023 — Present) [Independent Practitioner]
-- Independently exploring LLM safety boundaries, jailbreak dynamics, and policy enforcement across emergent models since 2023, developing deep hands-on intuition for model vulnerabilities.
-- Ranked in the top 8% globally on the Gray Swan AI Proving Ground (official record established July 2026) across 75+ confirmed model breaks spanning chat, multimodal/image, agentic tool-use, and indirect prompt injection categories.
+- Informally exploring LLM alignment boundaries and policy robustness since early 2023 — initially through self-directed testing of early ChatGPT releases — developing hands-on intuition for how models interpret instructions, handle edge cases, and maintain safety constraints across different prompting contexts.
+- Formally benchmarked on the Gray Swan AI Proving Ground (July 2026): ranked top 8% globally across 75+ confirmed model breaks spanning chat, multimodal/image, agentic tool-use, and indirect prompt injection categories.
 
 ### Scientific Fact-Checker, Writer & Web Developer — Entropy for Life — Italy (Jun 2023 — Present) [Freelance Contractor (Partita IVA)]
 - Core content contributor upholding scientific integrity and quality across media for a leading Italian science communication project (245,000+ YouTube subscribers / 480,000+ cross-platform community); responsible for script writing, in-depth bibliographic research, rigorous fact-checking, and creating data visualizations.
