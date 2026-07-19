@@ -555,13 +555,12 @@ import "../styles/cv.css";
                   href="https://commons.wikimedia.org/wiki/File:Overlapping_clinical_phenotypes_in_genes_associated_with_monogenic_forms_of_autism_spectrum_disorder_(ASD),_dystonia,_epilepsy_and_schizophrenia.svg"
                   target="_blank"
                   rel="noopener noreferrer"
-                  class="print-hide"
-                  style="display: inline-block; margin-top: 8px;"
+                  class="print-hide viz-preview-link"
                 ><img
                     width="330"
                     alt="Euler diagram showing overlapping clinical phenotypes in genes associated with monogenic forms of autism spectrum disorder (ASD), dystonia, epilepsy and schizophrenia."
                     src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Overlapping_clinical_phenotypes_in_genes_associated_with_monogenic_forms_of_autism_spectrum_disorder_%28ASD%29%2C_dystonia%2C_epilepsy_and_schizophrenia.svg/330px-Overlapping_clinical_phenotypes_in_genes_associated_with_monogenic_forms_of_autism_spectrum_disorder_%28ASD%29%2C_dystonia%2C_epilepsy_and_schizophrenia.svg.png"
-                    style="border-radius: 6px; border: 1px solid var(--line); max-width: 100%; height: auto;"
+                    class="viz-preview-img"
                   /></a>
               </li>
               <li>
@@ -693,78 +692,34 @@ import "../styles/cv.css";
         <h2 class="cv-section-heading">
           Core Technical & Scientific Competencies
         </h2>
-        <div
-          class="skills-list"
-          id="skillsList"
-          style="display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:12px;"
-        >
-          <div
-            class="skill-category"
-            style="padding:12px; border:1px solid var(--line-strong, #333); border-radius:8px;"
-          >
-            <strong
-              style="display:block; margin-bottom:6px; color:var(--emerald, #34D399);"
-              >AI-Native Systems & Orchestration</strong
-            >
-            <span style="font-size:13px; opacity:0.9;"
-              >Agentic Workflow Design, LLM Integration (`llms.txt` / MCP /
-              Structured Output), Automated Pipeline Engineering, Prompt
-              Verification & Security</span
-            >
+        <div class="skills-list" id="skillsList">
+          <div class="skill-category">
+            <strong class="skill-category-title">AI Red-Teaming & Adversarial Evaluation</strong>
+            <span class="skill-category-detail">Top 8% globally, Gray Swan AI Proving Ground (<a href="https://app.grayswan.ai/arena/user/6a57be70d15e123775a1e9cf" target="_blank" rel="noopener noreferrer">https://app.grayswan.ai/arena/user/6a57be70d15e123775a1e9cf</a>) — 75+ confirmed breaks across Chat, Image, Agent, and Indirect-Injection categories.</span>
           </div>
-          <div
-            class="skill-category"
-            style="padding:12px; border:1px solid var(--line-strong, #333); border-radius:8px;"
-          >
-            <strong
-              style="display:block; margin-bottom:6px; color:var(--emerald, #34D399);"
-              >Open Science & Data Infrastructure</strong
-            >
-            <span style="font-size:13px; opacity:0.9;"
-              >FAIRsharing Standards, Semantic JSON-LD Knowledge Graphs,
-              Wikimedia & Wikidata Curation (4,317 verified edits), ENA
-              BioSample Metadata</span
-            >
+          <div class="skill-category">
+            <strong class="skill-category-title">Web Engineering & Architecture</strong>
+            <span class="skill-category-detail">JavaScript, Node.js, Static & Serverless Architecture, WordPress Development & Customization, HTML/CSS Design Systems, Cloud DNS / SSL / OVHCloud / AWS Lambda / API Gateway</span>
           </div>
-          <div
-            class="skill-category"
-            style="padding:12px; border:1px solid var(--line-strong, #333); border-radius:8px;"
-          >
-            <strong
-              style="display:block; margin-bottom:6px; color:var(--emerald, #34D399);"
-              >Web Engineering & Performance</strong
-            >
-            <span style="font-size:13px; opacity:0.9;"
-              >Modern Static Architecture, Vanilla JS/CSS Design Systems,
-              Technical SEO, 100/100 Lighthouse Performance/a11y/SEO, Cloud
-              DNS/Hosting</span
-            >
+          <div class="skill-category">
+            <strong class="skill-category-title">Scientific Verification & Methodologies</strong>
+            <span class="skill-category-detail">Bibliographic Research Methodology, Primary Source Fact-Checking, Psychological Focus Group Facilitation & Standardized Protocols, Epidemiological Data Synthesis, Cochrane/Galenos Screening</span>
           </div>
-          <div
-            class="skill-category"
-            style="padding:12px; border:1px solid var(--line-strong, #333); border-radius:8px;"
-          >
-            <strong
-              style="display:block; margin-bottom:6px; color:var(--emerald, #34D399);"
-              >Empirical Visual Synthesis</strong
-            >
-            <span style="font-size:13px; opacity:0.9;"
-              >High-Clarity Vector Diagrams (SVG), Flourish & Tableau Public
-              Epidemiological Modeling (70+ Vizzes), Interactive Canvas Graph
-              Simulators</span
-            >
+          <div class="skill-category">
+            <strong class="skill-category-title">Open-Source Intelligence (OSINT) & Digital Investigation</strong>
+            <span class="skill-category-detail">Multi-engine Boolean search (Google, DuckDuckGo, Yandex) and academic/gray-literature querying (Google Scholar, PubMed, Europe PMC); reverse-image and facial-recognition verification (PimEyes, Yandex Images, Google Lens, TinEye); EXIF/metadata extraction and file provenance verification; archival/provenance research (Wayback Machine, Archive.today); WHOIS/DNS history and certificate-transparency lookups for tracing site ownership and technical infrastructure; cross-platform digital-footprint correlation for claim verification, source attribution, and coordinated-inauthentic-behavior detection</span>
           </div>
-          <div
-            class="skill-category"
-            style="padding:12px; border:1px solid var(--line-strong, #333); border-radius:8px;"
-          >
-            <strong
-              style="display:block; margin-bottom:6px; color:var(--emerald, #34D399);"
-              >OSINT & Digital Investigation</strong
-            >
-            <span style="font-size:13px; opacity:0.9;"
-              >Multi-Engine Boolean Search, Academic/Gray-Literature Querying, Reverse-Image & Facial Verification (PimEyes/TinEye), EXIF/Metadata Extraction, Archival Provenance, WHOIS/DNS & Digital Footprint Correlation</span
-            >
+          <div class="skill-category">
+            <strong class="skill-category-title">Open Science & AI Infrastructure</strong>
+            <span class="skill-category-detail">FAIRsharing Standards, Semantic Linked Data (JSON-LD, RDF Turtle, llms.txt, live MCP Servers), Public Knowledge Bases (Wikidata, ENA BioSample)</span>
+          </div>
+          <div class="skill-category">
+            <strong class="skill-category-title">Data Visualization & Tools</strong>
+            <span class="skill-category-detail">High-Clarity SVG Vector Diagramming, Tableau Public, Flourish, Git / GitHub, GitHub Actions CI/CD</span>
+          </div>
+          <div class="skill-category">
+            <strong class="skill-category-title">Languages</strong>
+            <span class="skill-category-detail">Italian (Mother tongue / Native) · English (C1 Advanced: Listening C2, Reading C2, Writing C1, Spoken Production C1, Spoken Interaction C1) · French (Basic A2/A1) · Spanish (Basic A2/A1)</span>
           </div>
         </div>
       </section>
@@ -775,28 +730,25 @@ import "../styles/cv.css";
           Education, Languages & Certifications
         </h2>
         <div id="educationList">
-          <div class="cv-item">
-            <div class="cv-item-header">
-              <span class="cv-item-title"
-                >Studies in Medicine & Surgery</span
-              >
-              <span class="cv-item-date">2020</span>
-            </div>
-            <div class="cv-item-org">
-              Università degli Studi della Campania 'Luigi Vanvitelli' — Foundational biomedical and scientific coursework completed (no formal degree conferred)
-            </div>
+          <div class="edu-item">
+            <span class="edu-title">Studies in Medicine & Surgery</span>
+             — <span class="edu-detail">Università degli Studi della Campania 'Luigi Vanvitelli' — Foundational biomedical and scientific coursework completed (no formal degree conferred)</span>
+             <span class="edu-period">(2020)</span>
           </div>
-          <div class="cv-item">
-            <div class="cv-item-header">
-              <span class="cv-item-title"
-                >Languages & Scientific Proficiency</span
-              >
-              <span class="cv-item-date">Professional Working Proficiency</span>
-            </div>
-            <div class="cv-item-org">
-              Italian (Native / Bilingual) · English (C1 Advanced Professional
-              Proficiency) · Scientific Documentation & Technical Writing
-            </div>
+          <div class="edu-item">
+            <span class="edu-title">EF SET English Certificate 68/100 (C1 Advanced)</span>
+             — <span class="edu-detail">EF Standard English Test (EF SET) · <a href="https://cert.efset.org/jHk84h" target="_blank" rel="noopener noreferrer">https://cert.efset.org/jHk84h</a></span>
+             <span class="edu-period">(Mar 2024)</span>
+          </div>
+          <div class="edu-item">
+            <span class="edu-title">Career Essentials in Generative AI</span>
+             — <span class="edu-detail">Microsoft and LinkedIn · Certificate: <a href="https://www.linkedin.com/learning/certificates/c4f1f59578e3ac2567787e262e3b2ec55debf96bbbced4d34d5edaa821d9e6d9" target="_blank" rel="noopener noreferrer">https://www.linkedin.com/learning/certificates/c4f1f59578e3ac2567787e262e3b2ec55debf96bbbced4d34d5edaa821d9e6d9</a></span>
+             <span class="edu-period">(Mar 2024)</span>
+          </div>
+          <div class="edu-item">
+            <span class="edu-title">GALENOS Crowd Evidence Synthesis Training</span>
+             — <span class="edu-detail">Cochrane Crowd & GALENOS Systematic Review Screening Certification</span>
+             <span class="edu-period">(May 2026)</span>
           </div>
         </div>
       </section>
@@ -889,17 +841,31 @@ import "../styles/cv.css";
       return ` · ` + items.join(" · ");
     }
 
+    function linkifyUrls(text) {
+      if (!text) return "";
+      return text.replace(/(https?:\/\/[^\s<)]+)/g, '<a href="$1" target="_blank" rel="noopener noreferrer">$1</a>');
+    }
+
     window.addEventListener("DOMContentLoaded", () => {
       if (D.summary) {
         const sumEl = document.getElementById("cvSummary");
         if (sumEl) sumEl.textContent = D.summary;
       }
 
-      if (D.skills) {
+      if (D.skills && Array.isArray(D.skills)) {
         const list = document.getElementById("skillsList");
         if (list) {
           list.innerHTML = D.skills
-            .map((s) => `<div class="skill-group">• ${s}</div>`)
+            .map((s) => {
+              const colonIdx = s.indexOf(":");
+              const title = colonIdx !== -1 ? s.slice(0, colonIdx).trim() : "Skill";
+              let detail = colonIdx !== -1 ? s.slice(colonIdx + 1).trim() : s;
+              detail = linkifyUrls(detail);
+              return `<div class="skill-category">
+                <strong class="skill-category-title">${title}</strong>
+                <span class="skill-category-detail">${detail}</span>
+              </div>`;
+            })
             .join("");
         }
       }
@@ -920,7 +886,7 @@ import "../styles/cv.css";
               p.highlights && p.highlights.length
                 ? `
               <ul class="cv-item-bullets">
-                ${p.highlights.map((h) => `<li>${h}</li>`).join("")}
+                ${p.highlights.map((h) => `<li>${linkifyUrls(h)}</li>`).join("")}
               </ul>
             `
                 : ""
@@ -949,7 +915,7 @@ import "../styles/cv.css";
               e.bullets && e.bullets.length
                 ? `
               <ul class="cv-item-bullets">
-                ${e.bullets.map((b) => `<li>${b}</li>`).join("")}
+                ${e.bullets.map((b) => `<li>${linkifyUrls(b)}</li>`).join("")}
               </ul>
             `
                 : ""
@@ -978,7 +944,7 @@ import "../styles/cv.css";
               r.bullets && r.bullets.length
                 ? `
               <ul class="cv-item-bullets">
-                ${r.bullets.map((b) => `<li>${b}</li>`).join("")}
+                ${r.bullets.map((b) => `<li>${linkifyUrls(b)}</li>`).join("")}
               </ul>
             `
                 : ""
@@ -990,7 +956,7 @@ import "../styles/cv.css";
         }
       }
 
-      if (D.education) {
+      if (D.education && Array.isArray(D.education)) {
         const edList = document.getElementById("educationList");
         if (edList) {
           edList.innerHTML = D.education
@@ -998,7 +964,7 @@ import "../styles/cv.css";
               (e) => `
           <div class="edu-item">
             <span class="edu-title">${e.title}</span>
-            ${e.detail ? ` — <span class="edu-detail">${e.detail}</span>` : ""}
+            ${e.detail ? ` — <span class="edu-detail">${linkifyUrls(e.detail)}</span>` : ""}
             ${e.period ? ` <span class="edu-period">(${e.period})</span>` : ""}
           </div>
         `,
@@ -1089,7 +1055,7 @@ View full CV online: https://mariomarcolongo.com/cv.html or profile at https://m
       </span>
       <span class="screen-only">mariomarcolongo.com</span>
     </div>
-    <div class="cv-footer-row" style="margin-top: 4px;">
+    <div class="cv-footer-row cv-footer-row-secondary">
       <span
         >Primary Source Verification · ORCID: <a
           href="https://orcid.org/0000-0003-2846-7115"
@@ -1105,10 +1071,7 @@ View full CV online: https://mariomarcolongo.com/cv.html or profile at https://m
         ></span
       >
     </div>
-    <div
-      class="cv-footer-row"
-      style="margin-top: 6px; font-size: 0.72rem; color: var(--text-dim, #666); opacity: 0.85;"
-    >
+    <div class="cv-footer-row cv-footer-row-legal">
       <span
         >I authorize the processing of personal data present in the CV according
         to the General Data Protection Regulation (GDPR 679/2016).</span

@@ -36,8 +36,8 @@ async function generateFavicons() {
     // Ensure site.webmanifest is generated even if screenshots are skipped
     const manifestPath = path.join(publicDir, 'site.webmanifest');
     const manifest = {
-      name: "Mario Marcolongo — AI-Native Systems Builder & Scientific Fact-Checker",
-      short_name: "Mario Marcolongo",
+      name: "Mario Marcolongo — Portfolio",
+      short_name: "Marcolongo",
       icons: [
         { src: "/favicon-192x192.png", sizes: "192x192", type: "image/png" },
         { src: "/favicon-512x512.png", sizes: "512x512", type: "image/png" }
@@ -80,8 +80,8 @@ async function generateFavicons() {
     // Generate site.webmanifest
     const manifestPath = path.join(publicDir, 'site.webmanifest');
     const manifest = {
-      name: "Mario Marcolongo — AI-Native Systems Builder & Scientific Fact-Checker",
-      short_name: "Mario Marcolongo",
+      name: "Mario Marcolongo — Portfolio",
+      short_name: "Marcolongo",
       icons: [
         { src: "/favicon-192x192.png", sizes: "192x192", type: "image/png" },
         { src: "/favicon-512x512.png", sizes: "512x512", type: "image/png" }

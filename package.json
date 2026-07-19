@@ -5,7 +5,7 @@
   "description": "AI-Native Systems Builder, Open Science Technologist & Empirical Data Synthesizer portfolio and CV SSOT",
   "scripts": {
     "dev": "node scripts/generate-llm-dossiers.js && astro dev",
-    "build": "node scripts/generate-llm-dossiers.js && astro build && cp dist/index.html index.html 2>/dev/null || true",
+    "build": "node scripts/generate-llm-dossiers.js && astro build && cp dist/index.html index.html 2>/dev/null && cp dist/cv.html cv.html 2>/dev/null || true",
     "deploy": "npx wrangler pages deploy dist --project-name=mariomarcolongo",
     "preview": "astro preview",
     "generate:llms": "node scripts/generate-llm-dossiers.js",
