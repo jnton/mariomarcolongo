@@ -30,3 +30,4 @@
 - Agent-Readiness Audit (16/16 Checks): https://isitagentready.com/mariomarcolongo.com?checks=robotsTxt%2Csitemap%2ClinkHeaders%2CdnsAid%2CmarkdownNegotiation%2CrobotsTxtAiRules%2CcontentSignals%2CwebBotAuth%2CapiCatalog%2CoauthDiscovery%2CoauthProtectedResource%2CauthMd%2CmcpServerCard%2Ca2aAgentCard%2CagentSkills%2CwebMcp%2Cx402%2Cmpp%2Cucp%2Cacp
 - A2A Agent Card: https://mariomarcolongo.com/.well-known/agent-card.json
 - Genomic Pipeline Codebase: https://github.com/jnton/git-nome
+- Portfolio SSOT Codebase: https://github.com/jnton/mariomarcolongo

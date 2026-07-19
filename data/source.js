@@ -21,6 +21,7 @@ const MARIO_DOSSIER = {
     domain: "https://mariomarcolongo.com",
     linkedin: "https://www.linkedin.com/in/mario-marcolongo",
     github: "https://github.com/jnton",
+    portfolioRepo: "https://github.com/jnton/mariomarcolongo",
     agentReadyUrl: "https://isitagentready.com/mariomarcolongo.com?checks=robotsTxt%2Csitemap%2ClinkHeaders%2CdnsAid%2CmarkdownNegotiation%2CrobotsTxtAiRules%2CcontentSignals%2CwebBotAuth%2CapiCatalog%2CoauthDiscovery%2CoauthProtectedResource%2CauthMd%2CmcpServerCard%2Ca2aAgentCard%2CagentSkills%2CwebMcp%2Cx402%2Cmpp%2Cucp%2Cacp",
     // Obfuscated for public HTML — reassembled client-side
     contactObfuscated: ["me", "mariomarcolongo", "com"]

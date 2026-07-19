@@ -70,6 +70,7 @@ function generateLlmsTxt(d) {
     out += `- A2A Agent Card: ${d.identity.domain}/.well-known/agent-card.json\n`;
   }
   out += `- Genomic Pipeline Codebase: https://github.com/jnton/git-nome\n`;
+  if (d.identity.portfolioRepo) out += `- Portfolio SSOT Codebase: ${d.identity.portfolioRepo}\n`;
 
   return out;
 }
@@ -167,6 +168,7 @@ function generateLlmsFullTxt(d) {
     out += `- A2A Agent Card: ${d.identity.domain}/.well-known/agent-card.json\n`;
   }
   out += `- Genomic Pipeline Codebase: https://github.com/jnton/git-nome\n`;
+  if (d.identity.portfolioRepo) out += `- Portfolio SSOT Codebase: ${d.identity.portfolioRepo}\n`;
   out += `\n`;
 
   return out;
@@ -250,6 +252,7 @@ function generateCvLlmTxt(d) {
     out += `- A2A Agent Card: ${d.identity.domain}/.well-known/agent-card.json\n`;
   }
   out += `- Genomic Pipeline Codebase: https://github.com/jnton/git-nome\n`;
+  if (d.identity.portfolioRepo) out += `- Portfolio SSOT Codebase: ${d.identity.portfolioRepo}\n`;
   out += `\n`;
 
   return out;
