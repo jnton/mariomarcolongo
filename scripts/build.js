@@ -65,6 +65,10 @@ function generateLlmsTxt(d) {
   out += `- LinkedIn: ${d.identity.linkedin}\n`;
   out += `- ORCID: ${d.identity.orcidUrl}\n`;
   out += `- GitHub: ${d.identity.github}\n`;
+  if (d.identity.agentReadyUrl) {
+    out += `- Agent-Readiness Audit (16/16 Checks): ${d.identity.agentReadyUrl}\n`;
+    out += `- A2A Agent Card: ${d.identity.domain}/.well-known/agent-card.json\n`;
+  }
 
   return out;
 }
@@ -90,7 +94,7 @@ function generateLlmsFullTxt(d) {
   out += `## Experience & Leadership\n\n`;
   if (d.experience) {
     d.experience.forEach(exp => {
-      out += `### ${exp.role} — ${exp.org} (${exp.period})\n`;
+      out += `### ${exp.role} — ${exp.org} (${exp.period})${exp.tag ? ` [${exp.tag}]` : ''}\n`;
       if (exp.bullets) {
         exp.bullets.forEach(b => {
           out += `- ${b}\n`;
@@ -103,7 +107,7 @@ function generateLlmsFullTxt(d) {
   out += `## Research & Open Science Contributions\n\n`;
   if (d.research) {
     d.research.forEach(r => {
-      out += `### ${r.role} — ${r.org} (${r.period})\n`;
+      out += `### ${r.role} — ${r.org} (${r.period})${r.tag ? ` [${r.tag}]` : ''}\n`;
       if (r.bullets) {
         r.bullets.forEach(b => {
           out += `- ${b}\n`;
@@ -150,12 +154,17 @@ function generateLlmsFullTxt(d) {
     out += `\n`;
   }
 
-  out += `## Contact & Identifiers\n`;
+  out += `## Verification & Identifiers\n`;
   out += `- Email: ${d.identity.email}\n`;
   out += `- Website: ${d.identity.domain}\n`;
   out += `- ORCID: ${d.identity.orcidUrl}\n`;
   out += `- LinkedIn: ${d.identity.linkedin}\n`;
   out += `- GitHub: ${d.identity.github}\n`;
+  if (d.identity.agentReadyUrl) {
+    out += `- Agent-Readiness Audit (16/16 Checks): ${d.identity.agentReadyUrl}\n`;
+    out += `- A2A Agent Card: ${d.identity.domain}/.well-known/agent-card.json\n`;
+  }
+  out += `\n`;
 
   return out;
 }
@@ -181,7 +190,7 @@ function generateCvLlmTxt(d) {
   if (d.experience) {
     d.experience.forEach(exp => {
       out += `### ${exp.role} — ${exp.org}\n`;
-      out += `*${exp.period}*\n\n`;
+      out += `*${exp.period}*${exp.tag ? ` · **[${exp.tag}]**` : ''}\n\n`;
       if (exp.bullets) {
         exp.bullets.forEach(b => {
           out += `- ${b}\n`;
@@ -196,7 +205,7 @@ function generateCvLlmTxt(d) {
   if (d.research) {
     d.research.forEach(r => {
       out += `### ${r.role} — ${r.org}\n`;
-      out += `*${r.period}*\n\n`;
+      out += `*${r.period}*${r.tag ? ` · **[${r.tag}]**` : ''}\n\n`;
       if (r.bullets) {
         r.bullets.forEach(b => {
           out += `- ${b}\n`;
@@ -223,6 +232,18 @@ function generateCvLlmTxt(d) {
     d.education.forEach(e => {
       out += `- **${e.title}** ${e.period ? `(${e.period})` : ''} — ${e.detail}\n`;
     });
+  }
+  out += `\n`;
+
+  out += `## Contact & Identifiers\n`;
+  out += `- Email: ${d.identity.email}\n`;
+  out += `- Website: ${d.identity.domain}\n`;
+  out += `- ORCID: ${d.identity.orcidUrl}\n`;
+  out += `- LinkedIn: ${d.identity.linkedin}\n`;
+  out += `- GitHub: ${d.identity.github}\n`;
+  if (d.identity.agentReadyUrl) {
+    out += `- Agent-Readiness Audit (16/16 Checks): ${d.identity.agentReadyUrl}\n`;
+    out += `- A2A Agent Card: ${d.identity.domain}/.well-known/agent-card.json\n`;
   }
   out += `\n`;
 

@@ -6,11 +6,12 @@
 ---
 
 ## Executive Summary
-AI-native software developer, open science builder, and scientific fact-checker with 9+ years of experience verifying biomedical and technical claims across public knowledge bases (4,317 documented edits across English/Italian Wikipedia, Wikidata, and Wikimedia Commons). Founder and lead developer of Yourself to Science™ (yourselftoscience.org), an open-source catalogue and unified directory indexing 55+ initiatives where people can contribute their biological and digital self (including genomic data, biological samples, biobanks, and clinical trials) to scientific research. Managed technical web infrastructure (OVHCloud, custom WordPress, SEO) and upheld scientific integrity for Entropy for Life (245,000+ YouTube subscribers / 480,000+ cross-platform community)—conducting bibliographic research, fact-checking scripts, and creating empirical data visualizations across 55+ documentaries and articles, earning formal acknowledgment in a Mondadori book. Volunteer research facilitator under Prof. Marta Panzeri at the University of Padua Department of Developmental Psychology and Socialisation (Nov 2022 – 2025), designing standardized focus group protocols and co-conducting psychological research sessions with autistic participants to inform educational strategies and support programs.
+Scientific fact-checker, systems developer, and open science technologist with 9+ years of experience verifying biomedical and technical claims across public knowledge bases (4,317 documented edits across English/Italian Wikipedia, Wikidata, and Wikimedia Commons). Founder and lead developer of Yourself to Science™ (yourselftoscience.org), an open-source catalogue and unified directory indexing 55+ initiatives where people can contribute their biological and digital self (including genomic data, biological samples, biobanks, and clinical trials) to scientific research. Managed technical web infrastructure (OVHCloud, custom WordPress, SEO) and upheld scientific integrity for Entropy for Life (245,000+ YouTube subscribers / 480,000+ cross-platform community)—conducting bibliographic research, fact-checking scripts, and creating empirical data visualizations across 55+ documentaries and articles, earning formal acknowledgment in a Mondadori book. Volunteer research facilitator under Prof. Marta Panzeri at the University of Padua Department of Developmental Psychology and Socialisation (Nov 2022 – 2025), designing standardized focus group protocols and co-conducting psychological research sessions with autistic participants to inform educational strategies and support programs.
 
 ---
 
 ## Core Competencies & Technical Skills
+- AI Red-Teaming & Adversarial Evaluation: Top 8% globally, Gray Swan AI Proving Ground (https://app.grayswan.ai/arena/user/6a57be70d15e123775a1e9cf) — 75+ confirmed breaks across Chat, Image, Agent, and Indirect-Injection categories.
 - Web Engineering & Architecture: JavaScript, Node.js, Static & Serverless Architecture, WordPress Development & Customization, HTML/CSS Design Systems, Cloud DNS / SSL / OVHCloud / AWS Lambda / API Gateway
 - Scientific Verification & Methodologies: Bibliographic Research Methodology, Primary Source Fact-Checking, Psychological Focus Group Facilitation & Standardized Protocols, Epidemiological Data Synthesis, Cochrane/Galenos Screening
 - Open-Source Intelligence (OSINT) & Digital Investigation: Multi-engine Boolean search (Google, DuckDuckGo, Yandex) and academic/gray-literature querying (Google Scholar, PubMed, Europe PMC); reverse-image and facial-recognition verification (PimEyes, Yandex Images, Google Lens, TinEye); EXIF/metadata extraction and file provenance verification; archival/provenance research (Wayback Machine, Archive.today); WHOIS/DNS history and certificate-transparency lookups for tracing site ownership and technical infrastructure; cross-platform digital-footprint correlation for claim verification, source attribution, and coordinated-inauthentic-behavior detection
@@ -23,21 +24,27 @@ AI-native software developer, open science builder, and scientific fact-checker 
 ## Professional Experience
 
 ### Founder & Lead Builder — Yourself to Science™
-*Aug 2024 — Present*
+*Aug 2024 — Present* · **[Independent / Self-Funded]**
 
 - Launched and currently manage Yourself to Science, a comprehensive open-source catalogue and unified directory indexing 55+ clinical trials, biobanks, tissue/blood donation programs, and digital health registries enabling individuals to contribute their biological and digital self to scientific research.
 - Architected AI-native Linked Data infrastructure (JSON-LD, RDF Turtle/VoID graphs, live MCP Server, standard llms.txt, OpenAPI spec) indexed in FAIRsharing and Zenodo.
 - Published as a 100% Open Science stack: catalogue dataset dedicated to the public domain (CC0 1.0 Universal), website content under CC BY-SA 4.0, and platform codebase under AGPL-3.0.
 
+### AI Red-Teaming Practitioner — Gray Swan AI Proving Ground
+*2023 — Present* · **[Independent Practitioner]**
+
+- Independently exploring LLM safety boundaries, jailbreak dynamics, and policy enforcement across emergent models since 2023, developing deep hands-on intuition for model vulnerabilities.
+- Ranked in the top 8% globally on the Gray Swan AI Proving Ground (official record established July 2026) across 75+ confirmed model breaks spanning chat, multimodal/image, agentic tool-use, and indirect prompt injection categories.
+
 ### Scientific Fact-Checker, Writer & Web Developer — Entropy for Life — Italy
-*Jun 2023 — Present*
+*Jun 2023 — Present* · **[Freelance Contractor (Partita IVA)]**
 
 - Core content contributor upholding scientific integrity and quality across media for a leading Italian science communication project (245,000+ YouTube subscribers / 480,000+ cross-platform community); responsible for script writing, in-depth bibliographic research, rigorous fact-checking, and creating data visualizations.
 - Formally acknowledged as a trusted primary literature researcher on the final page of Giacomo Moro Mauretto's Mondadori book Italiani veri. Storia evolutiva e genetica del nostro Paese.
 - Sole web developer for the project's official website (entropyforlife.it), handling full lifecycle on OVHCloud (hosting, DNS, SSL), custom WordPress layout/functionality, and technical SEO strategies.
 
 ### Volunteer Focus Group Conductor & Research Facilitator — University of Padua — Department of Developmental Psychology and Socialisation
-*Nov 2022 — 2025*
+*Nov 2022 — 2025* · **[Volunteer, unpaid]**
 
 - Contributed as a volunteer researcher to a psychological focus group study on sexuality in the autism spectrum led by Prof. Marta Panzeri. The study aimed to gather qualitative insights on the sexual experiences of autistic people to inform educational strategies and support initiatives.
 - Developed the standardized facilitation guide for focus groups—including scripting and behavioral protocols—to ensure consistent, reproducible session execution.
@@ -45,7 +52,7 @@ AI-native software developer, open science builder, and scientific fact-checker 
 - Served as primary conductor and co-conductor for recorded focus groups with autistic participants, establishing psychological safety while managing technical session infrastructure.
 
 ### Scientific & Biomedical Editor — Wikipedia & Wikimedia Foundation
-*Jan 2017 — Present*
+*Jan 2017 — Present* · **[Volunteer, unpaid]**
 
 - Author of 4,317 verified public edits across Wikimedia projects (1,592 English Wikipedia, 1,249 Wikidata, 752 Italian Wikipedia, 684 Wikimedia Commons).
 - Created original data-driven scientific diagrams and biomedical visualizations independently adopted across 4 Wikipedia language editions and open-access repositories.
@@ -54,16 +61,16 @@ AI-native software developer, open science builder, and scientific fact-checker 
 
 ## Research & Open Science Infrastructure
 
-### Citizen Scientist Open Genomic Donor (41× WGS) — European Nucleotide Archive — ENA PRJEB109744 / SAMEA121950568
-*Jan 2026*
+### Whole-Genome Sequencing Pipeline & Polygenic Risk Scoring (41×) — European Nucleotide Archive — ENA PRJEB109744 / SAMEA121950568
+*Jan 2026* · **[Independent / Personal Project, unpaid]**
 
-- Donated personal 41× Whole Genome Sequencing raw paired-end FASTQ reads (DNBSEQ-T7) to the public domain (CC0) under ENA BioSample SAMEA121950568.
 - Utilized Terra.bio cloud platform to process raw FASTQ reads aligned against the GRCh38 human reference genome to extract high-coverage GRCh38 BAM and VCF files.
 - Architected downstream local bioinformatic pipeline on Apple Silicon (M4 Macbook)—converting VCF to Plink2 (PGEN/PVAR/PSAM) and executing Nextflow pgsc_calc with PCA ancestry projection against 1000 Genomes / HGDP reference panels.
 - Engineered custom Python extraction pipelines for VEP-annotated VCFs—calculating multi-trait Z-Score standardized Polygenic Risk Scores, pharmacogenomic/lifestyle loci, mitochondrial heteroplasmy, and novel 'dark matter' variant filtration mapped to HPO/MONDO ontologies.
+- Pipeline output — FASTQ, GRCh38-aligned BAM, VEP-annotated VCF, and multi-trait PRS — released to the public domain (CC0) under ENA accession PRJEB109744 / BioSample SAMEA121950568, as an open-science reference implementation.
 
 ### Empirical Data Scientist & Scientific Visualizer — Wikimedia Commons, Tableau Public & Flourish Visual Data Portfolio
-*2023 — Present*
+*2023 — Present* · **[Independent / Self-Funded]**
 
 - Published 70+ interactive empirical public health, epidemiological, and biomedical visualizations across Wikimedia Commons, Tableau Public (15 Vizzes, 4,300+ views), and Flourish.
 - Created original vector Euler diagram illustrating overlapping clinical phenotypes across autism spectrum disorder (ASD), dystonia, epilepsy, and schizophrenia (CC BY-SA 4.0, adopted across 4 Wikipedia language editions).
@@ -106,4 +113,13 @@ A personal, evolving interactive narration and simulation modeling humanity as a
 - **EF SET English Certificate 68/100 (C1 Advanced)** (Mar 2024) — EF Standard English Test (EF SET) · https://cert.efset.org/jHk84h
 - **Career Essentials in Generative AI** (Mar 2024) — Microsoft and LinkedIn · Certificate: https://www.linkedin.com/learning/certificates/c4f1f59578e3ac2567787e262e3b2ec55debf96bbbced4d34d5edaa821d9e6d9
 - **GALENOS Crowd Evidence Synthesis Training** (May 2026) — Cochrane Crowd & GALENOS Systematic Review Screening Certification
+
+## Contact & Identifiers
+- Email: me@mariomarcolongo.com
+- Website: https://mariomarcolongo.com
+- ORCID: https://orcid.org/0000-0003-2846-7115
+- LinkedIn: https://www.linkedin.com/in/mario-marcolongo
+- GitHub: https://github.com/jnton
+- Agent-Readiness Audit (16/16 Checks): https://isitagentready.com/mariomarcolongo.com?checks=robotsTxt%2Csitemap%2ClinkHeaders%2CdnsAid%2CmarkdownNegotiation%2CrobotsTxtAiRules%2CcontentSignals%2CwebBotAuth%2CapiCatalog%2CoauthDiscovery%2CoauthProtectedResource%2CauthMd%2CmcpServerCard%2Ca2aAgentCard%2CagentSkills%2CwebMcp%2Cx402%2Cmpp%2Cucp%2Cacp
+- A2A Agent Card: https://mariomarcolongo.com/.well-known/agent-card.json
 

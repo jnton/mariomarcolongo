@@ -4,7 +4,7 @@ import "../styles/cv.css";
 ---
 
 <Layout
-  title="Mario Marcolongo — Comprehensive Profile & CV"
+  title="Mario Marcolongo — CV / Curriculum Vitae"
   description="Curriculum Vitae of Mario Marcolongo — Primary source verification, open science infrastructure (Yourself to Science™), and empirical data synthesis."
   canonical="https://mariomarcolongo.com/cv.html"
 >
@@ -15,11 +15,18 @@ import "../styles/cv.css";
         "@context": "https://schema.org",
         "@graph": [
           {
+            "@type": "ProfilePage",
+            "@id": "https://mariomarcolongo.com/cv.html#webpage",
+            "name": "Mario Marcolongo — CV / Curriculum Vitae",
+            "url": "https://mariomarcolongo.com/cv.html",
+            "mainEntity": { "@id": "https://mariomarcolongo.com/#person" }
+          },
+          {
             "@type": "Person",
             "@id": "https://mariomarcolongo.com/#person",
             "name": "Mario Marcolongo",
-            "jobTitle": "AI-Native Systems Builder & Open Science Technologist",
-            "description": "AI-native systems builder and open science technologist specializing in rapid empirical data synthesis, autonomous infrastructure, primary source verification, and FAIRsharing data curation.",
+            "jobTitle": "Scientific Fact-Checker & Open Science Technologist",
+            "description": "Scientific fact-checker, systems developer, and open science technologist specializing in rapid empirical data synthesis, autonomous infrastructure, primary source verification, and FAIRsharing data curation.",
             "url": "https://mariomarcolongo.com",
             "identifier": "https://orcid.org/0000-0003-2846-7115",
             "sameAs": [
@@ -41,7 +48,7 @@ import "../styles/cv.css";
               }
             ],
             "knowsAbout": [
-              "AI-Native Systems Architecture & Serverless Engineering",
+              "Systems Architecture & Serverless Engineering",
               "41× Whole Genome Sequencing Bioinformatics (Terra.bio BAM/VCF Extraction & Nextflow pgsc_calc / Apple Silicon)",
               "Polygenic Risk Score (PRS) Computation & HPO/MONDO Disease Ontologies",
               "Epistemic Rigor & Primary Literature Fact-Checking",
@@ -98,7 +105,7 @@ import "../styles/cv.css";
           {
             "@type": "MedicalScholarlyArticle",
             "@id": "https://mariomarcolongo.com/#genomic-pipeline",
-            "name": "Local 41× Whole Genome Sequencing & Polygenic Risk Score Nextflow Pipeline",
+            "name": "Whole-Genome Sequencing Pipeline & Polygenic Risk Scoring (41×)",
             "headline": "Utilized Terra.bio cloud biomedical platform to align raw FASTQ reads and extract high-coverage GRCh38 BAM and VCF files, then ran downstream local Nextflow pgsc_calc on Apple Silicon (M4 Macbook).",
             "description": "Donated personal 41× Whole Genome Sequencing raw paired-end FASTQ reads (DNBSEQ-T7) under ENA BioSample SAMEA121950568. Processed raw FASTQ reads via Terra.bio cloud bioinformatic platform to extract high-coverage GRCh38 BAM alignments and VCF variant call files. Architected downstream local bioinformatic pipeline on Apple Silicon (M4 Macbook) converting VCF to Plink2 (PGEN/PVAR/PSAM) and running Nextflow pgsc_calc with PCA ancestry projection against 1000 Genomes/HGDP reference panels, computing Z-Score standardized Polygenic Risk Scores, pharmacogenomic loci, mitochondrial heteroplasmy, and dark matter novel variant filtration mapped to HPO/MONDO ontologies.",
             "author": { "@id": "https://mariomarcolongo.com/#person" },
@@ -210,8 +217,8 @@ import "../styles/cv.css";
           >
         </div>
         <p class="cv-tagline" id="cvTagline">
-          AI-Native Systems Builder · Open Science Technologist · Empirical Data
-          Synthesizer
+          Scientific Fact-Checker · Open Science Technologist · Systems
+          Developer
         </p>
 
         <div class="cv-contact" id="cvContact">
@@ -248,8 +255,8 @@ import "../styles/cv.css";
       <section class="cv-section">
         <h2 class="cv-section-heading">Executive Summary</h2>
         <p class="cv-summary" id="cvSummary">
-          AI-native software developer, open science builder, and scientific
-          fact-checker with 9+ years of experience verifying biomedical and
+          Scientific fact-checker, systems developer, and open science
+          technologist with 9+ years of experience verifying biomedical and
           technical claims across public knowledge bases (4,317 documented edits
           across English/Italian Wikipedia, Wikidata, and Wikimedia Commons).
           Founder and lead developer of Yourself to Science™
@@ -280,6 +287,7 @@ import "../styles/cv.css";
           <div class="cv-item">
             <div class="cv-item-header">
               <span class="cv-item-title">Founder & Lead Builder</span>
+              <span class="cv-role-tag">Independent / Self-Funded</span>
               <span class="cv-item-date">Aug 2024 — Present</span>
             </div>
             <div class="cv-item-org">
@@ -318,9 +326,33 @@ import "../styles/cv.css";
 
           <div class="cv-item">
             <div class="cv-item-header">
+              <span class="cv-item-title">AI Red-Teaming Practitioner</span>
+              <span class="cv-role-tag">Independent Practitioner</span>
+              <span class="cv-item-date">2023 — Present</span>
+            </div>
+            <div class="cv-item-org">
+              Gray Swan AI Proving Ground · <a
+                href="https://app.grayswan.ai/arena/user/6a57be70d15e123775a1e9cf"
+                target="_blank"
+                rel="noopener noreferrer">Proving Ground Profile</a
+              >
+            </div>
+            <ul class="cv-item-bullets">
+              <li>
+                Independently exploring LLM safety boundaries, jailbreak dynamics, and policy enforcement across emergent models since 2023, developing deep hands-on intuition for model vulnerabilities.
+              </li>
+              <li>
+                Ranked in the top 8% globally on the Gray Swan AI Proving Ground (official record established July 2026) across 75+ confirmed model breaks spanning chat, multimodal/image, agentic tool-use, and indirect prompt injection categories.
+              </li>
+            </ul>
+          </div>
+
+          <div class="cv-item">
+            <div class="cv-item-header">
               <span class="cv-item-title"
                 >Scientific Fact-Checker, Writer & Web Developer</span
               >
+              <span class="cv-role-tag">Freelance Contractor (Partita IVA)</span>
               <span class="cv-item-date">Jun 2023 — Present</span>
             </div>
             <div class="cv-item-org">
@@ -366,6 +398,7 @@ import "../styles/cv.css";
               <span class="cv-item-title"
                 >Volunteer Focus Group Conductor & Research Facilitator</span
               >
+              <span class="cv-role-tag">Volunteer, unpaid</span>
               <span class="cv-item-date">Nov 2022 — 2025</span>
             </div>
             <div class="cv-item-org">
@@ -400,6 +433,7 @@ import "../styles/cv.css";
           <div class="cv-item">
             <div class="cv-item-header">
               <span class="cv-item-title">Scientific & Biomedical Editor</span>
+              <span class="cv-role-tag">Volunteer, unpaid</span>
               <span class="cv-item-date">Jan 2017 — Present</span>
             </div>
             <div class="cv-item-org">
@@ -434,8 +468,9 @@ import "../styles/cv.css";
           <div class="cv-item">
             <div class="cv-item-header">
               <span class="cv-item-title"
-                >Citizen Scientist Open Genomic Donor (41× WGS)</span
+                >Whole-Genome Sequencing Pipeline & Polygenic Risk Scoring (41×)</span
               >
+              <span class="cv-role-tag">Independent / Personal Project, unpaid</span>
               <span class="cv-item-date">Jan 2026</span>
             </div>
             <div class="cv-item-org">
@@ -481,6 +516,7 @@ import "../styles/cv.css";
               <span class="cv-item-title"
                 >Empirical Data Scientist & Scientific Visualizer</span
               >
+              <span class="cv-role-tag">Independent / Self-Funded</span>
               <span class="cv-item-date">2023 — Present</span>
             </div>
             <div class="cv-item-org">
@@ -901,6 +937,7 @@ import "../styles/cv.css";
           <div class="cv-item">
             <div class="cv-item-header">
               <span class="cv-item-title">${e.role}</span>
+              ${e.tag ? `<span class="cv-role-tag">${e.tag}</span>` : ""}
               ${e.period ? `<span class="cv-item-date">${e.period}</span>` : ""}
             </div>
             ${e.org ? `<div class="cv-item-org">${e.org}${renderLinksHtml(e.links)}</div>` : ""}
@@ -929,6 +966,7 @@ import "../styles/cv.css";
           <div class="cv-item">
             <div class="cv-item-header">
               <span class="cv-item-title">${r.role}</span>
+              ${r.tag ? `<span class="cv-role-tag">${r.tag}</span>` : ""}
               ${r.period ? `<span class="cv-item-date">${r.period}</span>` : ""}
             </div>
             ${r.org ? `<div class="cv-item-org">${r.org}${renderLinksHtml(r.links)}</div>` : ""}
@@ -1014,7 +1052,7 @@ import "../styles/cv.css";
 
       if (!content) {
         content = `# Mario Marcolongo — Curriculum Vitae (AI / LLM Compatible Markdown)
-> AI-Native Systems Builder · Open Science Technologist · Empirical Data Synthesizer
+> Scientific Fact-Checker · Open Science Technologist · Systems Developer
 > Location: Italy · Open to Global Opportunities Worldwide
 
 ## Executive Summary

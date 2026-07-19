@@ -3,7 +3,7 @@ import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout
-  title="Mario Marcolongo — I check the claims other people don't."
+  title="Mario Marcolongo — Scientific Fact-Checker & Open Science Technologist"
   description="Primary source verification, open science infrastructure (Yourself to Science™ indexing 55+ research studies), interactive systems simulation (Emergent Humanity), and empirical data synthesis."
   canonical="https://mariomarcolongo.com/"
 >
@@ -14,11 +14,18 @@ import Layout from '../layouts/Layout.astro';
     "@context": "https://schema.org",
     "@graph": [
       {
+        "@type": "ProfilePage",
+        "@id": "https://mariomarcolongo.com/#webpage",
+        "name": "Mario Marcolongo — Scientific Fact-Checker & Open Science Technologist",
+        "url": "https://mariomarcolongo.com/",
+        "mainEntity": { "@id": "https://mariomarcolongo.com/#person" }
+      },
+      {
         "@type": "Person",
         "@id": "https://mariomarcolongo.com/#person",
         "name": "Mario Marcolongo",
-        "jobTitle": "AI-Native Systems Builder & Open Science Technologist",
-        "description": "AI-native systems builder and open science technologist specializing in rapid empirical data synthesis, autonomous infrastructure, primary source verification, and FAIRsharing data curation.",
+        "jobTitle": "Scientific Fact-Checker & Open Science Technologist",
+        "description": "Scientific fact-checker, systems developer, and open science technologist specializing in rapid empirical data synthesis, autonomous infrastructure, primary source verification, and FAIRsharing data curation.",
         "url": "https://mariomarcolongo.com",
         "identifier": "https://orcid.org/0000-0003-2846-7115",
         "sameAs": [
@@ -40,7 +47,7 @@ import Layout from '../layouts/Layout.astro';
           }
         ],
         "knowsAbout": [
-          "AI-Native Systems Architecture & Serverless Engineering",
+          "Systems Architecture & Serverless Engineering",
           "41× Whole Genome Sequencing Bioinformatics (Terra.bio BAM/VCF Extraction & Nextflow pgsc_calc / Apple Silicon)",
           "Polygenic Risk Score (PRS) Computation & HPO/MONDO Disease Ontologies",
           "Epistemic Rigor & Primary Literature Fact-Checking",
@@ -97,7 +104,7 @@ import Layout from '../layouts/Layout.astro';
       {
         "@type": "MedicalScholarlyArticle",
         "@id": "https://mariomarcolongo.com/#genomic-pipeline",
-        "name": "Local 41× Whole Genome Sequencing & Polygenic Risk Score Nextflow Pipeline",
+        "name": "Whole-Genome Sequencing Pipeline & Polygenic Risk Scoring (41×)",
         "headline": "Utilized Terra.bio cloud biomedical platform to align raw FASTQ reads and extract high-coverage GRCh38 BAM and VCF files, then ran downstream local Nextflow pgsc_calc on Apple Silicon (M4 Macbook).",
         "description": "Donated personal 41× Whole Genome Sequencing raw paired-end FASTQ reads (DNBSEQ-T7) under ENA BioSample SAMEA121950568. Processed raw FASTQ reads via Terra.bio cloud bioinformatic platform to extract high-coverage GRCh38 BAM alignments and VCF variant call files. Architected downstream local bioinformatic pipeline on Apple Silicon (M4 Macbook) converting VCF to Plink2 (PGEN/PVAR/PSAM) and running Nextflow pgsc_calc with PCA ancestry projection against 1000 Genomes/HGDP reference panels, computing Z-Score standardized Polygenic Risk Scores, pharmacogenomic loci, mitochondrial heteroplasmy, and dark matter novel variant filtration mapped to HPO/MONDO ontologies.",
         "author": { "@id": "https://mariomarcolongo.com/#person" },
@@ -189,7 +196,7 @@ import Layout from '../layouts/Layout.astro';
           </div>
         </div>
         <h1 class="hero-headline hero-animate" id="heroHeadline" style="--delay: 0.15s;">I check the claims other people don't.</h1>
-        <p class="hero-sub hero-animate" id="heroSub" style="--delay: 0.25s;">Nine years of Wikipedia edits<button class="cite-btn" data-cite="edits" aria-expanded="false" title="Click to inspect source">1</button> that hold up under scrutiny. A genome<button class="cite-btn" data-cite="ena" aria-expanded="false" title="Click to inspect source">2</button> released to the public domain under a real accession number. An open science registry<button class="cite-btn" data-cite="registry" aria-expanded="false" title="Click to inspect platform">3</button> cataloging 55+ research studies and cited across 37 Wikidata entities.</p>
+        <p class="hero-sub hero-animate" id="heroSub" style="--delay: 0.25s;">Nine years of Wikipedia edits<button class="cite-btn" data-cite="edits" aria-expanded="false" title="Click to inspect source">1</button> that hold up under scrutiny. A genome<button class="cite-btn" data-cite="ena" aria-expanded="false" title="Click to inspect source">2</button> released to the public domain under a real accession number. An open science registry<button class="cite-btn" data-cite="registry" aria-expanded="false" title="Click to inspect platform">3</button> cataloging 55+ research studies and cited across 37 Wikidata entities. And a top-8% ranking<button class="cite-btn" data-cite="grayswan" aria-expanded="false" title="Click to inspect profile">4</button> on Gray Swan AI's red-teaming leaderboard — 75+ confirmed breaks across chat, image, agentic, and prompt-injection challenges.</p>
         <div class="hero-meta hero-animate" style="--delay: 0.35s;">
           <span id="heroLocation">Italy</span>
           <span>·</span>
@@ -233,6 +240,14 @@ import Layout from '../layouts/Layout.astro';
         <div class="proof-row">
           <span class="proof-tag">Open Genomic Donor</span>
           <p class="proof-text">Donated personal 41× Whole Genome Sequencing raw paired-end FASTQ reads (DNBSEQ-T7) to the public domain (CC0) under ENA BioSample SAMEA121950568.<button class="cite-btn" data-cite="ena" aria-expanded="false" title="Click to inspect verification source">4</button></p>
+        </div>
+        <div class="proof-row">
+          <span class="proof-tag">AI Red-Teaming</span>
+          <p class="proof-text">Ranked in the top 8% globally on Gray Swan AI's Proving Ground — 75+ independently verified LLM breaks across chat, image, agentic, and prompt-injection categories. Gray Swan's research is cited in 11 frontier model system cards, including Anthropic's Claude family and OpenAI's GPT-5/o1/o3-mini.<button class="cite-btn" data-cite="grayswan" aria-expanded="false" title="Click to inspect profile">5</button></p>
+        </div>
+        <div class="proof-row">
+          <span class="proof-tag">Agent-Ready Architecture</span>
+          <p class="proof-text">100% agent-ready web infrastructure verified by independent benchmark — passing all 16 autonomous agent endpoints including live A2A Agent Card (`agent-card.json`), DNS-AID, and llms.txt.<button class="cite-btn" data-cite="agentready" aria-expanded="false" title="Click to inspect live benchmark">6</button></p>
         </div>
       </div>
     </div>
@@ -810,6 +825,16 @@ import Layout from '../layouts/Layout.astro';
         text: "Giacomo Moro Mauretto's 'Italiani Veri', published by Mondadori in April 2025 — official acknowledgment published on the final page.",
         href: "https://www.mondadori.it/libri/italiani-veri-giacomo-moro-mauretto/",
         label: "Italiani Veri — Mondadori ↗"
+      },
+      grayswan: {
+        text: "Ranked in the top 8% globally on Gray Swan AI's Proving Ground — 75+ confirmed breaks across chat, image, agentic, and prompt-injection categories. Gray Swan's research is cited across 11 frontier model system cards.",
+        href: "https://app.grayswan.ai/arena/user/6a57be70d15e123775a1e9cf",
+        label: "Gray Swan Proving Ground Profile ↗"
+      },
+      agentready: {
+        text: "Independently verified by IsItAgentReady benchmark passing 16/16 autonomous agent endpoints: robotsTxt, sitemap, linkHeaders, dnsAid, markdownNegotiation, robotsTxtAiRules, contentSignals, apiCatalog, authMd, mcpServerCard, a2aAgentCard, agentSkills.",
+        href: "https://isitagentready.com/mariomarcolongo.com?checks=robotsTxt%2Csitemap%2ClinkHeaders%2CdnsAid%2CmarkdownNegotiation%2CrobotsTxtAiRules%2CcontentSignals%2CwebBotAuth%2CapiCatalog%2CoauthDiscovery%2CoauthProtectedResource%2CauthMd%2CmcpServerCard%2Ca2aAgentCard%2CagentSkills%2CwebMcp%2Cx402%2Cmpp%2Cucp%2Cacp",
+        label: "Live Agent-Readiness Benchmark (16/16 Passing) ↗"
       }
     };
 
@@ -1115,7 +1140,7 @@ import Layout from '../layouts/Layout.astro';
       }
 
       if (!content) {
-        content = `# Mario Marcolongo — AI Curriculum Vitae\nAI-Native Systems Builder, Open Science Technologist & Empirical Data Synthesizer.\n4,317 verified Wikimedia contributions. Founder of Yourself to Science™ (yourselftoscience.org).\nView full profile online at https://mariomarcolongo.com/llms-full.txt`;
+        content = `# Mario Marcolongo — AI Curriculum Vitae\nScientific Fact-Checker, Open Science Technologist & Systems Developer.\n4,317 verified Wikimedia contributions. Founder of Yourself to Science™ (yourselftoscience.org).\nView full profile online at https://mariomarcolongo.com/llms-full.txt`;
       }
 
       try {

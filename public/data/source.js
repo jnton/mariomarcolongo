@@ -10,8 +10,8 @@ const MARIO_DOSSIER = {
   identity: {
     name: "Mario Marcolongo",
     headline: "I check the claims other people don't.",
-    role: "Nine years of Wikipedia edits that hold up under scrutiny. A genome released to the public domain under a real accession number. An open science registry cataloging 55+ research studies and cited across 37 Wikidata entities.",
-    heroSubHtml: "Nine years of Wikipedia edits<button class=\"cite-btn\" data-cite=\"edits\" aria-expanded=\"false\" title=\"Click to inspect source\">1</button> that hold up under scrutiny. A genome<button class=\"cite-btn\" data-cite=\"ena\" aria-expanded=\"false\" title=\"Click to inspect source\">2</button> released to the public domain under a real accession number. An open science registry<button class=\"cite-btn\" data-cite=\"registry\" aria-expanded=\"false\" title=\"Click to inspect platform\">3</button> cataloging 55+ research studies and cited across 37 Wikidata entities.",
+    role: "Nine years of Wikipedia edits that hold up under scrutiny. A genome released to the public domain under a real accession number. An open science registry cataloging 55+ research studies and cited across 37 Wikidata entities. And a top-8% ranking on Gray Swan AI's red-teaming leaderboard — 75+ confirmed breaks across chat, image, agentic, and prompt-injection challenges.",
+    heroSubHtml: "Nine years of Wikipedia edits<button class=\"cite-btn\" data-cite=\"edits\" aria-expanded=\"false\" title=\"Click to inspect source\">1</button> that hold up under scrutiny. A genome<button class=\"cite-btn\" data-cite=\"ena\" aria-expanded=\"false\" title=\"Click to inspect source\">2</button> released to the public domain under a real accession number. An open science registry<button class=\"cite-btn\" data-cite=\"registry\" aria-expanded=\"false\" title=\"Click to inspect platform\">3</button> cataloging 55+ research studies and cited across 37 Wikidata entities. And a top-8% ranking<button class=\"cite-btn\" data-cite=\"grayswan\" aria-expanded=\"false\" title=\"Click to inspect profile\">4</button> on Gray Swan AI's red-teaming leaderboard — 75+ confirmed breaks across chat, image, agentic, and prompt-injection challenges.",
     location: "Italy",
     relocation: "Open to Global Opportunities Worldwide (Full-Time, Remote, B2B / Consulting)",
     languages: "Italian (Native / Mother Tongue) · English (C1 Advanced)",
@@ -21,11 +21,12 @@ const MARIO_DOSSIER = {
     domain: "https://mariomarcolongo.com",
     linkedin: "https://www.linkedin.com/in/mario-marcolongo",
     github: "https://github.com/jnton",
+    agentReadyUrl: "https://isitagentready.com/mariomarcolongo.com?checks=robotsTxt%2Csitemap%2ClinkHeaders%2CdnsAid%2CmarkdownNegotiation%2CrobotsTxtAiRules%2CcontentSignals%2CwebBotAuth%2CapiCatalog%2CoauthDiscovery%2CoauthProtectedResource%2CauthMd%2CmcpServerCard%2Ca2aAgentCard%2CagentSkills%2CwebMcp%2Cx402%2Cmpp%2Cucp%2Cacp",
     // Obfuscated for public HTML — reassembled client-side
     contactObfuscated: ["me", "mariomarcolongo", "com"]
   },
 
-  summary: "AI-native software developer, open science builder, and scientific fact-checker with 9+ years of experience verifying biomedical and technical claims across public knowledge bases (4,317 documented edits across English/Italian Wikipedia, Wikidata, and Wikimedia Commons). Founder and lead developer of Yourself to Science™ (yourselftoscience.org), an open-source catalogue and unified directory indexing 55+ initiatives where people can contribute their biological and digital self (including genomic data, biological samples, biobanks, and clinical trials) to scientific research. Managed technical web infrastructure (OVHCloud, custom WordPress, SEO) and upheld scientific integrity for Entropy for Life (245,000+ YouTube subscribers / 480,000+ cross-platform community)—conducting bibliographic research, fact-checking scripts, and creating empirical data visualizations across 55+ documentaries and articles, earning formal acknowledgment in a Mondadori book. Volunteer research facilitator under Prof. Marta Panzeri at the University of Padua Department of Developmental Psychology and Socialisation (Nov 2022 – 2025), designing standardized focus group protocols and co-conducting psychological research sessions with autistic participants to inform educational strategies and support programs.",
+  summary: "Scientific fact-checker, systems developer, and open science technologist with 9+ years of experience verifying biomedical and technical claims across public knowledge bases (4,317 documented edits across English/Italian Wikipedia, Wikidata, and Wikimedia Commons). Founder and lead developer of Yourself to Science™ (yourselftoscience.org), an open-source catalogue and unified directory indexing 55+ initiatives where people can contribute their biological and digital self (including genomic data, biological samples, biobanks, and clinical trials) to scientific research. Managed technical web infrastructure (OVHCloud, custom WordPress, SEO) and upheld scientific integrity for Entropy for Life (245,000+ YouTube subscribers / 480,000+ cross-platform community)—conducting bibliographic research, fact-checking scripts, and creating empirical data visualizations across 55+ documentaries and articles, earning formal acknowledgment in a Mondadori book. Volunteer research facilitator under Prof. Marta Panzeri at the University of Padua Department of Developmental Psychology and Socialisation (Nov 2022 – 2025), designing standardized focus group protocols and co-conducting psychological research sessions with autistic participants to inform educational strategies and support programs.",
 
   pillars: [
     {
@@ -64,6 +65,7 @@ const MARIO_DOSSIER = {
   ],
 
   stats: [
+    { value: "100 / 100 — Level 5", label: "Cloudflare Agent-Ready Audit", detail: "Full marks on Cloudflare's isitagentready.com audit: Discoverability 4/4, Content 1/1, Bot Access Control 2/2, API/Auth/MCP & Skill Discovery 7/7. Cloudflare's own data shows most professional sites score well under 50." },
     { value: "100 / 100", label: "Production Web & AI Readiness", detail: "Perfect 100 Lighthouse (Performance/a11y/SEO) & 3/3 Agentic Browsing score on Yourself to Science™" },
     { value: "70+ Vizzes", label: "Empirical Data Visualizations", detail: "Published 55+ Flourish & 15 Tableau Public epidemiological, demographic & ISTAT workbooks analyzing ~80+ datasets" },
     { value: "55+ Videos & 4 Articles", label: "Science Verification & Editorial Acceleration", detail: "Fact-checked primary literature across 55+ YouTube videos (long & short), co-authored 4 articles, designed data visualizations & Reels, and managed A/B tested thumbnails/titles for Giacomo Moro Mauretto's Entropy for Life (480K+ community); acknowledged in Mondadori book Italiani Veri" },
@@ -223,6 +225,7 @@ const MARIO_DOSSIER = {
     {
       role: "Founder & Lead Builder",
       org: "Yourself to Science™",
+      tag: "Independent / Self-Funded",
       period: "Aug 2024 — Present",
       links: {
         website: "https://yourselftoscience.org",
@@ -235,8 +238,22 @@ const MARIO_DOSSIER = {
       ]
     },
     {
+      role: "AI Red-Teaming Practitioner",
+      org: "Gray Swan AI Proving Ground",
+      tag: "Independent Practitioner",
+      period: "2023 — Present",
+      links: {
+        website: "https://app.grayswan.ai/arena/user/6a57be70d15e123775a1e9cf"
+      },
+      bullets: [
+        "Independently exploring LLM safety boundaries, jailbreak dynamics, and policy enforcement across emergent models since 2023, developing deep hands-on intuition for model vulnerabilities.",
+        "Ranked in the top 8% globally on the Gray Swan AI Proving Ground (official record established July 2026) across 75+ confirmed model breaks spanning chat, multimodal/image, agentic tool-use, and indirect prompt injection categories."
+      ]
+    },
+    {
       role: "Scientific Fact-Checker, Writer & Web Developer",
       org: "Entropy for Life — Italy",
+      tag: "Freelance Contractor (Partita IVA)",
       period: "Jun 2023 — Present",
       links: {
         website: "https://entropyforlife.it",
@@ -252,6 +269,7 @@ const MARIO_DOSSIER = {
     {
       role: "Volunteer Focus Group Conductor & Research Facilitator",
       org: "University of Padua — Department of Developmental Psychology and Socialisation",
+      tag: "Volunteer, unpaid",
       period: "Nov 2022 — 2025",
       bullets: [
         "Contributed as a volunteer researcher to a psychological focus group study on sexuality in the autism spectrum led by Prof. Marta Panzeri. The study aimed to gather qualitative insights on the sexual experiences of autistic people to inform educational strategies and support initiatives.",
@@ -263,6 +281,7 @@ const MARIO_DOSSIER = {
     {
       role: "Scientific & Biomedical Editor",
       org: "Wikipedia & Wikimedia Foundation",
+      tag: "Volunteer, unpaid",
       period: "Jan 2017 — Present",
       links: {
         website: "https://commons.wikimedia.org/wiki/Special:CentralAuth/Digressivo"
@@ -276,22 +295,24 @@ const MARIO_DOSSIER = {
 
   research: [
     {
-      role: "Citizen Scientist Open Genomic Donor (41× WGS)",
+      role: "Whole-Genome Sequencing Pipeline & Polygenic Risk Scoring (41×)",
       org: "European Nucleotide Archive — ENA PRJEB109744 / SAMEA121950568",
+      tag: "Independent / Personal Project, unpaid",
       period: "Jan 2026",
       links: {
         website: "https://www.ebi.ac.uk/ena/browser/view/PRJEB109744"
       },
       bullets: [
-        "Donated personal 41× Whole Genome Sequencing raw paired-end FASTQ reads (DNBSEQ-T7) to the public domain (CC0) under ENA BioSample SAMEA121950568.",
         "Utilized Terra.bio cloud platform to process raw FASTQ reads aligned against the GRCh38 human reference genome to extract high-coverage GRCh38 BAM and VCF files.",
         "Architected downstream local bioinformatic pipeline on Apple Silicon (M4 Macbook)—converting VCF to Plink2 (PGEN/PVAR/PSAM) and executing Nextflow pgsc_calc with PCA ancestry projection against 1000 Genomes / HGDP reference panels.",
-        "Engineered custom Python extraction pipelines for VEP-annotated VCFs—calculating multi-trait Z-Score standardized Polygenic Risk Scores, pharmacogenomic/lifestyle loci, mitochondrial heteroplasmy, and novel 'dark matter' variant filtration mapped to HPO/MONDO ontologies."
+        "Engineered custom Python extraction pipelines for VEP-annotated VCFs—calculating multi-trait Z-Score standardized Polygenic Risk Scores, pharmacogenomic/lifestyle loci, mitochondrial heteroplasmy, and novel 'dark matter' variant filtration mapped to HPO/MONDO ontologies.",
+        "Pipeline output — FASTQ, GRCh38-aligned BAM, VEP-annotated VCF, and multi-trait PRS — released to the public domain (CC0) under ENA accession PRJEB109744 / BioSample SAMEA121950568, as an open-science reference implementation."
       ]
     },
     {
       role: "Empirical Data Scientist & Scientific Visualizer",
       org: "Wikimedia Commons, Tableau Public & Flourish Visual Data Portfolio",
+      tag: "Independent / Self-Funded",
       period: "2023 — Present",
       links: {
         tableau: "https://public.tableau.com/app/profile/mario.marcolongo/vizzes",
@@ -313,6 +334,7 @@ const MARIO_DOSSIER = {
   ],
 
   skills: [
+    "AI Red-Teaming & Adversarial Evaluation: Top 8% globally, Gray Swan AI Proving Ground (https://app.grayswan.ai/arena/user/6a57be70d15e123775a1e9cf) — 75+ confirmed breaks across Chat, Image, Agent, and Indirect-Injection categories.",
     "Web Engineering & Architecture: JavaScript, Node.js, Static & Serverless Architecture, WordPress Development & Customization, HTML/CSS Design Systems, Cloud DNS / SSL / OVHCloud / AWS Lambda / API Gateway",
     "Scientific Verification & Methodologies: Bibliographic Research Methodology, Primary Source Fact-Checking, Psychological Focus Group Facilitation & Standardized Protocols, Epidemiological Data Synthesis, Cochrane/Galenos Screening",
     "Open-Source Intelligence (OSINT) & Digital Investigation: Multi-engine Boolean search (Google, DuckDuckGo, Yandex) and academic/gray-literature querying (Google Scholar, PubMed, Europe PMC); reverse-image and facial-recognition verification (PimEyes, Yandex Images, Google Lens, TinEye); EXIF/metadata extraction and file provenance verification; archival/provenance research (Wayback Machine, Archive.today); WHOIS/DNS history and certificate-transparency lookups for tracing site ownership and technical infrastructure; cross-platform digital-footprint correlation for claim verification, source attribution, and coordinated-inauthentic-behavior detection",
