@@ -15,6 +15,40 @@ const sizes = [
   { name: 'favicon.ico', size: 32 }
 ];
 
+function pngToIco(pngBuffer, width = 32, height = 32) {
+  const header = Buffer.alloc(6);
+  header.writeUInt16LE(0, 0); // Reserved
+  header.writeUInt16LE(1, 2); // Type: 1 = ICO
+  header.writeUInt16LE(1, 4); // Number of images: 1
+
+  const entry = Buffer.alloc(16);
+  entry.writeUInt8(width >= 256 ? 0 : width, 0);   // Width
+  entry.writeUInt8(height >= 256 ? 0 : height, 1); // Height
+  entry.writeUInt8(0, 2);                          // Color palette
+  entry.writeUInt8(0, 3);                          // Reserved
+  entry.writeUInt16LE(1, 4);                       // Color planes
+  entry.writeUInt16LE(32, 6);                      // Bits per pixel
+  entry.writeUInt32LE(pngBuffer.length, 8);        // Image data size
+  entry.writeUInt32LE(22, 12);                     // Offset (6 + 16)
+
+  return Buffer.concat([header, entry, pngBuffer]);
+}
+
+function ensureValidIco(filePath) {
+  if (!fs.existsSync(filePath)) return;
+  const buffer = fs.readFileSync(filePath);
+  // Check if already valid ICO (starts with 00 00 01 00)
+  if (buffer.length > 4 && buffer[0] === 0x00 && buffer[1] === 0x00 && buffer[2] === 0x01 && buffer[3] === 0x00) {
+    return;
+  }
+  // Check if PNG (starts with 89 50 4E 47)
+  if (buffer.length > 8 && buffer[0] === 0x89 && buffer[1] === 0x50 && buffer[2] === 0x4E && buffer[3] === 0x47) {
+    const icoBuffer = pngToIco(buffer);
+    fs.writeFileSync(filePath, icoBuffer);
+    console.log(`✓ Converted raw PNG ${path.basename(filePath)} to valid MS Windows icon resource (.ico format)`);
+  }
+}
+
 async function generateFavicons() {
   console.log('Generating high-resolution favicons from favicon.svg...');
   if (!fs.existsSync(svgPath)) {
@@ -48,6 +82,7 @@ async function generateFavicons() {
     };
     fs.writeFileSync(manifestPath, JSON.stringify(manifest, null, 2), 'utf8');
     console.log('✓ Verified/Generated site.webmanifest');
+    ensureValidIco(path.join(publicDir, 'favicon.ico'));
     return;
   }
 
@@ -76,6 +111,8 @@ async function generateFavicons() {
       await element.screenshot({ path: outputPath, omitBackground: true });
       console.log(`✓ Generated ${name} (${size}x${size})`);
     }
+
+    ensureValidIco(path.join(publicDir, 'favicon.ico'));
 
     // Generate site.webmanifest
     const manifestPath = path.join(publicDir, 'site.webmanifest');
