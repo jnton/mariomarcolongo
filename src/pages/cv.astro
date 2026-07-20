@@ -799,43 +799,43 @@ import "../styles/cv.css";
       const items = [];
       if (links.website)
         items.push(
-          `<a href="${links.website}" target="_blank" rel="noopener noreferrer">Website</a>`,
+          `<a href="${links.website}" target="_blank" rel="noopener noreferrer" aria-label="Website for ${title}">Website</a>`,
         );
       if (links.github)
         items.push(
-          `<a href="${links.github}" target="_blank" rel="noopener noreferrer">GitHub</a>`,
+          `<a href="${links.github}" target="_blank" rel="noopener noreferrer" aria-label="GitHub repository for ${title}">GitHub</a>`,
         );
       if (links.chromeStore)
         items.push(
-          `<a href="${links.chromeStore}" target="_blank" rel="noopener noreferrer">Chrome Web Store</a>`,
+          `<a href="${links.chromeStore}" target="_blank" rel="noopener noreferrer" aria-label="Chrome Web Store page for ${title}">Chrome Web Store</a>`,
         );
       if (links.edgeStore)
         items.push(
-          `<a href="${links.edgeStore}" target="_blank" rel="noopener noreferrer">Edge Add-ons</a>`,
+          `<a href="${links.edgeStore}" target="_blank" rel="noopener noreferrer" aria-label="Edge Add-ons page for ${title}">Edge Add-ons</a>`,
         );
       if (links.bot)
         items.push(
-          `<a href="${links.bot}" target="_blank" rel="noopener noreferrer">Telegram Bot</a>`,
+          `<a href="${links.bot}" target="_blank" rel="noopener noreferrer" aria-label="Telegram Bot for ${title}">Telegram Bot</a>`,
         );
       if (links.youtube)
         items.push(
-          `<a href="${links.youtube}" target="_blank" rel="noopener noreferrer">YouTube</a>`,
+          `<a href="${links.youtube}" target="_blank" rel="noopener noreferrer" aria-label="YouTube channel for ${title}">YouTube</a>`,
         );
       if (links.playlist)
         items.push(
-          `<a href="${links.playlist}" target="_blank" rel="noopener noreferrer">Videos & Documentaries</a>`,
+          `<a href="${links.playlist}" target="_blank" rel="noopener noreferrer" aria-label="Videos and documentaries for ${title}">Videos & Documentaries</a>`,
         );
       if (links.authorPage)
         items.push(
-          `<a href="${links.authorPage}" target="_blank" rel="noopener noreferrer">Author Page</a>`,
+          `<a href="${links.authorPage}" target="_blank" rel="noopener noreferrer" aria-label="Author page for ${title}">Author Page</a>`,
         );
       if (links.tableau)
         items.push(
-          `<a href="${links.tableau}" target="_blank" rel="noopener noreferrer">Tableau Portfolio</a>`,
+          `<a href="${links.tableau}" target="_blank" rel="noopener noreferrer" aria-label="Tableau portfolio for ${title}">Tableau Portfolio</a>`,
         );
       if (links.flourish)
         items.push(
-          `<a href="${links.flourish}" target="_blank" rel="noopener noreferrer">Flourish Portfolio</a>`,
+          `<a href="${links.flourish}" target="_blank" rel="noopener noreferrer" aria-label="Flourish portfolio for ${title}">Flourish Portfolio</a>`,
         );
       if (items.length === 0) return "";
       return ` · ` + items.join(" · ");

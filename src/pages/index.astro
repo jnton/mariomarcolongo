@@ -328,15 +328,15 @@ import Layout from '../layouts/Layout.astro';
         </div>
 
         <div class="viz-display">
-          <img id="vizImg" src="" alt="" decoding="async" loading="lazy">
+          <img id="vizImg" src="" alt="" decoding="async" loading="lazy" width="1200" height="675" style="width: 100%; height: auto; aspect-ratio: 16/9;">
         </div>
 
         <p class="viz-caption" id="vizCaption"></p>
 
         <div class="viz-btn-row">
-          <a id="vizLink" href="" target="_blank" rel="noopener noreferrer" class="btn btn-sm">View on Wikimedia Commons ↗</a>
-          <a href="https://public.tableau.com/app/profile/mario.marcolongo/vizzes" target="_blank" rel="noopener noreferrer" class="btn btn-sm">Tableau Portfolio ↗</a>
-          <a href="https://app.flourish.studio/@Digressivo" target="_blank" rel="noopener noreferrer" class="btn btn-sm">Flourish Portfolio ↗</a>
+          <a id="vizLink" href="" target="_blank" rel="noopener noreferrer" class="btn btn-sm" aria-label="View current data visualization on Wikimedia Commons">View on Wikimedia Commons ↗</a>
+          <a href="https://public.tableau.com/app/profile/mario.marcolongo/vizzes" target="_blank" rel="noopener noreferrer" class="btn btn-sm" aria-label="View Mario Marcolongo Tableau Public Portfolio">Tableau Portfolio ↗</a>
+          <a href="https://app.flourish.studio/@Digressivo" target="_blank" rel="noopener noreferrer" class="btn btn-sm" aria-label="View Mario Marcolongo Flourish Studio Portfolio">Flourish Portfolio ↗</a>
         </div>
       </div>
     </div>
@@ -703,19 +703,20 @@ import Layout from '../layouts/Layout.astro';
     function buildProjectLinks(p) {
       const btns = [];
       const l = p.links || {};
-      if (l.website) btns.push(`<a href="${l.website}" target="_blank" rel="noopener noreferrer" class="btn btn-sm">Visit Site ↗</a>`);
-      if (l.playlist) btns.push(`<a href="${l.playlist}" target="_blank" rel="noopener noreferrer" class="btn btn-sm">Videos & Documentaries ↗</a>`);
-      if (l.authorPage) btns.push(`<a href="${l.authorPage}" target="_blank" rel="noopener noreferrer" class="btn btn-sm">Author Page ↗</a>`);
-      if (l.chromeStore) btns.push(`<a href="${l.chromeStore}" target="_blank" rel="noopener noreferrer" class="btn btn-sm">Chrome Store ↗</a>`);
-      if (l.edgeStore) btns.push(`<a href="${l.edgeStore}" target="_blank" rel="noopener noreferrer" class="btn btn-sm">Edge Store ↗</a>`);
-      if (l.youtube) btns.push(`<a href="${l.youtube}" target="_blank" rel="noopener noreferrer" class="btn btn-sm">YouTube ↗</a>`);
-      if (l.bot || l.telegramBot) btns.push(`<a href="${l.bot || l.telegramBot}" target="_blank" rel="noopener noreferrer" class="btn btn-sm">Try Bot ↗</a>`);
-      if (l.wikimedia) btns.push(`<a href="${l.wikimedia}" target="_blank" rel="noopener noreferrer" class="btn btn-sm">Wikimedia ↗</a>`);
-      if (l.github || l.githubOrg) btns.push(`<a href="${l.github || l.githubOrg}" target="_blank" rel="noopener noreferrer" class="btn btn-sm">GitHub ↗</a>`);
-      if (l.doi) btns.push(`<a href="${l.doi}" target="_blank" rel="noopener noreferrer" class="btn btn-sm">DOI ↗</a>`);
-      if (l.fairsharing) btns.push(`<a href="${l.fairsharing}" target="_blank" rel="noopener noreferrer" class="btn btn-sm">FAIRsharing ↗</a>`);
-      if (l.tableau) btns.push(`<a href="${l.tableau}" target="_blank" rel="noopener noreferrer" class="btn btn-sm">Tableau ↗</a>`);
-      if (l.flourish) btns.push(`<a href="${l.flourish}" target="_blank" rel="noopener noreferrer" class="btn btn-sm">Flourish ↗</a>`);
+      const t = (p.title || p.org || 'project').replace(/"/g, '&quot;');
+      if (l.website) btns.push(`<a href="${l.website}" target="_blank" rel="noopener noreferrer" class="btn btn-sm" aria-label="Visit site for ${t}">Visit Site ↗</a>`);
+      if (l.playlist) btns.push(`<a href="${l.playlist}" target="_blank" rel="noopener noreferrer" class="btn btn-sm" aria-label="Videos and documentaries for ${t}">Videos & Documentaries ↗</a>`);
+      if (l.authorPage) btns.push(`<a href="${l.authorPage}" target="_blank" rel="noopener noreferrer" class="btn btn-sm" aria-label="Author page for ${t}">Author Page ↗</a>`);
+      if (l.chromeStore) btns.push(`<a href="${l.chromeStore}" target="_blank" rel="noopener noreferrer" class="btn btn-sm" aria-label="Chrome Store extension for ${t}">Chrome Store ↗</a>`);
+      if (l.edgeStore) btns.push(`<a href="${l.edgeStore}" target="_blank" rel="noopener noreferrer" class="btn btn-sm" aria-label="Edge Add-on for ${t}">Edge Store ↗</a>`);
+      if (l.youtube) btns.push(`<a href="${l.youtube}" target="_blank" rel="noopener noreferrer" class="btn btn-sm" aria-label="YouTube channel for ${t}">YouTube ↗</a>`);
+      if (l.bot || l.telegramBot) btns.push(`<a href="${l.bot || l.telegramBot}" target="_blank" rel="noopener noreferrer" class="btn btn-sm" aria-label="Telegram Bot for ${t}">Try Bot ↗</a>`);
+      if (l.wikimedia) btns.push(`<a href="${l.wikimedia}" target="_blank" rel="noopener noreferrer" class="btn btn-sm" aria-label="Wikimedia contributions for ${t}">Wikimedia ↗</a>`);
+      if (l.github || l.githubOrg) btns.push(`<a href="${l.github || l.githubOrg}" target="_blank" rel="noopener noreferrer" class="btn btn-sm" aria-label="GitHub repository for ${t}">GitHub ↗</a>`);
+      if (l.doi) btns.push(`<a href="${l.doi}" target="_blank" rel="noopener noreferrer" class="btn btn-sm" aria-label="DOI publication for ${t}">DOI ↗</a>`);
+      if (l.fairsharing) btns.push(`<a href="${l.fairsharing}" target="_blank" rel="noopener noreferrer" class="btn btn-sm" aria-label="FAIRsharing record for ${t}">FAIRsharing ↗</a>`);
+      if (l.tableau) btns.push(`<a href="${l.tableau}" target="_blank" rel="noopener noreferrer" class="btn btn-sm" aria-label="Tableau portfolio for ${t}">Tableau ↗</a>`);
+      if (l.flourish) btns.push(`<a href="${l.flourish}" target="_blank" rel="noopener noreferrer" class="btn btn-sm" aria-label="Flourish studio portfolio for ${t}">Flourish ↗</a>`);
       return btns.join('');
     }
 

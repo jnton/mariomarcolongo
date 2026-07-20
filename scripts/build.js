@@ -59,19 +59,19 @@ function generateLlmsTxt(d) {
   out += `\n`;
 
   out += `## Links\n`;
-  out += `- Website: ${d.identity.domain}\n`;
-  out += `- Full profile: ${d.identity.domain}/llms-full.txt\n`;
-  out += `- Full CV (Markdown): ${d.identity.domain}/cv-llm.txt\n`;
-  out += `- Email: ${d.identity.email}\n`;
-  out += `- LinkedIn: ${d.identity.linkedin}\n`;
-  out += `- ORCID: ${d.identity.orcidUrl}\n`;
-  out += `- GitHub: ${d.identity.github}\n`;
+  out += `- [Website](${d.identity.domain}): Main portfolio homepage\n`;
+  out += `- [Full Profile](${d.identity.domain}/llms-full.txt): Comprehensive AI profile and extended curriculum vitae\n`;
+  out += `- [Full CV (Markdown)](${d.identity.domain}/cv-llm.txt): Unified AI-compatible markdown CV\n`;
+  out += `- [Email](mailto:${d.identity.email}): Direct email contact\n`;
+  out += `- [LinkedIn](${d.identity.linkedin}): Professional LinkedIn profile\n`;
+  out += `- [ORCID](${d.identity.orcidUrl}): ORCID scientific researcher profile\n`;
+  out += `- [GitHub](${d.identity.github}): GitHub profile and open-source repositories\n`;
   if (d.identity.agentReadyUrl) {
-    out += `- Agent-Readiness Audit (16/16 Checks): ${d.identity.agentReadyUrl}\n`;
-    out += `- A2A Agent Card: ${d.identity.domain}/.well-known/agent-card.json\n`;
+    out += `- [Agent-Readiness Audit](${d.identity.agentReadyUrl}): Verified full marks on Cloudflare isitagentready.com audit\n`;
+    out += `- [A2A Agent Card](${d.identity.domain}/.well-known/agent-card.json): Agent-to-Agent discovery card\n`;
   }
-  out += `- Genomic Pipeline Codebase: https://github.com/jnton/git-nome\n`;
-  if (d.identity.portfolioRepo) out += `- Portfolio SSOT Codebase: ${d.identity.portfolioRepo}\n`;
+  out += `- [Genomic Pipeline Codebase](https://github.com/jnton/git-nome): Open-source pipeline for clinical/research genome analysis\n`;
+  if (d.identity.portfolioRepo) out += `- [Portfolio SSOT Codebase](${d.identity.portfolioRepo}): Source code and Single Source of Truth for this portfolio\n`;
 
   return out;
 }
@@ -159,17 +159,17 @@ function generateLlmsFullTxt(d) {
   }
 
   out += `## Verification & Identifiers\n`;
-  out += `- Email: ${d.identity.email}\n`;
-  out += `- Website: ${d.identity.domain}\n`;
-  out += `- ORCID: ${d.identity.orcidUrl}\n`;
-  out += `- LinkedIn: ${d.identity.linkedin}\n`;
-  out += `- GitHub: ${d.identity.github}\n`;
+  out += `- [Email](mailto:${d.identity.email}): Direct email contact\n`;
+  out += `- [Website](${d.identity.domain}): Main portfolio homepage\n`;
+  out += `- [ORCID](${d.identity.orcidUrl}): ORCID scientific researcher profile\n`;
+  out += `- [LinkedIn](${d.identity.linkedin}): Professional LinkedIn profile\n`;
+  out += `- [GitHub](${d.identity.github}): GitHub profile and open-source repositories\n`;
   if (d.identity.agentReadyUrl) {
-    out += `- Agent-Readiness Audit (16/16 Checks): ${d.identity.agentReadyUrl}\n`;
-    out += `- A2A Agent Card: ${d.identity.domain}/.well-known/agent-card.json\n`;
+    out += `- [Agent-Readiness Audit](${d.identity.agentReadyUrl}): Verified full marks on Cloudflare isitagentready.com audit\n`;
+    out += `- [A2A Agent Card](${d.identity.domain}/.well-known/agent-card.json): Agent-to-Agent discovery card\n`;
   }
-  out += `- Genomic Pipeline Codebase: https://github.com/jnton/git-nome\n`;
-  if (d.identity.portfolioRepo) out += `- Portfolio SSOT Codebase: ${d.identity.portfolioRepo}\n`;
+  out += `- [Genomic Pipeline Codebase](https://github.com/jnton/git-nome): Open-source pipeline for clinical/research genome analysis\n`;
+  if (d.identity.portfolioRepo) out += `- [Portfolio SSOT Codebase](${d.identity.portfolioRepo}): Source code and Single Source of Truth for this portfolio\n`;
   out += `\n`;
 
   return out;
@@ -243,17 +243,17 @@ function generateCvLlmTxt(d) {
   out += `\n`;
 
   out += `## Contact & Identifiers\n`;
-  out += `- Email: ${d.identity.email}\n`;
-  out += `- Website: ${d.identity.domain}\n`;
-  out += `- ORCID: ${d.identity.orcidUrl}\n`;
-  out += `- LinkedIn: ${d.identity.linkedin}\n`;
-  out += `- GitHub: ${d.identity.github}\n`;
+  out += `- [Email](mailto:${d.identity.email}): Direct email contact\n`;
+  out += `- [Website](${d.identity.domain}): Main portfolio homepage\n`;
+  out += `- [ORCID](${d.identity.orcidUrl}): ORCID scientific researcher profile\n`;
+  out += `- [LinkedIn](${d.identity.linkedin}): Professional LinkedIn profile\n`;
+  out += `- [GitHub](${d.identity.github}): GitHub profile and open-source repositories\n`;
   if (d.identity.agentReadyUrl) {
-    out += `- Agent-Readiness Audit (16/16 Checks): ${d.identity.agentReadyUrl}\n`;
-    out += `- A2A Agent Card: ${d.identity.domain}/.well-known/agent-card.json\n`;
+    out += `- [Agent-Readiness Audit](${d.identity.agentReadyUrl}): Verified full marks on Cloudflare isitagentready.com audit\n`;
+    out += `- [A2A Agent Card](${d.identity.domain}/.well-known/agent-card.json): Agent-to-Agent discovery card\n`;
   }
-  out += `- Genomic Pipeline Codebase: https://github.com/jnton/git-nome\n`;
-  if (d.identity.portfolioRepo) out += `- Portfolio SSOT Codebase: ${d.identity.portfolioRepo}\n`;
+  out += `- [Genomic Pipeline Codebase](https://github.com/jnton/git-nome): Open-source pipeline for clinical/research genome analysis\n`;
+  if (d.identity.portfolioRepo) out += `- [Portfolio SSOT Codebase](${d.identity.portfolioRepo}): Source code and Single Source of Truth for this portfolio\n`;
   out += `\n`;
 
   return out;

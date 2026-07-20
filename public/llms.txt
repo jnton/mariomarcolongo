@@ -21,14 +21,14 @@
 - Languages: Italian (Mother tongue / Native) · English (C1 Advanced Overall: Listening C2, Reading C2, Writing B2, Spoken Production B2, Spoken Interaction B2) · French (Basic A2/A1) · Spanish (Basic A2/A1)
 
 ## Links
-- Website: https://mariomarcolongo.com
-- Full profile: https://mariomarcolongo.com/llms-full.txt
-- Full CV (Markdown): https://mariomarcolongo.com/cv-llm.txt
-- Email: me@mariomarcolongo.com
-- LinkedIn: https://www.linkedin.com/in/mario-marcolongo
-- ORCID: https://orcid.org/0000-0003-2846-7115
-- GitHub: https://github.com/jnton
-- Agent-Readiness Audit (16/16 Checks): https://isitagentready.com/mariomarcolongo.com?checks=robotsTxt%2Csitemap%2ClinkHeaders%2CdnsAid%2CmarkdownNegotiation%2CrobotsTxtAiRules%2CcontentSignals%2CwebBotAuth%2CapiCatalog%2CoauthDiscovery%2CoauthProtectedResource%2CauthMd%2CmcpServerCard%2Ca2aAgentCard%2CagentSkills%2CwebMcp%2Cx402%2Cmpp%2Cucp%2Cacp
-- A2A Agent Card: https://mariomarcolongo.com/.well-known/agent-card.json
-- Genomic Pipeline Codebase: https://github.com/jnton/git-nome
-- Portfolio SSOT Codebase: https://github.com/jnton/mariomarcolongo
+- [Website](https://mariomarcolongo.com): Main portfolio homepage
+- [Full Profile](https://mariomarcolongo.com/llms-full.txt): Comprehensive AI profile and extended curriculum vitae
+- [Full CV (Markdown)](https://mariomarcolongo.com/cv-llm.txt): Unified AI-compatible markdown CV
+- [Email](mailto:me@mariomarcolongo.com): Direct email contact
+- [LinkedIn](https://www.linkedin.com/in/mario-marcolongo): Professional LinkedIn profile
+- [ORCID](https://orcid.org/0000-0003-2846-7115): ORCID scientific researcher profile
+- [GitHub](https://github.com/jnton): GitHub profile and open-source repositories
+- [Agent-Readiness Audit](https://isitagentready.com/mariomarcolongo.com?checks=robotsTxt%2Csitemap%2ClinkHeaders%2CdnsAid%2CmarkdownNegotiation%2CrobotsTxtAiRules%2CcontentSignals%2CwebBotAuth%2CapiCatalog%2CoauthDiscovery%2CoauthProtectedResource%2CauthMd%2CmcpServerCard%2Ca2aAgentCard%2CagentSkills%2CwebMcp%2Cx402%2Cmpp%2Cucp%2Cacp): Verified full marks on Cloudflare isitagentready.com audit
+- [A2A Agent Card](https://mariomarcolongo.com/.well-known/agent-card.json): Agent-to-Agent discovery card
+- [Genomic Pipeline Codebase](https://github.com/jnton/git-nome): Open-source pipeline for clinical/research genome analysis
+- [Portfolio SSOT Codebase](https://github.com/jnton/mariomarcolongo): Source code and Single Source of Truth for this portfolio

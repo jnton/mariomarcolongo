@@ -144,13 +144,13 @@ Source: https://commons.wikimedia.org/wiki/File:Oesophageal_Cancer,_Age-Standard
 - **GALENOS Crowd Evidence Synthesis Training** (May 2026) — Cochrane Crowd & GALENOS Systematic Review Screening Certification
 
 ## Verification & Identifiers
-- Email: me@mariomarcolongo.com
-- Website: https://mariomarcolongo.com
-- ORCID: https://orcid.org/0000-0003-2846-7115
-- LinkedIn: https://www.linkedin.com/in/mario-marcolongo
-- GitHub: https://github.com/jnton
-- Agent-Readiness Audit (16/16 Checks): https://isitagentready.com/mariomarcolongo.com?checks=robotsTxt%2Csitemap%2ClinkHeaders%2CdnsAid%2CmarkdownNegotiation%2CrobotsTxtAiRules%2CcontentSignals%2CwebBotAuth%2CapiCatalog%2CoauthDiscovery%2CoauthProtectedResource%2CauthMd%2CmcpServerCard%2Ca2aAgentCard%2CagentSkills%2CwebMcp%2Cx402%2Cmpp%2Cucp%2Cacp
-- A2A Agent Card: https://mariomarcolongo.com/.well-known/agent-card.json
-- Genomic Pipeline Codebase: https://github.com/jnton/git-nome
-- Portfolio SSOT Codebase: https://github.com/jnton/mariomarcolongo
+- [Email](mailto:me@mariomarcolongo.com): Direct email contact
+- [Website](https://mariomarcolongo.com): Main portfolio homepage
+- [ORCID](https://orcid.org/0000-0003-2846-7115): ORCID scientific researcher profile
+- [LinkedIn](https://www.linkedin.com/in/mario-marcolongo): Professional LinkedIn profile
+- [GitHub](https://github.com/jnton): GitHub profile and open-source repositories
+- [Agent-Readiness Audit](https://isitagentready.com/mariomarcolongo.com?checks=robotsTxt%2Csitemap%2ClinkHeaders%2CdnsAid%2CmarkdownNegotiation%2CrobotsTxtAiRules%2CcontentSignals%2CwebBotAuth%2CapiCatalog%2CoauthDiscovery%2CoauthProtectedResource%2CauthMd%2CmcpServerCard%2Ca2aAgentCard%2CagentSkills%2CwebMcp%2Cx402%2Cmpp%2Cucp%2Cacp): Verified full marks on Cloudflare isitagentready.com audit
+- [A2A Agent Card](https://mariomarcolongo.com/.well-known/agent-card.json): Agent-to-Agent discovery card
+- [Genomic Pipeline Codebase](https://github.com/jnton/git-nome): Open-source pipeline for clinical/research genome analysis
+- [Portfolio SSOT Codebase](https://github.com/jnton/mariomarcolongo): Source code and Single Source of Truth for this portfolio
 
