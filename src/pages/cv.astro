@@ -794,7 +794,7 @@ import "../styles/cv.css";
       }
     }
 
-    function renderLinksHtml(links) {
+    function renderLinksHtml(links, title = 'item') {
       if (!links) return "";
       const items = [];
       if (links.website)
@@ -881,7 +881,7 @@ import "../styles/cv.css";
               <span class="cv-item-title">${p.title}</span>
               ${p.period ? `<span class="cv-item-date">${p.period}</span>` : ""}
             </div>
-            ${p.role ? `<div class="cv-item-org">${p.role}${renderLinksHtml(p.links)}</div>` : ""}
+            ${p.role ? `<div class="cv-item-org">${p.role}${renderLinksHtml(p.links, (p.title || p.role || 'project').replace(/"/g, '&quot;'))}</div>` : ""}
             ${
               p.highlights && p.highlights.length
                 ? `
@@ -910,7 +910,7 @@ import "../styles/cv.css";
               ${e.tag ? `<span class="cv-role-tag">${e.tag}</span>` : ""}
               ${e.period ? `<span class="cv-item-date">${e.period}</span>` : ""}
             </div>
-            ${e.org ? `<div class="cv-item-org">${e.org}${renderLinksHtml(e.links)}</div>` : ""}
+            ${e.org ? `<div class="cv-item-org">${e.org}${renderLinksHtml(e.links, (e.role || e.org || 'experience').replace(/"/g, '&quot;'))}</div>` : ""}
             ${
               e.bullets && e.bullets.length
                 ? `
@@ -939,7 +939,7 @@ import "../styles/cv.css";
               ${r.tag ? `<span class="cv-role-tag">${r.tag}</span>` : ""}
               ${r.period ? `<span class="cv-item-date">${r.period}</span>` : ""}
             </div>
-            ${r.org ? `<div class="cv-item-org">${r.org}${renderLinksHtml(r.links)}</div>` : ""}
+            ${r.org ? `<div class="cv-item-org">${r.org}${renderLinksHtml(r.links, (r.role || r.org || 'research').replace(/"/g, '&quot;'))}</div>` : ""}
             ${
               r.bullets && r.bullets.length
                 ? `

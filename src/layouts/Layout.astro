@@ -65,7 +65,9 @@ const {
 </head>
 <body>
   <div id="scrollProgress"></div>
-  <slot />
+  <main id="main-content">
+    <slot />
+  </main>
   <script is:inline>
     (function initWebMCP() {
       function registerTools() {
