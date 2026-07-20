@@ -7,7 +7,7 @@
     --line:       #E8E8E6;
     --line-strong:#D4D4D0;
     --accent:     #1D4ED8;
-    --emerald:    #059669;
+    --emerald:    #047857;
 
     --font-display: 'Inter', 'Outfit', -apple-system, Roboto, Helvetica, Arial, sans-serif;
     --font-body:    'Inter', -apple-system, Roboto, Helvetica, Arial, sans-serif;
@@ -393,7 +393,7 @@
   }
 
   .skill-category-title {
-    color: var(--emerald, #34D399);
+    color: var(--emerald, #047857);
     font-size: 14.5px;
     font-weight: 700;
     line-height: 1.35;
