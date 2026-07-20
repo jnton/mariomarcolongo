@@ -9,12 +9,13 @@ const MARIO_DOSSIER = {
 
   identity: {
     name: "Mario Marcolongo",
+    jobTitle: "Scientific AI Evaluation & Research Data Specialist",
     headline: "I check the claims other people don't.",
-    role: "Nine years of Wikipedia edits that hold up under scrutiny. A genome released to the public domain under a real accession number. An open science registry cataloging 55+ research studies and cited across 37 Wikidata entities. And a top-8% ranking on Gray Swan AI's red-teaming leaderboard — 75+ confirmed breaks across chat, image, agentic, and prompt-injection challenges.",
-    heroSubHtml: "Nine years of Wikipedia edits<button class=\"cite-btn\" data-cite=\"edits\" aria-expanded=\"false\" title=\"Click to inspect source\">1</button> that hold up under scrutiny. A genome<button class=\"cite-btn\" data-cite=\"ena\" aria-expanded=\"false\" title=\"Click to inspect source\">2</button> released to the public domain under a real accession number. An open science registry<button class=\"cite-btn\" data-cite=\"registry\" aria-expanded=\"false\" title=\"Click to inspect platform\">3</button> cataloging 55+ research studies and cited across 37 Wikidata entities. And a top-8% ranking<button class=\"cite-btn\" data-cite=\"grayswan\" aria-expanded=\"false\" title=\"Click to inspect profile\">4</button> on Gray Swan AI's red-teaming leaderboard — 75+ confirmed breaks across chat, image, agentic, and prompt-injection challenges.",
-    location: "Italy",
-    relocation: "Open to Global Opportunities Worldwide (Full-Time, Remote, B2B / Consulting)",
-    languages: "Italian (Native / Mother Tongue) · English (C1 Advanced)",
+    role: "Eight years of verifiable Wikipedia edits holding up under scrutiny. A personal genome released to the public domain under a real ENA accession number. An open science registry cataloging 55+ research initiatives cited across 37 Wikidata entities. And ranked top 8% globally on Gray Swan AI's proving ground — with 75+ confirmed adversarial model breaks (as of July 2026) across chat, multimodal, agentic, and prompt-injection challenges.",
+    heroSubHtml: "Eight years of verifiable Wikipedia edits<button class=\"cite-btn\" data-cite=\"edits\" aria-expanded=\"false\" title=\"Click to inspect source\">1</button> holding up under scrutiny. A personal genome<button class=\"cite-btn\" data-cite=\"ena\" aria-expanded=\"false\" title=\"Click to inspect source\">2</button> released to the public domain under a real ENA accession number. An open science registry<button class=\"cite-btn\" data-cite=\"registry\" aria-expanded=\"false\" title=\"Click to inspect platform\">3</button> cataloging 55+ research initiatives cited across 37 Wikidata entities. And ranked top 8% globally on Gray Swan AI's proving ground<button class=\"cite-btn\" data-cite=\"grayswan\" aria-expanded=\"false\" title=\"Click to inspect profile\">4</button> — with 75+ confirmed adversarial model breaks (as of July 2026) across chat, multimodal, agentic, and prompt-injection challenges.",
+    location: "Italy (Italian Citizen — Unrestricted EU Work Authorization)",
+    relocation: "Italian Citizen — Unrestricted EU work authorization; eligible for Swiss EU/EFTA mobility procedures; international B2B via Italian Partita IVA; sponsorship required elsewhere.",
+    languages: "Italian (Native / Mother Tongue) · English (C1 Advanced Overall: C2 Reading/Listening, B2 Writing/Speaking)",
     email: "me@mariomarcolongo.com",
     orcid: "0000-0003-2846-7115",
     orcidUrl: "https://orcid.org/0000-0003-2846-7115",
@@ -27,14 +28,14 @@ const MARIO_DOSSIER = {
     contactObfuscated: ["me", "mariomarcolongo", "com"]
   },
 
-  summary: "Scientific fact-checker, systems developer, and open science technologist with 9+ years of experience verifying biomedical and technical claims across public knowledge bases (4,317 documented edits across English/Italian Wikipedia, Wikidata, and Wikimedia Commons). Founder and lead developer of Yourself to Science™ (yourselftoscience.org), an open-source catalogue and unified directory indexing 55+ initiatives where people can contribute their biological and digital self (including genomic data, biological samples, biobanks, and clinical trials) to scientific research. Managed technical web infrastructure (OVHCloud, custom WordPress, SEO) and upheld scientific integrity for Entropy for Life (245,000+ YouTube subscribers / 480,000+ cross-platform community)—conducting bibliographic research, fact-checking scripts, and creating empirical data visualizations across 55+ documentaries and articles, earning formal acknowledgment in a Mondadori book. Volunteer research facilitator under Prof. Marta Panzeri at the University of Padua Department of Developmental Psychology and Socialisation (Nov 2022 – 2025), designing standardized focus group protocols and co-conducting psychological research sessions with autistic participants to inform educational strategies and support programs.",
+  summary: "Scientific AI evaluation and research data specialist with 8+ years of experience verifying biomedical and technical claims across public knowledge bases (since March 2018; 4,317 documented edits across English/Italian Wikipedia, Wikidata, and Wikimedia Commons). Founder and lead developer of Yourself to Science™ (yourselftoscience.org), an open-source catalogue and unified directory indexing 55+ initiatives where people can contribute their biological and digital self (including genomic data, biological samples, biobanks, and clinical trials) to scientific research. Managed technical web infrastructure (OVHCloud, custom WordPress, SEO) and upheld scientific integrity for Entropy for Life (245,000+ YouTube subscribers / 480,000+ cross-platform community)—conducting bibliographic research, fact-checking scripts, and creating empirical data visualizations across 55+ documentaries and articles, earning formal acknowledgment in a Mondadori book. Volunteer research facilitator under Prof. Marta Panzeri at the University of Padua Department of Developmental Psychology and Socialisation (Nov 2022 – 2025), designing standardized focus group protocols and co-conducting psychological research sessions with autistic participants to inform educational strategies and support programs.",
 
   pillars: [
     {
       category: "EVIDENCE SYNTHESIS & EDITORIAL",
       icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><path d="M11 8v6"></path><path d="M8 11h6"></path></svg>`,
       title: "Biomedical Verification & Editorial Fact-Checking",
-      lead: "9+ years verifying scientific claims across public ecosystems, managing editorial workflows, and synthesizing complex literature for academic and public audiences.",
+      lead: "8+ years verifying scientific claims across public ecosystems (contributing since March 2018), managing editorial workflows, and synthesizing complex literature for academic and public audiences.",
       desc: "Verified 4,300+ biomedical contributions across Wikimedia holding up under scrutiny. Fact-checked primary literature across 55+ YouTube videos (long & short), co-authored 4 articles, and created data visualizations for a 480K+ community, earning formal acknowledgment in a Mondadori bestseller. Completed formal Cochrane Crowd & GALENOS systematic review screening training and certification.",
       highlights: [
         { label: "Editorial & Fact-Checking", detail: "55+ videos & 4 articles verified; Cochrane Crowd / GALENOS screening methodology certification" },
@@ -67,7 +68,7 @@ const MARIO_DOSSIER = {
 
   stats: [
     { value: "100 / 100 — Level 5", label: "Cloudflare Agent-Ready Audit", detail: "Full marks on Cloudflare's isitagentready.com audit: Discoverability 4/4, Content 1/1, Bot Access Control 2/2, API/Auth/MCP & Skill Discovery 7/7. Cloudflare's own data shows most professional sites score well under 50." },
-    { value: "100 / 100", label: "Production Web & AI Readiness", detail: "Perfect 100 Lighthouse (Performance/a11y/SEO) & 3/3 Agentic Browsing score on Yourself to Science™" },
+    { value: "100 / 100", label: "Web & AI Readiness Architecture", detail: "Perfect 100 Lighthouse (Performance/a11y/SEO) & 3/3 Agentic Browsing score on Yourself to Science™" },
     { value: "70+ Vizzes", label: "Empirical Data Visualizations", detail: "Published 55+ Flourish & 15 Tableau Public epidemiological, demographic & ISTAT workbooks analyzing ~80+ datasets" },
     { value: "55+ Videos & 4 Articles", label: "Science Verification & Editorial Acceleration", detail: "Fact-checked primary literature across 55+ YouTube videos (long & short), co-authored 4 articles, designed data visualizations & Reels, and managed A/B tested thumbnails/titles for Giacomo Moro Mauretto's Entropy for Life (480K+ community); acknowledged in Mondadori book Italiani Veri" },
     { value: "4,317 Edits", label: "Wikimedia & Knowledge Graph Curation", detail: "Verifiable contributions across English Wikipedia (1,592), Wikidata (1,249), Italian Wikipedia (752), and Wikimedia Commons (684)" }
@@ -248,7 +249,7 @@ const MARIO_DOSSIER = {
       },
       bullets: [
         "Informally exploring LLM alignment boundaries and policy robustness since early 2023 — initially through self-directed testing of early ChatGPT releases — developing hands-on intuition for how models interpret instructions, handle edge cases, and maintain safety constraints across different prompting contexts.",
-        "Formally benchmarked on the Gray Swan AI Proving Ground (July 2026): ranked top 8% globally across 75+ confirmed model breaks spanning chat, multimodal/image, agentic tool-use, and indirect prompt injection categories."
+        "Benchmarked on the Gray Swan AI Proving Ground: ranked top 8% globally across 75+ confirmed model breaks (as of July 2026) spanning chat, multimodal/image, agentic tool-use, and indirect prompt injection categories during safety evaluation challenges."
       ]
     },
     {
@@ -296,7 +297,7 @@ const MARIO_DOSSIER = {
 
   research: [
     {
-      role: "Whole-Genome Sequencing Pipeline & Polygenic Risk Scoring (41×)",
+      role: "Personal Research Genomics Pipeline & Polygenic Risk Scoring (41×)",
       org: "European Nucleotide Archive — ENA PRJEB109744 / SAMEA121950568",
       tag: "Independent / Personal Project, unpaid",
       period: "Jan 2026",
@@ -308,7 +309,7 @@ const MARIO_DOSSIER = {
         "Utilized Terra.bio cloud platform to process raw FASTQ reads aligned against the GRCh38 human reference genome to extract high-coverage GRCh38 BAM and VCF files.",
         "Architected downstream local bioinformatic pipeline on Apple Silicon (M4 Macbook)—converting VCF to Plink2 (PGEN/PVAR/PSAM) and executing Nextflow pgsc_calc with PCA ancestry projection against 1000 Genomes / HGDP reference panels.",
         "Engineered custom Python extraction pipelines for VEP-annotated VCFs—calculating multi-trait Z-Score standardized Polygenic Risk Scores, pharmacogenomic/lifestyle loci, mitochondrial heteroplasmy, and novel 'dark matter' variant filtration mapped to HPO/MONDO ontologies.",
-        "Pipeline output — FASTQ, GRCh38-aligned BAM, VEP-annotated VCF, and multi-trait PRS — released to the public domain (CC0) under ENA accession PRJEB109744 / BioSample SAMEA121950568, as an open-science reference implementation."
+        "Pipeline output — FASTQ, GRCh38-aligned BAM, VEP-annotated VCF, and multi-trait PRS — released to the public domain (CC0) under ENA accession PRJEB109744 / BioSample SAMEA121950568, as an open-science personal research reference implementation (non-clinical / research genomics)."
       ]
     },
     {
@@ -330,19 +331,19 @@ const MARIO_DOSSIER = {
 
   education: [
     { title: "Studies in Medicine & Surgery", detail: "Università degli Studi della Campania 'Luigi Vanvitelli' — Foundational biomedical and scientific coursework completed (no formal degree conferred)", period: "2020" },
-    { title: "EF SET English Certificate 68/100 (C1 Advanced)", detail: "EF Standard English Test (EF SET) · https://cert.efset.org/jHk84h", period: "Mar 2024" },
+    { title: "EF SET English Certificate 68/100 (C1 Advanced Overall · C2 Reading/Listening · B2 Writing/Speaking)", detail: "EF Standard English Test (EF SET) · https://cert.efset.org/jHk84h", period: "Mar 2024" },
     { title: "Career Essentials in Generative AI", detail: "Microsoft and LinkedIn · Certificate: https://www.linkedin.com/learning/certificates/c4f1f59578e3ac2567787e262e3b2ec55debf96bbbced4d34d5edaa821d9e6d9", period: "Mar 2024" },
     { title: "GALENOS Crowd Evidence Synthesis Training", detail: "Cochrane Crowd & GALENOS Systematic Review Screening Certification", period: "May 2026" }
   ],
 
   skills: [
-    "AI Red-Teaming & Adversarial Evaluation: Top 8% globally, Gray Swan AI Proving Ground — July 2026 (https://app.grayswan.ai/arena/user/6a57be70d15e123775a1e9cf) — 75+ confirmed breaks across Chat, Image, Agent, and Indirect-Injection categories.",
+    "AI Red-Teaming & Adversarial Evaluation: Top 8% globally on Gray Swan AI Proving Ground (https://app.grayswan.ai/arena/user/6a57be70d15e123775a1e9cf) — 75+ confirmed model breaks across Chat, Image, Agent, and Indirect-Injection categories (as of July 2026).",
     "Web Engineering & Architecture: JavaScript, Node.js, Static & Serverless Architecture, WordPress Development & Customization, HTML/CSS Design Systems, Cloud DNS / SSL / OVHCloud / AWS Lambda / API Gateway",
     "Scientific Verification & Methodologies: Bibliographic Research Methodology, Primary Source Fact-Checking, Psychological Focus Group Facilitation & Standardized Protocols, Epidemiological Data Synthesis, Cochrane/Galenos Screening",
     "Open-Source Intelligence (OSINT) & Digital Investigation: Multi-engine Boolean search (Google, DuckDuckGo, Yandex) and academic/gray-literature querying (Google Scholar, PubMed, Europe PMC); reverse-image and facial-recognition verification (PimEyes, Yandex Images, Google Lens, TinEye); EXIF/metadata extraction and file provenance verification; archival/provenance research (Wayback Machine, Archive.today); WHOIS/DNS history and certificate-transparency lookups for tracing site ownership and technical infrastructure; cross-platform digital-footprint correlation for claim verification, source attribution, and coordinated-inauthentic-behavior detection",
     "Open Science & AI Infrastructure: FAIRsharing Standards, Semantic Linked Data (JSON-LD, RDF Turtle, llms.txt, live MCP Servers), Public Knowledge Bases (Wikidata, ENA BioSample)",
     "Data Visualization & Tools: High-Clarity SVG Vector Diagramming, Tableau Public, Flourish, Git / GitHub, GitHub Actions CI/CD",
-    "Languages: Italian (Mother tongue / Native) · English (C1 Advanced: Listening C2, Reading C2, Writing C1, Spoken Production C1, Spoken Interaction C1) · French (Basic A2/A1) · Spanish (Basic A2/A1)"
+    "Languages: Italian (Mother tongue / Native) · English (C1 Advanced Overall: Listening C2, Reading C2, Writing B2, Spoken Production B2, Spoken Interaction B2) · French (Basic A2/A1) · Spanish (Basic A2/A1)"
   ]
 };
 

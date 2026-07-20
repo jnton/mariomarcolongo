@@ -110,7 +110,7 @@ function generateModularCv(d) {
   }
   out += `---\n\n`;
 
-  out += `## Key Production Projects\n\n`;
+  out += `## Deployed Systems & Open-Source Projects\n\n`;
   if (d.projects) {
     d.projects.filter(shouldInclude).forEach(p => {
       const linkUrl = p.links && (p.links.website || p.links.bot || p.links.github || p.links.chromeStore)

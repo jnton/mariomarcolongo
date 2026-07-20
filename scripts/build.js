@@ -38,7 +38,7 @@ function formatProjectLinksText(p) {
 }
 
 function generateLlmsTxt(d) {
-  let out = `# ${d.identity.name}\n\n`;
+  let out = `# ${d.identity.name} — ${d.identity.jobTitle || 'Scientific AI Evaluation & Research Data Specialist'}\n\n`;
   out += `> ${d.summary}\n\n`;
 
   out += `## Quick Facts & Key Metrics\n`;
@@ -47,7 +47,8 @@ function generateLlmsTxt(d) {
       out += `- **${s.value}** (${s.label}): ${s.detail}\n`;
     });
   }
-  out += `- Native Italian speaker & C1 Advanced English proficiency\n\n`;
+  out += `- Work Authorization: ${d.identity.relocation}\n`;
+  out += `- Languages: ${d.identity.languages}\n\n`;
 
   out += `## Core Competencies\n`;
   if (d.skills && d.skills.length) {
@@ -76,7 +77,7 @@ function generateLlmsTxt(d) {
 }
 
 function generateLlmsFullTxt(d) {
-  let out = `# ${d.identity.name} — Comprehensive Profile & Curriculum Vitae\n\n`;
+  let out = `# ${d.identity.name} — ${d.identity.jobTitle || 'Comprehensive Profile & Curriculum Vitae'}\n\n`;
   out += `## Overview\n${d.summary}\n\n`;
 
   out += `## Core Pillars & Expertise\n\n`;
@@ -120,7 +121,7 @@ function generateLlmsFullTxt(d) {
     });
   }
 
-  out += `## Key Projects & Production Systems\n\n`;
+  out += `## Deployed Systems & Open-Source Projects\n\n`;
   if (d.projects) {
     d.projects.forEach(p => {
       const linkUrl = formatProjectLinksText(p);
@@ -175,9 +176,9 @@ function generateLlmsFullTxt(d) {
 }
 
 function generateCvLlmTxt(d) {
-  let out = `# ${d.identity.name} — Curriculum Vitae (AI / LLM Compatible Markdown)\n`;
+  let out = `# ${d.identity.name} — ${d.identity.jobTitle || 'Curriculum Vitae'} (AI / LLM Compatible Markdown)\n`;
   out += `> ${d.identity.headline}\n`;
-  out += `> Location: ${d.identity.location} · ${d.identity.relocation}\n`;
+  out += `> Work Authorization: ${d.identity.relocation}\n`;
   out += `> Email: ${d.identity.email} | Web: ${d.identity.domain} | ORCID: ${d.identity.orcid}\n\n`;
   out += `---\n\n`;
 
@@ -222,7 +223,7 @@ function generateCvLlmTxt(d) {
   }
   out += `---\n\n`;
 
-  out += `## Key Production Projects\n\n`;
+  out += `## Deployed Systems & Open-Source Projects\n\n`;
   if (d.projects) {
     d.projects.forEach(p => {
       const linkUrl = formatProjectLinksText(p);

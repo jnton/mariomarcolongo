@@ -1,12 +1,12 @@
-# Mario Marcolongo — Comprehensive Profile & Curriculum Vitae
+# Mario Marcolongo — Scientific AI Evaluation & Research Data Specialist
 
 ## Overview
-Scientific fact-checker, systems developer, and open science technologist with 9+ years of experience verifying biomedical and technical claims across public knowledge bases (4,317 documented edits across English/Italian Wikipedia, Wikidata, and Wikimedia Commons). Founder and lead developer of Yourself to Science™ (yourselftoscience.org), an open-source catalogue and unified directory indexing 55+ initiatives where people can contribute their biological and digital self (including genomic data, biological samples, biobanks, and clinical trials) to scientific research. Managed technical web infrastructure (OVHCloud, custom WordPress, SEO) and upheld scientific integrity for Entropy for Life (245,000+ YouTube subscribers / 480,000+ cross-platform community)—conducting bibliographic research, fact-checking scripts, and creating empirical data visualizations across 55+ documentaries and articles, earning formal acknowledgment in a Mondadori book. Volunteer research facilitator under Prof. Marta Panzeri at the University of Padua Department of Developmental Psychology and Socialisation (Nov 2022 – 2025), designing standardized focus group protocols and co-conducting psychological research sessions with autistic participants to inform educational strategies and support programs.
+Scientific AI evaluation and research data specialist with 8+ years of experience verifying biomedical and technical claims across public knowledge bases (since March 2018; 4,317 documented edits across English/Italian Wikipedia, Wikidata, and Wikimedia Commons). Founder and lead developer of Yourself to Science™ (yourselftoscience.org), an open-source catalogue and unified directory indexing 55+ initiatives where people can contribute their biological and digital self (including genomic data, biological samples, biobanks, and clinical trials) to scientific research. Managed technical web infrastructure (OVHCloud, custom WordPress, SEO) and upheld scientific integrity for Entropy for Life (245,000+ YouTube subscribers / 480,000+ cross-platform community)—conducting bibliographic research, fact-checking scripts, and creating empirical data visualizations across 55+ documentaries and articles, earning formal acknowledgment in a Mondadori book. Volunteer research facilitator under Prof. Marta Panzeri at the University of Padua Department of Developmental Psychology and Socialisation (Nov 2022 – 2025), designing standardized focus group protocols and co-conducting psychological research sessions with autistic participants to inform educational strategies and support programs.
 
 ## Core Pillars & Expertise
 
 ### 1. Biomedical Verification & Editorial Fact-Checking
-9+ years verifying scientific claims across public ecosystems, managing editorial workflows, and synthesizing complex literature for academic and public audiences.
+8+ years verifying scientific claims across public ecosystems (contributing since March 2018), managing editorial workflows, and synthesizing complex literature for academic and public audiences.
 
 - **Editorial & Fact-Checking**: 55+ videos & 4 articles verified; Cochrane Crowd / GALENOS screening methodology certification
 - **Knowledge Graph & Article Curation**: 4,317 auditable edits across Wikimedia projects (English/Italian Wikipedia, Wikidata & Commons)
@@ -32,7 +32,7 @@ Leveraging psychological study facilitation to design standardized protocols, co
 
 ### AI Red-Teaming Practitioner — Gray Swan AI Proving Ground (2023 — Present) [Independent Practitioner]
 - Informally exploring LLM alignment boundaries and policy robustness since early 2023 — initially through self-directed testing of early ChatGPT releases — developing hands-on intuition for how models interpret instructions, handle edge cases, and maintain safety constraints across different prompting contexts.
-- Formally benchmarked on the Gray Swan AI Proving Ground (July 2026): ranked top 8% globally across 75+ confirmed model breaks spanning chat, multimodal/image, agentic tool-use, and indirect prompt injection categories.
+- Benchmarked on the Gray Swan AI Proving Ground: ranked top 8% globally across 75+ confirmed model breaks (as of July 2026) spanning chat, multimodal/image, agentic tool-use, and indirect prompt injection categories during safety evaluation challenges.
 
 ### Scientific Fact-Checker, Writer & Web Developer — Entropy for Life — Italy (Jun 2023 — Present) [Freelance Contractor (Partita IVA)]
 - Core content contributor upholding scientific integrity and quality across media for a leading Italian science communication project (245,000+ YouTube subscribers / 480,000+ cross-platform community); responsible for script writing, in-depth bibliographic research, rigorous fact-checking, and creating data visualizations.
@@ -51,18 +51,18 @@ Leveraging psychological study facilitation to design standardized protocols, co
 
 ## Research & Open Science Contributions
 
-### Whole-Genome Sequencing Pipeline & Polygenic Risk Scoring (41×) — European Nucleotide Archive — ENA PRJEB109744 / SAMEA121950568 (Jan 2026) [Independent / Personal Project, unpaid] | Website: https://www.ebi.ac.uk/ena/browser/view/PRJEB109744 | GitHub: https://github.com/jnton/git-nome
+### Personal Research Genomics Pipeline & Polygenic Risk Scoring (41×) — European Nucleotide Archive — ENA PRJEB109744 / SAMEA121950568 (Jan 2026) [Independent / Personal Project, unpaid] | Website: https://www.ebi.ac.uk/ena/browser/view/PRJEB109744 | GitHub: https://github.com/jnton/git-nome
 - Utilized Terra.bio cloud platform to process raw FASTQ reads aligned against the GRCh38 human reference genome to extract high-coverage GRCh38 BAM and VCF files.
 - Architected downstream local bioinformatic pipeline on Apple Silicon (M4 Macbook)—converting VCF to Plink2 (PGEN/PVAR/PSAM) and executing Nextflow pgsc_calc with PCA ancestry projection against 1000 Genomes / HGDP reference panels.
 - Engineered custom Python extraction pipelines for VEP-annotated VCFs—calculating multi-trait Z-Score standardized Polygenic Risk Scores, pharmacogenomic/lifestyle loci, mitochondrial heteroplasmy, and novel 'dark matter' variant filtration mapped to HPO/MONDO ontologies.
-- Pipeline output — FASTQ, GRCh38-aligned BAM, VEP-annotated VCF, and multi-trait PRS — released to the public domain (CC0) under ENA accession PRJEB109744 / BioSample SAMEA121950568, as an open-science reference implementation.
+- Pipeline output — FASTQ, GRCh38-aligned BAM, VEP-annotated VCF, and multi-trait PRS — released to the public domain (CC0) under ENA accession PRJEB109744 / BioSample SAMEA121950568, as an open-science personal research reference implementation (non-clinical / research genomics).
 
 ### Empirical Data Scientist & Scientific Visualizer — Wikimedia Commons, Tableau Public & Flourish Visual Data Portfolio (2023 — Present) [Independent / Self-Funded] | Tableau: https://public.tableau.com/app/profile/mario.marcolongo/vizzes | Flourish: https://app.flourish.studio/@Digressivo
 - Published 70+ interactive empirical public health, epidemiological, and biomedical visualizations across Wikimedia Commons, Tableau Public (15 Vizzes, 4,300+ views), and Flourish.
 - Created original vector Euler diagram illustrating overlapping clinical phenotypes across autism spectrum disorder (ASD), dystonia, epilepsy, and schizophrenia (CC BY-SA 4.0, adopted across 4 Wikipedia language editions).
 - Synthesized primary biomedical datasets—including H5N1 avian flu preparedness, carotid plaque microplastic pathology, age-stratified COVID-19 mortality, and ISTAT epidemiological trends—into open-access visual evidence repositories and vector charts.
 
-## Key Projects & Production Systems
+## Deployed Systems & Open-Source Projects
 
 ### Yourself to Science™ | Open Science Catalogue & Directory (Website: https://yourselftoscience.org | GitHub: https://github.com/yourselftoscience/yourselftoscience.org | DOI: https://doi.org/10.5281/zenodo.15109359 | FAIRsharing: https://doi.org/10.25504/FAIRsharing.d3d487)
 **Role**: Founder & Lead Builder
@@ -139,7 +139,7 @@ Source: https://commons.wikimedia.org/wiki/File:Oesophageal_Cancer,_Age-Standard
 ## Education & Certifications
 
 - **Studies in Medicine & Surgery** (2020) — Università degli Studi della Campania 'Luigi Vanvitelli' — Foundational biomedical and scientific coursework completed (no formal degree conferred)
-- **EF SET English Certificate 68/100 (C1 Advanced)** (Mar 2024) — EF Standard English Test (EF SET) · https://cert.efset.org/jHk84h
+- **EF SET English Certificate 68/100 (C1 Advanced Overall · C2 Reading/Listening · B2 Writing/Speaking)** (Mar 2024) — EF Standard English Test (EF SET) · https://cert.efset.org/jHk84h
 - **Career Essentials in Generative AI** (Mar 2024) — Microsoft and LinkedIn · Certificate: https://www.linkedin.com/learning/certificates/c4f1f59578e3ac2567787e262e3b2ec55debf96bbbced4d34d5edaa821d9e6d9
 - **GALENOS Crowd Evidence Synthesis Training** (May 2026) — Cochrane Crowd & GALENOS Systematic Review Screening Certification
 
