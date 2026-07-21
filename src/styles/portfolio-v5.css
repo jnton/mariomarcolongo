@@ -30,7 +30,7 @@
   --p5-shadow: 0 20px 55px rgba(0, 0, 0, 0.28);
 }
 
-body:has(.portfolio-v5) {
+.human-portfolio body {
   background: var(--p5-bg);
   color: var(--p5-ink);
 }

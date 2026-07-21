@@ -11,6 +11,10 @@ const pageTitle = "Mario Marcolongo — AI Evaluation, Scientific Evidence & Res
 const pageDescription = "AI model-behavior evaluation, paid scientific verification, research and product operations, knowledge integrity and public data quality.";
 const profileJsonLd = buildProfileGraph(D, "https://mariomarcolongo.com/", pageTitle);
 
+const responsiveSource = (src) => src.endsWith("-800.webp")
+  ? `${src.replace("-800.webp", "-400.webp")} 400w, ${src} 800w`
+  : undefined;
+
 const selectedExperience = [
   D.experience.find((item) => item.role?.includes("Model-Behavior")),
   D.experience.find((item) => item.org?.includes("Entropy for Life")),
@@ -41,9 +45,9 @@ const selectedExperience = [
       </div>
 
       <div class="p5-work-mosaic" aria-label="Selected public work">
-        {H.heroWork.map((item) => (
+        {H.heroWork.map((item, index) => (
           <a class="p5-work-tile" href={item.href} target={item.href.startsWith("http") ? "_blank" : undefined} rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}>
-            <img src={item.image} alt={item.alt} width="640" height="400" loading="eager" decoding="async" />
+            <img src={item.image} srcset={responsiveSource(item.image)} sizes="(max-width: 680px) calc(50vw - 22px), 312px" alt={item.alt} width="640" height="400" loading={index < 2 ? "eager" : "lazy"} decoding="async" />
             <div class="p5-work-caption">
               <strong>{item.title}</strong>
               <span>{item.label}</span>
@@ -76,7 +80,7 @@ const selectedExperience = [
         {H.flagships.map((item) => (
           <article class="p5-flagship">
             <div class="p5-flagship-media">
-              <img src={item.image} alt={item.alt} width="900" height="560" loading="lazy" decoding="async" />
+              <img src={item.image} srcset={responsiveSource(item.image)} sizes="(max-width: 680px) 86vw, (max-width: 980px) 48vw, 380px" alt={item.alt} width="900" height="560" loading="lazy" decoding="async" />
             </div>
             <div class="p5-flagship-body">
               <div class="p5-card-label">{item.label}</div>
@@ -101,7 +105,7 @@ const selectedExperience = [
       <div class="p5-products">
         {H.products.map((item) => (
           <article class={`p5-product ${item.title.includes("Wikipedia") ? "p5-product-bot" : ""}`}>
-            <img src={item.image} alt={item.alt} width="760" height="480" loading="lazy" decoding="async" />
+            <img src={item.image} srcset={responsiveSource(item.image)} sizes="(max-width: 680px) 86vw, (max-width: 980px) 48vw, 380px" alt={item.alt} width="760" height="480" loading="lazy" decoding="async" />
             <div class="p5-product-body">
               <div class="p5-product-label">{item.label}</div>
               <h3>{item.title}</h3>
@@ -124,7 +128,7 @@ const selectedExperience = [
       <div class="p5-visuals">
         {H.visualization.map((item) => (
           <article class="p5-visual">
-            <img src={item.image} alt={item.alt} width="760" height="480" loading="lazy" decoding="async" />
+            <img src={item.image} srcset={responsiveSource(item.image)} sizes="(max-width: 680px) 86vw, (max-width: 980px) 48vw, 380px" alt={item.alt} width="760" height="480" loading="lazy" decoding="async" />
             <div class="p5-visual-body">
               <h3>{item.title}</h3>
               <p>{item.body}</p>

@@ -102,11 +102,11 @@ for (const obsolete of [
 ]) assertNotContains(index, obsolete, 'dist/index.html');
 assertContains(index, 'class="portfolio-v5"', 'dist/index.html');
 assertContains(index, 'class="p5-work-mosaic"', 'dist/index.html');
-assertContains(index, '/media/work/mdpi-filter-1.jpg', 'dist/index.html');
+assertContains(index, '/media/work/mdpi-filter-1-800.webp', 'dist/index.html');
 assertContains(index, '/media/work/model-behavior-method.svg', 'dist/index.html');
 assertContains(index, '/media/work/entropy-social-proof.svg', 'dist/index.html');
 assertContains(index, '/media/work/telegram-bot-avatar.jpg', 'dist/index.html');
-assertContains(index, '/media/work/tableau-mortality.png', 'dist/index.html');
+assertContains(index, '/media/work/tableau-mortality-800.webp', 'dist/index.html');
 assertContains(index, 'public.flourish.studio/visualisation/17745490', 'dist/index.html');
 pass('Compact portfolio-v5 homepage checked');
 

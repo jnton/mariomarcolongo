@@ -48,14 +48,14 @@ const PORTFOLIO_HUMAN = {
     {
       title: "Yourself to Science",
       label: "Research and product operations",
-      image: "/media/work/yourself-to-science.png",
+      image: "/media/work/yourself-to-science-800.webp",
       alt: "Yourself to Science public research-participation catalogue",
       href: "https://yourselftoscience.org/"
     },
     {
       title: "MDPI Filter",
       label: "Research tooling",
-      image: "/media/work/mdpi-filter-1.jpg",
+      image: "/media/work/mdpi-filter-1-800.webp",
       alt: "MDPI Filter highlighting publisher citations inside a literature workflow",
       href: "https://chromewebstore.google.com/detail/mdpi-filter/comknkeimaaadpiopddjoknflbmjeccp"
     }
@@ -90,7 +90,7 @@ const PORTFOLIO_HUMAN = {
       title: "A public system for discovering ways to participate in research",
       summary: "I founded and operate Yourself to Science, defining inclusion rules, verification and provenance fields, open licensing, public datasets and the requirements used for AI-assisted implementation.",
       proof: "55+ initiatives · FAIRsharing and Zenodo records · public machine-readable interfaces",
-      image: "/media/work/yourself-to-science.png",
+      image: "/media/work/yourself-to-science-800.webp",
       alt: "Yourself to Science research-participation catalogue",
       href: "https://yourselftoscience.org/",
       linkLabel: "Explore the catalogue"
@@ -121,7 +121,7 @@ const PORTFOLIO_HUMAN = {
       title: "MDPI Filter",
       label: "Chrome and Edge extension",
       body: "Highlights or hides MDPI results across literature-search tools and identifies linked references inside publisher pages.",
-      image: "/media/work/mdpi-filter-2.jpg",
+      image: "/media/work/mdpi-filter-2-800.webp",
       alt: "MDPI Filter browser-extension popup and detected references",
       href: "https://chromewebstore.google.com/detail/mdpi-filter/comknkeimaaadpiopddjoknflbmjeccp"
     },
@@ -137,7 +137,7 @@ const PORTFOLIO_HUMAN = {
       title: "Emergent Humanity",
       label: "Interactive network narrative",
       body: "A browser-based narrative and simulation about signal, noise, echo chambers and collective memory.",
-      image: "/media/work/emergent-humanity.png",
+      image: "/media/work/emergent-humanity-800.webp",
       alt: "Emergent Humanity interactive network narrative",
       href: "https://jnton.github.io/emergent-humanity/"
     }
@@ -147,7 +147,7 @@ const PORTFOLIO_HUMAN = {
     {
       title: "Tableau Public",
       body: "Interactive statistical work covering mortality, demography, health and public policy.",
-      image: "/media/work/tableau-mortality.png",
+      image: "/media/work/tableau-mortality-800.webp",
       alt: "Tableau mortality analysis by age in Italy",
       href: "https://public.tableau.com/app/profile/mario.marcolongo/vizzes"
     },
