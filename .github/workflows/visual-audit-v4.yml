@@ -1,4 +1,4 @@
-name: Visual audit portfolio v4
+name: Visual audit portfolio
 
 on:
   pull_request:
@@ -6,7 +6,7 @@ on:
     paths:
       - scripts/capture-homepage-v4.js
       - src/pages/index.astro
-      - src/styles/portfolio-human-v2.css
+      - src/styles/portfolio-v5.css
       - src/styles/nav-editorial.css
       - data/portfolio-human.js
       - public/media/work/**
@@ -34,7 +34,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: portfolio-v4-visual-audit
+          name: portfolio-visual-audit
           path: audit-v4/**/*
           if-no-files-found: error
           retention-days: 7
