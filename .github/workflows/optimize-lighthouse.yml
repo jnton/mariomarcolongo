@@ -1,40 +1,30 @@
-name: Optimize Lighthouse
+name: Lighthouse 100 audit
 
 on:
   pull_request:
     branches: [main]
-    paths:
-      - .github/workflows/optimize-lighthouse.yml
-      - scripts/apply-lighthouse-optimizations.py
-      - scripts/optimize-portfolio-images.js
-      - scripts/lighthouse-static-server.js
-      - src/styles/brand-evidence-polish.css
-      - public/robots.txt
+  push:
+    branches: [main]
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
+
+concurrency:
+  group: lighthouse-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
-  optimize:
-    if: github.event_name == 'workflow_dispatch' || github.head_ref == 'human-centered-redesign'
+  audit:
     runs-on: ubuntu-latest
     timeout-minutes: 35
     steps:
       - uses: actions/checkout@v4
-        with:
-          ref: human-centered-redesign
       - uses: actions/setup-node@v4
         with:
           node-version: 22
           cache: npm
       - run: npm ci --no-audit --no-fund
-
-      - name: Generate responsive WebP previews
-        run: node scripts/optimize-portfolio-images.js
-
-      - name: Apply CSS, responsive-image and cache optimizations
-        run: python scripts/apply-lighthouse-optimizations.py
 
       - name: Build and verify all public outputs
         run: |
@@ -50,7 +40,11 @@ jobs:
           node scripts/lighthouse-static-server.js > /tmp/lighthouse-server.log 2>&1 &
           SERVER_PID=$!
           trap 'kill $SERVER_PID || true' EXIT
-          for i in {1..30}; do curl -fsS http://127.0.0.1:4173/index.html >/dev/null && break; sleep 1; done
+          for i in {1..30}; do
+            if curl -fsS http://127.0.0.1:4173/index.html >/dev/null; then break; fi
+            sleep 1
+          done
+          curl -fsS http://127.0.0.1:4173/index.html >/dev/null
           export CHROME_PATH="$(node -e "console.log(require('puppeteer').executablePath())")"
           npx --yes lighthouse@12.8.2 http://127.0.0.1:4173/index.html \
             --quiet --chrome-flags='--headless --no-sandbox --disable-dev-shm-usage' \
@@ -62,18 +56,22 @@ jobs:
             --output=json --output-path=lighthouse-output/desktop.json
           node - <<'NODE'
           const fs = require('node:fs');
+          const categories = ['performance', 'accessibility', 'best-practices', 'seo'];
           let failed = false;
+          const summary = ['# Lighthouse audit', '', '| Mode | Performance | Accessibility | Best practices | SEO |', '|---|---:|---:|---:|---:|'];
           for (const mode of ['mobile', 'desktop']) {
             const report = JSON.parse(fs.readFileSync(`lighthouse-output/${mode}.json`, 'utf8'));
-            const scores = Object.fromEntries(Object.entries(report.categories).map(([key, value]) => [key, Math.round(value.score * 100)]));
-            console.log(`${mode}:`, scores);
+            const scores = Object.fromEntries(categories.map((key) => [key, Math.round(report.categories[key].score * 100)]));
+            const diagnostics = Object.entries(report.audits)
+              .filter(([, audit]) => typeof audit.score === 'number' && audit.score < 1 && !['notApplicable', 'informative', 'manual'].includes(audit.scoreDisplayMode))
+              .map(([id, audit]) => ({ id, score: audit.score, title: audit.title }));
             fs.writeFileSync(`lighthouse-output/${mode}-scores.json`, JSON.stringify(scores, null, 2));
-            for (const category of ['accessibility', 'best-practices', 'seo']) {
-              if (scores[category] !== 100) failed = true;
-            }
-            const minimumPerformance = mode === 'mobile' ? 90 : 95;
-            if (scores.performance < minimumPerformance) failed = true;
+            fs.writeFileSync(`lighthouse-output/${mode}-diagnostics.json`, JSON.stringify(diagnostics, null, 2));
+            console.log(`${mode}:`, scores);
+            summary.push(`| ${mode} | ${scores.performance} | ${scores.accessibility} | ${scores['best-practices']} | ${scores.seo} |`);
+            if (categories.some((key) => scores[key] !== 100)) failed = true;
           }
+          if (process.env.GITHUB_STEP_SUMMARY) fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, `${summary.join('\n')}\n`);
           if (failed) process.exit(1);
           NODE
 
@@ -81,21 +79,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: optimized-lighthouse-audit
+          name: lighthouse-100-audit
           path: lighthouse-output/**/*
           if-no-files-found: error
           retention-days: 14
-
-      - name: Commit verified optimized assets and outputs
-        run: |
-          git config user.name 'github-actions[bot]'
-          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add \
-            astro.config.mjs data/portfolio-human.js src/layouts/Layout.astro src/pages/integrity.astro src/pages/index.astro \
-            src/styles/portfolio-v5.css scripts/verify-dist.js public/_headers \
-            public/media/work/*-400.webp public/media/work/*-800.webp \
-            index.html integrity.html security.html cv.html cv-resume.html cv-research.html cv-editorial.html cv-integrity.html \
-            llms.txt llms-full.txt cv-llm.txt public/llms.txt public/llms-full.txt public/cv-llm.txt public/data/source.js
-          if git diff --cached --quiet; then exit 0; fi
-          git commit -m 'performance: ship responsive images and production delivery optimizations'
-          git push origin HEAD:human-centered-redesign
