@@ -1,0 +1,201 @@
+name: Apply brand and evidence corrections
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - .github/workflows/apply-brand-and-evidence.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  apply:
+    if: github.event_name == 'workflow_dispatch' || github.head_ref == 'human-centered-redesign'
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: human-centered-redesign
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci --no-audit --no-fund
+
+      - name: Apply career, evidence and verification updates
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          def replace(path, old, new, count=1):
+              p = Path(path)
+              text = p.read_text()
+              if old not in text:
+                  raise SystemExit(f'Missing replacement in {path}: {old[:120]}')
+              p.write_text(text.replace(old, new, count))
+
+          replace('data/source.js',
+            'grayswanUrl: "https://app.grayswan.ai/arena/user/6a57be70d15e123775a1e9cf",',
+            'grayswanUrl: "https://app.grayswan.ai/arena/user/6a57be70d15e123775a1e9cf",\n    grayswanArchiveUrl: "https://archive.is/inkFs",')
+          replace('data/source.js',
+            'jobTitle: "Research, Evidence & AI Operations Specialist",',
+            'jobTitle: "AI Evaluation & Research Operations Specialist",')
+          replace('data/source.js',
+            'secondaryTitle: "AI Safety · Knowledge Integrity · Editorial & Research Operations · Open Science & Data Quality",',
+            'secondaryTitle: "Model Behavior · Scientific Evidence · Knowledge Integrity · Open Science & Data Quality",')
+          replace('data/source.js',
+            'headline: "I investigate claims, test systems, and build evidence workflows.",',
+            'headline: "I evaluate model behavior, verify scientific evidence, and operate research systems.",')
+          replace('data/source.js',
+            'role: "Research, evidence and AI operations specialist working across scientific verification, editorial and research programs, knowledge integrity, adversarial AI testing, open science and data quality.",',
+            'role: "AI evaluation and research operations specialist working across model behavior, scientific verification, knowledge integrity, open science and data quality.",')
+          replace('data/source.js',
+            'heroStatement: "Investigating claims, testing systems and building evidence workflows across research, public knowledge, AI behavior and technical operations.",',
+            'heroStatement: "Evaluating model behavior, verifying scientific evidence and operating research workflows and public technical products.",')
+          replace('data/source.js',
+            'The profile supports four application lanes: AI safety and model behavior;',
+            'The profile supports four application lanes: AI evaluation and model behavior;')
+          replace('data/source.js',
+            'category: "AI SAFETY EVALUATION",',
+            'category: "AI EVALUATION & SAFETY OPERATIONS",')
+
+          replace('data/application-profiles.js',
+            'title: "AI Safety & Adversarial Testing Specialist",',
+            'title: "AI Evaluation & Model Behavior Specialist",')
+          replace('data/application-profiles.js',
+            'subtitle: "Model behavior testing · jailbreak and prompt-injection analysis · evidence-bound reporting · evaluation operations",',
+            'subtitle: "Model behavior testing · adversarial QA · evidence-bound reporting · evaluation operations",')
+          replace('data/application-profiles.js',
+            'summary: "AI safety and research-verification specialist',
+            'summary: "AI evaluation and research-verification specialist')
+          replace('data/application-profiles.js',
+            '"AI safety evaluation and safeguards operations",',
+            '"AI evaluation and safeguards operations",')
+          replace('data/application-profiles.js',
+            'title: "Research Verification & Data Quality Specialist",',
+            'title: "Scientific AI Quality & Research Data Specialist",')
+
+          replace('scripts/check-stale-strings.js',
+            "jobTitle: 'Research, Evidence & AI Operations Specialist',",
+            "jobTitle: 'AI Evaluation & Research Operations Specialist',")
+          replace('scripts/check-stale-strings.js',
+            "secondaryTitle: 'AI Safety · Knowledge Integrity · Editorial & Research Operations · Open Science & Data Quality',",
+            "secondaryTitle: 'Model Behavior · Scientific Evidence · Knowledge Integrity · Open Science & Data Quality',")
+          replace('scripts/check-stale-strings.js',
+            "'Evidence that maps to the next role.',",
+            "'Evidence for the next role—and the path after it.',")
+          replace('scripts/check-stale-strings.js',
+            "for (const requiredText of ['Model behavior evaluation record.', 'What the record demonstrates', 'Limitations and interpretation'])",
+            "for (const requiredText of ['AI evaluation and model-behavior record.', 'What the record demonstrates', 'Limitations and interpretation', 'archive.is/inkFs'])")
+
+          p = Path('scripts/verify-dist.js')
+          text = p.read_text()
+          for old in [
+              '  H.humanResearch.title,\n',
+              '  H.humanResearch.organization,\n',
+              '  H.humanResearch.supervisor,\n'
+          ]:
+              if old not in text:
+                  raise SystemExit(f'Missing verify-dist removal: {old!r}')
+              text = text.replace(old, '')
+          replacements = {
+              "'Evidence that maps to the next role.', 'Discuss a difficult problem.'": "'Evidence for the next role—and the path after it.', 'Discuss a difficult problem.'",
+              "assertContains(index, 'class=\"p5-human\"', 'dist/index.html');\n": "",
+              "assertContains(index, '/media/work/telegram-bot-card.svg', 'dist/index.html');": "assertContains(index, '/media/work/telegram-bot-avatar.jpg', 'dist/index.html');",
+              "assertContains(index, '/media/work/mdpi-filter-1.jpg', 'dist/index.html');": "assertContains(index, '/media/work/mdpi-filter-1.jpg', 'dist/index.html');\nassertContains(index, '/media/work/model-behavior-method.svg', 'dist/index.html');\nassertContains(index, '/media/work/entropy-social-proof.svg', 'dist/index.html');",
+              "'Model behavior evaluation record.', 'What the record demonstrates', 'Evaluation approach',": "'AI evaluation and model-behavior record.', 'What the record demonstrates', 'Evaluation approach',",
+              "'weak-password-change', 'complete 26-wave activity table'": "'weak-password-change', 'complete 26-wave activity table', 'archive.is/inkFs'"
+          }
+          for old, new in replacements.items():
+              if old not in text:
+                  raise SystemExit(f'Missing verify-dist replacement: {old[:100]}')
+              text = text.replace(old, new, 1)
+          p.write_text(text)
+
+          p = Path('scripts/verify-rendering.js')
+          text = p.read_text()
+          text = text.replace("    humanSection: Boolean(document.querySelector('.p5-human')),\n", '')
+          text = text.replace("  if (!result.humanSection) throw new Error('Homepage is missing the named human-research section');\n", '')
+          p.write_text(text)
+
+          p = Path('src/styles/portfolio-v5.css')
+          css = p.read_text()
+          marker = '/* official Telegram bot avatar */'
+          if marker not in css:
+              css += '''\n\n/* official Telegram bot avatar */\n.p5-product-bot img {\n  object-fit: contain !important;\n  object-position: center !important;\n  padding: 34px;\n  background: #eef4f8;\n}\n\n.p5-work-tile img[src$="model-behavior-method.svg"],\n.p5-work-tile img[src$="entropy-social-proof.svg"],\n.p5-flagship-media img[src$="model-behavior-method.svg"],\n.p5-flagship-media img[src$="entropy-social-proof.svg"] {\n  object-fit: contain;\n  object-position: center;\n  background: #f7f6f2;\n}\n'''
+          p.write_text(css)
+          PY
+
+      - name: Download official Telegram bot avatar
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p public/media/work
+          URL='https://t.me/i/userpic/320/ToEnWikipediaBot.jpg'
+          curl -L --fail --retry 3 -A 'Mozilla/5.0 Chrome/124 Safari/537.36' "$URL" -o public/media/work/telegram-bot-avatar.jpg
+          file public/media/work/telegram-bot-avatar.jpg
+          file public/media/work/telegram-bot-avatar.jpg | grep -Eq 'JPEG|PNG|Web/P image'
+          test -s public/media/work/telegram-bot-avatar.jpg
+
+      - name: Generate favicon and social preview images
+        run: node scripts/generate-brand-assets.js
+
+      - name: Build and verify repository
+        run: |
+          npm run build
+          npm run verify:render
+          npm run pdf
+
+      - name: Run local Lighthouse audits
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p lighthouse-output
+          python3 -m http.server 4173 --directory dist > /tmp/mm-http.log 2>&1 &
+          SERVER_PID=$!
+          trap 'kill $SERVER_PID || true' EXIT
+          for i in {1..30}; do curl -fsS http://127.0.0.1:4173/index.html >/dev/null && break; sleep 1; done
+          export CHROME_PATH="$(node -e "console.log(require('puppeteer').executablePath())")"
+          npx --yes lighthouse@12.8.2 http://127.0.0.1:4173/index.html \
+            --quiet --chrome-flags='--headless --no-sandbox --disable-dev-shm-usage' \
+            --only-categories=performance,accessibility,best-practices,seo \
+            --output=json --output-path=lighthouse-output/mobile.json
+          npx --yes lighthouse@12.8.2 http://127.0.0.1:4173/index.html \
+            --quiet --preset=desktop --chrome-flags='--headless --no-sandbox --disable-dev-shm-usage' \
+            --only-categories=performance,accessibility,best-practices,seo \
+            --output=json --output-path=lighthouse-output/desktop.json
+          node - <<'NODE'
+          const fs = require('node:fs');
+          for (const mode of ['mobile', 'desktop']) {
+            const report = JSON.parse(fs.readFileSync(`lighthouse-output/${mode}.json`, 'utf8'));
+            const scores = Object.fromEntries(Object.entries(report.categories).map(([key, value]) => [key, Math.round(value.score * 100)]));
+            console.log(`${mode}:`, scores);
+            fs.writeFileSync(`lighthouse-output/${mode}-scores.json`, JSON.stringify(scores, null, 2));
+          }
+          NODE
+
+      - name: Upload Lighthouse reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lighthouse-brand-evidence-audit
+          path: lighthouse-output/**/*
+          if-no-files-found: warn
+          retention-days: 14
+
+      - name: Commit verified source and generated assets
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add \
+            data/source.js data/application-profiles.js scripts/check-stale-strings.js scripts/verify-dist.js scripts/verify-rendering.js \
+            src/styles/portfolio-v5.css public/media/work/telegram-bot-avatar.jpg \
+            public/favicon-48x48.png public/favicon-192x192.png public/favicon-512x512.png public/apple-touch-icon.png public/og \
+            index.html integrity.html security.html cv.html cv-resume.html cv-research.html cv-editorial.html cv-integrity.html \
+            llms.txt llms-full.txt cv-llm.txt public/llms.txt public/llms-full.txt public/cv-llm.txt public/data/source.js
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m 'brand: correct evidence previews, positioning and social assets'
+          git push origin HEAD:human-centered-redesign
