@@ -32,6 +32,15 @@ function read(relativePath) {
   return value;
 }
 
+function normalizeHtmlText(content) {
+  return String(content)
+    .replaceAll('&amp;', '&')
+    .replaceAll('&#39;', "'")
+    .replaceAll('&quot;', '"')
+    .replaceAll('&gt;', '>')
+    .replaceAll('&lt;', '<');
+}
+
 function assertContains(content, needle, label) {
   if (!content.includes(needle)) fail(`${label} is missing: ${needle}`);
 }
@@ -92,38 +101,42 @@ for (const [name, html] of Object.entries(pages)) {
 }
 
 const index = pages.index;
+const indexText = normalizeHtmlText(index);
 for (const needle of [
   'I test model behavior.',
   'AI Safety Application CV',
-  'Research Verification &amp; Data Quality CV',
-  'Master CV &amp; Evidence Record',
+  'Research Verification & Data Quality CV',
+  'Master CV & Evidence Record',
   'data-testid="career-focus"',
   'data-testid="career-evidence"',
   'data-testid="career-documents"'
-]) assertContains(index, needle, 'dist/index.html');
+]) assertContains(indexText, needle, 'dist/index.html');
 assertContains(index, D.identity.grayswanUrl, 'dist/index.html');
 pass('Recruiter-focused homepage checked');
 
 for (const [name, profile] of [['resume', P.aiSafety], ['research', P.researchQuality]]) {
   const html = pages[name];
-  assertContains(html, profile.title.replaceAll('&', '&amp;'), `dist/${name}.html`);
-  assertContains(html, 'Page 1 of 2', `dist/${name}.html`);
-  assertContains(html, 'Page 2 of 2', `dist/${name}.html`);
-  assertContains(html, 'C1 overall', `dist/${name}.html`);
-  assertContains(html, 'code structure and behavior', `dist/${name}.html`);
+  const text = normalizeHtmlText(html);
+  assertContains(text, profile.title, `dist/${name}.html`);
+  assertContains(text, 'Page 1 of 2', `dist/${name}.html`);
+  assertContains(text, 'Page 2 of 2', `dist/${name}.html`);
+  assertContains(text, 'C1 overall', `dist/${name}.html`);
+  assertContains(text, 'behavior inspection', `dist/${name}.html`);
 }
 pass('Specialized application CVs checked');
 
 const master = pages.cv;
+const masterText = normalizeHtmlText(master);
 for (const needle of [
-  'Master CV &amp; Evidence Record',
+  'Master CV & Evidence Record',
   'not presented as an independent software developer',
   'AI Safety CV',
-  'Research &amp; Data Quality CV'
-]) assertContains(master, needle, 'dist/cv.html');
+  'Research & Data Quality CV'
+]) assertContains(masterText, needle, 'dist/cv.html');
 pass('Master CV positioning checked');
 
 const security = pages.security;
+const securityText = normalizeHtmlText(security);
 for (const needle of [
   'Model behavior evaluation record.',
   'What the record demonstrates',
@@ -133,25 +146,23 @@ for (const needle of [
   'indirect-function-call',
   'weak-password-change',
   'complete 26-wave activity table'
-]) assertContains(security, needle, 'dist/security.html');
+]) assertContains(securityText, needle, 'dist/security.html');
 for (const needle of [
   'independently verified policy or alignment boundary failure',
   'tracking boundary resilience across major model architecture updates',
   'ensuring research directories and data pipelines are resilient',
-  'Model Behavior &amp; Safety Case Study'
-]) assertNotContains(security, needle, 'dist/security.html');
+  'Model Behavior & Safety Case Study'
+]) assertNotContains(securityText, needle, 'dist/security.html');
 pass('Evaluation record evidence boundary checked');
 
-const allGenerated = Object.values(pages).join('\n') + Object.values(canonical).join('\n');
+const allGenerated = normalizeHtmlText(Object.values(pages).join('\n')) + Object.values(canonical).join('\n');
 assertContains(allGenerated, D.identity.jobTitle, 'Generated outputs');
 assertContains(allGenerated, D.identity.secondaryTitle, 'Generated outputs');
 for (const needle of [
-  'AI Evaluation &amp; Research Verification Specialist',
   'AI Evaluation & Research Verification Specialist',
-  'Founder &amp; Technical Product Builder',
   'Founder & Technical Product Builder',
-  'Product Owner &amp; Technical Builder',
-  'Creator &amp; Systems Builder'
+  'Product Owner & Technical Builder',
+  'Creator & Systems Builder'
 ]) assertNotContains(allGenerated, needle, 'Generated outputs');
 
 const canonicalExpectations = [
