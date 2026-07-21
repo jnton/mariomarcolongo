@@ -2,25 +2,22 @@
 import Layout from "../layouts/Layout.astro";
 import SiteNav from "../components/SiteNav.astro";
 import SiteFooter from "../components/SiteFooter.astro";
-import "../styles/portfolio-human-v2.css";
+import "../styles/portfolio-v5.css";
 import D from "../../data/source.js";
 import H from "../../data/portfolio-human.js";
 import { buildProfileGraph } from "../lib/structured-data.js";
 
-const pageTitle = "Mario Marcolongo — Scientific Verification, AI Evaluation & Operations";
-const pageDescription = "Scientific verification, AI model-behavior evaluation, research operations, public-interest products and data visualization.";
+const pageTitle = "Mario Marcolongo — AI Safety, Scientific Verification & Research Operations";
+const pageDescription = "AI model-behavior testing, scientific verification, sensitive research operations, public products and data quality.";
 const profileJsonLd = buildProfileGraph(D, "https://mariomarcolongo.com/", pageTitle);
 
 const selectedExperience = [
-  D.experience.find((item) => item.org?.includes("Entropy for Life")),
   D.experience.find((item) => item.role?.includes("Model-Behavior")),
+  D.experience.find((item) => item.org?.includes("Entropy for Life")),
   D.experience.find((item) => item.org?.includes("Yourself to Science")),
   D.experience.find((item) => item.role?.includes("Focus-Group")),
   D.experience.find((item) => item.org?.includes("Wikipedia"))
 ].filter(Boolean);
-
-const mainProject = H.heroProjects[0];
-const secondaryProjects = H.heroProjects.slice(1);
 ---
 
 <Layout title={pageTitle} description={pageDescription} canonical="https://mariomarcolongo.com/">
@@ -30,185 +27,145 @@ const secondaryProjects = H.heroProjects.slice(1);
 
   <SiteNav activePage="home" />
 
-  <main class="portfolio-v4" id="content">
-    <section class="pv4-hero" aria-labelledby="portfolio-title">
-      <div class="pv4-hero-copy">
-        <div class="pv4-eyebrow">{H.eyebrow}</div>
-        <h1 id="portfolio-title">I work on difficult problems where <em>evidence</em>, systems and human judgment meet.</h1>
-        <p class="pv4-intro">{H.introduction}</p>
-        <div class="pv4-actions">
-          <a class="pv4-button pv4-button-primary" href="#work">See the evidence <span aria-hidden="true">↓</span></a>
-          <a class="pv4-button" href="#products">Explore shipped products</a>
-          <a class="pv4-button" href="#fit">Choose a targeted CV</a>
+  <main class="portfolio-v5" id="content">
+    <section class="p5-hero" aria-labelledby="portfolio-title">
+      <div class="p5-hero-copy">
+        <div class="p5-kicker">{H.eyebrow}</div>
+        <h1 id="portfolio-title">{H.headline}</h1>
+        <p>{H.introduction}</p>
+        <div class="p5-actions">
+          <a class="p5-button p5-button-primary" href="#selected-work">View selected work</a>
+          <a class="p5-button" href="#applications">Choose a targeted CV</a>
         </div>
-        <div class="pv4-facts" aria-label="Location and working information">
-          <span>Based in Italy</span>
-          <span>EU work authorization</span>
-          <span>Open to worldwide relocation</span>
-          <span>International B2B contracting</span>
-        </div>
+        <p class="p5-availability">Based in Italy · EU work authorization · open to worldwide relocation and international contracting</p>
       </div>
 
-      <div class="pv4-stage" aria-label="Selected public products and data work">
-        <span class="pv4-stage-label">Public work, not decorative imagery</span>
-        <figure class="pv4-stage-main">
-          <img src={mainProject.image} alt={mainProject.imageAlt} width="1280" height="800" loading="eager" decoding="async" />
-          <figcaption>
-            <span><strong>{mainProject.title}</strong> · {mainProject.label}</span>
-            <a href={mainProject.href} target="_blank" rel="noopener noreferrer">Open ↗</a>
-          </figcaption>
-        </figure>
-        <div class="pv4-stage-thumbs">
-          {secondaryProjects.map((project) => (
-            <a class="pv4-stage-thumb" href={project.href} target="_blank" rel="noopener noreferrer">
-              <img src={project.image} alt={project.imageAlt} width="640" height="360" loading="eager" decoding="async" />
-              <span><strong>{project.title}</strong><br />{project.label}</span>
-            </a>
-          ))}
-        </div>
+      <div class="p5-work-mosaic" aria-label="Selected public work">
+        {H.heroWork.map((item) => (
+          <a class="p5-work-tile" href={item.href} target={item.href.startsWith("http") ? "_blank" : undefined} rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}>
+            <img src={item.image} alt={item.alt} width="640" height="400" loading="eager" decoding="async" />
+            <div class="p5-work-caption">
+              <strong>{item.title}</strong>
+              <span>{item.label}</span>
+            </div>
+          </a>
+        ))}
       </div>
     </section>
 
-    <section class="pv4-proof" aria-label="Selected public proof">
-      {H.proofMetrics.map((metric) => (
-        <a class="pv4-proof-card" href={metric.source} target={metric.source.startsWith("http") ? "_blank" : undefined} rel={metric.source.startsWith("http") ? "noopener noreferrer" : undefined}>
-          <strong>{metric.value}</strong>
-          <span>{metric.label}</span>
-          <small>{metric.detail}</small>
+    <section class="p5-proof-grid" aria-label="Selected evidence">
+      {H.proofs.map((item) => (
+        <a class="p5-proof" href={item.href} target={item.href.startsWith("http") ? "_blank" : undefined} rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}>
+          <strong>{item.value}</strong>
+          <span>{item.label}</span>
+          <small>{item.detail}</small>
         </a>
       ))}
     </section>
 
-    <section class="pv4-section" id="work" aria-labelledby="work-title" data-testid="human-work">
-      <div class="pv4-section-head">
+    <section class="p5-section" id="selected-work" data-testid="human-work" aria-labelledby="selected-work-title">
+      <div class="p5-section-head">
         <div>
-          <span class="pv4-section-index">01 · Selected outcomes</span>
-          <h2 id="work-title">Scale, failure modes, systems and evidence.</h2>
+          <div class="p5-kicker">Selected work</div>
+          <h2 id="selected-work-title">Evidence that maps to the next role.</h2>
         </div>
-        <p>The homepage now prioritizes paid work, public reach, shipped tools and role-relevant outcomes. Smaller or more unusual records remain available, but they no longer lead the story.</p>
+        <p>AI safety and model behavior lead the portfolio, followed by paid scientific verification and research/product operations. Each case links to inspectable public evidence.</p>
       </div>
 
-      <div class="pv4-stories" data-testid="human-capabilities">
-        {H.stories.map((story) => (
-          <article class={`pv4-story pv4-story-${story.id}`}>
-            <div class="pv4-story-visual">
-              {story.visual === "audience" ? (
-                <div class="pv4-audience" role="img" aria-label="Entropy for Life audience: more than 250,000 YouTube subscribers, 158,000 Instagram followers and 54,000 TikTok followers">
-                  <span class="pv4-stage-label">Audience of the science-communication project I support</span>
-                  <div class="pv4-audience-main">
-                    <strong>250K+</strong>
-                    <span>YouTube subscribers</span>
-                  </div>
-                  <div class="pv4-audience-secondary">
-                    <div><strong>158K</strong><span>Instagram followers</span></div>
-                    <div><strong>54K</strong><span>TikTok followers</span></div>
-                  </div>
+      <div class="p5-flagship-grid" data-testid="human-capabilities">
+        {H.flagships.map((item) => (
+          <article class="p5-flagship">
+            <div class="p5-flagship-media">
+              {item.id === "entropy" ? (
+                <div class="p5-audience-media" role="img" aria-label="Entropy for Life project audience reported at more than 250,000 YouTube subscribers">
+                  <strong>250K+</strong>
+                  <span>reported YouTube audience of the science-communication project supported</span>
                 </div>
               ) : (
-                <figure class="pv4-story-frame">
-                  <img src={story.image} alt={story.imageAlt} width="1440" height="900" loading="lazy" decoding="async" />
-                  <span class="pv4-story-number" aria-hidden="true">{story.number}</span>
-                </figure>
+                <img src={item.image} alt={item.alt} width="900" height="560" loading="lazy" decoding="async" />
               )}
             </div>
-
-            <div class="pv4-story-copy">
-              <span class="pv4-story-label">{story.number} · {story.label}</span>
-              <h3>{story.title}</h3>
-              <p class="pv4-story-summary">{story.summary}</p>
-              <div class="pv4-story-role"><strong>My role:</strong> {story.role}</div>
-              <ul>{story.process.map((step) => <li>{step}</li>)}</ul>
-              <div class="pv4-story-result"><strong>Outcome:</strong> {story.result}</div>
-              <a class="pv4-story-link" href={story.href} target={story.href.startsWith("http") ? "_blank" : undefined} rel={story.href.startsWith("http") ? "noopener noreferrer" : undefined}>{story.linkLabel} →</a>
+            <div class="p5-flagship-body">
+              <div class="p5-card-label">{item.label}</div>
+              <h3>{item.title}</h3>
+              <p>{item.summary}</p>
+              <p class="p5-proof-line">{item.proof}</p>
+              <a class="p5-link" href={item.href} target={item.href.startsWith("http") ? "_blank" : undefined} rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}>{item.linkLabel} →</a>
             </div>
           </article>
         ))}
       </div>
     </section>
 
-    <section class="pv4-section" id="products" aria-labelledby="products-title">
-      <div class="pv4-section-head">
-        <div>
-          <span class="pv4-section-index">02 · Products and systems</span>
-          <h2 id="products-title">Small tools that solve real problems.</h2>
-        </div>
-        <p>These projects demonstrate requirements definition, behavioral testing, deployment diagnosis and operational maintenance—not a claim of unaided software engineering.</p>
+    <section class="p5-human" aria-labelledby="human-research-title">
+      <div class="p5-human-diagram" aria-label="Focus-group facilitation workflow">
+        <div class="p5-human-step"><strong>1</strong><span>Prepare the guide, prompts, Zoom workflow and participant expectations.</span></div>
+        <div class="p5-human-step"><strong>2</strong><span>Co-facilitate with live handoffs, careful pacing and non-judgmental follow-up.</span></div>
+        <div class="p5-human-step"><strong>3</strong><span>Recover missed prompts, support the other facilitator and protect participant privacy.</span></div>
       </div>
+      <div class="p5-human-copy">
+        <div class="p5-card-label">{H.humanResearch.label}</div>
+        <h2 id="human-research-title">{H.humanResearch.title}</h2>
+        <div class="p5-human-meta">
+          <strong>{H.humanResearch.organization}</strong>
+          <span>{H.humanResearch.supervisor}</span>
+          <span>{H.humanResearch.period}</span>
+        </div>
+        <p class="p5-human-summary">{H.humanResearch.summary}</p>
+        <ul>{H.humanResearch.capabilities.map((item) => <li>{item}</li>)}</ul>
+        <div class="p5-human-links">
+          {H.humanResearch.links.map((item) => <a href={item.href} target="_blank" rel="noopener noreferrer">{item.label} ↗</a>)}
+        </div>
+      </div>
+    </section>
 
-      <div class="pv4-products">
-        {H.products.map((product) => (
-          <article class="pv4-product">
-            <div class="pv4-product-copy">
-              <span class="pv4-product-label">{product.label}</span>
-              <h3>{product.title}</h3>
-              <p>{product.body}</p>
-              <a class="pv4-product-link" href={product.href} target="_blank" rel="noopener noreferrer">{product.linkLabel} →</a>
+    <section class="p5-section" id="products" aria-labelledby="products-title">
+      <div class="p5-section-head">
+        <div>
+          <div class="p5-kicker">Products and systems</div>
+          <h2 id="products-title">Public tools with a clear job to do.</h2>
+        </div>
+        <p>These projects show requirements definition, functional testing, deployment diagnosis and operational maintenance. They do not imply unaided software development.</p>
+      </div>
+      <div class="p5-products">
+        {H.products.map((item) => (
+          <article class="p5-product">
+            <img src={item.image} alt={item.alt} width="760" height="480" loading="lazy" decoding="async" />
+            <div class="p5-product-body">
+              <div class="p5-product-label">{item.label}</div>
+              <h3>{item.title}</h3>
+              <p>{item.body}</p>
+              <a class="p5-link" href={item.href} target="_blank" rel="noopener noreferrer">Open project →</a>
             </div>
-            <img src={product.image} alt={product.imageAlt} width="900" height="650" loading="lazy" decoding="async" />
           </article>
         ))}
       </div>
     </section>
 
-    <section class="pv4-section" id="visuals" aria-labelledby="visuals-title">
-      <div class="pv4-section-head">
+    <section class="p5-section" id="visuals" aria-labelledby="visuals-title">
+      <div class="p5-section-head">
         <div>
-          <span class="pv4-section-index">03 · Data visualization</span>
-          <h2 id="visuals-title">Interactive analysis and public visual explanation.</h2>
+          <div class="p5-kicker">Data and visual analysis</div>
+          <h2 id="visuals-title">Public analysis across three platforms.</h2>
         </div>
-        <p>The portfolio now shows Tableau and Flourish alongside the openly licensed Wikimedia work, rather than implying that one SVG represents the entire visualization practice.</p>
+        <p>Tableau and Flourish are shown directly, while Wikimedia provides the broader open record and reuse history.</p>
       </div>
-
-      <div class="pv4-platforms">
-        {H.visualizationPlatforms.map((platform) => (
-          <article class="pv4-platform">
-            <div class="pv4-platform-media">
-              <img src={platform.image} alt={platform.imageAlt} width="1440" height="900" loading="lazy" decoding="async" />
-            </div>
-            <div class="pv4-platform-copy">
-              <span class="pv4-platform-label">{platform.label}</span>
-              <h3>{platform.title}</h3>
-              <p>{platform.body}</p>
-              <a class="pv4-platform-link" href={platform.href} target="_blank" rel="noopener noreferrer">{platform.linkLabel} →</a>
+      <div class="p5-visuals">
+        {H.visualization.map((item) => (
+          <article class="p5-visual">
+            <img src={item.image} alt={item.alt} width="760" height="480" loading="lazy" decoding="async" />
+            <div class="p5-visual-body">
+              <h3>{item.title}</h3>
+              <p>{item.body}</p>
+              <a class="p5-link" href={item.href} target="_blank" rel="noopener noreferrer">View public work →</a>
             </div>
           </article>
         ))}
       </div>
 
-      <div class="pv4-gallery-shell">
-        <div class="pv4-gallery-head">
-          <h3>Selected open visualizations</h3>
-          <div class="pv4-gallery-controls" aria-label="Visualization gallery controls">
-            <button class="pv4-gallery-control" type="button" data-gallery-prev aria-label="Previous visualization">←</button>
-            <button class="pv4-gallery-control" type="button" data-gallery-next aria-label="Next visualization">→</button>
-          </div>
-        </div>
-        <div class="pv4-gallery-track" data-gallery-track tabindex="0">
-          {D.visualizations.map((item) => (
-            <figure class="pv4-gallery-item">
-              <img src={item.src} alt={item.title} width="1000" height="650" loading="lazy" decoding="async" />
-              <figcaption>
-                <strong>{item.title}</strong>
-                <p>{item.caption}</p>
-                <a href={item.fileUrl} target="_blank" rel="noopener noreferrer">Open the source ↗</a>
-              </figcaption>
-            </figure>
-          ))}
-        </div>
-      </div>
-    </section>
-
-    <section class="pv4-working-style" id="working-style" aria-labelledby="working-style-title">
-      <div class="pv4-section-head">
-        <div>
-          <span class="pv4-section-index">04 · Operating style</span>
-          <h2 id="working-style-title">Useful when the problem is strange, ambiguous or uncomfortable.</h2>
-        </div>
-        <p>This is the credible signal for unconventional, high-autonomy employers: how I approach difficult work—not a theatrical personality label.</p>
-      </div>
-      <div class="pv4-style-grid">
-        {H.operatingStyle.map((item) => (
-          <article class="pv4-style-card">
+      <div class="p5-principles" aria-label="Working principles">
+        {H.workingPrinciples.map((item) => (
+          <article class="p5-principle">
             <h3>{item.title}</h3>
             <p>{item.body}</p>
           </article>
@@ -216,80 +173,57 @@ const secondaryProjects = H.heroProjects.slice(1);
       </div>
     </section>
 
-    <section class="pv4-section" id="experience" aria-labelledby="experience-title">
-      <div class="pv4-section-head">
+    <section class="p5-section" id="experience" aria-labelledby="experience-title">
+      <div class="p5-section-head">
         <div>
-          <span class="pv4-section-index">05 · Experience</span>
-          <h2 id="experience-title">Different settings, the same pattern of ownership.</h2>
+          <div class="p5-kicker">Experience</div>
+          <h2 id="experience-title">A concise record, with deeper evidence available.</h2>
         </div>
-        <p>Paid work, independent products, public contribution records and volunteer research are labelled separately rather than made to look equivalent.</p>
+        <p>Paid work, independent projects, volunteer research and public contribution records are labelled separately.</p>
       </div>
-      <div class="pv4-experience-grid">
+      <div class="p5-experience-list">
         {selectedExperience.map((item) => (
-          <>
-            <div class="pv4-experience-period">{item.period}</div>
-            <article class="pv4-experience-copy">
+          <article class="p5-experience">
+            <time>{item.period}</time>
+            <div>
               <h3>{item.role}</h3>
               <p><strong>{item.org}</strong> · {item.tag}. {item.resumeBullets?.[0] || item.bullets?.[0]}</p>
-            </article>
-          </>
-        ))}
-      </div>
-    </section>
-
-    <section class="pv4-section" id="fit" aria-labelledby="fit-title" data-testid="human-documents">
-      <div class="pv4-section-head">
-        <div>
-          <span class="pv4-section-index">06 · Target roles</span>
-          <h2 id="fit-title">One evidence base. Four high-upside application routes.</h2>
-        </div>
-        <p>The public portfolio remains broad. Each application document selects the most relevant evidence for a specific role family.</p>
-      </div>
-      <div class="pv4-fit-grid">
-        {H.roleFamilies.map((role) => (
-          <article class="pv4-fit-card">
-            <h3>{role.title}</h3>
-            <p>{role.text}</p>
-            <a href={role.href}>{role.label} →</a>
+            </div>
           </article>
         ))}
       </div>
-      <div class="pv4-actions">
-        <a class="pv4-button" href="/cv.html">Open the master CV and evidence record</a>
-        <a class="pv4-button" href="/integrity.html">Knowledge-integrity work samples</a>
-        <a class="pv4-button" href="/security.html">Model-behavior record</a>
+    </section>
+
+    <section class="p5-section" id="applications" data-testid="human-documents" aria-labelledby="applications-title">
+      <div class="p5-section-head">
+        <div>
+          <div class="p5-kicker">Application documents</div>
+          <h2 id="applications-title">Use the version matched to the role.</h2>
+        </div>
+        <p>The first three documents target higher-upside paths. The editorial and community version remains available as a credible bridge option.</p>
+      </div>
+      <div class="p5-documents">
+        {H.applicationDocuments.map((item) => (
+          <a class="p5-document" href={item.href}>
+            <h3>{item.title}</h3>
+            <p>{item.description}</p>
+            <span class="p5-link">Open CV →</span>
+          </a>
+        ))}
       </div>
     </section>
 
-    <section class="pv4-contact" id="contact" aria-labelledby="contact-title">
+    <section class="p5-contact" id="contact" aria-labelledby="contact-title">
       <div>
-        <span class="pv4-section-index">07 · Contact</span>
-        <h2 id="contact-title">Bring me the difficult problem.</h2>
+        <h2 id="contact-title">Discuss a difficult problem.</h2>
+        <p>Open to AI safety, research operations, scientific AI quality, knowledge-integrity and other high-autonomy roles where evidence and operational ownership matter.</p>
       </div>
-      <div class="pv4-contact-copy">
-        <p>I am based in Italy, authorized to work across the EU/EEA and open to worldwide relocation, international contracting and roles where investigation, operational ownership or evidence quality creates real value.</p>
-        <div class="pv4-contact-links">
-          <a class="pv4-button pv4-button-primary" href={`mailto:${D.identity.email}`}>Email Mario</a>
-          <a class="pv4-button" href={D.identity.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a>
-          <a class="pv4-button" href={D.identity.github} target="_blank" rel="noopener noreferrer">GitHub</a>
-          <a class="pv4-button" href={D.identity.orcidUrl} target="_blank" rel="noopener noreferrer">ORCID</a>
-        </div>
+      <div class="p5-actions">
+        <a class="p5-button" href={`mailto:${D.identity.email}`}>Email Mario</a>
+        <a class="p5-button" href={D.identity.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a>
       </div>
     </section>
   </main>
 
   <SiteFooter version={D.identity.buildVersion} />
-
-  <script is:inline>
-    (function portfolioInteractions() {
-      var track = document.querySelector("[data-gallery-track]");
-      var prev = document.querySelector("[data-gallery-prev]");
-      var next = document.querySelector("[data-gallery-next]");
-      var step = function() { return track ? Math.max(300, track.clientWidth * 0.58) : 420; };
-      if (track && prev && next) {
-        prev.addEventListener("click", function() { track.scrollBy({ left: -step(), behavior: "smooth" }); });
-        next.addEventListener("click", function() { track.scrollBy({ left: step(), behavior: "smooth" }); });
-      }
-    })();
-  </script>
 </Layout>
