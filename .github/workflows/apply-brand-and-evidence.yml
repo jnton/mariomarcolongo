@@ -6,6 +6,8 @@ on:
     paths:
       - .github/workflows/apply-brand-and-evidence.yml
       - scripts/apply-brand-evidence-updates.py
+      - src/components/SiteNav.astro
+      - src/styles/brand-evidence-polish.css
   workflow_dispatch:
 
 permissions:
