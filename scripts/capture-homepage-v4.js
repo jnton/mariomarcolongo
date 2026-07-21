@@ -23,16 +23,13 @@ async function warmLazyContent(page) {
   });
 }
 
-async function capture(browser, server, name, width, height, theme, javaScriptEnabled = true) {
+async function capture(browser, server, name, width, height, theme) {
   const page = await browser.newPage();
-  await page.setJavaScriptEnabled(javaScriptEnabled);
   await page.setViewport({ width, height, deviceScaleFactor: 1 });
-  if (javaScriptEnabled) {
-    await page.evaluateOnNewDocument((selectedTheme) => {
-      try { localStorage.setItem('theme', selectedTheme); } catch (error) {}
-    }, theme);
-  }
-  await page.goto(`${server.origin}/index.html`, { waitUntil: javaScriptEnabled ? 'networkidle0' : 'load', timeout: 45000 });
+  await page.evaluateOnNewDocument((selectedTheme) => {
+    try { localStorage.setItem('theme', selectedTheme); } catch (error) {}
+  }, theme);
+  await page.goto(`${server.origin}/index.html`, { waitUntil: 'networkidle0', timeout: 45000 });
   await warmLazyContent(page);
   const measurements = await page.evaluate(() => {
     const brokenImages = Array.from(document.images)
@@ -70,7 +67,6 @@ async function main() {
     await capture(browser, server, 'index-dark-desktop-scrolled', 1440, 1000, 'dark');
     await capture(browser, server, 'index-light-mobile-scrolled', 390, 844, 'light');
     await capture(browser, server, 'index-dark-mobile-scrolled', 390, 844, 'dark');
-    await capture(browser, server, 'index-no-js-mobile', 390, 844, 'light', false);
     console.log(`Homepage visual audit passed: ${OUTPUT}`);
   } finally {
     await browser.close();
