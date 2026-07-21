@@ -66,8 +66,8 @@ jobs:
           name: verification-output
           path: |
             audit-output/**/*
-            Mario Marcolongo — AI Safety & Adversarial Testing CV.pdf
-            Mario Marcolongo — Research Verification & Data Quality CV.pdf
+            Mario Marcolongo — AI Evaluation & Model Behavior CV.pdf
+            Mario Marcolongo — Scientific AI Quality & Research Data CV.pdf
             Mario Marcolongo — Research Editorial & Community Operations CV.pdf
             Mario Marcolongo — Trust Safety & Knowledge Integrity CV.pdf
             Mario Marcolongo — Curriculum Vitae.pdf
