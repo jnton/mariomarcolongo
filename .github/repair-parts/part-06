@@ -1,0 +1,192 @@
+ntialUrl && <> · <a class="edu-credential" href={edu.credentialUrl} target="_blank" rel="noopener noreferrer">Credential</a></>}
+             </div>
+           ))}
+         </div>
+@@ -370,100 +259,22 @@ function renderLinksJsx(links) {
+   </div>
+ 
+   <script is:inline>
+-    function toggleTheme() {
+-      const html = document.documentElement;
+-      const next = html.dataset.theme === "dark" ? "light" : "dark";
+-      html.dataset.theme = next;
+-      const btn = document.getElementById("themeBtn");
+-      if (btn) btn.textContent = next === "dark" ? "Light Mode" : "Dark Mode";
+-      try {
+-        localStorage.setItem("mm-theme", next);
+-      } catch (err) {}
+-    }
+-
+-    try {
+-      const saved = localStorage.getItem("mm-theme");
+-      if (saved) {
+-        document.documentElement.dataset.theme = saved;
+-        const btn = document.getElementById("themeBtn");
+-        if (btn) btn.textContent = saved === "dark" ? "Light Mode" : "Dark Mode";
+-      }
+-    } catch (err) {}
+-
+-    function printCV() {
+-      injectPrivateData();
+-      setTimeout(() => window.print(), 100);
+-    }
+-
+     function injectPrivateData() {
+       const priv = (typeof window !== "undefined" && window._privateData) ? window._privateData : {};
+       const phoneSlot = document.getElementById("cvPhoneSlot");
+-
+       if (priv.phone && phoneSlot) {
+         phoneSlot.innerHTML = `· <a href="tel:${priv.phone.replaceAll(/\s+/g, "")}">${priv.phone}</a>`;
+         phoneSlot.classList.add("has-phone");
+       }
+     }
+ 
+-    window.addEventListener("DOMContentLoaded", () => {
++    function printCV() {
+       injectPrivateData();
+-
+-      // ---- SCROLL PROGRESS FALLBACK ----
+-      if (!CSS.supports("animation-timeline", "scroll()")) {
+-        const prog = document.getElementById("scrollProgress");
+-        if (prog) {
+-          window.addEventListener(
+-            "scroll",
+-            () => {
+-              const scrollable =
+-                document.documentElement.scrollHeight - window.innerHeight;
+-              prog.style.transform = `scaleX(${scrollable > 0 ? window.scrollY / scrollable : 0})`;
+-            },
+-            { passive: true },
+-          );
+-        }
+-      }
+-    });
+-
+-    async function copyCvForAI(btnEl) {
+-      const origText = btnEl.textContent;
+-      btnEl.textContent = "Copying...";
+-      let content = null;
+-
+-      try {
+-        const res = await fetch("/cv-llm.txt");
+-        if (res.ok) {
+-          content = await res.text();
+-        } else {
+-          console.error("Failed to fetch /cv-llm.txt:", res.status, res.statusText);
+-        }
+-      } catch (err) {
+-        console.error("Fetch error for CV AI Copy:", err);
+-      }
+-
+-      if (!content) {
+-        btnEl.textContent = "Unable to copy";
+-        setTimeout(() => (btnEl.textContent = origText), 2000);
+-        return;
+-      }
+-
+-      try {
+-        await navigator.clipboard.writeText(content);
+-        btnEl.textContent = "✓ Copied AI CV!";
+-        btnEl.style.background = "var(--emerald, #10B981)";
+-        btnEl.style.color = "#fff";
+-        setTimeout(() => {
+-          btnEl.textContent = origText;
+-          btnEl.style.background = "";
+-          btnEl.style.color = "";
+-        }, 2200);
+-      } catch (err) {
+-        console.error("Copy error:", err);
+-        btnEl.textContent = "Unable to copy";
+-        setTimeout(() => (btnEl.textContent = origText), 2000);
+-      }
++      window.setTimeout(() => window.print(), 100);
+     }
++
++    window.addEventListener("DOMContentLoaded", injectPrivateData);
+   </script>
+ 
+-  <SiteFooter version="v2026.07.21" />
++  <SiteFooter version={D.identity.buildVersion} />
+ </Layout>
+diff --git a/src/pages/index.astro b/src/pages/index.astro
+index 427d472..c6ebbc9 100644
+--- a/src/pages/index.astro
++++ b/src/pages/index.astro
+@@ -3,12 +3,13 @@ import Layout from '../layouts/Layout.astro';
+ import SiteNav from '../components/SiteNav.astro';
+ import SiteFooter from '../components/SiteFooter.astro';
+ import D from '../../data/source.js';
++import { buildProfileGraph } from '../lib/structured-data.js';
+ 
+ const CITATIONS = {
+   edits: {
+-    title: "Verified Wikimedia Contributions (CentralAuth)",
++    title: "Auditable Wikimedia Contributions (CentralAuth)",
+     href: D.identity.centralAuth || "https://commons.wikimedia.org/wiki/Special:CentralAuth/Digressivo",
+-    text: "1,592 English Wikipedia edits, 752 Italian Wikipedia edits, 1,249 on Wikidata, 684 on Wikimedia Commons — 4,317 total verified contributions under one audit-ready identity."
++    text: "1,592 English Wikipedia edits, 752 Italian Wikipedia edits, 1,249 on Wikidata, 684 on Wikimedia Commons — 4,317 total publicly inspectable contributions under one CentralAuth identity."
+   },
+   ena: {
+     title: "European Nucleotide Archive (ENA Accession)",
+@@ -253,134 +254,18 @@ function buildProjectVisualHtml(p, i) {
+ 
+ const maxWikiEdits = Math.max(...(D.wikimedia?.breakdown || []).map(b => Number.parseInt(b.edits.replaceAll(',', ''), 10) || 1));
+ const firstViz = D.visualizations?.[0] || { src: '', title: '', caption: '', fileUrl: '' };
++const pageTitle = `Mario Marcolongo — ${D.identity.jobTitle}`;
++const pageDescription = `AI evaluation and research verification specialist focused on ${D.identity.secondaryTitle.toLowerCase().replaceAll(' · ', ', ')}.`;
++const profileJsonLd = buildProfileGraph(D, 'https://mariomarcolongo.com/', pageTitle);
+ ---
+ 
+ <Layout
+-  title="Mario Marcolongo — AI Evaluation & Research Verification Specialist"
+-  description="AI Evaluation & Research Verification Specialist specializing in model behavior evaluation, primary source verification, evaluation operations, and scientific evidence review."
++  title={pageTitle}
++  description={pageDescription}
+   canonical="https://mariomarcolongo.com/"
+ >
+   <Fragment slot="head">
+-  <script type="application/ld+json">
+-  {
+-    "@context": "https://schema.org",
+-    "@graph": [
+-      {
+-        "@type": "ProfilePage",
+-        "@id": "https://mariomarcolongo.com/#webpage",
+-        "name": "Mario Marcolongo — AI Evaluation & Research Verification Specialist",
+-        "url": "https://mariomarcolongo.com/",
+-        "mainEntity": { "@id": "https://mariomarcolongo.com/#person" }
+-      },
+-      {
+-        "@type": "Person",
+-        "@id": "https://mariomarcolongo.com/#person",
+-        "name": "Mario Marcolongo",
+-        "jobTitle": "AI Evaluation & Research Verification Specialist",
+-        "description": "AI Evaluation & Research Verification Specialist specializing in model behavior evaluation, primary source verification, evaluation operations, and scientific evidence review.",
+-        "url": "https://mariomarcolongo.com",
+-        "identifier": "https://orcid.org/0000-0003-2846-7115",
+-        "sameAs": [
+-          "https://github.com/jnton",
+-          "https://orcid.org/0000-0003-2846-7115",
+-          "https://www.linkedin.com/in/mario-marcolongo",
+-          "https://commons.wikimedia.org/wiki/Special:CentralAuth/Digressivo",
+-          "https://app.grayswan.ai/arena/user/6a57be70d15e123775a1e9cf",
+-          "https://public.tableau.com/app/profile/mario.marcolongo/vizzes"
+-        ],
+-        "hasCredential": [
+-          {
+-            "@type": "EducationalOccupationalCredential",
+-            "name": "GALENOS Crowd Evidence Synthesis Training",
+-            "credentialCategory": "Cochrane Crowd & GALENOS Systematic Review Screening Certification"
+-          },
+-          {
+-            "@type": "EducationalOccupationalCredential",
+-            "name": "EF SET English Certificate 68/100 (C1 Advanced Overall · C2 Reading/Listening · B2 Writing/Speaking)",
+-            "credentialCategory": "EF Standard English Test (EF SET)"
+-          },
+-          {
+-            "@type": "EducationalOccupationalCredential",
+-            "name": "Career Essentials in Generative AI",
+-            "credentialCategory": "Microsoft and LinkedIn Certificate"
+-          }
+-        ],
+-      
