@@ -9,7 +9,7 @@ permissions:
 
 jobs:
   migrate:
-    if: github.head_ref == 'final-audit-repair'
+    if: github.head_ref == 'final-audit-repair' && !contains(github.event.pull_request.head.sha, 'portfolio-v3-diagnostic')
     runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
@@ -33,21 +33,46 @@ jobs:
           npm install --package-lock-only --ignore-scripts --no-audit --no-fund
           npm ci --no-audit --no-fund
 
-      - name: Build and verify generated output
-        run: npm run build
+      - name: Build and capture diagnostics
+        id: build
+        run: |
+          set +e
+          npm run build > /tmp/portfolio-v3-build.log 2>&1
+          status=$?
+          set -e
+          mkdir -p .github/diagnostics
+          tail -n 260 /tmp/portfolio-v3-build.log > .github/diagnostics/portfolio-v3-build.log
+          echo "status=$status" >> "$GITHUB_OUTPUT"
+
+      - name: Commit diagnostic on build failure
+        if: steps.build.outputs.status != '0'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add .github/diagnostics/portfolio-v3-build.log package-lock.json
+          git commit -m 'ci: record portfolio v3 build failure [portfolio-v3-diagnostic]'
+          git push origin HEAD:final-audit-repair
+
+      - name: Stop after diagnostic failure
+        if: steps.build.outputs.status != '0'
+        run: exit 1
 
       - name: Verify pages interactions themes and responsive rendering
+        if: steps.build.outputs.status == '0'
         run: npm run verify:render
 
       - name: Generate and validate all CV PDFs
+        if: steps.build.outputs.status == '0'
         run: npm run pdf
 
       - name: Restore permanent CI and commit verified portfolio
+        if: steps.build.outputs.status == '0'
         run: |
           cp scripts/verify-portfolio-final.yml .github/workflows/verify.yml
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git rm .github/workflows/sync-portfolio-v3.yml scripts/apply-portfolio-v3-migration.js scripts/verify-portfolio-final.yml
+          rm -rf .github/diagnostics
           git add -A
           git diff --cached --check
           git commit -m 'feat: rebuild broad evidence trust research and AI portfolio [portfolio-v3-synced]'
