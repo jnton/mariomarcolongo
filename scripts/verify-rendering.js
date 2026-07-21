@@ -1,14 +1,14 @@
 #!/usr/bin/env node
 const fs = require('node:fs');
 const path = require('node:path');
-const D = require('../data/source.js');
+const P = require('../data/application-profiles.js');
 const { startStaticServer } = require('./lib/static-server.js');
 const { launchBrowser } = require('./lib/browser.js');
 
 const ROOT = path.resolve(__dirname, '..');
 const DIST = path.join(ROOT, 'dist');
 const OUTPUT = path.join(ROOT, 'audit-output');
-const ROUTES = ['index.html', 'cv.html', 'cv-resume.html', 'security.html'];
+const ROUTES = ['index.html', 'cv.html', 'cv-resume.html', 'cv-research.html', 'security.html'];
 const VIEWPORTS = [
   { name: 'desktop', width: 1440, height: 1000 },
   { name: 'tablet', width: 768, height: 1024 },
@@ -57,6 +57,7 @@ async function main() {
           }, theme);
           await page.goto(`${staticServer.origin}/${route}`, { waitUntil: 'networkidle0', timeout: 45000 });
           await assertPage(page, route, theme, viewport);
+
           const themeState = await page.evaluate(() => {
             const button = document.getElementById('themeBtn');
             return button ? {
@@ -70,6 +71,17 @@ async function main() {
           if (themeState.pressed !== expectedPressed || themeState.label !== expectedLabel) {
             throw new Error(`${route} theme control state is incorrect for ${theme}`);
           }
+
+          if (route === 'cv-resume.html' || route === 'cv-research.html') {
+            const pageModel = await page.evaluate(() => ({
+              applicationPages: document.querySelectorAll('.application-page').length,
+              internalPageLabels: document.querySelectorAll('.application-footer-note').length
+            }));
+            if (pageModel.applicationPages !== 2 || pageModel.internalPageLabels !== 2) {
+              throw new Error(`${route} must render exactly two visible application pages`);
+            }
+          }
+
           if (pageErrors.length) throw new Error(`${route} page errors: ${pageErrors.join(' | ')}`);
           const relevantConsoleErrors = consoleErrors.filter((message) => !/favicon|google.*font|net::ERR_/i.test(message));
           if (relevantConsoleErrors.length) throw new Error(`${route} console errors: ${relevantConsoleErrors.join(' | ')}`);
@@ -84,16 +96,18 @@ async function main() {
     await noJs.setViewport({ width: 390, height: 844, deviceScaleFactor: 1 });
     await noJs.goto(`${staticServer.origin}/index.html`, { waitUntil: 'load', timeout: 45000 });
     const expectedNoJsText = [
-      ...D.pillars.map((item) => item.title),
-      ...D.projects.map((item) => item.title),
-      ...D.stats.map((item) => item.label),
-      D.visualizations[0].title
-    ].filter(Boolean);
+      'I test model behavior.',
+      P.aiSafety.title,
+      P.researchQuality.title,
+      'Model-behavior evaluation',
+      'Paid scientific verification',
+      'Research-workflow ownership'
+    ];
     const noJsResult = await noJs.evaluate((expected) => {
       const text = document.body.innerText;
       return {
         missing: expected.filter((value) => !text.includes(value)),
-        tests: ['homepage-pillars', 'homepage-projects', 'homepage-stats', 'homepage-visualization'].map((id) => {
+        tests: ['career-focus', 'career-evidence', 'career-documents'].map((id) => {
           const element = document.querySelector(`[data-testid="${id}"]`);
           return { id, exists: Boolean(element), children: element ? element.children.length : 0 };
         }),
