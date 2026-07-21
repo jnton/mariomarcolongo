@@ -2,279 +2,221 @@
 import Layout from "../layouts/Layout.astro";
 import SiteNav from "../components/SiteNav.astro";
 import SiteFooter from "../components/SiteFooter.astro";
-import "../styles/cv.css";
+import "../styles/career-v2.css";
 import D from "../../data/source.js";
+import P from "../../data/application-profiles.js";
 import { buildProfileGraph } from "../lib/structured-data.js";
 
-const pageTitle = "Mario Marcolongo — CV / Curriculum Vitae";
-const pageDescription = `Curriculum Vitae of ${D.identity.name} — ${D.identity.jobTitle}.`;
+const pageTitle = "Mario Marcolongo — Master CV & Evidence Record";
+const pageDescription = "Comprehensive master CV and evidence record for Mario Marcolongo. Use the specialized two-page CVs for most applications.";
 const profileJsonLd = buildProfileGraph(D, "https://mariomarcolongo.com/cv.html", pageTitle);
 
-function renderLinksJsx(links) {
-  if (!links) return [];
-  const entries = [
-    links.website ? { label: "Website", url: links.website } : null,
-    links.caseStudy ? { label: "Evaluation Record", url: links.caseStudy } : null,
-    links.profile ? { label: "Profile", url: links.profile } : null,
-    links.github ? { label: "GitHub", url: links.github } : null,
-    links.chromeStore ? { label: "Chrome Web Store", url: links.chromeStore } : null,
-    links.edgeStore ? { label: "Edge Add-ons", url: links.edgeStore } : null,
-    links.bot ? { label: "Telegram Bot", url: links.bot } : null,
-    links.youtube ? { label: "YouTube", url: links.youtube } : null,
-    links.playlist ? { label: "Videos & Documentaries", url: links.playlist } : null,
-    links.authorPage ? { label: "Author Page", url: links.authorPage } : null,
-    links.tableau ? { label: "Tableau Portfolio", url: links.tableau } : null,
-    links.flourish ? { label: "Flourish Portfolio", url: links.flourish } : null,
-  ];
-  return entries.filter((x) => x !== null && typeof x.url === "string" && typeof x.label === "string");
+const roleAliases = {
+  "Founder & Technical Product Builder": "Founder & Research-Workflow Owner",
+  "Independent Model-Behavior Evaluator": "Model-Behavior Evaluator",
+  "Product Owner & Technical Builder": "Product Owner & AI-Assisted Technical Operator",
+  "Creator & Systems Builder": "Creator & Technical Operator",
+  "Creator & Systems Designer": "Creator & Concept and Requirements Designer"
+};
+
+const tagAliases = {
+  "Independent / Self-Funded": "Independent project",
+  "Independent Practitioner": "Independent practice",
+  "Volunteer, unpaid": "Research or public contribution",
+  "Independent / Personal Project, unpaid": "Personal open-data project",
+  "VAT-Registered Independent Contractor — Italy": "Independent contractor"
+};
+
+function cleanRole(role) {
+  return roleAliases[role] || role;
+}
+
+function cleanTag(tag) {
+  return tagAliases[tag] || tag;
+}
+
+function cleanText(value) {
+  return String(value || "")
+    .replaceAll("Founder and technical builder", "Founder and research-workflow owner")
+    .replaceAll("Founder & Technical Product Builder", "Founder & Research-Workflow Owner")
+    .replaceAll("Product Owner & Technical Builder", "Product Owner & AI-Assisted Technical Operator")
+    .replaceAll("Creator & Systems Builder", "Creator & Technical Operator")
+    .replaceAll("Designed and iteratively validated a local downstream bioinformatics workflow", "Specified requirements for and iteratively validated a local downstream bioinformatics workflow")
+    .replaceAll("custom Python VEP extraction scripts", "AI-assisted Python VEP extraction scripts")
+    .replaceAll("Designed the analytical requirements and processed", "Defined the analytical requirements and used Terra.bio workflows to process")
+    .replaceAll("codebase navigation and modification", "codebase reading and behavior inspection")
+    .replaceAll("generated-code review", "code structure and behavior inspection")
+    .replaceAll("debugging", "functional issue diagnosis")
+    .replaceAll("technical builder", "research-workflow owner");
+}
+
+function linksFor(item) {
+  if (!item.links) return [];
+  const labels = {
+    website: "Website",
+    caseStudy: "Evaluation record",
+    profile: "Public profile",
+    github: "Repository",
+    chromeStore: "Chrome Web Store",
+    edgeStore: "Edge Add-ons",
+    bot: "Telegram bot",
+    playlist: "Videos & documentaries",
+    authorPage: "Author page",
+    tableau: "Tableau",
+    flourish: "Flourish",
+    doi: "Zenodo DOI",
+    fairsharing: "FAIRsharing"
+  };
+  return Object.entries(item.links)
+    .filter(([, url]) => typeof url === "string")
+    .map(([key, url]) => ({ label: labels[key] || key, url }));
 }
 ---
 
-<Layout
-  title={pageTitle}
-  description={pageDescription}
-  canonical="https://mariomarcolongo.com/cv.html"
->
+<Layout title={pageTitle} description={pageDescription} canonical="https://mariomarcolongo.com/cv.html">
   <Fragment slot="head">
-    <script is:inline src="/data/source.js"></script>
-    <script type="application/ld+json" set:html={JSON.stringify(profileJsonLd)} />
+    <script type="application/ld+json" set:html={JSON.stringify(profileJsonLd)}></script>
   </Fragment>
 
   <SiteNav activePage="cv" />
 
-  <div class="wrap" style="padding-top: 60px;">
-    <!-- Toolbar — web only, hidden on print -->
-    <div class="toolbar print-hide">
-      <div class="toolbar-left">
-        <span>Machine-Actionable Curriculum Vitae</span>
+  <div class="master-shell">
+    <section class="master-guidance print-hide">
+      <div>
+        <div class="master-eyebrow">Master source document</div>
+        <h2>Comprehensive CV & evidence archive</h2>
+        <p>This preserves the complete record used to create tailored applications. For most jobs, send one of the two specialized two-page CVs instead.</p>
       </div>
-      <div class="toolbar-right">
-        <a href="/cv-resume.html" class="btn">2-Page Résumé</a>
-        <button
-          class="btn btn-ai"
-          onclick="copyCanonicalText('/cv-llm.txt', this, '✓ Copied AI CV!')"
-          title="Copy complete CV in AI-compatible Markdown format"
-          >✨ Copy for AI (Markdown)</button
-        >
-        <button class="btn btn-primary" onclick="printCV()"
-          >Print / Save PDF</button
-        >
+      <div class="application-guide-actions">
+        <a class="btn btn-primary" href="/cv-resume.html">AI Safety CV</a>
+        <a class="btn" href="/cv-research.html">Research & Data Quality CV</a>
+        <button class="btn" type="button" onclick="window.print()">Print / Save PDF</button>
       </div>
-    </div>
+    </section>
 
-    <!-- CV Document -->
-    <article class="cv" id="cvDocument">
-      <header class="cv-header">
-        <div class="cv-header-top">
-          <h1 class="cv-name" id="cvName">{D.identity.name}</h1>
-          <span class="cv-version-pill print-hide"
-            >{D.identity.buildVersion} · Updated: {D.identity.evaluationAsOf}</span
-          >
+    <article class="master-document" id="cvDocument">
+      <header class="master-header">
+        <div>
+          <div class="master-eyebrow">Master CV · updated July 2026</div>
+          <h1 class="master-name">{P.shared.name}</h1>
+          <div class="master-title">AI Safety Evaluation · Research Verification · Data Quality · Technical Operations</div>
+          <p class="master-summary">
+            Evidence-focused specialist combining adversarial model testing, paid scientific fact-checking, open research workflows, structured-data quality and public-source verification. Code-literate and able to inspect structure and behavior, define requirements, test implementations and guide AI-assisted technical iteration; not presented as an independent software developer.
+          </p>
         </div>
-        <p class="cv-tagline" id="cvTagline">
-          {D.identity.jobTitle} | {D.identity.secondaryTitle}
-        </p>
-
-        <div class="cv-contact" id="cvContact">
-          <span id="cvLocation">{D.identity.relocationVisible}</span>
-          <span>·</span>
-          <a href="https://mariomarcolongo.com">mariomarcolongo.com</a>
-          <span>·</span>
-          <a href={`mailto:${D.identity.email}`}>{D.identity.email}</a>
-          <span>·</span>
-          <a
-            href={D.identity.orcidUrl}
-            target="_blank"
-            rel="noopener noreferrer">ORCID: {D.identity.orcid}</a
-          >
-          <span>·</span>
-          <a
-            href={D.identity.linkedin}
-            target="_blank"
-            rel="noopener noreferrer">LinkedIn</a
-          >
-          <span>·</span>
-          <a
-            href={D.identity.github}
-            target="_blank"
-            rel="noopener noreferrer">GitHub</a
-          >
-          <span class="cv-phone" id="cvPhoneSlot"></span>
+        <div class="master-contact">
+          <strong>Contact and mobility</strong><br />
+          {P.shared.location}<br />
+          <a href={`mailto:${P.shared.email}`}>{P.shared.email}</a><br />
+          <a href={P.shared.website}>mariomarcolongo.com</a><br />
+          <a href={P.shared.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn ↗</a> ·
+          <a href={P.shared.github} target="_blank" rel="noopener noreferrer">GitHub ↗</a><br />
+          <a href={P.shared.orcid} target="_blank" rel="noopener noreferrer">ORCID ↗</a><br /><br />
+          <strong>Languages</strong><br />
+          Italian — native<br />
+          English — C1 overall; advanced technical reading and professional/technical writing
         </div>
       </header>
 
-      <!-- SUMMARY -->
-      <section class="cv-section">
-        <h2 class="cv-section-heading">Executive Summary</h2>
-        <p class="cv-summary" id="cvSummary">
-          {D.summary}
-        </p>
-      </section>
-
-      <!-- EXPERIENCE -->
-      <section class="cv-section" id="sectionExperience">
-        <h2 class="cv-section-heading">
-          Professional Experience & Open Science Leadership
-        </h2>
-        <div id="experienceList">
-          {D.experience.map((item) => {
-            const linksList = renderLinksJsx(item.links);
-            return (
-              <div class="cv-item">
-                <div class="cv-item-header">
-                  <span class="cv-item-title">{item.role}</span>
-                  {item.tag && <span class="cv-role-tag">{item.tag}</span>}
-                  {item.period && <span class="cv-item-date">{item.period}</span>}
+      <section class="master-section">
+        <h2 class="master-section-title">Professional and public experience</h2>
+        {D.experience.map((item) => {
+          const links = linksFor(item);
+          return (
+            <article class="master-entry">
+              <div class="master-entry-head">
+                <div>
+                  <h3>{cleanRole(item.role)} {item.tag && <span class="master-tag">{cleanTag(item.tag)}</span>}</h3>
+                  <div class="master-organization">{item.org}</div>
+                  {links.length > 0 && (
+                    <div class="application-links">
+                      {links.map((link) => <a href={link.url} target={link.url.startsWith("http") ? "_blank" : undefined} rel={link.url.startsWith("http") ? "noopener noreferrer" : undefined}>{link.label} ↗</a>)}
+                    </div>
+                  )}
                 </div>
-                {item.org && (
-                  <div class="cv-item-org">
-                    {item.org}
-                    {linksList.map((lk) => (
-                      lk && lk.url ? <> · <a href={lk.url} target="_blank" rel="noopener noreferrer">{lk.label}</a></> : null
-                    ))}
-                  </div>
-                )}
-                {item.bullets && item.bullets.length > 0 && (
-                  <ul class="cv-item-bullets">
-                    {item.bullets.map((b) => (
-                      <li set:html={b} />
-                    ))}
-                  </ul>
-                )}
+                <span class="master-period">{item.period}</span>
               </div>
-            );
-          })}
-        </div>
+              <ul class="master-list">
+                {item.bullets.map((bullet) => <li>{cleanText(bullet)}</li>)}
+              </ul>
+            </article>
+          );
+        })}
       </section>
 
-      <!-- RESEARCH -->
-      <section class="cv-section" id="sectionResearch">
-        <h2 class="cv-section-heading">
-          Genomic & Computational Science Contributions
-        </h2>
-        <div id="researchList">
-          {D.research.map((item) => {
-            const linksList = renderLinksJsx(item.links);
-            return (
-              <div class="cv-item">
-                <div class="cv-item-header">
-                  <span class="cv-item-title">{item.role}</span>
-                  {item.tag && <span class="cv-role-tag">{item.tag}</span>}
-                  {item.period && <span class="cv-item-date">{item.period}</span>}
+      <section class="master-section">
+        <h2 class="master-section-title">Research, datasets and visual evidence</h2>
+        {D.research.map((item) => {
+          const links = linksFor(item);
+          return (
+            <article class="master-entry">
+              <div class="master-entry-head">
+                <div>
+                  <h3>{cleanRole(item.role)} {item.tag && <span class="master-tag">{cleanTag(item.tag)}</span>}</h3>
+                  <div class="master-organization">{item.org}</div>
+                  {links.length > 0 && (
+                    <div class="application-links">
+                      {links.map((link) => <a href={link.url} target="_blank" rel="noopener noreferrer">{link.label} ↗</a>)}
+                    </div>
+                  )}
                 </div>
-                {item.org && (
-                  <div class="cv-item-org">
-                    {item.org}
-                    {linksList.map((lk) => (
-                      lk && lk.url ? <> · <a href={lk.url} target="_blank" rel="noopener noreferrer">{lk.label}</a></> : null
-                    ))}
-                  </div>
-                )}
-                {item.bullets && item.bullets.length > 0 && (
-                  <ul class="cv-item-bullets">
-                    {item.bullets.map((b) => (
-                      <li set:html={b} />
-                    ))}
-                  </ul>
-                )}
+                <span class="master-period">{item.period}</span>
               </div>
-            );
-          })}
-        </div>
+              <ul class="master-list">
+                {item.bullets.map((bullet) => <li>{cleanText(bullet)}</li>)}
+              </ul>
+            </article>
+          );
+        })}
       </section>
 
-      <!-- WHAT I'VE BUILT -->
-      <section class="cv-section" id="sectionProjects">
-        <h2 class="cv-section-heading">
-          Deployed Systems & Open-Source Projects
-        </h2>
-        <div id="projectsList">
-          {D.projects.map((item) => {
-            const linksList = renderLinksJsx(item.links);
-            return (
-              <div class="cv-item">
-                <div class="cv-item-header">
-                  <span class="cv-item-title">{item.title}</span>
-                  {item.period && <span class="cv-item-date">{item.period}</span>}
+      <section class="master-section">
+        <h2 class="master-section-title">Selected systems and open-source projects</h2>
+        {D.projects.map((item) => {
+          const links = linksFor(item);
+          return (
+            <article class="master-entry">
+              <div class="master-entry-head">
+                <div>
+                  <h3>{item.title}</h3>
+                  <div class="master-organization">{cleanRole(item.role)}</div>
+                  {links.length > 0 && (
+                    <div class="application-links">
+                      {links.map((link) => <a href={link.url} target={link.url.startsWith("http") ? "_blank" : undefined} rel={link.url.startsWith("http") ? "noopener noreferrer" : undefined}>{link.label} ↗</a>)}
+                    </div>
+                  )}
                 </div>
-                {item.role && (
-                  <div class="cv-item-org">
-                    {item.role}
-                    {linksList.map((lk) => (
-                      lk && lk.url ? <> · <a href={lk.url} target="_blank" rel="noopener noreferrer">{lk.label}</a></> : null
-                    ))}
-                  </div>
-                )}
-                {item.highlights && item.highlights.length > 0 && (
-                  <ul class="cv-item-bullets">
-                    {item.highlights.map((h) => (
-                      <li set:html={h} />
-                    ))}
-                  </ul>
-                )}
               </div>
-            );
-          })}
-        </div>
+              <p class="master-summary" style="margin-top: 8px;">{cleanText(item.description)}</p>
+              <ul class="master-list">
+                {item.highlights.map((highlight) => <li>{cleanText(highlight)}</li>)}
+              </ul>
+            </article>
+          );
+        })}
       </section>
 
-      <!-- SKILLS -->
-      <section class="cv-section">
-        <h2 class="cv-section-heading">
-          Core Technical & Scientific Competencies
-        </h2>
-        <div class="skills-list" id="skillsList">
-          {D.skills.map((skill) => {
-            const colonIdx = skill.indexOf(":");
-            const title = colonIdx !== -1 ? skill.slice(0, colonIdx).trim() : "Skill";
-            const detail = colonIdx !== -1 ? skill.slice(colonIdx + 1).trim() : skill;
-            return (
-              <div class="skill-category">
-                <strong class="skill-category-title">{title}</strong>
-                <span class="skill-category-detail" set:html={detail} />
-              </div>
-            );
-          })}
-        </div>
-      </section>
-
-      <!-- EDUCATION & LANGUAGES -->
-      <section class="cv-section">
-        <h2 class="cv-section-heading">
-          Education, Languages & Certifications
-        </h2>
-        <div id="educationList">
-          {D.education.map((edu) => (
-            <div class="edu-item">
-              <span class="edu-title">{edu.title}</span>
-              {edu.period && <> <span class="edu-period">({edu.period})</span></>}
-              {edu.institution && <> — <span class="edu-detail">{edu.institution}</span></>}
-              {edu.status && <> · <span class="edu-status">{edu.status}</span></>}
-              {edu.credentialUrl && <> · <a class="edu-credential" href={edu.credentialUrl} target="_blank" rel="noopener noreferrer">Credential</a></>}
+      <section class="master-section">
+        <h2 class="master-section-title">Capabilities</h2>
+        {[...P.aiSafety.skills, ...P.researchQuality.skills]
+          .filter((item, index, array) => array.findIndex((candidate) => candidate[0] === item[0]) === index)
+          .map(([title, detail]) => (
+            <div class="application-skill">
+              <strong>{title}</strong>
+              <span>{detail}</span>
             </div>
           ))}
-        </div>
+      </section>
+
+      <section class="master-section">
+        <h2 class="master-section-title">Education, training and credentials</h2>
+        <ul class="master-list">
+          {P.shared.education.map((item) => <li>{item}</li>)}
+          <li>{P.shared.language}</li>
+        </ul>
       </section>
     </article>
   </div>
-
-  <script is:inline>
-    function injectPrivateData() {
-      const priv = (typeof window !== "undefined" && window._privateData) ? window._privateData : {};
-      const phoneSlot = document.getElementById("cvPhoneSlot");
-      if (priv.phone && phoneSlot) {
-        phoneSlot.innerHTML = `· <a href="tel:${priv.phone.replaceAll(/\s+/g, "")}">${priv.phone}</a>`;
-        phoneSlot.classList.add("has-phone");
-      }
-    }
-
-    function printCV() {
-      injectPrivateData();
-      window.setTimeout(() => window.print(), 100);
-    }
-
-    window.addEventListener("DOMContentLoaded", injectPrivateData);
-  </script>
 
   <SiteFooter version={D.identity.buildVersion} />
 </Layout>
