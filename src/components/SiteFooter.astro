@@ -1,0 +1,72 @@
+---
+export interface Props {
+  version?: string;
+}
+
+const { version = 'v2026.07.21' } = Astro.props;
+---
+
+<footer class="site-footer print-hide">
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-text">
+        <p><strong>© 2026 Mario Marcolongo.</strong> Project datasets, code and site content retain the licences stated in their respective repositories and records. Active Build: {version}</p>
+      </div>
+      <div class="footer-links">
+        <a href="https://orcid.org/0000-0003-2846-7115" target="_blank" rel="noopener noreferrer">ORCID: 0000-0003-2846-7115</a>
+        <a href="https://www.ebi.ac.uk/ena/browser/view/PRJEB109744" target="_blank" rel="noopener noreferrer">ENA: PRJEB109744</a>
+        <a href="https://github.com/jnton" target="_blank" rel="noopener noreferrer">GitHub: jnton</a>
+        <a href="https://www.linkedin.com/in/mario-marcolongo" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      </div>
+    </div>
+    <div class="footer-content" style="margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--line);">
+      <div class="footer-text">
+        <span style="font-size: 13px; color: var(--ink-faint);">Machine-actionable dossiers available for verification evaluation and automated processing:</span>
+      </div>
+      <div class="footer-links" style="align-items: center; gap: 12px;">
+        <a href="/llms.txt" class="btn btn-sm" target="_blank" rel="noopener noreferrer">llms.txt</a>
+        <a href="/llms-full.txt" class="btn btn-sm" target="_blank" rel="noopener noreferrer">llms-full.txt</a>
+        <a href="/cv-llm.txt" class="btn btn-sm" target="_blank" rel="noopener noreferrer">cv-llm.txt</a>
+        <button class="btn btn-ai btn-sm" onclick="copyFooterAI(this)" title="Copy complete AI-compatible Markdown Dossier">✨ Copy for AI</button>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script is:inline>
+  async function copyFooterAI(btnEl) {
+    var origText = btnEl.textContent;
+    btnEl.textContent = 'Copying...';
+    var content = null;
+    try {
+      var res = await fetch('/llms-full.txt');
+      if (res.ok) {
+        content = await res.text();
+      } else {
+        console.error('Failed to fetch /llms-full.txt:', res.status, res.statusText);
+      }
+    } catch(err) {
+      console.error('Fetch error during copyFooterAI:', err);
+    }
+    if (!content) {
+      btnEl.textContent = 'Unable to copy';
+      setTimeout(function() { btnEl.textContent = origText; }, 2000);
+      return;
+    }
+    try {
+      await navigator.clipboard.writeText(content);
+      btnEl.textContent = '✓ Copied Dossier!';
+      btnEl.style.background = 'var(--emerald, #10B981)';
+      btnEl.style.color = '#fff';
+      setTimeout(function() {
+        btnEl.textContent = origText;
+        btnEl.style.background = '';
+        btnEl.style.color = '';
+      }, 2200);
+    } catch (err) {
+      console.error('Clipboard write error:', err);
+      btnEl.textContent = 'Unable to copy';
+      setTimeout(function() { btnEl.textContent = origText; }, 2000);
+    }
+  }
+</script>

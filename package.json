@@ -2,18 +2,21 @@
   "name": "mariomarcolongo",
   "version": "2026.07.0",
   "private": true,
-  "description": "AI-Native Systems Builder, Open Science Technologist & Empirical Data Synthesizer portfolio and CV SSOT",
+  "description": "AI Evaluation & Research Verification Specialist | Model Behavior Evaluation · Scientific Evidence Review · Evaluation Operations · Technical Research portfolio and CV SSOT",
   "scripts": {
-    "dev": "node scripts/generate-llm-dossiers.js && astro dev",
-    "build": "node scripts/generate-llm-dossiers.js && astro build && cp dist/index.html index.html 2>/dev/null && cp dist/cv.html cv.html 2>/dev/null || true",
-    "deploy": "npx wrangler pages deploy dist --project-name=mariomarcolongo",
+    "lint": "node scripts/check-stale-strings.js",
+    "dev": "node scripts/check-stale-strings.js && node scripts/generate-llm-dossiers.js && astro dev",
+    "build": "node scripts/check-stale-strings.js && node scripts/generate-llm-dossiers.js && astro build",
+    "postbuild": "node scripts/postbuild.js && node scripts/verify-dist.js && node scripts/verify-rendering.js",
+    "deploy": "npm run lint && npm run build && npx wrangler pages deploy dist --project-name=mariomarcolongo",
     "preview": "astro preview",
     "generate:llms": "node scripts/generate-llm-dossiers.js",
     "generate:favicons": "node scripts/generate-favicons.js",
     "cv:custom": "node scripts/generate-custom-cv.js",
     "pdf:cv": "node scripts/generate-cv-pdf.js",
+    "pdf:resume": "node scripts/generate-resume-pdf.js",
     "pdf:campbell": "node scripts/generate-campbell-pdf.js",
-    "pdf": "node scripts/generate-cv-pdf.js && node scripts/generate-campbell-pdf.js"
+    "pdf": "node scripts/generate-cv-pdf.js && node scripts/generate-resume-pdf.js && node scripts/generate-campbell-pdf.js"
   },
   "author": "Mario Marcolongo <me@mariomarcolongo.com>",
   "devDependencies": {

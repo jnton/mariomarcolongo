@@ -8,14 +8,14 @@ export interface Props {
 }
 
 const {
-  title = "Mario Marcolongo — I check the claims other people don't.",
-  description = "Primary source verification, open science infrastructure (Yourself to Science™ indexing 55+ research studies), interactive systems simulation (Emergent Humanity), and empirical data synthesis.",
+  title = "Mario Marcolongo — AI Evaluation & Research Verification Specialist",
+  description = "AI evaluation and research verification specialist specializing in model behavior evaluation, scientific evidence review, evaluation operations, and technical research.",
   canonical = "https://mariomarcolongo.com/"
 } = Astro.props;
 ---
 
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -31,6 +31,22 @@ const {
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
   <link rel="mask-icon" href="/favicon.svg" color="#34D399" />
   <link rel="manifest" href="/site.webmanifest" />
+
+  <!-- mm-theme Pre-Paint Script -->
+  <script is:inline id="mm-theme">
+    (function() {
+      try {
+        var stored = null;
+        try { stored = localStorage.getItem('theme'); } catch(e) {}
+        var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (stored === 'dark' || (!stored && prefersDark)) {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        } else {
+          document.documentElement.setAttribute('data-theme', 'light');
+        }
+      } catch(err) {}
+    })();
+  </script>
 
   <!-- WebMCP & Agent-to-Agent Discovery Links -->
   <link rel="api-catalog" href="https://mariomarcolongo.com/.well-known/api-catalog" />

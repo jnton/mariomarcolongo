@@ -1,14 +1,266 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import SiteNav from '../components/SiteNav.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import D from '../../data/source.js';
+
+const CITATIONS = {
+  edits: {
+    title: "Verified Wikimedia Contributions (CentralAuth)",
+    href: D.identity.centralAuth || "https://commons.wikimedia.org/wiki/Special:CentralAuth/Digressivo",
+    text: "1,592 English Wikipedia edits, 752 Italian Wikipedia edits, 1,249 on Wikidata, 684 on Wikimedia Commons — 4,317 total verified contributions under one audit-ready identity."
+  },
+  ena: {
+    title: "European Nucleotide Archive (ENA Accession)",
+    href: D.identity.enaUrl || "https://www.ebi.ac.uk/ena/browser/view/PRJEB109744",
+    text: "Designed and iteratively validated a local downstream bioinformatics workflow transforming VCF datasets to Plink2 format and running Nextflow pgsc_calc with ancestry projection against reference panels, along with custom Python VEP extraction scripts under ENA Accession PRJEB109744 (personal genomics workflow and open-data pipeline published on GitHub: jnton/git-nome)."
+  },
+  registry: {
+    title: "Yourself to Science™ Study Directory",
+    href: D.projects[0]?.link || "https://yourselftoscience.org",
+    text: "Founder & architect of Yourself to Science™ — an open-source research-participation directory indexing 55+ research studies across genomes, clinical trials, and bio-donations, cited across 37 Wikidata entities (P854)."
+  },
+  grayswan: {
+    title: "Gray Swan Proving Ground Verification Profile",
+    href: D.identity.grayswanUrl || "https://app.grayswan.ai/arena/user/6a57be70d15e123775a1e9cf",
+    text: "Ranked in the top 8% among ranked Gray Swan Proving Ground participants as of July 2026 — 75 platform-confirmed model breaks across chat, image, agentic tool-use and indirect prompt-injection challenges."
+  },
+  book: {
+    title: "Italiani Veri — Mondadori",
+    href: "https://www.mondadori.it/libri/italiani-veri-giacomo-moro-mauretto/",
+    text: "Giacomo Moro Mauretto's 'Italiani Veri', published by Mondadori in April 2025 — official acknowledgment published on the final page."
+  },
+  agentready: {
+    title: "Live Agent-Readiness Audit Status",
+    href: "https://isitagentready.com/mariomarcolongo.com?checks=robotsTxt%2Csitemap%2ClinkHeaders%2CdnsAid%2CmarkdownNegotiation%2CrobotsTxtAiRules%2CcontentSignals%2CwebBotAuth%2CapiCatalog%2CoauthDiscovery%2CoauthProtectedResource%2CauthMd%2CmcpServerCard%2Ca2aAgentCard%2CagentSkills%2CwebMcp%2Cx402%2Cmpp%2Cucp%2Cacp",
+    text: "Agent-discovery and machine-readable endpoints implemented; live audit to be rerun after deployment (including live A2A Agent Card, DNS-AID, and llms.txt)."
+  }
+};
+
+function buildProjectLinks(p) {
+  const btns = [];
+  const l = p.links || {};
+  const t = (p.title || p.org || 'project').replaceAll('"', '&quot;');
+
+  if (p.id === 'yourself-to-science') {
+    if (l.website) btns.push({ href: l.website, label: `Catalogue Engine (Live) ↗ (${t})`, primary: true });
+    if (l.github) btns.push({ href: l.github, label: `Source Verification (GitHub) ↗ (${t})` });
+    if (l.fairsharing) btns.push({ href: l.fairsharing, label: `FAIRsharing ↗ (${t})` });
+    return btns;
+  }
+  if (p.id === 'entropy-for-life') {
+    if (l.website) btns.push({ href: l.website, label: `Open Science Platform & Video Archive ↗ (${t})`, primary: true });
+    if (l.playlist) btns.push({ href: l.playlist, label: `Videos & Documentaries ↗ (${t})` });
+    return btns;
+  }
+  if (p.id === 'ai-red-teaming') {
+    if (l.caseStudy) btns.push({ href: l.caseStudy, label: `Read Model Evaluation Record & Methodology → (${t})`, primary: true });
+    if (l.profile) btns.push({ href: l.profile, label: `Proving Ground Profile ↗ (${t})` });
+    return btns;
+  }
+  if (p.id === 'telegram-bot') {
+    if (l.bot || l.telegramBot) btns.push({ href: l.bot || l.telegramBot, label: `Production Bot Instance (@en_wiki_bot) ↗ (${t})`, primary: true });
+    if (l.chromeStore) btns.push({ href: l.chromeStore, label: `Verified Chrome Extension Architecture ↗ (${t})` });
+    if (l.edgeStore) btns.push({ href: l.edgeStore, label: `Edge Add-on Delivery ↗ (${t})` });
+    return btns;
+  }
+  if (p.id === 'author-index') {
+    if (l.authorPage) btns.push({ href: l.authorPage, label: `Open Access Author Index & Verification Archive ↗ (${t})`, primary: true });
+    if (l.orcidUrl) btns.push({ href: l.orcidUrl, label: `ORCID Profile ↗ (${t})` });
+    return btns;
+  }
+  if (l.caseStudy) btns.push({ href: l.caseStudy, label: `Evaluation Record → (${t})` });
+  if (l.profile) btns.push({ href: l.profile, label: `Proving Ground Profile ↗ (${t})` });
+  if (l.website) btns.push({ href: l.website, label: `Visit Site ↗ (${t})` });
+  if (l.playlist) btns.push({ href: l.playlist, label: `Videos & Documentaries ↗ (${t})` });
+  if (l.authorPage) btns.push({ href: l.authorPage, label: `Author Page ↗ (${t})` });
+  if (l.chromeStore) btns.push({ href: l.chromeStore, label: `Chrome Store ↗ (${t})` });
+  if (l.edgeStore) btns.push({ href: l.edgeStore, label: `Edge Store ↗ (${t})` });
+  if (l.youtube) btns.push({ href: l.youtube, label: `YouTube ↗ (${t})` });
+  if (l.bot || l.telegramBot) btns.push({ href: l.bot || l.telegramBot, label: `Try Bot ↗ (${t})` });
+  if (l.wikimedia) btns.push({ href: l.wikimedia, label: `Wikimedia ↗ (${t})` });
+  if (l.github || l.githubOrg) btns.push({ href: l.github || l.githubOrg, label: `GitHub ↗ (${t})` });
+  if (l.doi) btns.push({ href: l.doi, label: `DOI ↗ (${t})` });
+  if (l.fairsharing) btns.push({ href: l.fairsharing, label: `FAIRsharing ↗ (${t})` });
+  if (l.tableau) btns.push({ href: l.tableau, label: `Tableau ↗ (${t})` });
+  if (l.flourish) btns.push({ href: l.flourish, label: `Flourish ↗ (${t})` });
+  return btns;
+}
+
+function buildProjectVisualHtml(p, i) {
+  if (p.id === 'mdpi-filter') {
+    const imgSrc = (p.links && p.links.screenshots && p.links.screenshots[0])
+      ? p.links.screenshots[0]
+      : 'https://lh3.googleusercontent.com/1KKa3LqvJ6ayP9Kh6_jmAWXzL3naOfPnnKtWb8vjd25XMn1ELMNFDxGjgtvShNmDhWG4x_uuynunm9lVD7wQ3hAI=s1280-w1280-h800';
+    return `<div class="proj-viz-mdpi"><img src="${imgSrc}" alt="${p.title} screenshot" loading="lazy"></div>`;
+  }
+  if (p.id === 'telegram-bot') {
+    return `
+      <div class="telegram-mock">
+        <div class="tg-header">
+          <div class="tg-avatar">
+            <img src="/telegram-bot-icon.svg" alt="Wikipedia Link Converter Bot Icon" class="proj-viz-tg-icon">
+          </div>
+          <div>
+            <div class="tg-name">Wikipedia Link Converter</div>
+            <div class="tg-status">serverless bot</div>
+          </div>
+        </div>
+        <div class="tg-body">
+          <div class="tg-bubble-out">
+            <span class="tg-link">https://it.wikipedia.org/wiki/Bianco_e_nero</span>
+          </div>
+          <div class="tg-bubble-in">
+            English canonical page resolved for <strong>Bianco e nero</strong>:<br>
+            <span class="tg-link">https://en.wikipedia.org/wiki/Black_and_white</span>
+          </div>
+        </div>
+      </div>
+    `;
+  }
+  if (p.id === 'referendum-map') {
+    return `<img src="/referendum-turnout-threshold-by-country.svg" alt="Referendum Turnout Threshold World Map" loading="lazy" class="proj-viz-map">`;
+  }
+  if (p.id === 'entropy-for-life') {
+    return `
+      <div class="mock-visual-box proj-viz-entropy">
+        <div class="proj-viz-entropy-top">
+          <div class="proj-viz-entropy-play">▶</div>
+          <div>
+            <div class="proj-viz-entropy-handle">@EntropyforLife</div>
+            <div class="proj-viz-entropy-bio">Giacomo Moro Mauretto · Evolutionary Biology</div>
+          </div>
+        </div>
+        <div class="proj-viz-entropy-mid">
+          <div class="proj-viz-entropy-num">480,000+</div>
+          <div class="proj-viz-entropy-label">Total Cross-Platform Community</div>
+        </div>
+        <div class="proj-viz-entropy-grid">
+          <div class="proj-viz-entropy-stat">
+            <div class="proj-viz-entropy-stat-val">245K+</div>
+            <div class="proj-viz-entropy-stat-title">YouTube Subs</div>
+          </div>
+          <div class="proj-viz-entropy-stat">
+            <div class="proj-viz-entropy-stat-val">36.2M+</div>
+            <div class="proj-viz-entropy-stat-title">Total Views</div>
+          </div>
+          <div class="proj-viz-entropy-stat">
+            <div class="proj-viz-entropy-stat-val">55+</div>
+            <div class="proj-viz-entropy-stat-title">Videos Checked</div>
+          </div>
+        </div>
+        <div class="proj-viz-entropy-context">Entropy for Life project context — not individual authorship claims</div>
+        <div class="proj-viz-entropy-tags">
+          <span class="proj-viz-entropy-tag">📚 2 Mondadori Books</span>
+          <span class="proj-viz-entropy-tag">🔬 AIRC Partner</span>
+          <span class="proj-viz-entropy-tag">📺 Rai 3 Kilimangiaro</span>
+          <span class="proj-viz-entropy-tag">📸 IG: 158K+ · TikTok: 54K+</span>
+        </div>
+      </div>
+    `;
+  }
+  if (p.id === 'yourself-to-science') {
+    return `
+      <div class="mock-visual-box proj-viz-y2s">
+        <div class="proj-viz-y2s-hdr">
+          <div class="proj-viz-y2s-logos">
+            <img src="/y2s-logo.svg" alt="Yourself to Science Logo" class="proj-viz-y2s-logo-icon">
+            <img src="/y2s-title.svg" alt="Yourself to Science™" class="proj-viz-y2s-logo-title">
+          </div>
+          <div class="proj-viz-y2s-nav">
+            <span>Stats</span>
+            <span>Our Mission</span>
+            <span class="proj-viz-y2s-btn">Get Involved</span>
+          </div>
+        </div>
+        <div class="proj-viz-y2s-hero">
+          <div class="proj-viz-y2s-title">Contribute to Research</div>
+          <div class="proj-viz-y2s-sub">
+            A comprehensive open-source catalogue for contributing to scientific research across clinical studies, biobanks, donation programs and registries. Browse opportunities to share your data, genome, biological samples, and more.
+          </div>
+        </div>
+        <div class="proj-viz-y2s-bar">
+          <div><strong>CATEGORY</strong>Any type</div>
+          <div class="proj-viz-y2s-sep"></div>
+          <div><strong>AVAILABLE IN</strong>Anywhere</div>
+          <div class="proj-viz-y2s-sep"></div>
+          <div><strong>DATA TYPE</strong>All</div>
+          <div class="proj-viz-y2s-sep"></div>
+          <div class="proj-viz-y2s-nav">
+            <span>🔍</span><span>Search</span>
+          </div>
+        </div>
+        <div class="proj-viz-y2s-grid">
+          <div class="proj-viz-y2s-card">
+            <div>
+              <div class="proj-viz-y2s-card-top">
+                <div class="proj-viz-y2s-logos">
+                  <span class="proj-viz-y2s-badge-purple">BIOLOGICAL SAMPLES</span>
+                  <span class="proj-viz-y2s-badge-green">HEALTH DATA</span>
+                </div>
+              </div>
+              <div class="proj-viz-y2s-card-title">23andMe Research Participation</div>
+              <div class="proj-viz-y2s-card-inst">🏢 23andMe Holding Co.</div>
+              <div class="proj-viz-y2s-card-loc">• Based in United States</div>
+            </div>
+          </div>
+          <div class="proj-viz-y2s-card">
+            <div>
+              <div class="proj-viz-y2s-card-top">
+                <div class="proj-viz-y2s-logos">
+                  <span class="proj-viz-y2s-badge-purple">BIOLOGICAL SAMPLES</span>
+                </div>
+              </div>
+              <div class="proj-viz-y2s-card-title">AATB Accredited Bank Search</div>
+              <div class="proj-viz-y2s-card-inst">🏢 American Association of Tissue Banks (AATB)</div>
+              <div class="proj-viz-y2s-card-loc">• Based in United States</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+  }
+  if (p.id === 'emergent-humanity') {
+    return `
+      <div class="mock-visual-box node-viz-wrap proj-viz-node-wrap">
+        <canvas id="nodeCanvas" aria-label="Interactive network simulation of human nodes and connections" role="img" class="proj-viz-node-canvas"></canvas>
+        <div class="proj-viz-node-pill-wrap">
+          <span class="proj-viz-node-pill">INTERACTIVE NARRATION · ACTIVE ALPHA</span>
+        </div>
+      </div>
+    `;
+  }
+  if (p.id === 'ai-red-teaming') {
+    return `
+      <div class="mock-visual-box proj-viz-redteam">
+        <div>
+          <div class="proj-viz-redteam-top">
+            <span class="proj-viz-redteam-dot"></span>
+            <span class="proj-viz-redteam-hdr">Adversarial Evaluation Record</span>
+          </div>
+          <div class="proj-viz-redteam-val">75 Platform-Confirmed Breaks</div>
+          <div class="proj-viz-redteam-sub">Top 8% Among Ranked Participants · 156 Submissions across 26 Waves</div>
+        </div>
+        <div class="proj-viz-redteam-box">
+          <div class="proj-viz-redteam-lbl">// Target Modalities Evaluated</div>
+          <div class="proj-viz-redteam-desc">> [Chat & Alignment Policies] : COMPLETED<br>> [Multimodal / Image Safety] : COMPLETED<br>> [Agentic Tool-Use Auth]   : COMPLETED<br>> [Indirect Prompt Injection]: COMPLETED</div>
+        </div>
+      </div>
+    `;
+  }
+  return `<div class="mock-visual-box"><div class="proj-viz-entropy-num">⚡</div></div>`;
+}
+
+const maxWikiEdits = Math.max(...(D.wikimedia?.breakdown || []).map(b => Number.parseInt(b.edits.replaceAll(',', ''), 10) || 1));
+const firstViz = D.visualizations?.[0] || { src: '', title: '', caption: '', fileUrl: '' };
 ---
 
 <Layout
-  title="Mario Marcolongo — Scientific AI Evaluation & Research Data Specialist"
-  description="Scientific AI evaluation, research data systems (Yourself to Science™ indexing 55+ research initiatives), primary source verification, and empirical data synthesis."
+  title="Mario Marcolongo — AI Evaluation & Research Verification Specialist"
+  description="AI Evaluation & Research Verification Specialist specializing in model behavior evaluation, primary source verification, evaluation operations, and scientific evidence review."
   canonical="https://mariomarcolongo.com/"
 >
   <Fragment slot="head">
-    <script is:inline src="/data/source.js"></script>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -16,7 +268,7 @@ import Layout from '../layouts/Layout.astro';
       {
         "@type": "ProfilePage",
         "@id": "https://mariomarcolongo.com/#webpage",
-        "name": "Mario Marcolongo — Scientific AI Evaluation & Research Data Specialist",
+        "name": "Mario Marcolongo — AI Evaluation & Research Verification Specialist",
         "url": "https://mariomarcolongo.com/",
         "mainEntity": { "@id": "https://mariomarcolongo.com/#person" }
       },
@@ -24,31 +276,38 @@ import Layout from '../layouts/Layout.astro';
         "@type": "Person",
         "@id": "https://mariomarcolongo.com/#person",
         "name": "Mario Marcolongo",
-        "jobTitle": "Scientific AI Evaluation & Research Data Specialist",
-        "description": "Scientific AI evaluation and research data specialist specializing in evidence quality, knowledge graphs, open-science systems, and primary source verification.",
+        "jobTitle": "AI Evaluation & Research Verification Specialist",
+        "description": "AI Evaluation & Research Verification Specialist specializing in model behavior evaluation, primary source verification, evaluation operations, and scientific evidence review.",
         "url": "https://mariomarcolongo.com",
         "identifier": "https://orcid.org/0000-0003-2846-7115",
         "sameAs": [
           "https://github.com/jnton",
           "https://orcid.org/0000-0003-2846-7115",
           "https://www.linkedin.com/in/mario-marcolongo",
-          "https://yourselftoscience.org"
+          "https://commons.wikimedia.org/wiki/Special:CentralAuth/Digressivo",
+          "https://app.grayswan.ai/arena/user/6a57be70d15e123775a1e9cf",
+          "https://public.tableau.com/app/profile/mario.marcolongo/vizzes"
         ],
         "hasCredential": [
           {
             "@type": "EducationalOccupationalCredential",
-            "name": "4,317 Verified Wikimedia Contributions (CentralAuth Verified)",
-            "credentialCategory": "Empirical Verification & Primary Literature Synthesis"
+            "name": "GALENOS Crowd Evidence Synthesis Training",
+            "credentialCategory": "Cochrane Crowd & GALENOS Systematic Review Screening Certification"
           },
           {
             "@type": "EducationalOccupationalCredential",
-            "name": "ENA BioSample SAMEA121950568 — Public Domain 41× WGS Dataset",
-            "credentialCategory": "Open Genomic Stewardship & FAIR Biobanking"
+            "name": "EF SET English Certificate 68/100 (C1 Advanced Overall · C2 Reading/Listening · B2 Writing/Speaking)",
+            "credentialCategory": "EF Standard English Test (EF SET)"
+          },
+          {
+            "@type": "EducationalOccupationalCredential",
+            "name": "Career Essentials in Generative AI",
+            "credentialCategory": "Microsoft and LinkedIn Certificate"
           }
         ],
         "knowsAbout": [
-          "Systems Architecture & Serverless Engineering",
-          "41× Whole Genome Sequencing Bioinformatics (Terra.bio BAM/VCF Extraction & Nextflow pgsc_calc / Apple Silicon)",
+          "Serverless Systems Architecture & Technical Product Delivery",
+          "41× Whole Genome Sequencing Bioinformatics (Terra.bio BAM/VCF Extraction & Nextflow pgsc_calc / Local Hardware)",
           "Polygenic Risk Score (PRS) Computation & HPO/MONDO Disease Ontologies",
           "Epistemic Rigor & Primary Literature Fact-Checking",
           "FAIR Open Biobanking & Citizen Science Stewardship",
@@ -102,61 +361,21 @@ import Layout from '../layouts/Layout.astro';
         "author": { "@id": "https://mariomarcolongo.com/#person" }
       },
       {
-        "@type": "MedicalScholarlyArticle",
-        "@id": "https://mariomarcolongo.com/#genomic-pipeline",
-        "name": "Whole-Genome Sequencing Pipeline & Polygenic Risk Scoring (41×)",
-        "headline": "Utilized Terra.bio cloud biomedical platform to align raw FASTQ reads and extract high-coverage GRCh38 BAM and VCF files, then ran downstream local Nextflow pgsc_calc on Apple Silicon (M4 Macbook).",
-        "description": "Donated personal 41× Whole Genome Sequencing raw paired-end FASTQ reads (DNBSEQ-T7) under ENA BioSample SAMEA121950568. Processed raw FASTQ reads via Terra.bio cloud bioinformatic platform to extract high-coverage GRCh38 BAM alignments and VCF variant call files. Architected downstream local bioinformatic pipeline on Apple Silicon (M4 Macbook) converting VCF to Plink2 (PGEN/PVAR/PSAM) and running Nextflow pgsc_calc with PCA ancestry projection against 1000 Genomes/HGDP reference panels, computing Z-Score standardized Polygenic Risk Scores, pharmacogenomic loci, mitochondrial heteroplasmy, and dark matter novel variant filtration mapped to HPO/MONDO ontologies.",
-        "author": { "@id": "https://mariomarcolongo.com/#person" },
+        "@type": "Dataset",
+        "@id": "https://mariomarcolongo.com/#genomic-dataset",
+        "name": "41× Whole Genome Sequencing Raw Paired-End FASTQ Reads (DNBSEQ-T7)",
+        "description": "Personal 41× Whole Genome Sequencing raw paired-end FASTQ reads (DNBSEQ-T7) and high-coverage GRCh38 BAM alignments released to the public domain (CC0) under ENA BioSample SAMEA121950568 and Study PRJEB109744.",
+        "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "creator": { "@id": "https://mariomarcolongo.com/#person" },
         "url": "https://www.ebi.ac.uk/ena/browser/view/PRJEB109744"
       },
       {
-        "@type": "ClaimReview",
-        "@id": "https://mariomarcolongo.com/#claim-verification-1",
-        "claimReviewed": "Mario Marcolongo has contributed 4,317 verified public edits across Wikimedia Foundation projects with strict primary source fact-checking.",
-        "reviewRating": {
-          "@type": "Rating",
-          "ratingValue": "5",
-          "bestRating": "5",
-          "alternateName": "Empirically Verified Primary Record"
-        },
-        "author": {
-          "@type": "Organization",
-          "name": "Wikimedia CentralAuth Registry",
-          "url": "https://en.wikipedia.org"
-        }
-      },
-      {
-        "@type": "ClaimReview",
-        "@id": "https://mariomarcolongo.com/#claim-verification-2",
-        "claimReviewed": "Mario Marcolongo released his 41× Whole Genome Sequencing dataset to the public domain under ENA BioSample SAMEA121950568.",
-        "reviewRating": {
-          "@type": "Rating",
-          "ratingValue": "5",
-          "bestRating": "5",
-          "alternateName": "Public Domain Biological Accession Verified"
-        },
-        "author": {
-          "@type": "Organization",
-          "name": "European Nucleotide Archive (EMBL-EBI)",
-          "url": "https://www.ebi.ac.uk/ena/browser/view/SAMEA121950568"
-        }
-      },
-      {
-        "@type": "Review",
-        "@id": "https://mariomarcolongo.com/#clinical-facilitation-review",
-        "itemReviewed": { "@id": "https://mariomarcolongo.com/#person" },
-        "author": {
-          "@type": "Organization",
-          "name": "Biomedical & Psychological Research Collaborators"
-        },
-        "reviewRating": {
-          "@type": "Rating",
-          "ratingValue": "5",
-          "bestRating": "5"
-        },
-        "name": "Exceptional Epistemic Rigor, Emotional Intelligence, and Collaborative Leadership",
-        "reviewBody": "Mario Marcolongo demonstrates top-percentile epistemic rigor paired with exceptional emotional intelligence and psychological safety leadership. Volunteering as an independent researcher, he developed standardized facilitation guides and served as primary/co-conductor for psychological focus groups with autistic participants, while successfully aligning diverse commercial and institutional sponsors including AIRC."
+        "@type": "SoftwareSourceCode",
+        "@id": "https://mariomarcolongo.com/#genomic-pipeline",
+        "name": "Polygenic Risk Scoring & Genomic Extraction Pipeline (git-nome)",
+        "description": "Personal genomics workflow and open-data pipeline processing raw FASTQ reads via Terra.bio cloud bioinformatics platform to extract high-coverage GRCh38 BAM alignments and VCF variant call files, transforming VCF datasets to Plink2 format and executing Nextflow pgsc_calc with ancestry projection against reference panels, along with custom Python VEP extraction scripts calculating multi-trait Polygenic Risk Scores mapped to HPO/MONDO ontologies.",
+        "codeRepository": "https://github.com/jnton/git-nome",
+        "author": { "@id": "https://mariomarcolongo.com/#person" }
       }
     ]
   }
@@ -164,24 +383,10 @@ import Layout from '../layouts/Layout.astro';
 
   </Fragment>
 
-  <div id="scrollProgress" aria-hidden="true"></div>
-
   <!-- ========================================
        NAVIGATION
        ======================================== -->
-  <nav class="nav" id="mainNav">
-    <a href="/" class="nav-name" id="navName">Mario Marcolongo</a>
-    <div class="nav-actions">
-      <a href="#proof" class="nav-link hide-mobile">Proof</a>
-      <a href="#about" class="nav-link hide-mobile">Focus</a>
-      <a href="#work" class="nav-link hide-mobile">Work</a>
-      <a href="#numbers" class="nav-link hide-mobile">Impact</a>
-      <a href="#contact" class="nav-link hide-mobile">Contact</a>
-      <a href="/cv" class="nav-link">Full CV</a>
-      <button class="btn btn-ai hide-mobile" onclick="copyAiContent('unified', this)" title="1-Click copy complete AI-compatible Markdown Curriculum Vitae" style="padding: 6px 12px; font-size: 13px;">✨ Copy for AI</button>
-      <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme" id="themeBtn">☀</button>
-    </div>
-  </nav>
+  <SiteNav activePage="home" />
 
   <!-- ========================================
        HERO
@@ -189,25 +394,29 @@ import Layout from '../layouts/Layout.astro';
   <section class="hero">
     <div class="container">
       <div>
-        <div class="hero-animate" style="--delay: 0.05s;">
+        <div class="hero-animate hero-animate-1">
           <div class="badge-pill">
             <span class="badge-dot"></span>
-            <span>Italian Citizen · Unrestricted EU Work Authorization & Global B2B Partita IVA</span>
+            <span>Italian Citizen · Unrestricted EU Work Authorization · International B2B Contracting Available</span>
           </div>
         </div>
-        <h1 class="hero-headline hero-animate" id="heroHeadline" style="--delay: 0.15s;">I check the claims other people don't.</h1>
-        <p class="hero-sub hero-animate" id="heroSub" style="--delay: 0.25s;">Eight years of verifiable Wikipedia edits<button class="cite-btn" data-cite="edits" aria-expanded="false" title="Click to inspect source">1</button> holding up under scrutiny. A personal genome<button class="cite-btn" data-cite="ena" aria-expanded="false" title="Click to inspect source">2</button> released to the public domain under a real ENA accession number. An open science registry<button class="cite-btn" data-cite="registry" aria-expanded="false" title="Click to inspect platform">3</button> cataloging 55+ research initiatives cited across 37 Wikidata entities. And ranked top 8% globally on Gray Swan AI's proving ground<button class="cite-btn" data-cite="grayswan" aria-expanded="false" title="Click to inspect profile">4</button> — with 75+ confirmed adversarial model breaks (as of July 2026) across chat, multimodal, agentic, and prompt-injection challenges.</p>
-        <div class="hero-meta hero-animate" style="--delay: 0.35s;">
-          <span id="heroLocation">Italy (Italian Citizen — Unrestricted EU Work Authorization)</span>
+        <h1 class="hero-headline hero-animate hero-animate-2" id="heroHeadline">{D.identity.headline}</h1>
+        <p class="hero-sub hero-animate hero-animate-3" id="heroSub">Eight years of verifiable Wikipedia edits<a href={CITATIONS.edits.href} class="cite-btn" data-cite="edits" aria-expanded="false" title="Click to inspect source" target="_blank" rel="noopener noreferrer">1</a> holding up under scrutiny. A personal genome<a href={CITATIONS.ena.href} class="cite-btn" data-cite="ena" aria-expanded="false" title="Click to inspect source" target="_blank" rel="noopener noreferrer">2</a> released to the public domain under a real ENA accession number. An open-source research-participation directory<a href={CITATIONS.registry.href} class="cite-btn" data-cite="registry" aria-expanded="false" title="Click to inspect platform" target="_blank" rel="noopener noreferrer">3</a> indexing more than 55 clinical studies, biobanks, donation programs, registries and other research initiatives cited across 37 Wikidata entities. And ranked in the top 8% among ranked Gray Swan Proving Ground participants as of July 2026<a href={CITATIONS.grayswan.href} class="cite-btn" data-cite="grayswan" aria-expanded="false" title="Click to inspect profile" target="_blank" rel="noopener noreferrer">4</a>, with 75 platform-confirmed model breaks across chat, image, agentic tool-use and indirect prompt-injection challenges.</p>
+        <div class="hero-meta hero-animate hero-animate-4">
+          <span id="heroLocation">{D.identity.location}</span>
           <span>·</span>
           <span id="heroLanguages">Italian (Native) & English (C1 Overall)</span>
           <span>·</span>
-          <a href="https://orcid.org/0000-0003-2846-7115" target="_blank" rel="noopener noreferrer" id="heroOrcid">ORCID ↗</a>
+          <a href="/cv.html">Full CV</a>
+          <span>·</span>
+          <a href={D.identity.orcidUrl} target="_blank" rel="noopener noreferrer" id="heroOrcid">ORCID ↗</a>
+          <span>·</span>
+          <a href={D.identity.enaUrl} target="_blank" rel="noopener noreferrer">ENA ↗</a>
         </div>
-        <div class="hero-actions hero-animate" style="--delay: 0.45s;">
-          <a href="#work" class="btn btn-primary">Explore My Work ↓</a>
-          <a href="#proof" class="btn">Verified Proof</a>
-          <button class="btn btn-ai" onclick="copyAiContent('unified', this)" title="1-Click copy complete AI-compatible Markdown Curriculum Vitae">✨ Copy for AI (LLMs)</button>
+        <div class="hero-actions hero-animate hero-animate-5">
+          <a href="/cv-resume.html" class="btn btn-primary">2-Page Résumé (Application CTA) →</a>
+          <a href="/security.html" class="btn">Model Evaluation Record</a>
+          <a href="#work" class="btn">Explore Work ↓</a>
         </div>
       </div>
     </div>
@@ -216,7 +425,7 @@ import Layout from '../layouts/Layout.astro';
   <!-- ========================================
        VERIFIED PROOF STRIP
        ======================================== -->
-  <section class="section" id="proof" style="padding-top: 20px; padding-bottom: 60px;">
+  <section class="section section-proof" id="proof">
     <div class="container">
       <div class="reveal">
         <div class="section-label">Independently Auditable Public Evidence</div>
@@ -227,29 +436,40 @@ import Layout from '../layouts/Layout.astro';
       <div class="proof-grid reveal">
         <div class="proof-row">
           <span class="proof-tag">In Print</span>
-          <p class="proof-text">Named in the acknowledgments of <b>Italiani Veri</b> (Mondadori, 2025) as a collaborator "excellent at digging into the scientific literature and catching errors."<button class="cite-btn" data-cite="book" aria-expanded="false" title="Click to inspect verification source">1</button></p>
+          <p class="proof-text">Named in the acknowledgments of <b>Italiani Veri</b> (Mondadori, 2025) as a collaborator "excellent at digging into the scientific literature and catching errors."<a href={CITATIONS.book.href} class="cite-btn" data-cite="book" aria-expanded="false" title="Click to inspect verification source" target="_blank" rel="noopener noreferrer">1</a></p>
         </div>
         <div class="proof-row">
           <span class="proof-tag">On the Record</span>
-          <p class="proof-text">4,317 verified contributions across Wikipedia, Wikidata, and Wikimedia Commons, under a checkable public CentralAuth account.<button class="cite-btn" data-cite="edits" aria-expanded="false" title="Click to inspect verification source">2</button></p>
+          <p class="proof-text">4,317 verified contributions across Wikipedia, Wikidata, and Wikimedia Commons, under a checkable public CentralAuth account.<a href={CITATIONS.edits.href} class="cite-btn" data-cite="edits" aria-expanded="false" title="Click to inspect verification source" target="_blank" rel="noopener noreferrer">2</a></p>
         </div>
         <div class="proof-row">
-          <span class="proof-tag">Open Research Registry</span>
-          <p class="proof-text">Founder & architect of <b>Yourself to Science™</b> (yourselftoscience.org), an open citizen science platform cataloging 55+ research studies and bio-donations — cited across 37 Wikidata entities (P854).<button class="cite-btn" data-cite="registry" aria-expanded="false" title="Click to inspect verification source">3</button></p>
+          <span class="proof-tag">Open Research Directory</span>
+          <p class="proof-text">Founder & Technical Product Builder of <b>Yourself to Science™</b> (yourselftoscience.org), an open-source research-participation directory indexing more than 55 clinical studies, biobanks, donation programs, registries and other initiatives — cited across 37 Wikidata entities (P854).<a href={CITATIONS.registry.href} class="cite-btn" data-cite="registry" aria-expanded="false" title="Click to inspect verification source" target="_blank" rel="noopener noreferrer">3</a></p>
         </div>
         <div class="proof-row">
           <span class="proof-tag">Open Genomic Donor & Pipeline</span>
-          <p class="proof-text">Donated personal 41× Whole Genome Sequencing raw paired-end FASTQ reads (DNBSEQ-T7) to the public domain (CC0) under ENA BioSample SAMEA121950568, with complete local pipeline codebase open-sourced on GitHub (`git-nome`).<button class="cite-btn" data-cite="ena" aria-expanded="false" title="Click to inspect verification source">4</button></p>
+          <p class="proof-text">Donated personal 41× Whole Genome Sequencing raw paired-end FASTQ reads (DNBSEQ-T7) to the public domain (CC0) under ENA BioSample SAMEA121950568, with complete local personal genomics workflow and open-data pipeline open-sourced on GitHub (<code>git-nome</code>).<a href={CITATIONS.ena.href} class="cite-btn" data-cite="ena" aria-expanded="false" title="Click to inspect verification source" target="_blank" rel="noopener noreferrer">4</a></p>
         </div>
         <div class="proof-row">
-          <span class="proof-tag">AI Red-Teaming</span>
-          <p class="proof-text">Ranked top 8% globally on Gray Swan AI's Proving Ground — 75+ independently verified LLM breaks across chat, image, agentic, and prompt-injection categories (as of July 2026). Gray Swan's research is cited across 11 frontier model system cards, including Anthropic's Claude family and OpenAI's GPT-5/o1/o3-mini.<button class="cite-btn" data-cite="grayswan" aria-expanded="false" title="Click to inspect profile">5</button></p>
+          <span class="proof-tag">Model Behavior Evaluation</span>
+          <p class="proof-text">Ranked in the top 8% among ranked participants on Gray Swan AI's Proving Ground — 75 platform-confirmed model breaks across chat, image, agentic tool-use, and indirect prompt-injection categories (as of July 2026). <a href="/security.html" class="inline-proof-link">View Model Evaluation Record & Scenarios →</a><a href={CITATIONS.grayswan.href} class="cite-btn" data-cite="grayswan" aria-expanded="false" title="Click to inspect profile" target="_blank" rel="noopener noreferrer">5</a></p>
         </div>
         <div class="proof-row">
           <span class="proof-tag">Agent-Ready Architecture</span>
-          <p class="proof-text">100% agent-ready web infrastructure verified by independent benchmark — passing all 16 autonomous agent endpoints including live A2A Agent Card (`agent-card.json`), DNS-AID, and llms.txt.<button class="cite-btn" data-cite="agentready" aria-expanded="false" title="Click to inspect live benchmark">6</button></p>
+          <p class="proof-text">Agent-discovery and machine-readable endpoints implemented; live audit to be rerun after deployment.<a href={CITATIONS.agentready.href} class="cite-btn" data-cite="agentready" aria-expanded="false" title="Click to inspect live benchmark" target="_blank" rel="noopener noreferrer">6</a></p>
         </div>
       </div>
+
+      <details class="citation-raw-list reveal" style="margin-top: 24px;">
+        <summary class="btn btn-sm" style="cursor: pointer;">Verifiable Citations & Source Accessions (No-JS Disclosure)</summary>
+        <div style="padding-top: 16px; display: grid; gap: 12px; font-size: 13px;">
+          {Object.entries(CITATIONS).map(([key, data]) => (
+            <div class="citation-item">
+              <strong>[{key.toUpperCase()}]:</strong> {data.text} — <a href={data.href} target="_blank" rel="noopener noreferrer">{data.title} ↗</a>
+            </div>
+          ))}
+        </div>
+      </details>
     </div>
   </section>
 
@@ -264,8 +484,29 @@ import Layout from '../layouts/Layout.astro';
         <p class="section-desc">Bridging rapid AI-native prototyping, open biomedical data infrastructure, and evidence synthesis.</p>
       </div>
 
-      <div class="pillars reveal-stagger" id="pillarGrid">
-        <!-- Hydrated from source.js -->
+      <div class="pillars reveal-stagger" id="pillarGrid" data-testid="homepage-pillars">
+        {D.pillars.map((p) => (
+          <div class="pillar reveal">
+            <div class="pillar-header">
+              <div class="pillar-icon-box" aria-hidden="true" set:html={p.icon}></div>
+              {p.category && <span class="pillar-category">{p.category}</span>}
+            </div>
+            <h3 class="pillar-title">{p.title}</h3>
+            <p class="pillar-lead">{p.lead || p.desc}</p>
+            {p.highlights && (
+              <div class="pillar-highlights">
+                {p.highlights.map((h) => (
+                  <div class="pillar-highlight-item">
+                    <span class="pillar-highlight-dot"></span>
+                    <div class="pillar-highlight-text">
+                      <strong>{h.label}:</strong> {h.detail}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        ))}
       </div>
     </div>
   </section>
@@ -281,8 +522,36 @@ import Layout from '../layouts/Layout.astro';
         <p class="section-desc">Public tools, automated pipelines, and citizen science directories built for real-world impact.</p>
       </div>
 
-      <div class="project-list" id="projectList">
-        <!-- Hydrated from source.js -->
+      <div class="project-list" id="projectList" data-testid="homepage-projects">
+        {D.projects.map((p, i) => {
+          const isEven = i % 2 === 0;
+          const links = buildProjectLinks(p);
+          const visualHtml = buildProjectVisualHtml(p, i);
+          return (
+            <article class={`project-card reveal ${!isEven ? 'project-card-reverse' : ''}`}>
+              <div class="project-info">
+                <div class="project-tag">{p.role}</div>
+                <h3 class="project-title">{p.title}</h3>
+                <p class="project-one-liner">{p.oneLiner}</p>
+                {p.highlights && (
+                  <ul class="project-highlights">
+                    {p.highlights.map((h) => (
+                      <li>{h}</li>
+                    ))}
+                  </ul>
+                )}
+                <div class="project-links">
+                  {links.map((link) => (
+                    <a href={link.href} target="_blank" rel="noopener noreferrer" class={`btn btn-sm ${link.primary ? 'btn-primary' : ''}`} aria-label={link.label}>
+                      {link.label}
+                    </a>
+                  ))}
+                </div>
+              </div>
+              <div class="project-visual" set:html={visualHtml}></div>
+            </article>
+          );
+        })}
       </div>
     </div>
   </section>
@@ -297,13 +566,31 @@ import Layout from '../layouts/Layout.astro';
         <h2 class="section-title">Evidence across scientific & technical ecosystems.</h2>
       </div>
 
-      <div class="stats-grid reveal-stagger" id="statsGrid">
-        <!-- Hydrated from source.js -->
+      <div class="stats-grid reveal-stagger" id="statsGrid" data-testid="homepage-stats">
+        {D.stats.map((s) => (
+          <div class="stat-card reveal">
+            <div class="stat-value">{s.value}</div>
+            <div class="stat-label">{s.label}</div>
+            <div class="stat-detail">{s.detail}</div>
+          </div>
+        ))}
       </div>
 
       <div class="reveal">
         <div class="wiki-bar-group" id="wikiBreakdown">
-          <!-- Wikimedia contribution bars -->
+          {(D.wikimedia?.breakdown || []).map((b) => {
+            const count = Number.parseInt(b.edits.replaceAll(',', ''), 10) || 0;
+            const pct = (count / maxWikiEdits * 100).toFixed(1);
+            return (
+              <div class="wiki-bar-item">
+                <span class="wiki-bar-label">{b.platform}</span>
+                <div class="wiki-bar-track">
+                  <div class="wiki-bar-fill" data-width={`${pct}%`} style={`width: ${pct}%`}></div>
+                </div>
+                <span class="wiki-bar-count">{b.edits}</span>
+              </div>
+            );
+          })}
         </div>
       </div>
     </div>
@@ -324,19 +611,21 @@ import Layout from '../layouts/Layout.astro';
 
       <div class="reveal">
         <div class="viz-tabs" id="vizTabs">
-          <!-- Hydrated from source.js -->
+          {(D.visualizations || []).map((v, i) => (
+            <button class={`viz-tab${i === 0 ? ' active' : ''}`} onclick={`showViz(${i}, this)`}>{v.title}</button>
+          ))}
         </div>
 
-        <div class="viz-display">
-          <img id="vizImg" src="" alt="" decoding="async" loading="lazy" width="1200" height="675" style="width: 100%; height: auto; aspect-ratio: 16/9;">
+        <div class="viz-display" id="vizDisplay" data-testid="homepage-visualization">
+          <img id="vizImg" src={firstViz.src} alt={firstViz.title} decoding="async" loading="lazy" width="1200" height="675" class="viz-main-img" />
         </div>
 
-        <p class="viz-caption" id="vizCaption"></p>
+        <p class="viz-caption" id="vizCaption">{firstViz.caption}</p>
 
         <div class="viz-btn-row">
-          <a id="vizLink" href="" target="_blank" rel="noopener noreferrer" class="btn btn-sm" aria-label="View current data visualization on Wikimedia Commons">View on Wikimedia Commons ↗</a>
-          <a href="https://public.tableau.com/app/profile/mario.marcolongo/vizzes" target="_blank" rel="noopener noreferrer" class="btn btn-sm" aria-label="View Mario Marcolongo Tableau Public Portfolio">Tableau Portfolio ↗</a>
-          <a href="https://app.flourish.studio/@Digressivo" target="_blank" rel="noopener noreferrer" class="btn btn-sm" aria-label="View Mario Marcolongo Flourish Studio Portfolio">Flourish Portfolio ↗</a>
+          <a id="vizLink" href={firstViz.fileUrl} target="_blank" rel="noopener noreferrer" class="btn btn-sm" aria-label="View on Wikimedia Commons ↗ (Current Visualization)">View on Wikimedia Commons ↗</a>
+          <a href="https://public.tableau.com/app/profile/mario.marcolongo/vizzes" target="_blank" rel="noopener noreferrer" class="btn btn-sm" aria-label="Tableau Portfolio ↗ (Public Vizzes)">Tableau Portfolio ↗</a>
+          <a href="https://app.flourish.studio/@Digressivo" target="_blank" rel="noopener noreferrer" class="btn btn-sm" aria-label="Flourish Portfolio ↗ (Studio Vizzes)">Flourish Portfolio ↗</a>
         </div>
       </div>
     </div>
@@ -373,7 +662,7 @@ import Layout from '../layouts/Layout.astro';
       </div>
 
       <div class="reveal contact-cv-action">
-        <a href="/cv" class="btn btn-primary">View Comprehensive Profile & CV →</a>
+        <a href="/cv.html" class="btn btn-primary">View Comprehensive Profile & CV →</a>
       </div>
     </div>
   </section>
@@ -381,23 +670,12 @@ import Layout from '../layouts/Layout.astro';
   <!-- ========================================
        FOOTER
        ======================================== -->
-  <footer class="site-footer">
-    <div class="container">
-      <div class="footer-content">
-        <span class="footer-text">© 2026 Mario Marcolongo · <a href="https://github.com/jnton/mariomarcolongo" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline;">Built Open-Source</a></span>
-        <div class="footer-links">
-          <a href="https://github.com/jnton/mariomarcolongo" target="_blank" rel="noopener noreferrer">Source Code</a>
-          <a href="/llms-full.txt" target="_blank" rel="noopener noreferrer">llms.txt</a>
-          <a href="/sitemap.xml" target="_blank" rel="noopener noreferrer">Sitemap</a>
-          <a href="https://github.com/jnton" target="_blank" rel="noopener noreferrer">GitHub Profile</a>
-        </div>
-      </div>
-    </div>
-  </footer>
+  <SiteFooter version="v2026.07.21" />
 
   <!-- ========================================
        SCRIPTS
        ======================================== -->
+  <script is:inline src="/data/source.js"></script>
   <script is:inline>
     const D = window.MARIO_DOSSIER || {};
 
@@ -414,7 +692,7 @@ import Layout from '../layouts/Layout.astro';
     document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
     // ---- NAV SCROLL & ACTIVE SECTION HIGHLIGHTING ----
-    const nav = document.getElementById('mainNav');
+    const nav = document.getElementById('siteNav');
     const navLinks = document.querySelectorAll('.nav-link[href^="#"]');
     const sectionIds = Array.from(navLinks).map(link => link.getAttribute('href').substring(1));
     const sections = sectionIds.map(id => document.getElementById(id)).filter(Boolean);
@@ -447,347 +725,20 @@ import Layout from '../layouts/Layout.astro';
       });
     }, { passive: true });
 
-    // ---- THEME ----
-    function toggleTheme() {
-      const html = document.documentElement;
-      const current = html.getAttribute('data-theme');
-      const next = current === 'dark' ? 'light' : 'dark';
-      html.setAttribute('data-theme', next);
-      document.getElementById('themeBtn').textContent = next === 'dark' ? '☾' : '☀';
-      try { localStorage.setItem('mm-theme', next); } catch(e) {}
-    }
-
-    // Restore saved theme
-    try {
-      const saved = localStorage.getItem('mm-theme');
-      if (saved) {
-        document.documentElement.setAttribute('data-theme', saved);
-        document.getElementById('themeBtn').textContent = saved === 'dark' ? '☾' : '☀';
-      }
-    } catch(e) {}
-
-    // ---- HYDRATE PILLARS ----
-    function hydratePillars() {
-      const grid = document.getElementById('pillarGrid');
-      if (!D.pillars || !grid) return;
-
-      grid.innerHTML = D.pillars.map(p => `
-        <div class="pillar reveal">
-          <div class="pillar-header">
-            <div class="pillar-icon-box" aria-hidden="true">${p.icon}</div>
-            ${p.category ? `<span class="pillar-category">${p.category}</span>` : ''}
-          </div>
-          <h3 class="pillar-title">${p.title}</h3>
-          <p class="pillar-lead">${p.lead || p.desc}</p>
-          ${p.highlights ? `
-            <div class="pillar-highlights">
-              ${p.highlights.map(h => `
-                <div class="pillar-highlight-item">
-                  <span class="pillar-highlight-dot"></span>
-                  <div class="pillar-highlight-text">
-                    <strong>${h.label}:</strong> ${h.detail}
-                  </div>
-                </div>
-              `).join('')}
-            </div>
-          ` : ''}
-        </div>
-      `).join('');
-
-      grid.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
-    }
-
-    // ---- HYDRATE PROJECTS ----
-    function hydrateProjects() {
-      const list = document.getElementById('projectList');
-      if (!D.projects || !list) return;
-
-      list.innerHTML = D.projects.map((p, i) => {
-        const visual = buildProjectVisual(p, i);
-        const links = buildProjectLinks(p);
-        const highlights = p.highlights ? p.highlights.map(h => `<li>${h}</li>`).join('') : '';
-        const isEven = i % 2 === 0;
-
-        return `
-          <article class="project-card reveal" style="${!isEven ? 'direction: rtl;' : ''}">
-            <div class="project-info" style="direction: ltr;">
-              <div class="project-tag">${p.role}</div>
-              <h3 class="project-title">${p.title}</h3>
-              <p class="project-one-liner">${p.oneLiner}</p>
-              ${highlights ? `<ul class="project-highlights">${highlights}</ul>` : ''}
-              <div class="project-links">${links}</div>
-            </div>
-            <div class="project-visual" style="direction: ltr;">
-              ${visual}
-            </div>
-          </article>
-        `;
-      }).join('');
-
-      list.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
-    }
-
-    function buildProjectVisual(p, i) {
-      if (p.id === 'mdpi-filter') {
-        const imgSrc = (p.links && p.links.screenshots && p.links.screenshots[0])
-          ? p.links.screenshots[0]
-          : 'https://lh3.googleusercontent.com/1KKa3LqvJ6ayP9Kh6_jmAWXzL3naOfPnnKtWb8vjd25XMn1ELMNFDxGjgtvShNmDhWG4x_uuynunm9lVD7wQ3hAI=s1280-w1280-h800';
-        return `<div style="width:100%; height:100%; display:flex; align-items:center; justify-content:center; overflow:hidden; border-radius:14px; background:#F8FAFC; border:1px solid #E2E8F0;"><img src="${imgSrc}" alt="${p.title} screenshot" loading="lazy" style="width:100%; height:100%; object-fit:cover;"></div>`;
-      }
-      if (p.id === 'telegram-bot') {
-        return `
-          <div class="telegram-mock">
-            <div class="tg-header">
-              <div class="tg-avatar">
-                <img src="/telegram-bot-icon.svg" alt="Wikipedia Link Converter Bot Icon" style="width: 100%; height: 100%; object-fit: contain;">
-              </div>
-              <div>
-                <div class="tg-name">Wikipedia Link Converter</div>
-                <div class="tg-status">serverless bot</div>
-              </div>
-            </div>
-            <div class="tg-body">
-              <div class="tg-bubble-out">
-                <span class="tg-link">https://it.wikipedia.org/wiki/Bianco_e_nero</span>
-              </div>
-              <div class="tg-bubble-in">
-                English canonical page resolved for <strong>Bianco e nero</strong>:<br>
-                <span class="tg-link">https://en.wikipedia.org/wiki/Black_and_white</span>
-              </div>
-            </div>
-          </div>
-        `;
-      }
-      if (p.id === 'referendum-map') {
-        return `<img src="/referendum-turnout-threshold-by-country.svg" alt="Referendum Turnout Threshold World Map" loading="lazy" style="object-fit: contain; padding: 20px;">`;
-      }
-      if (p.id === 'entropy-for-life') {
-        return `
-          <div class="mock-visual-box" style="padding: 36px 28px; width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 26px;">
-            <!-- Channel Header -->
-            <div style="display: flex; flex-direction: column; align-items: center; gap: 12px;">
-              <div style="width: 68px; height: 68px; border-radius: 20px; background: linear-gradient(135deg, #F43F5E, #BE123C); display: flex; align-items: center; justify-content: center; font-size: 30px; color: #FFF; box-shadow: 0 8px 26px rgba(225,29,72,0.35);">▶</div>
-              <div>
-                <div style="font-family: var(--font-display); font-size: 24px; font-weight: 800; color: var(--ink); letter-spacing: -0.02em;">@EntropyforLife</div>
-                <div style="font-size: 13px; color: var(--ink-soft); font-weight: 500; margin-top: 2px;">Giacomo Moro Mauretto · Evolutionary Biology</div>
-              </div>
-            </div>
-
-            <!-- Hero Community Metric -->
-            <div style="display: flex; flex-direction: column; align-items: center;">
-              <div style="font-family: var(--font-display); font-size: 46px; font-weight: 900; color: var(--ink); line-height: 1; letter-spacing: -0.03em;">480,000+</div>
-              <div style="font-size: 12px; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 0.08em; margin-top: 6px;">Total Cross-Platform Community</div>
-            </div>
-
-            <!-- 3 Key Metric Cards Grid -->
-            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; width: 100%; max-width: 440px;">
-              <div style="background: var(--bg-surface); border: 1px solid var(--line); border-radius: 14px; padding: 14px 10px; text-align: center; box-shadow: var(--shadow);">
-                <div style="font-family: var(--font-display); font-size: 20px; font-weight: 800; color: var(--ink);">266K+</div>
-                <div style="font-size: 11px; color: var(--ink-soft); font-weight: 600; margin-top: 3px;">YouTube Subs</div>
-              </div>
-              <div style="background: var(--bg-surface); border: 1px solid var(--line); border-radius: 14px; padding: 14px 10px; text-align: center; box-shadow: var(--shadow);">
-                <div style="font-family: var(--font-display); font-size: 20px; font-weight: 800; color: var(--ink);">36.2M+</div>
-                <div style="font-size: 11px; color: var(--ink-soft); font-weight: 600; margin-top: 3px;">Total Views</div>
-              </div>
-              <div style="background: var(--bg-surface); border: 1px solid var(--line); border-radius: 14px; padding: 14px 10px; text-align: center; box-shadow: var(--shadow);">
-                <div style="font-family: var(--font-display); font-size: 20px; font-weight: 800; color: var(--ink);">55+</div>
-                <div style="font-size: 11px; color: var(--ink-soft); font-weight: 600; margin-top: 3px;">Videos Checked</div>
-              </div>
-            </div>
-
-            <!-- Verified Scope / Ecosystem Badges -->
-            <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; max-width: 460px;">
-              <span style="background: var(--bg-surface); border: 1px solid var(--line); color: var(--ink); padding: 6px 14px; border-radius: 99px; font-size: 11.5px; font-weight: 600;">📚 2 Mondadori Books</span>
-              <span style="background: var(--bg-surface); border: 1px solid var(--line); color: var(--ink); padding: 6px 14px; border-radius: 99px; font-size: 11.5px; font-weight: 600;">🔬 AIRC Partner</span>
-              <span style="background: var(--bg-surface); border: 1px solid var(--line); color: var(--ink); padding: 6px 14px; border-radius: 99px; font-size: 11.5px; font-weight: 600;">📺 Rai 3 Kilimangiaro</span>
-              <span style="background: var(--bg-surface); border: 1px solid var(--line); color: var(--ink); padding: 6px 14px; border-radius: 99px; font-size: 11.5px; font-weight: 600;">📸 IG: 158K+ · TikTok: 54K+</span>
-            </div>
-          </div>
-        `;
-      }
-      if (p.id === 'yourself-to-science') {
-        return `
-          <div class="mock-visual-box" style="padding: 16px; overflow: hidden; border-radius: 14px; background: #FFFFFF; border: 1px solid #E2E8F0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; text-align: left;">
-            <!-- Top Nav -->
-            <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #F1F5F9; padding-bottom: 12px; margin-bottom: 16px;">
-              <div style="display: flex; align-items: center; gap: 8px;">
-                <img src="/y2s-logo.svg" alt="Yourself to Science Logo" style="width: 28px; height: 28px; object-fit: contain;">
-                <img src="/y2s-title.svg" alt="Yourself to Science™" style="height: 16px; object-fit: contain;">
-              </div>
-              <div style="display: flex; align-items: center; gap: 14px; font-size: 11px; color: #475569; font-weight: 500;">
-                <span>Stats</span>
-                <span>Our Mission</span>
-                <span style="background: #2563EB; color: #FFFFFF; padding: 5px 12px; border-radius: 6px; font-weight: 600;">Get Involved</span>
-              </div>
-            </div>
-            <!-- Hero Title -->
-            <div style="text-align: center; margin-bottom: 18px;">
-              <div style="color: #2563EB; font-size: 22px; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 6px;">Contribute to Research</div>
-              <div style="font-size: 11.5px; color: #64748B; line-height: 1.45; max-width: 90%; margin: 0 auto;">
-                A comprehensive open-source catalogue for contributing your biological and digital self to scientific research. Browse opportunities to share your data, genome, biological samples, and more.
-              </div>
-            </div>
-            <!-- Search Pill Bar -->
-            <div style="background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 99px; padding: 7px 16px; display: flex; justify-content: space-between; align-items: center; font-size: 10px; color: #64748B; box-shadow: 0 2px 8px rgba(0,0,0,0.03); margin: 0 12px 18px 12px; overflow-x: auto;">
-              <div><strong style="color: #0F172A; font-weight: 700; margin-right: 4px;">CATEGORY</strong>Any type</div>
-              <div style="height: 12px; width: 1px; background: #E2E8F0;"></div>
-              <div><strong style="color: #0F172A; font-weight: 700; margin-right: 4px;">AVAILABLE IN</strong>Anywhere</div>
-              <div style="height: 12px; width: 1px; background: #E2E8F0;"></div>
-              <div><strong style="color: #0F172A; font-weight: 700; margin-right: 4px;">DATA TYPE</strong>All</div>
-              <div style="height: 12px; width: 1px; background: #E2E8F0;"></div>
-              <div style="display: flex; align-items: center; gap: 4px; color: #2563EB; font-weight: 600;">
-                <span>🔍</span><span>Search</span>
-              </div>
-            </div>
-            <!-- Mini Program Cards -->
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; text-align: left;">
-              <!-- Card 1 -->
-              <div style="background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 12px; padding: 12px; box-shadow: 0 1px 4px rgba(0,0,0,0.04); display: flex; flex-direction: column; justify-content: space-between;">
-                <div>
-                  <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 6px;">
-                    <div style="display: flex; flex-wrap: wrap; gap: 4px;">
-                      <span style="background: #EFF6FF; color: #2563EB; font-size: 8px; font-weight: 700; padding: 2px 6px; border-radius: 4px;">BIOLOGICAL SAMPLES</span>
-                      <span style="background: #FEF3C7; color: #D97706; font-size: 8px; font-weight: 700; padding: 2px 6px; border-radius: 4px;">HEALTH DATA</span>
-                    </div>
-                    <span style="background: #FFE4E6; color: #E11D48; width: 20px; height: 20px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 10px;">♥</span>
-                  </div>
-                  <div style="margin-bottom: 6px;">
-                    <span style="background: #F1F5F9; color: #475569; font-size: 8px; font-weight: 600; padding: 2px 6px; border-radius: 4px;">COMMERCIAL</span>
-                  </div>
-                  <div style="font-weight: 700; font-size: 13px; color: #0F172A; margin-bottom: 4px;">23andMe Research Participation</div>
-                  <div style="font-size: 10px; color: #64748B;">🏢 23andMe Holding Co.</div>
-                  <div style="font-size: 9.5px; color: #94A3B8; margin-top: 2px;">• Based in United States</div>
-                </div>
-                <div style="margin-top: 10px; background: #EFF6FF; border: 1px solid #DBEAFE; border-radius: 6px; padding: 5px 8px; font-size: 9px; color: #2563EB; display: flex; align-items: center; gap: 5px;">
-                  <span>ℹ️</span><span>Requires being a customer</span>
-                </div>
-              </div>
-              <!-- Card 2 -->
-              <div style="background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 12px; padding: 12px; box-shadow: 0 1px 4px rgba(0,0,0,0.04); display: flex; flex-direction: column; justify-content: space-between;">
-                <div>
-                  <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 6px;">
-                    <div style="display: flex; flex-wrap: wrap; gap: 4px;">
-                      <span style="background: #EFF6FF; color: #2563EB; font-size: 8px; font-weight: 700; padding: 2px 6px; border-radius: 4px;">BIOLOGICAL SAMPLES</span>
-                      <span style="background: #FCE7F3; color: #DB2777; font-size: 8px; font-weight: 700; padding: 2px 6px; border-radius: 4px;">TISSUE DONATION</span>
-                    </div>
-                    <div style="display: flex; gap: 4px;">
-                      <span style="background: #D1FAE5; color: #059669; width: 20px; height: 20px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 700;">$</span>
-                      <span style="background: #FFE4E6; color: #E11D48; width: 20px; height: 20px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 10px;">♥</span>
-                    </div>
-                  </div>
-                  <div style="margin-bottom: 6px;">
-                    <span style="background: #F1F5F9; color: #475569; font-size: 8px; font-weight: 600; padding: 2px 6px; border-radius: 4px;">PUBLIC & NON-PROFIT</span>
-                  </div>
-                  <div style="font-weight: 700; font-size: 13px; color: #0F172A; margin-bottom: 4px;">AATB Accredited Bank Search</div>
-                  <div style="font-size: 10px; color: #64748B;">🏢 American Association of Tissue Banks (AATB)</div>
-                  <div style="font-size: 9.5px; color: #94A3B8; margin-top: 2px;">• Based in United States</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        `;
-      }
-      if (p.id === 'emergent-humanity') {
-        return `
-          <div class="mock-visual-box node-viz-wrap" style="padding: 0; overflow: hidden; border-radius: 14px; background: #12160F; position: relative; aspect-ratio: 16/9; min-height: 220px;">
-            <canvas id="nodeCanvas" aria-label="Interactive network simulation of human nodes and connections" style="width: 100%; height: 100%; display: block;"></canvas>
-            <div style="position: absolute; top: 12px; right: 12px; pointer-events: none;">
-              <span style="font-size: 10px; font-weight: 700; text-transform: uppercase; background: rgba(154, 91, 19, 0.85); color: #fff; padding: 4px 10px; border-radius: 99px; backdrop-filter: blur(4px);">INTERACTIVE NARRATION · ACTIVE ALPHA</span>
-            </div>
-          </div>
-        `;
-      }
-      return `<div class="mock-visual-box"><div style="font-size:48px;opacity:0.3;">⚡</div></div>`;
-    }
-
-    function buildProjectLinks(p) {
-      const btns = [];
-      const l = p.links || {};
-      const t = (p.title || p.org || 'project').replace(/"/g, '&quot;');
-      if (l.website) btns.push(`<a href="${l.website}" target="_blank" rel="noopener noreferrer" class="btn btn-sm" aria-label="Visit site for ${t}">Visit Site ↗</a>`);
-      if (l.playlist) btns.push(`<a href="${l.playlist}" target="_blank" rel="noopener noreferrer" class="btn btn-sm" aria-label="Videos and documentaries for ${t}">Videos & Documentaries ↗</a>`);
-      if (l.authorPage) btns.push(`<a href="${l.authorPage}" target="_blank" rel="noopener noreferrer" class="btn btn-sm" aria-label="Author page for ${t}">Author Page ↗</a>`);
-      if (l.chromeStore) btns.push(`<a href="${l.chromeStore}" target="_blank" rel="noopener noreferrer" class="btn btn-sm" aria-label="Chrome Store extension for ${t}">Chrome Store ↗</a>`);
-      if (l.edgeStore) btns.push(`<a href="${l.edgeStore}" target="_blank" rel="noopener noreferrer" class="btn btn-sm" aria-label="Edge Add-on for ${t}">Edge Store ↗</a>`);
-      if (l.youtube) btns.push(`<a href="${l.youtube}" target="_blank" rel="noopener noreferrer" class="btn btn-sm" aria-label="YouTube channel for ${t}">YouTube ↗</a>`);
-      if (l.bot || l.telegramBot) btns.push(`<a href="${l.bot || l.telegramBot}" target="_blank" rel="noopener noreferrer" class="btn btn-sm" aria-label="Telegram Bot for ${t}">Try Bot ↗</a>`);
-      if (l.wikimedia) btns.push(`<a href="${l.wikimedia}" target="_blank" rel="noopener noreferrer" class="btn btn-sm" aria-label="Wikimedia contributions for ${t}">Wikimedia ↗</a>`);
-      if (l.github || l.githubOrg) btns.push(`<a href="${l.github || l.githubOrg}" target="_blank" rel="noopener noreferrer" class="btn btn-sm" aria-label="GitHub repository for ${t}">GitHub ↗</a>`);
-      if (l.doi) btns.push(`<a href="${l.doi}" target="_blank" rel="noopener noreferrer" class="btn btn-sm" aria-label="DOI publication for ${t}">DOI ↗</a>`);
-      if (l.fairsharing) btns.push(`<a href="${l.fairsharing}" target="_blank" rel="noopener noreferrer" class="btn btn-sm" aria-label="FAIRsharing record for ${t}">FAIRsharing ↗</a>`);
-      if (l.tableau) btns.push(`<a href="${l.tableau}" target="_blank" rel="noopener noreferrer" class="btn btn-sm" aria-label="Tableau portfolio for ${t}">Tableau ↗</a>`);
-      if (l.flourish) btns.push(`<a href="${l.flourish}" target="_blank" rel="noopener noreferrer" class="btn btn-sm" aria-label="Flourish studio portfolio for ${t}">Flourish ↗</a>`);
-      return btns.join('');
-    }
-
-    // ---- HYDRATE STATS ----
-    function hydrateStats() {
-      const grid = document.getElementById('statsGrid');
-      if (!D.stats || !grid) return;
-
-      grid.innerHTML = D.stats.map(s => `
-        <div class="stat-card reveal">
-          <div class="stat-value">${s.value}</div>
-          <div class="stat-label">${s.label}</div>
-          <div class="stat-detail">${s.detail}</div>
-        </div>
-      `).join('');
-
-      grid.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
-
-      // Wikimedia breakdown bars
-      const breakdown = document.getElementById('wikiBreakdown');
-      if (D.wikimedia && D.wikimedia.breakdown && breakdown) {
-        const max = Math.max(...D.wikimedia.breakdown.map(b => parseInt(b.edits.replace(/,/g, ''))));
-        breakdown.innerHTML = D.wikimedia.breakdown.map(b => {
-          const count = parseInt(b.edits.replace(/,/g, ''));
-          const pct = (count / max * 100).toFixed(1);
-          return `
-            <div class="wiki-bar-item">
-              <span class="wiki-bar-label">${b.platform}</span>
-              <div class="wiki-bar-track">
-                <div class="wiki-bar-fill" data-width="${pct}%"></div>
-              </div>
-              <span class="wiki-bar-count">${b.edits}</span>
-            </div>
-          `;
-        }).join('');
-
-        // Animate bars on scroll
-        const barObserver = new IntersectionObserver((entries) => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              entry.target.querySelectorAll('.wiki-bar-fill').forEach(bar => {
-                bar.style.width = bar.dataset.width;
-              });
-              barObserver.unobserve(entry.target);
-            }
-          });
-        }, { threshold: 0.3 });
-        barObserver.observe(breakdown);
-      }
-    }
-
-    // ---- HYDRATE VISUALIZATIONS ----
-    function hydrateViz() {
-      const tabs = document.getElementById('vizTabs');
-      if (!D.visualizations || !tabs) return;
-
-      tabs.innerHTML = D.visualizations.map((v, i) => `
-        <button class="viz-tab${i === 0 ? ' active' : ''}" onclick="showViz(${i}, this)">${v.title}</button>
-      `).join('');
-
-      showViz(0, null);
-    }
-
+    // ---- VISUALIZATION TABS ----
     function showViz(index, btn) {
-      const viz = D.visualizations[index];
+      const viz = D.visualizations && D.visualizations[index];
       if (!viz) return;
 
-      document.getElementById('vizImg').src = viz.src;
-      document.getElementById('vizImg').alt = viz.title;
-      document.getElementById('vizCaption').textContent = viz.caption;
-      document.getElementById('vizLink').href = viz.fileUrl;
+      const img = document.getElementById('vizImg');
+      const cap = document.getElementById('vizCaption');
+      const lnk = document.getElementById('vizLink');
+      if (img) {
+        img.src = viz.src;
+        img.alt = viz.title;
+      }
+      if (cap) cap.textContent = viz.caption;
+      if (lnk) lnk.href = viz.fileUrl;
 
       if (btn) {
         document.querySelectorAll('.viz-tab').forEach(t => t.classList.remove('active'));
@@ -795,15 +746,26 @@ import Layout from '../layouts/Layout.astro';
       }
     }
 
-    // ---- HYDRATE HERO FROM SSOT ----
-    function hydrateHero() {
-      if (!D.identity) return;
-      const h = document.getElementById('heroHeadline');
-      const s = document.getElementById('heroSub');
-      const loc = document.getElementById('heroLocation');
-      if (h && D.identity.headline) h.textContent = D.identity.headline;
-      if (s && (D.identity.heroSubHtml || D.identity.role)) s.innerHTML = D.identity.heroSubHtml || D.identity.role;
-      if (loc && D.identity.location) loc.textContent = D.identity.location;
+    // ---- WIKIMEDIA BREAKDOWN BARS ANIMATION ----
+    function initWikiBreakdown() {
+      const breakdown = document.getElementById('wikiBreakdown');
+      if (!breakdown) return;
+
+      const barObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.querySelectorAll('.wiki-bar-fill').forEach(bar => {
+              bar.style.width = bar.dataset.width;
+            });
+            barObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.3 });
+
+      breakdown.querySelectorAll('.wiki-bar-fill').forEach(bar => {
+        bar.style.width = '0%';
+      });
+      barObserver.observe(breakdown);
     }
 
     // ---- INTERACTIVE CITATION SYSTEM ("VERIFIED, NOT ASSERTED") ----
@@ -814,12 +776,12 @@ import Layout from '../layouts/Layout.astro';
         label: "Wikimedia CentralAuth Public Record ↗"
       },
       ena: {
-        text: "Executed a local 41× Whole Genome Sequencing pipeline on Apple Silicon (M4 Macbook), mapping raw paired-end FASTQ reads to BAM/VCF via Terra.bio. Orchestrated API queries against the EBI PGS Catalog to compute 50+ polygenic risk scores locally, mapping phenotypic metadata to HPO/MONDO ontologies under ENA Accession PRJEB109744 (complete open-source pipeline codebase published on GitHub: jnton/git-nome).",
+        text: "Designed and iteratively validated a local downstream bioinformatics workflow transforming VCF datasets to Plink2 format and running Nextflow pgsc_calc with ancestry projection against reference panels, along with custom Python VEP extraction scripts under ENA Accession PRJEB109744 (personal genomics workflow and open-data pipeline published on GitHub: jnton/git-nome).",
         href: "https://www.ebi.ac.uk/ena/browser/view/PRJEB109744",
         label: "ENA Accession PRJEB109744 & Pipeline Repository ↗"
       },
       registry: {
-        text: "Founder & architect of Yourself to Science™ — an open citizen science platform cataloging 55+ research studies across genomes, clinical trials, and bio-donations, cited across 37 Wikidata entities (P854).",
+        text: "Founder & architect of Yourself to Science™ — an open-source research-participation directory indexing 55+ research studies across genomes, clinical trials, and bio-donations, cited across 37 Wikidata entities (P854).",
         href: "https://yourselftoscience.org",
         label: "yourselftoscience.org ↗"
       },
@@ -829,22 +791,23 @@ import Layout from '../layouts/Layout.astro';
         label: "Italiani Veri — Mondadori ↗"
       },
       grayswan: {
-        text: "Ranked top 8% globally on Gray Swan AI's Proving Ground — achieved 75+ confirmed model breaks across chat, image, agentic, and prompt-injection categories during safety evaluation challenges (as of July 2026). Gray Swan's research is cited across 11 frontier model system cards.",
+        text: "Ranked in the top 8% among ranked Gray Swan Proving Ground participants as of July 2026 — 75 platform-confirmed model breaks across chat, image, agentic tool-use and indirect prompt-injection challenges.",
         href: "https://app.grayswan.ai/arena/user/6a57be70d15e123775a1e9cf",
         label: "Gray Swan Proving Ground Profile ↗"
       },
       agentready: {
-        text: "Independently verified by IsItAgentReady benchmark passing 16/16 autonomous agent endpoints: robotsTxt, sitemap, linkHeaders, dnsAid, markdownNegotiation, robotsTxtAiRules, contentSignals, apiCatalog, authMd, mcpServerCard, a2aAgentCard, agentSkills.",
+        text: "Agent-discovery and machine-readable endpoints implemented; live audit to be rerun after deployment (including live A2A Agent Card, DNS-AID, and llms.txt).",
         href: "https://isitagentready.com/mariomarcolongo.com?checks=robotsTxt%2Csitemap%2ClinkHeaders%2CdnsAid%2CmarkdownNegotiation%2CrobotsTxtAiRules%2CcontentSignals%2CwebBotAuth%2CapiCatalog%2CoauthDiscovery%2CoauthProtectedResource%2CauthMd%2CmcpServerCard%2Ca2aAgentCard%2CagentSkills%2CwebMcp%2Cx402%2Cmpp%2Cucp%2Cacp",
-        label: "Live Agent-Readiness Benchmark (16/16 Passing) ↗"
+        label: "Live Agent-Readiness Audit Status ↗"
       }
     };
 
     let activePopover = null;
 
     function initCitations() {
-      document.querySelectorAll('button.cite-btn').forEach(btn => {
+      document.querySelectorAll('.cite-btn').forEach(btn => {
         btn.addEventListener('click', (e) => {
+          e.preventDefault();
           e.stopPropagation();
           const key = btn.dataset.cite;
           if (activePopover && activePopover.key === key) {
@@ -890,7 +853,16 @@ import Layout from '../layouts/Layout.astro';
       }
     }
 
-    // ---- NODE NETWORK VISUALIZATION (Emergent Humanity Simulation) ----
+    // Cryptographically secure pseudorandom number generator for visual coordinate initialization
+    function getPseudoRand() {
+      if (typeof window !== 'undefined' && window.crypto && window.crypto.getRandomValues) {
+        const arr = new Uint32Array(1);
+        window.crypto.getRandomValues(arr);
+        return arr[0] / 4294967296;
+      }
+      return 0.5;
+    }
+
     // ---- NODE NETWORK VISUALIZATION (Emergent Humanity Interactive Simulation) ----
     function initNodeNetwork() {
       const canvas = document.getElementById('nodeCanvas');
@@ -915,11 +887,11 @@ import Layout from '../layouts/Layout.astro';
       function initNodes() {
         const rect = canvas.parentElement.getBoundingClientRect();
         nodes = Array.from({ length: NODE_COUNT }, () => ({
-          x: Math.random() * rect.width,
-          y: Math.random() * rect.height,
-          vx: (Math.random() - 0.5) * 0.22,
-          vy: (Math.random() - 0.5) * 0.22,
-          r: 2.8 + Math.random() * 2.2,
+          x: getPseudoRand() * rect.width,
+          y: getPseudoRand() * rect.height,
+          vx: (getPseudoRand() - 0.5) * 0.22,
+          vy: (getPseudoRand() - 0.5) * 0.22,
+          r: 2.8 + getPseudoRand() * 2.2,
           signal: 0
         }));
       }
@@ -968,11 +940,7 @@ import Layout from '../layouts/Layout.astro';
         pulses.push({ x: mx, y: my, radius: 0, maxRadius: Math.max(rect.width, rect.height) * 0.75 });
       });
 
-      function drawFrame() {
-        const rect = canvas.parentElement.getBoundingClientRect();
-        ctx.clearRect(0, 0, rect.width, rect.height);
-
-        // Update pulses
+      function stepPulses() {
         pulses = pulses.filter(p => p.radius < p.maxRadius);
         pulses.forEach(p => {
           p.radius += 3.5;
@@ -982,27 +950,28 @@ import Layout from '../layouts/Layout.astro';
           ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
           ctx.stroke();
 
-          // Energize nodes touched by pulse wave
           nodes.forEach(n => {
             if (Math.abs(Math.hypot(n.x - p.x, n.y - p.y) - p.radius) < 10) {
               n.signal = 1;
             }
           });
         });
+      }
 
-        if (!reduceMotion) {
-          nodes.forEach(n => {
-            if (n !== draggedNode) {
-              n.x += n.vx;
-              n.y += n.vy;
-              if (n.x < 0 || n.x > rect.width) n.vx *= -1;
-              if (n.y < 0 || n.y > rect.height) n.vy *= -1;
-            }
-            if (n.signal > 0) n.signal = Math.max(0, n.signal - 0.02);
-          });
-        }
+      function stepNodes(rect) {
+        if (reduceMotion) return;
+        nodes.forEach(n => {
+          if (n !== draggedNode) {
+            n.x += n.vx;
+            n.y += n.vy;
+            if (n.x < 0 || n.x > rect.width) n.vx *= -1;
+            if (n.y < 0 || n.y > rect.height) n.vy *= -1;
+          }
+          if (n.signal > 0) n.signal = Math.max(0, n.signal - 0.02);
+        });
+      }
 
-        // Draw connections
+      function renderConnections(rect) {
         for (let i = 0; i < nodes.length; i++) {
           for (let j = i + 1; j < nodes.length; j++) {
             const a = nodes[i], b = nodes[j];
@@ -1022,31 +991,41 @@ import Layout from '../layouts/Layout.astro';
             }
           }
         }
+      }
 
-        // Draw interactive mouse bridge lines
-        if (mouse.active && mouse.x !== null) {
-          nodes.forEach(n => {
-            const d = Math.hypot(n.x - mouse.x, n.y - mouse.y);
-            const maxD = rect.width * 0.32;
-            if (d < maxD) {
-              ctx.strokeStyle = `rgba(245, 158, 11, ${0.75 * (1 - d / maxD)})`;
-              ctx.lineWidth = 1.2;
-              ctx.beginPath();
-              ctx.moveTo(mouse.x, mouse.y);
-              ctx.lineTo(n.x, n.y);
-              ctx.stroke();
-            }
-          });
-        }
+      function renderMouseBridge(rect) {
+        if (!mouse.active || mouse.x === null) return;
+        nodes.forEach(n => {
+          const d = Math.hypot(n.x - mouse.x, n.y - mouse.y);
+          const maxD = rect.width * 0.32;
+          if (d < maxD) {
+            ctx.strokeStyle = `rgba(245, 158, 11, ${0.75 * (1 - d / maxD)})`;
+            ctx.lineWidth = 1.2;
+            ctx.beginPath();
+            ctx.moveTo(mouse.x, mouse.y);
+            ctx.lineTo(n.x, n.y);
+            ctx.stroke();
+          }
+        });
+      }
 
-        // Draw nodes
+      function renderNodes() {
         nodes.forEach(n => {
           ctx.fillStyle = n.signal > 0.1 ? '#F59E0B' : '#EFEEE6';
           ctx.beginPath();
           ctx.arc(n.x, n.y, n.r + (n.signal * 2), 0, Math.PI * 2);
           ctx.fill();
         });
+      }
 
+      function drawFrame() {
+        const rect = canvas.parentElement.getBoundingClientRect();
+        ctx.clearRect(0, 0, rect.width, rect.height);
+        stepPulses();
+        stepNodes(rect);
+        renderConnections(rect);
+        renderMouseBridge(rect);
+        renderNodes();
         if (!reduceMotion) requestAnimationFrame(drawFrame);
       }
 
@@ -1065,84 +1044,37 @@ import Layout from '../layouts/Layout.astro';
 
     // ---- INIT ----
     document.addEventListener('DOMContentLoaded', () => {
-      hydrateHero();
-      hydratePillars();
-      hydrateProjects();
-      hydrateStats();
-      hydrateViz();
       initCitations();
+      initWikiBreakdown();
       initNodeNetwork();
     });
 
     // ---- 1-CLICK AI COPY EXPORT ----
-    function generateLiveMarkdown(d, type) {
-      if (!d) return null;
-      if (type === 'llms.txt') {
-        return `# ${d.identity.name} — ${d.identity.jobTitle || 'Scientific AI Evaluation & Research Data Specialist'}\n\n> ${d.summary}\n\n## Quick Facts\n` +
-          (d.stats ? d.stats.map(s => `- **${s.value}** (${s.label}): ${s.detail}`).join('\n') : '') +
-          `\n- Work Authorization: ${d.identity.relocation}\n- Languages: ${d.identity.languages}\n\n## Core Competencies\n` +
-          (d.skills ? d.skills.map(s => `- ${s}`).join('\n') : '') +
-          `\n\n## Links\n- Website: ${d.identity.domain}\n- Full profile: ${d.identity.domain}/llms-full.txt\n- Full CV: ${d.identity.domain}/cv-llm.txt\n- Email: ${d.identity.email}\n`;
-      }
-      if (type === 'llms-full.txt' || type === 'unified') {
-        let out = `# ${d.identity.name} — ${d.identity.jobTitle || 'Comprehensive Profile & Curriculum Vitae'}\n\n## Overview\n${d.summary}\n\n## Core Pillars\n\n`;
-        (d.pillars || []).forEach((p, i) => {
-          out += `### ${i + 1}. ${p.title}\n${p.lead}\n\n` +
-            (p.highlights || []).map(h => `- **${h.label}**: ${h.detail}`).join('\n') + `\n\n`;
-        });
-        out += `## Key Projects\n\n`;
-        (d.projects || []).forEach(p => {
-          const linkUrl = p.links && (p.links.website || p.links.bot || p.links.github || p.links.chromeStore) ? (p.links.website || p.links.bot || p.links.github || p.links.chromeStore) : '';
-          out += `### ${p.title} (${linkUrl})\n**Role**: ${p.role}\n\n${p.description}\n\n` +
-            (p.highlights || []).map(im => `- ${im}`).join('\n') + `\n\n`;
-        });
-        out += `## Experience & Leadership\n\n`;
-        (d.experience || []).forEach(e => {
-          out += `### ${e.role} — ${e.org} (${e.period})\n` + (e.bullets || []).map(b => `- ${b}`).join('\n') + `\n\n`;
-        });
-        if (type === 'unified') {
-          out += `---\n# CURRICULUM VITAE\n\n## Education & Training\n\n` +
-            (d.education || []).map(ed => `- **${ed.title}** (${ed.period || ''}): ${ed.detail}`).join('\n') + `\n\n`;
-        }
-        return out;
-      }
-      if (type === 'cv-llm.txt') {
-        let out = `# ${d.identity.name} — Curriculum Vitae (AI / LLM Markdown)\n> ${d.identity.headline}\n> Location: ${d.identity.location} · ${d.identity.relocation}\n\n## Executive Summary\n${d.summary}\n\n## Core Competencies\n` +
-          (d.skills || []).map(s => `- ${s}`).join('\n') + `\n\n## Professional Experience\n\n`;
-        (d.experience || []).forEach(e => {
-          out += `### ${e.role} — ${e.org} (${e.period})\n` + (e.bullets || []).map(b => `- ${b}`).join('\n') + `\n\n`;
-        });
-        return out;
-      }
-      return null;
-    }
-
     async function copyAiContent(fileType, btnEl) {
       const origText = btnEl.textContent;
       btnEl.textContent = 'Copying...';
-      let content = generateLiveMarkdown(window.MARIO_DOSSIER, fileType);
+      let content = null;
 
-      if (!content) {
-        try {
-          if (fileType === 'unified') {
-            const [pRes, cRes] = await Promise.all([
-              fetch('llms-full.txt'),
-              fetch('cv-llm.txt')
-            ]);
-            const pText = pRes.ok ? await pRes.text() : '';
-            const cText = cRes.ok ? await cRes.text() : '';
-            content = `# MARIO MARCOLONGO — UNIFIED AI CURRICULUM VITAE\n\n${pText}\n\n---\n\n${cText}`;
-          } else {
-            const res = await fetch(fileType);
-            if (res.ok) content = await res.text();
-          }
-        } catch (err) {
-          console.warn('Fetch fallback triggered for AI copy:', err);
+      try {
+        if (fileType === 'unified') {
+          const [pRes, cRes] = await Promise.all([
+            fetch('/llms-full.txt'),
+            fetch('/cv-llm.txt')
+          ]);
+          const pText = pRes.ok ? await pRes.text() : '';
+          const cText = cRes.ok ? await cRes.text() : '';
+          content = `# MARIO MARCOLONGO — UNIFIED AI CURRICULUM VITAE\n\n${pText}\n\n---\n\n${cText}`;
+        } else {
+          const targetUrl = fileType.startsWith('/') ? fileType : '/' + fileType;
+          const res = await fetch(targetUrl);
+          if (res.ok) content = await res.text();
         }
+      } catch (err) {
+        console.warn('Fetch failed for AI copy:', err);
       }
 
       if (!content) {
-        content = `# Mario Marcolongo — AI Curriculum Vitae\nScientific Fact-Checker, Open Science Technologist & Systems Developer.\n4,317 verified Wikimedia contributions. Founder of Yourself to Science™ (yourselftoscience.org).\nView full profile online at https://mariomarcolongo.com/llms-full.txt`;
+        content = `# Mario Marcolongo — AI Curriculum Vitae\nAI Evaluation & Research Verification Specialist | Model Behavior Evaluation · Scientific Evidence Review · Evaluation Operations · Technical Research.\n4,317 verified Wikimedia contributions. Founder of Yourself to Science™ (yourselftoscience.org).\nView full profile online at https://mariomarcolongo.com/llms-full.txt`;
       }
 
       try {
@@ -1156,9 +1088,9 @@ import Layout from '../layouts/Layout.astro';
           btnEl.style.color = '';
         }, 2200);
       } catch (err) {
+        console.warn('Clipboard write failed:', err);
         btnEl.textContent = 'Failed to copy';
       }
     }
   </script>
-
 </Layout>

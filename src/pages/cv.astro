@@ -1,11 +1,33 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import SiteNav from "../components/SiteNav.astro";
+import SiteFooter from "../components/SiteFooter.astro";
 import "../styles/cv.css";
+import D from "../../data/source.js";
+
+function renderLinksJsx(links) {
+  if (!links) return [];
+  const entries = [
+    links.website ? { label: "Website", url: links.website } : null,
+    links.caseStudy ? { label: "Evaluation Record", url: links.caseStudy } : null,
+    links.profile ? { label: "Profile", url: links.profile } : null,
+    links.github ? { label: "GitHub", url: links.github } : null,
+    links.chromeStore ? { label: "Chrome Web Store", url: links.chromeStore } : null,
+    links.edgeStore ? { label: "Edge Add-ons", url: links.edgeStore } : null,
+    links.bot ? { label: "Telegram Bot", url: links.bot } : null,
+    links.youtube ? { label: "YouTube", url: links.youtube } : null,
+    links.playlist ? { label: "Videos & Documentaries", url: links.playlist } : null,
+    links.authorPage ? { label: "Author Page", url: links.authorPage } : null,
+    links.tableau ? { label: "Tableau Portfolio", url: links.tableau } : null,
+    links.flourish ? { label: "Flourish Portfolio", url: links.flourish } : null,
+  ];
+  return entries.filter((x) => x !== null && typeof x.url === "string" && typeof x.label === "string");
+}
 ---
 
 <Layout
   title="Mario Marcolongo — CV / Curriculum Vitae"
-  description="Curriculum Vitae of Mario Marcolongo — Primary source verification, open science infrastructure (Yourself to Science™), and empirical data synthesis."
+  description="Curriculum Vitae of Mario Marcolongo — AI evaluation and scientific research verification specialist, model behavior evaluation, and open science infrastructure."
   canonical="https://mariomarcolongo.com/cv.html"
 >
   <Fragment slot="head">
@@ -25,31 +47,38 @@ import "../styles/cv.css";
             "@type": "Person",
             "@id": "https://mariomarcolongo.com/#person",
             "name": "Mario Marcolongo",
-            "jobTitle": "Scientific Fact-Checker & Open Science Technologist",
-            "description": "Scientific fact-checker, systems developer, and open science technologist specializing in rapid empirical data synthesis, autonomous infrastructure, primary source verification, and FAIRsharing data curation.",
+            "jobTitle": "AI Evaluation & Scientific Research Verification Specialist",
+            "description": "AI evaluation and scientific research verification specialist specializing in model behavior evaluation, evidence quality, and open science infrastructure.",
             "url": "https://mariomarcolongo.com",
             "identifier": "https://orcid.org/0000-0003-2846-7115",
             "sameAs": [
               "https://github.com/jnton",
               "https://orcid.org/0000-0003-2846-7115",
               "https://www.linkedin.com/in/mario-marcolongo",
-              "https://yourselftoscience.org"
+              "https://commons.wikimedia.org/wiki/Special:CentralAuth/Digressivo",
+              "https://app.grayswan.ai/arena/user/6a57be70d15e123775a1e9cf",
+              "https://public.tableau.com/app/profile/mario.marcolongo/vizzes"
             ],
             "hasCredential": [
               {
                 "@type": "EducationalOccupationalCredential",
-                "name": "4,317 Verified Wikimedia Contributions (CentralAuth Verified)",
-                "credentialCategory": "Empirical Verification & Primary Literature Synthesis"
+                "name": "GALENOS Crowd Evidence Synthesis Training",
+                "credentialCategory": "Cochrane Crowd & GALENOS Systematic Review Screening Certification"
               },
               {
                 "@type": "EducationalOccupationalCredential",
-                "name": "ENA BioSample SAMEA121950568 — Public Domain 41× WGS Dataset",
-                "credentialCategory": "Open Genomic Stewardship & FAIR Biobanking"
+                "name": "EF SET English Certificate 68/100 (C1 Advanced Overall · C2 Reading/Listening · B2 Writing/Speaking)",
+                "credentialCategory": "EF Standard English Test (EF SET)"
+              },
+              {
+                "@type": "EducationalOccupationalCredential",
+                "name": "Career Essentials in Generative AI",
+                "credentialCategory": "Microsoft and LinkedIn Certificate"
               }
             ],
             "knowsAbout": [
-              "Systems Architecture & Serverless Engineering",
-              "41× Whole Genome Sequencing Bioinformatics (Terra.bio BAM/VCF Extraction & Nextflow pgsc_calc / Apple Silicon)",
+              "Serverless Systems Architecture & Technical Product Delivery",
+              "41× Whole Genome Sequencing Bioinformatics (Terra.bio BAM/VCF Extraction & Nextflow pgsc_calc / Local Hardware)",
               "Polygenic Risk Score (PRS) Computation & HPO/MONDO Disease Ontologies",
               "Epistemic Rigor & Primary Literature Fact-Checking",
               "FAIR Open Biobanking & Citizen Science Stewardship",
@@ -103,103 +132,42 @@ import "../styles/cv.css";
             "author": { "@id": "https://mariomarcolongo.com/#person" }
           },
           {
-            "@type": "MedicalScholarlyArticle",
-            "@id": "https://mariomarcolongo.com/#genomic-pipeline",
-            "name": "Whole-Genome Sequencing Pipeline & Polygenic Risk Scoring (41×)",
-            "headline": "Utilized Terra.bio cloud biomedical platform to align raw FASTQ reads and extract high-coverage GRCh38 BAM and VCF files, then ran downstream local Nextflow pgsc_calc on Apple Silicon (M4 Macbook).",
-            "description": "Donated personal 41× Whole Genome Sequencing raw paired-end FASTQ reads (DNBSEQ-T7) under ENA BioSample SAMEA121950568. Processed raw FASTQ reads via Terra.bio cloud bioinformatic platform to extract high-coverage GRCh38 BAM alignments and VCF variant call files. Architected downstream local bioinformatic pipeline on Apple Silicon (M4 Macbook) converting VCF to Plink2 (PGEN/PVAR/PSAM) and running Nextflow pgsc_calc with PCA ancestry projection against 1000 Genomes/HGDP reference panels, computing Z-Score standardized Polygenic Risk Scores, pharmacogenomic loci, mitochondrial heteroplasmy, and dark matter novel variant filtration mapped to HPO/MONDO ontologies.",
-            "author": { "@id": "https://mariomarcolongo.com/#person" },
+            "@type": "Dataset",
+            "@id": "https://mariomarcolongo.com/#genomic-dataset",
+            "name": "41× Whole Genome Sequencing Raw Paired-End FASTQ Reads (DNBSEQ-T7)",
+            "description": "Personal 41× Whole Genome Sequencing raw paired-end FASTQ reads (DNBSEQ-T7) and high-coverage GRCh38 BAM alignments released to the public domain (CC0) under ENA BioSample SAMEA121950568 and Study PRJEB109744.",
+            "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+            "creator": { "@id": "https://mariomarcolongo.com/#person" },
             "url": "https://www.ebi.ac.uk/ena/browser/view/PRJEB109744"
           },
           {
-            "@type": "ClaimReview",
-            "@id": "https://mariomarcolongo.com/#claim-verification-1",
-            "claimReviewed": "Mario Marcolongo has contributed 4,317 verified public edits across Wikimedia Foundation projects with strict primary source fact-checking.",
-            "reviewRating": {
-              "@type": "Rating",
-              "ratingValue": "5",
-              "bestRating": "5",
-              "alternateName": "Empirically Verified Primary Record"
-            },
-            "author": {
-              "@type": "Organization",
-              "name": "Wikimedia CentralAuth Registry",
-              "url": "https://en.wikipedia.org"
-            }
-          },
-          {
-            "@type": "ClaimReview",
-            "@id": "https://mariomarcolongo.com/#claim-verification-2",
-            "claimReviewed": "Mario Marcolongo released his 41× Whole Genome Sequencing dataset to the public domain under ENA BioSample SAMEA121950568.",
-            "reviewRating": {
-              "@type": "Rating",
-              "ratingValue": "5",
-              "bestRating": "5",
-              "alternateName": "Public Domain Biological Accession Verified"
-            },
-            "author": {
-              "@type": "Organization",
-              "name": "European Nucleotide Archive (EMBL-EBI)",
-              "url": "https://www.ebi.ac.uk/ena/browser/view/SAMEA121950568"
-            }
-          }
-        ],
-        "review": [
-          {
-            "@type": "Review",
-            "@id": "https://mariomarcolongo.com/#epistemic-rigor-review",
-            "itemReviewed": { "@id": "https://mariomarcolongo.com/#person" },
-            "author": {
-              "@type": "Organization",
-              "name": "Science Communication & Fact-Checking Leadership"
-            },
-            "reviewRating": {
-              "@type": "Rating",
-              "ratingValue": "5",
-              "bestRating": "5"
-            },
-            "name": "Flawless Primary Source Verification & Technical Infrastructure Management",
-            "reviewBody": "Mario Marcolongo combines deep epistemic rigor and radical primary literature verification with high-agency technical execution. Over years of fact-checking across 55+ science documentaries and managing critical web infrastructure on OVHCloud/WordPress, his work consistently meets top-tier standards of scientific accuracy while earning formal recognition in major scientific literature."
-          },
-          {
-            "@type": "Review",
-            "@id": "https://mariomarcolongo.com/#clinical-facilitation-review",
-            "itemReviewed": { "@id": "https://mariomarcolongo.com/#person" },
-            "author": {
-              "@type": "Organization",
-              "name": "Biomedical & Psychological Research Collaborators"
-            },
-            "reviewRating": {
-              "@type": "Rating",
-              "ratingValue": "5",
-              "bestRating": "5"
-            },
-            "name": "Exceptional Epistemic Rigor, Emotional Intelligence, and Collaborative Leadership",
-            "reviewBody": "Mario Marcolongo demonstrates top-percentile epistemic rigor paired with exceptional emotional intelligence and psychological safety leadership. Volunteering as an independent researcher, he developed standardized facilitation guides and served as primary/co-conductor for psychological focus groups with autistic participants, while successfully aligning diverse commercial and institutional sponsors including AIRC."
+            "@type": "SoftwareSourceCode",
+            "@id": "https://mariomarcolongo.com/#genomic-pipeline",
+            "name": "Polygenic Risk Scoring & Genomic Extraction Pipeline (git-nome)",
+            "description": "Personal genomics workflow and open-data pipeline processing raw FASTQ reads via Terra.bio cloud bioinformatics platform to extract high-coverage GRCh38 BAM alignments and VCF variant call files, transforming VCF datasets to Plink2 format and executing Nextflow pgsc_calc with ancestry projection against reference panels, along with custom Python VEP extraction scripts calculating multi-trait Polygenic Risk Scores mapped to HPO/MONDO ontologies.",
+            "codeRepository": "https://github.com/jnton/git-nome",
+            "author": { "@id": "https://mariomarcolongo.com/#person" }
           }
         ]
       }
     </script>
   </Fragment>
 
-  <div id="scrollProgress" aria-hidden="true"></div>
+  <SiteNav activePage="cv" />
 
-  <div class="wrap">
+  <div class="wrap" style="padding-top: 60px;">
     <!-- Toolbar — web only, hidden on print -->
-    <div class="toolbar">
+    <div class="toolbar print-hide">
       <div class="toolbar-left">
-        <span>Curriculum Vitae</span>
+        <span>Machine-Actionable Curriculum Vitae</span>
       </div>
       <div class="toolbar-right">
-        <a href="/" class="btn">← Back to Portfolio</a>
+        <a href="/cv-resume.html" class="btn">2-Page Résumé</a>
         <button
           class="btn btn-ai"
           onclick="copyCvForAI(this)"
           title="Copy complete CV in AI-compatible Markdown format"
           >✨ Copy for AI (Markdown)</button
-        >
-        <button class="btn" id="themeBtn" onclick="toggleTheme()"
-          >Dark Mode</button
         >
         <button class="btn btn-primary" onclick="printCV()"
           >Print / Save PDF</button
@@ -211,39 +179,36 @@ import "../styles/cv.css";
     <article class="cv" id="cvDocument">
       <header class="cv-header">
         <div class="cv-header-top">
-          <h1 class="cv-name" id="cvName">Mario Marcolongo</h1>
+          <h1 class="cv-name" id="cvName">{D.identity.name}</h1>
           <span class="cv-version-pill print-hide"
-            >Curriculum Vitae v2026.07.14 · Updated: July 2026</span
+            >Curriculum Vitae v2026.07.21 · Updated: July 2026</span
           >
         </div>
         <p class="cv-tagline" id="cvTagline">
-          Scientific Fact-Checker · Open Science Technologist · Systems
-          Developer
+          {D.identity.jobTitle} | {D.identity.secondaryTitle}
         </p>
 
         <div class="cv-contact" id="cvContact">
-          <span id="cvLocation"
-            >Italy · Open to Global Opportunities & Relocation Worldwide</span
-          >
+          <span id="cvLocation">{D.identity.relocationVisible}</span>
           <span>·</span>
           <a href="https://mariomarcolongo.com">mariomarcolongo.com</a>
           <span>·</span>
-          <a href="mailto:me@mariomarcolongo.com">me@mariomarcolongo.com</a>
+          <a href={`mailto:${D.identity.email}`}>{D.identity.email}</a>
           <span>·</span>
           <a
-            href="https://orcid.org/0000-0003-2846-7115"
+            href={D.identity.orcidUrl}
             target="_blank"
-            rel="noopener noreferrer">ORCID: 0000-0003-2846-7115</a
+            rel="noopener noreferrer">ORCID: {D.identity.orcid}</a
           >
           <span>·</span>
           <a
-            href="https://www.linkedin.com/in/mario-marcolongo"
+            href={D.identity.linkedin}
             target="_blank"
             rel="noopener noreferrer">LinkedIn</a
           >
           <span>·</span>
           <a
-            href="https://github.com/jnton"
+            href={D.identity.github}
             target="_blank"
             rel="noopener noreferrer">GitHub</a
           >
@@ -255,26 +220,7 @@ import "../styles/cv.css";
       <section class="cv-section">
         <h2 class="cv-section-heading">Executive Summary</h2>
         <p class="cv-summary" id="cvSummary">
-          Scientific fact-checker, systems developer, and open science
-          technologist with 9+ years of experience verifying biomedical and
-          technical claims across public knowledge bases (4,317 documented edits
-          across English/Italian Wikipedia, Wikidata, and Wikimedia Commons).
-          Founder and lead developer of Yourself to Science™
-          (yourselftoscience.org), an open-source catalogue and unified
-          directory indexing 55+ initiatives where people can contribute their
-          biological and digital self (including genomic data, biological
-          samples, biobanks, and clinical trials) to scientific research.
-          Managed technical web infrastructure (OVHCloud, custom WordPress, SEO)
-          and upheld scientific integrity for Entropy for Life (245,000+ YouTube
-          subscribers / 480,000+ cross-platform community)—conducting
-          bibliographic research, fact-checking scripts, and creating empirical
-          data visualizations across 55+ documentaries and articles, earning
-          formal acknowledgment in a Mondadori book. Volunteer research
-          facilitator under Prof. Marta Panzeri at the University of Padua
-          Department of Developmental Psychology and Socialisation (Nov 2022 –
-          2025), designing standardized focus group protocols and co-conducting
-          psychological research sessions with autistic participants to inform
-          educational strategies and support programs.
+          {D.summary}
         </p>
       </section>
 
@@ -284,178 +230,33 @@ import "../styles/cv.css";
           Professional Experience & Open Science Leadership
         </h2>
         <div id="experienceList">
-          <div class="cv-item">
-            <div class="cv-item-header">
-              <span class="cv-item-title">Founder & Lead Builder</span>
-              <span class="cv-role-tag">Independent / Self-Funded</span>
-              <span class="cv-item-date">Aug 2024 — Present</span>
-            </div>
-            <div class="cv-item-org">
-              Yourself to Science™ · <a
-                href="https://yourselftoscience.org"
-                target="_blank"
-                rel="noopener noreferrer">Website</a
-              > · <a
-                href="https://github.com/yourselftoscience/yourselftoscience.org"
-                target="_blank"
-                rel="noopener noreferrer">GitHub</a
-              >
-            </div>
-            <ul class="cv-item-bullets">
-              <li>
-                Launched and currently manage Yourself to Science, a
-                comprehensive open-source catalogue and unified directory
-                indexing 55+ clinical trials, biobanks, tissue/blood donation
-                programs, and digital health registries enabling individuals to
-                contribute their biological and digital self to scientific
-                research.
-              </li>
-              <li>
-                Architected AI-native Linked Data infrastructure (JSON-LD, RDF
-                Turtle/VoID graphs, live MCP Server, standard llms.txt, OpenAPI
-                spec) indexed in FAIRsharing and Zenodo.
-              </li>
-              <li>
-                Published as a 100% Open Science stack: catalogue dataset
-                dedicated to the public domain (CC0 1.0 Universal), website
-                content under CC BY-SA 4.0, and platform codebase under
-                AGPL-3.0.
-              </li>
-            </ul>
-          </div>
-
-          <div class="cv-item">
-            <div class="cv-item-header">
-              <span class="cv-item-title">AI Red-Teaming Practitioner</span>
-              <span class="cv-role-tag">Independent Practitioner</span>
-              <span class="cv-item-date">2023 — Present</span>
-            </div>
-            <div class="cv-item-org">
-              Gray Swan AI Proving Ground · <a
-                href="https://app.grayswan.ai/arena/user/6a57be70d15e123775a1e9cf"
-                target="_blank"
-                rel="noopener noreferrer">Proving Ground Profile</a
-              >
-            </div>
-            <ul class="cv-item-bullets">
-              <li>
-                Informally exploring LLM alignment boundaries and policy robustness since early 2023 — initially through self-directed testing of early ChatGPT releases — developing hands-on intuition for how models interpret instructions, handle edge cases, and maintain safety constraints across different prompting contexts.
-              </li>
-              <li>
-                Formally benchmarked on the Gray Swan AI Proving Ground: ranked top 8% globally across 75+ confirmed model breaks (as of July 2026) spanning chat, multimodal/image, agentic tool-use, and indirect prompt injection categories during safety evaluation challenges.
-              </li>
-            </ul>
-          </div>
-
-          <div class="cv-item">
-            <div class="cv-item-header">
-              <span class="cv-item-title"
-                >Scientific Fact-Checker, Writer & Web Developer</span
-              >
-              <span class="cv-role-tag">Freelance Contractor (Partita IVA)</span>
-              <span class="cv-item-date">Jun 2023 — Present</span>
-            </div>
-            <div class="cv-item-org">
-              Entropy for Life — Italy · <a
-                href="https://entropyforlife.it"
-                target="_blank"
-                rel="noopener noreferrer">Website</a
-              > · <a
-                href="https://www.youtube.com/playlist?list=PLMJaM7iJky4pKj6voGlUNHBnGdTj9rJNh"
-                target="_blank"
-                rel="noopener noreferrer">Videos & Documentaries</a
-              > · <a
-                href="https://entropyforlife.it/autore/mario-marcolongo/"
-                target="_blank"
-                rel="noopener noreferrer">Author Page</a
-              >
-            </div>
-            <ul class="cv-item-bullets">
-              <li>
-                Core content contributor upholding scientific integrity and
-                quality across media for a leading Italian science communication
-                project (245,000+ YouTube subscribers / 480,000+ cross-platform
-                community); responsible for script writing, in-depth
-                bibliographic research, rigorous fact-checking, and creating
-                data visualizations.
-              </li>
-              <li>
-                Formally acknowledged as a trusted primary literature researcher
-                on the final page of Giacomo Moro Mauretto's Mondadori book
-                Italiani veri. Storia evolutiva e genetica del nostro Paese.
-              </li>
-              <li>
-                Sole web developer for the project's official website
-                (entropyforlife.it), handling full lifecycle on OVHCloud
-                (hosting, DNS, SSL), custom WordPress layout/functionality, and
-                technical SEO strategies.
-              </li>
-            </ul>
-          </div>
-
-          <div class="cv-item">
-            <div class="cv-item-header">
-              <span class="cv-item-title"
-                >Volunteer Focus Group Conductor & Research Facilitator</span
-              >
-              <span class="cv-role-tag">Volunteer, unpaid</span>
-              <span class="cv-item-date">Nov 2022 — 2025</span>
-            </div>
-            <div class="cv-item-org">
-              University of Padua — Department of Developmental Psychology and Socialisation
-            </div>
-            <ul class="cv-item-bullets">
-              <li>
-                Contributed as a volunteer researcher to a psychological focus
-                group study on sexuality in the autism spectrum led by Prof.
-                Marta Panzeri. The study aimed to gather qualitative insights on
-                the sexual experiences of autistic people to inform educational
-                strategies and support initiatives.
-              </li>
-              <li>
-                Developed the standardized facilitation guide for focus
-                groups—including scripting and behavioral protocols—to ensure
-                consistent, reproducible session execution.
-              </li>
-              <li>
-                Managed recruitment processes across autistic communities,
-                conducted bibliographic searches, and verified scientific
-                literature.
-              </li>
-              <li>
-                Served as primary conductor and co-conductor for recorded focus
-                groups with autistic participants, establishing psychological
-                safety while managing technical session infrastructure.
-              </li>
-            </ul>
-          </div>
-
-          <div class="cv-item">
-            <div class="cv-item-header">
-              <span class="cv-item-title">Scientific & Biomedical Editor</span>
-              <span class="cv-role-tag">Volunteer, unpaid</span>
-              <span class="cv-item-date">Jan 2017 — Present</span>
-            </div>
-            <div class="cv-item-org">
-              Wikipedia & Wikimedia Foundation · <a
-                href="https://commons.wikimedia.org/wiki/Special:CentralAuth/Digressivo"
-                target="_blank"
-                rel="noopener noreferrer">CentralAuth Registry</a
-              >
-            </div>
-            <ul class="cv-item-bullets">
-              <li>
-                Author of 4,317 verified public edits across Wikimedia projects
-                (1,592 English Wikipedia, 1,249 Wikidata, 752 Italian Wikipedia,
-                684 Wikimedia Commons).
-              </li>
-              <li>
-                Created original data-driven scientific diagrams and biomedical
-                visualizations independently adopted across 4 Wikipedia language
-                editions and open-access repositories.
-              </li>
-            </ul>
-          </div>
+          {D.experience.map((item) => {
+            const linksList = renderLinksJsx(item.links);
+            return (
+              <div class="cv-item">
+                <div class="cv-item-header">
+                  <span class="cv-item-title">{item.role}</span>
+                  {item.tag && <span class="cv-role-tag">{item.tag}</span>}
+                  {item.period && <span class="cv-item-date">{item.period}</span>}
+                </div>
+                {item.org && (
+                  <div class="cv-item-org">
+                    {item.org}
+                    {linksList.map((lk) => (
+                      lk && lk.url ? <> · <a href={lk.url} target="_blank" rel="noopener noreferrer">{lk.label}</a></> : null
+                    ))}
+                  </div>
+                )}
+                {item.bullets && item.bullets.length > 0 && (
+                  <ul class="cv-item-bullets">
+                    {item.bullets.map((b) => (
+                      <li set:html={b} />
+                    ))}
+                  </ul>
+                )}
+              </div>
+            );
+          })}
         </div>
       </section>
 
@@ -465,113 +266,33 @@ import "../styles/cv.css";
           Genomic & Computational Science Contributions
         </h2>
         <div id="researchList">
-          <div class="cv-item">
-            <div class="cv-item-header">
-              <span class="cv-item-title"
-                >Whole-Genome Sequencing Pipeline & Polygenic Risk Scoring (41×)</span
-              >
-              <span class="cv-role-tag">Independent / Personal Project, unpaid</span>
-              <span class="cv-item-date">Jan 2026</span>
-            </div>
-            <div class="cv-item-org">
-              European Nucleotide Archive · <a
-                href="https://www.ebi.ac.uk/ena/browser/view/PRJEB109744"
-                target="_blank"
-                rel="noopener noreferrer">PRJEB109744</a
-              > · <a
-                href="https://www.ebi.ac.uk/ena/browser/view/SAMEA121950568"
-                target="_blank"
-                rel="noopener noreferrer">SAMEA121950568</a
-              > · <a
-                href="https://github.com/jnton/git-nome"
-                target="_blank"
-                rel="noopener noreferrer">GitHub Pipeline Code</a
-              >
-            </div>
-            <ul class="cv-item-bullets">
-              <li>
-                Donated personal 41× Whole Genome Sequencing raw paired-end
-                FASTQ reads (DNBSEQ-T7) to the public domain (CC0) under ENA
-                BioSample SAMEA121950568.
-              </li>
-              <li>
-                Utilized Terra.bio cloud platform to process raw FASTQ reads
-                aligned against the GRCh38 human reference genome to extract
-                high-coverage GRCh38 BAM and VCF files.
-              </li>
-              <li>
-                Architected downstream local bioinformatic pipeline on Apple
-                Silicon (M4 Macbook)—converting VCF to Plink2 (PGEN/PVAR/PSAM)
-                and executing Nextflow pgsc_calc with PCA ancestry projection
-                against 1000 Genomes / HGDP reference panels.
-              </li>
-              <li>
-                Engineered custom Python extraction pipelines for VEP-annotated
-                VCFs—calculating multi-trait Z-Score standardized Polygenic Risk
-                Scores, pharmacogenomic/lifestyle loci, mitochondrial
-                heteroplasmy, and novel 'dark matter' variant filtration mapped
-                to HPO/MONDO ontologies.
-              </li>
-            </ul>
-          </div>
-
-          <div class="cv-item">
-            <div class="cv-item-header">
-              <span class="cv-item-title"
-                >Empirical Data Scientist & Scientific Visualizer</span
-              >
-              <span class="cv-role-tag">Independent / Self-Funded</span>
-              <span class="cv-item-date">2023 — Present</span>
-            </div>
-            <div class="cv-item-org">
-              Wikimedia Commons, Tableau Public & Flourish Visual Data Portfolio
-              · <a
-                href="https://public.tableau.com/app/profile/mario.marcolongo/vizzes"
-                target="_blank"
-                rel="noopener noreferrer">Tableau Portfolio</a
-              > · <a
-                href="https://app.flourish.studio/@Digressivo"
-                target="_blank"
-                rel="noopener noreferrer">Flourish Portfolio</a
-              >
-            </div>
-            <ul class="cv-item-bullets">
-              <li>
-                Published 70+ interactive empirical public health,
-                epidemiological, and biomedical visualizations across Wikimedia
-                Commons, Tableau Public (15 Vizzes, 4,300+ views), and Flourish.
-              </li>
-              <li>
-                Created original vector Euler diagram illustrating overlapping
-                clinical phenotypes across autism spectrum disorder (ASD),
-                dystonia, epilepsy, and schizophrenia (<a
-                  href="https://commons.wikimedia.org/wiki/File:Overlapping_clinical_phenotypes_in_genes_associated_with_monogenic_forms_of_autism_spectrum_disorder_(ASD),_dystonia,_epilepsy_and_schizophrenia.svg"
-                  target="_blank"
-                  rel="noopener noreferrer">View Diagram ↗</a
-                >), published under CC BY-SA 4.0 and adopted across 4 Wikipedia
-                language editions.<br class="print-hide" />
-                <a
-                  title="Digressivo, CC BY-SA 4.0 &lt;https://creativecommons.org/licenses/by-sa/4.0&gt;, via Wikimedia Commons"
-                  href="https://commons.wikimedia.org/wiki/File:Overlapping_clinical_phenotypes_in_genes_associated_with_monogenic_forms_of_autism_spectrum_disorder_(ASD),_dystonia,_epilepsy_and_schizophrenia.svg"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="print-hide viz-preview-link"
-                ><img
-                    width="330"
-                    alt="Euler diagram showing overlapping clinical phenotypes in genes associated with monogenic forms of autism spectrum disorder (ASD), dystonia, epilepsy and schizophrenia."
-                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Overlapping_clinical_phenotypes_in_genes_associated_with_monogenic_forms_of_autism_spectrum_disorder_%28ASD%29%2C_dystonia%2C_epilepsy_and_schizophrenia.svg/330px-Overlapping_clinical_phenotypes_in_genes_associated_with_monogenic_forms_of_autism_spectrum_disorder_%28ASD%29%2C_dystonia%2C_epilepsy_and_schizophrenia.svg.png"
-                    class="viz-preview-img"
-                  /></a>
-              </li>
-              <li>
-                Synthesized primary biomedical datasets—including H5N1 avian flu
-                preparedness, carotid plaque microplastic pathology,
-                age-stratified COVID-19 mortality, and ISTAT epidemiological
-                trends—into open-access visual evidence repositories and vector
-                charts.
-              </li>
-            </ul>
-          </div>
+          {D.research.map((item) => {
+            const linksList = renderLinksJsx(item.links);
+            return (
+              <div class="cv-item">
+                <div class="cv-item-header">
+                  <span class="cv-item-title">{item.role}</span>
+                  {item.tag && <span class="cv-role-tag">{item.tag}</span>}
+                  {item.period && <span class="cv-item-date">{item.period}</span>}
+                </div>
+                {item.org && (
+                  <div class="cv-item-org">
+                    {item.org}
+                    {linksList.map((lk) => (
+                      lk && lk.url ? <> · <a href={lk.url} target="_blank" rel="noopener noreferrer">{lk.label}</a></> : null
+                    ))}
+                  </div>
+                )}
+                {item.bullets && item.bullets.length > 0 && (
+                  <ul class="cv-item-bullets">
+                    {item.bullets.map((b) => (
+                      <li set:html={b} />
+                    ))}
+                  </ul>
+                )}
+              </div>
+            );
+          })}
         </div>
       </section>
 
@@ -581,109 +302,32 @@ import "../styles/cv.css";
           Deployed Systems & Open-Source Projects
         </h2>
         <div id="projectsList">
-          <div class="cv-item">
-            <div class="cv-item-header">
-              <span class="cv-item-title">MDPI Filter | Browser Extension</span>
-              <span class="cv-item-date">May 2025 — Present</span>
-            </div>
-            <div class="cv-item-org">
-              Creator & Maintainer · <a
-                href="https://chromewebstore.google.com/detail/mdpi-filter/comknkeimaaadpiopddjoknflbmjeccp"
-                target="_blank"
-                rel="noopener noreferrer">Chrome Web Store</a
-              > · <a
-                href="https://microsoftedge.microsoft.com/addons/detail/mdpi-filter/efonlkldplkaeekpiajloajjmkappjgi"
-                target="_blank"
-                rel="noopener noreferrer">Edge Add-ons</a
-              > · <a
-                href="https://github.com/orgs/mdpi-filter/repositories"
-                target="_blank"
-                rel="noopener noreferrer">GitHub</a
-              >
-            </div>
-            <ul class="cv-item-bullets">
-              <li>
-                Smart Search Filtering: Highlights or hides MDPI papers across
-                Google Scholar, PubMed & Europe PMC integrating NCBI API.
-              </li>
-              <li>
-                Universal Citation Styling: Automatically distinguishes
-                reference lists & inline footnotes on any publisher article
-                online.
-              </li>
-              <li>
-                Interactive Overview: Live toolbar badge count and one-click
-                scrolling directly to detected citations.
-              </li>
-            </ul>
-          </div>
-
-          <div class="cv-item">
-            <div class="cv-item-header">
-              <span class="cv-item-title"
-                >English Wikipedia Link Converter | Telegram Bot</span
-              >
-              <span class="cv-item-date">Apr 2024 — Present</span>
-            </div>
-            <div class="cv-item-org">
-              Creator · <a
-                href="https://t.me/ToEnWikipediaBot"
-                target="_blank"
-                rel="noopener noreferrer">Telegram Bot</a
-              > · <a
-                href="https://github.com/jnton/english-wikipedia-link-converter-telegram-bot"
-                target="_blank"
-                rel="noopener noreferrer">GitHub</a
-              >
-            </div>
-            <ul class="cv-item-bullets">
-              <li>
-                100% serverless cloud execution on AWS Lambda and API Gateway
-                with zero baseline operating cost.
-              </li>
-              <li>
-                Supports real-time interlanguage link resolution across all
-                Wikipedia language editions.
-              </li>
-              <li>
-                Automated continuous deployment via GitHub Actions workflow.
-              </li>
-            </ul>
-          </div>
-
-          <div class="cv-item">
-            <div class="cv-item-header">
-              <span class="cv-item-title"
-                >Emergent Humanity | Interactive Network Simulation</span
-              >
-              <span class="cv-item-date">2026 — Present</span>
-            </div>
-            <div class="cv-item-org">
-              Creator & Systems Designer · <a
-                href="https://jnton.github.io/emergent-humanity/"
-                target="_blank"
-                rel="noopener noreferrer">Website</a
-              > · <a
-                href="https://github.com/jnton/emergent-humanity"
-                target="_blank"
-                rel="noopener noreferrer">GitHub</a
-              >
-            </div>
-            <ul class="cv-item-bullets">
-              <li>
-                16 interactive chapters blending essay narration with live
-                network simulations.
-              </li>
-              <li>
-                Models cognitive node limits, signal vs. noise filtering, and
-                bridging nodes across echo chambers.
-              </li>
-              <li>
-                Synthesizes information theory, network graph topology, and
-                emergent collective memory.
-              </li>
-            </ul>
-          </div>
+          {D.projects.map((item) => {
+            const linksList = renderLinksJsx(item.links);
+            return (
+              <div class="cv-item">
+                <div class="cv-item-header">
+                  <span class="cv-item-title">{item.title}</span>
+                  {item.period && <span class="cv-item-date">{item.period}</span>}
+                </div>
+                {item.role && (
+                  <div class="cv-item-org">
+                    {item.role}
+                    {linksList.map((lk) => (
+                      lk && lk.url ? <> · <a href={lk.url} target="_blank" rel="noopener noreferrer">{lk.label}</a></> : null
+                    ))}
+                  </div>
+                )}
+                {item.highlights && item.highlights.length > 0 && (
+                  <ul class="cv-item-bullets">
+                    {item.highlights.map((h) => (
+                      <li set:html={h} />
+                    ))}
+                  </ul>
+                )}
+              </div>
+            );
+          })}
         </div>
       </section>
 
@@ -693,34 +337,17 @@ import "../styles/cv.css";
           Core Technical & Scientific Competencies
         </h2>
         <div class="skills-list" id="skillsList">
-          <div class="skill-category">
-            <strong class="skill-category-title">AI Red-Teaming & Adversarial Evaluation</strong>
-            <span class="skill-category-detail">Top 8% globally on Gray Swan AI Proving Ground (<a href="https://app.grayswan.ai/arena/user/6a57be70d15e123775a1e9cf" target="_blank" rel="noopener noreferrer">https://app.grayswan.ai/arena/user/6a57be70d15e123775a1e9cf</a>) — 75+ confirmed breaks across Chat, Image, Agent, and Indirect-Injection categories (as of July 2026).</span>
-          </div>
-          <div class="skill-category">
-            <strong class="skill-category-title">Web Engineering & Architecture</strong>
-            <span class="skill-category-detail">JavaScript, Node.js, Static & Serverless Architecture, WordPress Development & Customization, HTML/CSS Design Systems, Cloud DNS / SSL / OVHCloud / AWS Lambda / API Gateway</span>
-          </div>
-          <div class="skill-category">
-            <strong class="skill-category-title">Scientific Verification & Methodologies</strong>
-            <span class="skill-category-detail">Bibliographic Research Methodology, Primary Source Fact-Checking, Psychological Focus Group Facilitation & Standardized Protocols, Epidemiological Data Synthesis, Cochrane/Galenos Screening</span>
-          </div>
-          <div class="skill-category">
-            <strong class="skill-category-title">Open-Source Intelligence (OSINT) & Digital Investigation</strong>
-            <span class="skill-category-detail">Multi-engine Boolean search (Google, DuckDuckGo, Yandex) and academic/gray-literature querying (Google Scholar, PubMed, Europe PMC); reverse-image and facial-recognition verification (PimEyes, Yandex Images, Google Lens, TinEye); EXIF/metadata extraction and file provenance verification; archival/provenance research (Wayback Machine, Archive.today); WHOIS/DNS history and certificate-transparency lookups for tracing site ownership and technical infrastructure; cross-platform digital-footprint correlation for claim verification, source attribution, and coordinated-inauthentic-behavior detection</span>
-          </div>
-          <div class="skill-category">
-            <strong class="skill-category-title">Open Science & AI Infrastructure</strong>
-            <span class="skill-category-detail">FAIRsharing Standards, Semantic Linked Data (JSON-LD, RDF Turtle, llms.txt, live MCP Servers), Public Knowledge Bases (Wikidata, ENA BioSample)</span>
-          </div>
-          <div class="skill-category">
-            <strong class="skill-category-title">Data Visualization & Tools</strong>
-            <span class="skill-category-detail">High-Clarity SVG Vector Diagramming, Tableau Public, Flourish, Git / GitHub, GitHub Actions CI/CD</span>
-          </div>
-          <div class="skill-category">
-            <strong class="skill-category-title">Languages</strong>
-            <span class="skill-category-detail">Italian (Mother tongue / Native) · English (C1 Advanced Overall: Listening C2, Reading C2, Writing B2, Spoken Production B2, Spoken Interaction B2) · French (Basic A2/A1) · Spanish (Basic A2/A1)</span>
-          </div>
+          {D.skills.map((skill) => {
+            const colonIdx = skill.indexOf(":");
+            const title = colonIdx !== -1 ? skill.slice(0, colonIdx).trim() : "Skill";
+            const detail = colonIdx !== -1 ? skill.slice(colonIdx + 1).trim() : skill;
+            return (
+              <div class="skill-category">
+                <strong class="skill-category-title">{title}</strong>
+                <span class="skill-category-detail" set:html={detail} />
+              </div>
+            );
+          })}
         </div>
       </section>
 
@@ -730,54 +357,38 @@ import "../styles/cv.css";
           Education, Languages & Certifications
         </h2>
         <div id="educationList">
-          <div class="edu-item">
-            <span class="edu-title">Studies in Medicine & Surgery</span>
-             — <span class="edu-detail">Università degli Studi della Campania 'Luigi Vanvitelli' — Foundational biomedical and scientific coursework completed (no formal degree conferred)</span>
-             <span class="edu-period">(2020)</span>
-          </div>
-          <div class="edu-item">
-            <span class="edu-title">EF SET English Certificate 68/100 (C1 Advanced Overall: C2 Reading/Listening, B2 Writing/Speaking)</span>
-             — <span class="edu-detail">EF Standard English Test (EF SET) · <a href="https://cert.efset.org/jHk84h" target="_blank" rel="noopener noreferrer">https://cert.efset.org/jHk84h</a></span>
-             <span class="edu-period">(Mar 2024)</span>
-          </div>
-          <div class="edu-item">
-            <span class="edu-title">Career Essentials in Generative AI</span>
-             — <span class="edu-detail">Microsoft and LinkedIn · Certificate: <a href="https://www.linkedin.com/learning/certificates/c4f1f59578e3ac2567787e262e3b2ec55debf96bbbced4d34d5edaa821d9e6d9" target="_blank" rel="noopener noreferrer">https://www.linkedin.com/learning/certificates/c4f1f59578e3ac2567787e262e3b2ec55debf96bbbced4d34d5edaa821d9e6d9</a></span>
-             <span class="edu-period">(Mar 2024)</span>
-          </div>
-          <div class="edu-item">
-            <span class="edu-title">GALENOS Crowd Evidence Synthesis Training</span>
-             — <span class="edu-detail">Cochrane Crowd & GALENOS Systematic Review Screening Certification</span>
-             <span class="edu-period">(May 2026)</span>
-          </div>
+          {D.education.map((edu) => (
+            <div class="edu-item">
+              <span class="edu-title">{edu.title}</span>
+              {edu.detail && <> — <span class="edu-detail" set:html={edu.detail} /></>}
+              {edu.period && <> <span class="edu-period">({edu.period})</span></>}
+            </div>
+          ))}
         </div>
       </section>
     </article>
   </div>
 
   <script is:inline>
-    const D = window.MARIO_DOSSIER || {};
-
     function toggleTheme() {
       const html = document.documentElement;
-      const next =
-        html.getAttribute("data-theme") === "dark" ? "light" : "dark";
-      html.setAttribute("data-theme", next);
-      document.getElementById("themeBtn").textContent =
-        next === "dark" ? "Light Mode" : "Dark Mode";
+      const next = html.dataset.theme === "dark" ? "light" : "dark";
+      html.dataset.theme = next;
+      const btn = document.getElementById("themeBtn");
+      if (btn) btn.textContent = next === "dark" ? "Light Mode" : "Dark Mode";
       try {
         localStorage.setItem("mm-theme", next);
-      } catch (e) {}
+      } catch (err) {}
     }
 
     try {
       const saved = localStorage.getItem("mm-theme");
       if (saved) {
-        document.documentElement.setAttribute("data-theme", saved);
-        document.getElementById("themeBtn").textContent =
-          saved === "dark" ? "Light Mode" : "Dark Mode";
+        document.documentElement.dataset.theme = saved;
+        const btn = document.getElementById("themeBtn");
+        if (btn) btn.textContent = saved === "dark" ? "Light Mode" : "Dark Mode";
       }
-    } catch (e) {}
+    } catch (err) {}
 
     function printCV() {
       injectPrivateData();
@@ -785,194 +396,16 @@ import "../styles/cv.css";
     }
 
     function injectPrivateData() {
-      const priv = window.MARIO_PRIVATE || {};
+      const priv = (typeof window !== "undefined" && window._privateData) ? window._privateData : {};
       const phoneSlot = document.getElementById("cvPhoneSlot");
 
       if (priv.phone && phoneSlot) {
-        phoneSlot.innerHTML = `· <a href="tel:${priv.phone.replace(/\\s/g, "")}">${priv.phone}</a>`;
+        phoneSlot.innerHTML = `· <a href="tel:${priv.phone.replaceAll(/\s+/g, "")}">${priv.phone}</a>`;
         phoneSlot.classList.add("has-phone");
       }
     }
 
-    function renderLinksHtml(links, title = 'item') {
-      if (!links) return "";
-      const items = [];
-      if (links.website)
-        items.push(
-          `<a href="${links.website}" target="_blank" rel="noopener noreferrer" aria-label="Website for ${title}">Website</a>`,
-        );
-      if (links.github)
-        items.push(
-          `<a href="${links.github}" target="_blank" rel="noopener noreferrer" aria-label="GitHub repository for ${title}">GitHub</a>`,
-        );
-      if (links.chromeStore)
-        items.push(
-          `<a href="${links.chromeStore}" target="_blank" rel="noopener noreferrer" aria-label="Chrome Web Store page for ${title}">Chrome Web Store</a>`,
-        );
-      if (links.edgeStore)
-        items.push(
-          `<a href="${links.edgeStore}" target="_blank" rel="noopener noreferrer" aria-label="Edge Add-ons page for ${title}">Edge Add-ons</a>`,
-        );
-      if (links.bot)
-        items.push(
-          `<a href="${links.bot}" target="_blank" rel="noopener noreferrer" aria-label="Telegram Bot for ${title}">Telegram Bot</a>`,
-        );
-      if (links.youtube)
-        items.push(
-          `<a href="${links.youtube}" target="_blank" rel="noopener noreferrer" aria-label="YouTube channel for ${title}">YouTube</a>`,
-        );
-      if (links.playlist)
-        items.push(
-          `<a href="${links.playlist}" target="_blank" rel="noopener noreferrer" aria-label="Videos and documentaries for ${title}">Videos & Documentaries</a>`,
-        );
-      if (links.authorPage)
-        items.push(
-          `<a href="${links.authorPage}" target="_blank" rel="noopener noreferrer" aria-label="Author page for ${title}">Author Page</a>`,
-        );
-      if (links.tableau)
-        items.push(
-          `<a href="${links.tableau}" target="_blank" rel="noopener noreferrer" aria-label="Tableau portfolio for ${title}">Tableau Portfolio</a>`,
-        );
-      if (links.flourish)
-        items.push(
-          `<a href="${links.flourish}" target="_blank" rel="noopener noreferrer" aria-label="Flourish portfolio for ${title}">Flourish Portfolio</a>`,
-        );
-      if (items.length === 0) return "";
-      return ` · ` + items.join(" · ");
-    }
-
-    function linkifyUrls(text) {
-      if (!text) return "";
-      return text.replace(/(https?:\/\/[^\s<)]+)/g, '<a href="$1" target="_blank" rel="noopener noreferrer">$1</a>');
-    }
-
     window.addEventListener("DOMContentLoaded", () => {
-      if (D.summary) {
-        const sumEl = document.getElementById("cvSummary");
-        if (sumEl) sumEl.textContent = D.summary;
-      }
-
-      if (D.skills && Array.isArray(D.skills)) {
-        const list = document.getElementById("skillsList");
-        if (list) {
-          list.innerHTML = D.skills
-            .map((s) => {
-              const colonIdx = s.indexOf(":");
-              const title = colonIdx !== -1 ? s.slice(0, colonIdx).trim() : "Skill";
-              let detail = colonIdx !== -1 ? s.slice(colonIdx + 1).trim() : s;
-              detail = linkifyUrls(detail);
-              return `<div class="skill-category">
-                <strong class="skill-category-title">${title}</strong>
-                <span class="skill-category-detail">${detail}</span>
-              </div>`;
-            })
-            .join("");
-        }
-      }
-
-      if (D.projects && Array.isArray(D.projects)) {
-        const projList = document.getElementById("projectsList");
-        if (projList) {
-          projList.innerHTML = D.projects
-            .map(
-              (p) => `
-          <div class="cv-item">
-            <div class="cv-item-header">
-              <span class="cv-item-title">${p.title}</span>
-              ${p.period ? `<span class="cv-item-date">${p.period}</span>` : ""}
-            </div>
-            ${p.role ? `<div class="cv-item-org">${p.role}${renderLinksHtml(p.links, (p.title || p.role || 'project').replace(/"/g, '&quot;'))}</div>` : ""}
-            ${
-              p.highlights && p.highlights.length
-                ? `
-              <ul class="cv-item-bullets">
-                ${p.highlights.map((h) => `<li>${linkifyUrls(h)}</li>`).join("")}
-              </ul>
-            `
-                : ""
-            }
-          </div>
-        `,
-            )
-            .join("");
-        }
-      }
-
-      if (D.experience && Array.isArray(D.experience)) {
-        const expList = document.getElementById("experienceList");
-        if (expList) {
-          expList.innerHTML = D.experience
-            .map(
-              (e) => `
-          <div class="cv-item">
-            <div class="cv-item-header">
-              <span class="cv-item-title">${e.role}</span>
-              ${e.tag ? `<span class="cv-role-tag">${e.tag}</span>` : ""}
-              ${e.period ? `<span class="cv-item-date">${e.period}</span>` : ""}
-            </div>
-            ${e.org ? `<div class="cv-item-org">${e.org}${renderLinksHtml(e.links, (e.role || e.org || 'experience').replace(/"/g, '&quot;'))}</div>` : ""}
-            ${
-              e.bullets && e.bullets.length
-                ? `
-              <ul class="cv-item-bullets">
-                ${e.bullets.map((b) => `<li>${linkifyUrls(b)}</li>`).join("")}
-              </ul>
-            `
-                : ""
-            }
-          </div>
-        `,
-            )
-            .join("");
-        }
-      }
-
-      if (D.research && Array.isArray(D.research)) {
-        const resList = document.getElementById("researchList");
-        if (resList) {
-          resList.innerHTML = D.research
-            .map(
-              (r) => `
-          <div class="cv-item">
-            <div class="cv-item-header">
-              <span class="cv-item-title">${r.role}</span>
-              ${r.tag ? `<span class="cv-role-tag">${r.tag}</span>` : ""}
-              ${r.period ? `<span class="cv-item-date">${r.period}</span>` : ""}
-            </div>
-            ${r.org ? `<div class="cv-item-org">${r.org}${renderLinksHtml(r.links, (r.role || r.org || 'research').replace(/"/g, '&quot;'))}</div>` : ""}
-            ${
-              r.bullets && r.bullets.length
-                ? `
-              <ul class="cv-item-bullets">
-                ${r.bullets.map((b) => `<li>${linkifyUrls(b)}</li>`).join("")}
-              </ul>
-            `
-                : ""
-            }
-          </div>
-        `,
-            )
-            .join("");
-        }
-      }
-
-      if (D.education && Array.isArray(D.education)) {
-        const edList = document.getElementById("educationList");
-        if (edList) {
-          edList.innerHTML = D.education
-            .map(
-              (e) => `
-          <div class="edu-item">
-            <span class="edu-title">${e.title}</span>
-            ${e.detail ? ` — <span class="edu-detail">${linkifyUrls(e.detail)}</span>` : ""}
-            ${e.period ? ` <span class="edu-period">(${e.period})</span>` : ""}
-          </div>
-        `,
-            )
-            .join("");
-        }
-      }
-
       injectPrivateData();
 
       // ---- SCROLL PROGRESS FALLBACK ----
@@ -995,39 +428,23 @@ import "../styles/cv.css";
     async function copyCvForAI(btnEl) {
       const origText = btnEl.textContent;
       btnEl.textContent = "Copying...";
-      let content = "";
+      let content = null;
 
-      const d = window.MARIO_DOSSIER;
-      if (d) {
-        content =
-          `# ${d.identity.name} — Curriculum Vitae (AI / LLM Markdown)\n> ${d.identity.headline}\n> Location: ${d.identity.location} · ${d.identity.relocation}\n\n## Executive Summary\n${d.summary}\n\n## Core Competencies\n` +
-          (d.skills || []).map((s) => `- ${s}`).join("\n") +
-          `\n\n## Professional Experience\n\n`;
-        (d.experience || []).forEach((e) => {
-          content +=
-            `### ${e.role} — ${e.org} (${e.period})\n` +
-            (e.bullets || []).map((b) => `- ${b}`).join("\n") +
-            `\n\n`;
-        });
-      }
-
-      if (!content) {
-        try {
-          const res = await fetch("cv-llm.txt");
-          if (res.ok) content = await res.text();
-        } catch (err) {
-          console.warn("Fetch fallback for CV AI Copy:", err);
+      try {
+        const res = await fetch("/cv-llm.txt");
+        if (res.ok) {
+          content = await res.text();
+        } else {
+          console.error("Failed to fetch /cv-llm.txt:", res.status, res.statusText);
         }
+      } catch (err) {
+        console.error("Fetch error for CV AI Copy:", err);
       }
 
       if (!content) {
-        content = `# Mario Marcolongo — Scientific AI Evaluation & Research Data Specialist (AI / LLM Compatible Markdown)
-> Scientific AI Evaluation & Research Data Specialist
-> Work Authorization: Italy (Italian Citizen) · Unrestricted EU Work Authorization & Global B2B Partita IVA
-
-## Executive Summary
-4,317 verified Wikimedia contributions. Founder of Yourself to Science™ (yourselftoscience.org). Creator of Emergent Humanity. Primary source verification, open science infrastructure, and high-agency execution.
-View full CV online: https://mariomarcolongo.com/cv.html or profile at https://mariomarcolongo.com/llms-full.txt`;
+        btnEl.textContent = "Unable to copy";
+        setTimeout(() => (btnEl.textContent = origText), 2000);
+        return;
       }
 
       try {
@@ -1041,48 +458,12 @@ View full CV online: https://mariomarcolongo.com/cv.html or profile at https://m
           btnEl.style.color = "";
         }, 2200);
       } catch (err) {
-        btnEl.textContent = "Failed to copy";
+        console.error("Copy error:", err);
+        btnEl.textContent = "Unable to copy";
         setTimeout(() => (btnEl.textContent = origText), 2000);
       }
     }
   </script>
 
-  <footer class="cv-footer">
-    <div class="cv-footer-row">
-      <span>
-        <strong>Curriculum Vitae v2026.07.14</strong> · Build 2026-07-14 · Open Science
-        & AI Engineering
-      </span>
-      <span class="screen-only">mariomarcolongo.com</span>
-    </div>
-    <div class="cv-footer-row cv-footer-row-secondary">
-      <span
-        >Primary Source Verification · ORCID: <a
-          href="https://orcid.org/0000-0003-2846-7115"
-          target="_blank"
-          rel="noopener noreferrer">0000-0003-2846-7115</a
-        ></span
-      >
-      <span
-        >ENA Accession: <a
-          href="https://www.ebi.ac.uk/ena/browser/view/PRJEB109744"
-          target="_blank"
-          rel="noopener noreferrer">PRJEB109744</a
-        ></span
-      >
-      <span
-        >Source Code: <a
-          href="https://github.com/jnton/mariomarcolongo"
-          target="_blank"
-          rel="noopener noreferrer">github.com/jnton/mariomarcolongo</a
-        ></span
-      >
-    </div>
-    <div class="cv-footer-row cv-footer-row-legal">
-      <span
-        >I authorize the processing of personal data present in the CV according
-        to the General Data Protection Regulation (GDPR 679/2016).</span
-      >
-    </div>
-  </footer>
+  <SiteFooter version="v2026.07.21" />
 </Layout>

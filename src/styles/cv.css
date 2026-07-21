@@ -566,9 +566,21 @@
       text-decoration: underline !important;
       word-break: break-all !important;
     }
+    .cv-section-heading, h1, h2, h3, h4, .cv-item-header, .skill-category-title, .cv-item-title {
+      page-break-after: avoid !important;
+      break-after: avoid !important;
+    }
+    p, li, span, div {
+      orphans: 3;
+      widows: 3;
+    }
     .edu-item, .edu-detail, .cv-item, .cv-item-bullets li {
       word-break: break-word !important;
       overflow-wrap: anywhere !important;
+    }
+    .edu-item {
+      page-break-inside: avoid !important;
+      break-inside: avoid !important;
     }
 
     a { color: #1A1A1A !important; text-decoration: underline !important; }
@@ -593,4 +605,245 @@
   @media (max-width: 640px) {
     .cv { padding: 32px 24px; }
     .cv-name { font-size: 28px; }
+  }
+
+  /* ---- CV & RESUME UTILITY CLASSES (Migrated from template <style>) ---- */
+  .resume-sec-top { margin-bottom: 14pt !important; }
+  .resume-sec-mid { margin-bottom: 12pt !important; }
+  .resume-sec-spaced { margin-top: 14pt !important; margin-bottom: 14pt !important; }
+  .resume-sec-zero { margin-bottom: 0 !important; }
+  .resume-summary { margin-bottom: 8pt !important; }
+  .resume-item { margin-bottom: 10pt !important; padding-bottom: 0 !important; }
+  .resume-item-last { margin-bottom: 0 !important; padding-bottom: 0 !important; }
+  .resume-skills { gap: 8pt !important; }
+  .resume-skill-box { padding: 6pt 8pt !important; }
+  .resume-edu { margin-bottom: 4pt !important; }
+  .resume-edu-last { margin-bottom: 0 !important; }
+
+  @media print {
+    #cvDocument {
+      font-size: 9pt !important;
+    }
+    #cvDocument .cv-header {
+      padding-bottom: 6pt !important;
+      margin-bottom: 8pt !important;
+    }
+    #cvDocument .cv-name {
+      font-size: 20pt !important;
+      margin-bottom: 2pt !important;
+    }
+    #cvDocument .cv-tagline {
+      font-size: 9.5pt !important;
+      margin-bottom: 4pt !important;
+    }
+    #cvDocument .cv-contact {
+      font-size: 8.5pt !important;
+    }
+    #cvDocument .cv-section {
+      margin-bottom: 8pt !important;
+    }
+    #cvDocument .cv-section-heading {
+      font-size: 11.5pt !important;
+      margin-bottom: 6pt !important;
+      padding-bottom: 2pt !important;
+    }
+    .resume-sec-top, .resume-sec-mid, .resume-sec-spaced, .resume-sec-zero {
+      margin-bottom: 8pt !important;
+      margin-top: 0 !important;
+    }
+    .resume-summary {
+      font-size: 9pt !important;
+      line-height: 1.35 !important;
+      margin-bottom: 8pt !important;
+    }
+    .resume-item, .resume-item-last {
+      margin-bottom: 6pt !important;
+      padding-bottom: 0 !important;
+    }
+    .resume-item .cv-item-title, .resume-item-last .cv-item-title {
+      font-size: 9.5pt !important;
+    }
+    .resume-item .cv-item-org, .resume-item-last .cv-item-org {
+      font-size: 8.5pt !important;
+      margin-bottom: 2pt !important;
+    }
+    .resume-item .cv-item-bullets li, .resume-item-last .cv-item-bullets li {
+      font-size: 8.5pt !important;
+      line-height: 1.3 !important;
+      margin-bottom: 1.5pt !important;
+    }
+    .resume-skills {
+      gap: 5pt !important;
+    }
+    .resume-skill-box {
+      padding: 3.5pt 5pt !important;
+    }
+    .resume-skill-box .skill-category-title {
+      font-size: 8.5pt !important;
+    }
+    .resume-skill-box .skill-category-detail {
+      font-size: 8pt !important;
+      line-height: 1.25 !important;
+    }
+    .resume-edu, .resume-edu-last {
+      margin-bottom: 3pt !important;
+    }
+    .resume-edu span, .resume-edu-last span {
+      font-size: 8.5pt !important;
+    }
+  }
+
+  /* ---- SECURITY EVALUATION RECORD METRICS & BOXES ---- */
+  .security-metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+  }
+  .metric-card {
+    background: var(--bg-card, #1E293B);
+    border: 1px solid var(--border, #334155);
+    border-radius: 12px;
+    padding: 1.5rem;
+    text-align: center;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+  }
+  .metric-card:hover {
+    transform: translateY(-2px);
+    border-color: var(--emerald, #10B981);
+  }
+  .metric-value {
+    font-size: 2.25rem;
+    font-weight: 800;
+    color: var(--emerald, #10B981);
+    font-family: 'Outfit', sans-serif;
+    margin-bottom: 0.5rem;
+  }
+  .metric-label {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text-main, #F8FAFC);
+    margin-bottom: 0.25rem;
+  }
+  .metric-detail {
+    font-size: 0.825rem;
+    color: var(--text-muted, #94A3B8);
+    line-height: 1.4;
+  }
+  .security-box {
+    background: var(--bg-card, #1E293B);
+    border-left: 4px solid var(--emerald, #10B981);
+    padding: 1.5rem;
+    border-radius: 0 12px 12px 0;
+    margin: 2rem 0;
+    color: var(--text-main, #F8FAFC);
+  }
+  .security-category-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+  }
+  .category-card {
+    background: var(--bg-card, #1E293B);
+    border: 1px solid var(--border, #334155);
+    border-radius: 12px;
+    padding: 1.5rem;
+  }
+  .category-card h3 {
+    color: var(--emerald, #10B981);
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .category-card p {
+    font-size: 0.925rem;
+    color: var(--text-muted, #94A3B8);
+    line-height: 1.6;
+  }
+  .back-nav {
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  .back-nav a {
+    color: var(--emerald, #10B981);
+    text-decoration: none;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+  }
+  .back-nav a:hover {
+    text-decoration: underline;
+  }
+  .sec-context-strong {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 1.05rem;
+    color: #fff;
+  }
+  .sec-bullets {
+    margin-top: 1rem;
+  }
+  .scenario-source {
+    margin-top: 1rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--line, #334155);
+    font-size: 0.8rem !important;
+  }
+  .scenario-source code {
+    font-family: "JetBrains Mono", monospace;
+    overflow-wrap: anywhere;
+  }
+  .security-waves-box {
+    margin-top: 24px;
+    padding: 20px;
+    border-radius: 12px;
+    border: 1px solid var(--line);
+    background: var(--bg-surface);
+  }
+  .security-waves-heading {
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: var(--ink);
+  }
+  .security-waves-desc {
+    font-size: 12.5px;
+    color: var(--ink-soft);
+    margin-bottom: 16px;
+  }
+  .security-waves-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    gap: 8px;
+  }
+  .security-wave-item {
+    padding: 8px 10px;
+    border-radius: 8px;
+    border: 1px solid var(--line);
+    background: var(--bg-card);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .security-wave-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--ink-soft);
+  }
+  .security-wave-badge {
+    font-size: 12px;
+    font-weight: 800;
+    color: var(--accent);
+    background: var(--line);
+    padding: 2px 8px;
+    border-radius: 99px;
   }

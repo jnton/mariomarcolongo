@@ -1,24 +1,29 @@
-# Mario Marcolongo — Scientific AI Evaluation & Research Data Specialist
+# Mario Marcolongo — AI Evaluation & Research Verification Specialist
+> Model Behavior Evaluation · Scientific Evidence Review · Evaluation Operations · Technical Research
 
-> Scientific AI evaluation and research data specialist with 8+ years of experience verifying biomedical and technical claims across public knowledge bases (since March 2018; 4,317 documented edits across English/Italian Wikipedia, Wikidata, and Wikimedia Commons). Founder and lead developer of Yourself to Science™ (yourselftoscience.org), an open-source catalogue and unified directory indexing 55+ initiatives where people can contribute their biological and digital self (including genomic data, biological samples, biobanks, and clinical trials) to scientific research. Managed technical web infrastructure (OVHCloud, custom WordPress, SEO) and upheld scientific integrity for Entropy for Life (245,000+ YouTube subscribers / 480,000+ cross-platform community)—conducting bibliographic research, fact-checking scripts, and creating empirical data visualizations across 55+ documentaries and articles, earning formal acknowledgment in a Mondadori book. Volunteer research facilitator under Prof. Marta Panzeri at the University of Padua Department of Developmental Psychology and Socialisation (Nov 2022 – 2025), designing standardized focus group protocols and co-conducting psychological research sessions with autistic participants to inform educational strategies and support programs.
+> AI evaluation and scientific research verification specialist with eight years of auditable work checking biomedical, technical and structured-data claims across sources, citations, datasets and public knowledge bases. Founder and product owner of Yourself to Science, an open-source research-participation directory indexing more than 55 clinical studies, biobanks, donation programs, registries and other initiatives, with documented verification workflows, machine-readable data, and Zenodo and FAIRsharing records. Paid scientific fact-checker, writer, data visualizer and website operator for Entropy for Life, supporting more than 55 videos and documentaries and four articles. Gray Swan Proving Ground participant since July 2026, with 75 platform-confirmed model breaks and a top-8% position among ranked participants as of July 2026.
+
+> **I use AI-assisted development workflows extensively. I independently own requirements, workflow and system design, validation, testing, debugging, deployment and maintenance, and personally inspect the resulting systems.**
 
 ## Quick Facts & Key Metrics
-- **100 / 100 — Level 5** (Cloudflare Agent-Ready Audit): Full marks on Cloudflare's isitagentready.com audit: Discoverability 4/4, Content 1/1, Bot Access Control 2/2, API/Auth/MCP & Skill Discovery 7/7. Cloudflare's own data shows most professional sites score well under 50.
-- **100 / 100** (Web & AI Readiness Architecture): Perfect 100 Lighthouse (Performance/a11y/SEO) & 3/3 Agentic Browsing score on Yourself to Science™
-- **70+ Vizzes** (Empirical Data Visualizations): Published 55+ Flourish & 15 Tableau Public epidemiological, demographic & ISTAT workbooks analyzing ~80+ datasets
-- **55+ Videos & 4 Articles** (Science Verification & Editorial Acceleration): Fact-checked primary literature across 55+ YouTube videos (long & short), co-authored 4 articles, designed data visualizations & Reels, and managed A/B tested thumbnails/titles for Giacomo Moro Mauretto's Entropy for Life (480K+ community); acknowledged in Mondadori book Italiani Veri
-- **4,317 Edits** (Wikimedia & Knowledge Graph Curation): Verifiable contributions across English Wikipedia (1,592), Wikidata (1,249), Italian Wikipedia (752), and Wikimedia Commons (684)
-- Work Authorization: Italian Citizen — Unrestricted EU work authorization; eligible for Swiss EU/EFTA mobility procedures; international B2B via Italian Partita IVA; sponsorship required elsewhere.
+- **75 Breaks** (Platform-Confirmed Model Breaks): 75 platform-confirmed model breaks as of July 2026 across chat, image, agentic tool-use and indirect prompt-injection challenges on the Gray Swan Proving Ground
+- **55+ Initiatives** (Research Initiatives Indexed): An open-source research-participation directory indexing more than 55 clinical studies, biobanks, donation programs, registries and other research initiatives
+- **70+ Visualizations** (Empirical Data Visualizations): Published 70+ interactive empirical public health, epidemiological, and biomedical visualizations across Wikimedia Commons, Tableau Public, and Flourish
+- **55+ Videos & 4 Articles** (Science Verification & Editorial Fact-Checking): Fact-checked primary literature across 55+ YouTube videos and documentaries and co-authored 4 articles for Entropy for Life; formally acknowledged in Giacomo Moro Mauretto's Mondadori book Italiani veri
+- **4,317 Edits** (Wikimedia Contributions as of July 2026): 4,317 auditable Wikimedia contributions across English Wikipedia (1,592), Wikidata (1,249), Italian Wikipedia (752), and Wikimedia Commons (684)
+- Work Authorization: EU/EEA work-authorized; Swiss EU/EFTA permit eligible; open to employer-sponsored work authorization elsewhere; self-funded relocation considered for exceptional opportunities.
 - Languages: Italian (Native / Mother Tongue) · English (C1 Advanced Overall: C2 Reading/Listening, B2 Writing/Speaking)
 
 ## Core Competencies
-- AI Red-Teaming & Adversarial Evaluation: Top 8% globally on Gray Swan AI Proving Ground (https://app.grayswan.ai/arena/user/6a57be70d15e123775a1e9cf) — 75+ confirmed model breaks across Chat, Image, Agent, and Indirect-Injection categories (as of July 2026).
-- Web Engineering & Architecture: JavaScript, Node.js, Static & Serverless Architecture, WordPress Development & Customization, HTML/CSS Design Systems, Cloud DNS / SSL / OVHCloud / AWS Lambda / API Gateway
-- Scientific Verification & Methodologies: Bibliographic Research Methodology, Primary Source Fact-Checking, Psychological Focus Group Facilitation & Standardized Protocols, Epidemiological Data Synthesis, Cochrane/Galenos Screening
-- Open-Source Intelligence (OSINT) & Digital Investigation: Multi-engine Boolean search (Google, DuckDuckGo, Yandex) and academic/gray-literature querying (Google Scholar, PubMed, Europe PMC); reverse-image and facial-recognition verification (PimEyes, Yandex Images, Google Lens, TinEye); EXIF/metadata extraction and file provenance verification; archival/provenance research (Wayback Machine, Archive.today); WHOIS/DNS history and certificate-transparency lookups for tracing site ownership and technical infrastructure; cross-platform digital-footprint correlation for claim verification, source attribution, and coordinated-inauthentic-behavior detection
-- Open Science & AI Infrastructure: FAIRsharing Standards, Semantic Linked Data (JSON-LD, RDF Turtle, llms.txt, live MCP Servers), Public Knowledge Bases (Wikidata, ENA BioSample)
-- Data Visualization & Tools: High-Clarity SVG Vector Diagramming, Tableau Public, Flourish, Git / GitHub, GitHub Actions CI/CD
-- Languages: Italian (Mother tongue / Native) · English (C1 Advanced Overall: Listening C2, Reading C2, Writing B2, Spoken Production B2, Spoken Interaction B2) · French (Basic A2/A1) · Spanish (Basic A2/A1)
+- Technical Product Delivery: Requirements definition, workflow and system design, codebase navigation and modification, functional testing, iterative debugging, deployment operations, WordPress, HTML/CSS, Git/GitHub, JSON, REST APIs, AWS Lambda, Cloudflare Pages, DNS/SSL and CI/CD.
+- AI-Assisted Development Workflow: Extensive use of coding agents for implementation, refactoring, documentation, testing and deployment automation, with independent ownership of requirements, validation, debugging, deployment and maintenance.
+- Model Behavior & Adversarial Evaluation: Self-directed LLM boundary testing since 2023; Gray Swan Proving Ground participant since July 2026, with 75 platform-confirmed model breaks and a top-8% position among ranked participants as of July 2026.
+- Scientific Verification & Evidence Synthesis: Primary-source fact-checking, bibliographic research, evidence screening, structured claim verification, epidemiological data synthesis and standardized research protocols.
+- Open-source research and provenance verification: advanced web and scholarly search, metadata analysis, archival research, domain and certificate-history checks, reverse-image verification and cross-source corroboration.
+- Command-Line & Systems Tooling: Unix/macOS shell environments, Git workflows, package management, serverless runtime configuration, and cloud deployment operations.
+- Open Science & Structured Data: JSON-LD, RDF Turtle/VoID, FAIRsharing, Zenodo, OpenAPI, MCP servers, Wikimedia projects, Wikidata and ENA BioSample records.
+- Data Visualization & Tools: High-Clarity SVG Vector Diagramming, Tableau Public, Flourish, Git / GitHub, GitHub Actions CI/CD.
+- Languages: Italian — native. English — C1 overall, with C2 reading/listening and B2 writing/speaking.
 
 ## Links
 - [Website](https://mariomarcolongo.com): Main portfolio homepage
@@ -28,7 +33,7 @@
 - [LinkedIn](https://www.linkedin.com/in/mario-marcolongo): Professional LinkedIn profile
 - [ORCID](https://orcid.org/0000-0003-2846-7115): ORCID scientific researcher profile
 - [GitHub](https://github.com/jnton): GitHub profile and open-source repositories
-- [Agent-Readiness Audit](https://isitagentready.com/mariomarcolongo.com?checks=robotsTxt%2Csitemap%2ClinkHeaders%2CdnsAid%2CmarkdownNegotiation%2CrobotsTxtAiRules%2CcontentSignals%2CwebBotAuth%2CapiCatalog%2CoauthDiscovery%2CoauthProtectedResource%2CauthMd%2CmcpServerCard%2Ca2aAgentCard%2CagentSkills%2CwebMcp%2Cx402%2Cmpp%2Cucp%2Cacp): Verified full marks on Cloudflare isitagentready.com audit
+- [Agent-Readiness Audit](https://isitagentready.com/mariomarcolongo.com?checks=robotsTxt%2Csitemap%2ClinkHeaders%2CdnsAid%2CmarkdownNegotiation%2CrobotsTxtAiRules%2CcontentSignals%2CwebBotAuth%2CapiCatalog%2CoauthDiscovery%2CoauthProtectedResource%2CauthMd%2CmcpServerCard%2Ca2aAgentCard%2CagentSkills%2CwebMcp%2Cx402%2Cmpp%2Cucp%2Cacp): Agent-discovery and machine-readable endpoints implemented; live audit to be rerun after deployment.
 - [A2A Agent Card](https://mariomarcolongo.com/.well-known/agent-card.json): Agent-to-Agent discovery card
-- [Genomic Pipeline Codebase](https://github.com/jnton/git-nome): Open-source pipeline for clinical/research genome analysis
+- [Genomic Pipeline Codebase](https://github.com/jnton/git-nome): Personal genomics workflow and open-data pipeline
 - [Portfolio SSOT Codebase](https://github.com/jnton/mariomarcolongo): Source code and Single Source of Truth for this portfolio

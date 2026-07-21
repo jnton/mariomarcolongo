@@ -1,0 +1,196 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Model Behavior &amp; Safety Case Study — Mario Marcolongo</title><meta name="description" content="Empirical safety evaluation, boundary testing, and scorecard on the Gray Swan Proving Ground (Top 8% among ranked participants as of July 2026, 75 platform-confirmed model breaks across 156 total submissions)."><link rel="canonical" href="https://mariomarcolongo.com/security.html"><!-- Favicon & PWA Manifest --><link rel="icon" type="image/x-icon" sizes="32x32" href="/favicon.ico"><link rel="shortcut icon" href="/favicon.ico"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/favicon.svg" color="#34D399"><link rel="manifest" href="/site.webmanifest"><!-- mm-theme Pre-Paint Script --><script id="mm-theme">
+    (function() {
+      try {
+        var stored = null;
+        try { stored = localStorage.getItem('theme'); } catch(e) {}
+        var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (stored === 'dark' || (!stored && prefersDark)) {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        } else {
+          document.documentElement.setAttribute('data-theme', 'light');
+        }
+      } catch(err) {}
+    })();
+  </script><!-- WebMCP & Agent-to-Agent Discovery Links --><link rel="api-catalog" href="https://mariomarcolongo.com/.well-known/api-catalog"><link rel="describedby" type="text/plain" href="https://mariomarcolongo.com/llms.txt"><link rel="describedby" type="text/plain" href="https://mariomarcolongo.com/llms-full.txt"><link rel="agent-card" href="https://mariomarcolongo.com/.well-known/agent-card.json"><link rel="mcp-server-card" href="https://mariomarcolongo.com/.well-known/mcp/server-card.json"><!-- Open Graph / Social Previews --><meta property="og:type" content="website"><meta property="og:url" content="https://mariomarcolongo.com/security.html"><meta property="og:title" content="Model Behavior &amp; Safety Case Study — Mario Marcolongo"><meta property="og:description" content="Empirical safety evaluation, boundary testing, and scorecard on the Gray Swan Proving Ground (Top 8% among ranked participants as of July 2026, 75 platform-confirmed model breaks across 156 total submissions)."><meta property="og:image" content="https://mariomarcolongo.com/og-preview.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:site_name" content="Mario Marcolongo"><!-- Twitter Card --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:url" content="https://mariomarcolongo.com/security.html"><meta name="twitter:title" content="Model Behavior &amp; Safety Case Study — Mario Marcolongo"><meta name="twitter:description" content="Empirical safety evaluation, boundary testing, and scorecard on the Gray Swan Proving Ground (Top 8% among ranked participants as of July 2026, 75 platform-confirmed model breaks across 156 total submissions)."><meta name="twitter:image" content="https://mariomarcolongo.com/og-preview.png"><!-- Google Fonts --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700;800;900&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet"><script src="/data/source.js"></script><script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "@id": "https://mariomarcolongo.com/security.html#webpage",
+      "name": "Model Behavior & Safety Case Study — Mario Marcolongo",
+      "description": "Empirical safety evaluation, boundary testing, and scorecard on the Gray Swan Proving Ground (Top 8% among ranked participants as of July 2026, 75 platform-confirmed model breaks across 156 total submissions).",
+      "url": "https://mariomarcolongo.com/security.html",
+      "author": { "@id": "https://mariomarcolongo.com/#person" },
+      "about": [
+        {
+          "@type": "Thing",
+          "name": "Model Behavior & Adversarial Safety Evaluation",
+          "description": "Systematic boundary probing of frontier LLMs and multimodal architectures across Chat, Image, Tool-Use, and Indirect Prompt Injection."
+        },
+        {
+          "@type": "Organization",
+          "name": "Gray Swan AI Proving Ground",
+          "url": "https://app.grayswan.ai/arena/user/6a57be70d15e123775a1e9cf"
+        }
+      ]
+    }
+    </script><link rel="stylesheet" href="/_astro/Layout.C-cLh2s_.css"><link rel="stylesheet" href="/_astro/cv.Dx1qFKOJ.css"><style>.security-case-study{max-width:var(--case-max,1080px);margin:0 auto;padding:40px 32px 80px}@media (width<=768px){.security-case-study{padding:24px 20px 60px}}.security-header{border-bottom:1px solid var(--line-strong);margin-bottom:48px;padding-bottom:32px}.security-meta-tag{font-family:var(--font-mono);background:var(--accent-soft);color:var(--accent);letter-spacing:.04em;text-transform:uppercase;border-radius:999px;align-items:center;gap:8px;margin-bottom:18px;padding:6px 14px;font-size:12px;font-weight:600;display:inline-flex}.security-title{font-family:var(--font-display);color:var(--ink);letter-spacing:-.025em;margin-bottom:16px;font-size:clamp(32px,4vw,44px);font-weight:900;line-height:1.15}.security-lead{color:var(--ink-soft);max-width:var(--text-max,72ch);font-size:clamp(16px,1.8vw,19px);line-height:1.65}.security-metrics-grid{gap:var(--card-gap,24px);grid-template-columns:repeat(auto-fit,minmax(220px,1fr));margin:36px 0 48px;display:grid}.security-metric-card{background:var(--bg-surface);border:1px solid var(--line);border-radius:var(--radius,20px);flex-direction:column;justify-content:center;padding:28px 24px;transition:border-color .25s,box-shadow .25s,transform .25s;display:flex}.security-metric-card:hover{border-color:var(--line-strong);box-shadow:var(--shadow);transform:translateY(-2px)}.security-metric-value{font-family:var(--font-display);color:var(--ink);letter-spacing:-.02em;margin-bottom:6px;font-size:clamp(30px,3.5vw,40px);font-weight:900;line-height:1.1}.security-metric-label{color:var(--ink);margin-bottom:6px;font-size:14.5px;font-weight:700}.security-metric-detail{color:var(--ink-soft);font-size:13px;line-height:1.5}.security-section{padding:var(--sec-major,80px) 0;border-bottom:1px solid var(--line)}@media (width<=768px){.security-section{padding:48px 0}}.security-section:last-of-type{border-bottom:none}.security-section-title{font-family:var(--font-display);color:var(--ink);letter-spacing:-.02em;margin-bottom:12px;font-size:clamp(24px,3vw,32px);font-weight:800}.security-section-desc{color:var(--ink-soft);max-width:var(--text-max,72ch);margin-bottom:36px;font-size:16px;line-height:1.65}.security-card-grid{gap:var(--card-gap,24px);grid-template-columns:repeat(auto-fit,minmax(300px,1fr));display:grid}.security-card{background:var(--bg-surface);border:1px solid var(--line);border-radius:var(--radius,20px);flex-direction:column;padding:30px;transition:border-color .25s,box-shadow .25s;display:flex}.security-card:hover{border-color:var(--line-strong);box-shadow:var(--shadow)}.security-card-tag{font-family:var(--font-mono);text-transform:uppercase;letter-spacing:.08em;color:var(--accent);margin-bottom:12px;font-size:11.5px;font-weight:700}.security-card-title{font-family:var(--font-display);color:var(--ink);margin-bottom:12px;font-size:20px;font-weight:700;line-height:1.35}.security-card-body{color:var(--ink-soft);margin-bottom:18px;font-size:14.5px;line-height:1.65}.security-card-body p{margin-bottom:12px}.security-card-body p:last-child{margin-bottom:0}.security-box{background:var(--bg-subtle);border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:var(--radius-sm,12px);color:var(--ink);margin:24px 0;padding:20px 24px}.security-box-title{color:var(--ink);margin-bottom:8px;font-size:15px;font-weight:700}.security-box-body{color:var(--ink-soft);font-size:14px;line-height:1.6}.security-code-block{font-family:var(--font-mono);color:#f8fafc;border-radius:var(--radius-sm,12px);background:#0f172a;border:1px solid #ffffff1a;margin:16px 0;padding:18px 20px;font-size:12.5px;line-height:1.6;overflow-x:auto}.security-back-link{color:var(--ink-soft);align-items:center;gap:8px;margin-bottom:24px;font-size:14px;font-weight:600;transition:color .2s;display:inline-flex}.security-back-link:hover{color:var(--accent);text-decoration:none}
+</style></head><body><div id="scrollProgress"></div><main id="main-content"><header class="nav print-hide" id="siteNav"><a href="/" class="nav-name" aria-label="Mario Marcolongo — Home">Mario Marcolongo</a><nav class="nav-actions" aria-label="Primary Navigation"><a href="/" class="nav-link ">Overview</a><a href="/security.html" class="nav-link active" aria-current="page">Security Case Study</a><a href="/cv.html" class="nav-link hide-mobile ">Full CV</a><a href="/cv-resume.html" class="btn btn-primary btn-sm ">2-Page Résumé</a><button class="theme-toggle" id="themeBtn" aria-label="Toggle visual theme" type="button"><span class="theme-icon-light" aria-hidden="true">☀️</span><span class="theme-icon-dark" aria-hidden="true" style="display:none;">🌙</span></button></nav></header><script>
+  (function initNavAndTheme() {
+    // Scroll handling for nav styling
+    var navEl = document.getElementById('siteNav');
+    if (navEl) {
+      var onScroll = function() {
+        if (window.scrollY > 20) {
+          navEl.classList.add('scrolled');
+        } else {
+          navEl.classList.remove('scrolled');
+        }
+      };
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+    }
+
+    // Theme toggle button handling
+    var themeBtn = document.getElementById('themeBtn');
+    if (themeBtn) {
+      function updateIcons(theme) {
+        var lightIcon = themeBtn.querySelector('.theme-icon-light');
+        var darkIcon = themeBtn.querySelector('.theme-icon-dark');
+        if (lightIcon && darkIcon) {
+          if (theme === 'dark') {
+            lightIcon.style.display = 'none';
+            darkIcon.style.display = 'inline';
+          } else {
+            lightIcon.style.display = 'inline';
+            darkIcon.style.display = 'none';
+          }
+        }
+      }
+
+      var current = document.documentElement.getAttribute('data-theme') || 'light';
+      updateIcons(current);
+
+      themeBtn.addEventListener('click', function() {
+        var active = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+        var next = active === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', next);
+        updateIcons(next);
+        try {
+          localStorage.setItem('theme', next);
+        } catch(e) {}
+      });
+    }
+  })();
+</script><div class="security-case-study"><a href="/" class="security-back-link">← Back to Portfolio & Overview</a><header class="security-header"><div class="security-meta-tag">Adversarial Evaluation & Policy Robustness · Case Study</div><h1 class="security-title">Model Behavior & Safety Case Study</h1><p class="security-lead">Systematic boundary probing, empirical safety evaluation, and policy consistency auditing across frontier LLMs and multimodal architectures on the Gray Swan Proving Ground.</p><div class="security-box" style="margin-top: 28px;"><div class="security-box-title">Practitioner & Verification Record</div><div class="security-box-body">Practitioner: <strong>Mario Marcolongo</strong> · Gray Swan Practitioner ID: <a href="https://app.grayswan.ai/arena/user/6a57be70d15e123775a1e9cf" target="_blank" rel="noopener noreferrer" style="color: var(--accent); font-weight: 600;">6a57be70d15e123775a1e9cf ↗</a> · ORCID: <a href="https://orcid.org/0000-0003-2846-7115" target="_blank" rel="noopener noreferrer" style="color: var(--accent); font-weight: 600;">0000-0003-2846-7115 ↗</a></div></div></header><!-- SCORECARD & METRICS --><section class="security-section" id="scorecard"><h2 class="security-section-title">Proving Ground Scorecard & Metrics</h2><p class="security-section-desc">Empirical evaluation record across structured testing waves. Every confirmed break represents an independently verified policy or alignment boundary failure under adversarial conditions.</p><div class="security-metrics-grid"><div class="security-metric-card"><div class="security-metric-value">Top 8%</div><div class="security-metric-label">Gray Swan Proving Ground Percentile</div><div class="security-metric-detail">Among ranked Gray Swan Proving Ground participants as of July 2026</div></div><div class="security-metric-card"><div class="security-metric-value">75</div><div class="security-metric-label">Platform-Confirmed Model Breaks</div><div class="security-metric-detail">75 platform-confirmed model breaks across 26 testing waves (as of July 2026)</div></div><div class="security-metric-card"><div class="security-metric-value">156</div><div class="security-metric-label">Total Platform Submissions</div><div class="security-metric-detail">Structured boundary evaluations across 26 longitudinal testing waves</div></div></div></section><!-- LONGITUDINAL WAVE DISTRIBUTION --><section class="security-section" id="longitudinal-waves"><h2 class="security-section-title">Historical Wave Performance & Longitudinal Distribution</h2><p class="security-section-desc">Sustained boundary evaluation across 26 testing waves (156 total submissions, 75 confirmed breaks). Historical evaluation peaks include Wave 1 (14 breaks), Waves 2 & 3 (10 breaks each), and Wave 15 (8 breaks), tracking boundary resilience across major model architecture updates.</p><div class="security-card-grid" style="grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 14px; margin-top: 24px;"><div style="background: var(--bg-surface); border: 1px solid var(--line); border-radius: var(--radius-sm, 12px); padding: 14px 16px; text-align: center;"><div style="font-family: var(--font-mono); font-size: 11.5px; font-weight: 700; color: var(--ink-soft); text-transform: uppercase; margin-bottom: 4px;">Wave 1</div><div style="font-family: var(--font-display); font-size: 20px; font-weight: 800; color: var(--ink);">14</div><div style="font-size: 12px; color: var(--accent); font-weight: 600;">Breaks</div></div><div style="background: var(--bg-surface); border: 1px solid var(--line); border-radius: var(--radius-sm, 12px); padding: 14px 16px; text-align: center;"><div style="font-family: var(--font-mono); font-size: 11.5px; font-weight: 700; color: var(--ink-soft); text-transform: uppercase; margin-bottom: 4px;">Wave 2</div><div style="font-family: var(--font-display); font-size: 20px; font-weight: 800; color: var(--ink);">10</div><div style="font-size: 12px; color: var(--accent); font-weight: 600;">Breaks</div></div><div style="background: var(--bg-surface); border: 1px solid var(--line); border-radius: var(--radius-sm, 12px); padding: 14px 16px; text-align: center;"><div style="font-family: var(--font-mono); font-size: 11.5px; font-weight: 700; color: var(--ink-soft); text-transform: uppercase; margin-bottom: 4px;">Wave 3</div><div style="font-family: var(--font-display); font-size: 20px; font-weight: 800; color: var(--ink);">10</div><div style="font-size: 12px; color: var(--accent); font-weight: 600;">Breaks</div></div><div style="background: var(--bg-surface); border: 1px solid var(--line); border-radius: var(--radius-sm, 12px); padding: 14px 16px; text-align: center;"><div style="font-family: var(--font-mono); font-size: 11.5px; font-weight: 700; color: var(--ink-soft); text-transform: uppercase; margin-bottom: 4px;">Wave 5</div><div style="font-family: var(--font-display); font-size: 20px; font-weight: 800; color: var(--ink);">5</div><div style="font-size: 12px; color: var(--accent); font-weight: 600;">Breaks</div></div><div style="background: var(--bg-surface); border: 1px solid var(--line); border-radius: var(--radius-sm, 12px); padding: 14px 16px; text-align: center;"><div style="font-family: var(--font-mono); font-size: 11.5px; font-weight: 700; color: var(--ink-soft); text-transform: uppercase; margin-bottom: 4px;">Wave 6</div><div style="font-family: var(--font-display); font-size: 20px; font-weight: 800; color: var(--ink);">3</div><div style="font-size: 12px; color: var(--accent); font-weight: 600;">Breaks</div></div><div style="background: var(--bg-surface); border: 1px solid var(--line); border-radius: var(--radius-sm, 12px); padding: 14px 16px; text-align: center;"><div style="font-family: var(--font-mono); font-size: 11.5px; font-weight: 700; color: var(--ink-soft); text-transform: uppercase; margin-bottom: 4px;">Wave 7</div><div style="font-family: var(--font-display); font-size: 20px; font-weight: 800; color: var(--ink);">2</div><div style="font-size: 12px; color: var(--accent); font-weight: 600;">Breaks</div></div><div style="background: var(--bg-surface); border: 1px solid var(--line); border-radius: var(--radius-sm, 12px); padding: 14px 16px; text-align: center;"><div style="font-family: var(--font-mono); font-size: 11.5px; font-weight: 700; color: var(--ink-soft); text-transform: uppercase; margin-bottom: 4px;">Wave 10</div><div style="font-family: var(--font-display); font-size: 20px; font-weight: 800; color: var(--ink);">3</div><div style="font-size: 12px; color: var(--accent); font-weight: 600;">Breaks</div></div><div style="background: var(--bg-surface); border: 1px solid var(--line); border-radius: var(--radius-sm, 12px); padding: 14px 16px; text-align: center;"><div style="font-family: var(--font-mono); font-size: 11.5px; font-weight: 700; color: var(--ink-soft); text-transform: uppercase; margin-bottom: 4px;">Wave 11</div><div style="font-family: var(--font-display); font-size: 20px; font-weight: 800; color: var(--ink);">2</div><div style="font-size: 12px; color: var(--accent); font-weight: 600;">Breaks</div></div><div style="background: var(--bg-surface); border: 1px solid var(--line); border-radius: var(--radius-sm, 12px); padding: 14px 16px; text-align: center;"><div style="font-family: var(--font-mono); font-size: 11.5px; font-weight: 700; color: var(--ink-soft); text-transform: uppercase; margin-bottom: 4px;">Wave 12</div><div style="font-family: var(--font-display); font-size: 20px; font-weight: 800; color: var(--ink);">3</div><div style="font-size: 12px; color: var(--accent); font-weight: 600;">Breaks</div></div><div style="background: var(--bg-surface); border: 1px solid var(--line); border-radius: var(--radius-sm, 12px); padding: 14px 16px; text-align: center;"><div style="font-family: var(--font-mono); font-size: 11.5px; font-weight: 700; color: var(--ink-soft); text-transform: uppercase; margin-bottom: 4px;">Wave 15</div><div style="font-family: var(--font-display); font-size: 20px; font-weight: 800; color: var(--ink);">8</div><div style="font-size: 12px; color: var(--accent); font-weight: 600;">Breaks</div></div><div style="background: var(--bg-surface); border: 1px solid var(--line); border-radius: var(--radius-sm, 12px); padding: 14px 16px; text-align: center;"><div style="font-family: var(--font-mono); font-size: 11.5px; font-weight: 700; color: var(--ink-soft); text-transform: uppercase; margin-bottom: 4px;">Wave 16</div><div style="font-family: var(--font-display); font-size: 20px; font-weight: 800; color: var(--ink);">3</div><div style="font-size: 12px; color: var(--accent); font-weight: 600;">Breaks</div></div><div style="background: var(--bg-surface); border: 1px solid var(--line); border-radius: var(--radius-sm, 12px); padding: 14px 16px; text-align: center;"><div style="font-family: var(--font-mono); font-size: 11.5px; font-weight: 700; color: var(--ink-soft); text-transform: uppercase; margin-bottom: 4px;">Wave 22</div><div style="font-family: var(--font-display); font-size: 20px; font-weight: 800; color: var(--ink);">6</div><div style="font-size: 12px; color: var(--accent); font-weight: 600;">Breaks</div></div><div style="background: var(--bg-surface); border: 1px solid var(--line); border-radius: var(--radius-sm, 12px); padding: 14px 16px; text-align: center;"><div style="font-family: var(--font-mono); font-size: 11.5px; font-weight: 700; color: var(--ink-soft); text-transform: uppercase; margin-bottom: 4px;">Wave 24</div><div style="font-family: var(--font-display); font-size: 20px; font-weight: 800; color: var(--ink);">2</div><div style="font-size: 12px; color: var(--accent); font-weight: 600;">Breaks</div></div><div style="background: var(--bg-surface); border: 1px solid var(--line); border-radius: var(--radius-sm, 12px); padding: 14px 16px; text-align: center;"><div style="font-family: var(--font-mono); font-size: 11.5px; font-weight: 700; color: var(--ink-soft); text-transform: uppercase; margin-bottom: 4px;">Wave 25</div><div style="font-family: var(--font-display); font-size: 20px; font-weight: 800; color: var(--ink);">3</div><div style="font-size: 12px; color: var(--accent); font-weight: 600;">Breaks</div></div><div style="background: var(--bg-surface); border: 1px solid var(--line); border-radius: var(--radius-sm, 12px); padding: 14px 16px; text-align: center;"><div style="font-family: var(--font-mono); font-size: 11.5px; font-weight: 700; color: var(--ink-soft); text-transform: uppercase; margin-bottom: 4px;">Wave 26</div><div style="font-family: var(--font-display); font-size: 20px; font-weight: 800; color: var(--ink);">1</div><div style="font-size: 12px; color: var(--accent); font-weight: 600;">Break</div></div></div></section><!-- EVALUATION VECTORS & TESTING METHODOLOGY --><section class="security-section" id="methodology"><h2 class="security-section-title">Evaluation Vectors & Testing Methodology</h2><p class="security-section-desc">Systematic evaluation probes alignment boundaries without relying on fabricated authority, brute-force obfuscation, or automated jailbreak templates. Testing methodology targets structural instruction adherence across four key modalities:</p><div class="security-card-grid"><div class="security-card"><div class="security-card-tag">Modality Vector 01</div><h3 class="security-card-title">Chat & Single-Turn/Multi-Turn Dialogue Mechanics</h3><div class="security-card-body"><p>Probing single-turn and multi-turn dialogue mechanics to test the resilience of model refusal behavior, instruction hierarchy, and contextual constraint enforcement when exposed to conflicting or nested directives.</p></div></div><div class="security-card"><div class="security-card-tag">Modality Vector 02</div><h3 class="security-card-title">Multimodal & Vision-Language Boundary Testing</h3><div class="security-card-body"><p>Evaluating cross-modality safety boundaries where visual inputs (images, diagrams, typography embedded within imagery) interact with textual system instructions to test for modality override vulnerabilities and visual prompt injection.</p></div></div><div class="security-card"><div class="security-card-tag">Modality Vector 03</div><h3 class="security-card-title">Agentic Tool-Use & Orchestration Boundaries</h3><div class="security-card-body"><p>Auditing autonomous multi-step execution chains where LLMs invoke external tools (search, code execution, APIs). Testing privilege boundaries, parameter injection resilience, and resistance to unauthorized action sequencing.</p></div></div><div class="security-card"><div class="security-card-tag">Modality Vector 04</div><h3 class="security-card-title">Indirect Prompt Injection & Context Hijacking</h3><div class="security-card-body"><p>Assessing vulnerability when models process untrusted external context (retrieved documents, web pages, user-submitted files) where adversarial instructions attempt to hijack the primary objective or manipulate tool outputs.</p></div></div></div></section><!-- REPRESENTATIVE EVALUATION SCENARIOS --><section class="security-section" id="scenarios"><h2 class="security-section-title">Representative Evaluation Scenarios</h2><p class="security-section-desc">The following sanitized scenarios illustrate empirical testing methodologies derived from publicly verified submission labels across target modalities. They document evaluation scope without exposing unpatched exploit payloads.</p><div class="security-card-grid"><div class="security-card"><div class="security-card-tag">Empirical Scenario · Agentic Tool-Use</div><h3 class="security-card-title">Indirect Function-Call Manipulation (Agentic Tool-Use)</h3><div class="security-card-body"><p>Evaluated whether untrusted or nested instructions in retrieved context could cause an agentic model to invoke a function outside the user’s intended task. Testing focused on instruction provenance, authorization boundaries, tool-selection logic, and resistance to concealed indirect directives.</p><div class="security-code-block">Verified Submission Label: indirect-function-call</div></div></div><div class="security-card"><div class="security-card-tag">Empirical Scenario · Policy & Workflow Integrity</div><h3 class="security-card-title">Account-Security Authorization & Workflow Integrity</h3><div class="security-card-body"><p>Tested whether a model preserves identity-verification, confirmation, and authorization requirements when instructed to perform security-sensitive account modifications. Examined whether conversational framing or contextual urgency weakens authentication controls.</p><div class="security-code-block">Verified Submission Label: weak-password-change</div></div></div><div class="security-card"><div class="security-card-tag">Empirical Scenario · Multimodal & Vision-Language</div><h3 class="security-card-title">Multimodal Instruction Override via Visual Typography</h3><div class="security-card-body"><p>Evaluated vision-language models for cross-modal instruction hierarchy robustness when textual constraints conflict with typography embedded directly inside uploaded images or technical diagrams, testing whether visual instructions can override system prompts.</p><div class="security-code-block">Evaluation Vector: Multimodal Vision-Language Override</div></div></div><div class="security-card"><div class="security-card-tag">Empirical Scenario · Conversational Alignment</div><h3 class="security-card-title">Multi-Turn Dialogue Constraint Relaxation</h3><div class="security-card-body"><p>Systematically audited multi-turn conversational interactions to evaluate whether repeated benign contextual framing gradually relaxes policy thresholds or instruction boundaries over extended dialogue horizons.</p><div class="security-code-block">Evaluation Vector: Multi-Turn Constraint Relaxation</div></div></div></div></section><!-- METHODOLOGICAL SYNTHESIS --><section class="security-section" id="synthesis"><h2 class="security-section-title">Bridging Red-Teaming with Epistemic Rigor</h2><p class="security-section-desc">Model behavior evaluation is directly synergistic with primary source verification and open science infrastructure engineering. Both disciplines require auditable rigor and defensive systems analysis:</p><div class="security-box"><div class="security-box-title">1. Structural Decomposition</div><div class="security-box-body">Breaking down complex, opaque systems—whether a frontier LLM's system prompt or a 41× WGS genomic alignment pipeline—into discrete, testable assumptions and verifiable boundary conditions.</div></div><div class="security-box"><div class="security-box-title">2. Evidence-Driven Auditing</div><div class="security-box-body">Documenting reproducible behaviors and empirical boundary failures rather than theoretical speculation, paralleling the verification of 4,317 Wikimedia contributions and public ENA genomic accessions.</div></div><div class="security-box"><div class="security-box-title">3. Defensive Systems Thinking</div><div class="security-box-body">Applying adversarial insights to threat-model open-science architectures, ensuring research directories and data pipelines are resilient against prompt injection, data poisoning, and untrusted-input risks.</div></div></section><div style="margin-top: 40px;"><a href="/" class="security-back-link">← Back to Portfolio & Overview</a></div></div><footer class="site-footer print-hide"><div class="container"><div class="footer-content"><div class="footer-text"><p><strong>© 2026 Mario Marcolongo.</strong> Released under CC BY 4.0 / Open Science. Active Build: v2026.07.21</p></div><div class="footer-links"><a href="https://orcid.org/0000-0003-2846-7115" target="_blank" rel="noopener noreferrer">ORCID: 0000-0003-2846-7115</a><a href="https://www.ebi.ac.uk/ena/browser/view/PRJEB109744" target="_blank" rel="noopener noreferrer">ENA: PRJEB109744</a><a href="https://github.com/jnton" target="_blank" rel="noopener noreferrer">GitHub: jnton</a><a href="https://www.linkedin.com/in/mario-marcolongo" target="_blank" rel="noopener noreferrer">LinkedIn</a></div></div><div class="footer-content" style="margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--line);"><div class="footer-text"><span style="font-size: 13px; color: var(--ink-faint);">Machine-actionable dossiers available for verification evaluation and automated processing:</span></div><div class="footer-links" style="align-items: center; gap: 12px;"><a href="/llms.txt" class="btn btn-sm" target="_blank">llms.txt</a><a href="/llms-full.txt" class="btn btn-sm" target="_blank">llms-full.txt</a><a href="/cv-llm.txt" class="btn btn-sm" target="_blank">cv-llm.txt</a><button class="btn btn-ai btn-sm" onclick="copyFooterAI(this)" title="Copy complete AI-compatible Markdown Dossier">✨ Copy for AI</button></div></div></div></footer><script>
+  async function copyFooterAI(btnEl) {
+    var origText = btnEl.textContent;
+    btnEl.textContent = 'Copying...';
+    var content = null;
+    if (typeof window !== 'undefined' && window.MARIO_DOSSIER) {
+      try {
+        var d = window.MARIO_DOSSIER;
+        content = `# ${d.identity.name} — ${d.identity.jobTitle || 'AI Evaluation & Scientific Research Verification Specialist'}\n\n## Overview\n${d.summary}\n\n## Core Pillars\n\n`;
+        (d.pillars || []).forEach(function(p, i) {
+          content += `### ${i + 1}. ${p.title}\n${p.lead}\n\n` +
+            (p.highlights || []).map(function(h) { return `- **${h.label}**: ${h.detail}`; }).join('\n') + `\n\n`;
+        });
+        content += `## Key Projects\n\n`;
+        (d.projects || []).forEach(function(p) {
+          var linkUrl = p.links && (p.links.caseStudy || p.links.profile || p.links.website || p.links.bot || p.links.github || p.links.chromeStore) ? (p.links.caseStudy || p.links.profile || p.links.website || p.links.bot || p.links.github || p.links.chromeStore) : '';
+          content += `### ${p.title} (${linkUrl})\n**Role**: ${p.role}\n\n${p.description}\n\n` +
+            (p.highlights || []).map(function(im) { return `- ${im}`; }).join('\n') + `\n\n`;
+        });
+        content += `## Experience & Leadership\n\n`;
+        (d.experience || []).forEach(function(e) {
+          content += `### ${e.role} — ${e.org} (${e.period})\n` + (e.bullets || []).map(function(b) { return `- ${b}`; }).join('\n') + `\n\n`;
+        });
+      } catch(e) {}
+    }
+    if (!content) {
+      try {
+        var res = await fetch('/llms-full.txt');
+        if (res.ok) content = await res.text();
+      } catch(e) {}
+    }
+    if (!content) {
+      content = `# Mario Marcolongo — AI Evaluation & Scientific Research Verification Specialist\n> AI Evaluation & Scientific Research Verification Specialist | Model Behavior Evaluation · Evidence Synthesis · Evaluation Operations · Technical Product Delivery\nView full profile online at https://mariomarcolongo.com/llms-full.txt`;
+    }
+    try {
+      await navigator.clipboard.writeText(content);
+      btnEl.textContent = '✓ Copied Dossier!';
+      btnEl.style.background = 'var(--emerald, #10B981)';
+      btnEl.style.color = '#fff';
+      setTimeout(function() {
+        btnEl.textContent = origText;
+        btnEl.style.background = '';
+        btnEl.style.color = '';
+      }, 2200);
+    } catch (err) {
+      btnEl.textContent = 'Failed to copy';
+      setTimeout(function() { btnEl.textContent = origText; }, 2000);
+    }
+  }
+</script></main><script>
+    (function initWebMCP() {
+      function registerTools() {
+        if (typeof navigator !== 'undefined' && navigator.modelContext && typeof navigator.modelContext.provideContext === 'function') {
+          try {
+            navigator.modelContext.provideContext({
+              tools: [
+                {
+                  name: "query_dossier",
+                  description: "Retrieve comprehensive verified biographical summary, work history, skills, and open science projects.",
+                  inputSchema: {
+                    type: "object",
+                    properties: {
+                      format: { type: "string", description: "Format option: 'summary' or 'full'", default: "full" }
+                    }
+                  },
+                  execute: async (args = {}) => {
+                    const url = args.format === 'summary' ? '/llms.txt' : '/llms-full.txt';
+                    const res = await fetch(url);
+                    const text = await res.text();
+                    return { content: text };
+                  }
+                },
+                {
+                  name: "query_cv",
+                  description: "Access Mario Marcolongo's machine-actionable Curriculum Vitae.",
+                  inputSchema: {
+                    type: "object",
+                    properties: {}
+                  },
+                  execute: async () => {
+                    const res = await fetch('/cv-llm.txt');
+                    const text = await res.text();
+                    return { content: text };
+                  }
+                },
+                {
+                  name: "query_genomic_pipeline",
+                  description: "Access full technical logs and variant analysis notes for the public 41x WGS genomic donation (ENA PRJEB109744).",
+                  inputSchema: {
+                    type: "object",
+                    properties: {}
+                  },
+                  execute: async () => {
+                    const res = await fetch('/llms-full.txt');
+                    const text = await res.text();
+                    return { content: text };
+                  }
+                }
+              ]
+            });
+          } catch (e) {
+            console.warn("WebMCP registration error:", e);
+          }
+        }
+      }
+
+      registerTools();
+      if (typeof window !== 'undefined') {
+        window.addEventListener('DOMContentLoaded', registerTools);
+        window.addEventListener('load', registerTools);
+      }
+    })();
+  </script></body></html>

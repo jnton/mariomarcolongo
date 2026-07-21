@@ -1,0 +1,86 @@
+---
+export interface Props {
+  activePage?: 'home' | 'security' | 'cv' | 'resume';
+}
+
+const { activePage = 'home' } = Astro.props;
+---
+
+<header class="nav print-hide" id="siteNav">
+  <a href="/" class="nav-name" aria-label="Mario Marcolongo — Home">Mario Marcolongo</a>
+  <nav class="nav-actions" aria-label="Primary Navigation">
+    <a
+      href="/"
+      class={`nav-link ${activePage === 'home' ? 'active' : ''}`}
+      aria-current={activePage === 'home' ? 'page' : undefined}
+    >Overview</a>
+    <a
+      href="/security.html"
+      class={`nav-link ${activePage === 'security' ? 'active' : ''}`}
+      aria-current={activePage === 'security' ? 'page' : undefined}
+    >Model Evaluation</a>
+    <a
+      href="/cv.html"
+      class={`nav-link hide-mobile ${activePage === 'cv' ? 'active' : ''}`}
+      aria-current={activePage === 'cv' ? 'page' : undefined}
+    >Full CV</a>
+    <a
+      href="/cv-resume.html"
+      class={`btn btn-primary btn-sm ${activePage === 'resume' ? 'active' : ''}`}
+      aria-current={activePage === 'resume' ? 'page' : undefined}
+    >2-Page Résumé</a>
+    <button class="theme-toggle" id="themeBtn" aria-label="Toggle visual theme" type="button">
+      <span class="theme-icon-light" aria-hidden="true">☀️</span>
+      <span class="theme-icon-dark" aria-hidden="true" style="display:none;">🌙</span>
+    </button>
+  </nav>
+</header>
+
+<script is:inline>
+  (function initNavAndTheme() {
+    // Scroll handling for nav styling
+    var navEl = document.getElementById('siteNav');
+    if (navEl) {
+      var onScroll = function() {
+        if (window.scrollY > 20) {
+          navEl.classList.add('scrolled');
+        } else {
+          navEl.classList.remove('scrolled');
+        }
+      };
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+    }
+
+    // Theme toggle button handling
+    var themeBtn = document.getElementById('themeBtn');
+    if (themeBtn) {
+      function updateIcons(theme) {
+        var lightIcon = themeBtn.querySelector('.theme-icon-light');
+        var darkIcon = themeBtn.querySelector('.theme-icon-dark');
+        if (lightIcon && darkIcon) {
+          if (theme === 'dark') {
+            lightIcon.style.display = 'none';
+            darkIcon.style.display = 'inline';
+          } else {
+            lightIcon.style.display = 'inline';
+            darkIcon.style.display = 'none';
+          }
+        }
+      }
+
+      var current = document.documentElement.getAttribute('data-theme') || 'light';
+      updateIcons(current);
+
+      themeBtn.addEventListener('click', function() {
+        var active = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+        var next = active === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', next);
+        updateIcons(next);
+        try {
+          localStorage.setItem('theme', next);
+        } catch(e) {}
+      });
+    }
+  })();
+</script>

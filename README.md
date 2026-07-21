@@ -1,6 +1,6 @@
 # Mario Marcolongo — Personal Portfolio & Curriculum Vitae
 
-> **Scientific Fact-Checker · Open Science Technologist · Systems Developer**  
+> **AI Evaluation & Scientific Research Verification Specialist | Model Behavior Evaluation · Evidence Synthesis · Evaluation Operations · Technical Product Delivery**  
 > 🌐 Live Website: [mariomarcolongo.com](https://mariomarcolongo.com) (`mariomarcolongo.org` redirects here)  
 > 🔍 Primary Source Verification: ORCID [0000-0003-2846-7115](https://orcid.org/0000-0003-2846-7115) · ENA Accession [PRJEB109744](https://www.ebi.ac.uk/ena/browser/view/PRJEB109744)
 
@@ -8,7 +8,7 @@
 
 ## Overview
 
-This repository hosts the source code and single-source-of-truth (SSOT) data layer for **Mario Marcolongo's personal web portfolio and interactive curriculum vitae**. Engineered with **Astro** and deployed on **Cloudflare Pages**, the platform combines modern, dynamic web design with state-of-the-art **AI-native discovery** and **open-science verifiability**.
+This repository hosts the source code and single-source-of-truth (SSOT) data layer for **Mario Marcolongo's personal web portfolio and interactive curriculum vitae**. Engineered with **Astro** and deployed on **Cloudflare Pages**, the platform combines modern, dynamic web design with state-of-the-art **AI-assisted discovery** and **open-science verifiability**.
 
 Every piece of biographical data, research infrastructure, professional experience, and technical skill is structured centrally. Both visual web pages and machine-readable dossiers (`llms.txt`, Markdown replicas, structured JSON-LD) are deterministically generated from this exact data source.
 
@@ -20,7 +20,7 @@ Every piece of biographical data, research infrastructure, professional experien
 - **No Data Drift**: All portfolio items, career milestones, skills, key metrics, and publications reside cleanly in a centralized JavaScript module (`data/source.js`).
 - **Unified Rendering**: The frontend pages (`src/pages/index.astro`, `src/pages/cv.astro`), AI dossiers, and custom PDF exporters pull from this exact SSOT during build time.
 
-### 2. AI-Native & Agent-Ready Infrastructure
+### 2. AI-Assisted & Agent-Ready Infrastructure
 - **LLMs.txt Standard (`/llms.txt`, `/llms-full.txt`, `/cv-llm.txt`)**: Automated build scripts generate structured, clean Markdown dossiers optimized for large language models, AI search engines (`PerplexityBot`, `ClaudeBot`, `GPTBot`), and recruiter evaluation.
 - **Build-Time Markdown Emitter (`src/integrations/markdown-emitter.mjs`)**: A custom Astro build integration that traverses generated static routes in `dist/` and emits pristine `.md` replicas (e.g., `index.md`, `cv.md`) with valid YAML frontmatter and stripped UI boilerplate.
 - **Edge HTTP Content Negotiation (`functions/[[path]].js`)**: A custom Cloudflare Pages edge function inspects incoming requests. When queried by AI agents, command-line tools (`curl`, `HTTPie`), or clients requesting `Accept: text/markdown`, the edge function automatically serves clean Markdown dossiers (`llms-full.txt` or `cv-llm.txt`) while delivering rich, interactive HTML to human visitors.
