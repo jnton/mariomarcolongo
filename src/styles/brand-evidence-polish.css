@@ -26,6 +26,10 @@
   color: #2f5fc5 !important;
 }
 
+.portfolio-v5 .p5-document:nth-child(4) {
+  opacity: 1;
+}
+
 [data-theme="dark"] .nav-editorial .nav-contact,
 [data-theme="dark"] .portfolio-v5 .p5-kicker,
 [data-theme="dark"] .portfolio-v5 .p5-card-label,
