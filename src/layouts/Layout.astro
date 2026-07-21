@@ -8,8 +8,8 @@ export interface Props {
 }
 
 const {
-  title = "Mario Marcolongo — AI Evaluation & Research Verification Specialist",
-  description = "AI evaluation and research verification specialist specializing in model behavior evaluation, scientific evidence review, evaluation operations, and technical research.",
+  title = "Mario Marcolongo — AI Safety Evaluation & Research Verification",
+  description = "AI safety evaluation, adversarial model testing, scientific evidence verification, research operations and data-quality portfolio.",
   canonical = "https://mariomarcolongo.com/"
 } = Astro.props;
 ---
@@ -23,16 +23,14 @@ const {
   <meta name="description" content={description} />
   <link rel="canonical" href={canonical} />
 
-  <!-- Favicon & PWA Manifest -->
   <link rel="icon" type="image/x-icon" sizes="32x32" href="/favicon.ico" />
   <link rel="shortcut icon" href="/favicon.ico" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png" />
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-  <link rel="mask-icon" href="/favicon.svg" color="#34D399" />
+  <link rel="mask-icon" href="/favicon.svg" color="#1f5d52" />
   <link rel="manifest" href="/site.webmanifest" />
 
-  <!-- mm-theme Pre-Paint Script -->
   <script is:inline id="mm-theme">
     (function() {
       try {
@@ -48,14 +46,12 @@ const {
     })();
   </script>
 
-  <!-- WebMCP & Agent-to-Agent Discovery Links -->
   <link rel="api-catalog" href="https://mariomarcolongo.com/.well-known/api-catalog" />
   <link rel="describedby" type="text/plain" href="https://mariomarcolongo.com/llms.txt" />
   <link rel="describedby" type="text/plain" href="https://mariomarcolongo.com/llms-full.txt" />
   <link rel="agent-card" href="https://mariomarcolongo.com/.well-known/agent-card.json" />
   <link rel="mcp-server-card" href="https://mariomarcolongo.com/.well-known/mcp/server-card.json" />
 
-  <!-- Open Graph / Social Previews -->
   <meta property="og:type" content="website" />
   <meta property="og:url" content={canonical} />
   <meta property="og:title" content={title} />
@@ -65,14 +61,12 @@ const {
   <meta property="og:image:height" content="630" />
   <meta property="og:site_name" content="Mario Marcolongo" />
 
-  <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:url" content={canonical} />
   <meta name="twitter:title" content={title} />
   <meta name="twitter:description" content={description} />
   <meta name="twitter:image" content="https://mariomarcolongo.com/og-preview.png" />
 
-  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700;800;900&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet" />
@@ -93,7 +87,7 @@ const {
               tools: [
                 {
                   name: "query_dossier",
-                  description: "Retrieve comprehensive verified biographical summary, work history, skills, and open science projects.",
+                  description: "Retrieve Mario Marcolongo's evidence-bound professional dossier, work history and public records.",
                   inputSchema: {
                     type: "object",
                     properties: {
@@ -109,11 +103,8 @@ const {
                 },
                 {
                   name: "query_cv",
-                  description: "Access Mario Marcolongo's machine-actionable Curriculum Vitae.",
-                  inputSchema: {
-                    type: "object",
-                    properties: {}
-                  },
+                  description: "Access Mario Marcolongo's machine-readable master CV.",
+                  inputSchema: { type: "object", properties: {} },
                   execute: async () => {
                     const res = await fetch('/cv-llm.txt');
                     const text = await res.text();
@@ -122,11 +113,8 @@ const {
                 },
                 {
                   name: "query_genomic_pipeline",
-                  description: "Access full technical logs and variant analysis notes for the public 41x WGS genomic donation (ENA PRJEB109744).",
-                  inputSchema: {
-                    type: "object",
-                    properties: {}
-                  },
+                  description: "Access technical notes for the public 41x WGS genomic donation under ENA PRJEB109744.",
+                  inputSchema: { type: "object", properties: {} },
                   execute: async () => {
                     const res = await fetch('/llms-full.txt');
                     const text = await res.text();
