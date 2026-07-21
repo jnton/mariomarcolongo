@@ -50,7 +50,11 @@ jobs:
           npm ci --no-audit --no-fund
 
       - name: Build and verify generated output
-        run: npm run build
+        shell: bash
+        run: |
+          set -o pipefail
+          mkdir -p audit-output
+          npm run build 2>&1 | tee audit-output/build.log
 
       - name: Verify deterministic generated files
         run: |
@@ -92,7 +96,7 @@ jobs:
           path: |
             /tmp/source-repair.patch
             /tmp/source-repair.sha256
-            audit-output/**/*.png
+            audit-output/**
             Mario Marcolongo — 2-Page Application Résumé.pdf
             Mario Marcolongo — Curriculum Vitae.pdf
           if-no-files-found: ignore
