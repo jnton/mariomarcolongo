@@ -21,7 +21,8 @@ const REQUIRED = [
   'src/pages/integrity.astro', 'src/pages/cv.astro', 'src/pages/cv-resume.astro',
   'src/pages/cv-research.astro', 'src/pages/cv-editorial.astro', 'src/pages/cv-integrity.astro',
   'src/pages/security.astro', 'src/styles/global.css', 'src/styles/career-v2.css',
-  'src/styles/portfolio-v5.css', 'src/styles/nav-editorial.css', 'src/styles/integrity.css',
+  'src/styles/portfolio-v5.css', 'src/styles/portfolio-v6-overrides.css',
+  'src/styles/nav-editorial.css', 'src/styles/integrity.css',
   'src/styles/v3-accessibility.css', 'scripts/lib/dossier-generators.js',
   'scripts/generate-llm-dossiers.js', 'scripts/postbuild.js', 'scripts/verify-dist.js',
   'scripts/verify-rendering.js', 'public/.well-known/api-catalog',
@@ -119,14 +120,16 @@ for (const marker of ['human-capabilities', 'human-work', 'human-documents']) {
 }
 for (const requiredText of [
   'Evidence for the next role—and the path after it.',
-  'Public tools with a clear job to do.', 'Public analysis across three platforms.',
+  'Public tools with a clear job to do.', 'Three inspectable public artifacts.',
+  'Built for teams that reward independent judgment.',
   'Use the version matched to the role.', 'Discuss a difficult problem.'
 ]) {
-  if (!indexSource.includes(requiredText)) fail('src/pages/index.astro', 1, `Homepage is missing portfolio-v5 content: ${requiredText}`);
+  if (!indexSource.includes(requiredText)) fail('src/pages/index.astro', 1, `Homepage is missing current portfolio content: ${requiredText}`);
 }
 for (const rejectedText of [
   'class="v3-network"', 'Explore role lenses', 'One profile. Four credible lenses.',
-  'Pencil_Fascist_Tuberculosis', 'Alessandro Lanzoni', 'class="portfolio-v4"'
+  'Pencil_Fascist_Tuberculosis', 'Alessandro Lanzoni', 'class="portfolio-v4"',
+  'Public analysis across three platforms.'
 ]) {
   if (indexSource.includes(rejectedText)) fail('src/pages/index.astro', 1, `Homepage still contains rejected content: ${rejectedText}`);
 }
@@ -137,7 +140,7 @@ for (const requiredText of ['evidence trail survives scrutiny', 'Evidence bounda
 }
 
 const securitySource = fs.readFileSync(path.join(ROOT, 'src/pages/security.astro'), 'utf8');
-for (const requiredText of ['AI evaluation and model-behavior record.', 'What the record demonstrates', 'Limitations and interpretation', 'archive.is/inkFs']) {
+for (const requiredText of ['AI evaluation and model-behavior record.', 'What the record demonstrates', 'Limitations and interpretation', 'archive.is/inkFs', 'Open live Gray Swan profile']) {
   if (!securitySource.includes(requiredText)) fail('src/pages/security.astro', 1, `Evaluation record is missing required text: ${requiredText}`);
 }
 
