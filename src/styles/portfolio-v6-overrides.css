@@ -224,10 +224,14 @@
 }
 
 .p5-operating-disclosure span {
-  color: var(--p5-coral);
+  color: #b33f2c;
   font: 750 0.7rem/1.35 var(--font-mono, monospace);
   letter-spacing: 0.1em;
   text-transform: uppercase;
+}
+
+[data-theme="dark"] .p5-operating-disclosure span {
+  color: var(--p5-coral);
 }
 
 .p5-operating-disclosure h3 {
