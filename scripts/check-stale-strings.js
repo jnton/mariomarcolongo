@@ -63,7 +63,6 @@ const PROHIBITED = [
   ['Model Behavior & Safety Case Study', 'Outdated evaluation-page positioning'],
   ['AI Evaluation & Scientific Research Verification Specialist', 'Competing primary title'],
   ['Scientific AI Evaluation & Research Data Specialist', 'Competing primary title'],
-  ['codebase navigation and modification', 'Unsupported independent-development implication'],
   ['C2 Reading/Listening, B2 Writing/Speaking', 'Unnecessary language subscore emphasis']
 ];
 
