@@ -1,0 +1,289 @@
+diff --git a/.github/workflows/verify.yml b/.github/workflows/verify.yml
+index 0dd16c1..d234d78 100644
+--- a/.github/workflows/verify.yml
++++ b/.github/workflows/verify.yml
+@@ -20,24 +20,24 @@ jobs:
+         uses: actions/setup-node@v4
+         with:
+           node-version: 22
++          cache: npm
+ 
+-      - name: Install dependencies for bootstrap audit
+-        run: npm install --no-audit --no-fund
+-
+-      - name: Run source checks
+-        run: npm run lint
++      - name: Install locked dependencies
++        run: npm ci --no-audit --no-fund
+ 
+       - name: Build and verify generated output
+         run: npm run build
+ 
+-      - name: Verify rendered pages
++      - name: Verify deterministic generated files
+         run: |
+-          if [ -f scripts/verify-rendering.js ]; then
+-            node scripts/verify-rendering.js
+-          else
+-            echo "scripts/verify-rendering.js is missing" >&2
+-            exit 1
+-          fi
++          npm run generate:llms
++          git diff --exit-code -- \
++            llms.txt llms-full.txt cv-llm.txt \
++            public/llms.txt public/llms-full.txt public/cv-llm.txt public/data/source.js \
++            index.html cv.html cv-resume.html security.html
++
++      - name: Verify rendered pages
++        run: npm run verify:render
+ 
+       - name: Generate résumé PDF
+         run: npm run pdf:resume
+@@ -45,31 +45,17 @@ jobs:
+       - name: Generate full CV PDF
+         run: npm run pdf:cv
+ 
+-      - name: Check generated tree cleanliness
++      - name: Check patch formatting
+         run: git diff --check
+ 
+-      - name: Package exact repository snapshot
+-        if: always()
+-        run: |
+-          mkdir -p audit-output
+-          tar --exclude=.git --exclude=./audit-output/repo-snapshot.tar.gz -czf audit-output/repo-snapshot.tar.gz .
+-
+-      - name: Upload repository snapshot
+-        if: always()
+-        uses: actions/upload-artifact@v4
+-        with:
+-          name: repo-snapshot
+-          path: audit-output/repo-snapshot.tar.gz
+-          if-no-files-found: error
+-          retention-days: 2
+-
+       - name: Upload verification screenshots and PDFs
+         if: always()
+         uses: actions/upload-artifact@v4
+         with:
+           name: verification-output
+           path: |
+-            audit-output/**
+-            *.pdf
++            audit-output/**/*.png
++            Mario Marcolongo — 2-Page Application Résumé.pdf
++            Mario Marcolongo — Curriculum Vitae.pdf
+           if-no-files-found: ignore
+           retention-days: 7
+diff --git a/.gitignore b/.gitignore
+index 78c4c1b..96d5dc8 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -1,6 +1,5 @@
+ # Dependencies
+ node_modules/
+-package-lock.json
+ 
+ # Build outputs
+ dist/
+diff --git a/README.md b/README.md
+index e94a4cd..d876e74 100644
+--- a/README.md
++++ b/README.md
+@@ -1,7 +1,7 @@
+ # Mario Marcolongo — Personal Portfolio & Curriculum Vitae
+ 
+-> **AI Evaluation & Scientific Research Verification Specialist | Model Behavior Evaluation · Evidence Synthesis · Evaluation Operations · Technical Product Delivery**  
+-> 🌐 Live Website: [mariomarcolongo.com](https://mariomarcolongo.com) (`mariomarcolongo.org` redirects here)  
++> **AI Evaluation & Research Verification Specialist | Model Behavior Evaluation · Scientific Evidence Review · Evaluation Operations · Technical Research**
++> 🌐 Live Website: [mariomarcolongo.com](https://mariomarcolongo.com) (`mariomarcolongo.org` redirects here)
+ > 🔍 Primary Source Verification: ORCID [0000-0003-2846-7115](https://orcid.org/0000-0003-2846-7115) · ENA Accession [PRJEB109744](https://www.ebi.ac.uk/ena/browser/view/PRJEB109744)
+ 
+ ---
+diff --git a/data/source.js b/data/source.js
+index b703b31..394b399 100644
+--- a/data/source.js
++++ b/data/source.js
+@@ -9,12 +9,19 @@ const MARIO_DOSSIER = {
+ 
+   identity: {
+     name: "Mario Marcolongo",
++    buildVersion: "v2026.07.21",
++    enaAccession: "PRJEB109744",
++    enaUrl: "https://www.ebi.ac.uk/ena/browser/view/PRJEB109744",
++    centralAuth: "https://commons.wikimedia.org/wiki/Special:CentralAuth/Digressivo",
++    grayswanId: "6a57be70d15e123775a1e9cf",
++    grayswanUrl: "https://app.grayswan.ai/arena/user/6a57be70d15e123775a1e9cf",
++    evaluationAsOf: "July 2026",
+     jobTitle: "AI Evaluation & Research Verification Specialist",
+     secondaryTitle: "Model Behavior Evaluation · Scientific Evidence Review · Evaluation Operations · Technical Research",
+     headline: "I check the claims other people don't.",
+-    authorshipStatement: "I use AI-assisted development workflows extensively. I independently own requirements, workflow and system design, validation, testing, debugging, deployment and maintenance, and personally inspect the resulting systems.",
+-    role: "Eight years of verifiable Wikipedia edits holding up under scrutiny. A personal genome released to the public domain under a real ENA accession number. An open-source research-participation directory indexing more than 55 clinical studies, biobanks, donation programs, registries and other research initiatives cited across 37 Wikidata entities. And ranked in the top 8% among ranked Gray Swan Proving Ground participants as of July 2026, with 75 platform-confirmed model breaks across chat, image, agentic tool-use and indirect prompt-injection challenges.",
+-    heroSubHtml: "Eight years of verifiable Wikipedia edits<button class=\"cite-btn\" data-cite=\"edits\" aria-expanded=\"false\" title=\"Click to inspect source\">1</button> holding up under scrutiny. A personal genome<button class=\"cite-btn\" data-cite=\"ena\" aria-expanded=\"false\" title=\"Click to inspect source\">2</button> released to the public domain under a real ENA accession number. An open-source research-participation directory<button class=\"cite-btn\" data-cite=\"registry\" aria-expanded=\"false\" title=\"Click to inspect platform\">3</button> indexing more than 55 clinical studies, biobanks, donation programs, registries and other research initiatives cited across 37 Wikidata entities. And ranked in the top 8% among ranked Gray Swan Proving Ground participants as of July 2026<button class=\"cite-btn\" data-cite=\"grayswan\" aria-expanded=\"false\" title=\"Click to inspect profile\">4</button>, with 75 platform-confirmed model breaks across chat, image, agentic tool-use and indirect prompt-injection challenges.",
++    authorshipStatement: "I use AI-assisted development extensively. For the systems I independently operate, I define requirements and workflows, review generated code, test behavior, debug failures, deploy releases, and maintain the resulting services.",
++    role: "Eight years of auditable Wikimedia work checking claims and sources. A personal genome released to the public domain under ENA accession PRJEB109744. An open-source research-participation directory indexing more than 55 clinical studies, biobanks, donation programs, registries and other research initiatives. Gray Swan Proving Ground participation since July 2026, with 75 platform-confirmed model breaks across chat, image, agentic tool-use and indirect prompt-injection challenges.",
++    heroStatement: "Eight years of auditable Wikimedia work, a public ENA genomic accession, an open-source research-participation directory, and sustained model-behavior evaluation activity on the Gray Swan Proving Ground.",
+     location: "Based in Italy · Italian/EU citizen · Open to worldwide relocation · International B2B contracting available",
+     relocation: "EU/EEA work-authorized; Swiss EU/EFTA permit eligible; open to employer-sponsored work authorization elsewhere; self-funded relocation considered for exceptional opportunities.",
+     relocationVisible: "Based in Italy · Italian/EU citizen · Open to worldwide relocation · International B2B contracting available",
+@@ -45,17 +52,17 @@ const MARIO_DOSSIER = {
+     contactObfuscated: ["me", "mariomarcolongo", "com"]
+   },
+ 
+-  summary: "AI evaluation and scientific research verification specialist with eight years of auditable work checking biomedical, technical and structured-data claims across sources, citations, datasets and public knowledge bases. Founder and product owner of Yourself to Science, an open-source research-participation directory indexing more than 55 clinical studies, biobanks, donation programs, registries and other initiatives, with documented verification workflows, machine-readable data, and Zenodo and FAIRsharing records. Paid scientific fact-checker, writer, data visualizer and website operator for Entropy for Life, supporting more than 55 videos and documentaries and four articles. Gray Swan Proving Ground participant since July 2026, with 75 platform-confirmed model breaks and a top-8% position among ranked participants as of July 2026.",
++  summary: "AI evaluation and research verification specialist with eight years of auditable work checking biomedical, technical and structured-data claims across sources, citations, datasets and public knowledge bases. Founder and product owner of Yourself to Science, an open-source research-participation directory indexing more than 55 clinical studies, biobanks, donation programs, registries and other initiatives, with documented verification workflows, machine-readable data, and Zenodo and FAIRsharing records. Paid scientific fact-checker, writer, data visualizer and website operator for Entropy for Life, supporting more than 55 videos and documentaries and four articles. Gray Swan Proving Ground participant since July 2026, with 75 platform-confirmed model breaks and a top-8% position among ranked participants as of July 2026.",
+ 
+   pillars: [
+     {
+-      category: "ADVERSARIAL EVALUATION & SAFETY",
++      category: "MODEL BEHAVIOR EVALUATION",
+       icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>`,
+       title: "AI Evaluation & Model Behavior Testing",
+-      lead: "Systematic boundary probing of frontier LLMs and multimodal architectures across Chat, Image, Tool-Use, and Indirect Prompt Injection.",
+-      desc: "Independent model safety testing through the Gray Swan Proving Ground since July 2026. Achieved a top 8% position among ranked participants as of July 2026, with 75 platform-confirmed model breaks across 156 submissions and 26 longitudinal testing waves. Evaluation targets instruction hierarchy, alignment consistency, multimodal safety boundaries, agentic tool-use, and indirect prompt injection.",
++      lead: "Structured, self-directed probing of LLM and multimodal-system behavior across chat, image, tool-use and indirect prompt-injection challenges.",
++      desc: "The Gray Swan Proving Ground public profile reports a top-8% rank band among listed participants as of July 2026, with 75 platform-confirmed model breaks across 156 platform submissions. The record demonstrates sustained evaluation activity; it is not an independent security audit or certification.",
+       highlights: [
+-        { label: "Confirmed Model Breaks", detail: "75 platform-confirmed breaks across 26 listed Proving Ground waves" },
++        { label: "Platform-Confirmed Model Breaks", detail: "75 platform-confirmed breaks across 26 listed Proving Ground waves as of July 2026" },
+         { label: "Evaluation Vectors", detail: "Chat & Alignment, Multimodal/Image, Agentic Tool-Use, and Indirect Prompt Injection" }
+       ]
+     },
+@@ -65,8 +72,8 @@ const MARIO_DOSSIER = {
+       title: "Evidence Synthesis & Primary Source Fact-Checking",
+       lead: "Eight years of verifiable Wikipedia edits holding up under scrutiny, with formal training in systematic review screening and biomedical literature verification.",
+       desc: "Completed 4,317 auditable Wikimedia contributions across English Wikipedia (1,592), Wikidata (1,249), Italian Wikipedia (752), and Wikimedia Commons (684) under one public CentralAuth account. Paid scientific fact-checker and writer for Entropy for Life, verifying primary literature for 55+ videos and 4 articles across a 480K+ community, formally acknowledged in Giacomo Moro Mauretto's Mondadori book Italiani veri. Certified in Cochrane Crowd & GALENOS systematic review screening.",
+       highlights: [
+-        { label: "Auditable Knowledge Graph Edits", detail: "4,317 verified contributions across Wikimedia projects as of July 2026" },
++        { label: "Auditable Wikimedia Contributions", detail: "4,317 publicly inspectable contributions across Wikimedia projects as of July 2026" },
+         { label: "Scientific Fact-Checking", detail: "55+ videos & 4 articles verified; Cochrane Crowd & GALENOS certified" }
+       ]
+     },
+@@ -74,7 +81,7 @@ const MARIO_DOSSIER = {
+       category: "OPEN SCIENCE & DATA STEWARDSHIP",
+       icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg>`,
+       title: "Open Science Infrastructure & Data Stewardship",
+-      lead: "Conceiving, designing, and operating open FAIRsharing directories, standardized metadata schemas, and public genomic data pipelines.",
++      lead: "Designing and operating an open research-participation directory, standardized metadata interfaces, and a public personal-genomics workflow.",
+       desc: "Founder and technical builder of Yourself to Science™ (yourselftoscience.org), an open-source research-participation directory indexing more than 55 clinical studies, biobanks, donation programs, registries and other initiatives, indexed in FAIRsharing and Zenodo with live machine-readable MCP servers and OpenAPI specs. Donated personal 41× Whole Genome Sequencing raw reads (DNBSEQ-T7) to the public domain (CC0) under ENA BioSample SAMEA121950568 and Study PRJEB109744.",
+       highlights: [
+         { label: "Open Research Cataloging", detail: "55+ clinical studies, biobanks & registries indexed in FAIRsharing & Zenodo" },
+@@ -86,11 +93,11 @@ const MARIO_DOSSIER = {
+       category: "TECHNICAL PRODUCT DELIVERY",
+       icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>`,
+       title: "Technical Product Delivery & Serverless Systems",
+-      lead: "Translating rigorous technical requirements into production-ready web platforms, serverless automations, and AI-assisted engineering workflows.",
+-      desc: "Independently delivered serverless AWS Lambda systems, browser extensions, interactive network simulations, and AI-native web infrastructure. Defined requirements, designed workflows, navigated and modified codebases, tested behavior, debugged failures, operated CI/CD pipelines, deployed releases, and maintained production systems across Cloudflare, AWS, OVHCloud and GitHub.",
++      lead: "Translating technical requirements into deployed web platforms, serverless automations, and AI-assisted development workflows.",
++      desc: "Delivered serverless AWS Lambda and Telegram automation, browser extensions, interactive network simulations, and WordPress, Cloudflare and OVHCloud web infrastructure. For independently operated systems, defined requirements and workflows, reviewed generated code, tested behavior, debugged failures, deployed releases and maintained services.",
+       highlights: [
+         { label: "Serverless & Web Infrastructure", detail: "AWS Lambda bots, browser extensions, Model Context Protocol (MCP) servers & Cloudflare edge functions" },
+-        { label: "Engineering Ownership", detail: "End-to-end architecture, testing, CI/CD pipelines & personal code verification" }
++        { label: "Technical Delivery Ownership", detail: "Requirements, workflow and system design, testing, CI/CD, deployment, maintenance and personal inspection of generated code" }
+       ]
+     }
+   ],
+@@ -210,12 +217,12 @@ const MARIO_DOSSIER = {
+     },
+     {
+       id: "ai-red-teaming",
+-      title: "Model Behavior & Adversarial Evaluation | Security Case Study",
+-      oneLiner: "Systematic safety boundary evaluation across chat, multimodal, agentic tool-use, and indirect prompt-injection challenges.",
+-      description: "Independent adversarial evaluation conducted through the Gray Swan AI Proving Ground. The public activity record shows 156 submissions and 75 confirmed model breaks across 26 listed waves, with testing spanning conversational alignment, multimodal safety, tool-use authorization, and indirect prompt injection. Individual exploit details are withheld where disclosure could undermine active benchmarks or model safeguards.",
++      title: "Model Behavior & Adversarial Evaluation",
++      oneLiner: "Public aggregate record of self-directed model-behavior evaluation across chat, multimodal, agentic tool-use and indirect prompt-injection challenges.",
++      description: "Self-directed model-behavior evaluation conducted through the Gray Swan Proving Ground. The public profile reports 156 platform submissions and 75 platform-confirmed model breaks across 26 listed waves. Aggregate counts and selected public labels are presented with explicit evidence limitations; complete prompts, outputs, model versions and adjudication materials are not reproduced.",
+       role: "Independent Model-Behavior Evaluator",
+-      tech: ["Adversarial Evaluation", "LLM Safety", "Multimodal Testing", "Agentic Tool-Use", "Prompt Injection"],
++      tech: ["Model Behavior Evaluation", "Multimodal Testing", "Agentic Tool-Use", "Indirect Prompt Injection"],
+       links: {
+         caseStudy: "/security.html",
+         profile: "https://app.grayswan.ai/arena/user/6a57be70d15e123775a1e9cf"
+@@ -223,9 +230,9 @@ const MARIO_DOSSIER = {
+         website: "https://app.grayswan.ai/arena/user/6a57be70d15e123775a1e9cf"
+       },
+       highlights: [
+-        "75 Confirmed Model Breaks: Verified through 26 structured Gray Swan Proving Ground testing waves",
+-        "Top 8% Global Ranking: Among all ranked participants as of July 2026",
+-        "Longitudinal Evaluation: Historical peaks at Wave 1 (14 breaks), Waves 2 & 3 (10 breaks each), and Wave 15 (8 breaks)",
++        "75 Platform-Confirmed Model Breaks: Aggregate total across 26 listed Gray Swan Proving Ground waves as of July 2026",
++        "156 Platform Submissions: Sustained activity across 26 listed testing waves",
++        "Public Wave Distribution: Highest listed break counts are Wave 1 (14), Waves 2 and 3 (10 each), and Wave 15 (8)",
+         "Cross-Modality Coverage: Chat, Image, Agent, and Indirect Prompt Injection"
+       ],
+       visual: {
+@@ -451,10 +458,34 @@ const MARIO_DOSSIER = {
+   education: [
+     {
+       title: "Coursework in Medicine and Surgery",
+-      detail: "Università degli Studi della Campania “Luigi Vanvitelli” · 2020",
+-      period: "Degree not completed."
++      institution: "Università degli Studi della Campania “Luigi Vanvitelli”",
++      period: "2020",
++      status: "Degree not completed"
+     },
+     {
+       title: "EF SET English Certificate 68/100 (C1 Advanced Overall · C2 Reading/Listening · B2 Writing/Speaking)",
+-      detail: "EF Standard English Test (EF SET) · https://cert.efset.org/en/eJz39v",
+-      period: "Mar 2024"
++      institution: "EF Standard English Test (EF SET)",
++      period: "Mar 2024",
++      credentialUrl: "https://cert.efset.org/en/eJz39v"
++    },
++    {
++      title: "Career Essentials in Generative AI",
++      institution: "Microsoft and LinkedIn",
++      period: "Mar 2024",
++      credentialUrl: "https://www.linkedin.com/learning/certificates/c4f1f59578e3ac2567787e262e3b2ec55debf96bbbced4d34d5edaa821d9e6d9"
++    },
++    {
++      title: "GALENOS Crowd Evidence Synthesis Training",
++      institution: "Cochrane Crowd & GALENOS",
++      period: "May 2026",
++      status: "Systematic Review Screening Certification"
++    }
++  ],
++
++  skills: [
++    "Technical Product Delivery: Requirements definition, workflow and system design, codebase navigation and modification, functional testing, iterative debugging, deployment operations, WordPress, HTML/CSS, Git/GitHub, JSON, REST APIs, AWS Lambda, Cloudflare Pages, DNS/SSL and CI/CD.",
++    "AI-Assisted Development Workflow: Extensive use of coding agents for implementation, refactoring, documentation, testing and deployment automation. For independently operated systems: requirements definition, generated-code review, functional testing, debugging, release deployment and maintenance.",
++    "Model Behavior & Adversarial Evaluation: Self-directed LLM boundary testing since 2023; Gray Swan Proving Ground participant since July 2026, with 75 platform-confirmed model breaks and a top-8% position among ranked participants as of July 2026.",
++    "Scientific Verification & Evidence Synthesis: Primary-source fact-checking, bibliographic research, evidence screening, structured claim verification, epidemiological data synthesis and standardized research protocols.",
++    "Open-source research and provenance verification: advanced web and scholarly search, metadata analysis, archival research, domain and certificate-history checks, reverse-image verification and cross-source corroboration.",
++    "Command-Line & Systems Tooling: Unix/macOS shell environments, Git workflows, package management, serverless runtime configuration, and cloud deployment operations.",
++    "Open Science & Structured Data: JSON-LD, RDF Turtle/VoID, FAIRsharing, Zenodo, OpenAPI, MCP servers, Wikimedia projects, Wikidata and ENA BioSample records.",
++    "Data Visualization & Tools: High-Clarity SVG Vector Diagramming, Tableau Public, Flourish, Git / GitHub, GitHub Actions CI/CD.",
++    "Languages: Italian — native. English — C1 overall, with C2 reading/listening and B2 writing/speaking."
++  ],
++
++  resumeSkills: [
++    "Technical Product Delivery: Requirements definition, workflow and system design, codebase navigation and modification, functional testing, iterative debugging, deployment operations, WordPress, HTML/CSS, Git/GitHub, JSON, REST APIs, AWS Lambda, Cloudflare Pages, DNS/SSL and CI/CD.",
++    "AI-Assisted Development Workflow: Extensive use of coding agents for implementation, refactoring, documentation, testing and deployment automation. For independently operated systems: requirements definition, generated-code review, functional testing, debugging, release deployment and maintenance.",
++    "Model Behavior & Adversarial Evaluation: Self-directed LLM boundary testing since 2023; Gray Swan Proving Ground participant since July 2026, with 75 platform-confirmed model breaks and a top-8% position among ranked participants as of July 2026.",
++    "Scientific Verification & Evidence Synthesis: Primary-source fact-checking, bibliographic research, evidence screening, structured claim verification, epidemiological data synthesis and standardized research protocols.",
++    "Open Science & Structured Data: JSON-LD, RDF Turtle/VoID, FAIRsharing, Zenodo, OpenAPI, MCP servers, Wikimedia projects, Wikidata and ENA BioSample records.",
++    "Languages: Italian — native. English — C1 overall, with C2 reading/listening and B2 writing/speaking."
++  ]
++};
++
++
++const computedBreaks = MARIO_DOSSIER.redTeamActivity.waves.reduce(
++  (total, wave) => total + wave.breaks,
++  0
++);
++
++if (computedBreaks !== MARIO_DOSSIER.redTeamActivity.confirmedBreaks) {
++  throw new Error(
++    `Gray Swan total mismatch: expected ${
++      MARIO_DOSSIER.redTeamActivity.confirmedBreaks
++    }, calculated ${computedBreaks}`
++  );
++}
++
++if (typeof window !== "undefined") {
++  window.MARIO_DOSSIER = MARIO_DOSSIER;
++}
++if (typeof module !== "undefined" && module.exports) {
++  module.exports = MARIO_DOSSIER;
++}
