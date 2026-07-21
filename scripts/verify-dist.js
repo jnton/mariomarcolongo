@@ -87,28 +87,34 @@ const indexText = normalizeHtmlText(index);
 for (const needle of [
   H.headline,
   ...H.proofs.flatMap((item) => [item.value, item.label]),
+  ...H.heroWork.flatMap((item) => [item.title, item.linkLabel]),
   ...H.flagships.map((item) => item.title),
   ...H.products.map((item) => item.title),
   ...H.visualization.map((item) => item.title),
+  H.workingStyle.label, H.workingStyle.title,
   ...H.workingPrinciples.map((item) => item.title),
   ...H.applicationDocuments.map((item) => item.title),
   'data-testid="human-capabilities"', 'data-testid="human-work"', 'data-testid="human-documents"',
-  'Evidence for the next role—and the path after it.', 'Discuss a difficult problem.'
+  'Evidence for the next role—and the path after it.', 'Three inspectable public artifacts.',
+  'Built for teams that reward independent judgment.', 'Discuss a difficult problem.'
 ]) assertContains(indexText, needle, 'dist/index.html');
 for (const obsolete of [
   'class="portfolio-v4"', 'class="v3-network"', 'Scale, failure modes, systems and evidence.',
   'Useful when the problem is strange, ambiguous or uncomfortable.', 'One evidence base. Four high-upside application routes.',
-  'Pencil_Fascist_Tuberculosis', 'Alessandro Lanzoni'
+  'Pencil_Fascist_Tuberculosis', 'Alessandro Lanzoni', 'Public analysis across three platforms.',
+  '/media/work/model-behavior-method.svg', '/media/work/entropy-social-proof.svg',
+  'Special:ListFiles/Digressivo'
 ]) assertNotContains(index, obsolete, 'dist/index.html');
 assertContains(index, 'class="portfolio-v5"', 'dist/index.html');
 assertContains(index, 'class="p5-work-mosaic"', 'dist/index.html');
-assertContains(index, '/media/work/mdpi-filter-1-800.webp', 'dist/index.html');
-assertContains(index, '/media/work/model-behavior-method.svg', 'dist/index.html');
-assertContains(index, '/media/work/entropy-social-proof.svg', 'dist/index.html');
+assertContains(index, 'class="p5-work-visual"', 'dist/index.html');
+assertContains(index, 'class="p5-case-cover', 'dist/index.html');
+assertContains(index, '/media/work/mdpi-filter-2-800.webp', 'dist/index.html');
 assertContains(index, '/media/work/telegram-bot-avatar.jpg', 'dist/index.html');
 assertContains(index, '/media/work/tableau-mortality-800.webp', 'dist/index.html');
 assertContains(index, 'public.flourish.studio/visualisation/17745490', 'dist/index.html');
-pass('Compact portfolio-v5 homepage checked');
+assertContains(index, 'Overlapping_clinical_phenotypes_in_genes_associated_with_monogenic_forms_of_autism', 'dist/index.html');
+pass('Readable evidence-card homepage checked');
 
 const applicationProfiles = [
   ['resume', P.aiSafety], ['research', P.researchQuality], ['editorial', P.editorialCommunity], ['integrityCv', P.integrity]
@@ -145,7 +151,8 @@ const securityText = normalizeHtmlText(pages.security);
 for (const needle of [
   'AI evaluation and model-behavior record.', 'What the record demonstrates', 'Evaluation approach',
   'Limitations and interpretation', 'Platform-confirmed model breaks', 'indirect-function-call',
-  'weak-password-change', 'complete 26-wave activity table', 'archive.is/inkFs'
+  'weak-password-change', 'complete 26-wave activity table', 'archive.is/inkFs',
+  'Open live Gray Swan profile', 'verification fallback'
 ]) assertContains(securityText, needle, 'dist/security.html');
 for (const needle of [
   'independently verified policy or alignment boundary failure',
