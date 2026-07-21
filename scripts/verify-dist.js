@@ -95,7 +95,7 @@ const indexText = index.replaceAll('&amp;', '&').replaceAll('&#39;', "'").replac
 });
 const firstVisualization = D.visualizations && D.visualizations[0];
 if (firstVisualization) {
-  assertContains(indexText, firstVisualization.alt, 'dist/index.html');
+  assertContains(indexText, firstVisualization.title, 'dist/index.html');
   assertContains(index, firstVisualization.fileUrl, 'dist/index.html');
 }
 [
