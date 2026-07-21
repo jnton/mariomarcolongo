@@ -41,7 +41,11 @@ jobs:
             index.html integrity.html cv.html cv-resume.html cv-research.html cv-editorial.html cv-integrity.html security.html
 
       - name: Verify rendered pages and interactions
-        run: npm run verify:render
+        shell: bash
+        run: |
+          find audit-output -type f -name '*.png' -delete
+          set -o pipefail
+          npm run verify:render 2>&1 | tee audit-output/render.log
 
       - name: Generate four specialized application PDFs
         run: npm run pdf:resume
