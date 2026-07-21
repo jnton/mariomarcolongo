@@ -1,4 +1,4 @@
-name: Capture public work previews
+name: Synchronize human-centered redesign
 
 on:
   pull_request:
@@ -7,14 +7,18 @@ on:
       - scripts/capture-public-work.js
       - .github/workflows/capture-public-work.yml
       - src/pages/index.astro
+      - src/styles/human-portfolio.css
       - data/portfolio-human.js
+      - scripts/check-stale-strings.js
+      - scripts/verify-dist.js
+      - scripts/verify-rendering.js
   workflow_dispatch:
 
 permissions:
   contents: write
 
 jobs:
-  capture:
+  synchronize:
     if: github.event_name == 'workflow_dispatch' || github.head_ref == 'human-centered-redesign'
     runs-on: ubuntu-latest
     steps:
@@ -35,14 +39,21 @@ jobs:
       - name: Capture public project previews
         run: node scripts/capture-public-work.js
 
-      - name: Commit captured media
+      - name: Build and verify generated output
+        run: npm run build
+
+      - name: Commit synchronized media and generated files
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add public/media/work/*.png
+          git add \
+            public/media/work/*.png \
+            index.html integrity.html security.html cv.html cv-resume.html cv-research.html cv-editorial.html cv-integrity.html \
+            llms.txt llms-full.txt cv-llm.txt \
+            public/llms.txt public/llms-full.txt public/cv-llm.txt public/data/source.js
           if git diff --cached --quiet; then
-            echo "No media changes to commit."
+            echo "No synchronized output changes to commit."
             exit 0
           fi
-          git commit -m "media: capture public work previews"
+          git commit -m "build: synchronize human-centered portfolio output"
           git push origin HEAD:human-centered-redesign
