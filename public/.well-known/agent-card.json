@@ -1,24 +1,24 @@
 {
   "$schema": "https://a2a-card.org/schema/v1.json",
-  "name": "Mario Marcolongo Dossier & Knowledge Interface",
-  "version": "2026.07.15",
-  "description": "Agent-to-Agent (A2A) discovery interface for Mario Marcolongo's verifiable professional dossier, OSINT digital investigation records, biomedical fact-checking history, and personal 41× WGS genomic analysis pipeline.",
+  "name": "Mario Marcolongo Professional Evidence Interface",
+  "version": "2026.07.21",
+  "description": "Agent-to-Agent discovery interface for Mario Marcolongo's evidence-bound professional dossier, AI safety evaluation activity, scientific fact-checking record, research-verification workflows and public open-science records.",
   "url": "https://mariomarcolongo.com",
   "documentationUrl": "https://mariomarcolongo.com/llms-full.txt",
   "capabilities": {
     "queryDossier": {
-      "description": "Retrieve comprehensive verified biographical summary, work history, skills, and projects.",
+      "description": "Retrieve the professional summary, work history, application positioning, skills and public evidence links.",
       "endpoint": "https://mariomarcolongo.com/llms.txt",
       "method": "GET"
     },
-    "queryGenomicPipeline": {
-      "description": "Access full technical logs and variant analysis notes for the public 41× WGS donation (`PRJEB109744`).",
-      "endpoint": "https://mariomarcolongo.com/llms-full.txt",
+    "queryMasterCv": {
+      "description": "Access the machine-readable master CV and comprehensive evidence record.",
+      "endpoint": "https://mariomarcolongo.com/cv-llm.txt",
       "method": "GET"
     },
-    "queryOsintSkills": {
-      "description": "Inspect multi-engine Boolean search, reverse-image/facial verification, EXIF geolocation, and digital-footprint correlation competencies.",
-      "endpoint": "https://mariomarcolongo.com/cv-llm.txt",
+    "queryGenomicRecord": {
+      "description": "Access public notes and identifiers for the 41× WGS donation under ENA PRJEB109744.",
+      "endpoint": "https://mariomarcolongo.com/llms-full.txt",
       "method": "GET"
     }
   },
@@ -27,30 +27,35 @@
       "url": "https://mariomarcolongo.com",
       "protocolBinding": "HTTP+JSON",
       "protocol": "HTTP/HTTPS",
-      "description": "RESTful & Markdown Dossier Interface"
+      "description": "Portfolio and Markdown dossier interface"
     },
     {
       "url": "https://mariomarcolongo.com/.well-known/mcp/server-card.json",
       "protocolBinding": "MCP",
       "protocol": "MCP",
-      "description": "Model Context Protocol Server Interface"
+      "description": "Model Context Protocol resource card"
     }
   ],
   "skills": [
     {
-      "id": "osint-digital-investigation",
-      "name": "OSINT & Digital Investigation Verification",
-      "description": "Performs multi-engine Boolean queries, reverse-image/facial verification (`PimEyes`, `TinEye`, `Google Lens`), EXIF/metadata geolocation, archival provenance (`Wayback Machine`, `Archive.today`), and WHOIS/certificate transparency lookups."
+      "id": "ai-safety-evaluation",
+      "name": "AI Safety Evaluation & Adversarial Testing",
+      "description": "Self-directed model-behavior testing across chat, image, agentic tool-use and indirect prompt-injection challenges, with evidence-bound reporting and explicit limitations."
     },
     {
-      "id": "biomedical-fact-checking",
-      "name": "Biomedical & Epidemiological Fact-Checking",
-      "description": "Synthesizes primary medical literature (`PubMed`, `Cochrane`, `Europe PMC`), executes systematic screening workflows (`GALENOS`), and cross-references public knowledge graphs (`Wikidata`, `English/Italian Wikipedia`)."
+      "id": "research-verification",
+      "name": "Scientific Evidence & Research Verification",
+      "description": "Primary-source fact-checking, bibliographic research, claim decomposition, source-quality assessment, evidence screening and cross-source corroboration."
     },
     {
-      "id": "genomic-pipeline-analysis",
-      "name": "41× WGS Open Genomic Analysis",
-      "description": "Inspects GRCh38-aligned BAM/VCF pipelines, runs `pgsc_calc` polygenic risk scores, and screens variants against `NCBI ClinVar` and `Ensembl VEP` (`ENA PRJEB109744`)."
+      "id": "data-quality-provenance",
+      "name": "Structured Data Quality & Provenance",
+      "description": "Metadata structure, public-source reconciliation, verification workflows, provenance documentation and open-science records across Wikimedia, Wikidata, FAIRsharing, Zenodo and ENA."
+    },
+    {
+      "id": "technical-operations",
+      "name": "Code-Literate Technical Operations",
+      "description": "Codebase reading and behavior inspection, requirements definition, functional testing, deployment operations and AI-assisted implementation workflows; not represented as independent software engineering."
     }
   ],
   "protocols": ["http", "https", "mcp"],
