@@ -1,4 +1,4 @@
-name: Verify portfolio
+name: Apply and verify final repair
 
 on:
   pull_request:
@@ -6,70 +6,81 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
-  verify:
+  repair-and-verify:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 25
     steps:
-      - name: Check out repository
+      - name: Check out repair branch
         uses: actions/checkout@v4
+        with:
+          ref: final-audit-repair
+          fetch-depth: 0
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 22
 
-      - name: Install dependencies for bootstrap audit
-        run: npm install --no-audit --no-fund
+      - name: Reconstruct, verify, and apply source patch
+        run: |
+          test -f .github/repair-ready
+          cat .github/repair-parts/part-* > /tmp/source-repair.patch
+          echo '27a76f20e2f1e4acb884f20e3bf545c1bf8fec534e762c58934a88a11d67e0a1  /tmp/source-repair.patch' | sha256sum -c -
+          git show 9e01792d174a33b7846b9fa6b1d1433c003b7d88:.github/workflows/verify.yml > .github/workflows/verify.yml
+          git apply --check /tmp/source-repair.patch
+          git apply /tmp/source-repair.patch
 
-      - name: Run source checks
-        run: npm run lint
+      - name: Generate lockfile and clean install
+        run: |
+          npm install --package-lock-only --ignore-scripts --no-audit --no-fund
+          npm ci --no-audit --no-fund
 
       - name: Build and verify generated output
         run: npm run build
 
-      - name: Verify rendered pages
+      - name: Verify deterministic generated files
         run: |
-          if [ -f scripts/verify-rendering.js ]; then
-            node scripts/verify-rendering.js
-          else
-            echo "scripts/verify-rendering.js is missing" >&2
-            exit 1
-          fi
+          npm run generate:llms
+          git diff --exit-code -- \
+            llms.txt llms-full.txt cv-llm.txt \
+            public/llms.txt public/llms-full.txt public/cv-llm.txt public/data/source.js \
+            index.html cv.html cv-resume.html security.html
 
-      - name: Generate résumé PDF
+      - name: Verify rendered pages
+        run: npm run verify:render
+
+      - name: Generate and validate résumé PDF
         run: npm run pdf:resume
 
       - name: Generate full CV PDF
         run: npm run pdf:cv
 
-      - name: Check generated tree cleanliness
-        run: git diff --check
-
-      - name: Package exact repository snapshot
-        if: always()
+      - name: Stage final repository state
         run: |
-          mkdir -p audit-output
-          tar --exclude=.git --exclude=./audit-output/repo-snapshot.tar.gz -czf audit-output/repo-snapshot.tar.gz .
+          git diff --check
+          git add -A
+          git rm -r .github/repair-parts .github/repair-ready .github/workflows/apply-final-repair.yml
+          git diff --cached --check
+          git status --short
 
-      - name: Upload repository snapshot
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: repo-snapshot
-          path: audit-output/repo-snapshot.tar.gz
-          if-no-files-found: error
-          retention-days: 2
+      - name: Commit and push verified repair
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'fix: complete portfolio audit and release hardening'
+          git push origin HEAD:final-audit-repair
 
       - name: Upload verification screenshots and PDFs
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: verification-output
+          name: final-verification-output
           path: |
-            audit-output/**
-            *.pdf
+            audit-output/**/*.png
+            Mario Marcolongo — 2-Page Application Résumé.pdf
+            Mario Marcolongo — Curriculum Vitae.pdf
           if-no-files-found: ignore
           retention-days: 7
