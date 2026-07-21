@@ -8,13 +8,23 @@ const { launchBrowser } = require('./lib/browser.js');
 const DOCUMENTS = [
   {
     route: 'cv-resume.html',
-    output: 'Mario Marcolongo — AI Safety Evaluation CV.pdf',
-    label: 'AI Safety Evaluation CV'
+    output: 'Mario Marcolongo — AI Safety & Adversarial Testing CV.pdf',
+    label: 'AI Safety & Adversarial Testing CV'
   },
   {
     route: 'cv-research.html',
     output: 'Mario Marcolongo — Research Verification & Data Quality CV.pdf',
     label: 'Research Verification & Data Quality CV'
+  },
+  {
+    route: 'cv-editorial.html',
+    output: 'Mario Marcolongo — Research Editorial & Community Operations CV.pdf',
+    label: 'Research, Editorial & Community Operations CV'
+  },
+  {
+    route: 'cv-integrity.html',
+    output: 'Mario Marcolongo — Trust Safety & Knowledge Integrity CV.pdf',
+    label: 'Trust, Safety & Knowledge Integrity CV'
   }
 ];
 
@@ -33,9 +43,15 @@ async function generateResumePdfs() {
       const page = await browser.newPage();
       await page.emulateMediaType('print');
       await page.goto(`${staticServer.origin}/${document.route}`, { waitUntil: 'networkidle0', timeout: 45000 });
-      await page.evaluate(() => {
+      await page.evaluate((phone) => {
         document.documentElement.setAttribute('data-theme', 'light');
-      });
+        const phoneSlot = document.getElementById('cvPhoneSlot');
+        if (phoneSlot && phone) {
+          phoneSlot.textContent = phone;
+          phoneSlot.setAttribute('href', `tel:${String(phone).replace(/\s+/g, '')}`);
+          phoneSlot.hidden = false;
+        }
+      }, process.env.CV_PHONE || '');
 
       const outPath = path.resolve(process.cwd(), document.output);
       await page.pdf({
