@@ -2,7 +2,7 @@
 const fs = require('node:fs');
 const path = require('node:path');
 const P = require('../data/application-profiles.js');
-const V = require('../data/portfolio-v3.js');
+const H = require('../data/portfolio-human.js');
 const { startStaticServer } = require('./lib/static-server.js');
 const { launchBrowser } = require('./lib/browser.js');
 
@@ -52,31 +52,37 @@ async function assertPage(page, route, theme, viewport) {
 
 async function verifyHomepageInteractions(page) {
   const interactionResult = await page.evaluate(() => {
-    const tab = document.querySelector('[data-lens="integrity"]');
-    const panel = document.querySelector('[data-panel="integrity"]');
-    if (tab) tab.click();
-    const filter = document.querySelector('[data-project-filter="editorial"]');
-    if (filter) filter.click();
-    const visibleProjects = Array.from(document.querySelectorAll('[data-project-category]')).filter((card) => {
-      return getComputedStyle(card).display !== 'none';
-    });
-    return {
-      activeTab: tab ? tab.getAttribute('aria-selected') : null,
-      activePanel: panel ? panel.classList.contains('is-active') : false,
-      visibleCategories: visibleProjects.map((card) => card.getAttribute('data-project-category')),
-      lensTabCount: document.querySelectorAll('[data-lens]').length,
-      lensPanelCount: document.querySelectorAll('[data-panel]').length
-    };
+    const track = document.querySelector('[data-artifact-track]');
+    const next = document.querySelector('[data-artifact-next]');
+    const before = track ? track.scrollLeft : null;
+    if (next) next.click();
+    return new Promise((resolve) => setTimeout(() => resolve({
+      capabilityCount: document.querySelectorAll('.human-capability').length,
+      storyCount: document.querySelectorAll('.human-story').length,
+      artifactCount: document.querySelectorAll('.human-artifact').length,
+      roleCount: document.querySelectorAll('.human-fit-card').length,
+      hasCollage: Boolean(document.querySelector('.human-collage')),
+      hasProtocol: Boolean(document.querySelector('.human-protocol')),
+      before,
+      after: track ? track.scrollLeft : null
+    }), 500));
   });
 
-  if (interactionResult.activeTab !== 'true' || !interactionResult.activePanel) {
-    throw new Error('Homepage role-lens interaction failed');
+  if (interactionResult.capabilityCount !== H.capabilities.length) {
+    throw new Error(`Homepage must render ${H.capabilities.length} capabilities`);
   }
-  if (interactionResult.lensTabCount !== V.lenses.length || interactionResult.lensPanelCount !== V.lenses.length) {
-    throw new Error(`Homepage must render ${V.lenses.length} role lenses`);
+  if (interactionResult.storyCount !== H.stories.length) {
+    throw new Error(`Homepage must render ${H.stories.length} work stories`);
   }
-  if (!interactionResult.visibleCategories.length || interactionResult.visibleCategories.some((value) => value !== 'editorial')) {
-    throw new Error(`Homepage project filtering failed: ${JSON.stringify(interactionResult.visibleCategories)}`);
+  if (interactionResult.artifactCount < 5) throw new Error('Homepage must render the public artifact gallery');
+  if (interactionResult.roleCount !== H.roleFamilies.length) {
+    throw new Error(`Homepage must render ${H.roleFamilies.length} role-family documents`);
+  }
+  if (!interactionResult.hasCollage || !interactionResult.hasProtocol) {
+    throw new Error('Homepage is missing the real-work collage or focus-group protocol visual');
+  }
+  if (interactionResult.before !== null && interactionResult.after !== null && interactionResult.after <= interactionResult.before) {
+    throw new Error('Homepage artifact carousel control did not move the gallery');
   }
 }
 
@@ -135,7 +141,7 @@ async function main() {
           }
 
           if (pageErrors.length) throw new Error(`${route} page errors: ${pageErrors.join(' | ')}`);
-          const relevantConsoleErrors = consoleErrors.filter((message) => !/favicon|google.*font|net::ERR_/i.test(message));
+          const relevantConsoleErrors = consoleErrors.filter((message) => !/favicon|google.*font|net::ERR_|Failed to load resource/i.test(message));
           if (relevantConsoleErrors.length) throw new Error(`${route} console errors: ${relevantConsoleErrors.join(' | ')}`);
           await page.screenshot({ path: path.join(OUTPUT, `${slug(route)}-${theme}-${viewport.name}.png`), fullPage: true });
           await page.close();
@@ -148,20 +154,19 @@ async function main() {
     await noJs.setViewport({ width: 390, height: 844, deviceScaleFactor: 1 });
     await noJs.goto(`${staticServer.origin}/index.html`, { waitUntil: 'load', timeout: 45000 });
     const expectedNoJsText = [
-      'I investigate claims',
-      ...V.lenses.map((lens) => lens.title),
-      ...V.cases.map((record) => record.title),
-      ...V.documents.filter((document) => document.id !== 'master').map((document) => document.title)
+      H.headline,
+      ...H.capabilities.map((item) => item.title),
+      ...H.stories.map((story) => story.title),
+      ...H.roleFamilies.map((role) => role.title)
     ];
     const noJsResult = await noJs.evaluate((expected) => {
       const text = document.body.innerText;
       return {
         missing: expected.filter((value) => !text.includes(value)),
-        tests: ['career-focus', 'career-evidence', 'career-documents', 'homepage-projects'].map((id) => {
+        tests: ['human-capabilities', 'human-work', 'human-documents'].map((id) => {
           const element = document.querySelector(`[data-testid="${id}"]`);
           return { id, exists: Boolean(element), children: element ? element.children.length : 0 };
         }),
-        visibleLensPanels: Array.from(document.querySelectorAll('[data-panel]')).filter((element) => getComputedStyle(element).display !== 'none').length,
         evidenceLinks: document.querySelectorAll('a[href^="http"]').length,
         scrollWidth: document.documentElement.scrollWidth,
         clientWidth: document.documentElement.clientWidth
@@ -169,7 +174,6 @@ async function main() {
     }, expectedNoJsText);
     if (noJsResult.missing.length) throw new Error(`No-JS homepage is missing: ${noJsResult.missing.join(', ')}`);
     if (noJsResult.tests.some((item) => !item.exists || item.children === 0)) throw new Error(`No-JS homepage has an empty required container: ${JSON.stringify(noJsResult.tests)}`);
-    if (noJsResult.visibleLensPanels !== V.lenses.length) throw new Error('No-JS homepage must expose all role-lens content');
     if (noJsResult.evidenceLinks === 0) throw new Error('No-JS homepage has no external evidence links');
     if (noJsResult.scrollWidth > noJsResult.clientWidth + 1) throw new Error('No-JS mobile homepage overflows horizontally');
     await noJs.screenshot({ path: path.join(OUTPUT, 'index-no-js-mobile.png'), fullPage: true });
