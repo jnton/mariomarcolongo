@@ -90,6 +90,7 @@ jobs:
         with:
           name: final-verification-output
           path: |
+            /tmp/source-repair.patch
             /tmp/source-repair.sha256
             audit-output/**/*.png
             Mario Marcolongo — 2-Page Application Résumé.pdf
