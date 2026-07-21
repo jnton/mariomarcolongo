@@ -32,6 +32,9 @@ jobs:
           set -o pipefail
           npm run build 2>&1 | tee audit-output/build.log
 
+      - name: Diagnose mobile layout
+        run: node scripts/diagnose-mobile-overflow.js | tee audit-output/mobile-overflow.json
+
       - name: Verify deterministic generated files
         run: |
           npm run generate:llms
