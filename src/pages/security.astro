@@ -5,9 +5,10 @@ import SiteFooter from "../components/SiteFooter.astro";
 import "../styles/career-v2.css";
 import D from "../../data/source.js";
 
-const title = "Model Behavior Evaluation Record — Mario Marcolongo";
-const description = "Concise public record of self-directed model-behavior evaluation on the Gray Swan Proving Ground, including scope, methodology, platform-reported activity and evidence limitations.";
+const title = "AI Evaluation & Model Behavior Record — Mario Marcolongo";
+const description = "Concise public record of self-directed model-behavior evaluation on the Gray Swan Proving Ground, including scope, methodology, platform-reported activity, archived evidence and limitations.";
 const asOf = D.redTeamActivity.asOf || "July 2026";
+const archiveUrl = D.identity.grayswanArchiveUrl || "https://archive.is/inkFs";
 
 const areas = [
   {
@@ -56,7 +57,8 @@ const evaluationJsonLd = {
   url: "https://mariomarcolongo.com/security.html",
   dateModified: "2026-07-21",
   author: { "@id": "https://mariomarcolongo.com/#person" },
-  about: { "@type": "Thing", name: "Model behavior evaluation" }
+  about: { "@type": "Thing", name: "AI evaluation and model behavior" },
+  citation: [D.identity.grayswanUrl, archiveUrl]
 };
 ---
 
@@ -71,13 +73,14 @@ const evaluationJsonLd = {
     <section class="evaluation-hero">
       <div>
         <div class="evaluation-eyebrow">Public evaluation evidence</div>
-        <h1 class="evaluation-title">Model behavior evaluation record.</h1>
+        <h1 class="evaluation-title">AI evaluation and model-behavior record.</h1>
         <p class="evaluation-lede">
-          Self-directed adversarial testing across chat, image, agentic tool-use and indirect prompt-injection challenges. This page is designed as a professional evidence record: it explains what the public activity demonstrates, how the work is approached and where the evidence stops.
+          Self-directed adversarial testing across chat, image, agentic tool-use and indirect prompt-injection challenges. This page explains what the public activity demonstrates, how the work is approached and where the evidence stops.
         </p>
         <div class="career-actions">
-          <a class="btn btn-primary" href={D.identity.grayswanUrl} target="_blank" rel="noopener noreferrer">Open Gray Swan profile ↗</a>
-          <a class="btn" href="/cv-resume.html">AI Safety Application CV</a>
+          <a class="btn btn-primary" href={archiveUrl} target="_blank" rel="noopener noreferrer">Open archived profile snapshot ↗</a>
+          <a class="btn" href={D.identity.grayswanUrl} target="_blank" rel="noopener noreferrer">Try live Gray Swan profile ↗</a>
+          <a class="btn" href="/cv-resume.html">AI Evaluation Application CV</a>
         </div>
       </div>
 
@@ -140,10 +143,16 @@ const evaluationJsonLd = {
     <section class="evaluation-section" id="public-evidence">
       <div class="evaluation-section-head">
         <h2>Publicly inspectable evidence</h2>
-        <p>The platform profile exposes aggregate activity and a limited number of public submission labels. Complete prompts, outputs, model versions and adjudication rationales are not reproduced here.</p>
+        <p>The original platform profile may be unstable or inaccessible to archival crawlers. A user-created archive.is snapshot preserves the public aggregate profile; Internet Archive could not save the page.</p>
       </div>
 
       <div class="evaluation-grid">
+        <article class="evaluation-card">
+          <div class="evaluation-step">ARCHIVED PUBLIC PROFILE</div>
+          <h3>Gray Swan profile snapshot</h3>
+          <p>Archived copy of the public participant page used to preserve aggregate counts, rank band and visible activity after the live page became difficult to archive.</p>
+          <p><a class="p5-link" href={archiveUrl} target="_blank" rel="noopener noreferrer">Open archive.is snapshot ↗</a></p>
+        </article>
         {(D.redTeamActivity.publicLabels || []).map((label) => (
           <article class="evaluation-card">
             <div class="evaluation-step">PUBLIC PLATFORM LABEL</div>
@@ -181,7 +190,7 @@ const evaluationJsonLd = {
     <section class="evaluation-section" id="limitations" data-testid="evaluation-limitations">
       <div class="evaluation-section-head">
         <h2>Limitations and interpretation</h2>
-        <p>This record supports applications to evaluation, safeguards operations, trust & safety and adversarial QA roles. It does not yet establish the application-security, independent Python development or automated-framework experience expected from senior AI red-team engineers.</p>
+        <p>This record supports applications to AI evaluation, safeguards operations, trust & safety and adversarial QA roles. It does not yet establish the application-security, independent Python development or automated-framework experience expected from senior AI red-team engineers.</p>
       </div>
       <ul class="evaluation-list">
         <li>“Platform-confirmed” describes Gray Swan’s status, not independent third-party reproduction.</li>
