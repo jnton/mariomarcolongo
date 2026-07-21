@@ -144,10 +144,15 @@ jobs:
         run: node scripts/generate-brand-assets.js
 
       - name: Build and verify repository
+        shell: bash
         run: |
-          npm run build
-          npm run verify:render
-          npm run pdf
+          set -o pipefail
+          npm run build > /tmp/build.log 2>&1 || { echo '--- build failure ---'; tail -n 220 /tmp/build.log; exit 1; }
+          npm run verify:render > /tmp/render.log 2>&1 || { echo '--- render failure ---'; tail -n 220 /tmp/render.log; exit 1; }
+          npm run pdf > /tmp/pdf.log 2>&1 || { echo '--- PDF failure ---'; tail -n 220 /tmp/pdf.log; exit 1; }
+          tail -n 40 /tmp/build.log
+          tail -n 40 /tmp/render.log
+          tail -n 40 /tmp/pdf.log
 
       - name: Run local Lighthouse audits
         shell: bash
