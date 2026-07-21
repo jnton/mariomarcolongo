@@ -1,0 +1,36 @@
+name: Apply final repair
+
+on:
+  push:
+    branches: [final-audit-repair]
+
+permissions:
+  contents: write
+
+jobs:
+  apply:
+    if: ${{ hashFiles('.github/repair-ready') != '' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: final-audit-repair
+          fetch-depth: 0
+
+      - name: Reconstruct and validate patch
+        run: |
+          cat .github/repair-parts/part-* > /tmp/final-repair.patch
+          echo '60bfa29c88ff73b6ebaf346ec4afe0925d5080760cd495b69c07c95ce6c4f4f5  /tmp/final-repair.patch' | sha256sum -c -
+          git apply --check /tmp/final-repair.patch
+
+      - name: Apply repair and remove bootstrap files
+        run: |
+          git apply --index /tmp/final-repair.patch
+          git rm -r .github/repair-parts .github/repair-ready .github/workflows/apply-final-repair.yml
+
+      - name: Commit and push repair
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'fix: complete portfolio audit and release hardening'
+          git push origin HEAD:final-audit-repair
