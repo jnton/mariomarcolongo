@@ -1,0 +1,145 @@
+name: Apply career positioning v2
+
+on:
+  push:
+    branches: [final-audit-repair]
+
+permissions:
+  contents: write
+
+jobs:
+  migrate:
+    if: "!contains(github.event.head_commit.message, '[career-v2-applied]')"
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Check out portfolio branch
+        uses: actions/checkout@v4
+        with:
+          ref: final-audit-repair
+          fetch-depth: 0
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Rewrite canonical positioning and capability boundaries
+        run: |
+          node <<'NODE'
+          const fs = require('node:fs');
+          const file = 'data/source.js';
+          let source = fs.readFileSync(file, 'utf8');
+
+          const replacements = [
+            [
+              'jobTitle: "AI Evaluation & Research Verification Specialist"',
+              'jobTitle: "AI Safety Evaluation & Research Verification Specialist"'
+            ],
+            [
+              'secondaryTitle: "Model Behavior Evaluation · Scientific Evidence Review · Evaluation Operations · Technical Research"',
+              'secondaryTitle: "Adversarial Model Testing · Scientific Evidence Review · Evaluation Operations · Data Quality"'
+            ],
+            [
+              'headline: "I check the claims other people don\'t."',
+              'headline: "I test model behavior and document what holds up."'
+            ],
+            [
+              'authorshipStatement: "I use AI-assisted development extensively. For the systems I independently operate, I define requirements and workflows, review generated code, test behavior, debug failures, deploy releases, and maintain the resulting services."',
+              'authorshipStatement: "I use AI-assisted implementation extensively. I define requirements and workflows, inspect code structure and behavior, test implementations, diagnose functional problems, guide iterative changes, deploy releases, and maintain services. I do not present myself as an independent software developer."'
+            ],
+            [
+              'role: "Eight years of auditable Wikimedia work checking claims and sources. A personal genome released to the public domain under ENA accession PRJEB109744. An open-source research-participation directory indexing more than 55 clinical studies, biobanks, donation programs, registries and other research initiatives. Gray Swan Proving Ground participation since July 2026, with 75 platform-confirmed model breaks across chat, image, agentic tool-use and indirect prompt-injection challenges."',
+              'role: "AI safety evaluation and research-verification specialist with sustained model-behavior testing, eight years of auditable claim and source work, paid scientific fact-checking, an open research-participation directory, and public open-science records."'
+            ],
+            [
+              'heroStatement: "Eight years of auditable Wikimedia work, a public ENA genomic accession, an open-source research-participation directory, and sustained model-behavior evaluation activity on the Gray Swan Proving Ground."',
+              'heroStatement: "Adversarial model testing, scientific evidence verification, research-workflow ownership, structured-data quality and public open-science records."'
+            ],
+            [
+              'languages: "Italian (Native / Mother Tongue) · English (C1 Advanced Overall: C2 Reading/Listening, B2 Writing/Speaking)"',
+              'languages: "Italian (Native / Mother Tongue) · English (C1 overall, EF SET 68/100; advanced technical reading and professional/technical writing)"'
+            ],
+            [
+              'summary: "AI evaluation and research verification specialist with eight years of auditable work checking biomedical, technical and structured-data claims across sources, citations, datasets and public knowledge bases. Founder and product owner of Yourself to Science, an open-source research-participation directory indexing more than 55 clinical studies, biobanks, donation programs, registries and other initiatives, with documented verification workflows, machine-readable data, and Zenodo and FAIRsharing records. Paid scientific fact-checker, writer, data visualizer and website operator for Entropy for Life, supporting more than 55 videos and documentaries and four articles. Gray Swan Proving Ground participant since July 2026, with 75 platform-confirmed model breaks and a top-8% position among ranked participants as of July 2026."',
+              'summary: "AI safety evaluation and research-verification specialist with sustained self-directed model-behavior testing across chat, image, agentic tool-use and indirect prompt-injection challenges. Gray Swan Proving Ground participant with 75 platform-confirmed model breaks across 156 submissions and a top-8% rank band among listed participants as of July 2026. Brings eight years of auditable claim verification, paid scientific fact-checking, structured research workflows, data-provenance discipline and clear evidence-bound reporting."'
+            ],
+            ['category: "TECHNICAL PRODUCT DELIVERY"', 'category: "TECHNICAL OPERATIONS & AI-ASSISTED DELIVERY"'],
+            ['title: "Technical Product Delivery & Serverless Systems"', 'title: "Code-Literate Technical Operations"'],
+            [
+              'lead: "Translating technical requirements into deployed web platforms, serverless automations, and AI-assisted development workflows."',
+              'lead: "Defining requirements, inspecting code structure and behavior, testing implementations, diagnosing functional problems and operating AI-assisted technical workflows."'
+            ],
+            [
+              'desc: "Delivered serverless AWS Lambda and Telegram automation, browser extensions, interactive network simulations, and WordPress, Cloudflare and OVHCloud web infrastructure. For independently operated systems, defined requirements and workflows, reviewed generated code, tested behavior, debugged failures, deployed releases and maintained services."',
+              'desc: "Operated AI-assisted delivery workflows for serverless automation, browser extensions, interactive web projects, and WordPress, Cloudflare and OVHCloud infrastructure. Defined requirements and workflows, inspected code structure and behavior, tested implementations, diagnosed functional issues, deployed releases and maintained services without claiming independent software development."'
+            ],
+            ['{ label: "Technical Delivery Ownership", detail: "Requirements, workflow and system design, testing, CI/CD, deployment, maintenance and personal inspection of generated code" }', '{ label: "Technical Operations", detail: "Requirements, workflow design, code reading, functional testing, AI-assisted iteration, deployment and maintenance" }'],
+            ['Founder and technical builder of Yourself to Science™', 'Founder and research-workflow owner of Yourself to Science™'],
+            ['role: "Founder & Technical Product Builder"', 'role: "Founder & Research-Workflow Owner"'],
+            ['role: "Product Owner & Technical Builder"', 'role: "Product Owner & AI-Assisted Technical Operator"'],
+            ['role: "Creator & Systems Builder"', 'role: "Creator & Technical Operator"'],
+            ['role: "Creator & Systems Designer"', 'role: "Creator & Concept and Requirements Designer"'],
+            ['tag: "Independent / Self-Funded"', 'tag: "Independent project"'],
+            ['tag: "Independent Practitioner"', 'tag: "Independent practice"'],
+            ['tag: "Volunteer, unpaid"', 'tag: "Research or public contribution"'],
+            ['tag: "Independent / Personal Project, unpaid"', 'tag: "Personal open-data project"'],
+            [
+              'Conceived product requirements, designed DOM-targeting verification logic, and delivered a browser extension',
+              'Conceived product requirements, specified DOM-targeting verification logic, and coordinated AI-assisted delivery of a browser extension'
+            ],
+            [
+              'Designed the analytical requirements and processed raw FASTQ reads via Terra.bio cloud bioinformatics platform',
+              'Defined the analytical requirements and used Terra.bio cloud workflows to process raw FASTQ reads'
+            ],
+            [
+              'Designed and iteratively validated a local downstream bioinformatics workflow',
+              'Specified requirements for and iteratively validated a local downstream bioinformatics workflow'
+            ],
+            ['custom Python extraction scripts', 'AI-assisted Python extraction scripts'],
+            ['custom Python VEP extraction scripts', 'AI-assisted Python VEP extraction scripts'],
+            [
+              'title: "EF SET English Certificate 68/100 (C1 Advanced Overall · C2 Reading/Listening · B2 Writing/Speaking)"',
+              'title: "EF SET English Certificate 68/100 (C1 overall)"'
+            ],
+            [
+              '"Technical Product Delivery: Requirements definition, workflow and system design, codebase navigation and modification, functional testing, iterative debugging, deployment operations, WordPress, HTML/CSS, Git/GitHub, JSON, REST APIs, AWS Lambda, Cloudflare Pages, DNS/SSL and CI/CD."',
+              '"Technical Operations: Requirements definition, workflow design, codebase reading and behavior inspection, functional testing, issue diagnosis, deployment operations, WordPress, HTML/CSS, Git/GitHub, JSON, REST APIs, AWS Lambda, Cloudflare Pages, DNS/SSL and CI/CD."'
+            ],
+            [
+              '"AI-Assisted Development Workflow: Extensive use of coding agents for implementation, refactoring, documentation, testing and deployment automation. For independently operated systems: requirements definition, generated-code review, functional testing, debugging, release deployment and maintenance."',
+              '"AI-Assisted Technical Workflow: Extensive use of coding agents for implementation support, refactoring, documentation, testing and deployment automation. Contributions center on requirements definition, code structure and behavior inspection, functional testing, issue diagnosis, release deployment and maintenance; not independent software development."'
+            ],
+            [
+              '"Languages: Italian — native. English — C1 overall, with C2 reading/listening and B2 writing/speaking."',
+              '"Languages: Italian — native. English — C1 overall (EF SET 68/100), with advanced technical reading and professional/technical writing."'
+            ]
+          ];
+
+          for (const [before, after] of replacements) {
+            if (!source.includes(before)) {
+              throw new Error(`Expected source text not found: ${before.slice(0, 140)}`);
+            }
+            source = source.replaceAll(before, after);
+          }
+
+          fs.writeFileSync(file, source);
+          NODE
+
+      - name: Refresh lockfile, dossiers and static outputs
+        run: |
+          npm install --package-lock-only --ignore-scripts --no-audit --no-fund
+          npm ci --no-audit --no-fund
+          npm run build
+          git diff --check
+
+      - name: Commit migration and remove one-shot workflow
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git rm .github/workflows/apply-career-v2.yml
+          git add -A
+          git diff --cached --check
+          git commit -m 'feat: complete recruiter-focused portfolio and CV system [career-v2-applied]'
+          git push origin HEAD:final-audit-repair
