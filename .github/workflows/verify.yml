@@ -24,14 +24,25 @@ jobs:
         with:
           node-version: 22
 
-      - name: Reconstruct, verify, and apply source patch
+      - name: Confirm repair activation
+        run: test -f .github/repair-ready
+
+      - name: Reconstruct repair patch
         run: |
-          test -f .github/repair-ready
           cat .github/repair-parts/part-* > /tmp/source-repair.patch
-          echo '27a76f20e2f1e4acb884f20e3bf545c1bf8fec534e762c58934a88a11d67e0a1  /tmp/source-repair.patch' | sha256sum -c -
-          git show 9e01792d174a33b7846b9fa6b1d1433c003b7d88:.github/workflows/verify.yml > .github/workflows/verify.yml
-          git apply --check /tmp/source-repair.patch
-          git apply /tmp/source-repair.patch
+          sha256sum /tmp/source-repair.patch | tee /tmp/source-repair.sha256
+
+      - name: Verify repair patch checksum
+        run: echo '27a76f20e2f1e4acb884f20e3bf545c1bf8fec534e762c58934a88a11d67e0a1  /tmp/source-repair.patch' | sha256sum -c -
+
+      - name: Restore expected verification-workflow baseline
+        run: git show 9e01792d174a33b7846b9fa6b1d1433c003b7d88:.github/workflows/verify.yml > .github/workflows/verify.yml
+
+      - name: Validate repair patch context
+        run: git apply --check /tmp/source-repair.patch
+
+      - name: Apply repair patch
+        run: git apply /tmp/source-repair.patch
 
       - name: Generate lockfile and clean install
         run: |
@@ -73,12 +84,13 @@ jobs:
           git commit -m 'fix: complete portfolio audit and release hardening'
           git push origin HEAD:final-audit-repair
 
-      - name: Upload verification screenshots and PDFs
+      - name: Upload diagnostics and verification artifacts
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: final-verification-output
           path: |
+            /tmp/source-repair.sha256
             audit-output/**/*.png
             Mario Marcolongo — 2-Page Application Résumé.pdf
             Mario Marcolongo — Curriculum Vitae.pdf
