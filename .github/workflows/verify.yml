@@ -91,7 +91,7 @@ jobs:
           cp scripts/verify-portfolio-final.yml .github/workflows/verify.yml
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git rm .github/workflows/sync-portfolio-v3.yml scripts/apply-portfolio-v3-migration.js scripts/verify-portfolio-final.yml
+          git rm -f --ignore-unmatch .github/workflows/sync-portfolio-v3.yml scripts/apply-portfolio-v3-migration.js scripts/verify-portfolio-final.yml
           rm -rf .github/diagnostics
           git add -A
           git diff --cached --check
