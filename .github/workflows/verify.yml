@@ -26,7 +26,11 @@ jobs:
         run: npm ci --no-audit --no-fund
 
       - name: Build and verify generated output
-        run: npm run build
+        shell: bash
+        run: |
+          mkdir -p audit-output
+          set -o pipefail
+          npm run build 2>&1 | tee audit-output/build.log
 
       - name: Verify deterministic generated files
         run: |
@@ -48,13 +52,13 @@ jobs:
       - name: Check patch formatting
         run: git diff --check
 
-      - name: Upload verification screenshots and PDFs
+      - name: Upload verification screenshots, logs and PDFs
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: verification-output
           path: |
-            audit-output/**/*.png
+            audit-output/**/*
             Mario Marcolongo — AI Safety & Adversarial Testing CV.pdf
             Mario Marcolongo — Research Verification & Data Quality CV.pdf
             Mario Marcolongo — Research Editorial & Community Operations CV.pdf
