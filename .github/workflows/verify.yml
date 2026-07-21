@@ -20,10 +20,9 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22
-          cache: npm
 
-      - name: Install dependencies
-        run: npm ci
+      - name: Install dependencies for bootstrap audit
+        run: npm install --no-audit --no-fund
 
       - name: Run source checks
         run: npm run lint
@@ -51,14 +50,16 @@ jobs:
 
       - name: Package exact repository snapshot
         if: always()
-        run: tar --exclude=.git -czf ../mariomarcolongo-repo-snapshot.tar.gz .
+        run: |
+          mkdir -p audit-output
+          tar --exclude=.git --exclude=./audit-output/repo-snapshot.tar.gz -czf audit-output/repo-snapshot.tar.gz .
 
       - name: Upload repository snapshot
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: repo-snapshot
-          path: ../mariomarcolongo-repo-snapshot.tar.gz
+          path: audit-output/repo-snapshot.tar.gz
           if-no-files-found: error
           retention-days: 2
 
