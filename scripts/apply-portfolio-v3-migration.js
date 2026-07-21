@@ -113,4 +113,15 @@ update('scripts/verify-dist.js', [
   ]
 ]);
 
+update('scripts/verify-rendering.js', [
+  [
+    `      P.aiSafety.title,
+      P.editorialCommunity.title,
+      P.integrity.title,
+      P.researchQuality.title`,
+    `      ...V.documents.filter((document) => document.id !== 'master').map((document) => document.title)`,
+    'no-JS document-title verification'
+  ]
+]);
+
 console.log('Portfolio v3 canonical migration complete.');
