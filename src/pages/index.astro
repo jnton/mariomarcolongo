@@ -3,6 +3,7 @@ import Layout from "../layouts/Layout.astro";
 import SiteNav from "../components/SiteNav.astro";
 import SiteFooter from "../components/SiteFooter.astro";
 import "../styles/portfolio-v5.css";
+import "../styles/portfolio-v6-overrides.css";
 import D from "../../data/source.js";
 import H from "../../data/portfolio-human.js";
 import { buildProfileGraph } from "../lib/structured-data.js";
@@ -44,13 +45,28 @@ const selectedExperience = [
         <p class="p5-availability">Based in Italy · EU work authorization · open to worldwide relocation and international contracting</p>
       </div>
 
-      <div class="p5-work-mosaic" aria-label="Selected public work">
+      <div class="p5-work-mosaic" aria-label="Selected public work and link destinations">
         {H.heroWork.map((item, index) => (
-          <a class="p5-work-tile" href={item.href} target={item.href.startsWith("http") ? "_blank" : undefined} rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}>
-            <img src={item.image} srcset={responsiveSource(item.image)} sizes="(max-width: 680px) calc(50vw - 22px), 312px" alt={item.alt} width="640" height="400" loading={index < 2 ? "eager" : "lazy"} decoding="async" />
+          <a
+            class={`p5-work-tile p5-work-tile-${item.theme}`}
+            href={item.href}
+            target={item.href.startsWith("http") ? "_blank" : undefined}
+            rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}
+            aria-label={`${item.title}. ${item.linkLabel}`}
+          >
+            <div class="p5-work-visual" aria-hidden="true">
+              <span class="p5-work-index">{String(index + 1).padStart(2, "0")}</span>
+              <span class="p5-work-domain">{item.domain}</span>
+              <strong class="p5-work-metric">{item.metric}</strong>
+              <span class="p5-work-metric-label">{item.metricLabel}</span>
+              <div class="p5-work-tags">
+                {item.tags.map((tag) => <span>{tag}</span>)}
+              </div>
+            </div>
             <div class="p5-work-caption">
               <strong>{item.title}</strong>
               <span>{item.label}</span>
+              <small>{item.linkLabel} →</small>
             </div>
           </a>
         ))}
@@ -80,14 +96,22 @@ const selectedExperience = [
         {H.flagships.map((item) => (
           <article class="p5-flagship">
             <div class="p5-flagship-media">
-              <img src={item.image} srcset={responsiveSource(item.image)} sizes="(max-width: 680px) 86vw, (max-width: 980px) 48vw, 380px" alt={item.alt} width="900" height="560" loading="lazy" decoding="async" />
+              <div class={`p5-case-cover p5-case-cover-${item.theme}`}>
+                <span class="p5-case-eyebrow">{item.visualEyebrow}</span>
+                <strong>{item.metric}</strong>
+                <span>{item.metricLabel}</span>
+                <div class="p5-case-details">
+                  {item.details.map((detail) => <span class="p5-case-detail">{detail}</span>)}
+                </div>
+                <span class="p5-case-destination">{item.destination}</span>
+              </div>
             </div>
             <div class="p5-flagship-body">
               <div class="p5-card-label">{item.label}</div>
               <h3>{item.title}</h3>
               <p>{item.summary}</p>
               <p class="p5-proof-line">{item.proof}</p>
-              <a class="p5-link" href={item.href} target={item.href.startsWith("http") ? "_blank" : undefined} rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}>{item.linkLabel} →</a>
+              <a class="p5-link" href={item.href} target={item.href.startsWith("http") ? "_blank" : undefined} rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}>{item.linkLabel}</a>
             </div>
           </article>
         ))}
@@ -110,7 +134,7 @@ const selectedExperience = [
               <div class="p5-product-label">{item.label}</div>
               <h3>{item.title}</h3>
               <p>{item.body}</p>
-              <a class="p5-link" href={item.href} target="_blank" rel="noopener noreferrer">Open project →</a>
+              <a class="p5-link" href={item.href} target="_blank" rel="noopener noreferrer">Open official project</a>
             </div>
           </article>
         ))}
@@ -121,9 +145,9 @@ const selectedExperience = [
       <div class="p5-section-head">
         <div>
           <div class="p5-kicker">Data and visual analysis</div>
-          <h2 id="visuals-title">Public analysis across three platforms.</h2>
+          <h2 id="visuals-title">Three inspectable public artifacts.</h2>
         </div>
-        <p>Tableau and Flourish are shown directly, while Wikimedia provides the broader open record and reuse history.</p>
+        <p>Each card opens a specific work or a deliberately curated portfolio. The Wikimedia link now points to the strongest autism-related visualization rather than an undifferentiated upload history.</p>
       </div>
       <div class="p5-visuals">
         {H.visualization.map((item) => (
@@ -132,19 +156,35 @@ const selectedExperience = [
             <div class="p5-visual-body">
               <h3>{item.title}</h3>
               <p>{item.body}</p>
-              <a class="p5-link" href={item.href} target="_blank" rel="noopener noreferrer">View public work →</a>
+              <a class="p5-link" href={item.href} target="_blank" rel="noopener noreferrer">View the public artifact</a>
             </div>
           </article>
         ))}
       </div>
+    </section>
 
-      <div class="p5-principles" aria-label="Working principles">
-        {H.workingPrinciples.map((item) => (
-          <article class="p5-principle">
-            <h3>{item.title}</h3>
-            <p>{item.body}</p>
-          </article>
-        ))}
+    <section class="p5-section" id="operating-style" aria-labelledby="operating-style-title">
+      <div class="p5-section-head">
+        <div>
+          <div class="p5-kicker">Operating profile</div>
+          <h2 id="operating-style-title">Built for teams that reward independent judgment.</h2>
+        </div>
+        <p>This is the defensible version of the “unusual person” signal: direct reasoning, low deference to weak consensus, comfort with sensitive or ambiguous problems and explicit ownership of outcomes.</p>
+      </div>
+      <div class="p5-operating-layout">
+        <article class="p5-operating-disclosure">
+          <span>{H.workingStyle.label}</span>
+          <h3>{H.workingStyle.title}</h3>
+          <p>{H.workingStyle.body}</p>
+        </article>
+        <div class="p5-principles" aria-label="Working principles">
+          {H.workingPrinciples.map((item) => (
+            <article class="p5-principle">
+              <h3>{item.title}</h3>
+              <p>{item.body}</p>
+            </article>
+          ))}
+        </div>
       </div>
     </section>
 
@@ -191,7 +231,7 @@ const selectedExperience = [
     <section class="p5-contact" id="contact" aria-labelledby="contact-title">
       <div>
         <h2 id="contact-title">Discuss a difficult problem.</h2>
-        <p>Open to AI evaluation, model-quality and safety operations, scientific AI quality, research operations and knowledge-integrity roles where evidence and operational ownership matter.</p>
+        <p>Open to AI evaluation, model-quality and safety operations, scientific AI quality, research operations and knowledge-integrity roles where evidence, direct judgment and operational ownership matter.</p>
       </div>
       <div class="p5-actions">
         <a class="p5-button" href={`mailto:${D.identity.email}`}>Email Mario</a>
