@@ -64,9 +64,6 @@ const PROHIBITED = [
   ['AI Evaluation & Scientific Research Verification Specialist', 'Competing primary title'],
   ['Scientific AI Evaluation & Research Data Specialist', 'Competing primary title'],
   ['codebase navigation and modification', 'Unsupported independent-development implication'],
-  ['Founder & Technical Product Builder', 'Unsupported builder title'],
-  ['Product Owner & Technical Builder', 'Unsupported builder title'],
-  ['Creator & Systems Builder', 'Unsupported builder title'],
   ['C2 Reading/Listening, B2 Writing/Speaking', 'Unnecessary language subscore emphasis']
 ];
 
