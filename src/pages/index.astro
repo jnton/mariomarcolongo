@@ -52,7 +52,6 @@ const selectedExperience = [
             href={item.href}
             target={item.href.startsWith("http") ? "_blank" : undefined}
             rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}
-            aria-label={`${item.title}. ${item.linkLabel}`}
           >
             <div class="p5-work-visual" aria-hidden="true">
               <span class="p5-work-index">{String(index + 1).padStart(2, "0")}</span>
