@@ -1,0 +1,177 @@
+pts/check-stale-strings.js && node scripts/generate-llm-dossiers.js && astro dev",
+-    "build": "node scripts/check-stale-strings.js && node scripts/generate-llm-dossiers.js && astro build",
+-    "postbuild": "node scripts/postbuild.js && node scripts/verify-dist.js && node scripts/verify-rendering.js",
+-    "deploy": "npm run lint && npm run build && npx wrangler pages deploy dist --project-name=mariomarcolongo",
++    "build": "npm run lint && node scripts/generate-llm-dossiers.js && astro build && node scripts/postbuild.js && node scripts/verify-dist.js",
++    "deploy": "npm run build && npm run verify:render && npx wrangler pages deploy dist --project-name=mariomarcolongo",
+     "preview": "astro preview",
+     "generate:llms": "node scripts/generate-llm-dossiers.js",
+     "generate:favicons": "node scripts/generate-favicons.js",
+     "cv:custom": "node scripts/generate-custom-cv.js",
+     "pdf:cv": "node scripts/generate-cv-pdf.js",
+     "pdf:resume": "node scripts/generate-resume-pdf.js",
+-    "pdf:campbell": "node scripts/generate-campbell-pdf.js",
+-    "pdf": "node scripts/generate-cv-pdf.js && node scripts/generate-resume-pdf.js && node scripts/generate-campbell-pdf.js"
++    "pdf": "npm run pdf:resume && npm run pdf:cv",
++    "verify:dist": "node scripts/verify-dist.js",
++    "verify:render": "node scripts/verify-rendering.js"
+   },
+   "author": "Mario Marcolongo <me@mariomarcolongo.com>",
+   "devDependencies": {
+     "astro": "^7.0.9",
++    "pdf-lib": "^1.17.1",
+     "puppeteer": "^25.3.0",
+     "turndown": "^7.2.4",
+     "wrangler": "^4.110.0"
+   }
+-}
+\ No newline at end of file
++}
+diff --git a/scripts/check-stale-strings.js b/scripts/check-stale-strings.js
+old mode 100644
+new mode 100755
+index bfb9290..d6426fe
+--- a/scripts/check-stale-strings.js
++++ b/scripts/check-stale-strings.js
+@@ -1,122 +1,136 @@
+ #!/usr/bin/env node
+-/**
+- * STALE-STRING & SSOT INTEGRITY BUILD CHECKER
+- *
+- * Scans `src/pages/*.astro`, `scripts/*.js`, and `data/source.js` to verify:
+- * 1. No outdated/stale version strings (e.g., v2026.07.14 or older dates) remain.
+- * 2. `cv.astro` and `cv-resume.astro` correctly import and derive content from `data/source.js` (SSOT)
+- *    rather than hardcoding static lists.
+- * 3. Core identifiers (ORCID, ENA Accession, email) stay perfectly synchronized.
+- */
+-
+ const fs = require('node:fs');
+ const path = require('node:path');
+ const D = require('../data/source.js');
+ 
+-const ROOT_DIR = path.resolve(__dirname, '..');
+-const ACTIVE_VERSION = 'v2026.07.21';
+-const STALE_VERSIONS = [
+-  'v2026.07.14',
+-  '2026-07-14',
+-  'v2026.07.01',
+-  'v2026.06.14',
+-  'v2026.06.01'
++const ROOT = path.resolve(__dirname, '..');
++const EXPECTED = {
++  jobTitle: 'AI Evaluation & Research Verification Specialist',
++  secondaryTitle: 'Model Behavior Evaluation · Scientific Evidence Review · Evaluation Operations · Technical Research',
++  email: 'me@mariomarcolongo.com',
++  orcid: '0000-0003-2846-7115',
++  ena: 'PRJEB109744',
++  version: 'v2026.07.21',
++  graySwanId: '6a57be70d15e123775a1e9cf'
++};
++const REQUIRED = [
++  'package.json',
++  'package-lock.json',
++  'data/source.js',
++  'src/layouts/Layout.astro',
++  'src/components/SiteNav.astro',
++  'src/components/SiteFooter.astro',
++  'src/pages/index.astro',
++  'src/pages/cv.astro',
++  'src/pages/cv-resume.astro',
++  'src/pages/security.astro',
++  'src/styles/global.css',
++  'src/styles/cv.css',
++  'src/styles/security.css',
++  'scripts/lib/dossier-generators.js',
++  'scripts/generate-llm-dossiers.js',
++  'scripts/postbuild.js',
++  'scripts/verify-dist.js',
++  'scripts/verify-rendering.js',
++  'public/.well-known/api-catalog',
++  'public/.well-known/agent-card.json',
++  'public/.well-known/mcp/server-card.json',
++  'public/robots.txt',
++  'public/sitemap.xml',
++  'public/site.webmanifest'
+ ];
++const SCAN_ROOTS = ['data', 'src', 'package.json', 'README.md', 'public/.well-known', 'public/robots.txt', 'public/sitemap.xml', 'public/site.webmanifest'];
++const PROHIBITED = [
++  ['independently verified policy or alignment boundary failure', 'Unsupported independent-verification claim'],
++  ['tracking boundary resilience across major model architecture updates', 'Unsupported architecture-update inference'],
++  ['ensuring research directories and data pipelines are resilient', 'Unsupported security-assurance claim'],
++  ['Released under CC BY 4.0 / Open Science', 'Incorrect blanket licence'],
++  ['biobanking platform', 'Incorrect Yourself to Science description'],
++  ['Model Behavior & Safety Case Study', 'Outdated evaluation-page positioning'],
++  ['Model Behavior &amp; Safety Case Study', 'Outdated evaluation-page positioning'],
++  ['AI Evaluation & Scientific Research Verification Specialist', 'Competing primary title'],
++  ['Scientific AI Evaluation & Research Data Specialist', 'Competing primary title']
++];
++let failures = 0;
+ 
+-let errorsFound = 0;
+-
+-function reportError(file, line, msg) {
+-  console.error(`❌ [SSOT LINT ERROR] ${file}:${line || '?'} — ${msg}`);
+-  errorsFound++;
++function fail(file, line, message) {
++  failures += 1;
++  console.error(`FAIL ${file}:${line} — ${message}`);
+ }
+ 
+-function scanFileForStaleVersions(filePath) {
+-  const relPath = path.relative(ROOT_DIR, filePath);
+-  if (!fs.existsSync(filePath)) return;
+-  const content = fs.readFileSync(filePath, 'utf8');
+-  const lines = content.split('\n');
+-
+-  lines.forEach((lineText, idx) => {
+-    const lineNum = idx + 1;
+-    STALE_VERSIONS.forEach(staleVer => {
+-      if (lineText.includes(staleVer)) {
+-        reportError(relPath, lineNum, `Found stale version string '${staleVer}'. Active version is '${ACTIVE_VERSION}'.`);
+-      }
+-    });
++function filesUnder(relative) {
++  const absolute = path.join(ROOT, relative);
++  if (!fs.existsSync(absolute)) return [];
++  if (fs.statSync(absolute).isFile()) return [absolute];
++  return fs.readdirSync(absolute, { withFileTypes: true }).flatMap((entry) => {
++    const child = path.join(relative, entry.name);
++    return entry.isDirectory() ? filesUnder(child) : [path.join(ROOT, child)];
+   });
+ }
+ 
+-function checkAstroSsotDerivation(astroFile) {
+-  const fullPath = path.join(ROOT_DIR, 'src/pages', astroFile);
+-  if (!fs.existsSync(fullPath)) return;
+-  const content = fs.readFileSync(fullPath, 'utf8');
+-  const relPath = `src/pages/${astroFile}`;
+-
+-  // Check 1: Must import D from source.js
+-  if (!content.includes('import D from "../../data/source.js"') && !content.includes("import D from '../../data/source.js'")) {
+-    reportError(relPath, 1, `Missing import of SSOT data object D ('import D from "../../data/source.js"').`);
+-  }
+-
+-  // Check 2: Verify dynamic maps exist for core sections instead of hardcoded items
+-  if (!content.includes('D.experience.map(')) {
+-    reportError(relPath, 1, `Missing dynamic rendering of D.experience.map(...). Section may contain hardcoded experience items.`);
+-  }
+-  if (astroFile === 'cv.astro' && !content.includes('D.projects.map(')) {
+-    reportError(relPath, 1, `Missing dynamic rendering of D.projects.map(...). Section may contain hardcoded project items.`);
+-  }
+-  if (!content.includes('D.skills.map(') && !content.includes('D.skills).map(') && !content.includes('resumeSkills')) {
+-    reportError(relPath, 1, `Missing dynamic rendering of D.skills/D.resumeSkills.map(...). Section may contain hardcoded skills items.`);
+-  }
+-  if (!content.includes('D.education.map(')) {
+-    reportError(relPath, 1, `Missing dynamic rendering of D.education.map(...). Section may contain hardcoded education items.`);
+-  }
+-
+-  // Check 3: Check for hardcoded project titles outside of dynamic mapping
+-  const hardcodedChecks = [
+-    "Yourself to Science™ | Open Science Catalogue & Directory",
+-    "Entropy for Life — Official Science Platform",
+-    "English Wikipedia Link Converter | Telegram Bot"
+-  ];
+-
+-  hardcodedChecks.forEach(title => {
+-    // If the exact raw title string appears inside JSX outside of source.js import / map, warn
+-    
