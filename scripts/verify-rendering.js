@@ -2,13 +2,29 @@
 const fs = require('node:fs');
 const path = require('node:path');
 const P = require('../data/application-profiles.js');
+const V = require('../data/portfolio-v3.js');
 const { startStaticServer } = require('./lib/static-server.js');
 const { launchBrowser } = require('./lib/browser.js');
 
 const ROOT = path.resolve(__dirname, '..');
 const DIST = path.join(ROOT, 'dist');
 const OUTPUT = path.join(ROOT, 'audit-output');
-const ROUTES = ['index.html', 'cv.html', 'cv-resume.html', 'cv-research.html', 'security.html'];
+const ROUTES = [
+  'index.html',
+  'integrity.html',
+  'cv.html',
+  'cv-resume.html',
+  'cv-research.html',
+  'cv-editorial.html',
+  'cv-integrity.html',
+  'security.html'
+];
+const APPLICATION_ROUTES = new Set([
+  'cv-resume.html',
+  'cv-research.html',
+  'cv-editorial.html',
+  'cv-integrity.html'
+]);
 const VIEWPORTS = [
   { name: 'desktop', width: 1440, height: 1000 },
   { name: 'tablet', width: 768, height: 1024 },
@@ -32,6 +48,36 @@ async function assertPage(page, route, theme, viewport) {
   }
   if (result.h1Count !== 1) throw new Error(`${route} must have exactly one H1; found ${result.h1Count}`);
   if (!result.title.trim() || !result.bodyText.trim()) throw new Error(`${route} rendered empty title or body`);
+}
+
+async function verifyHomepageInteractions(page) {
+  const interactionResult = await page.evaluate(() => {
+    const tab = document.querySelector('[data-lens="integrity"]');
+    const panel = document.querySelector('[data-panel="integrity"]');
+    if (tab) tab.click();
+    const filter = document.querySelector('[data-project-filter="editorial"]');
+    if (filter) filter.click();
+    const visibleProjects = Array.from(document.querySelectorAll('[data-project-category]')).filter((card) => {
+      return getComputedStyle(card).display !== 'none';
+    });
+    return {
+      activeTab: tab ? tab.getAttribute('aria-selected') : null,
+      activePanel: panel ? panel.classList.contains('is-active') : false,
+      visibleCategories: visibleProjects.map((card) => card.getAttribute('data-project-category')),
+      lensTabCount: document.querySelectorAll('[data-lens]').length,
+      lensPanelCount: document.querySelectorAll('[data-panel]').length
+    };
+  });
+
+  if (interactionResult.activeTab !== 'true' || !interactionResult.activePanel) {
+    throw new Error('Homepage role-lens interaction failed');
+  }
+  if (interactionResult.lensTabCount !== V.lenses.length || interactionResult.lensPanelCount !== V.lenses.length) {
+    throw new Error(`Homepage must render ${V.lenses.length} role lenses`);
+  }
+  if (!interactionResult.visibleCategories.length || interactionResult.visibleCategories.some((value) => value !== 'editorial')) {
+    throw new Error(`Homepage project filtering failed: ${JSON.stringify(interactionResult.visibleCategories)}`);
+  }
 }
 
 async function main() {
@@ -72,14 +118,20 @@ async function main() {
             throw new Error(`${route} theme control state is incorrect for ${theme}`);
           }
 
-          if (route === 'cv-resume.html' || route === 'cv-research.html') {
+          if (APPLICATION_ROUTES.has(route)) {
             const pageModel = await page.evaluate(() => ({
               applicationPages: document.querySelectorAll('.application-page').length,
-              internalPageLabels: document.querySelectorAll('.application-footer-note').length
+              internalPageLabels: document.querySelectorAll('.application-footer-note').length,
+              phoneSlot: Boolean(document.getElementById('cvPhoneSlot'))
             }));
             if (pageModel.applicationPages !== 2 || pageModel.internalPageLabels !== 2) {
               throw new Error(`${route} must render exactly two visible application pages`);
             }
+            if (!pageModel.phoneSlot) throw new Error(`${route} is missing the private phone injection slot`);
+          }
+
+          if (route === 'index.html' && viewport.name === 'desktop' && theme === 'light') {
+            await verifyHomepageInteractions(page);
           }
 
           if (pageErrors.length) throw new Error(`${route} page errors: ${pageErrors.join(' | ')}`);
@@ -96,21 +148,23 @@ async function main() {
     await noJs.setViewport({ width: 390, height: 844, deviceScaleFactor: 1 });
     await noJs.goto(`${staticServer.origin}/index.html`, { waitUntil: 'load', timeout: 45000 });
     const expectedNoJsText = [
-      'I test model behavior.',
+      'I investigate claims',
+      ...V.lenses.map((lens) => lens.title),
+      ...V.cases.map((record) => record.title),
       P.aiSafety.title,
-      P.researchQuality.title,
-      'Model-behavior evaluation',
-      'Paid scientific verification',
-      'Research-workflow ownership'
+      P.editorialCommunity.title,
+      P.integrity.title,
+      P.researchQuality.title
     ];
     const noJsResult = await noJs.evaluate((expected) => {
       const text = document.body.innerText;
       return {
         missing: expected.filter((value) => !text.includes(value)),
-        tests: ['career-focus', 'career-evidence', 'career-documents'].map((id) => {
+        tests: ['career-focus', 'career-evidence', 'career-documents', 'homepage-projects'].map((id) => {
           const element = document.querySelector(`[data-testid="${id}"]`);
           return { id, exists: Boolean(element), children: element ? element.children.length : 0 };
         }),
+        visibleLensPanels: Array.from(document.querySelectorAll('[data-panel]')).filter((element) => getComputedStyle(element).display !== 'none').length,
         evidenceLinks: document.querySelectorAll('a[href^="http"]').length,
         scrollWidth: document.documentElement.scrollWidth,
         clientWidth: document.documentElement.clientWidth
@@ -118,6 +172,7 @@ async function main() {
     }, expectedNoJsText);
     if (noJsResult.missing.length) throw new Error(`No-JS homepage is missing: ${noJsResult.missing.join(', ')}`);
     if (noJsResult.tests.some((item) => !item.exists || item.children === 0)) throw new Error(`No-JS homepage has an empty required container: ${JSON.stringify(noJsResult.tests)}`);
+    if (noJsResult.visibleLensPanels !== V.lenses.length) throw new Error('No-JS homepage must expose all role-lens content');
     if (noJsResult.evidenceLinks === 0) throw new Error('No-JS homepage has no external evidence links');
     if (noJsResult.scrollWidth > noJsResult.clientWidth + 1) throw new Error('No-JS mobile homepage overflows horizontally');
     await noJs.screenshot({ path: path.join(OUTPUT, 'index-no-js-mobile.png'), fullPage: true });
