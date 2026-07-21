@@ -1,0 +1,40 @@
+name: Visual audit portfolio v4
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - scripts/capture-homepage-v4.js
+      - src/pages/index.astro
+      - src/styles/portfolio-human-v2.css
+      - src/styles/nav-editorial.css
+      - data/portfolio-human.js
+      - public/media/work/**
+      - .github/workflows/visual-audit-v4.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci --no-audit --no-fund
+      - run: npm run build
+      - name: Capture scrolled homepage states
+        run: node scripts/capture-homepage-v4.js
+      - name: Upload visual audit
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: portfolio-v4-visual-audit
+          path: audit-v4/**/*
+          if-no-files-found: error
+          retention-days: 7
