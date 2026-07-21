@@ -93,7 +93,8 @@ const PORTFOLIO_HUMAN = {
         "Report limitations alongside aggregate outcomes"
       ],
       result: "75 platform-confirmed model breaks across 156 submissions and 26 listed waves as of July 2026.",
-      visual: "model-record",
+      image: "/media/work/model-behavior-record.svg",
+      imageAlt: "Editorial visualization of the public aggregate model-behavior activity record",
       href: "/security.html",
       linkLabel: "Open the evaluation record"
     }
