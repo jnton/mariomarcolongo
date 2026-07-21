@@ -73,9 +73,9 @@ const APPLICATION_PROFILES = {
         link: "/security.html"
       },
       {
-        title: "Research protocol experience",
-        body: "Developed standardized facilitation guidance and recruitment workflows for a University of Padua autism research collaboration.",
-        link: "https://orcid.org/0000-0003-2846-7115"
+        title: "Human-subject research operations",
+        body: "Co-developed structured remote facilitation procedures and supported autistic participants discussing sensitive topics; institutional attribution is withheld pending permission.",
+        link: "/cv-editorial.html"
       }
     ],
     skills: [
@@ -179,7 +179,7 @@ const APPLICATION_PROFILES = {
     documentLabel: "Specialized Application CV",
     title: "Research, Editorial & Community Operations Specialist",
     subtitle: "Evidence synthesis · editorial coordination · research programs · community engagement · AI-enabled workflows",
-    summary: "Research, editorial and community-operations specialist with paid experience supporting scientific content production, primary-source fact-checking, professional writing and web operations. Contributed evidence research to more than 55 videos and documentaries and four published articles for Entropy for Life; developed standardized facilitation and recruitment workflows for a University of Padua autism study; and founded an open research-participation directory covering more than 55 initiatives. Combines independent project ownership, evidence-synthesis training, technical troubleshooting and clear professional English writing.",
+    summary: "Research, editorial and community-operations specialist with paid experience supporting scientific content production, primary-source fact-checking, professional writing and web operations. Co-developed and co-facilitated a structured remote focus-group process for autistic participants discussing sensitive sexuality and relationship topics, including recruitment, session protocols, Zoom logistics and two-person moderation handoffs. Also contributed evidence research to more than 55 videos and documentaries and four published articles and founded an open research-participation directory covering more than 55 initiatives.",
     fit: [
       "Assistant editor and editorial operations",
       "Evidence-synthesis program coordination",
@@ -190,7 +190,7 @@ const APPLICATION_PROFILES = {
       { value: "55+", label: "Scientific productions supported", detail: "Videos and documentaries plus four articles" },
       { value: "55+", label: "Research initiatives coordinated", detail: "Verification, metadata and public participation records" },
       { value: "4,317", label: "Public knowledge contributions", detail: "Long-running editorial and source-work record" },
-      { value: "C1", label: "English overall", detail: "Advanced technical reading and professional writing" }
+      { value: "2022–25", label: "Sensitive research facilitation", detail: "Remote focus groups with autistic participants" }
     ],
     experience: [
       {
@@ -208,16 +208,14 @@ const APPLICATION_PROFILES = {
         ]
       },
       {
-        role: "Research Facilitator & Focus-Group Conductor",
-        organization: "University of Padua · Volunteer collaboration",
+        role: "Volunteer Focus-Group Co-Facilitator & Research Operations Contributor",
+        organization: "University-affiliated developmental psychology research collaboration · Italy",
         period: "Nov 2022 — 2025",
-        links: [
-          { label: "ORCID record", url: "https://orcid.org/0000-0003-2846-7115" }
-        ],
+        links: [],
         bullets: [
-          "Developed a standardized facilitation guide, scripting and behavioral protocols for remote focus groups involving autistic participants.",
-          "Supported participant recruitment across autistic communities and conducted or co-conducted recorded sessions while maintaining psychological safety.",
-          "Coordinated research preparation, bibliographic searches and technical session logistics for a geographically distributed collaboration."
+          "Co-facilitated recorded Zoom focus groups with autistic participants discussing sensitive sexuality and relationship topics, using clear expectations, respectful pacing and non-judgmental follow-up.",
+          "Co-developed a standardized discussion guide, scripted prompts and session procedures; worked in a two-person facilitation team using live handoffs and recovery when prompts were missed or a facilitator needed support.",
+          "Supported participant recruitment, bibliographic research, technical session preparation and coordination with the supervising professor, researchers and a second autistic volunteer facilitator. Institutional attribution is withheld pending permission."
         ]
       },
       {
@@ -247,15 +245,15 @@ const APPLICATION_PROFILES = {
         link: "https://orcid.org/0000-0003-2846-7115"
       },
       {
-        title: "Community-facing research protocol",
-        body: "Standardized facilitation, recruitment and remote-session procedures developed for a University of Padua autism research collaboration.",
-        link: "https://orcid.org/0000-0003-2846-7115"
+        title: "Sensitive remote research facilitation",
+        body: "Structured moderation, recruitment and Zoom-session procedures for autistic participants discussing sensitive topics; attribution remains private pending permission.",
+        link: "/cv-editorial.html"
       }
     ],
     skills: [
       ["Editorial operations", "Evidence research, claim checking, source documentation, editorial feedback, content preparation and production troubleshooting"],
       ["Project coordination", "Independent prioritization, overlapping workstreams, issue tracking, progress documentation, release coordination and follow-through"],
-      ["Community engagement", "Participant recruitment, psychologically safe facilitation, public science communication and support for distributed communities"],
+      ["Community engagement", "Participant recruitment, sensitive-topic moderation, neurodiversity-aware communication, two-person facilitation handoffs and support for distributed communities"],
       ["Digital communications", "Professional and technical writing, WordPress publishing, website operations, technical SEO and content presentation"],
       ["AI-enabled workflows", "Experimenting with AI for research, drafting, implementation support, quality checks and workflow acceleration while retaining human verification"]
     ]

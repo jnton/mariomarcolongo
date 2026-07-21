@@ -38,7 +38,7 @@ const PORTFOLIO_V3 = {
       color: "coral",
       label: "Strong immediate bridge lane",
       title: "Research, Editorial & Community Operations",
-      summary: "Evidence synthesis, editorial production, research coordination and community-facing work. This is the best lens for Campbell-style roles and mission-driven evidence organizations.",
+      summary: "Evidence synthesis, editorial production, research coordination and sensitive community-facing work, including remote facilitation with autistic participants. This is the best lens for Campbell-style roles and mission-driven evidence organizations.",
       roles: [
         "Assistant editor or editorial coordinator",
         "Evidence-synthesis program officer",
@@ -47,7 +47,7 @@ const PORTFOLIO_V3 = {
       ],
       evidence: [
         "Paid research and fact-checking for 55+ productions and four articles",
-        "Standardized focus-group protocol, recruitment and facilitation",
+        "Sensitive Zoom focus groups with autistic participants, structured protocols and two-person facilitation handoffs",
         "Independent ownership of a public research-participation directory"
       ],
       next: "This route is credible now, but the highest compensation usually comes later through program leadership, technical program management or senior AI/research operations.",
@@ -131,6 +131,16 @@ const PORTFOLIO_V3 = {
       linkLabel: "Open Wikimedia record"
     },
     {
+      id: "focus-group",
+      eyebrow: "Sensitive research facilitation",
+      title: "Co-facilitating remote discussions where participant comfort and team reliability mattered",
+      summary: "Co-developed and co-facilitated recorded Zoom focus groups with autistic participants on sensitive sexuality and relationship topics, using structured prompts, respectful pacing, live handoffs and recovery when a facilitator missed steps or needed support. Institutional attribution is withheld pending permission.",
+      methods: ["Sensitive-topic moderation", "Neurodiversity-aware communication", "Two-person handoffs", "Remote-session logistics"],
+      metric: "2022–2025 collaboration · attribution pending permission",
+      href: "/cv-editorial.html",
+      linkLabel: "Open relevant CV"
+    },
+    {
       id: "research-directory",
       eyebrow: "Research data quality",
       title: "Verifying who can participate in research—and under what conditions",
@@ -150,7 +160,7 @@ const PORTFOLIO_V3 = {
     {
       year: "2022 — 2025",
       title: "Community-facing research facilitation",
-      body: "Standardized protocols, recruitment and recorded focus-group facilitation for a University of Padua autism research collaboration."
+      body: "Co-developed and co-facilitated recorded Zoom discussions with autistic participants on sensitive sexuality and relationship topics, combining participant-sensitive moderation, technical session operations and reliable two-person handoffs. Institutional attribution is withheld pending permission."
     },
     {
       year: "2023 — now",

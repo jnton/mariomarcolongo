@@ -373,17 +373,19 @@ const MARIO_DOSSIER = {
       ]
     },
     {
-      role: "Focus Group Conductor & Research Facilitator",
-      org: "University of Padua — Department of Developmental Psychology and Socialisation",
-      tag: "Research collaboration",
+      role: "Volunteer Focus-Group Co-Facilitator & Research Operations Contributor",
+      org: "University-affiliated developmental psychology research collaboration — Italy",
+      tag: "Volunteer research collaboration",
       period: "Nov 2022 — 2025",
       bullets: [
-        "Contributed to a psychological focus-group study on sexuality in the autism spectrum led by Prof. Marta Panzeri.",
-        "Developed a standardized facilitation guide, scripting and behavioral protocols to support consistent session execution.",
-        "Managed recruitment, conducted bibliographic searches, verified scientific literature and facilitated recorded remote focus groups."
+        "Co-facilitated recorded Zoom focus groups with autistic participants discussing sensitive sexuality and relationship topics, using clear expectations, respectful pacing and non-judgmental follow-up to support participant comfort.",
+        "Co-developed a standardized discussion guide, scripted prompts and session procedures; worked in a two-person facilitation team using live handoffs and recovery when prompts were missed or a facilitator needed support.",
+        "Supported participant recruitment, bibliographic research, technical session preparation and coordination with the supervising professor, researchers and a second autistic volunteer facilitator.",
+        "Institutional and individual attribution is withheld from the public portfolio pending permission; no participant information is disclosed."
       ],
       resumeBullets: [
-        "Developed standardized remote facilitation protocols, supported recruitment and conducted focus groups for a University of Padua autism research collaboration."
+        "Co-facilitated recorded Zoom focus groups with autistic participants on sensitive sexuality and relationship topics, using structured prompts, respectful pacing and non-judgmental follow-up.",
+        "Co-developed session guides and worked in a two-person moderation team with live handoffs, recovery when prompts were missed, participant recruitment and technical coordination."
       ]
     },
     {
