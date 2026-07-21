@@ -21,7 +21,7 @@ const REQUIRED = [
   'src/pages/integrity.astro', 'src/pages/cv.astro', 'src/pages/cv-resume.astro',
   'src/pages/cv-research.astro', 'src/pages/cv-editorial.astro', 'src/pages/cv-integrity.astro',
   'src/pages/security.astro', 'src/styles/global.css', 'src/styles/career-v2.css',
-  'src/styles/portfolio-human-v2.css', 'src/styles/nav-editorial.css', 'src/styles/integrity.css',
+  'src/styles/portfolio-v5.css', 'src/styles/nav-editorial.css', 'src/styles/integrity.css',
   'src/styles/v3-accessibility.css', 'scripts/lib/dossier-generators.js',
   'scripts/generate-llm-dossiers.js', 'scripts/postbuild.js', 'scripts/verify-dist.js',
   'scripts/verify-rendering.js', 'public/.well-known/api-catalog',
@@ -44,7 +44,10 @@ const PROHIBITED = [
   ['AI Evaluation & Scientific Research Verification Specialist', 'Competing primary title'],
   ['Scientific AI Evaluation & Research Data Specialist', 'Competing primary title'],
   ['AI Safety Evaluation & Research Verification Specialist', 'Rejected narrow umbrella title'],
-  ['C2 Reading/Listening, B2 Writing/Speaking', 'Unnecessary language subscore emphasis']
+  ['C2 Reading/Listening, B2 Writing/Speaking', 'Unnecessary language subscore emphasis'],
+  ['Institutional and individual attribution is withheld', 'Outdated focus-group attribution status'],
+  ['Scale, failure modes, systems and evidence.', 'Rejected oversized portfolio-v4 heading'],
+  ['Useful when the problem is strange, ambiguous or uncomfortable.', 'Rejected self-promotional portfolio-v4 heading']
 ];
 
 let failures = 0;
@@ -94,6 +97,15 @@ for (const [field, actual, expected] of identityChecks) {
   if (actual !== expected) fail('data/source.js', 1, `${field} must equal ${JSON.stringify(expected)}; found ${JSON.stringify(actual)}.`);
 }
 
+const focusGroup = (D.experience || []).find((item) => String(item.role || '').includes('Focus-Group'));
+if (!focusGroup) fail('data/source.js', 1, 'Named focus-group research experience is missing.');
+else {
+  for (const required of ['Marta Panzeri', 'Department of Developmental Psychology and Socialisation', 'University of Padua']) {
+    const serialized = JSON.stringify(focusGroup);
+    if (!serialized.includes(required)) fail('data/source.js', 1, `Focus-group record is missing approved attribution: ${required}`);
+  }
+}
+
 const packageJson = JSON.parse(fs.readFileSync(path.join(ROOT, 'package.json'), 'utf8'));
 for (const [name, command] of Object.entries(packageJson.scripts || {})) {
   if (/\|\|\s*true|2>\/dev\/null/.test(command)) fail('package.json', 1, `Script ${name} suppresses failures.`);
@@ -106,18 +118,17 @@ for (const marker of ['human-capabilities', 'human-work', 'human-documents']) {
   if (!indexSource.includes(`data-testid="${marker}"`)) fail('src/pages/index.astro', 1, `Missing homepage marker ${marker}.`);
 }
 for (const requiredText of [
-  'I work on difficult problems where', 'Scale, failure modes, systems and evidence.',
-  'Small tools that solve real problems.', 'Interactive analysis and public visual explanation.',
-  'Useful when the problem is strange, ambiguous or uncomfortable.',
-  'One evidence base. Four high-upside application routes.', 'Bring me the difficult problem.'
+  'Evidence that maps to the next role.', 'Co-facilitating autism-and-sexuality focus groups',
+  'Public tools with a clear job to do.', 'Public analysis across three platforms.',
+  'Use the version matched to the role.', 'Discuss a difficult problem.'
 ]) {
-  if (!indexSource.includes(requiredText)) fail('src/pages/index.astro', 1, `Homepage is missing outcome-led content: ${requiredText}`);
+  if (!indexSource.includes(requiredText)) fail('src/pages/index.astro', 1, `Homepage is missing portfolio-v5 content: ${requiredText}`);
 }
 for (const rejectedText of [
   'class="v3-network"', 'Explore role lenses', 'One profile. Four credible lenses.',
-  'Pencil_Fascist_Tuberculosis', 'Alessandro Lanzoni'
+  'Pencil_Fascist_Tuberculosis', 'Alessandro Lanzoni', 'class="portfolio-v4"'
 ]) {
-  if (indexSource.includes(rejectedText)) fail('src/pages/index.astro', 1, `Homepage still contains rejected or de-prioritized content: ${rejectedText}`);
+  if (indexSource.includes(rejectedText)) fail('src/pages/index.astro', 1, `Homepage still contains rejected content: ${rejectedText}`);
 }
 
 const integritySource = fs.readFileSync(path.join(ROOT, 'src/pages/integrity.astro'), 'utf8');
@@ -131,7 +142,7 @@ for (const requiredText of ['Model behavior evaluation record.', 'What the recor
 }
 
 const navSource = fs.readFileSync(path.join(ROOT, 'src/components/SiteNav.astro'), 'utf8');
-for (const requiredText of ['aria-pressed="false"', 'Switch to dark theme', 'Switch to light theme', 'Products', 'Visuals', 'CVs', 'Email']) {
+for (const requiredText of ['aria-pressed="false"', 'Switch to dark theme', 'Switch to light theme', 'Work', 'Experience', 'CV', 'Contact']) {
   if (!navSource.includes(requiredText)) fail('src/components/SiteNav.astro', 1, `Navigation is missing required text: ${requiredText}`);
 }
 
