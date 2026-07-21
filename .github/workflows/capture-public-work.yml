@@ -7,7 +7,9 @@ on:
       - scripts/capture-public-work.js
       - .github/workflows/capture-public-work.yml
       - src/pages/index.astro
+      - src/layouts/Layout.astro
       - src/styles/human-portfolio.css
+      - src/styles/human-mobile-fixes.css
       - data/portfolio-human.js
       - scripts/check-stale-strings.js
       - scripts/verify-dist.js
