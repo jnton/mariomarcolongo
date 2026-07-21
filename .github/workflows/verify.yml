@@ -95,10 +95,14 @@ jobs:
         run: npm run pdf:cv
 
       - name: Stage final repository state
+        shell: bash
         run: |
+          set -euo pipefail
           git diff --check
+          printf '\naudit-output/\n' >> .git/info/exclude
+          rm -rf .github/repair-parts
+          rm -f .github/repair-ready .github/mobile-overflow.patch .github/resume-pagination.patch .github/workflows/apply-final-repair.yml
           git add -A
-          git rm -r .github/repair-parts .github/repair-ready .github/mobile-overflow.patch .github/resume-pagination.patch .github/workflows/apply-final-repair.yml
           git diff --cached --check
           git status --short
 
