@@ -1,23 +1,27 @@
 {
   "name": "mariomarcolongo",
-  "version": "2026.07.0",
+  "version": "2026.07.2",
   "private": true,
-  "description": "AI-Native Systems Builder, Open Science Technologist & Empirical Data Synthesizer portfolio and CV SSOT",
+  "description": "Research, evidence and AI operations portfolio spanning scientific verification, editorial and research programs, knowledge integrity, AI safety and open-science data quality",
   "scripts": {
-    "dev": "node scripts/generate-llm-dossiers.js && astro dev",
-    "build": "node scripts/generate-llm-dossiers.js && astro build && cp dist/index.html index.html 2>/dev/null && cp dist/cv.html cv.html 2>/dev/null || true",
-    "deploy": "npx wrangler pages deploy dist --project-name=mariomarcolongo",
+    "lint": "node scripts/check-stale-strings.js",
+    "dev": "node scripts/check-stale-strings.js && node scripts/generate-llm-dossiers.js && astro dev",
+    "build": "npm run lint && node scripts/generate-llm-dossiers.js && astro build && node scripts/postbuild.js && node scripts/verify-dist.js",
+    "deploy": "npm run build && npm run verify:render && npx wrangler pages deploy dist --project-name=mariomarcolongo",
     "preview": "astro preview",
     "generate:llms": "node scripts/generate-llm-dossiers.js",
     "generate:favicons": "node scripts/generate-favicons.js",
     "cv:custom": "node scripts/generate-custom-cv.js",
     "pdf:cv": "node scripts/generate-cv-pdf.js",
-    "pdf:campbell": "node scripts/generate-campbell-pdf.js",
-    "pdf": "node scripts/generate-cv-pdf.js && node scripts/generate-campbell-pdf.js"
+    "pdf:resume": "node scripts/generate-resume-pdf.js",
+    "pdf": "npm run pdf:resume && npm run pdf:cv",
+    "verify:dist": "node scripts/verify-dist.js",
+    "verify:render": "node scripts/verify-rendering.js"
   },
   "author": "Mario Marcolongo <me@mariomarcolongo.com>",
   "devDependencies": {
     "astro": "^7.0.9",
+    "pdf-lib": "^1.17.1",
     "puppeteer": "^25.3.0",
     "turndown": "^7.2.4",
     "wrangler": "^4.110.0"

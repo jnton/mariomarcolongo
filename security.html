@@ -1,0 +1,135 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Model Behavior Evaluation Record — Mario Marcolongo</title><meta name="description" content="Concise public record of self-directed model-behavior evaluation on the Gray Swan Proving Ground, including scope, methodology, platform-reported activity and evidence limitations."><link rel="canonical" href="https://mariomarcolongo.com/security.html"><link rel="icon" type="image/x-icon" sizes="32x32" href="/favicon.ico"><link rel="shortcut icon" href="/favicon.ico"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/favicon.svg" color="#526dff"><link rel="manifest" href="/site.webmanifest"><script id="mm-theme">
+    (function() {
+      try {
+        var stored = null;
+        try { stored = localStorage.getItem('theme'); } catch(e) {}
+        var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (stored === 'dark' || (!stored && prefersDark)) {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        } else {
+          document.documentElement.setAttribute('data-theme', 'light');
+        }
+      } catch(err) {}
+    })();
+  </script><link rel="api-catalog" href="https://mariomarcolongo.com/.well-known/api-catalog"><link rel="describedby" type="text/plain" href="https://mariomarcolongo.com/llms.txt"><link rel="describedby" type="text/plain" href="https://mariomarcolongo.com/llms-full.txt"><link rel="agent-card" href="https://mariomarcolongo.com/.well-known/agent-card.json"><link rel="mcp-server-card" href="https://mariomarcolongo.com/.well-known/mcp/server-card.json"><meta property="og:type" content="website"><meta property="og:url" content="https://mariomarcolongo.com/security.html"><meta property="og:title" content="Model Behavior Evaluation Record — Mario Marcolongo"><meta property="og:description" content="Concise public record of self-directed model-behavior evaluation on the Gray Swan Proving Ground, including scope, methodology, platform-reported activity and evidence limitations."><meta property="og:image" content="https://mariomarcolongo.com/og-preview.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:site_name" content="Mario Marcolongo"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:url" content="https://mariomarcolongo.com/security.html"><meta name="twitter:title" content="Model Behavior Evaluation Record — Mario Marcolongo"><meta name="twitter:description" content="Concise public record of self-directed model-behavior evaluation on the Gray Swan Proving Ground, including scope, methodology, platform-reported activity and evidence limitations."><meta name="twitter:image" content="https://mariomarcolongo.com/og-preview.png"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700;800;900&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet"><script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","@id":"https://mariomarcolongo.com/security.html#webpage","name":"Model Behavior Evaluation Record — Mario Marcolongo","description":"Concise public record of self-directed model-behavior evaluation on the Gray Swan Proving Ground, including scope, methodology, platform-reported activity and evidence limitations.","url":"https://mariomarcolongo.com/security.html","dateModified":"2026-07-21","author":{"@id":"https://mariomarcolongo.com/#person"},"about":{"@type":"Thing","name":"Model behavior evaluation"}}</script><link rel="stylesheet" href="/_astro/SiteFooter.a256J8yn.css"><link rel="stylesheet" href="/_astro/career-v2.DkBnJmCP.css"></head><body><div id="scrollProgress"></div><main id="main-content"><header class="nav print-hide" id="siteNav"><a href="/" class="nav-name" aria-label="Mario Marcolongo — Home"><span class="nav-name-full">Mario Marcolongo</span><span class="nav-name-short" aria-hidden="true">MM</span></a><nav class="nav-actions" aria-label="Primary navigation"><a href="/" class="nav-link nav-overview ">Portfolio</a><a href="/integrity.html" class="nav-link nav-integrity "><span class="evaluation-label-full">Work Samples</span><span class="evaluation-label-short" aria-hidden="true">Work</span></a><a href="/#documents" class="nav-link nav-documents ">CVs</a><a href="/cv.html" class="nav-link nav-full-cv ">Master CV</a><a href="/#contact" class="btn btn-primary btn-sm nav-resume" aria-label="Contact Mario Marcolongo"><span class="resume-label-full">Contact</span><span class="resume-label-short" aria-hidden="true">Email</span></a><button class="theme-toggle" id="themeBtn" aria-label="Switch to dark theme" aria-pressed="false" type="button"><span class="theme-icon-light" aria-hidden="true">☀️</span><span class="theme-icon-dark" aria-hidden="true" hidden>🌙</span></button></nav></header><script>
+  (function initNavAndTheme() {
+    var navEl = document.getElementById("siteNav");
+    if (navEl) {
+      var onScroll = function() {
+        navEl.classList.toggle("scrolled", window.scrollY > 20);
+      };
+      window.addEventListener("scroll", onScroll, { passive: true });
+      onScroll();
+    }
+
+    var themeBtn = document.getElementById("themeBtn");
+    if (!themeBtn) return;
+
+    function updateThemeControl(theme) {
+      var isDark = theme === "dark";
+      var lightIcon = themeBtn.querySelector(".theme-icon-light");
+      var darkIcon = themeBtn.querySelector(".theme-icon-dark");
+      if (lightIcon) lightIcon.hidden = isDark;
+      if (darkIcon) darkIcon.hidden = !isDark;
+      themeBtn.setAttribute("aria-pressed", isDark ? "true" : "false");
+      themeBtn.setAttribute("aria-label", isDark ? "Switch to light theme" : "Switch to dark theme");
+    }
+
+    var current = document.documentElement.getAttribute("data-theme") === "dark" ? "dark" : "light";
+    updateThemeControl(current);
+
+    themeBtn.addEventListener("click", function() {
+      var active = document.documentElement.getAttribute("data-theme") === "dark" ? "dark" : "light";
+      var next = active === "dark" ? "light" : "dark";
+      document.documentElement.setAttribute("data-theme", next);
+      updateThemeControl(next);
+      try { localStorage.setItem("theme", next); } catch (e) {}
+    });
+  })();
+</script><div class="evaluation-shell"><section class="evaluation-hero"><div><div class="evaluation-eyebrow">Public evaluation evidence</div><h1 class="evaluation-title">Model behavior evaluation record.</h1><p class="evaluation-lede">Self-directed adversarial testing across chat, image, agentic tool-use and indirect prompt-injection challenges. This page is designed as a professional evidence record: it explains what the public activity demonstrates, how the work is approached and where the evidence stops.</p><div class="career-actions"><a class="btn btn-primary" href="https://app.grayswan.ai/arena/user/6a57be70d15e123775a1e9cf" target="_blank" rel="noopener noreferrer">Open Gray Swan profile ↗</a><a class="btn" href="/cv-resume.html">AI Safety Application CV</a></div></div><aside class="evaluation-scope-note"><strong>Evidence boundary</strong><p>Counts and ranking are platform-reported snapshots as of July 2026. They are not an independent security audit, formal certification, proof of model-wide vulnerability or reproduction of every adjudicated result.</p></aside></section><section class="evaluation-metrics" aria-label="Platform-reported activity"><article class="evaluation-metric"><strong>75</strong><span>Platform-confirmed model breaks</span><small>Across 26 listed waves · July 2026</small></article><article class="evaluation-metric"><strong>156</strong><span>Platform submissions</span><small>Repeated activity across multiple testing surfaces</small></article><article class="evaluation-metric"><strong>Top 8%</strong><span>Rank band among listed participants</span><small>Time-sensitive platform snapshot · July 2026</small></article></section><section class="evaluation-section" id="scope" data-testid="evaluation-scope"><div class="evaluation-section-head"><h2>What the record demonstrates</h2><p>Sustained exploratory testing, familiarity with several model-interaction surfaces, repeated submission workflows and careful distinction between public evidence and interpretation.</p></div><div class="evaluation-grid"><article class="evaluation-card"><div class="evaluation-step">AREA 01</div><h3>Instruction hierarchy and multi-turn behavior</h3><p>Probe whether constraints, refusals and contextual priorities remain stable across direct and extended conversations.</p></article><article class="evaluation-card"><div class="evaluation-step">AREA 02</div><h3>Multimodal and visual inputs</h3><p>Test interactions between textual instructions and information embedded in images, diagrams or visual typography.</p></article><article class="evaluation-card"><div class="evaluation-step">AREA 03</div><h3>Agentic tool-use and function selection</h3><p>Investigate whether tool selection and function calls remain aligned when external, nested or conflicting context is present.</p></article><article class="evaluation-card"><div class="evaluation-step">AREA 04</div><h3>Indirect prompt injection</h3><p>Test how systems handle adversarial instructions contained in retrieved documents, web pages or uploaded files.</p></article></div></section><section class="evaluation-section" id="method" data-testid="evaluation-method"><div class="evaluation-section-head"><h2>Evaluation approach</h2><p>The current public record is stronger as evidence of evaluation judgment and persistence than as evidence of security engineering. The methodology therefore emphasizes observable behavior, test variation, documentation and evidence boundaries.</p></div><div class="evaluation-grid"><article class="evaluation-card"><div class="evaluation-step">STEP 01</div><h3>Define the behavior under test</h3><p>Translate an ambiguous risk or product behavior into an observable condition, boundary or expected response.</p></article><article class="evaluation-card"><div class="evaluation-step">STEP 02</div><h3>Vary context and attack path</h3><p>Explore direct, multi-turn, multimodal, nested and tool-mediated variants rather than relying on a single prompt.</p></article><article class="evaluation-card"><div class="evaluation-step">STEP 03</div><h3>Record evidence conservatively</h3><p>Separate observed behavior and platform status from interpretation, model-wide conclusions or unsupported severity claims.</p></article><article class="evaluation-card"><div class="evaluation-step">STEP 04</div><h3>Communicate reproducibly</h3><p>Document the test area, preconditions, behavior, limitations and available public evidence in a form another evaluator can inspect.</p></article></div></section><section class="evaluation-section" id="public-evidence"><div class="evaluation-section-head"><h2>Publicly inspectable evidence</h2><p>The platform profile exposes aggregate activity and a limited number of public submission labels. Complete prompts, outputs, model versions and adjudication rationales are not reproduced here.</p></div><div class="evaluation-grid"><article class="evaluation-card"><div class="evaluation-step">PUBLIC PLATFORM LABEL</div><h3><code>indirect-function-call</code></h3><p>Category visible through the public platform record. It is not presented as a complete vulnerability report or independently reproduced exploit.</p></article><article class="evaluation-card"><div class="evaluation-step">PUBLIC PLATFORM LABEL</div><h3><code>weak-password-change</code></h3><p>Category visible through the public platform record. It is not presented as a complete vulnerability report or independently reproduced exploit.</p></article></div><details class="evaluation-details"><summary>Open the complete 26-wave activity table</summary><div class="evaluation-table-wrap" role="region" aria-label="Gray Swan testing wave activity" tabindex="0"><table class="evaluation-table"><thead><tr><th scope="col">Wave</th><th scope="col">Platform-confirmed breaks</th><th scope="col">Available challenges shown</th></tr></thead><tbody><tr><td>Wave 1</td><td>14</td><td>67</td></tr><tr><td>Wave 2</td><td>10</td><td>72</td></tr><tr><td>Wave 3</td><td>10</td><td>72</td></tr><tr><td>Wave 4</td><td>0</td><td>46</td></tr><tr><td>Wave 5</td><td>5</td><td>72</td></tr><tr><td>Wave 6</td><td>3</td><td>72</td></tr><tr><td>Wave 7</td><td>2</td><td>64</td></tr><tr><td>Wave 8</td><td>0</td><td>67</td></tr><tr><td>Wave 9</td><td>0</td><td>67</td></tr><tr><td>Wave 10</td><td>3</td><td>67</td></tr><tr><td>Wave 11</td><td>2</td><td>67</td></tr><tr><td>Wave 12</td><td>3</td><td>67</td></tr><tr><td>Wave 13</td><td>0</td><td>67</td></tr><tr><td>Wave 14</td><td>0</td><td>67</td></tr><tr><td>Wave 15</td><td>8</td><td>67</td></tr><tr><td>Wave 16</td><td>3</td><td>67</td></tr><tr><td>Wave 17</td><td>0</td><td>75</td></tr><tr><td>Wave 18</td><td>0</td><td>75</td></tr><tr><td>Wave 19</td><td>0</td><td>56</td></tr><tr><td>Wave 20</td><td>0</td><td>56</td></tr><tr><td>Wave 21</td><td>0</td><td>56</td></tr><tr><td>Wave 22</td><td>6</td><td>56</td></tr><tr><td>Wave 23</td><td>0</td><td>57</td></tr><tr><td>Wave 24</td><td>2</td><td>56</td></tr><tr><td>Wave 25</td><td>3</td><td>55</td></tr><tr><td>Wave 26</td><td>1</td><td>56</td></tr></tbody></table></div></details></section><section class="evaluation-section" id="limitations" data-testid="evaluation-limitations"><div class="evaluation-section-head"><h2>Limitations and interpretation</h2><p>This record supports applications to evaluation, safeguards operations, trust & safety and adversarial QA roles. It does not yet establish the application-security, independent Python development or automated-framework experience expected from senior AI red-team engineers.</p></div><ul class="evaluation-list"><li>“Platform-confirmed” describes Gray Swan’s status, not independent third-party reproduction.</li><li>The public source does not expose complete prompts, outputs, model versions or adjudication materials for every result.</li><li>Counts and rankings are snapshots and may change after July 2026.</li><li>No claim is made that every recorded result represents a security vulnerability or model-wide failure.</li><li>The next evidence milestone is a public, reproducible evaluation dataset and automated test harness built with independently understood code.</li></ul></section></div><footer class="site-footer print-hide"><div class="container"><div class="footer-content"><div class="footer-text"><p><strong>© 2026 Mario Marcolongo.</strong> Project datasets, code and site content retain the licences stated in their respective repositories and records. Active Build: v2026.07.21</p></div><div class="footer-links"><a href="https://orcid.org/0000-0003-2846-7115" target="_blank" rel="noopener noreferrer">ORCID: 0000-0003-2846-7115</a><a href="https://www.ebi.ac.uk/ena/browser/view/PRJEB109744" target="_blank" rel="noopener noreferrer">ENA: PRJEB109744</a><a href="https://github.com/jnton" target="_blank" rel="noopener noreferrer">GitHub: jnton</a><a href="https://www.linkedin.com/in/mario-marcolongo" target="_blank" rel="noopener noreferrer">LinkedIn</a></div></div><div class="footer-content footer-dossiers"><div class="footer-text"><span>Machine-actionable dossiers for verification and automated processing:</span></div><div class="footer-links footer-dossier-links"><a href="/llms.txt" class="btn btn-sm" target="_blank" rel="noopener noreferrer">llms.txt</a><a href="/llms-full.txt" class="btn btn-sm" target="_blank" rel="noopener noreferrer">llms-full.txt</a><a href="/cv-llm.txt" class="btn btn-sm" target="_blank" rel="noopener noreferrer">cv-llm.txt</a><button class="btn btn-ai btn-sm" type="button" onclick="copyCanonicalText('/llms-full.txt', this, '✓ Copied Dossier!')" title="Copy the canonical complete AI-compatible dossier">✨ Copy complete dossier</button></div></div></div></footer><script>
+  (function exposeCanonicalCopyUtility() {
+    if (window.copyCanonicalText) return;
+
+    window.copyCanonicalText = async function copyCanonicalText(url, btnEl, successText) {
+      var originalText = btnEl.textContent;
+      btnEl.disabled = true;
+      btnEl.textContent = 'Copying...';
+
+      try {
+        var response = await fetch(url, { cache: 'no-store' });
+        if (!response.ok) throw new Error('HTTP ' + response.status);
+        var content = await response.text();
+        if (!content.trim()) throw new Error('Canonical file was empty');
+        await navigator.clipboard.writeText(content);
+        btnEl.textContent = successText || '✓ Copied!';
+        btnEl.classList.add('copy-success');
+      } catch (error) {
+        console.error('Unable to copy canonical file ' + url + ':', error);
+        btnEl.textContent = 'Unable to copy';
+      }
+
+      window.setTimeout(function() {
+        btnEl.textContent = originalText;
+        btnEl.disabled = false;
+        btnEl.classList.remove('copy-success');
+      }, 2200);
+    };
+  })();
+</script></main><script>
+    (function initWebMCP() {
+      function registerTools() {
+        if (typeof navigator !== 'undefined' && navigator.modelContext && typeof navigator.modelContext.provideContext === 'function') {
+          try {
+            navigator.modelContext.provideContext({
+              tools: [
+                {
+                  name: "query_dossier",
+                  description: "Retrieve Mario Marcolongo's evidence-bound professional dossier, work history and public records.",
+                  inputSchema: {
+                    type: "object",
+                    properties: {
+                      format: { type: "string", description: "Format option: 'summary' or 'full'", default: "full" }
+                    }
+                  },
+                  execute: async (args = {}) => {
+                    const url = args.format === 'summary' ? '/llms.txt' : '/llms-full.txt';
+                    const res = await fetch(url);
+                    const text = await res.text();
+                    return { content: text };
+                  }
+                },
+                {
+                  name: "query_cv",
+                  description: "Access Mario Marcolongo's machine-readable master CV.",
+                  inputSchema: { type: "object", properties: {} },
+                  execute: async () => {
+                    const res = await fetch('/cv-llm.txt');
+                    const text = await res.text();
+                    return { content: text };
+                  }
+                },
+                {
+                  name: "query_genomic_pipeline",
+                  description: "Access technical notes for the public 41x WGS genomic donation under ENA PRJEB109744.",
+                  inputSchema: { type: "object", properties: {} },
+                  execute: async () => {
+                    const res = await fetch('/llms-full.txt');
+                    const text = await res.text();
+                    return { content: text };
+                  }
+                }
+              ]
+            });
+          } catch (e) {
+            console.warn("WebMCP registration error:", e);
+          }
+        }
+      }
+
+      registerTools();
+      if (typeof window !== 'undefined') {
+        window.addEventListener('DOMContentLoaded', registerTools);
+        window.addEventListener('load', registerTools);
+      }
+    })();
+  </script></body></html>
