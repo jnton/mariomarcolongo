@@ -35,7 +35,7 @@ const PORTFOLIO_HUMAN = {
       id: "mdpi",
       label: "Browser extension",
       title: "MDPI Filter",
-      image: "/media/work/mdpi-filter-1.png",
+      image: "https://lh3.googleusercontent.com/1KKa3LqvJ6ayP9Kh6_jmAWXzL3naOfPnnKtWb8vjd25XMn1ELMNFDxGjgtvShNmDhWG4x_uuynunm9lVD7wQ3hAI=s1280-w1280-h800",
       imageAlt: "MDPI Filter browser extension highlighting publisher results in a literature-search interface",
       href: "https://chromewebstore.google.com/detail/mdpi-filter/comknkeimaaadpiopddjoknflbmjeccp"
     },
@@ -51,15 +51,15 @@ const PORTFOLIO_HUMAN = {
       id: "telegram",
       label: "Serverless automation",
       title: "Wikipedia Link Converter",
-      image: "/media/work/telegram-bot.png",
-      imageAlt: "Public Telegram landing page for the English Wikipedia Link Converter bot",
+      image: "https://cdn4.telesco.pe/file/pZUg4_EKmf_XKFJ1mesezgQCQNLUEoEhIf2PkVmxn5E97MKs43H7Rx6S6PEwzST3GM9HzoiCT4H7ec5i6S6xuluOYwyLWfj4Z0OqNl2vgkqCGMulAXGcUqnWRiMVglqDNCC4fkKuT0m8YizUQMbkISnpnt-8cV509X3_CDf76FETk3ApwGce1QWt54xjuYYALbOrOh_FGuk3ll7i5HoMKyGiFVvqSWXYAdCah1O8B9EAFMwIDA4taSh5m466VLqI55mg8SXvTz0gICVeV1N9e5eR0B-t4ZONBAE-kbM-hvhG5L4VCuvlmx0hLudnq-rttkia6aTbKohf3lrCwc6r_g.jpg",
+      imageAlt: "Public Telegram bot image for the English Wikipedia Link Converter",
       href: "https://t.me/ToEnWikipediaBot"
     },
     {
       id: "tableau",
       label: "Interactive data work",
       title: "Tableau Public",
-      image: "/media/work/tableau-mortality.png",
+      image: "https://public.tableau.com/views/TavolediMortalitSingoleEtItalia-ISTAT/Sheet1.png?:showVizHome=no",
       imageAlt: "Tableau Public visualization of Italian mortality tables by individual age",
       href: "https://public.tableau.com/app/profile/mario.marcolongo/viz/TavolediMortalitSingoleEtItalia-ISTAT/Sheet1"
     }
@@ -136,7 +136,7 @@ const PORTFOLIO_HUMAN = {
         "Maintain Chrome and Edge store releases"
       ],
       result: "A public, open-source Manifest V3 extension available through the Chrome and Edge stores.",
-      image: "/media/work/mdpi-filter-2.png",
+      image: "https://lh3.googleusercontent.com/PFwTjvBGc7yEyomiAhZYB60HVcqcIRJaWjRndm8CukDwCOikYyErU9tBqOzMUhF-HTXv4wGyKNbsjvIjNyU0NpSO=s1280-w1280-h800",
       imageAlt: "MDPI Filter extension popup listing detected references and page controls",
       href: "https://chromewebstore.google.com/detail/mdpi-filter/comknkeimaaadpiopddjoknflbmjeccp",
       linkLabel: "Open the Chrome Web Store listing"
@@ -149,8 +149,8 @@ const PORTFOLIO_HUMAN = {
       label: "AWS Lambda · Telegram · GitHub Actions",
       title: "English Wikipedia Link Converter",
       body: "A serverless Telegram bot that converts non-English Wikipedia links into their English equivalents in private chats, groups and inline mode.",
-      image: "/media/work/telegram-bot.png",
-      imageAlt: "Telegram page for the English Wikipedia Link Converter bot",
+      image: "https://cdn4.telesco.pe/file/pZUg4_EKmf_XKFJ1mesezgQCQNLUEoEhIf2PkVmxn5E97MKs43H7Rx6S6PEwzST3GM9HzoiCT4H7ec5i6S6xuluOYwyLWfj4Z0OqNl2vgkqCGMulAXGcUqnWRiMVglqDNCC4fkKuT0m8YizUQMbkISnpnt-8cV509X3_CDf76FETk3ApwGce1QWt54xjuYYALbOrOh_FGuk3ll7i5HoMKyGiFVvqSWXYAdCah1O8B9EAFMwIDA4taSh5m466VLqI55mg8SXvTz0gICVeV1N9e5eR0B-t4ZONBAE-kbM-hvhG5L4VCuvlmx0hLudnq-rttkia6aTbKohf3lrCwc6r_g.jpg",
+      imageAlt: "Telegram image for the English Wikipedia Link Converter bot",
       href: "https://t.me/ToEnWikipediaBot",
       linkLabel: "Launch the bot"
     },
@@ -172,7 +172,7 @@ const PORTFOLIO_HUMAN = {
       label: "Tableau Public",
       title: "Interactive statistical analysis",
       body: "Public workbooks covering mortality, health, demography and policy data, including Italian age-specific mortality tables.",
-      image: "/media/work/tableau-mortality.png",
+      image: "https://public.tableau.com/views/TavolediMortalitSingoleEtItalia-ISTAT/Sheet1.png?:showVizHome=no",
       imageAlt: "Tableau visualization of mortality tables for individual ages in Italy",
       href: "https://public.tableau.com/app/profile/mario.marcolongo/vizzes",
       linkLabel: "Open the Tableau portfolio"
@@ -181,11 +181,11 @@ const PORTFOLIO_HUMAN = {
       id: "flourish",
       label: "Flourish",
       title: "Interactive visual storytelling",
-      body: "Charts and visual stories designed for exploratory public communication rather than static reporting alone.",
-      image: "/media/work/flourish-profile.png",
-      imageAlt: "Public Flourish profile showing interactive data-visualization projects",
-      href: "https://app.flourish.studio/@Digressivo",
-      linkLabel: "Open the Flourish portfolio"
+      body: "A Flourish-built global cancer-incidence map, published openly and reused through Wikimedia and Wikipedia.",
+      image: "https://upload.wikimedia.org/wikipedia/commons/5/53/Oesophageal_Cancer%2C_Age-Standardized_Rate_%28World%29_per_100.000_of_Incidence_Cases%2C_Both_sexes%2C_Worldwide_in_2022.svg",
+      imageAlt: "Flourish-built world map of age-standardized oesophageal cancer incidence",
+      href: "https://public.flourish.studio/visualisation/17745490/",
+      linkLabel: "Open the Flourish visualization"
     }
   ],
 
