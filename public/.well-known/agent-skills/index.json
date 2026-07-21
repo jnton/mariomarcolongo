@@ -1,28 +1,35 @@
 {
   "$schema": "https://agent-skills.org/schema/v0.2.0/index.json",
-  "name": "Mario Marcolongo Specialized Agent Skills",
-  "version": "2026.07.15",
+  "name": "Mario Marcolongo Evidence-Bound Professional Skills",
+  "version": "2026.07.21",
   "skills": [
     {
-      "id": "osint-digital-investigation",
-      "name": "OSINT & Digital Investigation Verification",
-      "description": "Performs multi-engine Boolean queries, reverse-image/facial verification (`PimEyes`, `TinEye`, `Google Lens`), EXIF/metadata geolocation, archival provenance (`Wayback Machine`, `Archive.today`), and WHOIS/certificate transparency lookups.",
-      "category": "investigation",
+      "id": "ai-safety-evaluation",
+      "name": "AI Safety Evaluation & Adversarial Testing",
+      "description": "Self-directed model-behavior testing across chat, image, agentic tool-use and indirect prompt-injection challenges, with conservative interpretation of platform-reported outcomes.",
+      "category": "ai-evaluation",
+      "referenceUrl": "https://mariomarcolongo.com/security.html"
+    },
+    {
+      "id": "scientific-evidence-verification",
+      "name": "Scientific Evidence Verification",
+      "description": "Primary-source fact-checking, bibliographic research, evidence screening, claim decomposition, source-quality assessment and cross-source corroboration.",
+      "category": "research-quality",
+      "referenceUrl": "https://mariomarcolongo.com/cv-research.html"
+    },
+    {
+      "id": "structured-data-provenance",
+      "name": "Structured Data Quality & Provenance",
+      "description": "Metadata structure, public-source reconciliation, taxonomy and validation workflows across Wikimedia, Wikidata, FAIRsharing, Zenodo and ENA records.",
+      "category": "data-quality",
       "referenceUrl": "https://mariomarcolongo.com/cv-llm.txt"
     },
     {
-      "id": "biomedical-fact-checking",
-      "name": "Biomedical & Epidemiological Fact-Checking",
-      "description": "Synthesizes primary medical literature (`PubMed`, `Cochrane`, `Europe PMC`), executes systematic screening workflows (`GALENOS`), and cross-references public knowledge graphs (`Wikidata`, `English/Italian Wikipedia`).",
-      "category": "science",
-      "referenceUrl": "https://mariomarcolongo.com/llms-full.txt"
-    },
-    {
-      "id": "genomic-pipeline-analysis",
-      "name": "41× WGS Open Genomic Analysis",
-      "description": "Inspects GRCh38-aligned BAM/VCF pipelines, runs `pgsc_calc` polygenic risk scores, and screens variants against `NCBI ClinVar` and `Ensembl VEP` (`ENA PRJEB109744`).",
-      "category": "bioinformatics",
-      "referenceUrl": "https://mariomarcolongo.com/llms-full.txt"
+      "id": "code-literate-technical-operations",
+      "name": "Code-Literate Technical Operations",
+      "description": "Requirements definition, codebase reading and behavior inspection, functional testing, issue diagnosis, deployment operations and AI-assisted implementation workflows; not independent software development.",
+      "category": "technical-operations",
+      "referenceUrl": "https://mariomarcolongo.com/cv.html"
     }
   ]
 }
