@@ -25,7 +25,9 @@ jobs:
           node-version: 22
 
       - name: Confirm repair activation
-        run: test -f .github/repair-ready
+        run: |
+          test -f .github/repair-ready
+          cp .github/workflows/verify.yml /tmp/verify-workflow-original.yml
 
       - name: Reconstruct repair patch
         run: |
@@ -94,19 +96,21 @@ jobs:
       - name: Generate full CV PDF
         run: npm run pdf:cv
 
-      - name: Stage final repository state
+      - name: Stage verified site and code tree
         shell: bash
         run: |
           set -euo pipefail
           git diff --check
           printf '\naudit-output/\n' >> .git/info/exclude
+          cp /tmp/verify-workflow-original.yml .github/workflows/verify.yml
           rm -rf .github/repair-parts
-          rm -f .github/repair-ready .github/mobile-overflow.patch .github/resume-pagination.patch .github/workflows/apply-final-repair.yml
+          rm -f .github/repair-ready .github/mobile-overflow.patch .github/resume-pagination.patch
           git add -A
           git diff --cached --check
+          git diff --cached --quiet -- .github/workflows/verify.yml .github/workflows/apply-final-repair.yml
           git status --short
 
-      - name: Commit and push verified repair
+      - name: Commit and push verified site tree
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
