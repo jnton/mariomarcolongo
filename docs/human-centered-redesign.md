@@ -4,7 +4,7 @@
 
 This branch is a design exploration. It must not be merged or deployed until the interactive desktop and mobile result is visually approved by Mario.
 
-The first executable prototype now includes the replacement homepage, real screenshots of public work, open-license visualizations, the historical provenance photograph, an evidence-led model-activity graphic and a privacy-safe focus-group protocol visual. The next gate is human inspection of the rendered desktop and mobile result—not merely successful compilation.
+The first executable prototype now includes the replacement homepage, real screenshots of public work, open-license visualizations, the historical provenance photograph, an evidence-led model-activity graphic and a privacy-safe focus-group protocol visual. Explicit inline-size containment is applied to the mobile marquee and horizontal artifact gallery. The next gate is human inspection of the rendered desktop and mobile result—not merely successful compilation.
 
 ## Why the previous direction is rejected
 
