@@ -1,23 +1,20 @@
-name: Migrate and verify portfolio v3
+name: Verify portfolio
 
 on:
   pull_request:
     branches: [main]
+  workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
-  migrate:
-    if: github.head_ref == 'final-audit-repair'
+  verify:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 25
     steps:
-      - name: Check out portfolio branch
+      - name: Check out repository
         uses: actions/checkout@v4
-        with:
-          ref: final-audit-repair
-          fetch-depth: 0
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
@@ -25,75 +22,43 @@ jobs:
           node-version: 22
           cache: npm
 
-      - name: Apply canonical portfolio migration
-        run: node scripts/apply-portfolio-v3-migration.js
+      - name: Install locked dependencies
+        run: npm ci --no-audit --no-fund
 
-      - name: Refresh lockfile and install dependencies
+      - name: Build and verify generated output
+        run: npm run build
+
+      - name: Verify deterministic generated files
         run: |
-          npm install --package-lock-only --ignore-scripts --no-audit --no-fund
-          npm ci --no-audit --no-fund
+          npm run generate:llms
+          git diff --exit-code -- \
+            llms.txt llms-full.txt cv-llm.txt \
+            public/llms.txt public/llms-full.txt public/cv-llm.txt public/data/source.js \
+            index.html integrity.html cv.html cv-resume.html cv-research.html cv-editorial.html cv-integrity.html security.html
 
-      - name: Build and capture diagnostics
-        id: build
-        run: |
-          set +e
-          npm run build > /tmp/portfolio-v3-build.log 2>&1
-          status=$?
-          set -e
-          mkdir -p .github/diagnostics
-          tail -n 260 /tmp/portfolio-v3-build.log > .github/diagnostics/portfolio-v3-build.log
-          echo "status=$status" >> "$GITHUB_OUTPUT"
+      - name: Verify rendered pages and interactions
+        run: npm run verify:render
 
-      - name: Commit diagnostic on build failure
-        if: steps.build.outputs.status != '0'
-        run: |
-          git config user.name 'github-actions[bot]'
-          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add .github/diagnostics/portfolio-v3-build.log package-lock.json
-          git commit -m 'ci: record portfolio v3 build failure [portfolio-v3-diagnostic]'
-          git push origin HEAD:final-audit-repair
+      - name: Generate four specialized application PDFs
+        run: npm run pdf:resume
 
-      - name: Stop after build failure
-        if: steps.build.outputs.status != '0'
-        run: exit 1
+      - name: Generate master CV PDF
+        run: npm run pdf:cv
 
-      - name: Verify pages and capture rendering diagnostics
-        id: render
-        if: steps.build.outputs.status == '0'
-        run: |
-          set +e
-          npm run verify:render > /tmp/portfolio-v3-render.log 2>&1
-          status=$?
-          set -e
-          tail -n 260 /tmp/portfolio-v3-render.log > .github/diagnostics/portfolio-v3-render.log
-          echo "status=$status" >> "$GITHUB_OUTPUT"
+      - name: Check patch formatting
+        run: git diff --check
 
-      - name: Commit diagnostic on rendering failure
-        if: steps.build.outputs.status == '0' && steps.render.outputs.status != '0'
-        run: |
-          git config user.name 'github-actions[bot]'
-          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add .github/diagnostics/portfolio-v3-render.log package-lock.json
-          git commit -m 'ci: record portfolio v3 rendering failure [portfolio-v3-diagnostic]'
-          git push origin HEAD:final-audit-repair
-
-      - name: Stop after rendering failure
-        if: steps.build.outputs.status == '0' && steps.render.outputs.status != '0'
-        run: exit 1
-
-      - name: Generate and validate all CV PDFs
-        if: steps.build.outputs.status == '0' && steps.render.outputs.status == '0'
-        run: npm run pdf
-
-      - name: Restore permanent CI and commit verified portfolio
-        if: steps.build.outputs.status == '0' && steps.render.outputs.status == '0'
-        run: |
-          cp scripts/verify-portfolio-final.yml .github/workflows/verify.yml
-          git config user.name 'github-actions[bot]'
-          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git rm -f --ignore-unmatch .github/workflows/sync-portfolio-v3.yml scripts/apply-portfolio-v3-migration.js scripts/verify-portfolio-final.yml
-          rm -rf .github/diagnostics
-          git add -A
-          git diff --cached --check
-          git commit -m 'feat: rebuild broad evidence trust research and AI portfolio [portfolio-v3-synced]'
-          git push origin HEAD:final-audit-repair
+      - name: Upload verification screenshots and PDFs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: verification-output
+          path: |
+            audit-output/**/*.png
+            Mario Marcolongo — AI Safety & Adversarial Testing CV.pdf
+            Mario Marcolongo — Research Verification & Data Quality CV.pdf
+            Mario Marcolongo — Research Editorial & Community Operations CV.pdf
+            Mario Marcolongo — Trust Safety & Knowledge Integrity CV.pdf
+            Mario Marcolongo — Curriculum Vitae.pdf
+          if-no-files-found: ignore
+          retention-days: 7
