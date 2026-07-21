@@ -1,0 +1,117 @@
+        <article class="security-card">
++            <div class="security-card-tag">Testing Area {String(index + 1).padStart(2, "0")}</div>
++            <h3 class="security-card-title">{area.title}</h3>
++            <div class="security-card-body"><p>{area.body}</p></div>
++          </article>
++        ))}
+       </div>
+     </section>
+ 
+-    <!-- REPRESENTATIVE EVALUATION SCENARIOS -->
+-    <section class="security-section" id="scenarios">
+-      <h2 class="security-section-title">Representative Evaluation Scenarios</h2>
++    <section class="security-section" id="labels">
++      <h2 class="security-section-title">Publicly Identifiable Submission Labels</h2>
+       <p class="security-section-desc">
+-        The following sanitized scenarios illustrate empirical testing methodologies derived from publicly verified submission labels across target modalities. They document evaluation scope without exposing unpatched exploit payloads.
++        The public profile exposes a limited number of submission labels. These labels identify platform categories; they are not complete public case records and do not independently document the prompt, full model output, model version, adjudication rationale or reproducibility materials.
+       </p>
+-
+-      <div class="security-card-grid">
+-        <div class="security-card">
+-          <div class="security-card-tag">Empirical Scenario · Agentic Tool-Use</div>
+-          <h3 class="security-card-title">Indirect Function-Call Manipulation (Agentic Tool-Use)</h3>
+-          <div class="security-card-body">
+-            <p>
+-              Evaluated whether untrusted or nested instructions in retrieved context could cause an agentic model to invoke a function outside the user’s intended task. Testing focused on instruction provenance, authorization boundaries, tool-selection logic, and resistance to concealed indirect directives.
+-            </p>
+-            <div class="security-code-block">Verified Submission Label: indirect-function-call</div>
+-          </div>
+-        </div>
+-
+-        <div class="security-card">
+-          <div class="security-card-tag">Empirical Scenario · Policy & Workflow Integrity</div>
+-          <h3 class="security-card-title">Account-Security Authorization & Workflow Integrity</h3>
+-          <div class="security-card-body">
+-            <p>
+-              Tested whether a model preserves identity-verification, confirmation, and authorization requirements when instructed to perform security-sensitive account modifications. Examined whether conversational framing or contextual urgency weakens authentication controls.
+-            </p>
+-            <div class="security-code-block">Verified Submission Label: weak-password-change</div>
+-          </div>
+-        </div>
+-
+-        <div class="security-card">
+-          <div class="security-card-tag">Empirical Scenario · Multimodal & Vision-Language</div>
+-          <h3 class="security-card-title">Multimodal Instruction Override via Visual Typography</h3>
+-          <div class="security-card-body">
+-            <p>
+-              Evaluated vision-language models for cross-modal instruction hierarchy robustness when textual constraints conflict with typography embedded directly inside uploaded images or technical diagrams, testing whether visual instructions can override system prompts.
+-            </p>
+-            <div class="security-code-block">Evaluation Vector: Multimodal Vision-Language Override</div>
+-          </div>
+-        </div>
+-
+-        <div class="security-card">
+-          <div class="security-card-tag">Empirical Scenario · Conversational Alignment</div>
+-          <h3 class="security-card-title">Multi-Turn Dialogue Constraint Relaxation</h3>
+-          <div class="security-card-body">
+-            <p>
+-              Systematically audited multi-turn conversational interactions to evaluate whether repeated benign contextual framing gradually relaxes policy thresholds or instruction boundaries over extended dialogue horizons.
+-            </p>
+-            <div class="security-code-block">Evaluation Vector: Multi-Turn Constraint Relaxation</div>
+-          </div>
+-        </div>
++      <div class="security-card-grid security-label-grid">
++        {publicLabels.map((label) => (
++          <article class="security-card">
++            <div class="security-card-tag">Public Platform Label</div>
++            <h3 class="security-card-title"><code>{label}</code></h3>
++            <div class="security-card-body">
++              <p><strong>Portfolio interpretation:</strong> {labelInterpretations[label] || "A category label exposed by the public platform profile."}</p>
++              <p class="security-evidence-note">Public platform label. The complete prompt, model output, model version and platform adjudication materials are not reproduced on this page.</p>
++            </div>
++          </article>
++        ))}
+       </div>
+     </section>
+ 
+-    <!-- METHODOLOGICAL SYNTHESIS -->
+-    <section class="security-section" id="synthesis">
+-      <h2 class="security-section-title">Bridging Red-Teaming with Epistemic Rigor</h2>
++    <section class="security-section" id="limitations">
++      <h2 class="security-section-title">Limitations and Interpretation</h2>
++      <ul class="security-limitations">
++        <li>The page reports aggregate platform activity and selected public labels, not complete test transcripts.</li>
++        <li>Specific model names, versions and architecture changes are not documented here unless present in the public source.</li>
++        <li>Full prompts, outputs, platform adjudication rationales and exploit payloads are not reproduced.</li>
++        <li>“Platform-confirmed” refers to the Gray Swan platform’s status and is not equivalent to independent third-party reproduction.</li>
++        <li>Rankings and counts are time-sensitive snapshots reported as of July 2026.</li>
++        <li>The record demonstrates sustained evaluation activity; it does not constitute a security certification or a comprehensive audit of any model provider.</li>
++      </ul>
++    </section>
++
++    <section class="security-section" id="relevance">
++      <h2 class="security-section-title">Relevance to Evaluation Operations and Research Verification</h2>
+       <p class="security-section-desc">
+-        Model behavior evaluation is directly synergistic with primary source verification and open science infrastructure engineering. Both disciplines require auditable rigor and defensive systems analysis:
++        This work demonstrates structured test design, repeated submission workflows, evidence-bound reporting, classification of observed behaviors, and careful separation between public evidence and interpretation. Those practices are relevant to AI evaluation operations, research verification, quality assurance and technical research roles.
+       </p>
+-
+       <div class="security-box">
+-        <div class="security-box-title">1. Structural Decomposition</div>
+-        <div class="security-box-body">
+-          Breaking down complex, opaque systems—whether a frontier LLM's system prompt or a 41× WGS genomic alignment pipeline—into discrete, testable assumptions and verifiable boundary conditions.
+-        </div>
+-      </div>
+-
+-      <div class="security-box">
+-        <div class="security-box-title">2. Evidence-Driven Auditing</div>
+-        <div class="security-box-body">
+-          Documenting reproducible behaviors and empirical boundary failures rather than theoretical speculation, paralleling the verification of 4,317 Wikimedia contributions and public ENA genomic accessions.
+-        </div>
+-      </div>
+-
+-      <div class="security-box">
+-        <div class="security-box-title">3. Defensive Systems Thinking</div>
+-        <div class="security-box-body">
+-          Applying adversarial insights to threat-model open-science architectures, ensuring research directories and data pipelines are resilient against prompt inje
