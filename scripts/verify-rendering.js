@@ -83,6 +83,12 @@ async function main() {
     await noJs.setJavaScriptEnabled(false);
     await noJs.setViewport({ width: 390, height: 844, deviceScaleFactor: 1 });
     await noJs.goto(`${staticServer.origin}/index.html`, { waitUntil: 'load', timeout: 45000 });
+    const expectedNoJsText = [
+      ...D.pillars.map((item) => item.title),
+      ...D.projects.map((item) => item.title),
+      ...D.stats.map((item) => item.label),
+      D.visualizations[0].title
+    ].filter(Boolean);
     const noJsResult = await noJs.evaluate((expected) => {
       const text = document.body.innerText;
       return {
@@ -95,12 +101,7 @@ async function main() {
         scrollWidth: document.documentElement.scrollWidth,
         clientWidth: document.documentElement.clientWidth
       };
-    }, [
-      ...D.pillars.map((item) => item.title),
-      ...D.projects.map((item) => item.title),
-      ...D.stats.map((item) => item.label),
-      D.visualizations[0].alt
-    ]);
+    }, expectedNoJsText);
     if (noJsResult.missing.length) throw new Error(`No-JS homepage is missing: ${noJsResult.missing.join(', ')}`);
     if (noJsResult.tests.some((item) => !item.exists || item.children === 0)) throw new Error(`No-JS homepage has an empty required container: ${JSON.stringify(noJsResult.tests)}`);
     if (noJsResult.evidenceLinks === 0) throw new Error('No-JS homepage has no external evidence links');
