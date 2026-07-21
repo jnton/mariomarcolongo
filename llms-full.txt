@@ -1,148 +1,147 @@
-# Mario Marcolongo — AI Evaluation & Research Verification Specialist
-> Model Behavior Evaluation · Scientific Evidence Review · Evaluation Operations · Technical Research
+# Mario Marcolongo — AI Safety Evaluation & Research Verification Specialist
+> Adversarial Model Testing · Scientific Evidence Review · Evaluation Operations · Data Quality
 
 ## Overview
-AI evaluation and research verification specialist with eight years of auditable work checking biomedical, technical and structured-data claims across sources, citations, datasets and public knowledge bases. Founder and product owner of Yourself to Science, an open-source research-participation directory indexing more than 55 clinical studies, biobanks, donation programs, registries and other initiatives, with documented verification workflows, machine-readable data, and Zenodo and FAIRsharing records. Paid scientific fact-checker, writer, data visualizer and website operator for Entropy for Life, supporting more than 55 videos and documentaries and four articles. Gray Swan Proving Ground participant since July 2026, with 75 platform-confirmed model breaks and a top-8% position among ranked participants as of July 2026.
+AI safety evaluation and research-verification specialist with sustained self-directed model-behavior testing across chat, image, agentic tool-use and indirect prompt-injection challenges. Gray Swan Proving Ground participant with 75 platform-confirmed model breaks across 156 submissions and a top-8% rank band among listed participants as of July 2026. Brings eight years of auditable claim verification, paid scientific fact-checking, structured research workflows, data-provenance discipline and clear evidence-bound reporting.
 
-> **I use AI-assisted development extensively. For the systems I independently operate, I define requirements and workflows, review generated code, test behavior, debug failures, deploy releases, and maintain the resulting services.**
+> **I use AI-assisted implementation extensively. I define requirements and workflows, inspect code structure and behavior, test implementations, diagnose functional problems, guide iterative changes, deploy releases, and maintain services. I do not present myself as an independent software developer.**
 
 ## Core Pillars & Expertise
 
-### 1. AI Evaluation & Model Behavior Testing
+### 1. Model Behavior & Adversarial Testing
 Structured, self-directed probing of LLM and multimodal-system behavior across chat, image, tool-use and indirect prompt-injection challenges.
 
-- **Platform-Confirmed Model Breaks**: 75 platform-confirmed breaks across 26 listed Proving Ground waves as of July 2026
-- **Evaluation Vectors**: Chat & Alignment, Multimodal/Image, Agentic Tool-Use, and Indirect Prompt Injection
+- **Platform-Confirmed Activity**: 75 breaks across 26 listed Proving Ground waves as of July 2026
+- **Testing Surfaces**: Chat, multimodal/image, agentic tool-use and indirect prompt injection
 
-### 2. Evidence Synthesis & Primary Source Fact-Checking
-Eight years of verifiable Wikipedia edits holding up under scrutiny, with formal training in systematic review screening and biomedical literature verification.
+### 2. Evidence Synthesis & Primary-Source Fact-Checking
+Eight years of auditable claim and source work, with paid biomedical literature verification and systematic-review screening training.
 
-- **Auditable Wikimedia Contributions**: 4,317 publicly inspectable contributions across Wikimedia projects as of July 2026
-- **Scientific Fact-Checking**: 55+ videos & 4 articles verified; Cochrane Crowd & GALENOS certified
+- **Auditable Contributions**: 4,317 publicly inspectable Wikimedia contributions as of July 2026
+- **Paid Scientific Verification**: Primary literature checked for 55+ videos and documentaries and four articles
 
-### 3. Open Science Infrastructure & Data Stewardship
-Designing and operating an open research-participation directory, standardized metadata interfaces, and a public personal-genomics workflow.
+### 3. Research Workflows, Metadata & Provenance
+Operating an open research-participation directory and maintaining structured, publicly inspectable research and data records.
 
-- **Open Research Cataloging**: 55+ clinical studies, biobanks & registries indexed in FAIRsharing & Zenodo
-- **Public Genomic Infrastructure**: 41× WGS raw reads & high-coverage GRCh38 BAM/VCF pipelines released under ENA PRJEB109744
+- **Research Directory**: 55+ clinical studies, biobanks, registries and donation programs indexed
+- **Public Records**: FAIRsharing, Zenodo, Wikimedia, Wikidata and ENA evidence
 
-### 4. Technical Product Delivery & Serverless Systems
-Translating technical requirements into deployed web platforms, serverless automations, and AI-assisted development workflows.
+### 4. Code-Literate, AI-Assisted Technical Operations
+Defining requirements, inspecting code structure and behavior, testing implementations, diagnosing functional problems and operating deployed services.
 
-- **Serverless & Web Infrastructure**: AWS Lambda bots, browser extensions, Model Context Protocol (MCP) servers & Cloudflare edge functions
-- **Technical Delivery Ownership**: Requirements, workflow and system design, testing, CI/CD, deployment, maintenance and personal inspection of generated code
+- **Technical Operations**: Requirements, code reading, functional testing, deployment and maintenance
+- **Delivery Model**: AI-assisted implementation with explicit ownership of verification and operational behavior
 
 ## Experience & Leadership
 
-### Founder & Technical Product Builder — Yourself to Science™ (Aug 2024 — Present) [Independent / Self-Funded]
-- Founded, designed and operate an open-source research-participation directory indexing more than 55 clinical studies, biobanks, donation programs, registries and other research initiatives.
-- Defined the data model, verification workflow, licensing structure and machine-readable interfaces, including JSON-LD, RDF Turtle/VoID, OpenAPI and an MCP server.
-- Dataset released under CC0 1.0 Universal; website content under CC BY-SA 4.0; code under AGPL-3.0.
+### Founder & Research-Workflow Owner — Yourself to Science™ (Aug 2024 — Present) [Independent project]
+- Founded and operate an open-source research-participation directory indexing more than 55 clinical studies, biobanks, donation programs, registries and other initiatives.
+- Defined the inclusion model, verification workflow, provenance fields, licensing structure and machine-readable metadata requirements.
+- Use AI-assisted implementation while personally defining requirements, inspecting code structure and behavior, testing releases and maintaining the service.
 
-### Independent Model-Behavior Evaluator — Independent Practice · Gray Swan Proving Ground participant since July 2026 (2023 — Present) [Independent Practitioner]
-- Conducted self-directed testing of LLM instruction handling, policy boundaries and edge cases beginning in 2023.
-- Participating in the Gray Swan Proving Ground since July 2026; recorded 75 platform-confirmed model breaks across chat, image, agentic tool-use and indirect prompt-injection challenges; top 8% among ranked participants as of July 2026.
+### Model-Behavior Evaluator — Independent practice · Gray Swan Proving Ground participant (2023 — Present) [Independent practice]
+- Conduct self-directed testing of LLM instruction handling, policy boundaries and edge cases across chat, image, agentic tool-use and indirect prompt-injection settings.
+- Recorded 75 platform-confirmed model breaks across 156 submissions and 26 listed waves; top-8% rank band among listed participants as of July 2026.
+- Document platform-reported outcomes conservatively, separating public evidence from independent verification, security certification or model-wide conclusions.
 
-### Scientific Fact-Checker, Writer & Website Manager — Entropy for Life — Italy (Jun 2023 — Present) [VAT-Registered Independent Contractor — Italy]
-- Paid scientific fact-checker, writer, data visualizer and website manager for Entropy for Life; conducted bibliographic research and verified primary literature for more than 55 videos and documentaries and four articles.
-- Managed OVHCloud hosting, DNS, SSL, WordPress configuration, layout and functionality changes, and technical SEO.
-- Formally acknowledged on the final page of Giacomo Moro Mauretto’s Mondadori book Italiani veri.
+### Scientific Fact-Checker, Writer & Website Manager — Entropy for Life — Italy (Jun 2023 — Present) [Independent contractor]
+- Conduct bibliographic research and verify primary literature for more than 55 videos and documentaries and four articles.
+- Identify unsupported claims, conflicting evidence and source-quality problems and communicate corrections to a non-specialist production team.
+- Manage OVHCloud hosting, DNS, SSL, WordPress configuration, layout and functionality changes, and technical SEO.
+- Formally acknowledged in Giacomo Moro Mauretto’s Mondadori book Italiani veri for scientific-literature research and error detection.
 
-### Volunteer Focus Group Conductor & Research Facilitator — University of Padua — Department of Developmental Psychology and Socialisation (Nov 2022 — 2025) [Volunteer, unpaid]
-- Contributed as a volunteer researcher to a psychological focus group study on sexuality in the autism spectrum led by Prof. Marta Panzeri. The study aimed to gather qualitative insights on the sexual experiences of autistic people to inform educational strategies and support initiatives.
-- Developed the standardized facilitation guide for focus groups—including scripting and behavioral protocols—to ensure consistent, reproducible session execution.
-- Managed recruitment processes across autistic communities, conducted bibliographic searches, and verified scientific literature.
-- Served as primary conductor and co-conductor for recorded focus groups with autistic participants, establishing psychological safety while managing technical session infrastructure.
+### Focus Group Conductor & Research Facilitator — University of Padua — Department of Developmental Psychology and Socialisation (Nov 2022 — 2025) [Research collaboration]
+- Contributed to a psychological focus-group study on sexuality in the autism spectrum led by Prof. Marta Panzeri.
+- Developed a standardized facilitation guide, scripting and behavioral protocols to support consistent session execution.
+- Managed recruitment, conducted bibliographic searches, verified scientific literature and facilitated recorded remote focus groups.
 
-### Independent Scientific Contributor — Wikimedia Projects — Wikimedia Projects — Wikipedia, Wikidata & Wikimedia Commons (March 2018 — Present) [Volunteer, unpaid]
-- Completed 4,317 auditable Wikimedia contributions across Wikimedia projects as of July 2026 (1,592 English Wikipedia, 1,249 Wikidata, 752 Italian Wikipedia, 684 Wikimedia Commons).
-- Created original data-driven scientific diagrams and biomedical visualizations independently adopted across 4 Wikipedia language editions and open-access repositories.
+### Scientific Contributor & Structured-Data Editor — Wikipedia, Wikidata & Wikimedia Commons (Mar 2018 — Present) [Public contribution record]
+- Completed 4,317 auditable contributions across Wikimedia projects as of July 2026.
+- Check citations, reconcile conflicting sources, improve structured metadata and create scientific visualizations adopted across four Wikipedia language editions.
 
 ## Research & Open Science Contributions
 
-### Personal Research Genomics Pipeline & Polygenic Risk Scoring (41×) — European Nucleotide Archive — ENA PRJEB109744 / SAMEA121950568 (Jan 2026) [Independent / Personal Project, unpaid] | Website: https://www.ebi.ac.uk/ena/browser/view/PRJEB109744 | GitHub: https://github.com/jnton/git-nome
-- Donated personal 41× Whole Genome Sequencing raw paired-end FASTQ reads (DNBSEQ-T7) to the public domain (CC0) under ENA BioSample SAMEA121950568.
-- Designed the analytical requirements and processed raw FASTQ reads via Terra.bio cloud bioinformatics platform to extract high-coverage GRCh38 BAM alignments and VCF variant call files.
-- Designed and iteratively validated a local downstream bioinformatics workflow transforming VCF datasets to Plink2 format and running Nextflow pgsc_calc with ancestry projection against reference panels.
-- Specified and iteratively validated Python extraction scripts for VEP-annotated VCFs—calculating multi-trait Z-Score standardized Polygenic Risk Scores, pharmacogenomic/lifestyle loci, mitochondrial heteroplasmy, and novel variant filtration mapped to HPO/MONDO ontologies.
-- Pipeline output — FASTQ, GRCh38-aligned BAM, VEP-annotated VCF, and multi-trait PRS — released to the public domain (CC0) under ENA accession PRJEB109744 / BioSample SAMEA121950568, as a personal genomics workflow and open-data pipeline.
+### Personal Genomics Workflow & Open-Data Record (41×) — European Nucleotide Archive — PRJEB109744 / SAMEA121950568 (Jan 2026) [Personal open-data project] | Website: https://www.ebi.ac.uk/ena/browser/view/PRJEB109744 | GitHub: https://github.com/jnton/git-nome
+- Donated personal 41× whole-genome sequencing raw paired-end FASTQ reads to the public domain under ENA BioSample SAMEA121950568.
+- Defined analytical requirements and used Terra.bio cloud workflows to produce GRCh38 BAM alignments and VCF variant-call files.
+- Specified requirements for and iteratively validated a downstream workflow using Plink2 and Nextflow pgsc_calc with ancestry projection.
+- Used AI-assisted Python scripts for VEP-annotated VCF extraction, multi-trait polygenic-score summaries and variant filtering; inspected outputs and iterated requirements rather than independently developing the code.
 
-### Scientific Data Visualizer & Evidence Synthesist — Wikimedia Commons, Tableau Public & Flourish Visual Data Portfolio (2023 — Present) [Independent / Self-Funded] | Tableau: https://public.tableau.com/app/profile/mario.marcolongo/vizzes | Flourish: https://app.flourish.studio/@Digressivo
-- Published 70+ interactive empirical public health, epidemiological, and biomedical visualizations across Wikimedia Commons, Tableau Public (15 Vizzes, 4,300+ views as of July 2026), and Flourish.
-- Created original vector Euler diagram illustrating overlapping clinical phenotypes across autism spectrum disorder (ASD), dystonia, epilepsy, and schizophrenia (CC BY-SA 4.0, adopted across 4 Wikipedia language editions).
-- Synthesized primary biomedical datasets—including H5N1 avian flu preparedness, carotid plaque microplastic pathology, age-stratified COVID-19 mortality, and ISTAT epidemiological trends—into open-access visual evidence repositories and vector charts.
+### Scientific Data Visualizer & Evidence Synthesist — Wikimedia Commons, Tableau Public & Flourish (2023 — Present) [Independent project] | Tableau: https://public.tableau.com/app/profile/mario.marcolongo/vizzes | Flourish: https://app.flourish.studio/@Digressivo
+- Published more than 70 empirical public-health, epidemiological and biomedical visualizations across Wikimedia Commons, Tableau Public and Flourish.
+- Created an original vector Euler diagram of overlapping monogenic clinical phenotypes adopted across four Wikipedia language editions.
+- Synthesized primary datasets into open-access charts, maps and vector evidence records.
 
 ## Deployed Systems & Open-Source Projects
 
 ### Model Behavior & Adversarial Evaluation
-**Role**: Independent Model-Behavior Evaluator
-**Tech Stack**: Adversarial Evaluation, Prompt Injection, Agentic Tool-Use, Multimodal Safety, Policy Robustness
+**Role**: Model-Behavior Evaluator
+**Tech Stack**: Adversarial Evaluation, Prompt Injection, Agentic Tool-Use, Multimodal Safety, Evidence-Bound Reporting
 
 Self-directed model-behavior evaluation conducted through the Gray Swan Proving Ground. The public profile reports 156 platform submissions and 75 platform-confirmed model breaks across 26 listed waves. Aggregate counts and selected public labels are presented with explicit evidence limitations; complete prompts, outputs, model versions and adjudication materials are not reproduced.
 
-- 75 Platform-Confirmed Model Breaks: Aggregate total across 26 listed Gray Swan Proving Ground waves as of July 2026
-- 156 Platform Submissions: Sustained activity across 26 listed testing waves
-- Public Wave Distribution: Highest listed break counts are Wave 1 (14), Waves 2 and 3 (10 each), and Wave 15 (8)
-- Cross-Modality Coverage: Chat, Image, Agent, and Indirect Prompt Injection
+- 75 Platform-Confirmed Model Breaks: Aggregate platform total across 26 listed waves as of July 2026
+- 156 Platform Submissions: Repeated activity across multiple testing surfaces
+- Evidence Boundary: Platform-reported outcomes are separated from independent verification or security-certification claims
 
 ### Yourself to Science™ | Open Research-Participation Directory (Website: https://yourselftoscience.org | GitHub: https://github.com/yourselftoscience/yourselftoscience.org | DOI: https://doi.org/10.5281/zenodo.15109359 | FAIRsharing: https://doi.org/10.25504/FAIRsharing.d3d487)
-**Role**: Founder & Technical Product Builder
-**Tech Stack**: MCP Server, Linked Data / JSON-LD, FAIRsharing Registry, Open Research Directory, CC0 / AGPL-3.0
+**Role**: Founder & Research-Workflow Owner
+**Tech Stack**: Research Verification, Metadata & Provenance, JSON-LD, FAIRsharing, Zenodo, OpenAPI, MCP
 
-Founded, designed and operate an open-source research-participation directory indexing more than 55 clinical studies, biobanks, donation programs, registries and other research initiatives. Defined the data model, verification workflow, licensing structure and machine-readable interfaces, including JSON-LD, RDF Turtle/VoID, OpenAPI and an MCP server. Dataset released under CC0 1.0 Universal; website content under CC BY-SA 4.0; code under AGPL-3.0.
+Founded, designed and operate an open-source research-participation directory indexing more than 55 initiatives. Defined the inclusion model, verification workflow, provenance fields, licensing structure and machine-readable metadata requirements, including JSON-LD, RDF Turtle/VoID, OpenAPI and an MCP interface. Technical implementation is AI-assisted and personally verified through requirements, code reading, functional testing and operational maintenance.
 
-- FAIRsharing & Zenodo Indexed: Standardized Linked Data infrastructure with live MCP Server & OpenAPI spec
-- 55+ Research Initiatives Cataloged: An open-source research-participation directory indexing clinical studies, biobanks, donation programs and registries
-- Open-Source Licensing: Dataset released under CC0 1.0 Universal; website content under CC BY-SA 4.0; code under AGPL-3.0.
+- 55+ Research Initiatives: Clinical studies, biobanks, donation programs and registries catalogued
+- Verification Workflow: Inclusion, provenance, metadata and licensing requirements documented
+- Open Records: FAIRsharing and Zenodo registrations with machine-readable interfaces
 
-### Entropy for Life — Science Communication Project (Website: https://entropyforlife.it | Videos & Documentaries: https://www.youtube.com/playlist?list=PLMJaM7iJky4pKj6voGlUNHBnGdTj9rJNh | Author Page: https://entropyforlife.it/autore/mario-marcolongo/)
+### Entropy for Life — Scientific Verification & Web Operations (Website: https://entropyforlife.it | Videos & Documentaries: https://www.youtube.com/playlist?list=PLMJaM7iJky4pKj6voGlUNHBnGdTj9rJNh | Author Page: https://entropyforlife.it/autore/mario-marcolongo/)
 **Role**: Scientific Fact-Checker, Writer & Website Manager
-**Tech Stack**: Primary Source Fact-Checking, Bibliographic Research, OVHCloud DNS/SSL, Custom WordPress & Technical SEO, Data Visualization
+**Tech Stack**: Primary-Source Fact-Checking, Bibliographic Research, Scientific Writing, WordPress, DNS/SSL, Technical SEO
 
-Paid scientific fact-checker, writer, data visualizer and website manager for Entropy for Life (245,000+ YouTube subscribers / 480,000+ cross-platform community as of July 2026); conducted bibliographic research and verified primary literature for more than 55 videos and documentaries and four articles. Managed OVHCloud hosting, DNS, SSL, WordPress configuration, layout and functionality changes, and technical SEO. Formally acknowledged on the final page of Giacomo Moro Mauretto’s Mondadori book Italiani veri.
+Conduct bibliographic research and verify primary literature for more than 55 videos and documentaries and four articles. Identify unsupported claims, conflicting evidence and source-quality problems; communicate corrections to a non-specialist production team. Manage OVHCloud hosting, DNS, SSL, WordPress configuration, layout and functionality changes, and technical SEO. Formally acknowledged in Giacomo Moro Mauretto’s Mondadori book Italiani veri.
 
-- Fact-Checked 55+ Videos & 4 Articles: Conducted bibliographic research and verified primary literature for more than 55 videos and documentaries across a 480,000+ cross-platform community
-- Technical Web Operations: Managed OVHCloud hosting, DNS, SSL, WordPress configuration, layout and functionality changes, and technical SEO
-- Mondadori Book Acknowledgment: Formally acknowledged on the final page of Giacomo Moro Mauretto's book Italiani veri
+- 55+ Videos and Documentaries: Primary literature researched and checked
+- Four Published Articles: Scientific writing and evidence verification
+- Operational Responsibility: Hosting, DNS, SSL, WordPress and technical SEO
 
 ### MDPI Filter | Browser Extension (Chrome Store: https://chromewebstore.google.com/detail/mdpi-filter/comknkeimaaadpiopddjoknflbmjeccp | Edge Store: https://microsoftedge.microsoft.com/addons/detail/mdpi-filter/efonlkldplkaeekpiajloajjmkappjgi | GitHub: https://github.com/orgs/mdpi-filter/repositories)
-**Role**: Product Owner & Technical Builder
-**Tech Stack**: Manifest V3, Chrome & Edge, NCBI E-utilities API, Universal DOM Citation Styling, AGPL-3.0
+**Role**: Product Owner & AI-Assisted Technical Operator
+**Tech Stack**: Product Requirements, Functional Testing, Manifest V3, NCBI E-utilities, Browser Extension Operations
 
-Enhances research workflows by giving researchers granular control over how publications from MDPI appear online. Conceived product requirements, designed DOM-targeting verification logic, and delivered a browser extension to highlight or hide MDPI articles directly within search results across Google, Google Scholar, PubMed, and Europe PMC via NCBI API integration. Visually distinguishes citations both in reference lists and inline numerical/author-year footnotes on any publisher article online, and features an interactive popup with real-time badge counts and instant scroll-to-reference navigation.
+Conceived product requirements and specified DOM-targeting behavior for a browser extension that highlights or hides MDPI publications across Google, Google Scholar, PubMed and Europe PMC and identifies citations on publisher pages. Coordinated AI-assisted implementation, inspected behavior, tested releases and maintained public store deployments.
 
-- Smart Search Filtering: Highlights or hides MDPI papers across Google Scholar, PubMed & Europe PMC integrating NCBI API
-- Universal Citation Styling: Automatically distinguishes reference lists & inline footnotes on any publisher article online
-- Interactive Overview: Live toolbar badge count and one-click scrolling directly to detected citations
+- Multi-Surface Filtering: Google Scholar, PubMed, Europe PMC and publisher pages
+- Product Ownership: Requirements, behavioral testing and release maintenance
+- Implementation Boundary: AI-assisted implementation rather than independent software development
 
 ### English Wikipedia Link Converter | Telegram Bot (GitHub: https://github.com/jnton/english-wikipedia-link-converter-telegram-bot | Bot: https://t.me/ToEnWikipediaBot)
-**Role**: Creator & Systems Builder
-**Tech Stack**: AWS Lambda, API Gateway, GitHub Actions CI/CD, Serverless
+**Role**: Creator & Technical Operator
+**Tech Stack**: Requirements, Functional Testing, AWS Lambda, API Gateway, GitHub Actions, Serverless Operations
 
-Paste a Wikipedia link in any language and instantly receive the English canonical equivalent. Specified and deployed on AWS Lambda and API Gateway for zero idle cloud cost, automated via GitHub Actions CI/CD.
+Specified the behavior and deployment requirements for a Telegram bot running on AWS Lambda and API Gateway. Used AI-assisted implementation, tested private, group and inline workflows, diagnosed deployment problems and maintained GitHub Actions releases.
 
-- 100% serverless cloud execution with zero baseline operating cost
-- Supports real-time interlanguage link resolution across all Wikipedia language editions
-- Automated continuous deployment via GitHub Actions workflow
+- Serverless Deployment: AWS Lambda and API Gateway
+- Behavioral Coverage: Private chats, groups and inline usage
+- Operational Ownership: Testing, deployment diagnosis and release maintenance
 
-### Emergent Humanity | Interactive Network Simulation (Website: https://jnton.github.io/emergent-humanity/ | GitHub: https://github.com/jnton/emergent-humanity)
-**Role**: Creator & Systems Designer
-**Tech Stack**: Interactive Narration, Network Simulation, Complex Systems Modeling, Canvas UI
+### Emergent Humanity | Interactive Network Narrative (Website: https://jnton.github.io/emergent-humanity/ | GitHub: https://github.com/jnton/emergent-humanity)
+**Role**: Creator & Concept and Requirements Designer
+**Tech Stack**: Concept Design, Interactive Narration, Requirements, Behavioral Testing, Network Visualization
 
-A personal, evolving interactive narration and simulation modeling humanity as a network: nodes with hard cognitive limits, connections that carry signal or carry noise, echo chambers that need deliberate bridging, and collective memory that outlives whoever built it. Sixteen interactive chapters written and simulated — active alpha release.
+Developed the concept, narrative structure, interaction requirements and behavioral specifications for an evolving browser-based network simulation. Implementation was produced through AI-assisted workflows and personally tested and iterated.
 
-- 16 interactive chapters blending essay narration with live network simulations
-- Models cognitive node limits, signal vs. noise filtering, and bridging nodes across echo chambers
-- Synthesizes information theory, network graph topology, and emergent collective memory
+- Sixteen Interactive Chapters: Essay narration combined with live simulation
+- Conceptual Model: Signal, noise, echo chambers and collective memory
+- Delivery Boundary: AI-assisted implementation with personal requirements and testing
 
 ## Empirical Visualizations & Open Data
 
 ### Brain Disorder Gene Overlap
-Original vector Euler diagram illustrating shared monogenic mutations across autism spectrum disorder (ASD), epilepsy, dystonia, and schizophrenia. Published under CC BY-SA 4.0 and independently adopted across 4 Wikipedia language editions.
+Original vector Euler diagram illustrating shared monogenic mutations across autism spectrum disorder, epilepsy, dystonia and schizophrenia. Published under CC BY-SA 4.0 and adopted across four Wikipedia language editions.
 Source: https://commons.wikimedia.org/wiki/File:Overlapping_clinical_phenotypes_in_genes_associated_with_monogenic_forms_of_autism_spectrum_disorder_(ASD),_dystonia,_epilepsy_and_schizophrenia.svg
 
 ### Carcinogen Levels in Yerba Maté
-Benzo(a)pyrene contamination measured across commercial brands and sampling years, synthesized from published HPLC/GC-MS toxicology literature.
+Benzo(a)pyrene contamination measured across commercial brands and sampling years, synthesized from published HPLC and GC-MS toxicology literature.
 Source: https://commons.wikimedia.org/wiki/File:Benzo(a)pyrene_Concentration_in_Processed_Yerba_Mat%C3%A9_Leaves_Sampled_in_2006,_2008,_and_2010_-_Column_Chart.svg
 
 ### Global Vegetarian Diet Policies
@@ -150,19 +149,19 @@ Comparative policy mapping of national food-based dietary guidelines regarding v
 Source: https://commons.wikimedia.org/wiki/File:Countries_(States_and_Subnational_Regions)_and_Their_Positions_on_Vegetarian_Diets_in_Food-Based_Dietary_Guidelines.svg
 
 ### Global Naturalization Residence Requirements
-Programmatically generated world choropleth map illustrating statutory residence requirements for citizenship across 190+ countries. Generated via automated SVG pipeline and active across English, Italian, Russian, and Chinese Wikipedia.
+Programmatically generated world choropleth map illustrating statutory residence requirements for citizenship across more than 190 countries.
 Source: https://commons.wikimedia.org/wiki/File:Naturalization_Residence_Requirements_by_Country_(Years_of_Residence).svg
 
 ### Global Oesophageal Cancer Incidence (IARC 2022)
-Age-standardized global incidence rate (world) per 100,000 synthesized from Globocan 2022 / International Agency for Research on Cancer data. Modeled in Flourish and published as open vector data.
+Age-standardized global incidence rate per 100,000 synthesized from Globocan 2022 and International Agency for Research on Cancer data.
 Source: https://commons.wikimedia.org/wiki/File:Oesophageal_Cancer,_Age-Standardized_Rate_(World)_per_100.000_of_Incidence_Cases,_Both_sexes,_Worldwide_in_2022.svg
 
 ## Education & Certifications
 
-- **Coursework in Medicine and Surgery** (2020) — Università degli Studi della Campania “Luigi Vanvitelli” · Degree not completed
-- **EF SET English Certificate 68/100 (C1 Advanced Overall · C2 Reading/Listening · B2 Writing/Speaking)** (Mar 2024) — EF Standard English Test (EF SET) · Credential: https://cert.efset.org/en/eJz39v
+- **Coursework in Medicine and Surgery** (2020) — Università degli Studi della Campania ‘Luigi Vanvitelli’ · Degree not completed
+- **EF SET English Certificate 68/100 (C1 overall)** (Mar 2024) — EF Standard English Test · Credential: https://cert.efset.org/en/eJz39v
 - **Career Essentials in Generative AI** (Mar 2024) — Microsoft and LinkedIn · Credential: https://www.linkedin.com/learning/certificates/c4f1f59578e3ac2567787e262e3b2ec55debf96bbbced4d34d5edaa821d9e6d9
-- **GALENOS Crowd Evidence Synthesis Training** (May 2026) — Cochrane Crowd & GALENOS · Systematic Review Screening Certification
+- **GALENOS Crowd Evidence Synthesis Training** (May 2026) — Cochrane Crowd & GALENOS · Systematic-review screening training
 
 ## Verification & Identifiers
 - [Email](mailto:me@mariomarcolongo.com): Direct email contact

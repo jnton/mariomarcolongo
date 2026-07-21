@@ -1,29 +1,30 @@
-# Mario Marcolongo — AI Evaluation & Research Verification Specialist
-> Model Behavior Evaluation · Scientific Evidence Review · Evaluation Operations · Technical Research
+# Mario Marcolongo — AI Safety Evaluation & Research Verification Specialist
+> Adversarial Model Testing · Scientific Evidence Review · Evaluation Operations · Data Quality
 
-> AI evaluation and research verification specialist with eight years of auditable work checking biomedical, technical and structured-data claims across sources, citations, datasets and public knowledge bases. Founder and product owner of Yourself to Science, an open-source research-participation directory indexing more than 55 clinical studies, biobanks, donation programs, registries and other initiatives, with documented verification workflows, machine-readable data, and Zenodo and FAIRsharing records. Paid scientific fact-checker, writer, data visualizer and website operator for Entropy for Life, supporting more than 55 videos and documentaries and four articles. Gray Swan Proving Ground participant since July 2026, with 75 platform-confirmed model breaks and a top-8% position among ranked participants as of July 2026.
+> AI safety evaluation and research-verification specialist with sustained self-directed model-behavior testing across chat, image, agentic tool-use and indirect prompt-injection challenges. Gray Swan Proving Ground participant with 75 platform-confirmed model breaks across 156 submissions and a top-8% rank band among listed participants as of July 2026. Brings eight years of auditable claim verification, paid scientific fact-checking, structured research workflows, data-provenance discipline and clear evidence-bound reporting.
 
-> **I use AI-assisted development extensively. For the systems I independently operate, I define requirements and workflows, review generated code, test behavior, debug failures, deploy releases, and maintain the resulting services.**
+> **I use AI-assisted implementation extensively. I define requirements and workflows, inspect code structure and behavior, test implementations, diagnose functional problems, guide iterative changes, deploy releases, and maintain services. I do not present myself as an independent software developer.**
 
 ## Quick Facts & Key Metrics
-- **75 Breaks** (Platform-Confirmed Model Breaks): 75 platform-confirmed model breaks as of July 2026 across chat, image, agentic tool-use and indirect prompt-injection challenges on the Gray Swan Proving Ground
-- **55+ Initiatives** (Research Initiatives Indexed): An open-source research-participation directory indexing more than 55 clinical studies, biobanks, donation programs, registries and other research initiatives
-- **70+ Visualizations** (Empirical Data Visualizations): Published 70+ interactive empirical public health, epidemiological, and biomedical visualizations across Wikimedia Commons, Tableau Public, and Flourish
-- **55+ Videos & 4 Articles** (Science Verification & Editorial Fact-Checking): Fact-checked primary literature across 55+ YouTube videos and documentaries and co-authored 4 articles for Entropy for Life; formally acknowledged in Giacomo Moro Mauretto's Mondadori book Italiani veri
-- **4,317 Edits** (Wikimedia Contributions as of July 2026): 4,317 auditable Wikimedia contributions across English Wikipedia (1,592), Wikidata (1,249), Italian Wikipedia (752), and Wikimedia Commons (684)
+- **75** (Platform-Confirmed Model Breaks): Gray Swan Proving Ground snapshot across 26 listed waves as of July 2026
+- **156** (Model-Evaluation Submissions): Repeated activity across chat, image, agentic tool-use and indirect prompt-injection challenges
+- **55+** (Research Initiatives Indexed): Clinical studies, biobanks, donation programs, registries and other research initiatives
+- **55+ Videos & 4 Articles** (Paid Scientific Verification): Primary-source research and fact-checking for Entropy for Life
+- **4,317** (Auditable Wikimedia Contributions): Public contributions across Wikipedia, Wikidata and Wikimedia Commons as of July 2026
 - Work Authorization: EU/EEA work-authorized; Swiss EU/EFTA permit eligible; open to employer-sponsored work authorization elsewhere; self-funded relocation considered for exceptional opportunities.
-- Languages: Italian (Native / Mother Tongue) · English (C1 Advanced Overall: C2 Reading/Listening, B2 Writing/Speaking)
+- Languages: Italian (Native / Mother Tongue) · English (C1 overall, EF SET 68/100; advanced technical reading and professional/technical writing)
 
 ## Core Competencies
-- Technical Product Delivery: Requirements definition, workflow and system design, codebase navigation and modification, functional testing, iterative debugging, deployment operations, WordPress, HTML/CSS, Git/GitHub, JSON, REST APIs, AWS Lambda, Cloudflare Pages, DNS/SSL and CI/CD.
-- AI-Assisted Development Workflow: Extensive use of coding agents for implementation, refactoring, documentation, testing and deployment automation. For independently operated systems: requirements definition, generated-code review, functional testing, debugging, release deployment and maintenance.
-- Model Behavior & Adversarial Evaluation: Self-directed LLM boundary testing since 2023; Gray Swan Proving Ground participant since July 2026, with 75 platform-confirmed model breaks and a top-8% position among ranked participants as of July 2026.
-- Scientific Verification & Evidence Synthesis: Primary-source fact-checking, bibliographic research, evidence screening, structured claim verification, epidemiological data synthesis and standardized research protocols.
-- Open-source research and provenance verification: advanced web and scholarly search, metadata analysis, archival research, domain and certificate-history checks, reverse-image verification and cross-source corroboration.
-- Command-Line & Systems Tooling: Unix/macOS shell environments, Git workflows, package management, serverless runtime configuration, and cloud deployment operations.
-- Open Science & Structured Data: JSON-LD, RDF Turtle/VoID, FAIRsharing, Zenodo, OpenAPI, MCP servers, Wikimedia projects, Wikidata and ENA BioSample records.
-- Data Visualization & Tools: High-Clarity SVG Vector Diagramming, Tableau Public, Flourish, Git / GitHub, GitHub Actions CI/CD.
-- Languages: Italian — native. English — C1 overall, with C2 reading/listening and B2 writing/speaking.
+- AI Safety Evaluation & Adversarial Testing: Exploratory model-behavior testing, prompt and jailbreak analysis, multi-turn behavior, multimodal inputs, agentic tool-use and indirect prompt injection.
+- Evaluation Operations: Test planning, evidence capture, reproducibility notes, taxonomy thinking, issue classification, evidence-bound reporting and mitigation-retesting concepts.
+- Scientific Verification & Evidence Synthesis: Primary-source fact-checking, bibliographic research, claim decomposition, evidence screening, source-quality assessment and cross-source corroboration.
+- Data Quality & Provenance: Structured metadata, entity reconciliation, validation rules, documentation, taxonomy design and public-record verification.
+- Code-Literate Technical Operations: Requirements definition, codebase reading and behavior inspection, functional testing, issue diagnosis, deployment operations and service maintenance.
+- AI-Assisted Technical Workflow: Uses coding agents for implementation support while personally inspecting structure and behavior, testing results and coordinating revisions; not independent software development.
+- Open Science & Structured Data: Wikimedia, Wikidata, FAIRsharing, Zenodo, ENA records, JSON-LD, RDF Turtle/VoID, OpenAPI and MCP interfaces.
+- Web & Cloud Operations: WordPress, HTML/CSS modification, Git/GitHub, JSON, REST APIs, AWS Lambda, Cloudflare Pages, DNS/SSL and CI/CD operations.
+- Data Visualization: SVG vector diagrams, Tableau Public, Flourish and open-data publication.
+- Languages: Italian — native. English — C1 overall (EF SET 68/100), with advanced technical reading and professional/technical writing.
 
 ## Links
 - [Website](https://mariomarcolongo.com): Main portfolio homepage
