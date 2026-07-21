@@ -84,19 +84,28 @@ for (const [name, html] of Object.entries(pages)) {
 const index = pages.index;
 const indexText = normalizeHtmlText(index);
 for (const needle of [
-  'I make difficult evidence easier to', 'trust', 'and use.',
-  ...H.capabilities.map((item) => item.title),
+  'I work on difficult problems where', 'evidence', 'systems and human judgment meet.',
+  ...H.proofMetrics.flatMap((item) => [item.value, item.label]),
   ...H.stories.map((story) => story.title),
+  ...H.products.map((product) => product.title),
+  ...H.visualizationPlatforms.map((platform) => platform.title),
+  ...H.operatingStyle.map((item) => item.title),
   ...H.roleFamilies.map((role) => role.title),
   'data-testid="human-capabilities"', 'data-testid="human-work"', 'data-testid="human-documents"',
-  'Real projects, public records and inspectable evidence', 'Work you can inspect, reuse or challenge.'
+  'Public work, not decorative imagery', 'Bring me the difficult problem.'
 ]) assertContains(indexText, needle, 'dist/index.html');
-for (const obsolete of ['class="v3-network"', 'One profile. Four credible lenses.', 'data-lens=', 'data-project-filter=']) {
-  assertNotContains(index, obsolete, 'dist/index.html');
-}
-assertContains(index, 'class="human-collage"', 'dist/index.html');
-assertContains(index, 'class="human-artifact-track"', 'dist/index.html');
-pass('Human-centered portfolio homepage checked');
+for (const obsolete of [
+  'class="v3-network"', 'One profile. Four credible lenses.', 'data-lens=', 'data-project-filter=',
+  'Pencil_Fascist_Tuberculosis', 'Alessandro Lanzoni'
+]) assertNotContains(index, obsolete, 'dist/index.html');
+assertContains(index, 'class="portfolio-v4"', 'dist/index.html');
+assertContains(index, 'class="pv4-stage-main"', 'dist/index.html');
+assertContains(index, 'class="pv4-gallery-track"', 'dist/index.html');
+assertContains(index, '/media/work/mdpi-filter-1.png', 'dist/index.html');
+assertContains(index, '/media/work/telegram-bot.png', 'dist/index.html');
+assertContains(index, '/media/work/tableau-mortality.png', 'dist/index.html');
+assertContains(index, '/media/work/flourish-profile.png', 'dist/index.html');
+pass('Outcome-led portfolio homepage checked');
 
 const applicationProfiles = [
   ['resume', P.aiSafety], ['research', P.researchQuality], ['editorial', P.editorialCommunity], ['integrityCv', P.integrity]
