@@ -1,4 +1,31 @@
-/* Explicit inline-size containment for horizontal editorial components. */
+/* Explicit inline-size containment for the human-centered portfolio. */
+
+.human-portfolio .human-page,
+.human-portfolio .human-section,
+.human-portfolio .human-stories,
+.human-portfolio .human-story,
+.human-portfolio .human-story-visual,
+.human-portfolio .human-story-copy,
+.human-portfolio .human-story-frame,
+.human-portfolio .human-artifact-shell,
+.human-portfolio .human-artifact-track {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.human-portfolio .human-story,
+.human-portfolio .human-story-visual,
+.human-portfolio .human-story-copy,
+.human-portfolio .human-story-frame,
+.human-portfolio .human-artifact-shell,
+.human-portfolio .human-artifact-track {
+  width: 100%;
+}
+
+.human-portfolio .human-story-copy,
+.human-portfolio .human-story-copy * {
+  overflow-wrap: anywhere;
+}
 
 .human-portfolio .human-marquee {
   width: 100vw;
@@ -8,13 +35,7 @@
 }
 
 .human-portfolio .human-artifact-shell,
-.human-portfolio .human-artifact-track {
-  width: 100%;
-  max-width: 100%;
-  min-width: 0;
-}
-
-.human-portfolio .human-artifact-shell {
+.human-portfolio .human-stories {
   contain: inline-size;
 }
 
@@ -26,9 +47,18 @@
 }
 
 @media (max-width: 760px) {
+  .human-portfolio .human-page {
+    width: calc(100% - 28px);
+  }
+
   .human-portfolio .human-marquee {
     margin-right: calc(50% - 50vw);
     margin-left: calc(50% - 50vw);
+  }
+
+  .human-portfolio .human-stories,
+  .human-portfolio .human-story {
+    grid-template-columns: minmax(0, 1fr);
   }
 
   .human-portfolio .human-artifact-track {
