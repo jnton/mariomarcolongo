@@ -4,7 +4,6 @@ on:
   pull_request:
     branches: [main]
     paths:
-      - scripts/capture-public-work.js
       - src/pages/index.astro
       - src/styles/portfolio-human-v2.css
       - src/styles/nav-editorial.css
@@ -33,22 +32,13 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci --no-audit --no-fund
-      - name: Capture public work previews
-        run: node scripts/capture-public-work.js
       - name: Build and verify generated output
         run: npm run build
-      - name: Commit captured media and generated mirrors
+      - name: Commit generated mirrors
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add \
-            public/media/work/mdpi-filter-1.png \
-            public/media/work/mdpi-filter-2.png \
-            public/media/work/telegram-bot.png \
-            public/media/work/tableau-mortality.png \
-            public/media/work/flourish-profile.png \
-            public/media/work/yourself-to-science.png \
-            public/media/work/emergent-humanity.png \
             index.html integrity.html security.html cv.html cv-resume.html cv-research.html cv-editorial.html cv-integrity.html \
             llms.txt llms-full.txt cv-llm.txt \
             public/llms.txt public/llms-full.txt public/cv-llm.txt public/data/source.js
