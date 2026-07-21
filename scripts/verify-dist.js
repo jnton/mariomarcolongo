@@ -3,7 +3,7 @@ const fs = require('node:fs');
 const path = require('node:path');
 const D = require('../data/source.js');
 const P = require('../data/application-profiles.js');
-const V = require('../data/portfolio-v3.js');
+const H = require('../data/portfolio-human.js');
 const {
   generateLlmsTxt,
   generateLlmsFullTxt,
@@ -107,19 +107,25 @@ for (const [name, html] of Object.entries(pages)) {
 const index = pages.index;
 const indexText = normalizeHtmlText(index);
 for (const needle of [
-  'I investigate ',
-  'claims',
-  ...V.lenses.map((lens) => lens.title),
-  ...V.cases.map((record) => record.title),
-  ...V.documents.map((document) => document.title),
-  'data-testid="career-focus"',
-  'data-testid="career-evidence"',
-  'data-testid="career-documents"',
-  'data-testid="homepage-projects"'
+  H.headline,
+  ...H.capabilities.map((item) => item.title),
+  ...H.stories.map((story) => story.title),
+  ...H.roleFamilies.map((role) => role.title),
+  'data-testid="human-capabilities"',
+  'data-testid="human-work"',
+  'data-testid="human-documents"',
+  'Real projects, public records and inspectable evidence',
+  'Work you can inspect, reuse or challenge.'
 ]) assertContains(indexText, needle, 'dist/index.html');
-assertContains(index, 'class="v3-network"', 'dist/index.html');
-assertContains(index, 'data-project-filter="editorial"', 'dist/index.html');
-pass('Broad portfolio homepage checked');
+for (const obsolete of [
+  'class="v3-network"',
+  'One profile. Four credible lenses.',
+  'data-lens=',
+  'data-project-filter='
+]) assertNotContains(index, obsolete, 'dist/index.html');
+assertContains(index, 'class="human-collage"', 'dist/index.html');
+assertContains(index, 'class="human-artifact-track"', 'dist/index.html');
+pass('Human-centered portfolio homepage checked');
 
 const applicationProfiles = [
   ['resume', P.aiSafety],
