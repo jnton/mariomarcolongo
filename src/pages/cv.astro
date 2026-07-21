@@ -4,6 +4,11 @@ import SiteNav from "../components/SiteNav.astro";
 import SiteFooter from "../components/SiteFooter.astro";
 import "../styles/cv.css";
 import D from "../../data/source.js";
+import { buildProfileGraph } from "../lib/structured-data.js";
+
+const pageTitle = "Mario Marcolongo — CV / Curriculum Vitae";
+const pageDescription = `Curriculum Vitae of ${D.identity.name} — ${D.identity.jobTitle}.`;
+const profileJsonLd = buildProfileGraph(D, "https://mariomarcolongo.com/cv.html", pageTitle);
 
 function renderLinksJsx(links) {
   if (!links) return [];
@@ -26,131 +31,13 @@ function renderLinksJsx(links) {
 ---
 
 <Layout
-  title="Mario Marcolongo — CV / Curriculum Vitae"
-  description="Curriculum Vitae of Mario Marcolongo — AI evaluation and scientific research verification specialist, model behavior evaluation, and open science infrastructure."
+  title={pageTitle}
+  description={pageDescription}
   canonical="https://mariomarcolongo.com/cv.html"
 >
   <Fragment slot="head">
     <script is:inline src="/data/source.js"></script>
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@graph": [
-          {
-            "@type": "ProfilePage",
-            "@id": "https://mariomarcolongo.com/cv.html#webpage",
-            "name": "Mario Marcolongo — CV / Curriculum Vitae",
-            "url": "https://mariomarcolongo.com/cv.html",
-            "mainEntity": { "@id": "https://mariomarcolongo.com/#person" }
-          },
-          {
-            "@type": "Person",
-            "@id": "https://mariomarcolongo.com/#person",
-            "name": "Mario Marcolongo",
-            "jobTitle": "AI Evaluation & Scientific Research Verification Specialist",
-            "description": "AI evaluation and scientific research verification specialist specializing in model behavior evaluation, evidence quality, and open science infrastructure.",
-            "url": "https://mariomarcolongo.com",
-            "identifier": "https://orcid.org/0000-0003-2846-7115",
-            "sameAs": [
-              "https://github.com/jnton",
-              "https://orcid.org/0000-0003-2846-7115",
-              "https://www.linkedin.com/in/mario-marcolongo",
-              "https://commons.wikimedia.org/wiki/Special:CentralAuth/Digressivo",
-              "https://app.grayswan.ai/arena/user/6a57be70d15e123775a1e9cf",
-              "https://public.tableau.com/app/profile/mario.marcolongo/vizzes"
-            ],
-            "hasCredential": [
-              {
-                "@type": "EducationalOccupationalCredential",
-                "name": "GALENOS Crowd Evidence Synthesis Training",
-                "credentialCategory": "Cochrane Crowd & GALENOS Systematic Review Screening Certification"
-              },
-              {
-                "@type": "EducationalOccupationalCredential",
-                "name": "EF SET English Certificate 68/100 (C1 Advanced Overall · C2 Reading/Listening · B2 Writing/Speaking)",
-                "credentialCategory": "EF Standard English Test (EF SET)"
-              },
-              {
-                "@type": "EducationalOccupationalCredential",
-                "name": "Career Essentials in Generative AI",
-                "credentialCategory": "Microsoft and LinkedIn Certificate"
-              }
-            ],
-            "knowsAbout": [
-              "Serverless Systems Architecture & Technical Product Delivery",
-              "41× Whole Genome Sequencing Bioinformatics (Terra.bio BAM/VCF Extraction & Nextflow pgsc_calc / Local Hardware)",
-              "Polygenic Risk Score (PRS) Computation & HPO/MONDO Disease Ontologies",
-              "Epistemic Rigor & Primary Literature Fact-Checking",
-              "FAIR Open Biobanking & Citizen Science Stewardship",
-              "Psychological Focus Group Facilitation & Autistic Community Recruitment",
-              "Bridging Epistemic Rigor with Public Comprehension & Institutional Collaborations (AIRC)"
-            ]
-          },
-          {
-            "@type": "SoftwareApplication",
-            "@id": "https://yourselftoscience.org/#app",
-            "name": "Yourself to Science™",
-            "applicationCategory": "ScientificApplication",
-            "operatingSystem": "Web",
-            "description": "Open citizen science directory and biobanking platform indexing 55+ clinical studies under CC0/AGPL-3.0, verified in FAIRsharing and Zenodo.",
-            "url": "https://yourselftoscience.org",
-            "author": { "@id": "https://mariomarcolongo.com/#person" }
-          },
-          {
-            "@type": "SoftwareApplication",
-            "@id": "https://mariomarcolongo.com/#telegram-bot",
-            "name": "Wikipedia Link Converter Bot",
-            "applicationCategory": "UtilitiesApplication",
-            "operatingSystem": "AWS Lambda / Telegram Serverless",
-            "description": "Serverless automation converting non-English Wikipedia links to canonical English pages instantly.",
-            "url": "https://t.me/ToEnWikipediaBot",
-            "author": { "@id": "https://mariomarcolongo.com/#person" }
-          },
-          {
-            "@type": "SoftwareApplication",
-            "@id": "https://mariomarcolongo.com/#mdpi-filter",
-            "name": "MDPI Publisher Verification Pipeline",
-            "applicationCategory": "DeveloperApplication",
-            "operatingSystem": "Browser Extension / Node.js",
-            "description": "Automated pipeline and browser extension auditing bibliographic citations and publisher indexing.",
-            "author": { "@id": "https://mariomarcolongo.com/#person" }
-          },
-          {
-            "@type": "CreativeWork",
-            "@id": "https://emergent-humanity.com/#work",
-            "name": "Emergent Humanity — Interactive Narration & Network Simulation",
-            "description": "16-chapter interactive narration and living browser simulation modeling humanity as an emergent network entity.",
-            "url": "https://emergent-humanity.com",
-            "author": { "@id": "https://mariomarcolongo.com/#person" }
-          },
-          {
-            "@type": "CreativeWork",
-            "@id": "https://mariomarcolongo.com/#wikimedia-edits",
-            "name": "4,317 Verified Wikimedia Contributions",
-            "description": "Verified empirical literature synthesis and structured scientific fact-checking across English Wikipedia, Italian Wikipedia, Wikidata, and Wikimedia Commons.",
-            "url": "https://commons.wikimedia.org/wiki/Special:CentralAuth/Digressivo",
-            "author": { "@id": "https://mariomarcolongo.com/#person" }
-          },
-          {
-            "@type": "Dataset",
-            "@id": "https://mariomarcolongo.com/#genomic-dataset",
-            "name": "41× Whole Genome Sequencing Raw Paired-End FASTQ Reads (DNBSEQ-T7)",
-            "description": "Personal 41× Whole Genome Sequencing raw paired-end FASTQ reads (DNBSEQ-T7) and high-coverage GRCh38 BAM alignments released to the public domain (CC0) under ENA BioSample SAMEA121950568 and Study PRJEB109744.",
-            "license": "https://creativecommons.org/publicdomain/zero/1.0/",
-            "creator": { "@id": "https://mariomarcolongo.com/#person" },
-            "url": "https://www.ebi.ac.uk/ena/browser/view/PRJEB109744"
-          },
-          {
-            "@type": "SoftwareSourceCode",
-            "@id": "https://mariomarcolongo.com/#genomic-pipeline",
-            "name": "Polygenic Risk Scoring & Genomic Extraction Pipeline (git-nome)",
-            "description": "Personal genomics workflow and open-data pipeline processing raw FASTQ reads via Terra.bio cloud bioinformatics platform to extract high-coverage GRCh38 BAM alignments and VCF variant call files, transforming VCF datasets to Plink2 format and executing Nextflow pgsc_calc with ancestry projection against reference panels, along with custom Python VEP extraction scripts calculating multi-trait Polygenic Risk Scores mapped to HPO/MONDO ontologies.",
-            "codeRepository": "https://github.com/jnton/git-nome",
-            "author": { "@id": "https://mariomarcolongo.com/#person" }
-          }
-        ]
-      }
-    </script>
+    <script type="application/ld+json" set:html={JSON.stringify(profileJsonLd)} />
   </Fragment>
 
   <SiteNav activePage="cv" />
@@ -165,7 +52,7 @@ function renderLinksJsx(links) {
         <a href="/cv-resume.html" class="btn">2-Page Résumé</a>
         <button
           class="btn btn-ai"
-          onclick="copyCvForAI(this)"
+          onclick="copyCanonicalText('/cv-llm.txt', this, '✓ Copied AI CV!')"
           title="Copy complete CV in AI-compatible Markdown format"
           >✨ Copy for AI (Markdown)</button
         >
@@ -181,7 +68,7 @@ function renderLinksJsx(links) {
         <div class="cv-header-top">
           <h1 class="cv-name" id="cvName">{D.identity.name}</h1>
           <span class="cv-version-pill print-hide"
-            >Curriculum Vitae v2026.07.21 · Updated: July 2026</span
+            >{D.identity.buildVersion} · Updated: {D.identity.evaluationAsOf}</span
           >
         </div>
         <p class="cv-tagline" id="cvTagline">
@@ -360,8 +247,10 @@ function renderLinksJsx(links) {
           {D.education.map((edu) => (
             <div class="edu-item">
               <span class="edu-title">{edu.title}</span>
-              {edu.detail && <> — <span class="edu-detail" set:html={edu.detail} /></>}
               {edu.period && <> <span class="edu-period">({edu.period})</span></>}
+              {edu.institution && <> — <span class="edu-detail">{edu.institution}</span></>}
+              {edu.status && <> · <span class="edu-status">{edu.status}</span></>}
+              {edu.credentialUrl && <> · <a class="edu-credential" href={edu.credentialUrl} target="_blank" rel="noopener noreferrer">Credential</a></>}
             </div>
           ))}
         </div>
@@ -370,100 +259,22 @@ function renderLinksJsx(links) {
   </div>
 
   <script is:inline>
-    function toggleTheme() {
-      const html = document.documentElement;
-      const next = html.dataset.theme === "dark" ? "light" : "dark";
-      html.dataset.theme = next;
-      const btn = document.getElementById("themeBtn");
-      if (btn) btn.textContent = next === "dark" ? "Light Mode" : "Dark Mode";
-      try {
-        localStorage.setItem("mm-theme", next);
-      } catch (err) {}
-    }
-
-    try {
-      const saved = localStorage.getItem("mm-theme");
-      if (saved) {
-        document.documentElement.dataset.theme = saved;
-        const btn = document.getElementById("themeBtn");
-        if (btn) btn.textContent = saved === "dark" ? "Light Mode" : "Dark Mode";
-      }
-    } catch (err) {}
-
-    function printCV() {
-      injectPrivateData();
-      setTimeout(() => window.print(), 100);
-    }
-
     function injectPrivateData() {
       const priv = (typeof window !== "undefined" && window._privateData) ? window._privateData : {};
       const phoneSlot = document.getElementById("cvPhoneSlot");
-
       if (priv.phone && phoneSlot) {
         phoneSlot.innerHTML = `· <a href="tel:${priv.phone.replaceAll(/\s+/g, "")}">${priv.phone}</a>`;
         phoneSlot.classList.add("has-phone");
       }
     }
 
-    window.addEventListener("DOMContentLoaded", () => {
+    function printCV() {
       injectPrivateData();
-
-      // ---- SCROLL PROGRESS FALLBACK ----
-      if (!CSS.supports("animation-timeline", "scroll()")) {
-        const prog = document.getElementById("scrollProgress");
-        if (prog) {
-          window.addEventListener(
-            "scroll",
-            () => {
-              const scrollable =
-                document.documentElement.scrollHeight - window.innerHeight;
-              prog.style.transform = `scaleX(${scrollable > 0 ? window.scrollY / scrollable : 0})`;
-            },
-            { passive: true },
-          );
-        }
-      }
-    });
-
-    async function copyCvForAI(btnEl) {
-      const origText = btnEl.textContent;
-      btnEl.textContent = "Copying...";
-      let content = null;
-
-      try {
-        const res = await fetch("/cv-llm.txt");
-        if (res.ok) {
-          content = await res.text();
-        } else {
-          console.error("Failed to fetch /cv-llm.txt:", res.status, res.statusText);
-        }
-      } catch (err) {
-        console.error("Fetch error for CV AI Copy:", err);
-      }
-
-      if (!content) {
-        btnEl.textContent = "Unable to copy";
-        setTimeout(() => (btnEl.textContent = origText), 2000);
-        return;
-      }
-
-      try {
-        await navigator.clipboard.writeText(content);
-        btnEl.textContent = "✓ Copied AI CV!";
-        btnEl.style.background = "var(--emerald, #10B981)";
-        btnEl.style.color = "#fff";
-        setTimeout(() => {
-          btnEl.textContent = origText;
-          btnEl.style.background = "";
-          btnEl.style.color = "";
-        }, 2200);
-      } catch (err) {
-        console.error("Copy error:", err);
-        btnEl.textContent = "Unable to copy";
-        setTimeout(() => (btnEl.textContent = origText), 2000);
-      }
+      window.setTimeout(() => window.print(), 100);
     }
+
+    window.addEventListener("DOMContentLoaded", injectPrivateData);
   </script>
 
-  <SiteFooter version="v2026.07.21" />
+  <SiteFooter version={D.identity.buildVersion} />
 </Layout>

@@ -9,12 +9,19 @@ const MARIO_DOSSIER = {
 
   identity: {
     name: "Mario Marcolongo",
+    buildVersion: "v2026.07.21",
+    enaAccession: "PRJEB109744",
+    enaUrl: "https://www.ebi.ac.uk/ena/browser/view/PRJEB109744",
+    centralAuth: "https://commons.wikimedia.org/wiki/Special:CentralAuth/Digressivo",
+    grayswanId: "6a57be70d15e123775a1e9cf",
+    grayswanUrl: "https://app.grayswan.ai/arena/user/6a57be70d15e123775a1e9cf",
+    evaluationAsOf: "July 2026",
     jobTitle: "AI Evaluation & Research Verification Specialist",
     secondaryTitle: "Model Behavior Evaluation · Scientific Evidence Review · Evaluation Operations · Technical Research",
     headline: "I check the claims other people don't.",
-    authorshipStatement: "I use AI-assisted development workflows extensively. I independently own requirements, workflow and system design, validation, testing, debugging, deployment and maintenance, and personally inspect the resulting systems.",
-    role: "Eight years of verifiable Wikipedia edits holding up under scrutiny. A personal genome released to the public domain under a real ENA accession number. An open-source research-participation directory indexing more than 55 clinical studies, biobanks, donation programs, registries and other research initiatives cited across 37 Wikidata entities. And ranked in the top 8% among ranked Gray Swan Proving Ground participants as of July 2026, with 75 platform-confirmed model breaks across chat, image, agentic tool-use and indirect prompt-injection challenges.",
-    heroSubHtml: "Eight years of verifiable Wikipedia edits<button class=\"cite-btn\" data-cite=\"edits\" aria-expanded=\"false\" title=\"Click to inspect source\">1</button> holding up under scrutiny. A personal genome<button class=\"cite-btn\" data-cite=\"ena\" aria-expanded=\"false\" title=\"Click to inspect source\">2</button> released to the public domain under a real ENA accession number. An open-source research-participation directory<button class=\"cite-btn\" data-cite=\"registry\" aria-expanded=\"false\" title=\"Click to inspect platform\">3</button> indexing more than 55 clinical studies, biobanks, donation programs, registries and other research initiatives cited across 37 Wikidata entities. And ranked in the top 8% among ranked Gray Swan Proving Ground participants as of July 2026<button class=\"cite-btn\" data-cite=\"grayswan\" aria-expanded=\"false\" title=\"Click to inspect profile\">4</button>, with 75 platform-confirmed model breaks across chat, image, agentic tool-use and indirect prompt-injection challenges.",
+    authorshipStatement: "I use AI-assisted development extensively. For the systems I independently operate, I define requirements and workflows, review generated code, test behavior, debug failures, deploy releases, and maintain the resulting services.",
+    role: "Eight years of auditable Wikimedia work checking claims and sources. A personal genome released to the public domain under ENA accession PRJEB109744. An open-source research-participation directory indexing more than 55 clinical studies, biobanks, donation programs, registries and other research initiatives. Gray Swan Proving Ground participation since July 2026, with 75 platform-confirmed model breaks across chat, image, agentic tool-use and indirect prompt-injection challenges.",
+    heroStatement: "Eight years of auditable Wikimedia work, a public ENA genomic accession, an open-source research-participation directory, and sustained model-behavior evaluation activity on the Gray Swan Proving Ground.",
     location: "Based in Italy · Italian/EU citizen · Open to worldwide relocation · International B2B contracting available",
     relocation: "EU/EEA work-authorized; Swiss EU/EFTA permit eligible; open to employer-sponsored work authorization elsewhere; self-funded relocation considered for exceptional opportunities.",
     relocationVisible: "Based in Italy · Italian/EU citizen · Open to worldwide relocation · International B2B contracting available",
@@ -45,17 +52,17 @@ const MARIO_DOSSIER = {
     contactObfuscated: ["me", "mariomarcolongo", "com"]
   },
 
-  summary: "AI evaluation and scientific research verification specialist with eight years of auditable work checking biomedical, technical and structured-data claims across sources, citations, datasets and public knowledge bases. Founder and product owner of Yourself to Science, an open-source research-participation directory indexing more than 55 clinical studies, biobanks, donation programs, registries and other initiatives, with documented verification workflows, machine-readable data, and Zenodo and FAIRsharing records. Paid scientific fact-checker, writer, data visualizer and website operator for Entropy for Life, supporting more than 55 videos and documentaries and four articles. Gray Swan Proving Ground participant since July 2026, with 75 platform-confirmed model breaks and a top-8% position among ranked participants as of July 2026.",
+  summary: "AI evaluation and research verification specialist with eight years of auditable work checking biomedical, technical and structured-data claims across sources, citations, datasets and public knowledge bases. Founder and product owner of Yourself to Science, an open-source research-participation directory indexing more than 55 clinical studies, biobanks, donation programs, registries and other initiatives, with documented verification workflows, machine-readable data, and Zenodo and FAIRsharing records. Paid scientific fact-checker, writer, data visualizer and website operator for Entropy for Life, supporting more than 55 videos and documentaries and four articles. Gray Swan Proving Ground participant since July 2026, with 75 platform-confirmed model breaks and a top-8% position among ranked participants as of July 2026.",
 
   pillars: [
     {
-      category: "ADVERSARIAL EVALUATION & SAFETY",
+      category: "MODEL BEHAVIOR EVALUATION",
       icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>`,
       title: "AI Evaluation & Model Behavior Testing",
-      lead: "Systematic boundary probing of frontier LLMs and multimodal architectures across Chat, Image, Tool-Use, and Indirect Prompt Injection.",
-      desc: "Ranked in the top 8% among ranked participants on the Gray Swan AI Proving Ground as of July 2026, with 75 platform-confirmed model breaks across 156 formal submissions. Rigorously testing instruction hierarchy, refusal resilience, visual prompt injection, and multi-step agentic authorization boundaries.",
+      lead: "Structured, self-directed probing of LLM and multimodal-system behavior across chat, image, tool-use and indirect prompt-injection challenges.",
+      desc: "The Gray Swan Proving Ground public profile reports a top-8% rank band among listed participants as of July 2026, with 75 platform-confirmed model breaks across 156 platform submissions. The record demonstrates sustained evaluation activity; it is not an independent security audit or certification.",
       highlights: [
-        { label: "Confirmed Model Breaks", detail: "75 platform-confirmed breaks across 26 listed Proving Ground waves" },
+        { label: "Platform-Confirmed Model Breaks", detail: "75 platform-confirmed breaks across 26 listed Proving Ground waves as of July 2026" },
         { label: "Evaluation Vectors", detail: "Chat & Alignment, Multimodal/Image, Agentic Tool-Use, and Indirect Prompt Injection" }
       ]
     },
@@ -66,7 +73,7 @@ const MARIO_DOSSIER = {
       lead: "Eight years of verifiable Wikipedia edits holding up under scrutiny, with formal training in systematic review screening and biomedical literature verification.",
       desc: "Completed 4,317 auditable Wikimedia contributions across English Wikipedia (1,592), Wikidata (1,249), Italian Wikipedia (752), and Wikimedia Commons (684) under one public CentralAuth account. Paid scientific fact-checker and writer for Entropy for Life, verifying primary literature for 55+ videos and 4 articles across a 480K+ community, formally acknowledged in Giacomo Moro Mauretto's Mondadori book Italiani veri. Certified in Cochrane Crowd & GALENOS systematic review screening.",
       highlights: [
-        { label: "Auditable Knowledge Graph Edits", detail: "4,317 verified contributions across Wikimedia projects as of July 2026" },
+        { label: "Auditable Wikimedia Contributions", detail: "4,317 publicly inspectable contributions across Wikimedia projects as of July 2026" },
         { label: "Scientific Fact-Checking", detail: "55+ videos & 4 articles verified; Cochrane Crowd & GALENOS certified" }
       ]
     },
@@ -74,7 +81,7 @@ const MARIO_DOSSIER = {
       category: "OPEN SCIENCE & DATA STEWARDSHIP",
       icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg>`,
       title: "Open Science Infrastructure & Data Stewardship",
-      lead: "Conceiving, designing, and operating open FAIRsharing directories, standardized metadata schemas, and public genomic data pipelines.",
+      lead: "Designing and operating an open research-participation directory, standardized metadata interfaces, and a public personal-genomics workflow.",
       desc: "Founder and technical builder of Yourself to Science™ (yourselftoscience.org), an open-source research-participation directory indexing more than 55 clinical studies, biobanks, donation programs, registries and other initiatives, indexed in FAIRsharing and Zenodo with live machine-readable MCP servers and OpenAPI specs. Donated personal 41× Whole Genome Sequencing raw reads (DNBSEQ-T7) to the public domain (CC0) under ENA BioSample SAMEA121950568 and Study PRJEB109744.",
       highlights: [
         { label: "Open Research Cataloging", detail: "55+ clinical studies, biobanks & registries indexed in FAIRsharing & Zenodo" },
@@ -85,11 +92,11 @@ const MARIO_DOSSIER = {
       category: "TECHNICAL PRODUCT DELIVERY",
       icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>`,
       title: "Technical Product Delivery & Serverless Systems",
-      lead: "Translating rigorous technical requirements into production-ready web platforms, serverless automations, and AI-assisted engineering workflows.",
-      desc: "Delivered serverless AWS Lambda and Telegram automation (Wikipedia Link Converter Bot), browser extensions (MDPI Publisher Verification Pipeline), interactive network simulations (Emergent Humanity), and custom WordPress / Cloudflare / OVHCloud web infrastructure. Extensive experience with AI-assisted development workflows, owning requirements, system design, validation, debugging, deployment and maintenance.",
+      lead: "Translating technical requirements into deployed web platforms, serverless automations, and AI-assisted development workflows.",
+      desc: "Delivered serverless AWS Lambda and Telegram automation, browser extensions, interactive network simulations, and WordPress, Cloudflare and OVHCloud web infrastructure. For independently operated systems, defined requirements and workflows, reviewed generated code, tested behavior, debugged failures, deployed releases and maintained services.",
       highlights: [
         { label: "Serverless & Web Infrastructure", detail: "AWS Lambda bots, browser extensions, Model Context Protocol (MCP) servers & Cloudflare edge functions" },
-        { label: "Engineering Ownership", detail: "End-to-end architecture, testing, CI/CD pipelines & personal code verification" }
+        { label: "Technical Delivery Ownership", detail: "Requirements, workflow and system design, testing, CI/CD, deployment, maintenance and personal inspection of generated code" }
       ]
     }
   ],
@@ -107,9 +114,9 @@ const MARIO_DOSSIER = {
       id: "ai-red-teaming",
       title: "Model Behavior & Adversarial Evaluation",
       oneLiner:
-        "Public, aggregate evidence of frontier-model boundary testing across chat, multimodal, agentic tool-use, and indirect prompt-injection challenges.",
+        "Public aggregate record of self-directed model-behavior evaluation across chat, multimodal, agentic tool-use and indirect prompt-injection challenges.",
       description:
-        "Independent adversarial evaluation conducted through the Gray Swan AI Proving Ground. The public activity record shows 156 submissions and 75 confirmed model breaks across 26 listed waves, with testing spanning conversational alignment, multimodal safety, tool-use authorization, and indirect prompt injection. Individual exploit details are withheld where disclosure could undermine active benchmarks or model safeguards.",
+        "Self-directed model-behavior evaluation conducted through the Gray Swan Proving Ground. The public profile reports 156 platform submissions and 75 platform-confirmed model breaks across 26 listed waves. Aggregate counts and selected public labels are presented with explicit evidence limitations; complete prompts, outputs, model versions and adjudication materials are not reproduced.",
       role: "Independent Model-Behavior Evaluator",
       tech: [
         "Adversarial Evaluation",
@@ -124,9 +131,9 @@ const MARIO_DOSSIER = {
           "https://app.grayswan.ai/arena/user/6a57be70d15e123775a1e9cf"
       },
       highlights: [
-        "75 Confirmed Breaks: Aggregate total across 26 listed Gray Swan Proving Ground waves",
-        "156 Formal Submissions & 736 Test Chats: Sustained iterative boundary testing across multiple model families",
-        "Peak Wave Results: 14 confirmed breaks in Wave 1; 10 each in Waves 2 and 3; 8 in Wave 15",
+        "75 Platform-Confirmed Model Breaks: Aggregate total across 26 listed Gray Swan Proving Ground waves as of July 2026",
+        "156 Platform Submissions: Sustained activity across 26 listed testing waves",
+        "Public Wave Distribution: Highest listed break counts are Wave 1 (14), Waves 2 and 3 (10 each), and Wave 15 (8)",
         "Cross-Modality Coverage: Chat, Image, Agent, and Indirect Prompt Injection"
       ]
     },
@@ -280,9 +287,12 @@ const MARIO_DOSSIER = {
 
   redTeamActivity: {
     platform: "Gray Swan AI Proving Ground",
+    asOf: "July 2026",
+    rankBand: "Top 8%",
     submissions: 156,
     previousChats: 736,
     confirmedBreaks: 75,
+    publicLabels: ["indirect-function-call", "weak-password-change"],
     waves: [
       { wave: 1, breaks: 14, available: 67 },
       { wave: 2, breaks: 10, available: 72 },
@@ -448,15 +458,35 @@ const MARIO_DOSSIER = {
   ],
 
   education: [
-    { title: "Coursework in Medicine and Surgery", detail: "Università degli Studi della Campania “Luigi Vanvitelli” · 2020", period: "Degree not completed." },
-    { title: "EF SET English Certificate 68/100 (C1 Advanced Overall · C2 Reading/Listening · B2 Writing/Speaking)", detail: "EF Standard English Test (EF SET) · https://cert.efset.org/en/eJz39v", period: "Mar 2024" },
-    { title: "Career Essentials in Generative AI", detail: "Microsoft and LinkedIn · https://www.linkedin.com/learning/certificates/c4f1f59578e3ac2567787e262e3b2ec55debf96bbbced4d34d5edaa821d9e6d9", period: "Mar 2024" },
-    { title: "GALENOS Crowd Evidence Synthesis Training", detail: "Cochrane Crowd & GALENOS Systematic Review Screening Certification", period: "May 2026" }
+    {
+      title: "Coursework in Medicine and Surgery",
+      institution: "Università degli Studi della Campania “Luigi Vanvitelli”",
+      period: "2020",
+      status: "Degree not completed"
+    },
+    {
+      title: "EF SET English Certificate 68/100 (C1 Advanced Overall · C2 Reading/Listening · B2 Writing/Speaking)",
+      institution: "EF Standard English Test (EF SET)",
+      period: "Mar 2024",
+      credentialUrl: "https://cert.efset.org/en/eJz39v"
+    },
+    {
+      title: "Career Essentials in Generative AI",
+      institution: "Microsoft and LinkedIn",
+      period: "Mar 2024",
+      credentialUrl: "https://www.linkedin.com/learning/certificates/c4f1f59578e3ac2567787e262e3b2ec55debf96bbbced4d34d5edaa821d9e6d9"
+    },
+    {
+      title: "GALENOS Crowd Evidence Synthesis Training",
+      institution: "Cochrane Crowd & GALENOS",
+      period: "May 2026",
+      status: "Systematic Review Screening Certification"
+    }
   ],
 
   skills: [
     "Technical Product Delivery: Requirements definition, workflow and system design, codebase navigation and modification, functional testing, iterative debugging, deployment operations, WordPress, HTML/CSS, Git/GitHub, JSON, REST APIs, AWS Lambda, Cloudflare Pages, DNS/SSL and CI/CD.",
-    "AI-Assisted Development Workflow: Extensive use of coding agents for implementation, refactoring, documentation, testing and deployment automation, with independent ownership of requirements, validation, debugging, deployment and maintenance.",
+    "AI-Assisted Development Workflow: Extensive use of coding agents for implementation, refactoring, documentation, testing and deployment automation. For independently operated systems: requirements definition, generated-code review, functional testing, debugging, release deployment and maintenance.",
     "Model Behavior & Adversarial Evaluation: Self-directed LLM boundary testing since 2023; Gray Swan Proving Ground participant since July 2026, with 75 platform-confirmed model breaks and a top-8% position among ranked participants as of July 2026.",
     "Scientific Verification & Evidence Synthesis: Primary-source fact-checking, bibliographic research, evidence screening, structured claim verification, epidemiological data synthesis and standardized research protocols.",
     "Open-source research and provenance verification: advanced web and scholarly search, metadata analysis, archival research, domain and certificate-history checks, reverse-image verification and cross-source corroboration.",
@@ -468,7 +498,7 @@ const MARIO_DOSSIER = {
 
   resumeSkills: [
     "Technical Product Delivery: Requirements definition, workflow and system design, codebase navigation and modification, functional testing, iterative debugging, deployment operations, WordPress, HTML/CSS, Git/GitHub, JSON, REST APIs, AWS Lambda, Cloudflare Pages, DNS/SSL and CI/CD.",
-    "AI-Assisted Development Workflow: Extensive use of coding agents for implementation, refactoring, documentation, testing and deployment automation, with independent ownership of requirements, validation, debugging, deployment and maintenance.",
+    "AI-Assisted Development Workflow: Extensive use of coding agents for implementation, refactoring, documentation, testing and deployment automation. For independently operated systems: requirements definition, generated-code review, functional testing, debugging, release deployment and maintenance.",
     "Model Behavior & Adversarial Evaluation: Self-directed LLM boundary testing since 2023; Gray Swan Proving Ground participant since July 2026, with 75 platform-confirmed model breaks and a top-8% position among ranked participants as of July 2026.",
     "Scientific Verification & Evidence Synthesis: Primary-source fact-checking, bibliographic research, evidence screening, structured claim verification, epidemiological data synthesis and standardized research protocols.",
     "Open Science & Structured Data: JSON-LD, RDF Turtle/VoID, FAIRsharing, Zenodo, OpenAPI, MCP servers, Wikimedia projects, Wikidata and ENA BioSample records.",

@@ -2,35 +2,35 @@
 > Model Behavior Evaluation · Scientific Evidence Review · Evaluation Operations · Technical Research
 
 ## Overview
-AI evaluation and scientific research verification specialist with eight years of auditable work checking biomedical, technical and structured-data claims across sources, citations, datasets and public knowledge bases. Founder and product owner of Yourself to Science, an open-source research-participation directory indexing more than 55 clinical studies, biobanks, donation programs, registries and other initiatives, with documented verification workflows, machine-readable data, and Zenodo and FAIRsharing records. Paid scientific fact-checker, writer, data visualizer and website operator for Entropy for Life, supporting more than 55 videos and documentaries and four articles. Gray Swan Proving Ground participant since July 2026, with 75 platform-confirmed model breaks and a top-8% position among ranked participants as of July 2026.
+AI evaluation and research verification specialist with eight years of auditable work checking biomedical, technical and structured-data claims across sources, citations, datasets and public knowledge bases. Founder and product owner of Yourself to Science, an open-source research-participation directory indexing more than 55 clinical studies, biobanks, donation programs, registries and other initiatives, with documented verification workflows, machine-readable data, and Zenodo and FAIRsharing records. Paid scientific fact-checker, writer, data visualizer and website operator for Entropy for Life, supporting more than 55 videos and documentaries and four articles. Gray Swan Proving Ground participant since July 2026, with 75 platform-confirmed model breaks and a top-8% position among ranked participants as of July 2026.
 
-> **I use AI-assisted development workflows extensively. I independently own requirements, workflow and system design, validation, testing, debugging, deployment and maintenance, and personally inspect the resulting systems.**
+> **I use AI-assisted development extensively. For the systems I independently operate, I define requirements and workflows, review generated code, test behavior, debug failures, deploy releases, and maintain the resulting services.**
 
 ## Core Pillars & Expertise
 
 ### 1. AI Evaluation & Model Behavior Testing
-Systematic boundary probing of frontier LLMs and multimodal architectures across Chat, Image, Tool-Use, and Indirect Prompt Injection.
+Structured, self-directed probing of LLM and multimodal-system behavior across chat, image, tool-use and indirect prompt-injection challenges.
 
-- **Confirmed Model Breaks**: 75 platform-confirmed breaks across 26 listed Proving Ground waves
+- **Platform-Confirmed Model Breaks**: 75 platform-confirmed breaks across 26 listed Proving Ground waves as of July 2026
 - **Evaluation Vectors**: Chat & Alignment, Multimodal/Image, Agentic Tool-Use, and Indirect Prompt Injection
 
 ### 2. Evidence Synthesis & Primary Source Fact-Checking
 Eight years of verifiable Wikipedia edits holding up under scrutiny, with formal training in systematic review screening and biomedical literature verification.
 
-- **Auditable Knowledge Graph Edits**: 4,317 verified contributions across Wikimedia projects as of July 2026
+- **Auditable Wikimedia Contributions**: 4,317 publicly inspectable contributions across Wikimedia projects as of July 2026
 - **Scientific Fact-Checking**: 55+ videos & 4 articles verified; Cochrane Crowd & GALENOS certified
 
 ### 3. Open Science Infrastructure & Data Stewardship
-Conceiving, designing, and operating open FAIRsharing directories, standardized metadata schemas, and public genomic data pipelines.
+Designing and operating an open research-participation directory, standardized metadata interfaces, and a public personal-genomics workflow.
 
 - **Open Research Cataloging**: 55+ clinical studies, biobanks & registries indexed in FAIRsharing & Zenodo
 - **Public Genomic Infrastructure**: 41× WGS raw reads & high-coverage GRCh38 BAM/VCF pipelines released under ENA PRJEB109744
 
 ### 4. Technical Product Delivery & Serverless Systems
-Translating rigorous technical requirements into production-ready web platforms, serverless automations, and AI-assisted engineering workflows.
+Translating technical requirements into deployed web platforms, serverless automations, and AI-assisted development workflows.
 
 - **Serverless & Web Infrastructure**: AWS Lambda bots, browser extensions, Model Context Protocol (MCP) servers & Cloudflare edge functions
-- **Engineering Ownership**: End-to-end architecture, testing, CI/CD pipelines & personal code verification
+- **Technical Delivery Ownership**: Requirements, workflow and system design, testing, CI/CD, deployment, maintenance and personal inspection of generated code
 
 ## Experience & Leadership
 
@@ -78,11 +78,11 @@ Translating rigorous technical requirements into production-ready web platforms,
 **Role**: Independent Model-Behavior Evaluator
 **Tech Stack**: Adversarial Evaluation, Prompt Injection, Agentic Tool-Use, Multimodal Safety, Policy Robustness
 
-Independent adversarial evaluation conducted through the Gray Swan AI Proving Ground. The public activity record shows 156 submissions and 75 confirmed model breaks across 26 listed waves, with testing spanning conversational alignment, multimodal safety, tool-use authorization, and indirect prompt injection. Individual exploit details are withheld where disclosure could undermine active benchmarks or model safeguards.
+Self-directed model-behavior evaluation conducted through the Gray Swan Proving Ground. The public profile reports 156 platform submissions and 75 platform-confirmed model breaks across 26 listed waves. Aggregate counts and selected public labels are presented with explicit evidence limitations; complete prompts, outputs, model versions and adjudication materials are not reproduced.
 
-- 75 Confirmed Breaks: Aggregate total across 26 listed Gray Swan Proving Ground waves
-- 156 Formal Submissions & 736 Test Chats: Sustained iterative boundary testing across multiple model families
-- Peak Wave Results: 14 confirmed breaks in Wave 1; 10 each in Waves 2 and 3; 8 in Wave 15
+- 75 Platform-Confirmed Model Breaks: Aggregate total across 26 listed Gray Swan Proving Ground waves as of July 2026
+- 156 Platform Submissions: Sustained activity across 26 listed testing waves
+- Public Wave Distribution: Highest listed break counts are Wave 1 (14), Waves 2 and 3 (10 each), and Wave 15 (8)
 - Cross-Modality Coverage: Chat, Image, Agent, and Indirect Prompt Injection
 
 ### Yourself to Science™ | Open Research-Participation Directory (Website: https://yourselftoscience.org | GitHub: https://github.com/yourselftoscience/yourselftoscience.org | DOI: https://doi.org/10.5281/zenodo.15109359 | FAIRsharing: https://doi.org/10.25504/FAIRsharing.d3d487)
@@ -159,10 +159,10 @@ Source: https://commons.wikimedia.org/wiki/File:Oesophageal_Cancer,_Age-Standard
 
 ## Education & Certifications
 
-- **Coursework in Medicine and Surgery** (Degree not completed.) — Università degli Studi della Campania “Luigi Vanvitelli” · 2020
-- **EF SET English Certificate 68/100 (C1 Advanced Overall · C2 Reading/Listening · B2 Writing/Speaking)** (Mar 2024) — EF Standard English Test (EF SET) · https://cert.efset.org/en/eJz39v
-- **Career Essentials in Generative AI** (Mar 2024) — Microsoft and LinkedIn · https://www.linkedin.com/learning/certificates/c4f1f59578e3ac2567787e262e3b2ec55debf96bbbced4d34d5edaa821d9e6d9
-- **GALENOS Crowd Evidence Synthesis Training** (May 2026) — Cochrane Crowd & GALENOS Systematic Review Screening Certification
+- **Coursework in Medicine and Surgery** (2020) — Università degli Studi della Campania “Luigi Vanvitelli” · Degree not completed
+- **EF SET English Certificate 68/100 (C1 Advanced Overall · C2 Reading/Listening · B2 Writing/Speaking)** (Mar 2024) — EF Standard English Test (EF SET) · Credential: https://cert.efset.org/en/eJz39v
+- **Career Essentials in Generative AI** (Mar 2024) — Microsoft and LinkedIn · Credential: https://www.linkedin.com/learning/certificates/c4f1f59578e3ac2567787e262e3b2ec55debf96bbbced4d34d5edaa821d9e6d9
+- **GALENOS Crowd Evidence Synthesis Training** (May 2026) — Cochrane Crowd & GALENOS · Systematic Review Screening Certification
 
 ## Verification & Identifiers
 - [Email](mailto:me@mariomarcolongo.com): Direct email contact

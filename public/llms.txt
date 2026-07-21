@@ -1,9 +1,9 @@
 # Mario Marcolongo — AI Evaluation & Research Verification Specialist
 > Model Behavior Evaluation · Scientific Evidence Review · Evaluation Operations · Technical Research
 
-> AI evaluation and scientific research verification specialist with eight years of auditable work checking biomedical, technical and structured-data claims across sources, citations, datasets and public knowledge bases. Founder and product owner of Yourself to Science, an open-source research-participation directory indexing more than 55 clinical studies, biobanks, donation programs, registries and other initiatives, with documented verification workflows, machine-readable data, and Zenodo and FAIRsharing records. Paid scientific fact-checker, writer, data visualizer and website operator for Entropy for Life, supporting more than 55 videos and documentaries and four articles. Gray Swan Proving Ground participant since July 2026, with 75 platform-confirmed model breaks and a top-8% position among ranked participants as of July 2026.
+> AI evaluation and research verification specialist with eight years of auditable work checking biomedical, technical and structured-data claims across sources, citations, datasets and public knowledge bases. Founder and product owner of Yourself to Science, an open-source research-participation directory indexing more than 55 clinical studies, biobanks, donation programs, registries and other initiatives, with documented verification workflows, machine-readable data, and Zenodo and FAIRsharing records. Paid scientific fact-checker, writer, data visualizer and website operator for Entropy for Life, supporting more than 55 videos and documentaries and four articles. Gray Swan Proving Ground participant since July 2026, with 75 platform-confirmed model breaks and a top-8% position among ranked participants as of July 2026.
 
-> **I use AI-assisted development workflows extensively. I independently own requirements, workflow and system design, validation, testing, debugging, deployment and maintenance, and personally inspect the resulting systems.**
+> **I use AI-assisted development extensively. For the systems I independently operate, I define requirements and workflows, review generated code, test behavior, debug failures, deploy releases, and maintain the resulting services.**
 
 ## Quick Facts & Key Metrics
 - **75 Breaks** (Platform-Confirmed Model Breaks): 75 platform-confirmed model breaks as of July 2026 across chat, image, agentic tool-use and indirect prompt-injection challenges on the Gray Swan Proving Ground
@@ -16,7 +16,7 @@
 
 ## Core Competencies
 - Technical Product Delivery: Requirements definition, workflow and system design, codebase navigation and modification, functional testing, iterative debugging, deployment operations, WordPress, HTML/CSS, Git/GitHub, JSON, REST APIs, AWS Lambda, Cloudflare Pages, DNS/SSL and CI/CD.
-- AI-Assisted Development Workflow: Extensive use of coding agents for implementation, refactoring, documentation, testing and deployment automation, with independent ownership of requirements, validation, debugging, deployment and maintenance.
+- AI-Assisted Development Workflow: Extensive use of coding agents for implementation, refactoring, documentation, testing and deployment automation. For independently operated systems: requirements definition, generated-code review, functional testing, debugging, release deployment and maintenance.
 - Model Behavior & Adversarial Evaluation: Self-directed LLM boundary testing since 2023; Gray Swan Proving Ground participant since July 2026, with 75 platform-confirmed model breaks and a top-8% position among ranked participants as of July 2026.
 - Scientific Verification & Evidence Synthesis: Primary-source fact-checking, bibliographic research, evidence screening, structured claim verification, epidemiological data synthesis and standardized research protocols.
 - Open-source research and provenance verification: advanced web and scholarly search, metadata analysis, archival research, domain and certificate-history checks, reverse-image verification and cross-source corroboration.

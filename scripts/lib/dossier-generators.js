@@ -27,6 +27,17 @@ function formatProjectLinksText(p) {
   return parts.join(' | ');
 }
 
+
+function formatEducationText(e) {
+  const parts = [];
+  if (e.institution) parts.push(e.institution);
+  if (e.status) parts.push(e.status);
+  if (e.credentialUrl) parts.push(`Credential: ${e.credentialUrl}`);
+  const period = e.period ? ` (${e.period})` : '';
+  const details = parts.length ? ` — ${parts.join(' · ')}` : '';
+  return `- **${e.title}**${period}${details}\n`;
+}
+
 function generateLlmsTxt(d) {
   let out = `# ${d.identity.name} — ${d.identity.jobTitle || 'AI Evaluation & Research Verification Specialist'}\n`;
   if (d.identity.secondaryTitle) out += `> ${d.identity.secondaryTitle}\n`;
@@ -151,8 +162,7 @@ function generateLlmsFullTxt(d) {
   out += `## Education & Certifications\n\n`;
   if (d.education) {
     d.education.forEach(e => {
-      const periodPart = e.period ? '(' + e.period + ') ' : '';
-      out += `- **${e.title}** ${periodPart}— ${e.detail}\n`;
+      out += formatEducationText(e);
     });
     out += `\n`;
   }
@@ -243,8 +253,7 @@ function generateCvLlmTxt(d) {
   out += `## Education & Certifications\n\n`;
   if (d.education) {
     d.education.forEach(e => {
-      const periodPart = e.period ? '(' + e.period + ') ' : '';
-      out += `- **${e.title}** ${periodPart}— ${e.detail}\n`;
+      out += formatEducationText(e);
     });
   }
   out += `\n`;
@@ -297,6 +306,7 @@ function buildDossiers(d, rootDir) {
 
 module.exports = {
   formatProjectLinksText,
+  formatEducationText,
   generateLlmsTxt,
   generateLlmsFullTxt,
   generateCvLlmTxt,

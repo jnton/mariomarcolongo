@@ -1,7 +1,7 @@
 # Mario Marcolongo — Personal Portfolio & Curriculum Vitae
 
-> **AI Evaluation & Scientific Research Verification Specialist | Model Behavior Evaluation · Evidence Synthesis · Evaluation Operations · Technical Product Delivery**  
-> 🌐 Live Website: [mariomarcolongo.com](https://mariomarcolongo.com) (`mariomarcolongo.org` redirects here)  
+> **AI Evaluation & Research Verification Specialist | Model Behavior Evaluation · Scientific Evidence Review · Evaluation Operations · Technical Research**
+> 🌐 Live Website: [mariomarcolongo.com](https://mariomarcolongo.com) (`mariomarcolongo.org` redirects here)
 > 🔍 Primary Source Verification: ORCID [0000-0003-2846-7115](https://orcid.org/0000-0003-2846-7115) · ENA Accession [PRJEB109744](https://www.ebi.ac.uk/ena/browser/view/PRJEB109744)
 
 ---

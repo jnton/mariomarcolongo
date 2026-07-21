@@ -19,54 +19,52 @@ const { version = 'v2026.07.21' } = Astro.props;
         <a href="https://www.linkedin.com/in/mario-marcolongo" target="_blank" rel="noopener noreferrer">LinkedIn</a>
       </div>
     </div>
-    <div class="footer-content" style="margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--line);">
+    <div class="footer-content footer-dossiers">
       <div class="footer-text">
-        <span style="font-size: 13px; color: var(--ink-faint);">Machine-actionable dossiers available for verification evaluation and automated processing:</span>
+        <span>Machine-actionable dossiers for verification and automated processing:</span>
       </div>
-      <div class="footer-links" style="align-items: center; gap: 12px;">
+      <div class="footer-links footer-dossier-links">
         <a href="/llms.txt" class="btn btn-sm" target="_blank" rel="noopener noreferrer">llms.txt</a>
         <a href="/llms-full.txt" class="btn btn-sm" target="_blank" rel="noopener noreferrer">llms-full.txt</a>
         <a href="/cv-llm.txt" class="btn btn-sm" target="_blank" rel="noopener noreferrer">cv-llm.txt</a>
-        <button class="btn btn-ai btn-sm" onclick="copyFooterAI(this)" title="Copy complete AI-compatible Markdown Dossier">✨ Copy for AI</button>
+        <button
+          class="btn btn-ai btn-sm"
+          type="button"
+          onclick="copyCanonicalText('/llms-full.txt', this, '✓ Copied Dossier!')"
+          title="Copy the canonical complete AI-compatible dossier"
+        >✨ Copy complete dossier</button>
       </div>
     </div>
   </div>
 </footer>
 
 <script is:inline>
-  async function copyFooterAI(btnEl) {
-    var origText = btnEl.textContent;
-    btnEl.textContent = 'Copying...';
-    var content = null;
-    try {
-      var res = await fetch('/llms-full.txt');
-      if (res.ok) {
-        content = await res.text();
-      } else {
-        console.error('Failed to fetch /llms-full.txt:', res.status, res.statusText);
+  (function exposeCanonicalCopyUtility() {
+    if (window.copyCanonicalText) return;
+
+    window.copyCanonicalText = async function copyCanonicalText(url, btnEl, successText) {
+      var originalText = btnEl.textContent;
+      btnEl.disabled = true;
+      btnEl.textContent = 'Copying...';
+
+      try {
+        var response = await fetch(url, { cache: 'no-store' });
+        if (!response.ok) throw new Error('HTTP ' + response.status);
+        var content = await response.text();
+        if (!content.trim()) throw new Error('Canonical file was empty');
+        await navigator.clipboard.writeText(content);
+        btnEl.textContent = successText || '✓ Copied!';
+        btnEl.classList.add('copy-success');
+      } catch (error) {
+        console.error('Unable to copy canonical file ' + url + ':', error);
+        btnEl.textContent = 'Unable to copy';
       }
-    } catch(err) {
-      console.error('Fetch error during copyFooterAI:', err);
-    }
-    if (!content) {
-      btnEl.textContent = 'Unable to copy';
-      setTimeout(function() { btnEl.textContent = origText; }, 2000);
-      return;
-    }
-    try {
-      await navigator.clipboard.writeText(content);
-      btnEl.textContent = '✓ Copied Dossier!';
-      btnEl.style.background = 'var(--emerald, #10B981)';
-      btnEl.style.color = '#fff';
-      setTimeout(function() {
-        btnEl.textContent = origText;
-        btnEl.style.background = '';
-        btnEl.style.color = '';
+
+      window.setTimeout(function() {
+        btnEl.textContent = originalText;
+        btnEl.disabled = false;
+        btnEl.classList.remove('copy-success');
       }, 2200);
-    } catch (err) {
-      console.error('Clipboard write error:', err);
-      btnEl.textContent = 'Unable to copy';
-      setTimeout(function() { btnEl.textContent = origText; }, 2000);
-    }
-  }
+    };
+  })();
 </script>

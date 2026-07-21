@@ -7,80 +7,75 @@ const { activePage = 'home' } = Astro.props;
 ---
 
 <header class="nav print-hide" id="siteNav">
-  <a href="/" class="nav-name" aria-label="Mario Marcolongo — Home">Mario Marcolongo</a>
-  <nav class="nav-actions" aria-label="Primary Navigation">
+  <a href="/" class="nav-name" aria-label="Mario Marcolongo — Home"><span class="nav-name-full">Mario Marcolongo</span><span class="nav-name-short" aria-hidden="true">MM</span></a>
+  <nav class="nav-actions" aria-label="Primary navigation">
     <a
       href="/"
-      class={`nav-link ${activePage === 'home' ? 'active' : ''}`}
+      class={`nav-link nav-overview ${activePage === 'home' ? 'active' : ''}`}
       aria-current={activePage === 'home' ? 'page' : undefined}
     >Overview</a>
     <a
       href="/security.html"
-      class={`nav-link ${activePage === 'security' ? 'active' : ''}`}
+      class={`nav-link nav-evaluation ${activePage === 'security' ? 'active' : ''}`}
       aria-current={activePage === 'security' ? 'page' : undefined}
-    >Model Evaluation</a>
+    ><span class="evaluation-label-full">Evaluation Record</span><span class="evaluation-label-short" aria-hidden="true">Evaluation</span></a>
     <a
       href="/cv.html"
-      class={`nav-link hide-mobile ${activePage === 'cv' ? 'active' : ''}`}
+      class={`nav-link nav-full-cv ${activePage === 'cv' ? 'active' : ''}`}
       aria-current={activePage === 'cv' ? 'page' : undefined}
     >Full CV</a>
     <a
       href="/cv-resume.html"
-      class={`btn btn-primary btn-sm ${activePage === 'resume' ? 'active' : ''}`}
+      class={`btn btn-primary btn-sm nav-resume ${activePage === 'resume' ? 'active' : ''}`}
       aria-current={activePage === 'resume' ? 'page' : undefined}
-    >2-Page Résumé</a>
-    <button class="theme-toggle" id="themeBtn" aria-label="Toggle visual theme" type="button">
+      aria-label="2-Page Application Résumé"
+    ><span class="resume-label-full">2-Page Résumé</span><span class="resume-label-short" aria-hidden="true">Résumé</span></a>
+    <button
+      class="theme-toggle"
+      id="themeBtn"
+      aria-label="Switch to dark theme"
+      aria-pressed="false"
+      type="button"
+    >
       <span class="theme-icon-light" aria-hidden="true">☀️</span>
-      <span class="theme-icon-dark" aria-hidden="true" style="display:none;">🌙</span>
+      <span class="theme-icon-dark" aria-hidden="true" hidden>🌙</span>
     </button>
   </nav>
 </header>
 
 <script is:inline>
   (function initNavAndTheme() {
-    // Scroll handling for nav styling
     var navEl = document.getElementById('siteNav');
     if (navEl) {
       var onScroll = function() {
-        if (window.scrollY > 20) {
-          navEl.classList.add('scrolled');
-        } else {
-          navEl.classList.remove('scrolled');
-        }
+        navEl.classList.toggle('scrolled', window.scrollY > 20);
       };
       window.addEventListener('scroll', onScroll, { passive: true });
       onScroll();
     }
 
-    // Theme toggle button handling
     var themeBtn = document.getElementById('themeBtn');
-    if (themeBtn) {
-      function updateIcons(theme) {
-        var lightIcon = themeBtn.querySelector('.theme-icon-light');
-        var darkIcon = themeBtn.querySelector('.theme-icon-dark');
-        if (lightIcon && darkIcon) {
-          if (theme === 'dark') {
-            lightIcon.style.display = 'none';
-            darkIcon.style.display = 'inline';
-          } else {
-            lightIcon.style.display = 'inline';
-            darkIcon.style.display = 'none';
-          }
-        }
-      }
+    if (!themeBtn) return;
 
-      var current = document.documentElement.getAttribute('data-theme') || 'light';
-      updateIcons(current);
-
-      themeBtn.addEventListener('click', function() {
-        var active = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
-        var next = active === 'dark' ? 'light' : 'dark';
-        document.documentElement.setAttribute('data-theme', next);
-        updateIcons(next);
-        try {
-          localStorage.setItem('theme', next);
-        } catch(e) {}
-      });
+    function updateThemeControl(theme) {
+      var isDark = theme === 'dark';
+      var lightIcon = themeBtn.querySelector('.theme-icon-light');
+      var darkIcon = themeBtn.querySelector('.theme-icon-dark');
+      if (lightIcon) lightIcon.hidden = isDark;
+      if (darkIcon) darkIcon.hidden = !isDark;
+      themeBtn.setAttribute('aria-pressed', isDark ? 'true' : 'false');
+      themeBtn.setAttribute('aria-label', isDark ? 'Switch to light theme' : 'Switch to dark theme');
     }
+
+    var current = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+    updateThemeControl(current);
+
+    themeBtn.addEventListener('click', function() {
+      var active = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+      var next = active === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', next);
+      updateThemeControl(next);
+      try { localStorage.setItem('theme', next); } catch (e) {}
+    });
   })();
 </script>

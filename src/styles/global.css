@@ -231,6 +231,8 @@
       align-items: center;
     }
 
+    .resume-label-short, .nav-name-short, .evaluation-label-short { display: none; }
+
     .nav-link {
       font-size: 14px;
       font-weight: 500;
@@ -1033,6 +1035,15 @@
 
     .footer-links a:hover { color: var(--accent); }
 
+    .footer-dossiers {
+      margin-top: 24px;
+      padding-top: 20px;
+      border-top: 1px solid var(--line);
+    }
+    .footer-dossiers .footer-text span { font-size: 13px; color: var(--ink-faint); }
+    .footer-dossier-links { align-items: center; gap: 12px; flex-wrap: wrap; max-width: 100%; }
+    .copy-success { background: var(--emerald) !important; color: #fff !important; }
+
     /* ==========================================
        VERIFIED PROOF STRIP & INTERACTIVE CITATIONS
        ========================================== */
@@ -1387,8 +1398,25 @@
       .proof-row { flex-direction: column; gap: 10px; padding: 18px 20px; }
       .container { padding: 0 20px; }
       .hero { padding: 110px 0 48px; }
-      .nav-link.hide-mobile { display: none; }
+      .nav { padding: 12px 16px; gap: 12px; }
+      .nav-actions { gap: 6px; }
+      .nav-link { min-height: 44px; display: inline-flex; align-items: center; padding: 8px 10px; font-size: 13px; }
+      .nav-link.nav-overview, .nav-link.nav-full-cv { display: none; }
+      .nav-resume { min-height: 44px; display: inline-flex; align-items: center; padding-inline: 12px !important; }
+      .theme-toggle { width: 44px; height: 44px; flex: 0 0 44px; }
+      .footer-links { flex-wrap: wrap; }
+      .footer-dossier-links { width: 100%; gap: 8px; }
+      .resume-label-full { display: none; }
+      .resume-label-short { display: inline; }
       .wiki-bar-label { min-width: 120px; }
+    }
+
+    @media (max-width: 520px) {
+      .nav-name { font-size: 16px; white-space: nowrap; }
+      .nav-name-full, .evaluation-label-full { display: none; }
+      .nav-name-short, .evaluation-label-short { display: inline; }
+      .nav-evaluation { display: inline-flex; }
+      .nav-resume { display: inline-flex !important; }
     }
 
     /* ---- INDEX TEMPLATE UTILITIES ---- */
