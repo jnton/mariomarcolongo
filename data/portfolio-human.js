@@ -35,7 +35,7 @@ const PORTFOLIO_HUMAN = {
       id: "mdpi",
       label: "Browser extension",
       title: "MDPI Filter",
-      image: "https://lh3.googleusercontent.com/1KKa3LqvJ6ayP9Kh6_jmAWXzL3naOfPnnKtWb8vjd25XMn1ELMNFDxGjgtvShNmDhWG4x_uuynunm9lVD7wQ3hAI=s1280-w1280-h800",
+      image: "/media/work/mdpi-filter-1.jpg",
       imageAlt: "MDPI Filter browser extension highlighting publisher results in a literature-search interface",
       href: "https://chromewebstore.google.com/detail/mdpi-filter/comknkeimaaadpiopddjoknflbmjeccp"
     },
@@ -51,7 +51,7 @@ const PORTFOLIO_HUMAN = {
       id: "telegram",
       label: "Serverless automation",
       title: "Wikipedia Link Converter",
-      image: "https://cdn4.telesco.pe/file/pZUg4_EKmf_XKFJ1mesezgQCQNLUEoEhIf2PkVmxn5E97MKs43H7Rx6S6PEwzST3GM9HzoiCT4H7ec5i6S6xuluOYwyLWfj4Z0OqNl2vgkqCGMulAXGcUqnWRiMVglqDNCC4fkKuT0m8YizUQMbkISnpnt-8cV509X3_CDf76FETk3ApwGce1QWt54xjuYYALbOrOh_FGuk3ll7i5HoMKyGiFVvqSWXYAdCah1O8B9EAFMwIDA4taSh5m466VLqI55mg8SXvTz0gICVeV1N9e5eR0B-t4ZONBAE-kbM-hvhG5L4VCuvlmx0hLudnq-rttkia6aTbKohf3lrCwc6r_g.jpg",
+      image: "/media/work/telegram-bot.jpg",
       imageAlt: "Public Telegram bot image for the English Wikipedia Link Converter",
       href: "https://t.me/ToEnWikipediaBot"
     },
@@ -59,7 +59,7 @@ const PORTFOLIO_HUMAN = {
       id: "tableau",
       label: "Interactive data work",
       title: "Tableau Public",
-      image: "https://public.tableau.com/views/TavolediMortalitSingoleEtItalia-ISTAT/Sheet1.png?:showVizHome=no",
+      image: "/media/work/tableau-mortality.png",
       imageAlt: "Tableau Public visualization of Italian mortality tables by individual age",
       href: "https://public.tableau.com/app/profile/mario.marcolongo/viz/TavolediMortalitSingoleEtItalia-ISTAT/Sheet1"
     }
@@ -136,7 +136,7 @@ const PORTFOLIO_HUMAN = {
         "Maintain Chrome and Edge store releases"
       ],
       result: "A public, open-source Manifest V3 extension available through the Chrome and Edge stores.",
-      image: "https://lh3.googleusercontent.com/PFwTjvBGc7yEyomiAhZYB60HVcqcIRJaWjRndm8CukDwCOikYyErU9tBqOzMUhF-HTXv4wGyKNbsjvIjNyU0NpSO=s1280-w1280-h800",
+      image: "/media/work/mdpi-filter-2.jpg",
       imageAlt: "MDPI Filter extension popup listing detected references and page controls",
       href: "https://chromewebstore.google.com/detail/mdpi-filter/comknkeimaaadpiopddjoknflbmjeccp",
       linkLabel: "Open the Chrome Web Store listing"
@@ -149,7 +149,7 @@ const PORTFOLIO_HUMAN = {
       label: "AWS Lambda · Telegram · GitHub Actions",
       title: "English Wikipedia Link Converter",
       body: "A serverless Telegram bot that converts non-English Wikipedia links into their English equivalents in private chats, groups and inline mode.",
-      image: "https://cdn4.telesco.pe/file/pZUg4_EKmf_XKFJ1mesezgQCQNLUEoEhIf2PkVmxn5E97MKs43H7Rx6S6PEwzST3GM9HzoiCT4H7ec5i6S6xuluOYwyLWfj4Z0OqNl2vgkqCGMulAXGcUqnWRiMVglqDNCC4fkKuT0m8YizUQMbkISnpnt-8cV509X3_CDf76FETk3ApwGce1QWt54xjuYYALbOrOh_FGuk3ll7i5HoMKyGiFVvqSWXYAdCah1O8B9EAFMwIDA4taSh5m466VLqI55mg8SXvTz0gICVeV1N9e5eR0B-t4ZONBAE-kbM-hvhG5L4VCuvlmx0hLudnq-rttkia6aTbKohf3lrCwc6r_g.jpg",
+      image: "/media/work/telegram-bot.jpg",
       imageAlt: "Telegram image for the English Wikipedia Link Converter bot",
       href: "https://t.me/ToEnWikipediaBot",
       linkLabel: "Launch the bot"
@@ -172,7 +172,7 @@ const PORTFOLIO_HUMAN = {
       label: "Tableau Public",
       title: "Interactive statistical analysis",
       body: "Public workbooks covering mortality, health, demography and policy data, including Italian age-specific mortality tables.",
-      image: "https://public.tableau.com/views/TavolediMortalitSingoleEtItalia-ISTAT/Sheet1.png?:showVizHome=no",
+      image: "/media/work/tableau-mortality.png",
       imageAlt: "Tableau visualization of mortality tables for individual ages in Italy",
       href: "https://public.tableau.com/app/profile/mario.marcolongo/vizzes",
       linkLabel: "Open the Tableau portfolio"

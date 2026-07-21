@@ -103,7 +103,7 @@ assertContains(index, 'class="pv4-stage-main"', 'dist/index.html');
 assertContains(index, 'class="pv4-gallery-track"', 'dist/index.html');
 assertContains(index, 'chromewebstore.google.com/detail/mdpi-filter', 'dist/index.html');
 assertContains(index, 't.me/ToEnWikipediaBot', 'dist/index.html');
-assertContains(index, 'public.tableau.com/views/TavolediMortalitSingoleEtItalia-ISTAT/Sheet1.png', 'dist/index.html');
+assertContains(index, '/media/work/tableau-mortality.png', 'dist/index.html');
 assertContains(index, 'public.flourish.studio/visualisation/17745490', 'dist/index.html');
 pass('Outcome-led portfolio homepage checked');
 
