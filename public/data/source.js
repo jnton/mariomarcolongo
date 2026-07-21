@@ -15,12 +15,12 @@ const MARIO_DOSSIER = {
     grayswanId: "6a57be70d15e123775a1e9cf",
     grayswanUrl: "https://app.grayswan.ai/arena/user/6a57be70d15e123775a1e9cf",
     evaluationAsOf: "July 2026",
-    jobTitle: "AI Safety Evaluation & Research Verification Specialist",
-    secondaryTitle: "Adversarial Model Testing · Scientific Evidence Review · Evaluation Operations · Data Quality",
-    headline: "I test model behavior and document what holds up.",
+    jobTitle: "Research, Evidence & AI Operations Specialist",
+    secondaryTitle: "AI Safety · Knowledge Integrity · Editorial & Research Operations · Open Science & Data Quality",
+    headline: "I investigate claims, test systems, and build evidence workflows.",
     authorshipStatement: "I use AI-assisted implementation extensively. I define requirements and workflows, inspect code structure and behavior, test implementations, diagnose functional problems, guide iterative changes, deploy releases, and maintain services. I do not present myself as an independent software developer.",
-    role: "AI safety evaluation and research-verification specialist with sustained model-behavior testing, eight years of auditable claim and source work, paid scientific fact-checking, an open research-participation directory, and public open-science records.",
-    heroStatement: "Adversarial model testing, scientific evidence verification, research-workflow ownership, structured-data quality and public open-science records.",
+    role: "Research, evidence and AI operations specialist working across scientific verification, editorial and research programs, knowledge integrity, adversarial AI testing, open science and data quality.",
+    heroStatement: "Investigating claims, testing systems and building evidence workflows across research, public knowledge, AI behavior and technical operations.",
     location: "Based in Italy · Italian/EU citizen · Open to worldwide relocation · International B2B contracting available",
     relocation: "EU/EEA work-authorized; Swiss EU/EFTA permit eligible; open to employer-sponsored work authorization elsewhere; self-funded relocation considered for exceptional opportunities.",
     relocationVisible: "Based in Italy · Italian/EU citizen · Open to worldwide relocation · International B2B contracting available",
@@ -50,7 +50,7 @@ const MARIO_DOSSIER = {
     contactObfuscated: ["me", "mariomarcolongo", "com"]
   },
 
-  summary: "AI safety evaluation and research-verification specialist with sustained self-directed model-behavior testing across chat, image, agentic tool-use and indirect prompt-injection challenges. Gray Swan Proving Ground participant with 75 platform-confirmed model breaks across 156 submissions and a top-8% rank band among listed participants as of July 2026. Brings eight years of auditable claim verification, paid scientific fact-checking, structured research workflows, data-provenance discipline and clear evidence-bound reporting.",
+  summary: "Research, evidence and AI operations specialist with eight years of auditable public-source and structured-data work, paid scientific fact-checking and writing, community-facing research facilitation, ownership of an open research-participation directory, and sustained adversarial testing of AI systems. The profile supports four application lanes: AI safety and model behavior; research, editorial and community operations; knowledge integrity and trust; and open science and data quality. Public claims are reported with explicit evidence boundaries, while technical implementation is described accurately as code-literate, AI-assisted operations rather than independent software development.",
 
   pillars: [
     {

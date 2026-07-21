@@ -151,10 +151,7 @@ async function main() {
       'I investigate claims',
       ...V.lenses.map((lens) => lens.title),
       ...V.cases.map((record) => record.title),
-      P.aiSafety.title,
-      P.editorialCommunity.title,
-      P.integrity.title,
-      P.researchQuality.title
+      ...V.documents.filter((document) => document.id !== 'master').map((document) => document.title)
     ];
     const noJsResult = await noJs.evaluate((expected) => {
       const text = document.body.innerText;

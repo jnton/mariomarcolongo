@@ -93,6 +93,15 @@ const methods = [
 <Layout title={pageTitle} description={pageDescription} canonical="https://mariomarcolongo.com/integrity.html">
   <Fragment slot="head">
     <script is:inline>document.documentElement.classList.add("v3-js");</script>
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "ProfilePage",
+      name: pageTitle,
+      description: pageDescription,
+      url: "https://mariomarcolongo.com/integrity.html",
+      mainEntity: { "@id": "https://mariomarcolongo.com/#person" },
+      about: ["Knowledge integrity", "Open-source research", "Source provenance", "Trust and safety"]
+    })}></script>
   </Fragment>
 
   <SiteNav activePage="integrity" />

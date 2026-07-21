@@ -85,10 +85,12 @@ function linksFor(item) {
       <div>
         <div class="master-eyebrow">Master source document</div>
         <h2>Comprehensive CV & evidence archive</h2>
-        <p>This preserves the complete record used to create tailored applications. For most jobs, send one of the two specialized two-page CVs instead.</p>
+        <p>This preserves the complete record used to create tailored applications. For most jobs, send one of the four specialized two-page CVs instead.</p>
       </div>
       <div class="application-guide-actions">
         <a class="btn btn-primary" href="/cv-resume.html">AI Safety CV</a>
+        <a class="btn" href="/cv-editorial.html">Editorial & Community CV</a>
+        <a class="btn" href="/cv-integrity.html">Trust & Knowledge Integrity CV</a>
         <a class="btn" href="/cv-research.html">Research & Data Quality CV</a>
         <button class="btn" type="button" onclick="window.print()">Print / Save PDF</button>
       </div>
@@ -99,15 +101,16 @@ function linksFor(item) {
         <div>
           <div class="master-eyebrow">Master CV · updated July 2026</div>
           <h1 class="master-name">{P.shared.name}</h1>
-          <div class="master-title">AI Safety Evaluation · Research Verification · Data Quality · Technical Operations</div>
+          <div class="master-title">Research · Evidence · Knowledge Integrity · AI Operations</div>
           <p class="master-summary">
-            Evidence-focused specialist combining adversarial model testing, paid scientific fact-checking, open research workflows, structured-data quality and public-source verification. Code-literate and able to inspect structure and behavior, define requirements, test implementations and guide AI-assisted technical iteration; not presented as an independent software developer.
+            Evidence-focused specialist combining paid scientific fact-checking and writing, editorial and research operations, public-source and provenance work, open research workflows, structured-data quality and adversarial model testing. Code-literate and able to inspect structure and behavior, define requirements, test implementations and guide AI-assisted technical iteration; not presented as an independent software developer.
           </p>
         </div>
         <div class="master-contact">
           <strong>Contact and mobility</strong><br />
           {P.shared.location}<br />
           <a href={`mailto:${P.shared.email}`}>{P.shared.email}</a><br />
+          <a id="cvPhoneSlot" hidden></a>
           <a href={P.shared.website}>mariomarcolongo.com</a><br />
           <a href={P.shared.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn ↗</a> ·
           <a href={P.shared.github} target="_blank" rel="noopener noreferrer">GitHub ↗</a><br />

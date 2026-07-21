@@ -107,7 +107,8 @@ for (const [name, html] of Object.entries(pages)) {
 const index = pages.index;
 const indexText = normalizeHtmlText(index);
 for (const needle of [
-  'I investigate claims',
+  'I investigate ',
+  'claims',
   ...V.lenses.map((lens) => lens.title),
   ...V.cases.map((record) => record.title),
   ...V.documents.map((document) => document.title),

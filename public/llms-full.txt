@@ -1,8 +1,8 @@
-# Mario Marcolongo — AI Safety Evaluation & Research Verification Specialist
-> Adversarial Model Testing · Scientific Evidence Review · Evaluation Operations · Data Quality
+# Mario Marcolongo — Research, Evidence & AI Operations Specialist
+> AI Safety · Knowledge Integrity · Editorial & Research Operations · Open Science & Data Quality
 
 ## Overview
-AI safety evaluation and research-verification specialist with sustained self-directed model-behavior testing across chat, image, agentic tool-use and indirect prompt-injection challenges. Gray Swan Proving Ground participant with 75 platform-confirmed model breaks across 156 submissions and a top-8% rank band among listed participants as of July 2026. Brings eight years of auditable claim verification, paid scientific fact-checking, structured research workflows, data-provenance discipline and clear evidence-bound reporting.
+Research, evidence and AI operations specialist with eight years of auditable public-source and structured-data work, paid scientific fact-checking and writing, community-facing research facilitation, ownership of an open research-participation directory, and sustained adversarial testing of AI systems. The profile supports four application lanes: AI safety and model behavior; research, editorial and community operations; knowledge integrity and trust; and open science and data quality. Public claims are reported with explicit evidence boundaries, while technical implementation is described accurately as code-literate, AI-assisted operations rather than independent software development.
 
 > **I use AI-assisted implementation extensively. I define requirements and workflows, inspect code structure and behavior, test implementations, diagnose functional problems, guide iterative changes, deploy releases, and maintain services. I do not present myself as an independent software developer.**
 
