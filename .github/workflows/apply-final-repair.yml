@@ -9,7 +9,6 @@ permissions:
 
 jobs:
   apply:
-    if: ${{ hashFiles('.github/repair-ready') != '' }}
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
@@ -18,6 +17,9 @@ jobs:
         with:
           ref: final-audit-repair
           fetch-depth: 0
+
+      - name: Confirm repair activation
+        run: test -f .github/repair-ready
 
       - name: Reconstruct, verify, and apply source patch
         run: |
