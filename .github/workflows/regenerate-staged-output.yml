@@ -1,23 +1,17 @@
 name: Regenerate staged output
 
 on:
-  push:
-    branches: [human-centered-redesign]
-    paths:
-      - 'src/**'
-      - 'data/**'
-      - 'public/**'
-      - 'scripts/**'
-      - 'package.json'
-      - 'package-lock.json'
-      - '.github/workflows/regenerate-staged-output.yml'
+  pull_request:
+    branches: [main]
+    types: [synchronize]
+  workflow_dispatch:
 
 permissions:
   contents: write
 
 jobs:
   regenerate:
-    if: github.actor != 'github-actions[bot]'
+    if: github.event.pull_request.head.ref == 'human-centered-redesign' || github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
