@@ -23,6 +23,8 @@ The portfolio deliberately distinguishes code literacy and AI-assisted technical
 - **Research Verification & Data Quality CV (`/cv-research.html`)** — two-page application CV for scientific evidence, research operations, provenance and data-quality roles.
 - **Master CV (`/cv.html`)** — comprehensive evidence archive used to create tailored applications; not the default attachment.
 
+The two specialized application CVs are generated and verified as exactly two A4 pages. The master CV remains intentionally comprehensive and may span more pages.
+
 ## Evidence architecture
 
 `data/source.js` remains the canonical factual dossier. `data/application-profiles.js` defines role-specific selection and wording without changing the underlying records.
