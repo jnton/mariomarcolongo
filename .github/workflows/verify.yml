@@ -71,7 +71,10 @@ jobs:
           diff -u /tmp/generated-before.sha256 /tmp/generated-after.sha256
 
       - name: Verify rendered pages
-        run: npm run verify:render
+        shell: bash
+        run: |
+          set -o pipefail
+          npm run verify:render 2>&1 | tee audit-output/render.log
 
       - name: Generate and validate résumé PDF
         run: npm run pdf:resume
