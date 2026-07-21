@@ -1,42 +1,61 @@
 # Mario Marcolongo — Portfolio & Application CV System
 
-> **AI Safety Evaluation & Research Verification Specialist**  
-> Adversarial Model Testing · Scientific Evidence Review · Evaluation Operations · Data Quality
+> **Research, Evidence & AI Operations Specialist**  
+> AI Safety · Knowledge Integrity · Editorial & Research Operations · Open Science & Data Quality
 
 Live website: [mariomarcolongo.com](https://mariomarcolongo.com)
 
 ## Purpose
 
-This repository powers Mario Marcolongo's public portfolio, comprehensive evidence record and role-specific application CVs. The system is optimized around the highest-upside credible career path supported by the current evidence base:
+This repository powers Mario Marcolongo's public portfolio, comprehensive evidence record, public work samples and role-specific application CVs. The architecture deliberately avoids forcing a diverse evidence base into one narrow job title.
 
-1. **Primary lane:** AI safety evaluation, adversarial model testing, safeguards operations, trust & safety and evaluation operations.
-2. **Secondary lane:** research verification, scientific and biomedical AI quality, structured-data quality, provenance and research operations.
-3. **Long-term direction:** AI red-team and automated-evaluation engineering after independently verifiable Python, application-security, automation and professional team experience are added.
+The public portfolio supports four credible application lenses:
 
-The portfolio deliberately distinguishes code literacy and AI-assisted technical delivery from independent software development.
+1. **AI Safety & Model Behavior** — adversarial testing, safeguards, trust & safety and evaluation operations.
+2. **Research, Editorial & Community Operations** — evidence synthesis, editorial production, research programs, science communication and community engagement.
+3. **Knowledge Integrity, Trust & Investigations** — source provenance, public-record research, structured-data integrity and ethical open-source research.
+4. **Open Science & Data Quality** — scientific verification, metadata, provenance, knowledge graphs and human-data quality.
 
-## Document model
+The long-term high-revenue directions include AI red-team engineering, automated evaluation, trust/integrity operations, technical program management and senior research/AI operations. The portfolio distinguishes code literacy and AI-assisted technical delivery from independent software development.
 
-- **Portfolio (`/`)** — curated hiring surface with selected evidence and clear role positioning.
-- **Evaluation record (`/security.html`)** — concise public work sample with scope, methodology, platform-reported activity and explicit limitations.
-- **AI Safety Evaluation CV (`/cv-resume.html`)** — two-page application CV for model-behavior, safeguards, adversarial QA and trust & safety roles.
-- **Research Verification & Data Quality CV (`/cv-research.html`)** — two-page application CV for scientific evidence, research operations, provenance and data-quality roles.
+## Document and evidence model
+
+- **Portfolio (`/`)** — broad public overview, interactive role lenses, selected work samples, project library and document studio.
+- **Knowledge Integrity Work Samples (`/integrity.html`)** — public provenance, source-monitoring, entity-reconciliation and structured-data cases with explicit limitations.
+- **Model Behavior Record (`/security.html`)** — scope, methodology, platform-reported activity and evidence boundaries for Gray Swan participation.
+- **AI Safety & Adversarial Testing CV (`/cv-resume.html`)** — two-page application document.
+- **Research, Editorial & Community Operations CV (`/cv-editorial.html`)** — two-page application document for Campbell-style and related evidence-organization roles.
+- **Trust, Safety & Knowledge Integrity CV (`/cv-integrity.html`)** — two-page application document for integrity, OSINT-support and trust & safety analyst roles.
+- **Research Verification & Data Quality CV (`/cv-research.html`)** — two-page application document for scientific evidence, provenance, metadata and AI-quality roles.
 - **Master CV (`/cv.html`)** — comprehensive evidence archive used to create tailored applications; not the default attachment.
 
-The two specialized application CVs are generated and verified as exactly two A4 pages. The master CV remains intentionally comprehensive and may span more pages.
+All four specialized application CVs are generated and verified as exactly two A4 pages. The master CV remains intentionally comprehensive and may span more pages.
+
+## Private phone number in local PDFs
+
+The public source and generated website do not contain a personal phone number. To include it in local PDFs, set `CV_PHONE` only in the local environment:
+
+```bash
+CV_PHONE="+39 ..." npm run pdf
+```
+
+The PDF generator injects the value at render time into all four specialized CVs and the master CV. The value is not written into tracked source files or public HTML.
 
 ## Evidence architecture
 
-`data/source.js` remains the canonical factual dossier. `data/application-profiles.js` defines role-specific selection and wording without changing the underlying records.
+- `data/source.js` — canonical factual dossier.
+- `data/application-profiles.js` — role-specific CV selection and wording.
+- `data/portfolio-v3.js` — public role lenses, work samples, project taxonomy and document studio.
 
 Generated outputs include:
 
 - `llms.txt`
 - `llms-full.txt`
 - `cv-llm.txt`
-- static HTML mirrors
-- two specialized two-page PDFs
+- static HTML mirrors for all public routes
+- four specialized two-page PDFs
 - a comprehensive master-CV PDF
+- responsive light/dark screenshots for visual review
 
 ## Core commands
 
@@ -48,7 +67,7 @@ npm run pdf:resume
 npm run pdf:cv
 ```
 
-The production build fails closed on stale positioning, unsupported claims, missing generated files, invalid JSON-LD and inconsistent dossier mirrors. Rendering checks cover desktop, tablet and mobile in light and dark themes, plus a JavaScript-disabled homepage.
+The production build fails closed on stale positioning, unsupported claims, missing generated files, invalid JSON-LD and inconsistent dossier mirrors. Rendering checks cover desktop, tablet and mobile in light and dark themes, interactive role-lens and project-filter behavior, plus a JavaScript-disabled homepage.
 
 ## Public records
 
