@@ -34,15 +34,15 @@ jobs:
           git diff --exit-code -- \
             llms.txt llms-full.txt cv-llm.txt \
             public/llms.txt public/llms-full.txt public/cv-llm.txt public/data/source.js \
-            index.html cv.html cv-resume.html security.html
+            index.html cv.html cv-resume.html cv-research.html security.html
 
       - name: Verify rendered pages
         run: npm run verify:render
 
-      - name: Generate résumé PDF
+      - name: Generate specialized application PDFs
         run: npm run pdf:resume
 
-      - name: Generate full CV PDF
+      - name: Generate master CV PDF
         run: npm run pdf:cv
 
       - name: Check patch formatting
@@ -55,7 +55,8 @@ jobs:
           name: verification-output
           path: |
             audit-output/**/*.png
-            Mario Marcolongo — 2-Page Application Résumé.pdf
+            Mario Marcolongo — AI Safety Evaluation CV.pdf
+            Mario Marcolongo — Research Verification & Data Quality CV.pdf
             Mario Marcolongo — Curriculum Vitae.pdf
           if-no-files-found: ignore
           retention-days: 7
