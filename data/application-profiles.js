@@ -74,7 +74,7 @@ const APPLICATION_PROFILES = {
       },
       {
         title: "Human-subject research operations",
-        body: "Co-developed structured remote facilitation procedures and supported autistic participants discussing sensitive topics; institutional attribution is withheld pending permission.",
+        body: "Co-developed and co-facilitated structured remote focus groups with autistic participants on sexuality and relationships, supervised by Marta Panzeri at the University of Padua DPSS.",
         link: "/cv-editorial.html"
       }
     ],
@@ -179,7 +179,7 @@ const APPLICATION_PROFILES = {
     documentLabel: "Specialized Application CV",
     title: "Research, Editorial & Community Operations Specialist",
     subtitle: "Evidence synthesis · editorial coordination · research programs · community engagement · AI-enabled workflows",
-    summary: "Research, editorial and community-operations specialist with paid experience supporting scientific content production, primary-source fact-checking, professional writing and web operations. Co-developed and co-facilitated a structured remote focus-group process for autistic participants discussing sensitive sexuality and relationship topics, including recruitment, session protocols, Zoom logistics and two-person moderation handoffs. Also contributed evidence research to more than 55 videos and documentaries and four published articles and founded an open research-participation directory covering more than 55 initiatives.",
+    summary: "Research, editorial and community-operations specialist with paid experience supporting scientific content production, primary-source fact-checking, professional writing and web operations. Co-developed and co-facilitated a structured remote focus-group process for autistic participants discussing sensitive sexuality and relationship topics, supervised by Marta Panzeri at the University of Padua Department of Developmental Psychology and Socialisation (DPSS), including recruitment, session protocols, Zoom logistics and two-person moderation handoffs. Also contributed evidence research to more than 55 videos and documentaries and four published articles and founded an open research-participation directory covering more than 55 initiatives.",
     fit: [
       "Assistant editor and editorial operations",
       "Evidence-synthesis program coordination",
@@ -209,13 +209,17 @@ const APPLICATION_PROFILES = {
       },
       {
         role: "Volunteer Focus-Group Co-Facilitator & Research Operations Contributor",
-        organization: "University-affiliated developmental psychology research collaboration · Italy",
+        organization: "Department of Developmental Psychology and Socialisation (DPSS), University of Padua · supervised by Marta Panzeri",
         period: "Nov 2022 — 2025",
-        links: [],
+        links: [
+          { label: "Marta Panzeri", url: "https://dpss.unipd.it/en/node/239" },
+          { label: "Department", url: "https://www.unipd.it/en/dpss" },
+          { label: "Thesis context", url: "https://thesis.unipd.it/handle/20.500.12608/51396" }
+        ],
         bullets: [
           "Co-facilitated recorded Zoom focus groups with autistic participants discussing sensitive sexuality and relationship topics, using clear expectations, respectful pacing and non-judgmental follow-up.",
           "Co-developed a standardized discussion guide, scripted prompts and session procedures; worked in a two-person facilitation team using live handoffs and recovery when prompts were missed or a facilitator needed support.",
-          "Supported participant recruitment, bibliographic research, technical session preparation and coordination with the supervising professor, researchers and a second autistic volunteer facilitator. Institutional attribution is withheld pending permission."
+          "Supported participant recruitment, bibliographic research, technical session preparation and coordination with Marta Panzeri, researchers and a second autistic volunteer facilitator. Public attribution is included with permission; participant information remains confidential."
         ]
       },
       {

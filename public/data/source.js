@@ -374,14 +374,19 @@ const MARIO_DOSSIER = {
     },
     {
       role: "Volunteer Focus-Group Co-Facilitator & Research Operations Contributor",
-      org: "University-affiliated developmental psychology research collaboration — Italy",
-      tag: "Volunteer research collaboration",
+      org: "Department of Developmental Psychology and Socialisation (DPSS), University of Padua",
+      tag: "Volunteer research collaboration supervised by Marta Panzeri",
       period: "Nov 2022 — 2025",
+      links: {
+        supervisor: "https://dpss.unipd.it/en/node/239",
+        department: "https://www.unipd.it/en/dpss",
+        thesisContext: "https://thesis.unipd.it/handle/20.500.12608/51396"
+      },
       bullets: [
         "Co-facilitated recorded Zoom focus groups with autistic participants discussing sensitive sexuality and relationship topics, using clear expectations, respectful pacing and non-judgmental follow-up to support participant comfort.",
         "Co-developed a standardized discussion guide, scripted prompts and session procedures; worked in a two-person facilitation team using live handoffs and recovery when prompts were missed or a facilitator needed support.",
-        "Supported participant recruitment, bibliographic research, technical session preparation and coordination with the supervising professor, researchers and a second autistic volunteer facilitator.",
-        "Institutional and individual attribution is withheld from the public portfolio pending permission; no participant information is disclosed."
+        "Supported participant recruitment, bibliographic research, technical session preparation and coordination with Marta Panzeri, the research team and a second autistic volunteer facilitator.",
+        "Public attribution to Marta Panzeri and the Department of Developmental Psychology and Socialisation is included with permission; no participant information or confidential session content is disclosed."
       ],
       resumeBullets: [
         "Co-facilitated recorded Zoom focus groups with autistic participants on sensitive sexuality and relationship topics, using structured prompts, respectful pacing and non-judgmental follow-up.",

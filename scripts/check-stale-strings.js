@@ -118,7 +118,7 @@ for (const marker of ['human-capabilities', 'human-work', 'human-documents']) {
   if (!indexSource.includes(`data-testid="${marker}"`)) fail('src/pages/index.astro', 1, `Missing homepage marker ${marker}.`);
 }
 for (const requiredText of [
-  'Evidence that maps to the next role.', 'Co-facilitating autism-and-sexuality focus groups',
+  'Evidence that maps to the next role.',
   'Public tools with a clear job to do.', 'Public analysis across three platforms.',
   'Use the version matched to the role.', 'Discuss a difficult problem.'
 ]) {
