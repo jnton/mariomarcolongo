@@ -4,6 +4,8 @@
 
 This branch is a design exploration. It must not be merged or deployed until the interactive desktop and mobile result is visually approved by Mario.
 
+The first executable prototype now includes the replacement homepage, real screenshots of public work, open-license visualizations, the historical provenance photograph, an evidence-led model-activity graphic and a privacy-safe focus-group protocol visual. The next gate is human inspection of the rendered desktop and mobile result—not merely successful compilation.
+
 ## Why the previous direction is rejected
 
 The current portfolio is mechanically valid but visually synthetic. Its oversized gradient headline, abstract evidence-network diagram, pastel role cards, uniform rounded surfaces, dense explanatory copy and blanket reveal animations make it resemble an AI-generated SaaS landing page. The result is harder to read, less memorable and less human than the older portfolio.
