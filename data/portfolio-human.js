@@ -33,31 +33,47 @@ const PORTFOLIO_HUMAN = {
   heroWork: [
     {
       title: "Model-behavior evaluation",
-      label: "AI evaluation and safety operations",
-      image: "/media/work/model-behavior-method.svg",
-      alt: "Model-behavior evaluation workflow from threat surface through test variation to evidence record",
-      href: "/security.html"
+      label: "AI evaluation and safeguards operations",
+      domain: "Adversarial evaluation",
+      metric: "75",
+      metricLabel: "platform-confirmed breaks",
+      tags: ["156 submissions", "26 waves"],
+      href: "/security.html",
+      linkLabel: "Internal evidence record",
+      theme: "cobalt"
     },
     {
       title: "Paid scientific verification",
       label: "Entropy for Life",
-      image: "/media/work/entropy-social-proof.svg",
-      alt: "Public social-platform scale of Entropy for Life across YouTube, Instagram, Telegram and other official channels",
-      href: "https://www.youtube.com/@entropyforlife"
+      domain: "Public science production",
+      metric: "55+",
+      metricLabel: "productions supported",
+      tags: ["266K YouTube", "159K Instagram"],
+      href: "https://www.youtube.com/@entropyforlife",
+      linkLabel: "Official YouTube channel",
+      theme: "coral"
     },
     {
       title: "Yourself to Science",
       label: "Research and product operations",
-      image: "/media/work/yourself-to-science-800.webp",
-      alt: "Yourself to Science public research-participation catalogue",
-      href: "https://yourselftoscience.org/"
+      domain: "Open research infrastructure",
+      metric: "55+",
+      metricLabel: "research routes indexed",
+      tags: ["FAIRsharing", "Zenodo"],
+      href: "https://yourselftoscience.org/",
+      linkLabel: "Official product website",
+      theme: "moss"
     },
     {
       title: "MDPI Filter",
-      label: "Research tooling",
-      image: "/media/work/mdpi-filter-1-800.webp",
-      alt: "MDPI Filter highlighting publisher citations inside a literature workflow",
-      href: "https://chromewebstore.google.com/detail/mdpi-filter/comknkeimaaadpiopddjoknflbmjeccp"
+      label: "Chrome and Edge research tooling",
+      domain: "Browser product",
+      metric: "2",
+      metricLabel: "public browser stores",
+      tags: ["Literature search", "Citation detection"],
+      href: "https://chromewebstore.google.com/detail/mdpi-filter/comknkeimaaadpiopddjoknflbmjeccp",
+      linkLabel: "Chrome Web Store listing",
+      theme: "slate"
     }
   ],
 
@@ -68,8 +84,12 @@ const PORTFOLIO_HUMAN = {
       title: "Adversarial testing with explicit evidence boundaries",
       summary: "I explore instruction handling, multimodal inputs, agentic tool use and indirect prompt injection, preserving reproduction notes while separating platform-confirmed outcomes from independent security claims.",
       proof: "75 platform-confirmed breaks · 156 submissions · 26 listed waves",
-      image: "/media/work/model-behavior-method.svg",
-      alt: "Model-behavior evaluation workflow from threat surface through test variation to evidence record",
+      metric: "75",
+      metricLabel: "platform-confirmed breaks",
+      visualEyebrow: "Gray Swan activity · July 2026",
+      details: ["156 submissions", "26 listed waves"],
+      destination: "Internal case record with live profile and archived verification snapshot",
+      theme: "cobalt",
       href: "/security.html",
       linkLabel: "View the evaluation record"
     },
@@ -79,10 +99,14 @@ const PORTFOLIO_HUMAN = {
       title: "Primary-source checking inside a multi-platform public production workflow",
       summary: "For Entropy for Life, I investigate biomedical and evolutionary claims, identify weak or conflicting evidence and communicate corrections to a non-specialist production team.",
       proof: "55+ videos and documentaries · four articles · public presence across seven official social platforms",
-      image: "/media/work/entropy-social-proof.svg",
-      alt: "Public social-platform counts and official channel presence for Entropy for Life",
+      metric: "55+",
+      metricLabel: "productions supported",
+      visualEyebrow: "Paid scientific verification",
+      details: ["266K YouTube", "159K Instagram", "4.1K Telegram"],
+      destination: "Official Entropy for Life channel; project-scale figures are attributed, not treated as unique audience",
+      theme: "coral",
       href: "https://www.youtube.com/@entropyforlife",
-      linkLabel: "Open the YouTube channel"
+      linkLabel: "Open the official channel"
     },
     {
       id: "yourself-to-science",
@@ -90,8 +114,12 @@ const PORTFOLIO_HUMAN = {
       title: "A public system for discovering ways to participate in research",
       summary: "I founded and operate Yourself to Science, defining inclusion rules, verification and provenance fields, open licensing, public datasets and the requirements used for AI-assisted implementation.",
       proof: "55+ initiatives · FAIRsharing and Zenodo records · public machine-readable interfaces",
-      image: "/media/work/yourself-to-science-800.webp",
-      alt: "Yourself to Science research-participation catalogue",
+      metric: "55+",
+      metricLabel: "research initiatives",
+      visualEyebrow: "Open research participation",
+      details: ["FAIRsharing", "Zenodo", "Machine-readable data"],
+      destination: "Official Yourself to Science catalogue",
+      theme: "moss",
       href: "https://yourselftoscience.org/",
       linkLabel: "Explore the catalogue"
     }
@@ -159,26 +187,36 @@ const PORTFOLIO_HUMAN = {
       href: "https://public.flourish.studio/visualisation/17745490/"
     },
     {
-      title: "Wikimedia Commons",
-      body: "More than 70 open biomedical, epidemiological and public-policy visualizations, with reuse across Wikipedia editions.",
+      title: "Autism genetics visualization",
+      body: "A directly inspectable, self-authored SVG showing overlapping monogenic phenotypes across autism, dystonia, epilepsy and schizophrenia.",
       image: "/media/work/wikimedia-clinical-overlap.svg",
-      alt: "Diagram of genetic overlap across several mental disorders",
-      href: "https://commons.wikimedia.org/wiki/Special:ListFiles/Digressivo"
+      alt: "Euler diagram of overlapping clinical phenotypes in genes associated with autism spectrum disorder, dystonia, epilepsy and schizophrenia",
+      href: "https://commons.wikimedia.org/wiki/File:Overlapping_clinical_phenotypes_in_genes_associated_with_monogenic_forms_of_autism_spectrum_disorder_(ASD),_dystonia,_epilepsy_and_schizophrenia.svg"
     }
   ],
 
+  workingStyle: {
+    label: "Neurodivergent working profile",
+    title: "Autistic, direct and unusually comfortable with difficult problems.",
+    body: "I work best in high-autonomy teams that reward independent judgment, explicit assumptions, deep focus and ownership of outcomes. The useful signal is not an edgy personality label: it is a demonstrated willingness to question consensus, enter unusual domains and state exactly where the evidence stops."
+  },
+
   workingPrinciples: [
     {
-      title: "Investigate ambiguity",
-      body: "Break unclear questions into claims, evidence sources, operational constraints and testable failure modes."
+      title: "Contrarian, not careless",
+      body: "Challenge consensus and weak claims while keeping hypotheses, observed evidence and verified conclusions separate."
     },
     {
-      title: "Own the workflow",
-      body: "Move from requirements and coordination through testing, deployment diagnosis and maintenance."
+      title: "Direct communication",
+      body: "Prefer explicit constraints, plain disagreement and inspectable decisions over consensus theatre or ambiguous ownership."
     },
     {
-      title: "State the boundary",
-      body: "Distinguish observed evidence, platform labels, inference and uncertainty instead of making the result sound stronger than it is."
+      title: "High ownership",
+      body: "Move from a missing workflow to requirements, coordination, functional testing, deployment diagnosis and maintenance."
+    },
+    {
+      title: "Comfort with unusual domains",
+      body: "Work seriously on adversarial AI behavior, public genomics, sensitive research topics and difficult provenance questions."
     }
   ],
 
