@@ -1,12 +1,13 @@
 name: Capture public work previews
 
 on:
-  push:
-    branches:
-      - human-centered-redesign
+  pull_request:
+    branches: [main]
     paths:
       - scripts/capture-public-work.js
       - .github/workflows/capture-public-work.yml
+      - src/pages/index.astro
+      - data/portfolio-human.js
   workflow_dispatch:
 
 permissions:
@@ -14,9 +15,10 @@ permissions:
 
 jobs:
   capture:
+    if: github.event_name == 'workflow_dispatch' || github.head_ref == 'human-centered-redesign'
     runs-on: ubuntu-latest
     steps:
-      - name: Check out branch
+      - name: Check out redesign branch
         uses: actions/checkout@v4
         with:
           ref: human-centered-redesign
@@ -28,7 +30,7 @@ jobs:
           cache: npm
 
       - name: Install locked dependencies
-        run: npm ci
+        run: npm ci --no-audit --no-fund
 
       - name: Capture public project previews
         run: node scripts/capture-public-work.js
