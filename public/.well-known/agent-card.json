@@ -2,7 +2,7 @@
   "$schema": "https://a2a-card.org/schema/v1.json",
   "name": "Mario Marcolongo Professional Evidence Interface",
   "version": "2026.07.21",
-  "description": "Agent-to-Agent discovery interface for Mario Marcolongo's evidence-bound professional dossier, AI safety evaluation activity, scientific fact-checking record, research-verification workflows and public open-science records.",
+  "description": "Agent-to-Agent discovery interface for Mario Marcolongo's evidence-bound professional dossier spanning AI safety, research and editorial operations, knowledge integrity, scientific verification, open science and data quality.",
   "url": "https://mariomarcolongo.com",
   "documentationUrl": "https://mariomarcolongo.com/llms-full.txt",
   "capabilities": {
@@ -16,9 +16,9 @@
       "endpoint": "https://mariomarcolongo.com/cv-llm.txt",
       "method": "GET"
     },
-    "queryGenomicRecord": {
-      "description": "Access public notes and identifiers for the 41× WGS donation under ENA PRJEB109744.",
-      "endpoint": "https://mariomarcolongo.com/llms-full.txt",
+    "queryIntegrityRecord": {
+      "description": "Access public knowledge-integrity, provenance and investigation work samples.",
+      "endpoint": "https://mariomarcolongo.com/integrity.html",
       "method": "GET"
     }
   },
@@ -38,19 +38,24 @@
   ],
   "skills": [
     {
-      "id": "ai-safety-evaluation",
-      "name": "AI Safety Evaluation & Adversarial Testing",
-      "description": "Self-directed model-behavior testing across chat, image, agentic tool-use and indirect prompt-injection challenges, with evidence-bound reporting and explicit limitations."
+      "id": "ai-safety-model-behavior",
+      "name": "AI Safety & Model Behavior",
+      "description": "Self-directed adversarial testing across chat, image, agentic tool-use and indirect prompt-injection challenges, with evidence-bound reporting and explicit limitations."
     },
     {
-      "id": "research-verification",
-      "name": "Scientific Evidence & Research Verification",
-      "description": "Primary-source fact-checking, bibliographic research, claim decomposition, source-quality assessment, evidence screening and cross-source corroboration."
+      "id": "editorial-community-operations",
+      "name": "Research, Editorial & Community Operations",
+      "description": "Scientific editorial support, evidence-synthesis preparation, research facilitation, community-facing protocols, public writing and technical publishing operations."
     },
     {
-      "id": "data-quality-provenance",
-      "name": "Structured Data Quality & Provenance",
-      "description": "Metadata structure, public-source reconciliation, verification workflows, provenance documentation and open-science records across Wikimedia, Wikidata, FAIRsharing, Zenodo and ENA."
+      "id": "knowledge-integrity",
+      "name": "Knowledge Integrity, Trust & Investigations",
+      "description": "Source provenance, public-record research, cross-source corroboration, entity reconciliation, rights context and evidence-bound investigative reporting."
+    },
+    {
+      "id": "open-science-data-quality",
+      "name": "Open Science & Data Quality",
+      "description": "Scientific verification, structured metadata, provenance workflows and public records across Wikimedia, Wikidata, FAIRsharing, Zenodo and ENA."
     },
     {
       "id": "technical-operations",
