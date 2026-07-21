@@ -17,57 +17,39 @@ function fail(message) {
   failures += 1;
   console.error(`FAIL: ${message}`);
 }
-
-function pass(message) {
-  console.log(`PASS: ${message}`);
-}
-
+function pass(message) { console.log(`PASS: ${message}`); }
 function read(relativePath) {
   const full = path.join(ROOT, relativePath);
-  if (!fs.existsSync(full)) {
-    fail(`Missing file: ${relativePath}`);
-    return '';
-  }
+  if (!fs.existsSync(full)) { fail(`Missing file: ${relativePath}`); return ''; }
   const value = fs.readFileSync(full, 'utf8');
   if (!value.length) fail(`Empty file: ${relativePath}`);
   return value;
 }
-
 function normalizeHtmlText(content) {
   return String(content)
-    .replaceAll('&amp;', '&')
-    .replaceAll('&#39;', "'")
-    .replaceAll('&quot;', '"')
-    .replaceAll('&gt;', '>')
-    .replaceAll('&lt;', '<');
+    .replaceAll('&amp;', '&').replaceAll('&#39;', "'").replaceAll('&quot;', '"')
+    .replaceAll('&gt;', '>').replaceAll('&lt;', '<');
 }
-
 function assertContains(content, needle, label) {
   if (!content.includes(needle)) fail(`${label} is missing: ${needle}`);
 }
-
 function assertNotContains(content, needle, label) {
   if (content.includes(needle)) fail(`${label} contains prohibited text: ${needle}`);
 }
-
 function verifyExact(relativePaths, expected, label) {
   for (const relativePath of relativePaths) {
     const actual = read(relativePath);
     if (actual !== expected) fail(`${relativePath} is not byte-identical to canonical ${label} output`);
   }
 }
-
 function parseJsonLd(html, label) {
   const regex = /<script\b[^>]*type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi;
   let match;
   let count = 0;
   while ((match = regex.exec(html)) !== null) {
     count += 1;
-    try {
-      JSON.parse(match[1].trim());
-    } catch (error) {
-      fail(`${label} has invalid JSON-LD block ${count}: ${error.message}`);
-    }
+    try { JSON.parse(match[1].trim()); }
+    catch (error) { fail(`${label} has invalid JSON-LD block ${count}: ${error.message}`); }
   }
   if (count === 0) fail(`${label} has no JSON-LD block`);
 }
@@ -83,14 +65,9 @@ for (const [name, expected] of Object.entries(canonical)) {
 pass('Canonical dossier mirrors checked');
 
 const pages = {
-  index: read('dist/index.html'),
-  integrityPage: read('dist/integrity.html'),
-  cv: read('dist/cv.html'),
-  resume: read('dist/cv-resume.html'),
-  research: read('dist/cv-research.html'),
-  editorial: read('dist/cv-editorial.html'),
-  integrityCv: read('dist/cv-integrity.html'),
-  security: read('dist/security.html')
+  index: read('dist/index.html'), integrityPage: read('dist/integrity.html'), cv: read('dist/cv.html'),
+  resume: read('dist/cv-resume.html'), research: read('dist/cv-research.html'), editorial: read('dist/cv-editorial.html'),
+  integrityCv: read('dist/cv-integrity.html'), security: read('dist/security.html')
 };
 
 for (const [name, html] of Object.entries(pages)) {
@@ -107,31 +84,22 @@ for (const [name, html] of Object.entries(pages)) {
 const index = pages.index;
 const indexText = normalizeHtmlText(index);
 for (const needle of [
-  H.headline,
+  'I make difficult evidence easier to', 'trust', 'and use.',
   ...H.capabilities.map((item) => item.title),
   ...H.stories.map((story) => story.title),
   ...H.roleFamilies.map((role) => role.title),
-  'data-testid="human-capabilities"',
-  'data-testid="human-work"',
-  'data-testid="human-documents"',
-  'Real projects, public records and inspectable evidence',
-  'Work you can inspect, reuse or challenge.'
+  'data-testid="human-capabilities"', 'data-testid="human-work"', 'data-testid="human-documents"',
+  'Real projects, public records and inspectable evidence', 'Work you can inspect, reuse or challenge.'
 ]) assertContains(indexText, needle, 'dist/index.html');
-for (const obsolete of [
-  'class="v3-network"',
-  'One profile. Four credible lenses.',
-  'data-lens=',
-  'data-project-filter='
-]) assertNotContains(index, obsolete, 'dist/index.html');
+for (const obsolete of ['class="v3-network"', 'One profile. Four credible lenses.', 'data-lens=', 'data-project-filter=']) {
+  assertNotContains(index, obsolete, 'dist/index.html');
+}
 assertContains(index, 'class="human-collage"', 'dist/index.html');
 assertContains(index, 'class="human-artifact-track"', 'dist/index.html');
 pass('Human-centered portfolio homepage checked');
 
 const applicationProfiles = [
-  ['resume', P.aiSafety],
-  ['research', P.researchQuality],
-  ['editorial', P.editorialCommunity],
-  ['integrityCv', P.integrity]
+  ['resume', P.aiSafety], ['research', P.researchQuality], ['editorial', P.editorialCommunity], ['integrityCv', P.integrity]
 ];
 for (const [name, profile] of applicationProfiles) {
   const html = pages[name];
@@ -146,43 +114,29 @@ pass('Four specialized application CVs checked');
 
 const integrityText = normalizeHtmlText(pages.integrityPage);
 for (const needle of [
-  'Investigation is useful only when the evidence trail survives scrutiny.',
-  'Fascist-era carpenter\'s pencil',
-  'H5N1 situation tracker',
-  'Yourself to Science: verifying participation opportunities',
-  'Wikimedia and Wikidata: auditable source and metadata work',
-  'Evidence boundary',
-  'Ethical boundary'
+  'Investigation is useful only when the evidence trail survives scrutiny.', "Fascist-era carpenter's pencil",
+  'H5N1 situation tracker', 'Yourself to Science: verifying participation opportunities',
+  'Wikimedia and Wikidata: auditable source and metadata work', 'Evidence boundary', 'Ethical boundary'
 ]) assertContains(integrityText, needle, 'dist/integrity.html');
 pass('Knowledge-integrity work sample checked');
 
 const masterText = normalizeHtmlText(pages.cv);
 for (const needle of [
-  'Master CV & Evidence Record',
-  'not presented as an independent software developer',
-  'AI Safety',
-  'Research & Data Quality',
-  'Editorial & Community',
-  'Trust & Knowledge Integrity'
+  'Master CV & Evidence Record', 'not presented as an independent software developer', 'AI Safety',
+  'Research & Data Quality', 'Editorial & Community', 'Trust & Knowledge Integrity'
 ]) assertContains(masterText, needle, 'dist/cv.html');
 pass('Master CV positioning checked');
 
 const securityText = normalizeHtmlText(pages.security);
 for (const needle of [
-  'Model behavior evaluation record.',
-  'What the record demonstrates',
-  'Evaluation approach',
-  'Limitations and interpretation',
-  'Platform-confirmed model breaks',
-  'indirect-function-call',
-  'weak-password-change',
-  'complete 26-wave activity table'
+  'Model behavior evaluation record.', 'What the record demonstrates', 'Evaluation approach',
+  'Limitations and interpretation', 'Platform-confirmed model breaks', 'indirect-function-call',
+  'weak-password-change', 'complete 26-wave activity table'
 ]) assertContains(securityText, needle, 'dist/security.html');
 for (const needle of [
   'independently verified policy or alignment boundary failure',
   'tracking boundary resilience across major model architecture updates',
-  'ensuring research directories and data pipelines are resilient',
-  'Model Behavior & Safety Case Study'
+  'ensuring research directories and data pipelines are resilient', 'Model Behavior & Safety Case Study'
 ]) assertNotContains(securityText, needle, 'dist/security.html');
 pass('Evaluation record evidence boundary checked');
 
@@ -190,18 +144,13 @@ const allGenerated = normalizeHtmlText(Object.values(pages).join('\n')) + Object
 assertContains(allGenerated, D.identity.jobTitle, 'Generated outputs');
 assertContains(allGenerated, D.identity.secondaryTitle, 'Generated outputs');
 for (const needle of [
-  'AI Safety Evaluation & Research Verification Specialist',
-  'AI Evaluation & Research Verification Specialist',
-  'Founder & Technical Product Builder',
-  'Product Owner & Technical Builder',
-  'Creator & Systems Builder'
+  'AI Safety Evaluation & Research Verification Specialist', 'AI Evaluation & Research Verification Specialist',
+  'Founder & Technical Product Builder', 'Product Owner & Technical Builder', 'Creator & Systems Builder'
 ]) assertNotContains(allGenerated, needle, 'Generated outputs');
 
 const canonicalExpectations = [
-  ['dist/index.html', 'https://mariomarcolongo.com/'],
-  ['dist/integrity.html', 'https://mariomarcolongo.com/integrity.html'],
-  ['dist/cv.html', 'https://mariomarcolongo.com/cv.html'],
-  ['dist/cv-resume.html', 'https://mariomarcolongo.com/cv-resume.html'],
+  ['dist/index.html', 'https://mariomarcolongo.com/'], ['dist/integrity.html', 'https://mariomarcolongo.com/integrity.html'],
+  ['dist/cv.html', 'https://mariomarcolongo.com/cv.html'], ['dist/cv-resume.html', 'https://mariomarcolongo.com/cv-resume.html'],
   ['dist/cv-research.html', 'https://mariomarcolongo.com/cv-research.html'],
   ['dist/cv-editorial.html', 'https://mariomarcolongo.com/cv-editorial.html'],
   ['dist/cv-integrity.html', 'https://mariomarcolongo.com/cv-integrity.html'],
