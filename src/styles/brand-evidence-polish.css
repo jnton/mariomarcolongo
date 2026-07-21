@@ -8,6 +8,42 @@
   --p5-muted: #a6b2bc;
 }
 
+.nav-editorial .nav-contact,
+.portfolio-v5 .p5-kicker,
+.portfolio-v5 .p5-card-label,
+.portfolio-v5 .p5-product-label,
+.portfolio-v5 .p5-experience time {
+  color: #b34532 !important;
+}
+
+.portfolio-v5 .p5-work-caption span,
+.portfolio-v5 .p5-proof small,
+.portfolio-v5 .p5-proof-line {
+  color: #65727d !important;
+}
+
+.portfolio-v5 .p5-document .p5-link {
+  color: #2f5fc5 !important;
+}
+
+[data-theme="dark"] .nav-editorial .nav-contact,
+[data-theme="dark"] .portfolio-v5 .p5-kicker,
+[data-theme="dark"] .portfolio-v5 .p5-card-label,
+[data-theme="dark"] .portfolio-v5 .p5-product-label,
+[data-theme="dark"] .portfolio-v5 .p5-experience time {
+  color: #ff9b86 !important;
+}
+
+[data-theme="dark"] .portfolio-v5 .p5-work-caption span,
+[data-theme="dark"] .portfolio-v5 .p5-proof small,
+[data-theme="dark"] .portfolio-v5 .p5-proof-line {
+  color: #a6b2bc !important;
+}
+
+[data-theme="dark"] .portfolio-v5 .p5-document .p5-link {
+  color: #9fb9ff !important;
+}
+
 .portfolio-v5 .p5-hero {
   grid-template-columns: minmax(0, 0.86fr) minmax(460px, 1.14fr);
   gap: clamp(34px, 4.5vw, 62px);
