@@ -44,6 +44,12 @@ jobs:
       - name: Apply repair patch
         run: git apply /tmp/source-repair.patch
 
+      - name: Apply verified mobile overflow correction
+        run: |
+          echo '885951554a4287cae38f53fb71d655e8f968c1d756c394dd2f72c856d6d10dac  .github/mobile-overflow.patch' | sha256sum -c -
+          git apply --check .github/mobile-overflow.patch
+          git apply .github/mobile-overflow.patch
+
       - name: Generate lockfile and clean install
         run: |
           npm install --package-lock-only --ignore-scripts --no-audit --no-fund
@@ -86,7 +92,7 @@ jobs:
         run: |
           git diff --check
           git add -A
-          git rm -r .github/repair-parts .github/repair-ready .github/workflows/apply-final-repair.yml
+          git rm -r .github/repair-parts .github/repair-ready .github/mobile-overflow.patch .github/workflows/apply-final-repair.yml
           git diff --cached --check
           git status --short
 
