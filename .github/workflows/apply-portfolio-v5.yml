@@ -1,0 +1,83 @@
+name: Apply portfolio v5
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - data/portfolio-human.js
+      - src/pages/index.astro
+      - src/styles/portfolio-v5.css
+      - src/components/SiteNav.astro
+      - src/styles/nav-editorial.css
+      - scripts/check-stale-strings.js
+      - scripts/verify-dist.js
+      - scripts/verify-rendering.js
+      - .github/workflows/apply-portfolio-v5.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  apply:
+    if: github.event_name == 'workflow_dispatch' || github.head_ref == 'human-centered-redesign'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: human-centered-redesign
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - name: Apply approved focus-group attribution
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          source_path = Path('data/source.js')
+          source = source_path.read_text()
+          source_replacements = {
+            'org: "University-affiliated developmental psychology research collaboration — Italy",\n      tag: "Volunteer research collaboration",': 'org: "Department of Developmental Psychology and Socialisation (DPSS), University of Padua",\n      tag: "Volunteer research collaboration supervised by Marta Panzeri",',
+            'period: "Nov 2022 — 2025",\n      bullets: [': 'period: "Nov 2022 — 2025",\n      links: {\n        supervisor: "https://dpss.unipd.it/en/node/239",\n        department: "https://www.unipd.it/en/dpss",\n        thesisContext: "https://thesis.unipd.it/handle/20.500.12608/51396"\n      },\n      bullets: [',
+            'Supported participant recruitment, bibliographic research, technical session preparation and coordination with the supervising professor, researchers and a second autistic volunteer facilitator.",\n        "Institutional and individual attribution is withheld from the public portfolio pending permission; no participant information is disclosed.': 'Supported participant recruitment, bibliographic research, technical session preparation and coordination with Marta Panzeri, the research team and a second autistic volunteer facilitator.",\n        "Public attribution to Marta Panzeri and the Department of Developmental Psychology and Socialisation is included with permission; no participant information or confidential session content is disclosed.'
+          }
+          for old, new in source_replacements.items():
+              if old not in source:
+                  raise SystemExit(f'Missing source replacement: {old[:100]}')
+              source = source.replace(old, new, 1)
+          source_path.write_text(source)
+
+          profiles_path = Path('data/application-profiles.js')
+          profiles = profiles_path.read_text()
+          profile_replacements = {
+            'Human-subject research operations",\n        body: "Co-developed structured remote facilitation procedures and supported autistic participants discussing sensitive topics; institutional attribution is withheld pending permission.': 'Human-subject research operations",\n        body: "Co-developed and co-facilitated structured remote focus groups with autistic participants on sexuality and relationships, supervised by Marta Panzeri at the University of Padua DPSS.',
+            'Co-developed and co-facilitated a structured remote focus-group process for autistic participants discussing sensitive sexuality and relationship topics, including recruitment, session protocols, Zoom logistics and two-person moderation handoffs.': 'Co-developed and co-facilitated a structured remote focus-group process for autistic participants discussing sensitive sexuality and relationship topics, supervised by Marta Panzeri at the University of Padua Department of Developmental Psychology and Socialisation (DPSS), including recruitment, session protocols, Zoom logistics and two-person moderation handoffs.',
+            'organization: "University-affiliated developmental psychology research collaboration · Italy",': 'organization: "Department of Developmental Psychology and Socialisation (DPSS), University of Padua · supervised by Marta Panzeri",',
+            'links: [],\n        bullets: [\n          "Co-facilitated': 'links: [\n          { label: "Marta Panzeri", url: "https://dpss.unipd.it/en/node/239" },\n          { label: "Department", url: "https://www.unipd.it/en/dpss" },\n          { label: "Thesis context", url: "https://thesis.unipd.it/handle/20.500.12608/51396" }\n        ],\n        bullets: [\n          "Co-facilitated',
+            'coordination with the supervising professor, researchers and a second autistic volunteer facilitator. Institutional attribution is withheld pending permission.': 'coordination with Marta Panzeri, researchers and a second autistic volunteer facilitator. Public attribution is included with permission; participant information remains confidential.'
+          }
+          for old, new in profile_replacements.items():
+              if old not in profiles:
+                  raise SystemExit(f'Missing profile replacement: {old[:100]}')
+              profiles = profiles.replace(old, new, 1)
+          profiles_path.write_text(profiles)
+          PY
+      - run: npm ci --no-audit --no-fund
+      - name: Build and verify generated output
+        run: npm run build
+      - name: Verify rendered pages and interactions
+        run: npm run verify:render
+      - name: Generate application and master PDFs
+        run: npm run pdf
+      - name: Commit verified portfolio v5 state
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/source.js data/application-profiles.js \
+            index.html integrity.html security.html cv.html cv-resume.html cv-research.html cv-editorial.html cv-integrity.html \
+            llms.txt llms-full.txt cv-llm.txt public/llms.txt public/llms-full.txt public/cv-llm.txt public/data/source.js
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "build: apply verified compact portfolio v5"
+          git push origin HEAD:human-centered-redesign
