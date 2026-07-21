@@ -24,8 +24,8 @@ Longer-term targets include automated evaluation, AI-safety program or technical
 
 ## Public routes
 
-- **Portfolio (`/`)** — three principal evidence cases, supporting products and data work, concise experience, and targeted CV selection.
-- **AI Evaluation Record (`/security.html`)** — scope, methodology, platform-reported Gray Swan activity, archived evidence and explicit limitations.
+- **Portfolio (`/`)** — readable metric-led evidence cards, three principal cases, supporting products and curated data artifacts, an explicit high-autonomy working profile, concise experience and targeted CV selection.
+- **AI Evaluation Record (`/security.html`)** — scope, methodology, platform-reported Gray Swan activity, the live participant profile as the primary destination, an archived verification fallback and explicit limitations.
 - **Knowledge Integrity Work Samples (`/integrity.html`)** — provenance, health-information monitoring, entity reconciliation and structured-data cases.
 - **AI Evaluation & Model Behavior CV (`/cv-resume.html`)** — two-page application document.
 - **Scientific AI Quality & Research Data CV (`/cv-research.html`)** — two-page application document.
@@ -52,8 +52,9 @@ The collaboration is retained as named experience and in the relevant CV; it is 
 
 - `data/source.js` — canonical factual dossier and public evidence boundaries.
 - `data/application-profiles.js` — role-specific CV selection and wording.
-- `data/portfolio-human.js` — homepage hierarchy, work cards and application routes.
+- `data/portfolio-human.js` — homepage hierarchy, evidence cards, explicit link destinations, working-profile language and application routes.
 - `src/pages/` — Astro source pages.
+- `src/styles/portfolio-v6-overrides.css` — readable evidence-card system and corrected contact contrast layered over the established portfolio layout.
 - `scripts/generate-llm-dossiers.js` — canonical machine-readable dossiers.
 - `scripts/postbuild.js` — generated root mirrors and post-build outputs.
 - `scripts/verify-dist.js` — generated-output, metadata and evidence assertions.
@@ -73,7 +74,7 @@ Generated outputs include:
 
 ## Gray Swan evidence
 
-The public evaluation page links to the live Gray Swan profile and the archived snapshot at [archive.is/inkFs](https://archive.is/inkFs). Counts are presented as platform-reported snapshots, not as independent vulnerability reproduction or certification.
+The public evaluation page uses the live Gray Swan participant profile as its primary external destination and retains the [archive.is/inkFs](https://archive.is/inkFs) snapshot as a verification fallback for recruiters, automated readers and archival crawlers. Counts are presented as platform-reported snapshots, not as independent vulnerability reproduction or certification.
 
 ## Private phone number in local PDFs
 
