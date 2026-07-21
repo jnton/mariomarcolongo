@@ -41,6 +41,7 @@ const pageDescription = `Specialized two-page application CV for ${profile.title
       </div>
       <div class="application-guide-actions">
         <a class="btn" href={alternateHref}>{alternateLabel}</a>
+        <a class="btn" href="/#documents">All application CVs</a>
         <a class="btn" href="/cv.html">Master CV</a>
         <button class="btn btn-primary" type="button" onclick="window.print()">Print / Save PDF</button>
       </div>
@@ -59,6 +60,7 @@ const pageDescription = `Specialized two-page application CV for ${profile.title
               <span>{shared.location}</span>
               <a href={shared.website}>{shared.website.replace("https://", "")}</a>
               <a href={`mailto:${shared.email}`}>{shared.email}</a>
+              <a id="cvPhoneSlot" class="application-phone" hidden></a>
               <a href={shared.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a>
               <a href={shared.github} target="_blank" rel="noopener noreferrer">GitHub</a>
             </div>
@@ -180,6 +182,17 @@ const pageDescription = `Specialized two-page application CV for ${profile.title
       </article>
     </div>
   </div>
+
+  <script is:inline>
+    (function injectPrivateCvData() {
+      var privateData = typeof window !== "undefined" && window._privateData ? window._privateData : {};
+      var phoneSlot = document.getElementById("cvPhoneSlot");
+      if (!phoneSlot || !privateData.phone) return;
+      phoneSlot.textContent = privateData.phone;
+      phoneSlot.setAttribute("href", "tel:" + String(privateData.phone).replace(/\s+/g, ""));
+      phoneSlot.hidden = false;
+    })();
+  </script>
 
   <SiteFooter version="v2026.07.21" />
 </Layout>
