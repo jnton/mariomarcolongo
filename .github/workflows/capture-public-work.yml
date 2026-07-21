@@ -1,0 +1,46 @@
+name: Capture public work previews
+
+on:
+  push:
+    branches:
+      - human-centered-redesign
+    paths:
+      - scripts/capture-public-work.js
+      - .github/workflows/capture-public-work.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  capture:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out branch
+        uses: actions/checkout@v4
+        with:
+          ref: human-centered-redesign
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install locked dependencies
+        run: npm ci
+
+      - name: Capture public project previews
+        run: node scripts/capture-public-work.js
+
+      - name: Commit captured media
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add public/media/work/*.png
+          if git diff --cached --quiet; then
+            echo "No media changes to commit."
+            exit 0
+          fi
+          git commit -m "media: capture public work previews"
+          git push origin HEAD:human-centered-redesign
