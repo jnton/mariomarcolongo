@@ -57,12 +57,18 @@ jobs:
           npm run build 2>&1 | tee audit-output/build.log
 
       - name: Verify deterministic generated files
+        shell: bash
         run: |
-          npm run generate:llms
-          git diff --exit-code -- \
-            llms.txt llms-full.txt cv-llm.txt \
-            public/llms.txt public/llms-full.txt public/cv-llm.txt public/data/source.js \
+          set -euo pipefail
+          generated=(
+            llms.txt llms-full.txt cv-llm.txt
+            public/llms.txt public/llms-full.txt public/cv-llm.txt public/data/source.js
             index.html cv.html cv-resume.html security.html
+          )
+          sha256sum "${generated[@]}" > /tmp/generated-before.sha256
+          npm run generate:llms
+          sha256sum "${generated[@]}" > /tmp/generated-after.sha256
+          diff -u /tmp/generated-before.sha256 /tmp/generated-after.sha256
 
       - name: Verify rendered pages
         run: npm run verify:render
@@ -96,6 +102,8 @@ jobs:
           path: |
             /tmp/source-repair.patch
             /tmp/source-repair.sha256
+            /tmp/generated-before.sha256
+            /tmp/generated-after.sha256
             audit-output/**
             Mario Marcolongo — 2-Page Application Résumé.pdf
             Mario Marcolongo — Curriculum Vitae.pdf
