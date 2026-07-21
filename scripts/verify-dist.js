@@ -3,6 +3,7 @@ const fs = require('node:fs');
 const path = require('node:path');
 const D = require('../data/source.js');
 const P = require('../data/application-profiles.js');
+const V = require('../data/portfolio-v3.js');
 const {
   generateLlmsTxt,
   generateLlmsFullTxt,
@@ -83,9 +84,12 @@ pass('Canonical dossier mirrors checked');
 
 const pages = {
   index: read('dist/index.html'),
+  integrityPage: read('dist/integrity.html'),
   cv: read('dist/cv.html'),
   resume: read('dist/cv-resume.html'),
   research: read('dist/cv-research.html'),
+  editorial: read('dist/cv-editorial.html'),
+  integrityCv: read('dist/cv-integrity.html'),
   security: read('dist/security.html')
 };
 
@@ -103,40 +107,60 @@ for (const [name, html] of Object.entries(pages)) {
 const index = pages.index;
 const indexText = normalizeHtmlText(index);
 for (const needle of [
-  'I test model behavior.',
-  'AI Safety Application CV',
-  'Research Verification & Data Quality CV',
-  'Master CV & Evidence Record',
+  'I investigate claims',
+  ...V.lenses.map((lens) => lens.title),
+  ...V.cases.map((record) => record.title),
+  ...V.documents.map((document) => document.title),
   'data-testid="career-focus"',
   'data-testid="career-evidence"',
-  'data-testid="career-documents"'
+  'data-testid="career-documents"',
+  'data-testid="homepage-projects"'
 ]) assertContains(indexText, needle, 'dist/index.html');
-assertContains(index, D.identity.grayswanUrl, 'dist/index.html');
-pass('Recruiter-focused homepage checked');
+assertContains(index, 'class="v3-network"', 'dist/index.html');
+assertContains(index, 'data-project-filter="editorial"', 'dist/index.html');
+pass('Broad portfolio homepage checked');
 
-for (const [name, profile] of [['resume', P.aiSafety], ['research', P.researchQuality]]) {
+const applicationProfiles = [
+  ['resume', P.aiSafety],
+  ['research', P.researchQuality],
+  ['editorial', P.editorialCommunity],
+  ['integrityCv', P.integrity]
+];
+for (const [name, profile] of applicationProfiles) {
   const html = pages[name];
   const text = normalizeHtmlText(html);
   assertContains(text, profile.title, `dist/${name}.html`);
   assertContains(text, 'Page 1 of 2', `dist/${name}.html`);
   assertContains(text, 'Page 2 of 2', `dist/${name}.html`);
   assertContains(text, 'C1 overall', `dist/${name}.html`);
-  assertContains(text, 'behavior inspection', `dist/${name}.html`);
+  assertContains(html, 'id="cvPhoneSlot"', `dist/${name}.html`);
 }
-pass('Specialized application CVs checked');
+pass('Four specialized application CVs checked');
 
-const master = pages.cv;
-const masterText = normalizeHtmlText(master);
+const integrityText = normalizeHtmlText(pages.integrityPage);
+for (const needle of [
+  'Investigation is useful only when the evidence trail survives scrutiny.',
+  'Fascist-era carpenter\'s pencil',
+  'H5N1 situation tracker',
+  'Yourself to Science: verifying participation opportunities',
+  'Wikimedia and Wikidata: auditable source and metadata work',
+  'Evidence boundary',
+  'Ethical boundary'
+]) assertContains(integrityText, needle, 'dist/integrity.html');
+pass('Knowledge-integrity work sample checked');
+
+const masterText = normalizeHtmlText(pages.cv);
 for (const needle of [
   'Master CV & Evidence Record',
   'not presented as an independent software developer',
-  'AI Safety CV',
-  'Research & Data Quality CV'
+  'AI Safety',
+  'Research & Data Quality',
+  'Editorial & Community',
+  'Trust & Knowledge Integrity'
 ]) assertContains(masterText, needle, 'dist/cv.html');
 pass('Master CV positioning checked');
 
-const security = pages.security;
-const securityText = normalizeHtmlText(security);
+const securityText = normalizeHtmlText(pages.security);
 for (const needle of [
   'Model behavior evaluation record.',
   'What the record demonstrates',
@@ -159,6 +183,7 @@ const allGenerated = normalizeHtmlText(Object.values(pages).join('\n')) + Object
 assertContains(allGenerated, D.identity.jobTitle, 'Generated outputs');
 assertContains(allGenerated, D.identity.secondaryTitle, 'Generated outputs');
 for (const needle of [
+  'AI Safety Evaluation & Research Verification Specialist',
   'AI Evaluation & Research Verification Specialist',
   'Founder & Technical Product Builder',
   'Product Owner & Technical Builder',
@@ -167,9 +192,12 @@ for (const needle of [
 
 const canonicalExpectations = [
   ['dist/index.html', 'https://mariomarcolongo.com/'],
+  ['dist/integrity.html', 'https://mariomarcolongo.com/integrity.html'],
   ['dist/cv.html', 'https://mariomarcolongo.com/cv.html'],
   ['dist/cv-resume.html', 'https://mariomarcolongo.com/cv-resume.html'],
   ['dist/cv-research.html', 'https://mariomarcolongo.com/cv-research.html'],
+  ['dist/cv-editorial.html', 'https://mariomarcolongo.com/cv-editorial.html'],
+  ['dist/cv-integrity.html', 'https://mariomarcolongo.com/cv-integrity.html'],
   ['dist/security.html', 'https://mariomarcolongo.com/security.html']
 ];
 for (const [file, url] of canonicalExpectations) {
