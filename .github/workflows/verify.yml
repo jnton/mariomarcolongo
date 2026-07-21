@@ -50,6 +50,12 @@ jobs:
           git apply --check .github/mobile-overflow.patch
           git apply .github/mobile-overflow.patch
 
+      - name: Apply verified résumé pagination correction
+        run: |
+          echo 'e605bebea61394fb1fcfb81cd6f221d367fc7fbf5a246d7a1e856a4b0cc90da3  .github/resume-pagination.patch' | sha256sum -c -
+          git apply --check .github/resume-pagination.patch
+          git apply .github/resume-pagination.patch
+
       - name: Generate lockfile and clean install
         run: |
           npm install --package-lock-only --ignore-scripts --no-audit --no-fund
@@ -92,7 +98,7 @@ jobs:
         run: |
           git diff --check
           git add -A
-          git rm -r .github/repair-parts .github/repair-ready .github/mobile-overflow.patch .github/workflows/apply-final-repair.yml
+          git rm -r .github/repair-parts .github/repair-ready .github/mobile-overflow.patch .github/resume-pagination.patch .github/workflows/apply-final-repair.yml
           git diff --cached --check
           git status --short
 
