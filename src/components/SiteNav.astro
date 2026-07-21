@@ -1,6 +1,6 @@
 ---
 export interface Props {
-  activePage?: "home" | "security" | "cv" | "resume";
+  activePage?: "home" | "integrity" | "security" | "cv" | "resume";
 }
 
 const { activePage = "home" } = Astro.props;
@@ -18,21 +18,25 @@ const { activePage = "home" } = Astro.props;
       aria-current={activePage === "home" ? "page" : undefined}
     >Portfolio</a>
     <a
-      href="/security.html"
-      class={`nav-link nav-evaluation ${activePage === "security" ? "active" : ""}`}
-      aria-current={activePage === "security" ? "page" : undefined}
-    ><span class="evaluation-label-full">Evaluation</span><span class="evaluation-label-short" aria-hidden="true">Eval</span></a>
+      href="/integrity.html"
+      class={`nav-link nav-integrity ${activePage === "integrity" ? "active" : ""}`}
+      aria-current={activePage === "integrity" ? "page" : undefined}
+    ><span class="evaluation-label-full">Work Samples</span><span class="evaluation-label-short" aria-hidden="true">Work</span></a>
+    <a
+      href="/#documents"
+      class={`nav-link nav-documents ${activePage === "resume" ? "active" : ""}`}
+      aria-current={activePage === "resume" ? "page" : undefined}
+    >CVs</a>
     <a
       href="/cv.html"
       class={`nav-link nav-full-cv ${activePage === "cv" ? "active" : ""}`}
       aria-current={activePage === "cv" ? "page" : undefined}
     >Master CV</a>
     <a
-      href="/cv-resume.html"
-      class={`btn btn-primary btn-sm nav-resume ${activePage === "resume" ? "active" : ""}`}
-      aria-current={activePage === "resume" ? "page" : undefined}
-      aria-label="AI Safety Application CV"
-    ><span class="resume-label-full">Application CV</span><span class="resume-label-short" aria-hidden="true">CV</span></a>
+      href="/#contact"
+      class="btn btn-primary btn-sm nav-resume"
+      aria-label="Contact Mario Marcolongo"
+    ><span class="resume-label-full">Contact</span><span class="resume-label-short" aria-hidden="true">Email</span></a>
     <button
       class="theme-toggle"
       id="themeBtn"
