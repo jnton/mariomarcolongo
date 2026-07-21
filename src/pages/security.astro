@@ -78,8 +78,8 @@ const evaluationJsonLd = {
           Self-directed adversarial testing across chat, image, agentic tool-use and indirect prompt-injection challenges. This page explains what the public activity demonstrates, how the work is approached and where the evidence stops.
         </p>
         <div class="career-actions">
-          <a class="btn btn-primary" href={archiveUrl} target="_blank" rel="noopener noreferrer">Open archived profile snapshot ↗</a>
-          <a class="btn" href={D.identity.grayswanUrl} target="_blank" rel="noopener noreferrer">Try live Gray Swan profile ↗</a>
+          <a class="btn btn-primary" href={D.identity.grayswanUrl} target="_blank" rel="noopener noreferrer">Open live Gray Swan profile ↗</a>
+          <a class="btn" href={archiveUrl} target="_blank" rel="noopener noreferrer">Open verification snapshot ↗</a>
           <a class="btn" href="/cv-resume.html">AI Evaluation Application CV</a>
         </div>
       </div>
@@ -143,14 +143,14 @@ const evaluationJsonLd = {
     <section class="evaluation-section" id="public-evidence">
       <div class="evaluation-section-head">
         <h2>Publicly inspectable evidence</h2>
-        <p>The original platform profile may be unstable or inaccessible to archival crawlers. A user-created archive.is snapshot preserves the public aggregate profile; Internet Archive could not save the page.</p>
+        <p>The live Gray Swan profile is the primary destination. A user-created archive.is snapshot is retained as a verification fallback for recruiters, automated readers and archival crawlers when the platform page cannot be accessed; Internet Archive could not save it.</p>
       </div>
 
       <div class="evaluation-grid">
         <article class="evaluation-card">
-          <div class="evaluation-step">ARCHIVED PUBLIC PROFILE</div>
-          <h3>Gray Swan profile snapshot</h3>
-          <p>Archived copy of the public participant page used to preserve aggregate counts, rank band and visible activity after the live page became difficult to archive.</p>
+          <div class="evaluation-step">VERIFICATION FALLBACK</div>
+          <h3>Archived Gray Swan profile snapshot</h3>
+          <p>Preserved copy of the public participant page used to verify aggregate counts, rank band and visible activity when the live platform is unavailable or blocks automated access.</p>
           <p><a class="p5-link" href={archiveUrl} target="_blank" rel="noopener noreferrer">Open archive.is snapshot ↗</a></p>
         </article>
         {(D.redTeamActivity.publicLabels || []).map((label) => (
