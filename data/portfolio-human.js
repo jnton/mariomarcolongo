@@ -1,7 +1,7 @@
 const PORTFOLIO_HUMAN = {
-  eyebrow: "AI safety · scientific verification · research operations",
-  headline: "Evidence, AI and operations for difficult problems.",
-  introduction: "I verify scientific claims, test model behavior, coordinate sensitive research and operate public tools. My strongest work combines investigation, clear evidence boundaries and ownership of the workflow from question to usable result.",
+  eyebrow: "AI evaluation · scientific evidence · research operations",
+  headline: "I evaluate model behavior, verify scientific evidence, and operate research systems.",
+  introduction: "My strongest work combines exploratory AI evaluation, paid primary-source verification and ownership of public research workflows. I am targeting roles where careful judgment, evidence quality and operational follow-through can grow into higher-value evaluation, safety and technical-program responsibility.",
 
   proofs: [
     {
@@ -33,10 +33,24 @@ const PORTFOLIO_HUMAN = {
   heroWork: [
     {
       title: "Model-behavior evaluation",
-      label: "AI safety",
-      image: "/media/work/model-behavior-record.svg",
-      alt: "Aggregate public record of model-behavior testing activity",
+      label: "AI evaluation and safety operations",
+      image: "/media/work/model-behavior-method.svg",
+      alt: "Model-behavior evaluation workflow from threat surface through test variation to evidence record",
       href: "/security.html"
+    },
+    {
+      title: "Paid scientific verification",
+      label: "Entropy for Life",
+      image: "/media/work/entropy-social-proof.svg",
+      alt: "Public social-platform scale of Entropy for Life across YouTube, Instagram, Telegram and other official channels",
+      href: "https://www.youtube.com/@entropyforlife"
+    },
+    {
+      title: "Yourself to Science",
+      label: "Research and product operations",
+      image: "/media/work/yourself-to-science.png",
+      alt: "Yourself to Science public research-participation catalogue",
+      href: "https://yourselftoscience.org/"
     },
     {
       title: "MDPI Filter",
@@ -44,45 +58,31 @@ const PORTFOLIO_HUMAN = {
       image: "/media/work/mdpi-filter-1.jpg",
       alt: "MDPI Filter highlighting publisher citations inside a literature workflow",
       href: "https://chromewebstore.google.com/detail/mdpi-filter/comknkeimaaadpiopddjoknflbmjeccp"
-    },
-    {
-      title: "Yourself to Science",
-      label: "Research operations",
-      image: "/media/work/yourself-to-science.png",
-      alt: "Yourself to Science public research-participation catalogue",
-      href: "https://yourselftoscience.org/"
-    },
-    {
-      title: "Wikipedia Link Converter",
-      label: "Serverless automation",
-      image: "/media/work/telegram-bot-card.svg",
-      alt: "English Wikipedia Link Converter Telegram bot product card",
-      href: "https://t.me/ToEnWikipediaBot"
     }
   ],
 
   flagships: [
     {
       id: "model-behavior",
-      label: "AI safety and model behavior",
+      label: "AI evaluation and model behavior",
       title: "Adversarial testing with explicit evidence boundaries",
       summary: "I explore instruction handling, multimodal inputs, agentic tool use and indirect prompt injection, preserving reproduction notes while separating platform-confirmed outcomes from independent security claims.",
       proof: "75 platform-confirmed breaks · 156 submissions · 26 listed waves",
-      image: "/media/work/model-behavior-record.svg",
-      alt: "Editorial aggregate record of model-behavior testing",
+      image: "/media/work/model-behavior-method.svg",
+      alt: "Model-behavior evaluation workflow from threat surface through test variation to evidence record",
       href: "/security.html",
       linkLabel: "View the evaluation record"
     },
     {
       id: "entropy",
       label: "Paid scientific verification",
-      title: "Primary-source checking inside a large public production workflow",
+      title: "Primary-source checking inside a multi-platform public production workflow",
       summary: "For Entropy for Life, I investigate biomedical and evolutionary claims, identify weak or conflicting evidence and communicate corrections to a non-specialist production team.",
-      proof: "55+ videos and documentaries · four articles · project audience reported at 250K+ YouTube subscribers",
-      image: null,
-      alt: null,
+      proof: "55+ videos and documentaries · four articles · public presence across seven official social platforms",
+      image: "/media/work/entropy-social-proof.svg",
+      alt: "Public social-platform counts and official channel presence for Entropy for Life",
       href: "https://www.youtube.com/@entropyforlife",
-      linkLabel: "Open the channel"
+      linkLabel: "Open the YouTube channel"
     },
     {
       id: "yourself-to-science",
@@ -98,21 +98,20 @@ const PORTFOLIO_HUMAN = {
   ],
 
   humanResearch: {
-    label: "Sensitive human-subject research operations",
-    title: "Co-facilitating autism-and-sexuality focus groups with participant safety built into the protocol",
+    label: "Participant-sensitive research experience",
+    title: "Structured remote facilitation with autistic participants",
     organization: "Department of Developmental Psychology and Socialisation (DPSS), University of Padua",
     supervisor: "Supervised by Marta Panzeri",
     period: "November 2022–2025 · volunteer research collaboration",
-    summary: "I co-facilitated recorded Zoom focus groups with autistic participants discussing sexuality, relationships and sensory experiences. The work required non-judgmental communication, clear expectations, careful pacing and reliable coordination inside a two-person facilitation team.",
+    summary: "Co-facilitated recorded Zoom focus groups on sexuality, relationships and sensory experiences; contributed structured prompts, participant-sensitive pacing, two-person handoffs, recruitment, literature research and technical preparation.",
     capabilities: [
-      "Co-developed structured discussion guides, scripted prompts and session procedures",
-      "Used live handoffs and recovery when a facilitator missed a prompt or needed support",
-      "Supported recruitment, literature research, Zoom preparation and research-team coordination",
-      "Protected participant privacy and kept public descriptions separate from confidential session content"
+      "Structured discussion guides and scripted prompts",
+      "Two-person handoffs and live recovery",
+      "Participant-sensitive communication and privacy boundaries"
     ],
     links: [
       { label: "Marta Panzeri — official profile", href: "https://dpss.unipd.it/en/node/239" },
-      { label: "Department of Developmental Psychology and Socialisation", href: "https://www.unipd.it/en/dpss" },
+      { label: "Department", href: "https://www.unipd.it/en/dpss" },
       { label: "Public thesis context", href: "https://thesis.unipd.it/handle/20.500.12608/51396" }
     ]
   },
@@ -130,8 +129,8 @@ const PORTFOLIO_HUMAN = {
       title: "English Wikipedia Link Converter",
       label: "AWS Lambda and Telegram",
       body: "Converts non-English Wikipedia links to their English equivalents in private chats, groups and inline mode.",
-      image: "/media/work/telegram-bot-card.svg",
-      alt: "English Wikipedia Link Converter product card",
+      image: "/media/work/telegram-bot-avatar.jpg",
+      alt: "Official profile icon of the English Wikipedia Link Converter Telegram bot",
       href: "https://t.me/ToEnWikipediaBot"
     },
     {
@@ -185,13 +184,13 @@ const PORTFOLIO_HUMAN = {
 
   applicationDocuments: [
     {
-      title: "AI Safety & Adversarial Testing",
-      description: "Model behavior, safeguards, adversarial QA, evaluation operations and trust-and-safety testing.",
+      title: "AI Evaluation & Model Behavior",
+      description: "Evaluation operations, model behavior, safeguards support, adversarial QA and trust-and-safety testing.",
       href: "/cv-resume.html"
     },
     {
-      title: "Research Verification & Data Quality",
-      description: "Scientific AI quality, provenance, research operations, metadata and evidence verification.",
+      title: "Scientific AI Quality & Research Data",
+      description: "Scientific evidence review, provenance, research operations, metadata and domain-expert quality work.",
       href: "/cv-research.html"
     },
     {
