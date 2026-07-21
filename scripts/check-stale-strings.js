@@ -5,8 +5,8 @@ const D = require('../data/source.js');
 
 const ROOT = path.resolve(__dirname, '..');
 const EXPECTED = {
-  jobTitle: 'AI Safety Evaluation & Research Verification Specialist',
-  secondaryTitle: 'Adversarial Model Testing · Scientific Evidence Review · Evaluation Operations · Data Quality',
+  jobTitle: 'Research, Evidence & AI Operations Specialist',
+  secondaryTitle: 'AI Safety · Knowledge Integrity · Editorial & Research Operations · Open Science & Data Quality',
   email: 'me@mariomarcolongo.com',
   orcid: '0000-0003-2846-7115',
   ena: 'PRJEB109744',
@@ -19,17 +19,24 @@ const REQUIRED = [
   'package-lock.json',
   'data/source.js',
   'data/application-profiles.js',
+  'data/portfolio-v3.js',
   'src/layouts/Layout.astro',
   'src/components/SiteNav.astro',
   'src/components/SiteFooter.astro',
   'src/components/ApplicationCv.astro',
   'src/pages/index.astro',
+  'src/pages/integrity.astro',
   'src/pages/cv.astro',
   'src/pages/cv-resume.astro',
   'src/pages/cv-research.astro',
+  'src/pages/cv-editorial.astro',
+  'src/pages/cv-integrity.astro',
   'src/pages/security.astro',
   'src/styles/global.css',
   'src/styles/career-v2.css',
+  'src/styles/portfolio-v3.css',
+  'src/styles/integrity.css',
+  'src/styles/v3-accessibility.css',
   'scripts/lib/dossier-generators.js',
   'scripts/generate-llm-dossiers.js',
   'scripts/postbuild.js',
@@ -63,6 +70,7 @@ const PROHIBITED = [
   ['Model Behavior & Safety Case Study', 'Outdated evaluation-page positioning'],
   ['AI Evaluation & Scientific Research Verification Specialist', 'Competing primary title'],
   ['Scientific AI Evaluation & Research Data Specialist', 'Competing primary title'],
+  ['AI Safety Evaluation & Research Verification Specialist', 'Rejected narrow umbrella title'],
   ['C2 Reading/Listening, B2 Writing/Speaking', 'Unnecessary language subscore emphasis']
 ];
 
@@ -125,11 +133,16 @@ if (!String(packageJson.scripts?.deploy || '').startsWith('npm run build')) fail
 if (!String(packageJson.scripts?.build || '').includes('verify-dist.js')) fail('package.json', 1, 'Production build must run generated-output verification.');
 
 const indexSource = fs.readFileSync(path.join(ROOT, 'src/pages/index.astro'), 'utf8');
-for (const marker of ['career-focus', 'career-evidence', 'career-documents']) {
+for (const marker of ['career-focus', 'career-evidence', 'career-documents', 'homepage-projects']) {
   if (!indexSource.includes(`data-testid="${marker}"`)) fail('src/pages/index.astro', 1, `Missing homepage marker ${marker}.`);
 }
-for (const requiredText of ['AI Safety Application CV', 'Research Verification & Data Quality CV', 'Master CV & Evidence Record']) {
-  if (!indexSource.includes(requiredText)) fail('src/pages/index.astro', 1, `Homepage is missing document positioning text: ${requiredText}`);
+for (const requiredText of ['I investigate', 'Explore role lenses', 'Choose a CV', 'knowledge-integrity & investigations record']) {
+  if (!indexSource.includes(requiredText)) fail('src/pages/index.astro', 1, `Homepage is missing broad portfolio content: ${requiredText}`);
+}
+
+const integritySource = fs.readFileSync(path.join(ROOT, 'src/pages/integrity.astro'), 'utf8');
+for (const requiredText of ['evidence trail survives scrutiny', 'Evidence boundary', 'Ethical boundary']) {
+  if (!integritySource.includes(requiredText)) fail('src/pages/integrity.astro', 1, `Integrity work sample is missing: ${requiredText}`);
 }
 
 const securitySource = fs.readFileSync(path.join(ROOT, 'src/pages/security.astro'), 'utf8');
@@ -138,7 +151,7 @@ for (const requiredText of ['Model behavior evaluation record.', 'What the recor
 }
 
 const navSource = fs.readFileSync(path.join(ROOT, 'src/components/SiteNav.astro'), 'utf8');
-for (const requiredText of ['aria-pressed="false"', 'Switch to dark theme', 'Switch to light theme', 'Application CV', 'Master CV']) {
+for (const requiredText of ['aria-pressed="false"', 'Switch to dark theme', 'Switch to light theme', 'Work Samples', 'CVs', 'Master CV']) {
   if (!navSource.includes(requiredText)) fail('src/components/SiteNav.astro', 1, `Navigation is missing required text: ${requiredText}`);
 }
 
