@@ -54,6 +54,9 @@ async function capture(browser, server, name, width, height, theme) {
   if (measurements.brokenLocalImages.length) {
     throw new Error(`${name} has broken first-party images: ${JSON.stringify(measurements.brokenLocalImages)}`);
   }
+  if (measurements.brokenExternalImages.length) {
+    throw new Error(`${name} has broken external images: ${JSON.stringify(measurements.brokenExternalImages)}`);
+  }
 }
 
 async function main() {
