@@ -2,14 +2,50 @@
 import Layout from "../layouts/Layout.astro";
 import SiteNav from "../components/SiteNav.astro";
 import SiteFooter from "../components/SiteFooter.astro";
-import "../styles/security.css";
+import "../styles/career-v2.css";
 import D from "../../data/source.js";
 
-const title = "Model Behavior Evaluation Record & Methodology — Mario Marcolongo";
-const description = "Public record of self-directed model-behavior evaluation on the Gray Swan Proving Ground, including platform-reported activity, testing areas, methodology, and evidence limitations as of July 2026.";
-const profileUrl = D.identity.grayswanUrl;
-const asOf = D.redTeamActivity.asOf || D.identity.evaluationAsOf || "July 2026";
-const publicLabels = D.redTeamActivity.publicLabels || [];
+const title = "Model Behavior Evaluation Record — Mario Marcolongo";
+const description = "Concise public record of self-directed model-behavior evaluation on the Gray Swan Proving Ground, including scope, methodology, platform-reported activity and evidence limitations.";
+const asOf = D.redTeamActivity.asOf || "July 2026";
+
+const areas = [
+  {
+    title: "Instruction hierarchy and multi-turn behavior",
+    body: "Probe whether constraints, refusals and contextual priorities remain stable across direct and extended conversations."
+  },
+  {
+    title: "Multimodal and visual inputs",
+    body: "Test interactions between textual instructions and information embedded in images, diagrams or visual typography."
+  },
+  {
+    title: "Agentic tool-use and function selection",
+    body: "Investigate whether tool selection and function calls remain aligned when external, nested or conflicting context is present."
+  },
+  {
+    title: "Indirect prompt injection",
+    body: "Test how systems handle adversarial instructions contained in retrieved documents, web pages or uploaded files."
+  }
+];
+
+const method = [
+  {
+    title: "Define the behavior under test",
+    body: "Translate an ambiguous risk or product behavior into an observable condition, boundary or expected response."
+  },
+  {
+    title: "Vary context and attack path",
+    body: "Explore direct, multi-turn, multimodal, nested and tool-mediated variants rather than relying on a single prompt."
+  },
+  {
+    title: "Record evidence conservatively",
+    body: "Separate observed behavior and platform status from interpretation, model-wide conclusions or unsupported severity claims."
+  },
+  {
+    title: "Communicate reproducibly",
+    body: "Document the test area, preconditions, behavior, limitations and available public evidence in a form another evaluator can inspect."
+  }
+];
 
 const evaluationJsonLd = {
   "@context": "https://schema.org",
@@ -20,42 +56,7 @@ const evaluationJsonLd = {
   url: "https://mariomarcolongo.com/security.html",
   dateModified: "2026-07-21",
   author: { "@id": "https://mariomarcolongo.com/#person" },
-  about: [
-    {
-      "@type": "Thing",
-      name: "Model behavior evaluation",
-      description: "Self-directed testing of instruction handling and policy boundaries across chat, multimodal inputs, agentic tool-use and indirect prompt injection."
-    },
-    {
-      "@type": "Organization",
-      name: "Gray Swan Proving Ground",
-      url: profileUrl
-    }
-  ]
-};
-
-const testingAreas = [
-  {
-    title: "Chat and Multi-Turn Instruction Handling",
-    body: "Testing how models preserve instruction hierarchy, contextual constraints and refusal behavior across single-turn and extended dialogue."
-  },
-  {
-    title: "Multimodal and Vision-Language Inputs",
-    body: "Testing interactions between textual instructions and information embedded in images, diagrams or visual typography."
-  },
-  {
-    title: "Agentic Tool-Use and Function Selection",
-    body: "Testing whether tool selection and function calls remain aligned with the user’s intended task when external or nested context is present."
-  },
-  {
-    title: "Indirect Prompt Injection and Untrusted Context",
-    body: "Testing how models handle adversarial instructions found in retrieved documents, web pages or user-provided files."
-  }
-];
-
-const labelInterpretations = {
-  "indirect-function-call": "A platform category associated with attempts to influence function selection through indirect or nested instructions.",
-  "weak-password-change": "A platform category associated with authorization and workflow controls for a security-sensitive account action."
+  about: { "@type": "Thing", name: "Model behavior evaluation" }
 };
 ---
 
@@ -66,145 +67,130 @@ const labelInterpretations = {
 
   <SiteNav activePage="security" />
 
-  <div class="security-record">
-    <a href="/" class="security-back-link">← Back to Portfolio & Overview</a>
-
-    <header class="security-header">
-      <div class="security-meta-tag">Independent Model-Behavior Evaluation · Public Record</div>
-      <h1 class="security-title">Model Behavior Evaluation Record & Methodology</h1>
-      <p class="security-lead">
-        Public record of self-directed model-behavior evaluation on the Gray Swan Proving Ground, summarizing platform-reported activity, testing areas, methodology, and evidence limitations as of July 2026.
-      </p>
-    </header>
-
-    <section class="security-section" id="scope">
-      <h2 class="security-section-title">Scope and Evidence Boundary</h2>
-      <p class="security-section-desc">
-        This page summarizes Mario Marcolongo’s self-directed participation in the Gray Swan Proving Ground. Aggregate counts and ranking are platform-reported figures visible through the linked public profile as of July 2026. They should not be interpreted as an independent security audit, formal certification, proof of model-wide vulnerability, or independent reproduction of every platform-confirmed result.
-      </p>
-      <div class="security-box">
-        <div class="security-box-title">Identity and Public Profile</div>
-        <div class="security-box-body">
-          <span>Mario Marcolongo</span>
-          <span aria-hidden="true"> · </span>
-          <a href={profileUrl} target="_blank" rel="noopener noreferrer">Gray Swan public profile ↗</a>
-          <span aria-hidden="true"> · </span>
-          <a href={D.identity.orcidUrl} target="_blank" rel="noopener noreferrer">ORCID identity record ↗</a>
+  <div class="evaluation-shell">
+    <section class="evaluation-hero">
+      <div>
+        <div class="evaluation-eyebrow">Public evaluation evidence</div>
+        <h1 class="evaluation-title">Model behavior evaluation record.</h1>
+        <p class="evaluation-lede">
+          Self-directed adversarial testing across chat, image, agentic tool-use and indirect prompt-injection challenges. This page is designed as a professional evidence record: it explains what the public activity demonstrates, how the work is approached and where the evidence stops.
+        </p>
+        <div class="career-actions">
+          <a class="btn btn-primary" href={D.identity.grayswanUrl} target="_blank" rel="noopener noreferrer">Open Gray Swan profile ↗</a>
+          <a class="btn" href="/cv-resume.html">AI Safety Application CV</a>
         </div>
       </div>
+
+      <aside class="evaluation-scope-note">
+        <strong>Evidence boundary</strong>
+        <p>Counts and ranking are platform-reported snapshots as of {asOf}. They are not an independent security audit, formal certification, proof of model-wide vulnerability or reproduction of every adjudicated result.</p>
+      </aside>
     </section>
 
-    <section class="security-section" id="activity">
-      <h2 class="security-section-title">Platform-Reported Activity</h2>
-      <p class="security-section-desc">
-        The figures below reproduce aggregate activity displayed by the Gray Swan Proving Ground as of July 2026. “Platform-confirmed” describes the platform’s status label and does not mean independent third-party validation.
-      </p>
-      <div class="security-metrics-grid">
-        <article class="security-metric-card">
-          <div class="security-metric-value">{D.redTeamActivity.rankBand || "Top 8%"}</div>
-          <div class="security-metric-label">Rank Band Among Listed Participants</div>
-          <div class="security-metric-detail">As of {asOf}</div>
-        </article>
-        <article class="security-metric-card">
-          <div class="security-metric-value">{D.redTeamActivity.confirmedBreaks}</div>
-          <div class="security-metric-label">Platform-Confirmed Model Breaks</div>
-          <div class="security-metric-detail">As of {asOf}</div>
-        </article>
-        <article class="security-metric-card">
-          <div class="security-metric-value">{D.redTeamActivity.submissions}</div>
-          <div class="security-metric-label">Platform Submissions</div>
-          <div class="security-metric-detail">As of {asOf}</div>
-        </article>
+    <section class="evaluation-metrics" aria-label="Platform-reported activity">
+      <article class="evaluation-metric">
+        <strong>{D.redTeamActivity.confirmedBreaks}</strong>
+        <span>Platform-confirmed model breaks</span>
+        <small>Across 26 listed waves · {asOf}</small>
+      </article>
+      <article class="evaluation-metric">
+        <strong>{D.redTeamActivity.submissions}</strong>
+        <span>Platform submissions</span>
+        <small>Repeated activity across multiple testing surfaces</small>
+      </article>
+      <article class="evaluation-metric">
+        <strong>{D.redTeamActivity.rankBand}</strong>
+        <span>Rank band among listed participants</span>
+        <small>Time-sensitive platform snapshot · {asOf}</small>
+      </article>
+    </section>
+
+    <section class="evaluation-section" id="scope" data-testid="evaluation-scope">
+      <div class="evaluation-section-head">
+        <h2>What the record demonstrates</h2>
+        <p>Sustained exploratory testing, familiarity with several model-interaction surfaces, repeated submission workflows and careful distinction between public evidence and interpretation.</p>
+      </div>
+      <div class="evaluation-grid">
+        {areas.map((area, index) => (
+          <article class="evaluation-card">
+            <div class="evaluation-step">AREA {String(index + 1).padStart(2, "0")}</div>
+            <h3>{area.title}</h3>
+            <p>{area.body}</p>
+          </article>
+        ))}
       </div>
     </section>
 
-    <section class="security-section" id="waves">
-      <h2 class="security-section-title">Activity Across Listed Testing Waves</h2>
-      <p class="security-section-desc">
-        The public profile lists 156 submissions and 75 platform-confirmed breaks across 26 testing waves. The distribution below reports platform counts only; it does not identify model versions, architecture changes, causal performance trends, or changes in model resilience.
-      </p>
-      <div class="security-table-wrap" role="region" aria-label="Gray Swan testing wave activity" tabindex="0">
-        <table class="security-table">
-          <caption>Platform-confirmed break counts for every listed Gray Swan Proving Ground wave as of July 2026.</caption>
-          <thead>
-            <tr>
-              <th scope="col">Wave</th>
-              <th scope="col">Platform-Confirmed Breaks</th>
-            </tr>
-          </thead>
-          <tbody>
-            {D.redTeamActivity.waves.map((wave) => (
+    <section class="evaluation-section" id="method" data-testid="evaluation-method">
+      <div class="evaluation-section-head">
+        <h2>Evaluation approach</h2>
+        <p>The current public record is stronger as evidence of evaluation judgment and persistence than as evidence of security engineering. The methodology therefore emphasizes observable behavior, test variation, documentation and evidence boundaries.</p>
+      </div>
+      <div class="evaluation-grid">
+        {method.map((step, index) => (
+          <article class="evaluation-card">
+            <div class="evaluation-step">STEP {String(index + 1).padStart(2, "0")}</div>
+            <h3>{step.title}</h3>
+            <p>{step.body}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="evaluation-section" id="public-evidence">
+      <div class="evaluation-section-head">
+        <h2>Publicly inspectable evidence</h2>
+        <p>The platform profile exposes aggregate activity and a limited number of public submission labels. Complete prompts, outputs, model versions and adjudication rationales are not reproduced here.</p>
+      </div>
+
+      <div class="evaluation-grid">
+        {(D.redTeamActivity.publicLabels || []).map((label) => (
+          <article class="evaluation-card">
+            <div class="evaluation-step">PUBLIC PLATFORM LABEL</div>
+            <h3><code>{label}</code></h3>
+            <p>Category visible through the public platform record. It is not presented as a complete vulnerability report or independently reproduced exploit.</p>
+          </article>
+        ))}
+      </div>
+
+      <details class="evaluation-details">
+        <summary>Open the complete 26-wave activity table</summary>
+        <div class="evaluation-table-wrap" role="region" aria-label="Gray Swan testing wave activity" tabindex="0">
+          <table class="evaluation-table">
+            <thead>
               <tr>
-                <th scope="row">Wave {wave.wave}</th>
-                <td>{wave.breaks}</td>
+                <th scope="col">Wave</th>
+                <th scope="col">Platform-confirmed breaks</th>
+                <th scope="col">Available challenges shown</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+            </thead>
+            <tbody>
+              {D.redTeamActivity.waves.map((wave) => (
+                <tr>
+                  <td>Wave {wave.wave}</td>
+                  <td>{wave.breaks}</td>
+                  <td>{wave.available}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </details>
     </section>
 
-    <section class="security-section" id="approach">
-      <h2 class="security-section-title">Testing Approach</h2>
-      <p class="security-section-desc">
-        The work uses structured, self-directed probing of instruction handling and policy boundaries. The public record supports broad testing categories, but it does not expose enough information to reconstruct every prompt, model output, platform adjudication or model version.
-      </p>
-      <div class="security-card-grid">
-        {testingAreas.map((area, index) => (
-          <article class="security-card">
-            <div class="security-card-tag">Testing Area {String(index + 1).padStart(2, "0")}</div>
-            <h3 class="security-card-title">{area.title}</h3>
-            <div class="security-card-body"><p>{area.body}</p></div>
-          </article>
-        ))}
+    <section class="evaluation-section" id="limitations" data-testid="evaluation-limitations">
+      <div class="evaluation-section-head">
+        <h2>Limitations and interpretation</h2>
+        <p>This record supports applications to evaluation, safeguards operations, trust & safety and adversarial QA roles. It does not yet establish the application-security, independent Python development or automated-framework experience expected from senior AI red-team engineers.</p>
       </div>
-    </section>
-
-    <section class="security-section" id="labels">
-      <h2 class="security-section-title">Publicly Identifiable Submission Labels</h2>
-      <p class="security-section-desc">
-        The public profile exposes a limited number of submission labels. These labels identify platform categories; they are not complete public case records and do not independently document the prompt, full model output, model version, adjudication rationale or reproducibility materials.
-      </p>
-      <div class="security-card-grid security-label-grid">
-        {publicLabels.map((label) => (
-          <article class="security-card">
-            <div class="security-card-tag">Public Platform Label</div>
-            <h3 class="security-card-title"><code>{label}</code></h3>
-            <div class="security-card-body">
-              <p><strong>Portfolio interpretation:</strong> {labelInterpretations[label] || "A category label exposed by the public platform profile."}</p>
-              <p class="security-evidence-note">Public platform label. The complete prompt, model output, model version and platform adjudication materials are not reproduced on this page.</p>
-            </div>
-          </article>
-        ))}
-      </div>
-    </section>
-
-    <section class="security-section" id="limitations">
-      <h2 class="security-section-title">Limitations and Interpretation</h2>
-      <ul class="security-limitations">
-        <li>The page reports aggregate platform activity and selected public labels, not complete test transcripts.</li>
-        <li>Specific model names, versions and architecture changes are not documented here unless present in the public source.</li>
-        <li>Full prompts, outputs, platform adjudication rationales and exploit payloads are not reproduced.</li>
-        <li>“Platform-confirmed” refers to the Gray Swan platform’s status and is not equivalent to independent third-party reproduction.</li>
-        <li>Rankings and counts are time-sensitive snapshots reported as of July 2026.</li>
-        <li>The record demonstrates sustained evaluation activity; it does not constitute a security certification or a comprehensive audit of any model provider.</li>
+      <ul class="evaluation-list">
+        <li>“Platform-confirmed” describes Gray Swan’s status, not independent third-party reproduction.</li>
+        <li>The public source does not expose complete prompts, outputs, model versions or adjudication materials for every result.</li>
+        <li>Counts and rankings are snapshots and may change after {asOf}.</li>
+        <li>No claim is made that every recorded result represents a security vulnerability or model-wide failure.</li>
+        <li>The next evidence milestone is a public, reproducible evaluation dataset and automated test harness built with independently understood code.</li>
       </ul>
     </section>
-
-    <section class="security-section" id="relevance">
-      <h2 class="security-section-title">Relevance to Evaluation Operations and Research Verification</h2>
-      <p class="security-section-desc">
-        This work demonstrates structured test design, repeated submission workflows, evidence-bound reporting, classification of observed behaviors, and careful separation between public evidence and interpretation. Those practices are relevant to AI evaluation operations, research verification, quality assurance and technical research roles.
-      </p>
-      <div class="security-box">
-        <div class="security-box-title">Defensive-design relevance</div>
-        <div class="security-box-body">Adversarial evaluation experience informs threat-modelling and defensive-design considerations for systems that process untrusted inputs.</div>
-      </div>
-    </section>
-
-    <div class="security-bottom-link">
-      <a href="/" class="security-back-link">← Back to Portfolio & Overview</a>
-    </div>
   </div>
 
   <SiteFooter version={D.identity.buildVersion} />
