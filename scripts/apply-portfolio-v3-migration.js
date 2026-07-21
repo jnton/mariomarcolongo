@@ -105,4 +105,12 @@ update('src/pages/integrity.astro', [
   ]
 ]);
 
+update('scripts/verify-dist.js', [
+  [
+    "  'I investigate claims',",
+    "  'I investigate ',\n  'claims',",
+    'animated headline verification'
+  ]
+]);
+
 console.log('Portfolio v3 canonical migration complete.');
