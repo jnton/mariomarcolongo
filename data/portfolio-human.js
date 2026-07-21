@@ -1,237 +1,208 @@
 const PORTFOLIO_HUMAN = {
-  eyebrow: "Scientific verification · AI evaluation · operational systems",
-  headline: "I work on difficult problems where evidence, systems and human judgment meet.",
-  introduction: "I investigate claims, test AI behavior, run research workflows and turn messy information into tools people can actually use. My work is public, inspectable and suited to teams that reward autonomy, contrarian thinking and ownership of outcomes.",
+  eyebrow: "AI safety · scientific verification · research operations",
+  headline: "Evidence, AI and operations for difficult problems.",
+  introduction: "I verify scientific claims, test model behavior, coordinate sensitive research and operate public tools. My strongest work combines investigation, clear evidence boundaries and ownership of the workflow from question to usable result.",
 
-  proofMetrics: [
-    {
-      value: "250K+",
-      label: "YouTube audience supported",
-      detail: "Paid scientific research and fact-checking for Entropy for Life; the wider project also reports 158K Instagram and 54K TikTok followers.",
-      source: "https://entropyforlife.it/chi-sono/"
-    },
+  proofs: [
     {
       value: "75",
       label: "Platform-confirmed model breaks",
-      detail: "Across 156 Gray Swan submissions and 26 listed testing waves as of July 2026.",
-      source: "/security.html"
+      detail: "156 submissions across 26 listed Gray Swan testing waves as of July 2026.",
+      href: "/security.html"
+    },
+    {
+      value: "55+",
+      label: "Scientific productions supported",
+      detail: "Paid primary-literature research and fact-checking for videos and documentaries, plus four articles.",
+      href: "https://www.youtube.com/@entropyforlife"
     },
     {
       value: "55+",
       label: "Research initiatives indexed",
-      detail: "Clinical studies, biobanks, registries and donation programs organized in a public research-participation directory.",
-      source: "https://yourselftoscience.org/"
-    },
-    {
-      value: "4,317",
-      label: "Auditable public contributions",
-      detail: "Source, metadata and visualization work across Wikipedia, Wikidata and Wikimedia Commons.",
-      source: "https://commons.wikimedia.org/wiki/Special:CentralAuth/Digressivo"
-    }
-  ],
-
-  heroProjects: [
-    {
-      id: "mdpi",
-      label: "Browser extension",
-      title: "MDPI Filter",
-      image: "/media/work/mdpi-filter-1.jpg",
-      imageAlt: "MDPI Filter browser extension highlighting publisher results in a literature-search interface",
-      href: "https://chromewebstore.google.com/detail/mdpi-filter/comknkeimaaadpiopddjoknflbmjeccp"
-    },
-    {
-      id: "research-directory",
-      label: "Open science product",
-      title: "Yourself to Science",
-      image: "/media/work/yourself-to-science.png",
-      imageAlt: "Yourself to Science public research-participation catalogue",
+      detail: "Clinical studies, biobanks, registries and donation programs in Yourself to Science.",
       href: "https://yourselftoscience.org/"
     },
     {
-      id: "telegram",
-      label: "Serverless automation",
-      title: "Wikipedia Link Converter",
-      image: "/media/work/telegram-bot-card.svg",
-      imageAlt: "Public Telegram bot image for the English Wikipedia Link Converter",
-      href: "https://t.me/ToEnWikipediaBot"
-    },
-    {
-      id: "tableau",
-      label: "Interactive data work",
-      title: "Tableau Public",
-      image: "/media/work/tableau-mortality.png",
-      imageAlt: "Tableau Public visualization of Italian mortality tables by individual age",
-      href: "https://public.tableau.com/app/profile/mario.marcolongo/viz/TavolediMortalitSingoleEtItalia-ISTAT/Sheet1"
+      value: "70+",
+      label: "Public data visualizations",
+      detail: "Biomedical, epidemiological and public-policy work across Wikimedia, Tableau and Flourish.",
+      href: "https://public.tableau.com/app/profile/mario.marcolongo/vizzes"
     }
   ],
 
-  stories: [
+  heroWork: [
     {
-      id: "entropy",
-      number: "01",
-      label: "Paid scientific verification · public communication at scale",
-      title: "Helping a large science-communication operation stay evidence-bound",
-      summary: "For Entropy for Life, I research primary literature, identify unsupported or conflicting claims and translate corrections into a production workflow used for public videos, documentaries and articles.",
-      role: "Scientific fact-checker, writer and website manager",
-      process: [
-        "Investigate biomedical and evolutionary claims in primary literature",
-        "Surface uncertainty, conflicts and weak sourcing before publication",
-        "Explain corrections to a non-specialist production team",
-        "Operate the WordPress, hosting, DNS, SSL and technical-SEO layer"
-      ],
-      result: "Paid support for 55+ videos and documentaries and four articles, serving a project reporting 250K+ YouTube subscribers, 158K Instagram followers and 54K TikTok followers.",
-      visual: "audience",
-      href: "https://www.youtube.com/@entropyforlife",
-      linkLabel: "Open the YouTube channel"
+      title: "Model-behavior evaluation",
+      label: "AI safety",
+      image: "/media/work/model-behavior-record.svg",
+      alt: "Aggregate public record of model-behavior testing activity",
+      href: "/security.html"
     },
     {
+      title: "MDPI Filter",
+      label: "Research tooling",
+      image: "/media/work/mdpi-filter-1.jpg",
+      alt: "MDPI Filter highlighting publisher citations inside a literature workflow",
+      href: "https://chromewebstore.google.com/detail/mdpi-filter/comknkeimaaadpiopddjoknflbmjeccp"
+    },
+    {
+      title: "Yourself to Science",
+      label: "Research operations",
+      image: "/media/work/yourself-to-science.png",
+      alt: "Yourself to Science public research-participation catalogue",
+      href: "https://yourselftoscience.org/"
+    },
+    {
+      title: "Wikipedia Link Converter",
+      label: "Serverless automation",
+      image: "/media/work/telegram-bot-card.svg",
+      alt: "English Wikipedia Link Converter Telegram bot product card",
+      href: "https://t.me/ToEnWikipediaBot"
+    }
+  ],
+
+  flagships: [
+    {
       id: "model-behavior",
-      number: "02",
-      label: "AI behavior · adversarial evaluation",
-      title: "Looking for failure modes before they become assumptions",
-      summary: "I conduct exploratory testing across chat, multimodal inputs, agentic tool use and indirect prompt injection, while keeping platform status separate from independent security verification.",
-      role: "Independent model-behavior evaluator",
-      process: [
-        "Design ambiguous and adversarial interaction paths",
-        "Test across repeated waves and multiple product surfaces",
-        "Classify outcomes and preserve reproduction notes",
-        "Report limitations alongside aggregate results"
-      ],
-      result: "75 platform-confirmed model breaks across 156 submissions and 26 listed waves as of July 2026.",
+      label: "AI safety and model behavior",
+      title: "Adversarial testing with explicit evidence boundaries",
+      summary: "I explore instruction handling, multimodal inputs, agentic tool use and indirect prompt injection, preserving reproduction notes while separating platform-confirmed outcomes from independent security claims.",
+      proof: "75 platform-confirmed breaks · 156 submissions · 26 listed waves",
       image: "/media/work/model-behavior-record.svg",
-      imageAlt: "Editorial visualization of the public aggregate model-behavior activity record",
+      alt: "Editorial aggregate record of model-behavior testing",
       href: "/security.html",
-      linkLabel: "Open the evaluation record"
+      linkLabel: "View the evaluation record"
+    },
+    {
+      id: "entropy",
+      label: "Paid scientific verification",
+      title: "Primary-source checking inside a large public production workflow",
+      summary: "For Entropy for Life, I investigate biomedical and evolutionary claims, identify weak or conflicting evidence and communicate corrections to a non-specialist production team.",
+      proof: "55+ videos and documentaries · four articles · project audience reported at 250K+ YouTube subscribers",
+      image: null,
+      alt: null,
+      href: "https://www.youtube.com/@entropyforlife",
+      linkLabel: "Open the channel"
     },
     {
       id: "yourself-to-science",
-      number: "03",
-      label: "Open science · product and research operations",
-      title: "Turning scattered participation opportunities into a usable public system",
-      summary: "Yourself to Science brings clinical studies, biobanks, registries and data-donation programs into one public, reusable catalogue.",
-      role: "Founder and research-workflow owner",
-      process: [
-        "Define inclusion, provenance, geography and participation fields",
-        "Verify records across organizations and countries",
-        "Publish open datasets and machine-readable interfaces",
-        "Test, deploy and maintain the public service"
-      ],
-      result: "More than 55 research initiatives indexed, with FAIRsharing and Zenodo records.",
+      label: "Research and product operations",
+      title: "A public system for discovering ways to participate in research",
+      summary: "I founded and operate Yourself to Science, defining inclusion rules, verification and provenance fields, open licensing, public datasets and the requirements used for AI-assisted implementation.",
+      proof: "55+ initiatives · FAIRsharing and Zenodo records · public machine-readable interfaces",
       image: "/media/work/yourself-to-science.png",
-      imageAlt: "Screenshot of the Yourself to Science public research-participation catalogue",
+      alt: "Yourself to Science research-participation catalogue",
       href: "https://yourselftoscience.org/",
       linkLabel: "Explore the catalogue"
-    },
-    {
-      id: "mdpi-filter",
-      number: "04",
-      label: "Research tooling · browser product operations",
-      title: "Making publisher signals visible inside real literature workflows",
-      summary: "MDPI Filter highlights or hides MDPI publications across academic search tools and identifies linked citations inside publisher pages.",
-      role: "Product owner and AI-assisted technical operator",
-      process: [
-        "Specify search, citation and popup behavior",
-        "Test Google Scholar, PubMed, Europe PMC and article pages",
-        "Validate optional NCBI metadata lookups and local processing",
-        "Maintain Chrome and Edge store releases"
-      ],
-      result: "A public, open-source Manifest V3 extension available through the Chrome and Edge stores.",
-      image: "/media/work/mdpi-filter-2.jpg",
-      imageAlt: "MDPI Filter extension popup listing detected references and page controls",
-      href: "https://chromewebstore.google.com/detail/mdpi-filter/comknkeimaaadpiopddjoknflbmjeccp",
-      linkLabel: "Open the Chrome Web Store listing"
     }
   ],
+
+  humanResearch: {
+    label: "Sensitive human-subject research operations",
+    title: "Co-facilitating autism-and-sexuality focus groups with participant safety built into the protocol",
+    organization: "Department of Developmental Psychology and Socialisation (DPSS), University of Padua",
+    supervisor: "Supervised by Marta Panzeri",
+    period: "November 2022–2025 · volunteer research collaboration",
+    summary: "I co-facilitated recorded Zoom focus groups with autistic participants discussing sexuality, relationships and sensory experiences. The work required non-judgmental communication, clear expectations, careful pacing and reliable coordination inside a two-person facilitation team.",
+    capabilities: [
+      "Co-developed structured discussion guides, scripted prompts and session procedures",
+      "Used live handoffs and recovery when a facilitator missed a prompt or needed support",
+      "Supported recruitment, literature research, Zoom preparation and research-team coordination",
+      "Protected participant privacy and kept public descriptions separate from confidential session content"
+    ],
+    links: [
+      { label: "Marta Panzeri — official profile", href: "https://dpss.unipd.it/en/node/239" },
+      { label: "Department of Developmental Psychology and Socialisation", href: "https://www.unipd.it/en/dpss" },
+      { label: "Public thesis context", href: "https://thesis.unipd.it/handle/20.500.12608/51396" }
+    ]
+  },
 
   products: [
     {
-      id: "telegram-bot",
-      label: "AWS Lambda · Telegram · GitHub Actions",
+      title: "MDPI Filter",
+      label: "Chrome and Edge extension",
+      body: "Highlights or hides MDPI results across literature-search tools and identifies linked references inside publisher pages.",
+      image: "/media/work/mdpi-filter-2.jpg",
+      alt: "MDPI Filter browser-extension popup and detected references",
+      href: "https://chromewebstore.google.com/detail/mdpi-filter/comknkeimaaadpiopddjoknflbmjeccp"
+    },
+    {
       title: "English Wikipedia Link Converter",
-      body: "A serverless Telegram bot that converts non-English Wikipedia links into their English equivalents in private chats, groups and inline mode.",
+      label: "AWS Lambda and Telegram",
+      body: "Converts non-English Wikipedia links to their English equivalents in private chats, groups and inline mode.",
       image: "/media/work/telegram-bot-card.svg",
-      imageAlt: "Telegram image for the English Wikipedia Link Converter bot",
-      href: "https://t.me/ToEnWikipediaBot",
-      linkLabel: "Launch the bot"
+      alt: "English Wikipedia Link Converter product card",
+      href: "https://t.me/ToEnWikipediaBot"
     },
     {
-      id: "emergent-humanity",
-      label: "Interactive narrative · network visualization",
       title: "Emergent Humanity",
-      body: "A sixteen-chapter interactive narrative and browser simulation exploring signal, noise, echo chambers and collective memory.",
+      label: "Interactive network narrative",
+      body: "A browser-based narrative and simulation about signal, noise, echo chambers and collective memory.",
       image: "/media/work/emergent-humanity.png",
-      imageAlt: "Emergent Humanity interactive network narrative in a web browser",
-      href: "https://jnton.github.io/emergent-humanity/",
-      linkLabel: "Open the interactive project"
+      alt: "Emergent Humanity interactive network narrative",
+      href: "https://jnton.github.io/emergent-humanity/"
     }
   ],
 
-  visualizationPlatforms: [
+  visualization: [
     {
-      id: "tableau",
-      label: "Tableau Public",
-      title: "Interactive statistical analysis",
-      body: "Public workbooks covering mortality, health, demography and policy data, including Italian age-specific mortality tables.",
+      title: "Tableau Public",
+      body: "Interactive statistical work covering mortality, demography, health and public policy.",
       image: "/media/work/tableau-mortality.png",
-      imageAlt: "Tableau visualization of mortality tables for individual ages in Italy",
-      href: "https://public.tableau.com/app/profile/mario.marcolongo/vizzes",
-      linkLabel: "Open the Tableau portfolio"
+      alt: "Tableau mortality analysis by age in Italy",
+      href: "https://public.tableau.com/app/profile/mario.marcolongo/vizzes"
     },
     {
-      id: "flourish",
-      label: "Flourish",
-      title: "Interactive visual storytelling",
-      body: "A Flourish-built global cancer-incidence map, published openly and reused through Wikimedia and Wikipedia.",
+      title: "Flourish",
+      body: "Interactive public visual storytelling, including global cancer-incidence mapping.",
       image: "https://upload.wikimedia.org/wikipedia/commons/5/53/Oesophageal_Cancer%2C_Age-Standardized_Rate_%28World%29_per_100.000_of_Incidence_Cases%2C_Both_sexes%2C_Worldwide_in_2022.svg",
-      imageAlt: "Flourish-built world map of age-standardized oesophageal cancer incidence",
-      href: "https://public.flourish.studio/visualisation/17745490/",
-      linkLabel: "Open the Flourish visualization"
+      alt: "Global map of age-standardized oesophageal cancer incidence",
+      href: "https://public.flourish.studio/visualisation/17745490/"
+    },
+    {
+      title: "Wikimedia Commons",
+      body: "More than 70 open biomedical, epidemiological and public-policy visualizations, with reuse across Wikipedia editions.",
+      image: "https://upload.wikimedia.org/wikipedia/commons/7/7f/Diagram_of_overlap_between_genes_which_are_affected_in_various_mental_disorders.svg",
+      alt: "Diagram of genetic overlap across several mental disorders",
+      href: "https://commons.wikimedia.org/wiki/Special:ListFiles/Digressivo"
     }
   ],
 
-  operatingStyle: [
+  workingPrinciples: [
     {
-      title: "Contrarian, not careless",
-      body: "I challenge assumptions and consensus, but I keep the evidence trail visible and distinguish a strong hypothesis from a verified conclusion."
+      title: "Investigate ambiguity",
+      body: "Break unclear questions into claims, evidence sources, operational constraints and testable failure modes."
     },
     {
-      title: "High ownership",
-      body: "When I see a useful system missing, I define the workflow, coordinate implementation, test it, deploy it and keep it operating."
+      title: "Own the workflow",
+      body: "Move from requirements and coordination through testing, deployment diagnosis and maintenance."
     },
     {
-      title: "Comfortable with unusual problems",
-      body: "My work has included adversarial AI behavior, personal genomic data, taboo research topics and messy provenance questions."
-    },
-    {
-      title: "Direct and systems-oriented",
-      body: "I communicate plainly, decompose ambiguous problems and prefer outcomes that can be inspected over polished claims that cannot."
+      title: "State the boundary",
+      body: "Distinguish observed evidence, platform labels, inference and uncertainty instead of making the result sound stronger than it is."
     }
   ],
 
-  roleFamilies: [
+  applicationDocuments: [
     {
-      title: "AI safety, safeguards and model behavior",
-      text: "Evaluation operations, adversarial QA, model quality and trust-and-safety work where persistent testing and evidence discipline matter.",
-      href: "/cv-resume.html",
-      label: "AI safety CV"
+      title: "AI Safety & Adversarial Testing",
+      description: "Model behavior, safeguards, adversarial QA, evaluation operations and trust-and-safety testing.",
+      href: "/cv-resume.html"
     },
     {
-      title: "Deployment, research and technical operations",
-      text: "High-ownership roles translating ambiguous needs into workflows, tests, public tools and operational outcomes.",
-      href: "/cv-research.html",
-      label: "Research & operations CV"
+      title: "Research Verification & Data Quality",
+      description: "Scientific AI quality, provenance, research operations, metadata and evidence verification.",
+      href: "/cv-research.html"
     },
     {
-      title: "Scientific and biomedical AI quality",
-      text: "Evidence verification, metadata, provenance and domain-expert quality work for research or AI systems.",
-      href: "/cv-research.html",
-      label: "Research & data CV"
+      title: "Trust, Safety & Knowledge Integrity",
+      description: "OSINT support, source provenance, content integrity and public-record investigation.",
+      href: "/cv-integrity.html"
     },
     {
-      title: "Knowledge integrity and investigations",
-      text: "Public-record research, source provenance, OSINT support, content integrity and abuse-analysis work.",
-      href: "/cv-integrity.html",
-      label: "Trust & integrity CV"
+      title: "Research, Editorial & Community Operations",
+      description: "A bridge document for editorial coordination, evidence synthesis and participant-facing research roles.",
+      href: "/cv-editorial.html"
     }
   ]
 };
