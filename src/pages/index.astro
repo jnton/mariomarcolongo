@@ -2,331 +2,244 @@
 import Layout from "../layouts/Layout.astro";
 import SiteNav from "../components/SiteNav.astro";
 import SiteFooter from "../components/SiteFooter.astro";
-import "../styles/portfolio-v3.css";
+import "../styles/human-portfolio.css";
 import D from "../../data/source.js";
-import V from "../../data/portfolio-v3.js";
+import H from "../../data/portfolio-human.js";
 import { buildProfileGraph } from "../lib/structured-data.js";
 
-const pageTitle = "Mario Marcolongo — Research, Evidence & AI Operations";
-const pageDescription = "Portfolio spanning AI safety, scientific verification, editorial and research operations, knowledge integrity, open-source research, open science and data quality.";
+const pageTitle = "Mario Marcolongo — Research, Evidence & Trustworthy Technology";
+const pageDescription = "Portfolio of scientific verification, research and editorial operations, knowledge integrity, open science and model-behavior testing.";
 const profileJsonLd = buildProfileGraph(D, "https://mariomarcolongo.com/", pageTitle);
 
-const projectMeta = {
-  "ai-red-teaming": { category: "ai", label: "AI systems", accent: "blue" },
-  "yourself-to-science": { category: "data", label: "Open science", accent: "cyan" },
-  "entropy-for-life": { category: "editorial", label: "Editorial & research", accent: "coral" },
-  "mdpi-filter": { category: "integrity", label: "Knowledge tools", accent: "violet" },
-  "telegram-bot": { category: "operations", label: "Technical operations", accent: "blue" },
-  "emergent-humanity": { category: "creative", label: "Interactive research", accent: "coral" }
-};
+const selectedExperience = [
+  D.experience.find((item) => item.org?.includes("Wikipedia")),
+  D.experience.find((item) => item.role?.includes("Focus-Group")),
+  D.experience.find((item) => item.org?.includes("Entropy for Life")),
+  D.experience.find((item) => item.org?.includes("Yourself to Science")),
+  D.experience.find((item) => item.role?.includes("Model-Behavior"))
+].filter(Boolean);
 
-function projectHref(project) {
-  const links = project.links || {};
-  return links.caseStudy || links.website || links.chromeStore || links.bot || links.github || links.profile || "#";
-}
-
-function projectLinkLabel(project) {
-  if (project.id === "ai-red-teaming") return "Open evaluation record";
-  if (project.id === "yourself-to-science") return "Open research directory";
-  if (project.id === "entropy-for-life") return "Open project record";
-  if (project.id === "mdpi-filter") return "Open browser extension";
-  if (project.id === "telegram-bot") return "Open Telegram bot";
-  return "Open project";
-}
+const pencilImage = "https://commons.wikimedia.org/wiki/Special:Redirect/file/Pencil_Fascist_Tuberculosis_Campaign_Italy_Side_A_Angle.jpg?width=1280";
 ---
 
 <Layout title={pageTitle} description={pageDescription} canonical="https://mariomarcolongo.com/">
   <Fragment slot="head">
-    <script is:inline>document.documentElement.classList.add("v3-js");</script>
+    <script is:inline>document.documentElement.classList.add("human-portfolio");</script>
     <script type="application/ld+json" set:html={JSON.stringify(profileJsonLd)}></script>
   </Fragment>
 
   <SiteNav activePage="home" />
 
-  <main class="v3-page" id="content">
-    <section class="v3-hero" aria-labelledby="portfolio-title">
-      <div class="v3-hero-glow v3-hero-glow-a" aria-hidden="true"></div>
-      <div class="v3-hero-glow v3-hero-glow-b" aria-hidden="true"></div>
-
-      <div class="v3-hero-copy">
-        <div class="v3-kicker v3-enter" style="--enter-delay: 60ms">{V.umbrella}</div>
-        <h1 class="v3-hero-title v3-enter" id="portfolio-title" style="--enter-delay: 130ms">
-          I investigate <span class="v3-gradient-text">claims</span>,<br />
-          test <span class="v3-gradient-text alt">systems</span>, and build<br />
-          evidence workflows.
-        </h1>
-        <p class="v3-hero-lede v3-enter" style="--enter-delay: 210ms">{V.introduction}</p>
-        <div class="v3-hero-actions v3-enter" style="--enter-delay: 290ms">
-          <a class="v3-button v3-button-primary" href="#lenses">Explore role lenses <span aria-hidden="true">↓</span></a>
-          <a class="v3-button" href="#work">View work samples</a>
-          <a class="v3-button v3-button-quiet" href="#documents">Choose a CV</a>
+  <main class="human-page" id="content">
+    <section class="human-hero" aria-labelledby="human-title">
+      <div class="human-hero-copy">
+        <div class="human-eyebrow">{H.eyebrow}</div>
+        <h1 id="human-title">I make difficult evidence easier to <em>trust</em> and use.</h1>
+        <p class="human-intro">{H.introduction}</p>
+        <div class="human-actions">
+          <a class="human-button human-button-primary" href="#work">See selected work <span aria-hidden="true">↓</span></a>
+          <a class="human-button" href="#experience">View experience</a>
+          <a class="human-button" href="#fit">Choose a CV</a>
         </div>
-        <div class="v3-meta v3-enter" style="--enter-delay: 350ms">
-          <span>Italy · EU work authorization</span>
-          <span>Worldwide relocation</span>
-          <span>English: C1 overall</span>
-          <span>International B2B</span>
+        <div class="human-hero-facts" aria-label="Location and working information">
+          <span>Based in Italy</span>
+          <span>EU work authorization</span>
+          <span>English C1 overall</span>
+          <span>Open to relocation and international contracting</span>
         </div>
       </div>
 
-      <div class="v3-hero-visual v3-enter" style="--enter-delay: 180ms" aria-label="A visual network connecting evidence, AI, integrity, research and operations">
-        <div class="v3-orbit v3-orbit-one" aria-hidden="true"></div>
-        <div class="v3-orbit v3-orbit-two" aria-hidden="true"></div>
-        <svg class="v3-network" viewBox="0 0 620 620" role="img" aria-labelledby="network-title network-desc">
-          <title id="network-title">Evidence network</title>
-          <desc id="network-desc">Connections between AI systems, scientific evidence, knowledge integrity, research communities, open data and technical operations.</desc>
-          <defs>
-            <linearGradient id="v3-line" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0" stop-color="var(--v3-blue)" />
-              <stop offset="0.5" stop-color="var(--v3-cyan)" />
-              <stop offset="1" stop-color="var(--v3-violet)" />
-            </linearGradient>
-            <radialGradient id="v3-core" cx="50%" cy="45%" r="65%">
-              <stop offset="0" stop-color="var(--v3-core-light)" />
-              <stop offset="1" stop-color="var(--v3-core-dark)" />
-            </radialGradient>
-          </defs>
-          <g class="v3-network-lines" fill="none" stroke="url(#v3-line)" stroke-width="2">
-            <path d="M310 310 L138 151" />
-            <path d="M310 310 L482 135" />
-            <path d="M310 310 L520 339" />
-            <path d="M310 310 L429 505" />
-            <path d="M310 310 L151 482" />
-            <path d="M310 310 L93 304" />
-            <path d="M138 151 C245 94 378 79 482 135" />
-            <path d="M482 135 C535 206 548 271 520 339" />
-            <path d="M520 339 C512 425 472 473 429 505" />
-            <path d="M429 505 C322 548 222 532 151 482" />
-            <path d="M151 482 C91 419 74 359 93 304" />
-            <path d="M93 304 C82 229 101 181 138 151" />
-          </g>
-          <g class="v3-network-pulses" fill="none" stroke="url(#v3-line)" stroke-width="4" stroke-linecap="round">
-            <path pathLength="1" d="M310 310 L138 151" />
-            <path pathLength="1" d="M310 310 L482 135" />
-            <path pathLength="1" d="M310 310 L520 339" />
-            <path pathLength="1" d="M310 310 L429 505" />
-            <path pathLength="1" d="M310 310 L151 482" />
-            <path pathLength="1" d="M310 310 L93 304" />
-          </g>
-          <g class="v3-node v3-node-core">
-            <circle cx="310" cy="310" r="91" fill="url(#v3-core)" />
-            <circle cx="310" cy="310" r="104" fill="none" stroke="var(--v3-line)" />
-            <text x="310" y="293" text-anchor="middle">EVIDENCE</text>
-            <text class="v3-node-small" x="310" y="321" text-anchor="middle">research · trust</text>
-            <text class="v3-node-small" x="310" y="345" text-anchor="middle">systems · operations</text>
-          </g>
-          <g class="v3-node"><circle cx="138" cy="151" r="55" /><text x="138" y="157" text-anchor="middle">AI</text></g>
-          <g class="v3-node"><circle cx="482" cy="135" r="62" /><text x="482" y="129" text-anchor="middle">SCIENCE</text><text class="v3-node-small" x="482" y="151" text-anchor="middle">verification</text></g>
-          <g class="v3-node"><circle cx="520" cy="339" r="62" /><text x="520" y="333" text-anchor="middle">TRUST</text><text class="v3-node-small" x="520" y="355" text-anchor="middle">integrity</text></g>
-          <g class="v3-node"><circle cx="429" cy="505" r="62" /><text x="429" y="499" text-anchor="middle">OPEN</text><text class="v3-node-small" x="429" y="521" text-anchor="middle">data</text></g>
-          <g class="v3-node"><circle cx="151" cy="482" r="65" /><text x="151" y="476" text-anchor="middle">RESEARCH</text><text class="v3-node-small" x="151" y="498" text-anchor="middle">community</text></g>
-          <g class="v3-node"><circle cx="93" cy="304" r="64" /><text x="93" y="298" text-anchor="middle">TECH</text><text class="v3-node-small" x="93" y="320" text-anchor="middle">operations</text></g>
-        </svg>
-        <div class="v3-visual-caption">
-          <span class="v3-live-dot" aria-hidden="true"></span>
-          <span>One evidence base · multiple role paths</span>
-        </div>
+      <div class="human-collage" aria-label="Real public work and artifacts">
+        <div class="human-paper-note">Real projects, public records and inspectable evidence—not stock illustrations.</div>
+        <figure class="human-media human-media-main" data-parallax="7">
+          <img src="/media/work/yourself-to-science.png" alt="Screenshot of the Yourself to Science research-participation catalogue" width="1440" height="900" />
+          <figcaption>Yourself to Science — public research-participation catalogue</figcaption>
+        </figure>
+        <figure class="human-media human-media-viz" data-parallax="-5">
+          <img src={D.visualizations[0].src} alt={D.visualizations[0].title} width="900" height="900" />
+          <figcaption>{D.visualizations[0].title} — original open visualization</figcaption>
+        </figure>
+        <figure class="human-media human-media-object" data-parallax="4">
+          <img src={pencilImage} alt="Fascist-era carpenter pencil documented for Wikimedia Commons" width="1280" height="444" />
+          <figcaption>Historical provenance and rights-verification record · photograph by Alessandro Lanzoni, CC BY-SA 4.0</figcaption>
+        </figure>
       </div>
     </section>
 
-    <section class="v3-metric-rail" aria-label="Selected public evidence">
-      {V.metrics.map((metric, index) => (
-        <article class="v3-metric v3-reveal" style={`--reveal-delay:${index * 55}ms`}>
-          <strong>{metric.value}</strong>
-          <span>{metric.label}</span>
-          <small>{metric.detail}</small>
-        </article>
-      ))}
-    </section>
+    <div class="human-marquee" aria-hidden="true">
+      <div class="human-marquee-track">
+        <span>Scientific verification</span><span>Research operations</span><span>Knowledge integrity</span><span>AI behavior</span><span>Open science</span><span>Community facilitation</span>
+        <span>Scientific verification</span><span>Research operations</span><span>Knowledge integrity</span><span>AI behavior</span><span>Open science</span><span>Community facilitation</span>
+      </div>
+    </div>
 
-    <section class="v3-section" id="lenses" data-testid="career-focus">
-      <div class="v3-section-head v3-reveal">
+    <section class="human-section" id="approach" aria-labelledby="approach-title">
+      <div class="human-section-head">
         <div>
-          <div class="v3-kicker">Career architecture</div>
-          <h2>One profile. Four credible lenses.</h2>
+          <span class="human-section-index">01 · What I do</span>
+          <h2 id="approach-title">Three useful verbs, not one inflated title.</h2>
         </div>
-        <p>The public portfolio stays broad. Applications become specific. Select a lens to see the role family, current proof and realistic next step without erasing the rest of the profile.</p>
+        <p>The work spans different domains, but the underlying pattern is consistent: establish what is true, make the process usable and look for what can fail.</p>
       </div>
 
-      <div class="v3-lens-layout">
-        <div class="v3-lens-tabs" role="tablist" aria-label="Career role lenses">
-          {V.lenses.map((lens, index) => (
-            <button
-              class={`v3-lens-tab ${index === 0 ? "is-active" : ""}`}
-              type="button"
-              role="tab"
-              id={`lens-tab-${lens.id}`}
-              aria-controls={`lens-panel-${lens.id}`}
-              aria-selected={index === 0 ? "true" : "false"}
-              data-lens={lens.id}
-            >
-              <span class={`v3-lens-number ${lens.color}`}>{lens.number}</span>
-              <span class="v3-lens-tab-copy"><strong>{lens.title}</strong><small>{lens.label}</small></span>
-              <span class="v3-lens-arrow" aria-hidden="true">↗</span>
-            </button>
-          ))}
-        </div>
+      <div class="human-capabilities" data-testid="human-capabilities">
+        {H.capabilities.map((capability) => (
+          <article class="human-capability">
+            <span class="human-capability-verb">{capability.verb}</span>
+            <h3>{capability.title}</h3>
+            <p>{capability.body}</p>
+            <small>{capability.proof}</small>
+          </article>
+        ))}
+      </div>
+    </section>
 
-        <div class="v3-lens-panels">
-          {V.lenses.map((lens, index) => (
-            <article
-              class={`v3-lens-panel ${lens.color} ${index === 0 ? "is-active" : ""}`}
-              id={`lens-panel-${lens.id}`}
-              role="tabpanel"
-              aria-labelledby={`lens-tab-${lens.id}`}
-              data-panel={lens.id}
-            >
-              <div class="v3-lens-panel-top">
-                <div>
-                  <span>{lens.label}</span>
-                  <h3>{lens.title}</h3>
+    <section class="human-section" id="work" aria-labelledby="work-title" data-testid="human-work">
+      <div class="human-section-head">
+        <div>
+          <span class="human-section-index">02 · Selected work</span>
+          <h2 id="work-title">The process matters as much as the result.</h2>
+        </div>
+        <p>Each story shows a different working environment: a public research product, a live evidence-monitoring workflow, sensitive participant-facing research and adversarial AI testing.</p>
+      </div>
+
+      <div class="human-stories">
+        {H.stories.map((story) => (
+          <article class={`human-story human-story-${story.id}`}>
+            <div class="human-story-visual">
+              {story.visual === "protocol" ? (
+                <div class="human-story-frame human-protocol" role="img" aria-label="Illustration of a structured two-person focus-group facilitation protocol">
+                  <div class="human-protocol-sidebar">
+                    <span>Session guide</span>
+                    <div>Welcome and expectations</div>
+                    <div>Consent and comfort check</div>
+                    <div>Structured prompts</div>
+                    <div>Handoff and recovery</div>
+                    <div>Closing and debrief</div>
+                  </div>
+                  <div class="human-protocol-page">
+                    <h4>Two-person facilitation</h4>
+                    <div class="human-protocol-line medium"></div>
+                    <div class="human-protocol-line"></div>
+                    <div class="human-protocol-line short"></div>
+                    <div class="human-handoff">
+                      <div class="human-handoff-person">Facilitator A<br />leads and listens</div>
+                      <div class="human-handoff-arrow" aria-hidden="true">↔</div>
+                      <div class="human-handoff-person">Facilitator B<br />tracks and supports</div>
+                    </div>
+                  </div>
                 </div>
-                <a class="v3-button v3-button-small" href={lens.cv}>{lens.cvLabel} →</a>
-              </div>
-              <p class="v3-lens-summary">{lens.summary}</p>
-              <div class="v3-lens-columns">
-                <div>
-                  <h4>Best-fit roles</h4>
-                  <ul>{lens.roles.map((role) => <li>{role}</li>)}</ul>
-                </div>
-                <div>
-                  <h4>Current public evidence</h4>
-                  <ul>{lens.evidence.map((item) => <li>{item}</li>)}</ul>
-                </div>
-              </div>
-              <div class="v3-next-step"><strong>Revenue path:</strong> {lens.next}</div>
-            </article>
+              ) : (
+                <figure class="human-story-frame">
+                  <img src={story.image} alt={story.imageAlt} width="1440" height="900" loading="lazy" decoding="async" />
+                </figure>
+              )}
+              <span class="human-story-number" aria-hidden="true">{story.number}</span>
+            </div>
+
+            <div class="human-story-copy">
+              <span class="human-story-label">{story.label}</span>
+              <h3>{story.title}</h3>
+              <p class="human-story-summary">{story.summary}</p>
+              <div class="human-story-role"><strong>My role:</strong> {story.role}</div>
+              <ul>{story.process.map((step) => <li>{step}</li>)}</ul>
+              <div class="human-story-result"><strong>Result:</strong> {story.result}</div>
+              <a class="human-story-link" href={story.href} target={story.href.startsWith("http") ? "_blank" : undefined} rel={story.href.startsWith("http") ? "noopener noreferrer" : undefined}>{story.linkLabel} →</a>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="human-section" id="artifacts" aria-labelledby="artifacts-title">
+      <div class="human-section-head">
+        <div>
+          <span class="human-section-index">03 · Public artifacts</span>
+          <h2 id="artifacts-title">Work you can inspect, reuse or challenge.</h2>
+        </div>
+        <p>A small selection from more than 70 public visualizations. The full record also includes Wikimedia contributions, datasets, open-source repositories and published research communication.</p>
+      </div>
+
+      <div class="human-artifact-shell">
+        <div class="human-artifact-controls" aria-label="Visualization gallery controls">
+          <button class="human-artifact-control" type="button" data-artifact-prev aria-label="Previous visualization">←</button>
+          <button class="human-artifact-control" type="button" data-artifact-next aria-label="Next visualization">→</button>
+        </div>
+        <div class="human-artifact-track" data-artifact-track tabindex="0">
+          {D.visualizations.map((item) => (
+            <figure class="human-artifact">
+              <img src={item.src} alt={item.title} width="1000" height="650" loading="lazy" decoding="async" />
+              <figcaption>
+                <strong>{item.title}</strong>
+                <p>{item.caption}</p>
+                <a href={item.fileUrl} target="_blank" rel="noopener noreferrer">Open the public source ↗</a>
+              </figcaption>
+            </figure>
           ))}
         </div>
       </div>
     </section>
 
-    <section class="v3-section" id="work" data-testid="career-evidence">
-      <div class="v3-section-head v3-reveal">
+    <section class="human-section" id="experience" aria-labelledby="experience-title">
+      <div class="human-section-head">
         <div>
-          <div class="v3-kicker">Selected work samples</div>
-          <h2>Evidence is stronger when the process is visible.</h2>
+          <span class="human-section-index">04 · Experience</span>
+          <h2 id="experience-title">A public record built over time.</h2>
         </div>
-        <p>These are not decorative project cards. Each record exposes a different part of the working method: adversarial testing, rapid evidence monitoring, sensitive remote facilitation, provenance investigation and structured research verification.</p>
+        <p>The chronology is intentionally mixed: paid work, independent public projects and volunteer research are labelled honestly rather than made to look equivalent.</p>
       </div>
 
-      <div class="v3-case-grid">
-        {V.cases.map((item, index) => (
-          <article class={`v3-case-card v3-case-${item.id} v3-reveal`} style={`--reveal-delay:${index * 70}ms`}>
-            <div class="v3-case-top">
-              <span>{item.eyebrow}</span>
-              <span>{String(index + 1).padStart(2, "0")}</span>
-            </div>
-            <h3>{item.title}</h3>
-            <p>{item.summary}</p>
-            <div class="v3-methods">
-              {item.methods.map((method) => <span>{method}</span>)}
-            </div>
-            <div class="v3-case-bottom">
-              <strong>{item.metric}</strong>
-              <a href={item.href} target={item.href.startsWith("http") ? "_blank" : undefined} rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}>{item.linkLabel} ↗</a>
-            </div>
-          </article>
-        ))}
-      </div>
-      <div class="v3-section-action v3-reveal">
-        <a class="v3-button" href="/integrity.html">Open knowledge-integrity & investigations record →</a>
-      </div>
-    </section>
-
-    <section class="v3-section v3-timeline-section" id="experience">
-      <div class="v3-section-head v3-reveal">
-        <div>
-          <div class="v3-kicker">Experience map</div>
-          <h2>A progression, not a collection of unrelated experiments.</h2>
-        </div>
-        <p>Public knowledge work developed into paid scientific verification, community-facing research, open research infrastructure and finally structured AI testing. Each stage adds a reusable operating skill.</p>
-      </div>
-      <div class="v3-timeline">
-        {V.timeline.map((item, index) => (
-          <article class="v3-timeline-item v3-reveal" style={`--reveal-delay:${index * 55}ms`}>
-            <div class="v3-timeline-marker"><span>{String(index + 1).padStart(2, "0")}</span></div>
-            <div class="v3-timeline-copy">
-              <time>{item.year}</time>
-              <h3>{item.title}</h3>
-              <p>{item.body}</p>
-            </div>
-          </article>
-        ))}
-      </div>
-    </section>
-
-    <section class="v3-section" id="projects" data-testid="homepage-projects">
-      <div class="v3-section-head v3-reveal">
-        <div>
-          <div class="v3-kicker">Project library</div>
-          <h2>The broader record remains available.</h2>
-        </div>
-        <p>The previous redesign removed too much. This library restores the technical, scientific, editorial and creative work while keeping the first screen focused.</p>
-      </div>
-
-      <div class="v3-project-filters v3-reveal" role="group" aria-label="Filter project library">
-        <button type="button" class="is-active" data-project-filter="all" aria-pressed="true">All work</button>
-        <button type="button" data-project-filter="ai" aria-pressed="false">AI systems</button>
-        <button type="button" data-project-filter="editorial" aria-pressed="false">Editorial</button>
-        <button type="button" data-project-filter="data" aria-pressed="false">Open science</button>
-        <button type="button" data-project-filter="integrity" aria-pressed="false">Integrity tools</button>
-        <button type="button" data-project-filter="operations" aria-pressed="false">Technical operations</button>
-      </div>
-
-      <div class="v3-project-grid">
-        {D.projects.map((project, index) => {
-          const meta = projectMeta[project.id] || { category: "creative", label: "Independent work", accent: "cyan" };
-          const href = projectHref(project);
-          return (
-            <article class={`v3-project-card ${meta.accent} v3-reveal`} data-project-category={meta.category} style={`--reveal-delay:${(index % 3) * 60}ms`}>
-              <div class="v3-project-header">
-                <span>{meta.label}</span>
-                <span>{String(index + 1).padStart(2, "0")}</span>
-              </div>
-              <h3>{project.title}</h3>
-              <p>{project.oneLiner}</p>
-              {project.tech && <div class="v3-project-tech">{project.tech.slice(0, 4).map((tech) => <span>{tech}</span>)}</div>}
-              <a href={href} target={href.startsWith("http") ? "_blank" : undefined} rel={href.startsWith("http") ? "noopener noreferrer" : undefined}>{projectLinkLabel(project)} ↗</a>
+      <div class="human-experience-grid">
+        {selectedExperience.map((item) => (
+          <>
+            <div class="human-experience-year">{item.period}</div>
+            <article class="human-experience-copy">
+              <h3>{item.role}</h3>
+              <p><strong>{item.org}</strong> · {item.tag}. {item.resumeBullets?.[0] || item.bullets?.[0]}</p>
             </article>
-          );
-        })}
+          </>
+        ))}
       </div>
     </section>
 
-    <section class="v3-section" id="documents" data-testid="career-documents">
-      <div class="v3-section-head v3-reveal">
+    <section class="human-section" id="fit" aria-labelledby="fit-title" data-testid="human-documents">
+      <div class="human-section-head">
         <div>
-          <div class="v3-kicker">Application document studio</div>
-          <h2>The portfolio is broad. The application is precise.</h2>
+          <span class="human-section-index">05 · Where I fit</span>
+          <h2 id="fit-title">One evidence base. Different application documents.</h2>
         </div>
-        <p>Choose the document that matches the vacancy. Each specialized CV is designed as a two-page application document; the master record preserves the complete history.</p>
+        <p>The public portfolio stays broad because the work is broad. Applications should not. Each two-page CV selects and orders the same verified facts for a specific role family.</p>
       </div>
 
-      <div class="v3-document-grid">
-        {V.documents.map((document, index) => (
-          <article class={`v3-document-card ${document.id} v3-reveal`} style={`--reveal-delay:${index * 55}ms`}>
-            <span>{document.label}</span>
-            <h3>{document.title}</h3>
-            <p>{document.body}</p>
-            <a href={document.href}>Open document →</a>
+      <div class="human-fit-grid">
+        {H.roleFamilies.map((role) => (
+          <article class="human-fit-card">
+            <h3>{role.title}</h3>
+            <p>{role.text}</p>
+            <a href={role.href}>{role.label} →</a>
           </article>
         ))}
       </div>
-      <p class="v3-private-note v3-reveal"><strong>Private contact data:</strong> local PDF generation can insert a personal phone number through <code>CV_PHONE</code>; it is never committed to the repository or exposed in public HTML.</p>
+      <div class="human-actions">
+        <a class="human-button" href="/cv.html">Open the master CV and evidence record</a>
+        <a class="human-button" href="/integrity.html">Open knowledge-integrity work samples</a>
+        <a class="human-button" href="/security.html">Open model-behavior record</a>
+      </div>
     </section>
 
-    <section class="v3-contact v3-reveal" id="contact">
+    <section class="human-contact" id="contact" aria-labelledby="contact-title">
       <div>
-        <div class="v3-kicker">Contact</div>
-        <h2>Ambitious destination.<br />Evidence-first route.</h2>
-        <p>Open to international roles across AI safety, research operations, editorial systems, trust & integrity, open science and data quality—and to building the missing proof required for higher-level technical roles.</p>
+        <span class="human-section-index">06 · Contact</span>
+        <h2 id="contact-title">Let’s talk about difficult evidence.</h2>
       </div>
-      <div class="v3-contact-links">
-        <a href={`mailto:${D.identity.email}`}><span>Email</span><strong>{D.identity.email}</strong><span aria-hidden="true">↗</span></a>
-        <a href={D.identity.linkedin} target="_blank" rel="noopener noreferrer"><span>LinkedIn</span><strong>Professional profile</strong><span aria-hidden="true">↗</span></a>
-        <a href={D.identity.github} target="_blank" rel="noopener noreferrer"><span>GitHub</span><strong>Public repositories</strong><span aria-hidden="true">↗</span></a>
-        <a href={D.identity.orcidUrl} target="_blank" rel="noopener noreferrer"><span>ORCID</span><strong>Research identity</strong><span aria-hidden="true">↗</span></a>
+      <div class="human-contact-copy">
+        <p>I am based in Italy, authorized to work across the EU/EEA and open to relocation, international contracting and roles where careful investigation or research operations create real value.</p>
+        <div class="human-contact-links">
+          <a class="human-button human-button-primary" href={`mailto:${D.identity.email}`}>Email Mario</a>
+          <a class="human-button" href={D.identity.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          <a class="human-button" href={D.identity.github} target="_blank" rel="noopener noreferrer">GitHub</a>
+          <a class="human-button" href={D.identity.orcidUrl} target="_blank" rel="noopener noreferrer">ORCID</a>
+        </div>
       </div>
     </section>
   </main>
@@ -334,83 +247,37 @@ function projectLinkLabel(project) {
   <SiteFooter version={D.identity.buildVersion} />
 
   <script is:inline>
-    (function initPortfolioV3() {
+    (function humanPortfolioInteractions() {
+      var track = document.querySelector("[data-artifact-track]");
+      var prev = document.querySelector("[data-artifact-prev]");
+      var next = document.querySelector("[data-artifact-next]");
+      var step = function() { return track ? Math.max(320, track.clientWidth * 0.62) : 420; };
+      if (track && prev && next) {
+        prev.addEventListener("click", function() { track.scrollBy({ left: -step(), behavior: "smooth" }); });
+        next.addEventListener("click", function() { track.scrollBy({ left: step(), behavior: "smooth" }); });
+      }
+
       var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      var collage = document.querySelector(".human-collage");
+      if (!collage || reduceMotion || !window.matchMedia("(pointer: fine)").matches) return;
 
-      var lensTabs = Array.from(document.querySelectorAll("[data-lens]"));
-      var lensPanels = Array.from(document.querySelectorAll("[data-panel]"));
-      function activateLens(id, focus) {
-        lensTabs.forEach(function(tab) {
-          var active = tab.dataset.lens === id;
-          tab.classList.toggle("is-active", active);
-          tab.setAttribute("aria-selected", active ? "true" : "false");
-          if (active && focus) tab.focus();
-        });
-        lensPanels.forEach(function(panel) {
-          panel.classList.toggle("is-active", panel.dataset.panel === id);
-        });
-      }
-      lensTabs.forEach(function(tab, index) {
-        tab.addEventListener("click", function() { activateLens(tab.dataset.lens, false); });
-        tab.addEventListener("keydown", function(event) {
-          if (!["ArrowDown", "ArrowUp", "ArrowRight", "ArrowLeft", "Home", "End"].includes(event.key)) return;
-          event.preventDefault();
-          var next = index;
-          if (event.key === "Home") next = 0;
-          else if (event.key === "End") next = lensTabs.length - 1;
-          else if (event.key === "ArrowDown" || event.key === "ArrowRight") next = (index + 1) % lensTabs.length;
-          else next = (index - 1 + lensTabs.length) % lensTabs.length;
-          activateLens(lensTabs[next].dataset.lens, true);
-        });
-      });
-
-      var filterButtons = Array.from(document.querySelectorAll("[data-project-filter]"));
-      var projectCards = Array.from(document.querySelectorAll("[data-project-category]"));
-      filterButtons.forEach(function(button) {
-        button.addEventListener("click", function() {
-          var filter = button.dataset.projectFilter;
-          filterButtons.forEach(function(other) {
-            var active = other === button;
-            other.classList.toggle("is-active", active);
-            other.setAttribute("aria-pressed", active ? "true" : "false");
-          });
-          projectCards.forEach(function(card) {
-            var visible = filter === "all" || card.dataset.projectCategory === filter;
-            card.classList.toggle("is-filtered-out", !visible);
+      var items = Array.from(collage.querySelectorAll("[data-parallax]"));
+      var frame = null;
+      collage.addEventListener("pointermove", function(event) {
+        var rect = collage.getBoundingClientRect();
+        var x = ((event.clientX - rect.left) / rect.width - 0.5) * 2;
+        var y = ((event.clientY - rect.top) / rect.height - 0.5) * 2;
+        if (frame) cancelAnimationFrame(frame);
+        frame = requestAnimationFrame(function() {
+          items.forEach(function(item) {
+            var amount = Number(item.getAttribute("data-parallax")) || 0;
+            item.style.translate = (x * amount) + "px " + (y * amount) + "px";
           });
         });
       });
-
-      var reveals = Array.from(document.querySelectorAll(".v3-reveal"));
-      if (reduceMotion || !("IntersectionObserver" in window)) {
-        reveals.forEach(function(element) { element.classList.add("is-visible"); });
-      } else {
-        var observer = new IntersectionObserver(function(entries) {
-          entries.forEach(function(entry) {
-            if (!entry.isIntersecting) return;
-            entry.target.classList.add("is-visible");
-            observer.unobserve(entry.target);
-          });
-        }, { threshold: 0.12, rootMargin: "0px 0px -6% 0px" });
-        reveals.forEach(function(element) { observer.observe(element); });
-      }
-
-      if (!reduceMotion) {
-        var visual = document.querySelector(".v3-hero-visual");
-        if (visual) {
-          visual.addEventListener("pointermove", function(event) {
-            var rect = visual.getBoundingClientRect();
-            var x = ((event.clientX - rect.left) / rect.width - 0.5) * 10;
-            var y = ((event.clientY - rect.top) / rect.height - 0.5) * 10;
-            visual.style.setProperty("--pointer-x", x + "px");
-            visual.style.setProperty("--pointer-y", y + "px");
-          });
-          visual.addEventListener("pointerleave", function() {
-            visual.style.setProperty("--pointer-x", "0px");
-            visual.style.setProperty("--pointer-y", "0px");
-          });
-        }
-      }
+      collage.addEventListener("pointerleave", function() {
+        items.forEach(function(item) { item.style.translate = "0 0"; });
+      });
     })();
   </script>
 </Layout>
