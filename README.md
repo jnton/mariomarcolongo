@@ -41,6 +41,12 @@ CV_PHONE="+39 ..." npm run pdf
 
 The PDF generator injects the value at render time into all four specialized CVs and the master CV. The value is not written into tracked source files or public HTML.
 
+## Sensitive research collaboration evidence
+
+The focus-group collaboration is described publicly in a privacy-safe, institution-neutral form until explicit permission is obtained from the supervising professor. The portfolio may describe Mario's own activities, working methods and learning outcomes, but it must not imply institutional endorsement, identify another volunteer through a personal relationship, or disclose participant information.
+
+Unattributed theses can support that the research project and two-autistic-facilitator model existed, but they do not by themselves verify Mario's identity or role. A named institutional version, public link, recommendation or reference should be added only after the professor confirms the dates, responsibilities, permitted attribution and reference status.
+
 ## Evidence architecture
 
 - `data/source.js` — canonical factual dossier.
