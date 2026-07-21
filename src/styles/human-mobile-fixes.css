@@ -1,4 +1,14 @@
-/* Explicit inline-size containment for the human-centered portfolio. */
+/* Explicit inline-size containment and final cascade fixes for the human-centered portfolio. */
+
+.human-portfolio .human-page a.human-button-primary,
+.human-portfolio .human-page a.human-button-primary:visited {
+  color: var(--human-paper);
+}
+
+.human-portfolio .human-page a.human-button-primary:hover,
+.human-portfolio .human-page a.human-button-primary:focus-visible {
+  color: var(--human-paper);
+}
 
 .human-portfolio .human-page,
 .human-portfolio .human-section,
