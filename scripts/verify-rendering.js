@@ -9,21 +9,10 @@ const ROOT = path.resolve(__dirname, '..');
 const DIST = path.join(ROOT, 'dist');
 const OUTPUT = path.join(ROOT, 'audit-output');
 const ROUTES = [
-  'index.html',
-  'integrity.html',
-  'cv.html',
-  'cv-resume.html',
-  'cv-research.html',
-  'cv-editorial.html',
-  'cv-integrity.html',
-  'security.html'
+  'index.html', 'integrity.html', 'cv.html', 'cv-resume.html',
+  'cv-research.html', 'cv-editorial.html', 'cv-integrity.html', 'security.html'
 ];
-const APPLICATION_ROUTES = new Set([
-  'cv-resume.html',
-  'cv-research.html',
-  'cv-editorial.html',
-  'cv-integrity.html'
-]);
+const APPLICATION_ROUTES = new Set(['cv-resume.html', 'cv-research.html', 'cv-editorial.html', 'cv-integrity.html']);
 const VIEWPORTS = [
   { name: 'desktop', width: 1440, height: 1000 },
   { name: 'tablet', width: 768, height: 1024 },
@@ -49,61 +38,40 @@ async function assertPage(page, route, theme, viewport) {
   if (!result.title.trim() || !result.bodyText.trim()) throw new Error(`${route} rendered empty title or body`);
 }
 
-async function verifyHomepageInteractions(page) {
-  const interactionResult = await page.evaluate(() => {
-    const track = document.querySelector('[data-gallery-track]');
-    const next = document.querySelector('[data-gallery-next]');
-    const before = track ? track.scrollLeft : null;
-    if (next) next.click();
-    return new Promise((resolve) => setTimeout(() => resolve({
-      proofCount: document.querySelectorAll('.pv4-proof-card').length,
-      storyCount: document.querySelectorAll('.pv4-story').length,
-      productCount: document.querySelectorAll('.pv4-product').length,
-      platformCount: document.querySelectorAll('.pv4-platform').length,
-      styleCount: document.querySelectorAll('.pv4-style-card').length,
-      galleryCount: document.querySelectorAll('.pv4-gallery-item').length,
-      roleCount: document.querySelectorAll('.pv4-fit-card').length,
-      stageThumbCount: document.querySelectorAll('.pv4-stage-thumb').length,
-      hasStageMain: Boolean(document.querySelector('.pv4-stage-main')),
-      hasAudienceVisual: Boolean(document.querySelector('.pv4-audience')),
-      hasEditorialNav: Boolean(document.querySelector('.nav-editorial .nav-shell')),
-      before,
-      after: track ? track.scrollLeft : null
-    }), 500));
-  });
+async function verifyHomepage(page) {
+  const result = await page.evaluate(() => ({
+    proofCount: document.querySelectorAll('.p5-proof').length,
+    heroWorkCount: document.querySelectorAll('.p5-work-tile').length,
+    flagshipCount: document.querySelectorAll('.p5-flagship').length,
+    humanSection: Boolean(document.querySelector('.p5-human')),
+    productCount: document.querySelectorAll('.p5-product').length,
+    visualCount: document.querySelectorAll('.p5-visual').length,
+    principleCount: document.querySelectorAll('.p5-principle').length,
+    documentCount: document.querySelectorAll('.p5-document').length,
+    navLinks: Array.from(document.querySelectorAll('.nav-editorial .nav-actions a')).map((item) => item.textContent.trim()),
+    firstSectionTop: document.querySelector('#selected-work')?.getBoundingClientRect().top,
+    heroHeight: document.querySelector('.p5-hero')?.getBoundingClientRect().height,
+    documentHeight: document.documentElement.scrollHeight
+  }));
 
-  if (interactionResult.proofCount !== H.proofMetrics.length) {
-    throw new Error(`Homepage must render ${H.proofMetrics.length} proof metrics`);
+  if (result.proofCount !== H.proofs.length) throw new Error(`Homepage must render ${H.proofs.length} proof items`);
+  if (result.heroWorkCount !== H.heroWork.length) throw new Error(`Homepage must render ${H.heroWork.length} hero-work tiles`);
+  if (result.flagshipCount !== H.flagships.length) throw new Error(`Homepage must render ${H.flagships.length} flagship cases`);
+  if (!result.humanSection) throw new Error('Homepage is missing the named human-research section');
+  if (result.productCount !== H.products.length) throw new Error(`Homepage must render ${H.products.length} product cards`);
+  if (result.visualCount !== H.visualization.length) throw new Error(`Homepage must render ${H.visualization.length} visualization cards`);
+  if (result.principleCount !== H.workingPrinciples.length) throw new Error(`Homepage must render ${H.workingPrinciples.length} principles`);
+  if (result.documentCount !== H.applicationDocuments.length) throw new Error(`Homepage must render ${H.applicationDocuments.length} application documents`);
+  for (const expected of ['Work', 'Experience', 'CV', 'Contact']) {
+    if (!result.navLinks.includes(expected)) throw new Error(`Homepage navigation is missing ${expected}`);
   }
-  if (interactionResult.storyCount !== H.stories.length) {
-    throw new Error(`Homepage must render ${H.stories.length} outcome stories`);
-  }
-  if (interactionResult.productCount !== H.products.length) {
-    throw new Error(`Homepage must render ${H.products.length} shipped products`);
-  }
-  if (interactionResult.platformCount !== H.visualizationPlatforms.length) {
-    throw new Error(`Homepage must render ${H.visualizationPlatforms.length} visualization platforms`);
-  }
-  if (interactionResult.styleCount !== H.operatingStyle.length) {
-    throw new Error(`Homepage must render ${H.operatingStyle.length} operating-style signals`);
-  }
-  if (interactionResult.galleryCount < 5) throw new Error('Homepage must render the open visualization gallery');
-  if (interactionResult.roleCount !== H.roleFamilies.length) {
-    throw new Error(`Homepage must render ${H.roleFamilies.length} role-family documents`);
-  }
-  if (interactionResult.stageThumbCount !== H.heroProjects.length - 1 || !interactionResult.hasStageMain) {
-    throw new Error('Homepage selected-work stage is incomplete');
-  }
-  if (!interactionResult.hasAudienceVisual || !interactionResult.hasEditorialNav) {
-    throw new Error('Homepage is missing the audience-scale visual or editorial navigation');
-  }
-  if (interactionResult.before !== null && interactionResult.after !== null && interactionResult.after <= interactionResult.before) {
-    throw new Error('Homepage visualization control did not move the gallery');
-  }
+  if (!result.heroHeight || result.heroHeight > 900) throw new Error(`Desktop hero is too tall: ${result.heroHeight}`);
+  if (!result.documentHeight || result.documentHeight > 10500) throw new Error(`Homepage is excessively long: ${result.documentHeight}px`);
 }
 
 async function main() {
   if (!fs.existsSync(DIST)) throw new Error('dist directory is missing. Run npm run build first.');
+  fs.rmSync(OUTPUT, { recursive: true, force: true });
   fs.mkdirSync(OUTPUT, { recursive: true });
   const staticServer = await startStaticServer(DIST);
   const browser = await launchBrowser();
@@ -115,9 +83,7 @@ async function main() {
           const page = await browser.newPage();
           const consoleErrors = [];
           const pageErrors = [];
-          page.on('console', (message) => {
-            if (message.type() === 'error') consoleErrors.push(message.text());
-          });
+          page.on('console', (message) => { if (message.type() === 'error') consoleErrors.push(message.text()); });
           page.on('pageerror', (error) => pageErrors.push(error.message));
           await page.setViewport({ width: viewport.width, height: viewport.height, deviceScaleFactor: 1 });
           await page.evaluateOnNewDocument((selectedTheme) => {
@@ -128,10 +94,7 @@ async function main() {
 
           const themeState = await page.evaluate(() => {
             const button = document.getElementById('themeBtn');
-            return button ? {
-              pressed: button.getAttribute('aria-pressed'),
-              label: button.getAttribute('aria-label')
-            } : null;
+            return button ? { pressed: button.getAttribute('aria-pressed'), label: button.getAttribute('aria-label') } : null;
           });
           if (!themeState) throw new Error(`${route} is missing theme control`);
           const expectedPressed = theme === 'dark' ? 'true' : 'false';
@@ -141,24 +104,20 @@ async function main() {
           }
 
           if (APPLICATION_ROUTES.has(route)) {
-            const pageModel = await page.evaluate(() => ({
+            const model = await page.evaluate(() => ({
               applicationPages: document.querySelectorAll('.application-page').length,
               internalPageLabels: document.querySelectorAll('.application-footer-note').length,
               phoneSlot: Boolean(document.getElementById('cvPhoneSlot'))
             }));
-            if (pageModel.applicationPages !== 2 || pageModel.internalPageLabels !== 2) {
-              throw new Error(`${route} must render exactly two visible application pages`);
-            }
-            if (!pageModel.phoneSlot) throw new Error(`${route} is missing the private phone injection slot`);
+            if (model.applicationPages !== 2 || model.internalPageLabels !== 2) throw new Error(`${route} must render exactly two visible application pages`);
+            if (!model.phoneSlot) throw new Error(`${route} is missing the private phone injection slot`);
           }
 
-          if (route === 'index.html' && viewport.name === 'desktop' && theme === 'light') {
-            await verifyHomepageInteractions(page);
-          }
+          if (route === 'index.html' && viewport.name === 'desktop' && theme === 'light') await verifyHomepage(page);
 
           if (pageErrors.length) throw new Error(`${route} page errors: ${pageErrors.join(' | ')}`);
-          const relevantConsoleErrors = consoleErrors.filter((message) => !/favicon|google.*font|net::ERR_|Failed to load resource/i.test(message));
-          if (relevantConsoleErrors.length) throw new Error(`${route} console errors: ${relevantConsoleErrors.join(' | ')}`);
+          const relevant = consoleErrors.filter((message) => !/favicon|google.*font|net::ERR_|Failed to load resource/i.test(message));
+          if (relevant.length) throw new Error(`${route} console errors: ${relevant.join(' | ')}`);
           await page.screenshot({ path: path.join(OUTPUT, `${slug(route)}-${theme}-${viewport.name}.png`), fullPage: true });
           await page.close();
         }
@@ -171,12 +130,12 @@ async function main() {
     await noJs.goto(`${staticServer.origin}/index.html`, { waitUntil: 'load', timeout: 45000 });
     const expectedNoJsText = [
       H.headline,
-      ...H.proofMetrics.map((item) => item.label),
-      ...H.stories.map((story) => story.title),
-      ...H.products.map((product) => product.title),
-      ...H.visualizationPlatforms.map((platform) => platform.title),
-      ...H.operatingStyle.map((item) => item.title),
-      ...H.roleFamilies.map((role) => role.title)
+      ...H.proofs.map((item) => item.label),
+      ...H.flagships.map((item) => item.title),
+      H.humanResearch.title,
+      ...H.products.map((item) => item.title),
+      ...H.visualization.map((item) => item.title),
+      ...H.applicationDocuments.map((item) => item.title)
     ];
     const noJsResult = await noJs.evaluate((expected) => {
       const text = document.body.innerText;
