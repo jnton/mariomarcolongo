@@ -63,6 +63,14 @@ jobs:
                   raise SystemExit(f'Missing profile replacement: {old[:100]}')
               profiles = profiles.replace(old, new, 1)
           profiles_path.write_text(profiles)
+
+          check_path = Path('scripts/check-stale-strings.js')
+          check = check_path.read_text()
+          old = "'Evidence that maps to the next role.', 'Co-facilitating autism-and-sexuality focus groups',\n  'Public tools with a clear job to do.'"
+          new = "'Evidence that maps to the next role.',\n  'Public tools with a clear job to do.'"
+          if old not in check:
+              raise SystemExit('Missing data-driven headline check replacement')
+          check_path.write_text(check.replace(old, new, 1))
           PY
       - run: npm ci --no-audit --no-fund
       - name: Build and verify generated output
@@ -75,7 +83,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/source.js data/application-profiles.js \
+          git add data/source.js data/application-profiles.js scripts/check-stale-strings.js \
             index.html integrity.html security.html cv.html cv-resume.html cv-research.html cv-editorial.html cv-integrity.html \
             llms.txt llms-full.txt cv-llm.txt public/llms.txt public/llms-full.txt public/cv-llm.txt public/data/source.js
           if git diff --cached --quiet; then exit 0; fi
