@@ -1,0 +1,120 @@
+July 2026</div>
+-        </div>
+-        <div class="security-metric-card">
+-          <div class="security-metric-value">75</div>
++        <article class="security-metric-card">
++          <div class="security-metric-value">{D.redTeamActivity.rankBand || "Top 8%"}</div>
++          <div class="security-metric-label">Rank Band Among Listed Participants</div>
++          <div class="security-metric-detail">As of {asOf}</div>
++        </article>
++        <article class="security-metric-card">
++          <div class="security-metric-value">{D.redTeamActivity.confirmedBreaks}</div>
+           <div class="security-metric-label">Platform-Confirmed Model Breaks</div>
+-          <div class="security-metric-detail">75 platform-confirmed model breaks across 26 testing waves (as of July 2026)</div>
+-        </div>
+-        <div class="security-metric-card">
+-          <div class="security-metric-value">156</div>
+-          <div class="security-metric-label">Total Platform Submissions</div>
+-          <div class="security-metric-detail">Structured boundary evaluations across 26 longitudinal testing waves</div>
+-        </div>
++          <div class="security-metric-detail">As of {asOf}</div>
++        </article>
++        <article class="security-metric-card">
++          <div class="security-metric-value">{D.redTeamActivity.submissions}</div>
++          <div class="security-metric-label">Platform Submissions</div>
++          <div class="security-metric-detail">As of {asOf}</div>
++        </article>
+       </div>
+     </section>
+ 
+-    <!-- LONGITUDINAL WAVE DISTRIBUTION -->
+-    <section class="security-section" id="longitudinal-waves">
+-      <h2 class="security-section-title">Historical Wave Performance & Longitudinal Distribution</h2>
++    <section class="security-section" id="waves">
++      <h2 class="security-section-title">Activity Across Listed Testing Waves</h2>
+       <p class="security-section-desc">
+-        Sustained boundary evaluation across 26 testing waves (156 total submissions, 75 confirmed breaks). Historical evaluation peaks include Wave 1 (14 breaks), Waves 2 & 3 (10 breaks each), and Wave 15 (8 breaks), tracking boundary resilience across major model architecture updates.
++        The public profile lists 156 submissions and 75 platform-confirmed breaks across 26 testing waves. The distribution below reports platform counts only; it does not identify model versions, architecture changes, causal performance trends, or changes in model resilience.
+       </p>
+-
+-      <div class="security-table-wrapper" style="margin-top: 24px; overflow-x: auto;">
+-        <table class="security-table" style="width: 100%; border-collapse: collapse; font-size: 14px; text-align: left;">
++      <div class="security-table-wrap" role="region" aria-label="Gray Swan testing wave activity" tabindex="0">
++        <table class="security-table">
++          <caption>Platform-confirmed break counts for every listed Gray Swan Proving Ground wave as of July 2026.</caption>
+           <thead>
+-            <tr style="border-bottom: 2px solid var(--line-strong);">
+-              <th style="padding: 12px 16px; font-family: var(--font-mono); font-size: 12px; color: var(--ink-soft); text-transform: uppercase; letter-spacing: 0.05em;">Testing Wave</th>
+-              <th style="padding: 12px 16px; font-family: var(--font-mono); font-size: 12px; color: var(--ink-soft); text-transform: uppercase; letter-spacing: 0.05em;">Confirmed Breaks</th>
+-              <th style="padding: 12px 16px; font-family: var(--font-mono); font-size: 12px; color: var(--ink-soft); text-transform: uppercase; letter-spacing: 0.05em;">Verification Status</th>
++            <tr>
++              <th scope="col">Wave</th>
++              <th scope="col">Platform-Confirmed Breaks</th>
+             </tr>
+           </thead>
+           <tbody>
+-            {D.redTeamActivity.waves.filter(w => w.breaks > 0).map(w => (
+-              <tr style="border-bottom: 1px solid var(--line); transition: background 0.2s ease;">
+-                <td style="padding: 12px 16px; font-family: var(--font-mono); font-weight: 600; color: var(--ink);">Wave {w.wave}</td>
+-                <td style="padding: 12px 16px; font-family: var(--font-display); font-weight: 700; color: var(--accent); font-size: 15px;">{w.breaks} {w.breaks === 1 ? 'Break' : 'Breaks'}</td>
+-                <td style="padding: 12px 16px; color: var(--ink-soft); font-size: 13.5px;">Platform-Confirmed · Gray Swan Arena</td>
++            {D.redTeamActivity.waves.map((wave) => (
++              <tr>
++                <th scope="row">Wave {wave.wave}</th>
++                <td>{wave.breaks}</td>
+               </tr>
+             ))}
+           </tbody>
+@@ -114,140 +144,68 @@ import D from "../../data/source.js";
+       </div>
+     </section>
+ 
+-    <!-- EVALUATION VECTORS & TESTING METHODOLOGY -->
+-    <section class="security-section" id="methodology">
+-      <h2 class="security-section-title">Evaluation Vectors & Testing Methodology</h2>
++    <section class="security-section" id="approach">
++      <h2 class="security-section-title">Testing Approach</h2>
+       <p class="security-section-desc">
+-        Systematic evaluation probes alignment boundaries without relying on fabricated authority, brute-force obfuscation, or automated jailbreak templates. Testing methodology targets structural instruction adherence across four key modalities:
++        The work uses structured, self-directed probing of instruction handling and policy boundaries. The public record supports broad testing categories, but it does not expose enough information to reconstruct every prompt, model output, platform adjudication or model version.
+       </p>
+-
+       <div class="security-card-grid">
+-        <div class="security-card">
+-          <div class="security-card-tag">Modality Vector 01</div>
+-          <h3 class="security-card-title">Chat & Single-Turn/Multi-Turn Dialogue Mechanics</h3>
+-          <div class="security-card-body">
+-            <p>
+-              Probing single-turn and multi-turn dialogue mechanics to test the resilience of model refusal behavior, instruction hierarchy, and contextual constraint enforcement when exposed to conflicting or nested directives.
+-            </p>
+-          </div>
+-        </div>
+-        <div class="security-card">
+-          <div class="security-card-tag">Modality Vector 02</div>
+-          <h3 class="security-card-title">Multimodal & Vision-Language Boundary Testing</h3>
+-          <div class="security-card-body">
+-            <p>
+-              Evaluating cross-modality safety boundaries where visual inputs (images, diagrams, typography embedded within imagery) interact with textual system instructions to test for modality override vulnerabilities and visual prompt injection.
+-            </p>
+-          </div>
+-        </div>
+-        <div class="security-card">
+-          <div class="security-card-tag">Modality Vector 03</div>
+-          <h3 class="security-card-title">Agentic Tool-Use & Orchestration Boundaries</h3>
+-          <div class="security-card-body">
+-            <p>
+-              Auditing autonomous multi-step execution chains where LLMs invoke external tools (search, code execution, APIs). Testing privilege boundaries, parameter injection resilience, and resistance to unauthorized action sequencing.
+-            </p>
+-          </div>
+-        </div>
+-        <div class="security-card">
+-          <div class="security-card-tag">Modality Vector 04</div>
+-          <h3 class="security-card-title">Indirect Prompt Injection & Context Hijacking</h3>
+-          <div class="security-card-body">
+-            <p>
+-              Assessing vulnerability when models process untrusted external context (retrieved documents, web pages, user-submitted files) where adversarial instructions attempt to hijack the primary objective or manipulate tool outputs.
+-            </p>
+-          </div>
+-        </div>
++        {testingAreas.map((area, index) => (
++  
