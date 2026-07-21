@@ -11,22 +11,33 @@ jobs:
   apply:
     if: ${{ hashFiles('.github/repair-ready') != '' }}
     runs-on: ubuntu-latest
+    timeout-minutes: 20
     steps:
-      - uses: actions/checkout@v4
+      - name: Check out repair branch
+        uses: actions/checkout@v4
         with:
           ref: final-audit-repair
           fetch-depth: 0
 
-      - name: Reconstruct and validate patch
+      - name: Reconstruct, verify, and apply source patch
         run: |
-          cat .github/repair-parts/part-* > /tmp/final-repair.patch
-          echo '60bfa29c88ff73b6ebaf346ec4afe0925d5080760cd495b69c07c95ce6c4f4f5  /tmp/final-repair.patch' | sha256sum -c -
-          git apply --check /tmp/final-repair.patch
+          cat .github/repair-parts/part-* > /tmp/source-repair.patch
+          echo '27a76f20e2f1e4acb884f20e3bf545c1bf8fec534e762c58934a88a11d67e0a1  /tmp/source-repair.patch' | sha256sum -c -
+          git apply --check /tmp/source-repair.patch
+          git apply /tmp/source-repair.patch
 
-      - name: Apply repair and remove bootstrap files
+      - name: Generate lockfile and verified build outputs
         run: |
-          git apply --index /tmp/final-repair.patch
+          npm install --package-lock-only --ignore-scripts --no-audit --no-fund
+          npm ci --no-audit --no-fund
+          npm run build
+          git diff --check
+
+      - name: Stage final repository state and remove transfer machinery
+        run: |
+          git add -A
           git rm -r .github/repair-parts .github/repair-ready .github/workflows/apply-final-repair.yml
+          git diff --cached --check
 
       - name: Commit and push repair
         run: |
