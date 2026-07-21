@@ -51,7 +51,7 @@ const PORTFOLIO_HUMAN = {
       id: "telegram",
       label: "Serverless automation",
       title: "Wikipedia Link Converter",
-      image: "/media/work/telegram-bot.jpg",
+      image: "/media/work/telegram-bot-card.svg",
       imageAlt: "Public Telegram bot image for the English Wikipedia Link Converter",
       href: "https://t.me/ToEnWikipediaBot"
     },
@@ -149,7 +149,7 @@ const PORTFOLIO_HUMAN = {
       label: "AWS Lambda · Telegram · GitHub Actions",
       title: "English Wikipedia Link Converter",
       body: "A serverless Telegram bot that converts non-English Wikipedia links into their English equivalents in private chats, groups and inline mode.",
-      image: "/media/work/telegram-bot.jpg",
+      image: "/media/work/telegram-bot-card.svg",
       imageAlt: "Telegram image for the English Wikipedia Link Converter bot",
       href: "https://t.me/ToEnWikipediaBot",
       linkLabel: "Launch the bot"
