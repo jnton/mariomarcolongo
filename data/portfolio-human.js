@@ -93,8 +93,7 @@ const PORTFOLIO_HUMAN = {
         "Report limitations alongside aggregate outcomes"
       ],
       result: "75 platform-confirmed model breaks across 156 submissions and 26 listed waves as of July 2026.",
-      image: "/media/work/gray-swan-profile.png",
-      imageAlt: "Screenshot of Mario Marcolongo's public Gray Swan Proving Ground profile",
+      visual: "model-record",
       href: "/security.html",
       linkLabel: "Open the evaluation record"
     }
