@@ -1,0 +1,181 @@
+s.createReadStream(filePath).pipe(res);
+-  });
+-
+-  await new Promise(resolve => server.listen(0, '127.0.0.1', resolve));
+-  const port = server.address().port;
+-  const targetUrl = `http://127.0.0.1:${port}/cv-resume.html`;
+-  console.log(`Local static server listening at http://127.0.0.1:${port}/`);
+-
+-  const chromePaths = [
+-    '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
+-    '/Applications/Google Chrome Canary.app/Contents/MacOS/Google Chrome Canary',
+-    '/usr/bin/google-chrome',
+-    '/usr/bin/chromium'
+-  ];
+-  let executablePath = chromePaths.find(p => fs.existsSync(p));
++  const htmlPath = path.join(distDir, 'cv-resume.html');
++  if (!fs.existsSync(htmlPath)) throw new Error('dist/cv-resume.html not found. Run `npm run build` first.');
+ 
+-  console.log(`Launching headless Chromium (${executablePath || 'bundled puppeteer'})...`);
+-  const browser = await puppeteer.launch({
+-    headless: 'new',
+-    executablePath: executablePath || undefined,
+-    args: ['--no-sandbox', '--disable-setuid-sandbox', '--font-render-hinting=medium']
+-  });
++  const staticServer = await startStaticServer(distDir);
++  const browser = await launchBrowser();
+ 
+   try {
+     const page = await browser.newPage();
+-    console.log(`Navigating to ${targetUrl}...`);
+-    await page.goto(targetUrl, { waitUntil: ['load', 'networkidle0'], timeout: 30000 });
+-
+-    const localPhoneEnv = process.env.CV_PHONE || '';
+-
+-    await page.evaluate((envPhone) => {
+-      document.documentElement.dataset.theme = 'light';
+-      
++    await page.emulateMediaType('print');
++    await page.goto(`${staticServer.origin}/cv-resume.html`, { waitUntil: 'networkidle0', timeout: 45000 });
++    await page.evaluate((phone) => {
++      document.documentElement.setAttribute('data-theme', 'light');
+       const phoneSlot = document.getElementById('cvPhoneSlot');
+-      const priv = window.MARIO_PRIVATE || {};
+-      const phoneStr = envPhone || priv.phone || '';
+-      
+-      if (phoneSlot && phoneStr) {
+-        phoneSlot.innerHTML = `<span>·</span> <a href="tel:${phoneStr.replace(/\s/g, '')}" style="color:inherit; text-decoration:none;">${phoneStr}</a>`;
++      if (phoneSlot && phone) {
++        phoneSlot.innerHTML = `<span>·</span> <a href="tel:${phone.replace(/\s/g, '')}">${phone}</a>`;
+         phoneSlot.classList.add('has-phone');
+       }
+-    }, localPhoneEnv);
+-
+-    await page.addStyleTag({
+-      content: `
+-        @page {
+-          margin: 0 !important;
+-          @bottom-left { content: none !important; }
+-          @bottom-center { content: none !important; }
+-          @bottom-right { content: none !important; }
+-          @top-left { content: none !important; }
+-          @top-center { content: none !important; }
+-          @top-right { content: none !important; }
+-        }
+-      `
+-    });
+-
+-    const targetPdf = 'Mario Marcolongo — 2-Page Application Résumé.pdf';
+-    const footerTemplate = `
+-      <div style="width: calc(100% - 36mm); margin: 0 auto; font-size: 8.5px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; color: #64748b; display: flex; justify-content: space-between; align-items: center; box-sizing: border-box; -webkit-print-color-adjust: exact;">
+-        <span>Mario Marcolongo · 2-Page Application Résumé</span>
+-        <span>Page <span class="pageNumber"></span> of <span class="totalPages"></span></span>
+-      </div>
+-    `;
++    }, process.env.CV_PHONE || '');
+ 
+-    const outPath = path.resolve(process.cwd(), targetPdf);
++    const outPath = path.resolve(process.cwd(), 'Mario Marcolongo — 2-Page Application Résumé.pdf');
+     await page.pdf({
+       format: 'A4',
+       printBackground: true,
+-      margin: {
+-        top: '14mm',
+-        bottom: '22mm',
+-        left: '16mm',
+-        right: '16mm'
+-      },
++      preferCSSPageSize: false,
++      margin: { top: '14mm', bottom: '22mm', left: '16mm', right: '16mm' },
+       displayHeaderFooter: true,
+       headerTemplate: '<div></div>',
+-      footerTemplate: footerTemplate,
++      footerTemplate: `<div style="width:calc(100% - 32mm);margin:0 auto;font:8.5px Arial,sans-serif;color:#64748b;display:flex;justify-content:space-between"><span>Mario Marcolongo · 2-Page Application Résumé</span><span>Page <span class="pageNumber"></span> of <span class="totalPages"></span></span></div>`,
+       path: outPath
+     });
+-    console.log(`✓ Saved 2-Page Application Résumé PDF (${fs.statSync(outPath).size} bytes) locally to:\n  ${outPath}`);
++
++    const pdf = await PDFDocument.load(fs.readFileSync(outPath));
++    const pageCount = pdf.getPageCount();
++    console.log(`Résumé PDF page count: ${pageCount}`);
++    console.log(`Résumé PDF path: ${outPath}`);
++    if (pageCount !== 2) throw new Error(`Résumé PDF must be exactly 2 pages; generated ${pageCount}.`);
+   } finally {
+     await browser.close();
+-    server.close();
++    await staticServer.close();
+   }
+-  console.log(`✓ 2-Page Application Résumé PDF generation complete.`);
+ }
+ 
+-generateResumePdf().catch(err => {
+-  console.error('Fatal error in 2-Page Application Résumé PDF generation:', err);
++generateResumePdf().catch((error) => {
++  console.error(`Résumé PDF generation failed: ${error.stack || error.message}`);
+   process.exit(1);
+ });
+diff --git a/scripts/lib/dossier-generators.js b/scripts/lib/dossier-generators.js
+index 968abfc..9742c48 100644
+--- a/scripts/lib/dossier-generators.js
++++ b/scripts/lib/dossier-generators.js
+@@ -27,6 +27,17 @@ function formatProjectLinksText(p) {
+   return parts.join(' | ');
+ }
+ 
++
++function formatEducationText(e) {
++  const parts = [];
++  if (e.institution) parts.push(e.institution);
++  if (e.status) parts.push(e.status);
++  if (e.credentialUrl) parts.push(`Credential: ${e.credentialUrl}`);
++  const period = e.period ? ` (${e.period})` : '';
++  const details = parts.length ? ` — ${parts.join(' · ')}` : '';
++  return `- **${e.title}**${period}${details}\n`;
++}
++
+ function generateLlmsTxt(d) {
+   let out = `# ${d.identity.name} — ${d.identity.jobTitle || 'AI Evaluation & Research Verification Specialist'}\n`;
+   if (d.identity.secondaryTitle) out += `> ${d.identity.secondaryTitle}\n`;
+@@ -151,8 +162,7 @@ function generateLlmsFullTxt(d) {
+   out += `## Education & Certifications\n\n`;
+   if (d.education) {
+     d.education.forEach(e => {
+-      const periodPart = e.period ? '(' + e.period + ') ' : '';
+-      out += `- **${e.title}** ${periodPart}— ${e.detail}\n`;
++      out += formatEducationText(e);
+     });
+     out += `\n`;
+   }
+@@ -243,8 +253,7 @@ function generateCvLlmTxt(d) {
+   out += `## Education & Certifications\n\n`;
+   if (d.education) {
+     d.education.forEach(e => {
+-      const periodPart = e.period ? '(' + e.period + ') ' : '';
+-      out += `- **${e.title}** ${periodPart}— ${e.detail}\n`;
++      out += formatEducationText(e);
+     });
+   }
+   out += `\n`;
+@@ -297,6 +306,7 @@ function buildDossiers(d, rootDir) {
+ 
+ module.exports = {
+   formatProjectLinksText,
++  formatEducationText,
+   generateLlmsTxt,
+   generateLlmsFullTxt,
+   generateCvLlmTxt,
+diff --git a/src/components/SiteFooter.astro b/src/components/SiteFooter.astro
+index 1af0609..405e4b8 100644
+--- a/src/components/SiteFooter.astro
++++ b/src/components/SiteFooter.astro
+@@ -19,54 +19,52 @@ const { version = 'v2026.07.21' } = Astro.props;
+         <a href="https://www.linkedin.com/in/mario-marcolongo" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+       </div>
+     </div>
+-    <div class="footer-content" style="margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--line);">
++    <div class="footer-content footer-dossiers">
+       <div class="footer-text">
+-        <span style="font-size: 13px; color: var(--ink-faint);">Machine-actionable dossiers available for verification evaluation and automated processing:</span>
++        <span>Machine-actionable dossiers for verification and automated processing:</span>
+       </div>
+-      <div 
