@@ -7,8 +7,8 @@ import D from "../../data/source.js";
 import H from "../../data/portfolio-human.js";
 import { buildProfileGraph } from "../lib/structured-data.js";
 
-const pageTitle = "Mario Marcolongo — AI Safety, Scientific Verification & Research Operations";
-const pageDescription = "AI model-behavior testing, scientific verification, sensitive research operations, public products and data quality.";
+const pageTitle = "Mario Marcolongo — AI Evaluation, Scientific Evidence & Research Operations";
+const pageDescription = "AI model-behavior evaluation, paid scientific verification, research and product operations, knowledge integrity and public data quality.";
 const profileJsonLd = buildProfileGraph(D, "https://mariomarcolongo.com/", pageTitle);
 
 const selectedExperience = [
@@ -67,23 +67,16 @@ const selectedExperience = [
       <div class="p5-section-head">
         <div>
           <div class="p5-kicker">Selected work</div>
-          <h2 id="selected-work-title">Evidence that maps to the next role.</h2>
+          <h2 id="selected-work-title">Evidence for the next role—and the path after it.</h2>
         </div>
-        <p>AI safety and model behavior lead the portfolio, followed by paid scientific verification and research/product operations. Each case links to inspectable public evidence.</p>
+        <p>AI evaluation and model behavior lead the portfolio, followed by paid scientific verification and research/product operations. Senior red-team engineering remains a longer-term path requiring stronger independent coding and security evidence.</p>
       </div>
 
       <div class="p5-flagship-grid" data-testid="human-capabilities">
         {H.flagships.map((item) => (
           <article class="p5-flagship">
             <div class="p5-flagship-media">
-              {item.id === "entropy" ? (
-                <div class="p5-audience-media" role="img" aria-label="Entropy for Life project audience reported at more than 250,000 YouTube subscribers">
-                  <strong>250K+</strong>
-                  <span>reported YouTube audience of the science-communication project supported</span>
-                </div>
-              ) : (
-                <img src={item.image} alt={item.alt} width="900" height="560" loading="lazy" decoding="async" />
-              )}
+              <img src={item.image} alt={item.alt} width="900" height="560" loading="lazy" decoding="async" />
             </div>
             <div class="p5-flagship-body">
               <div class="p5-card-label">{item.label}</div>
@@ -97,28 +90,6 @@ const selectedExperience = [
       </div>
     </section>
 
-    <section class="p5-human" aria-labelledby="human-research-title">
-      <div class="p5-human-diagram" aria-label="Focus-group facilitation workflow">
-        <div class="p5-human-step"><strong>1</strong><span>Prepare the guide, prompts, Zoom workflow and participant expectations.</span></div>
-        <div class="p5-human-step"><strong>2</strong><span>Co-facilitate with live handoffs, careful pacing and non-judgmental follow-up.</span></div>
-        <div class="p5-human-step"><strong>3</strong><span>Recover missed prompts, support the other facilitator and protect participant privacy.</span></div>
-      </div>
-      <div class="p5-human-copy">
-        <div class="p5-card-label">{H.humanResearch.label}</div>
-        <h2 id="human-research-title">{H.humanResearch.title}</h2>
-        <div class="p5-human-meta">
-          <strong>{H.humanResearch.organization}</strong>
-          <span>{H.humanResearch.supervisor}</span>
-          <span>{H.humanResearch.period}</span>
-        </div>
-        <p class="p5-human-summary">{H.humanResearch.summary}</p>
-        <ul>{H.humanResearch.capabilities.map((item) => <li>{item}</li>)}</ul>
-        <div class="p5-human-links">
-          {H.humanResearch.links.map((item) => <a href={item.href} target="_blank" rel="noopener noreferrer">{item.label} ↗</a>)}
-        </div>
-      </div>
-    </section>
-
     <section class="p5-section" id="products" aria-labelledby="products-title">
       <div class="p5-section-head">
         <div>
@@ -129,7 +100,7 @@ const selectedExperience = [
       </div>
       <div class="p5-products">
         {H.products.map((item) => (
-          <article class="p5-product">
+          <article class={`p5-product ${item.title.includes("Wikipedia") ? "p5-product-bot" : ""}`}>
             <img src={item.image} alt={item.alt} width="760" height="480" loading="lazy" decoding="async" />
             <div class="p5-product-body">
               <div class="p5-product-label">{item.label}</div>
@@ -179,7 +150,7 @@ const selectedExperience = [
           <div class="p5-kicker">Experience</div>
           <h2 id="experience-title">A concise record, with deeper evidence available.</h2>
         </div>
-        <p>Paid work, independent projects, volunteer research and public contribution records are labelled separately.</p>
+        <p>The focus-group collaboration is named and verifiable here, but kept proportional to its role as supporting evidence for participant-facing research and trust-and-safety work.</p>
       </div>
       <div class="p5-experience-list">
         {selectedExperience.map((item) => (
@@ -200,7 +171,7 @@ const selectedExperience = [
           <div class="p5-kicker">Application documents</div>
           <h2 id="applications-title">Use the version matched to the role.</h2>
         </div>
-        <p>The first three documents target higher-upside paths. The editorial and community version remains available as a credible bridge option.</p>
+        <p>The first document targets the strongest immediate high-upside lane. Scientific-AI quality and knowledge integrity are parallel routes; editorial/community operations remains a bridge option.</p>
       </div>
       <div class="p5-documents">
         {H.applicationDocuments.map((item) => (
@@ -216,7 +187,7 @@ const selectedExperience = [
     <section class="p5-contact" id="contact" aria-labelledby="contact-title">
       <div>
         <h2 id="contact-title">Discuss a difficult problem.</h2>
-        <p>Open to AI safety, research operations, scientific AI quality, knowledge-integrity and other high-autonomy roles where evidence and operational ownership matter.</p>
+        <p>Open to AI evaluation, model-quality and safety operations, scientific AI quality, research operations and knowledge-integrity roles where evidence and operational ownership matter.</p>
       </div>
       <div class="p5-actions">
         <a class="p5-button" href={`mailto:${D.identity.email}`}>Email Mario</a>
