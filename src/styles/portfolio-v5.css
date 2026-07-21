@@ -649,3 +649,39 @@ body:has(.portfolio-v5) {
   .p5-experience { grid-template-columns: minmax(0, 1fr); gap: 6px; }
   .p5-contact { grid-template-columns: minmax(0, 1fr); margin-right: -14px; margin-left: -14px; padding: 36px 24px 44px; border-radius: 20px 20px 0 0; }
 }
+
+
+/* mobile horizontal evidence rails */
+@media (max-width: 680px) {
+  .p5-flagship-grid,
+  .p5-products,
+  .p5-visuals,
+  .p5-documents {
+    display: flex;
+    gap: 14px;
+    width: calc(100% + 14px);
+    margin-right: -14px;
+    padding: 2px 14px 16px 0;
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: thin;
+  }
+
+  .p5-flagship,
+  .p5-product,
+  .p5-visual {
+    flex: 0 0 86%;
+    scroll-snap-align: start;
+  }
+
+  .p5-document {
+    flex: 0 0 82%;
+    scroll-snap-align: start;
+  }
+
+  .p5-section { padding: 52px 0; }
+  .p5-section-head { margin-bottom: 24px; }
+  .p5-flagship:last-child,
+  .p5-document:last-child { grid-column: auto; }
+}

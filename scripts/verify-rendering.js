@@ -36,6 +36,9 @@ async function assertPage(page, route, theme, viewport) {
   }
   if (result.h1Count !== 1) throw new Error(`${route} must have exactly one H1; found ${result.h1Count}`);
   if (!result.title.trim() || !result.bodyText.trim()) throw new Error(`${route} rendered empty title or body`);
+  if (route === 'index.html' && viewport.name === 'mobile' && result.documentHeight > 11000) {
+    throw new Error(`Mobile homepage is excessively long: ${result.documentHeight}px`);
+  }
 }
 
 async function verifyHomepage(page) {

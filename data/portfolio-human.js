@@ -155,14 +155,14 @@ const PORTFOLIO_HUMAN = {
     {
       title: "Flourish",
       body: "Interactive public visual storytelling, including global cancer-incidence mapping.",
-      image: "https://upload.wikimedia.org/wikipedia/commons/5/53/Oesophageal_Cancer%2C_Age-Standardized_Rate_%28World%29_per_100.000_of_Incidence_Cases%2C_Both_sexes%2C_Worldwide_in_2022.svg",
+      image: "/media/work/flourish-oesophageal-cancer.svg",
       alt: "Global map of age-standardized oesophageal cancer incidence",
       href: "https://public.flourish.studio/visualisation/17745490/"
     },
     {
       title: "Wikimedia Commons",
       body: "More than 70 open biomedical, epidemiological and public-policy visualizations, with reuse across Wikipedia editions.",
-      image: "https://upload.wikimedia.org/wikipedia/commons/7/7f/Diagram_of_overlap_between_genes_which_are_affected_in_various_mental_disorders.svg",
+      image: "/media/work/wikimedia-clinical-overlap.svg",
       alt: "Diagram of genetic overlap across several mental disorders",
       href: "https://commons.wikimedia.org/wiki/Special:ListFiles/Digressivo"
     }
