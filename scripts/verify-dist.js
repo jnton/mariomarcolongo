@@ -79,33 +79,38 @@ for (const [name, html] of Object.entries(pages)) {
   assertNotContains(html, 'codebase navigation and modification', `dist/${name}.html`);
   assertNotContains(html, 'Founder &amp; Technical Product Builder', `dist/${name}.html`);
   assertNotContains(html, 'C2 Reading/Listening, B2 Writing/Speaking', `dist/${name}.html`);
+  assertNotContains(html, 'Institutional and individual attribution is withheld', `dist/${name}.html`);
 }
 
 const index = pages.index;
 const indexText = normalizeHtmlText(index);
 for (const needle of [
-  'I work on difficult problems where', 'evidence', 'systems and human judgment meet.',
-  ...H.proofMetrics.flatMap((item) => [item.value, item.label]),
-  ...H.stories.map((story) => story.title),
-  ...H.products.map((product) => product.title),
-  ...H.visualizationPlatforms.map((platform) => platform.title),
-  ...H.operatingStyle.map((item) => item.title),
-  ...H.roleFamilies.map((role) => role.title),
+  H.headline,
+  ...H.proofs.flatMap((item) => [item.value, item.label]),
+  ...H.flagships.map((item) => item.title),
+  H.humanResearch.title,
+  H.humanResearch.organization,
+  H.humanResearch.supervisor,
+  ...H.products.map((item) => item.title),
+  ...H.visualization.map((item) => item.title),
+  ...H.workingPrinciples.map((item) => item.title),
+  ...H.applicationDocuments.map((item) => item.title),
   'data-testid="human-capabilities"', 'data-testid="human-work"', 'data-testid="human-documents"',
-  'Public work, not decorative imagery', 'Bring me the difficult problem.'
+  'Evidence that maps to the next role.', 'Discuss a difficult problem.'
 ]) assertContains(indexText, needle, 'dist/index.html');
 for (const obsolete of [
-  'class="v3-network"', 'One profile. Four credible lenses.', 'data-lens=', 'data-project-filter=',
+  'class="portfolio-v4"', 'class="v3-network"', 'Scale, failure modes, systems and evidence.',
+  'Useful when the problem is strange, ambiguous or uncomfortable.', 'One evidence base. Four high-upside application routes.',
   'Pencil_Fascist_Tuberculosis', 'Alessandro Lanzoni'
 ]) assertNotContains(index, obsolete, 'dist/index.html');
-assertContains(index, 'class="portfolio-v4"', 'dist/index.html');
-assertContains(index, 'class="pv4-stage-main"', 'dist/index.html');
-assertContains(index, 'class="pv4-gallery-track"', 'dist/index.html');
-assertContains(index, 'chromewebstore.google.com/detail/mdpi-filter', 'dist/index.html');
-assertContains(index, 't.me/ToEnWikipediaBot', 'dist/index.html');
+assertContains(index, 'class="portfolio-v5"', 'dist/index.html');
+assertContains(index, 'class="p5-work-mosaic"', 'dist/index.html');
+assertContains(index, 'class="p5-human"', 'dist/index.html');
+assertContains(index, '/media/work/mdpi-filter-1.jpg', 'dist/index.html');
+assertContains(index, '/media/work/telegram-bot-card.svg', 'dist/index.html');
 assertContains(index, '/media/work/tableau-mortality.png', 'dist/index.html');
 assertContains(index, 'public.flourish.studio/visualisation/17745490', 'dist/index.html');
-pass('Outcome-led portfolio homepage checked');
+pass('Compact portfolio-v5 homepage checked');
 
 const applicationProfiles = [
   ['resume', P.aiSafety], ['research', P.researchQuality], ['editorial', P.editorialCommunity], ['integrityCv', P.integrity]
@@ -119,6 +124,8 @@ for (const [name, profile] of applicationProfiles) {
   assertContains(text, 'C1 overall', `dist/${name}.html`);
   assertContains(html, 'id="cvPhoneSlot"', `dist/${name}.html`);
 }
+assertContains(normalizeHtmlText(pages.editorial), 'Marta Panzeri', 'dist/cv-editorial.html');
+assertContains(normalizeHtmlText(pages.editorial), 'Department of Developmental Psychology and Socialisation', 'dist/cv-editorial.html');
 pass('Four specialized application CVs checked');
 
 const integrityText = normalizeHtmlText(pages.integrityPage);
@@ -132,7 +139,7 @@ pass('Knowledge-integrity work sample checked');
 const masterText = normalizeHtmlText(pages.cv);
 for (const needle of [
   'Master CV & Evidence Record', 'not presented as an independent software developer', 'AI Safety',
-  'Research & Data Quality', 'Editorial & Community', 'Trust & Knowledge Integrity'
+  'Research & Data Quality', 'Editorial & Community', 'Trust & Knowledge Integrity', 'Marta Panzeri'
 ]) assertContains(masterText, needle, 'dist/cv.html');
 pass('Master CV positioning checked');
 
