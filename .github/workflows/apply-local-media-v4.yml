@@ -23,12 +23,13 @@ jobs:
         with:
           node-version: 22
           cache: npm
-      - name: Replace hotlinked media with localized copies
+      - name: Replace hotlinked media and stale verification strings
         run: |
           python - <<'PY'
           from pathlib import Path
-          path = Path('data/portfolio-human.js')
-          text = path.read_text()
+
+          data_path = Path('data/portfolio-human.js')
+          data = data_path.read_text()
           replacements = {
             'https://lh3.googleusercontent.com/1KKa3LqvJ6ayP9Kh6_jmAWXzL3naOfPnnKtWb8vjd25XMn1ELMNFDxGjgtvShNmDhWG4x_uuynunm9lVD7wQ3hAI=s1280-w1280-h800': '/media/work/mdpi-filter-1.jpg',
             'https://lh3.googleusercontent.com/PFwTjvBGc7yEyomiAhZYB60HVcqcIRJaWjRndm8CukDwCOikYyErU9tBqOzMUhF-HTXv4wGyKNbsjvIjNyU0NpSO=s1280-w1280-h800': '/media/work/mdpi-filter-2.jpg',
@@ -36,10 +37,18 @@ jobs:
             'https://public.tableau.com/views/TavolediMortalitSingoleEtItalia-ISTAT/Sheet1.png?:showVizHome=no': '/media/work/tableau-mortality.png'
           }
           for old, new in replacements.items():
-              if old not in text:
+              if old not in data:
                   raise SystemExit(f'Missing expected media URL: {old[:80]}')
-              text = text.replace(old, new)
-          path.write_text(text)
+              data = data.replace(old, new)
+          data_path.write_text(data)
+
+          verify_path = Path('scripts/verify-dist.js')
+          verify = verify_path.read_text()
+          verify = verify.replace(
+              "assertContains(index, 'public.tableau.com/views/TavolediMortalitSingoleEtItalia-ISTAT/Sheet1.png', 'dist/index.html');",
+              "assertContains(index, '/media/work/tableau-mortality.png', 'dist/index.html');"
+          )
+          verify_path.write_text(verify)
           PY
       - run: npm ci --no-audit --no-fund
       - name: Build and verify
@@ -48,7 +57,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/portfolio-human.js index.html integrity.html security.html cv.html cv-resume.html cv-research.html cv-editorial.html cv-integrity.html llms.txt llms-full.txt cv-llm.txt public/llms.txt public/llms-full.txt public/cv-llm.txt public/data/source.js
+          git add data/portfolio-human.js scripts/verify-dist.js index.html integrity.html security.html cv.html cv-resume.html cv-research.html cv-editorial.html cv-integrity.html llms.txt llms-full.txt cv-llm.txt public/llms.txt public/llms-full.txt public/cv-llm.txt public/data/source.js
           if git diff --cached --quiet; then exit 0; fi
           git commit -m "media: use localized portfolio previews"
           git push origin HEAD:human-centered-redesign
