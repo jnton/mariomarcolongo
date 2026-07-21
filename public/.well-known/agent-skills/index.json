@@ -4,25 +4,32 @@
   "version": "2026.07.21",
   "skills": [
     {
-      "id": "ai-safety-evaluation",
-      "name": "AI Safety Evaluation & Adversarial Testing",
-      "description": "Self-directed model-behavior testing across chat, image, agentic tool-use and indirect prompt-injection challenges, with conservative interpretation of platform-reported outcomes.",
-      "category": "ai-evaluation",
+      "id": "ai-safety-model-behavior",
+      "name": "AI Safety & Model Behavior",
+      "description": "Self-directed adversarial testing across chat, image, agentic tool-use and indirect prompt-injection challenges, with conservative interpretation of platform-reported outcomes.",
+      "category": "ai-safety",
       "referenceUrl": "https://mariomarcolongo.com/security.html"
     },
     {
-      "id": "scientific-evidence-verification",
-      "name": "Scientific Evidence Verification",
-      "description": "Primary-source fact-checking, bibliographic research, evidence screening, claim decomposition, source-quality assessment and cross-source corroboration.",
-      "category": "research-quality",
-      "referenceUrl": "https://mariomarcolongo.com/cv-research.html"
+      "id": "research-editorial-community-operations",
+      "name": "Research, Editorial & Community Operations",
+      "description": "Scientific editorial support, public writing, evidence-synthesis preparation, research facilitation, community-facing protocols and technical publishing operations.",
+      "category": "research-operations",
+      "referenceUrl": "https://mariomarcolongo.com/cv-editorial.html"
     },
     {
-      "id": "structured-data-provenance",
-      "name": "Structured Data Quality & Provenance",
-      "description": "Metadata structure, public-source reconciliation, taxonomy and validation workflows across Wikimedia, Wikidata, FAIRsharing, Zenodo and ENA records.",
+      "id": "knowledge-integrity-investigations",
+      "name": "Knowledge Integrity, Trust & Investigations",
+      "description": "Source provenance, public-record research, cross-source corroboration, entity reconciliation, rights context and evidence-bound investigative reporting.",
+      "category": "trust-integrity",
+      "referenceUrl": "https://mariomarcolongo.com/integrity.html"
+    },
+    {
+      "id": "open-science-data-quality",
+      "name": "Open Science & Data Quality",
+      "description": "Scientific evidence verification, structured metadata, provenance, taxonomy and validation workflows across Wikimedia, Wikidata, FAIRsharing, Zenodo and ENA records.",
       "category": "data-quality",
-      "referenceUrl": "https://mariomarcolongo.com/cv-llm.txt"
+      "referenceUrl": "https://mariomarcolongo.com/cv-research.html"
     },
     {
       "id": "code-literate-technical-operations",
