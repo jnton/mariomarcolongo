@@ -8,13 +8,13 @@ const { launchBrowser } = require('./lib/browser.js');
 const DOCUMENTS = [
   {
     route: 'cv-resume.html',
-    output: 'Mario Marcolongo — AI Safety & Adversarial Testing CV.pdf',
-    label: 'AI Safety & Adversarial Testing CV'
+    output: 'Mario Marcolongo — AI Evaluation & Model Behavior CV.pdf',
+    label: 'AI Evaluation & Model Behavior CV'
   },
   {
     route: 'cv-research.html',
-    output: 'Mario Marcolongo — Research Verification & Data Quality CV.pdf',
-    label: 'Research Verification & Data Quality CV'
+    output: 'Mario Marcolongo — Scientific AI Quality & Research Data CV.pdf',
+    label: 'Scientific AI Quality & Research Data CV'
   },
   {
     route: 'cv-editorial.html',
