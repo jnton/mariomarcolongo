@@ -685,3 +685,21 @@ body:has(.portfolio-v5) {
   .p5-flagship:last-child,
   .p5-document:last-child { grid-column: auto; }
 }
+
+
+/* official Telegram bot avatar */
+.p5-product-bot img {
+  object-fit: contain !important;
+  object-position: center !important;
+  padding: 34px;
+  background: #eef4f8;
+}
+
+.p5-work-tile img[src$="model-behavior-method.svg"],
+.p5-work-tile img[src$="entropy-social-proof.svg"],
+.p5-flagship-media img[src$="model-behavior-method.svg"],
+.p5-flagship-media img[src$="entropy-social-proof.svg"] {
+  object-fit: contain;
+  object-position: center;
+  background: #f7f6f2;
+}

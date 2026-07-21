@@ -2,11 +2,11 @@ const APPLICATION_PROFILES = {
   aiSafety: {
     id: "ai-safety",
     documentLabel: "Specialized Application CV",
-    title: "AI Safety & Adversarial Testing Specialist",
-    subtitle: "Model behavior testing · jailbreak and prompt-injection analysis · evidence-bound reporting · evaluation operations",
-    summary: "AI safety and research-verification specialist with sustained self-directed model-behavior testing across chat, image, agentic tool-use and indirect prompt-injection challenges. Gray Swan Proving Ground participant with 75 platform-confirmed model breaks across 156 submissions and a top-8% rank band among listed participants as of July 2026. Brings eight years of auditable claim verification, paid scientific fact-checking, structured research workflows and clear evidence-bound reporting.",
+    title: "AI Evaluation & Model Behavior Specialist",
+    subtitle: "Model behavior testing · adversarial QA · evidence-bound reporting · evaluation operations",
+    summary: "AI evaluation and research-verification specialist with sustained self-directed model-behavior testing across chat, image, agentic tool-use and indirect prompt-injection challenges. Gray Swan Proving Ground participant with 75 platform-confirmed model breaks across 156 submissions and a top-8% rank band among listed participants as of July 2026. Brings eight years of auditable claim verification, paid scientific fact-checking, structured research workflows and clear evidence-bound reporting.",
     fit: [
-      "AI safety evaluation and safeguards operations",
+      "AI evaluation and safeguards operations",
       "AI content red teaming and adversarial QA",
       "Model behavior, trust & safety and policy testing",
       "Human-data quality, grading and evaluation operations"
@@ -90,7 +90,7 @@ const APPLICATION_PROFILES = {
   researchQuality: {
     id: "research-quality",
     documentLabel: "Specialized Application CV",
-    title: "Research Verification & Data Quality Specialist",
+    title: "Scientific AI Quality & Research Data Specialist",
     subtitle: "Scientific evidence review · structured-data quality · provenance verification · research operations",
     summary: "Research-verification and data-quality specialist with eight years of auditable work checking scientific, biomedical and structured-data claims. Paid fact-checker and writer for Entropy for Life, founder of an open research-participation directory with documented verification and metadata workflows, and public contributor across Wikipedia, Wikidata and Wikimedia Commons. Combines primary-source research, provenance discipline, structured-data literacy and practical technical operations.",
     fit: [

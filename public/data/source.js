@@ -14,13 +14,14 @@ const MARIO_DOSSIER = {
     centralAuth: "https://commons.wikimedia.org/wiki/Special:CentralAuth/Digressivo",
     grayswanId: "6a57be70d15e123775a1e9cf",
     grayswanUrl: "https://app.grayswan.ai/arena/user/6a57be70d15e123775a1e9cf",
+    grayswanArchiveUrl: "https://archive.is/inkFs",
     evaluationAsOf: "July 2026",
-    jobTitle: "Research, Evidence & AI Operations Specialist",
-    secondaryTitle: "AI Safety · Knowledge Integrity · Editorial & Research Operations · Open Science & Data Quality",
-    headline: "I investigate claims, test systems, and build evidence workflows.",
+    jobTitle: "AI Evaluation & Research Operations Specialist",
+    secondaryTitle: "Model Behavior · Scientific Evidence · Knowledge Integrity · Open Science & Data Quality",
+    headline: "I evaluate model behavior, verify scientific evidence, and operate research systems.",
     authorshipStatement: "I use AI-assisted implementation extensively. I define requirements and workflows, inspect code structure and behavior, test implementations, diagnose functional problems, guide iterative changes, deploy releases, and maintain services. I do not present myself as an independent software developer.",
-    role: "Research, evidence and AI operations specialist working across scientific verification, editorial and research programs, knowledge integrity, adversarial AI testing, open science and data quality.",
-    heroStatement: "Investigating claims, testing systems and building evidence workflows across research, public knowledge, AI behavior and technical operations.",
+    role: "AI evaluation and research operations specialist working across model behavior, scientific verification, knowledge integrity, open science and data quality.",
+    heroStatement: "Evaluating model behavior, verifying scientific evidence and operating research workflows and public technical products.",
     location: "Based in Italy · Italian/EU citizen · Open to worldwide relocation · International B2B contracting available",
     relocation: "EU/EEA work-authorized; Swiss EU/EFTA permit eligible; open to employer-sponsored work authorization elsewhere; self-funded relocation considered for exceptional opportunities.",
     relocationVisible: "Based in Italy · Italian/EU citizen · Open to worldwide relocation · International B2B contracting available",
@@ -50,11 +51,11 @@ const MARIO_DOSSIER = {
     contactObfuscated: ["me", "mariomarcolongo", "com"]
   },
 
-  summary: "Research, evidence and AI operations specialist with eight years of auditable public-source and structured-data work, paid scientific fact-checking and writing, community-facing research facilitation, ownership of an open research-participation directory, and sustained adversarial testing of AI systems. The profile supports four application lanes: AI safety and model behavior; research, editorial and community operations; knowledge integrity and trust; and open science and data quality. Public claims are reported with explicit evidence boundaries, while technical implementation is described accurately as code-literate, AI-assisted operations rather than independent software development.",
+  summary: "Research, evidence and AI operations specialist with eight years of auditable public-source and structured-data work, paid scientific fact-checking and writing, community-facing research facilitation, ownership of an open research-participation directory, and sustained adversarial testing of AI systems. The profile supports four application lanes: AI evaluation and model behavior; research, editorial and community operations; knowledge integrity and trust; and open science and data quality. Public claims are reported with explicit evidence boundaries, while technical implementation is described accurately as code-literate, AI-assisted operations rather than independent software development.",
 
   pillars: [
     {
-      category: "AI SAFETY EVALUATION",
+      category: "AI EVALUATION & SAFETY OPERATIONS",
       icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>`,
       title: "Model Behavior & Adversarial Testing",
       lead: "Structured, self-directed probing of LLM and multimodal-system behavior across chat, image, tool-use and indirect prompt-injection challenges.",

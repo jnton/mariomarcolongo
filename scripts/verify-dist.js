@@ -88,15 +88,12 @@ for (const needle of [
   H.headline,
   ...H.proofs.flatMap((item) => [item.value, item.label]),
   ...H.flagships.map((item) => item.title),
-  H.humanResearch.title,
-  H.humanResearch.organization,
-  H.humanResearch.supervisor,
   ...H.products.map((item) => item.title),
   ...H.visualization.map((item) => item.title),
   ...H.workingPrinciples.map((item) => item.title),
   ...H.applicationDocuments.map((item) => item.title),
   'data-testid="human-capabilities"', 'data-testid="human-work"', 'data-testid="human-documents"',
-  'Evidence that maps to the next role.', 'Discuss a difficult problem.'
+  'Evidence for the next role—and the path after it.', 'Discuss a difficult problem.'
 ]) assertContains(indexText, needle, 'dist/index.html');
 for (const obsolete of [
   'class="portfolio-v4"', 'class="v3-network"', 'Scale, failure modes, systems and evidence.',
@@ -105,9 +102,10 @@ for (const obsolete of [
 ]) assertNotContains(index, obsolete, 'dist/index.html');
 assertContains(index, 'class="portfolio-v5"', 'dist/index.html');
 assertContains(index, 'class="p5-work-mosaic"', 'dist/index.html');
-assertContains(index, 'class="p5-human"', 'dist/index.html');
 assertContains(index, '/media/work/mdpi-filter-1.jpg', 'dist/index.html');
-assertContains(index, '/media/work/telegram-bot-card.svg', 'dist/index.html');
+assertContains(index, '/media/work/model-behavior-method.svg', 'dist/index.html');
+assertContains(index, '/media/work/entropy-social-proof.svg', 'dist/index.html');
+assertContains(index, '/media/work/telegram-bot-avatar.jpg', 'dist/index.html');
 assertContains(index, '/media/work/tableau-mortality.png', 'dist/index.html');
 assertContains(index, 'public.flourish.studio/visualisation/17745490', 'dist/index.html');
 pass('Compact portfolio-v5 homepage checked');
@@ -145,9 +143,9 @@ pass('Master CV positioning checked');
 
 const securityText = normalizeHtmlText(pages.security);
 for (const needle of [
-  'Model behavior evaluation record.', 'What the record demonstrates', 'Evaluation approach',
+  'AI evaluation and model-behavior record.', 'What the record demonstrates', 'Evaluation approach',
   'Limitations and interpretation', 'Platform-confirmed model breaks', 'indirect-function-call',
-  'weak-password-change', 'complete 26-wave activity table'
+  'weak-password-change', 'complete 26-wave activity table', 'archive.is/inkFs'
 ]) assertContains(securityText, needle, 'dist/security.html');
 for (const needle of [
   'independently verified policy or alignment boundary failure',

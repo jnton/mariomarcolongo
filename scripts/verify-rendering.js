@@ -46,7 +46,6 @@ async function verifyHomepage(page) {
     proofCount: document.querySelectorAll('.p5-proof').length,
     heroWorkCount: document.querySelectorAll('.p5-work-tile').length,
     flagshipCount: document.querySelectorAll('.p5-flagship').length,
-    humanSection: Boolean(document.querySelector('.p5-human')),
     productCount: document.querySelectorAll('.p5-product').length,
     visualCount: document.querySelectorAll('.p5-visual').length,
     principleCount: document.querySelectorAll('.p5-principle').length,
@@ -60,7 +59,6 @@ async function verifyHomepage(page) {
   if (result.proofCount !== H.proofs.length) throw new Error(`Homepage must render ${H.proofs.length} proof items`);
   if (result.heroWorkCount !== H.heroWork.length) throw new Error(`Homepage must render ${H.heroWork.length} hero-work tiles`);
   if (result.flagshipCount !== H.flagships.length) throw new Error(`Homepage must render ${H.flagships.length} flagship cases`);
-  if (!result.humanSection) throw new Error('Homepage is missing the named human-research section');
   if (result.productCount !== H.products.length) throw new Error(`Homepage must render ${H.products.length} product cards`);
   if (result.visualCount !== H.visualization.length) throw new Error(`Homepage must render ${H.visualization.length} visualization cards`);
   if (result.principleCount !== H.workingPrinciples.length) throw new Error(`Homepage must render ${H.workingPrinciples.length} principles`);
@@ -135,7 +133,6 @@ async function main() {
       H.headline,
       ...H.proofs.map((item) => item.label),
       ...H.flagships.map((item) => item.title),
-      H.humanResearch.title,
       ...H.products.map((item) => item.title),
       ...H.visualization.map((item) => item.title),
       ...H.applicationDocuments.map((item) => item.title)

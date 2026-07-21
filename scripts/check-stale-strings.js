@@ -5,8 +5,8 @@ const D = require('../data/source.js');
 
 const ROOT = path.resolve(__dirname, '..');
 const EXPECTED = {
-  jobTitle: 'Research, Evidence & AI Operations Specialist',
-  secondaryTitle: 'AI Safety · Knowledge Integrity · Editorial & Research Operations · Open Science & Data Quality',
+  jobTitle: 'AI Evaluation & Research Operations Specialist',
+  secondaryTitle: 'Model Behavior · Scientific Evidence · Knowledge Integrity · Open Science & Data Quality',
   email: 'me@mariomarcolongo.com',
   orcid: '0000-0003-2846-7115',
   ena: 'PRJEB109744',
@@ -118,7 +118,7 @@ for (const marker of ['human-capabilities', 'human-work', 'human-documents']) {
   if (!indexSource.includes(`data-testid="${marker}"`)) fail('src/pages/index.astro', 1, `Missing homepage marker ${marker}.`);
 }
 for (const requiredText of [
-  'Evidence that maps to the next role.',
+  'Evidence for the next role—and the path after it.',
   'Public tools with a clear job to do.', 'Public analysis across three platforms.',
   'Use the version matched to the role.', 'Discuss a difficult problem.'
 ]) {
@@ -137,7 +137,7 @@ for (const requiredText of ['evidence trail survives scrutiny', 'Evidence bounda
 }
 
 const securitySource = fs.readFileSync(path.join(ROOT, 'src/pages/security.astro'), 'utf8');
-for (const requiredText of ['Model behavior evaluation record.', 'What the record demonstrates', 'Limitations and interpretation']) {
+for (const requiredText of ['AI evaluation and model-behavior record.', 'What the record demonstrates', 'Limitations and interpretation', 'archive.is/inkFs']) {
   if (!securitySource.includes(requiredText)) fail('src/pages/security.astro', 1, `Evaluation record is missing required text: ${requiredText}`);
 }
 
