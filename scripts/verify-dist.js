@@ -2,6 +2,7 @@
 const fs = require('node:fs');
 const path = require('node:path');
 const D = require('../data/source.js');
+const P = require('../data/application-profiles.js');
 const {
   generateLlmsTxt,
   generateLlmsFullTxt,
@@ -9,7 +10,6 @@ const {
 } = require('./lib/dossier-generators.js');
 
 const ROOT = path.resolve(__dirname, '..');
-const DIST = path.join(ROOT, 'dist');
 let failures = 0;
 
 function fail(message) {
@@ -76,6 +76,7 @@ const pages = {
   index: read('dist/index.html'),
   cv: read('dist/cv.html'),
   resume: read('dist/cv-resume.html'),
+  research: read('dist/cv-research.html'),
   security: read('dist/security.html')
 };
 
@@ -85,61 +86,79 @@ for (const [name, html] of Object.entries(pages)) {
   ['{D.', 'Astro.props', '<SiteNav', '<SiteFooter'].forEach((needle) => assertNotContains(html, needle, `dist/${name}.html`));
   assertNotContains(html, 'Released under CC BY 4.0 / Open Science', `dist/${name}.html`);
   assertNotContains(html, 'biobanking platform', `dist/${name}.html`);
+  assertNotContains(html, 'codebase navigation and modification', `dist/${name}.html`);
+  assertNotContains(html, 'Founder &amp; Technical Product Builder', `dist/${name}.html`);
+  assertNotContains(html, 'C2 Reading/Listening, B2 Writing/Speaking', `dist/${name}.html`);
 }
 
 const index = pages.index;
-const indexText = index.replaceAll('&amp;', '&').replaceAll('&#39;', "'").replaceAll('&quot;', '"').replaceAll('&gt;', '>').replaceAll('&lt;', '<');
-[D.pillars, D.projects, D.stats].flat().forEach((item) => {
-  const value = item.title || item.label;
-  if (value) assertContains(indexText, value, 'dist/index.html');
-});
-const firstVisualization = D.visualizations && D.visualizations[0];
-if (firstVisualization) {
-  assertContains(indexText, firstVisualization.title, 'dist/index.html');
-  assertContains(index, firstVisualization.fileUrl, 'dist/index.html');
+for (const needle of [
+  'I test model behavior.',
+  'AI Safety Application CV',
+  'Research Verification &amp; Data Quality CV',
+  'Master CV &amp; Evidence Record',
+  'data-testid="career-focus"',
+  'data-testid="career-evidence"',
+  'data-testid="career-documents"'
+]) assertContains(index, needle, 'dist/index.html');
+assertContains(index, D.identity.grayswanUrl, 'dist/index.html');
+pass('Recruiter-focused homepage checked');
+
+for (const [name, profile] of [['resume', P.aiSafety], ['research', P.researchQuality]]) {
+  const html = pages[name];
+  assertContains(html, profile.title.replaceAll('&', '&amp;'), `dist/${name}.html`);
+  assertContains(html, 'Page 1 of 2', `dist/${name}.html`);
+  assertContains(html, 'Page 2 of 2', `dist/${name}.html`);
+  assertContains(html, 'C1 overall', `dist/${name}.html`);
+  assertContains(html, 'code structure and behavior', `dist/${name}.html`);
 }
-[
-  'data-testid="homepage-pillars"',
-  'data-testid="homepage-projects"',
-  'data-testid="homepage-stats"',
-  'data-testid="homepage-visualization"'
-].forEach((needle) => assertContains(index, needle, 'dist/index.html'));
-assertNotContains(index, 'id="pillarsGrid"></div>', 'dist/index.html');
-assertNotContains(index, 'id="projectsGrid"></div>', 'dist/index.html');
-assertNotContains(index, 'id="statsGrid"></div>', 'dist/index.html');
-pass('Homepage raw HTML contains canonical essential content');
+pass('Specialized application CVs checked');
+
+const master = pages.cv;
+for (const needle of [
+  'Master CV &amp; Evidence Record',
+  'not presented as an independent software developer',
+  'AI Safety CV',
+  'Research &amp; Data Quality CV'
+]) assertContains(master, needle, 'dist/cv.html');
+pass('Master CV positioning checked');
 
 const security = pages.security;
-[
-  'Model Behavior Evaluation Record &amp; Methodology',
-  'Limitations and Interpretation',
-  'Platform-Confirmed Model Breaks',
-  'Publicly Identifiable Submission Labels',
+for (const needle of [
+  'Model behavior evaluation record.',
+  'What the record demonstrates',
+  'Evaluation approach',
+  'Limitations and interpretation',
+  'Platform-confirmed model breaks',
   'indirect-function-call',
-  'weak-password-change'
-].forEach((needle) => assertContains(security, needle, 'dist/security.html'));
-[
+  'weak-password-change',
+  'complete 26-wave activity table'
+]) assertContains(security, needle, 'dist/security.html');
+for (const needle of [
   'independently verified policy or alignment boundary failure',
   'tracking boundary resilience across major model architecture updates',
   'ensuring research directories and data pipelines are resilient',
-  'Model Behavior &amp; Safety Case Study',
-  'Model Behavior & Safety Case Study'
-].forEach((needle) => assertNotContains(security, needle, 'dist/security.html'));
+  'Model Behavior &amp; Safety Case Study'
+]) assertNotContains(security, needle, 'dist/security.html');
 pass('Evaluation record evidence boundary checked');
 
 const allGenerated = Object.values(pages).join('\n') + Object.values(canonical).join('\n');
 assertContains(allGenerated, D.identity.jobTitle, 'Generated outputs');
 assertContains(allGenerated, D.identity.secondaryTitle, 'Generated outputs');
-[
-  'Scientific AI Evaluation &amp; Research Data Specialist',
-  'AI Evaluation &amp; Scientific Research Verification Specialist',
-  'Primary Source Verification &amp; Open Science Infrastructure'
-].forEach((needle) => assertNotContains(allGenerated, needle, 'Generated outputs'));
+for (const needle of [
+  'AI Evaluation &amp; Research Verification Specialist',
+  'AI Evaluation & Research Verification Specialist',
+  'Founder &amp; Technical Product Builder',
+  'Founder & Technical Product Builder',
+  'Product Owner &amp; Technical Builder',
+  'Creator &amp; Systems Builder'
+]) assertNotContains(allGenerated, needle, 'Generated outputs');
 
 const canonicalExpectations = [
   ['dist/index.html', 'https://mariomarcolongo.com/'],
   ['dist/cv.html', 'https://mariomarcolongo.com/cv.html'],
   ['dist/cv-resume.html', 'https://mariomarcolongo.com/cv-resume.html'],
+  ['dist/cv-research.html', 'https://mariomarcolongo.com/cv-research.html'],
   ['dist/security.html', 'https://mariomarcolongo.com/security.html']
 ];
 for (const [file, url] of canonicalExpectations) {
