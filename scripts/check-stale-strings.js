@@ -15,50 +15,22 @@ const EXPECTED = {
 };
 
 const REQUIRED = [
-  'package.json',
-  'package-lock.json',
-  'data/source.js',
-  'data/application-profiles.js',
-  'data/portfolio-v3.js',
-  'src/layouts/Layout.astro',
-  'src/components/SiteNav.astro',
-  'src/components/SiteFooter.astro',
-  'src/components/ApplicationCv.astro',
-  'src/pages/index.astro',
-  'src/pages/integrity.astro',
-  'src/pages/cv.astro',
-  'src/pages/cv-resume.astro',
-  'src/pages/cv-research.astro',
-  'src/pages/cv-editorial.astro',
-  'src/pages/cv-integrity.astro',
-  'src/pages/security.astro',
-  'src/styles/global.css',
-  'src/styles/career-v2.css',
-  'src/styles/portfolio-v3.css',
-  'src/styles/integrity.css',
-  'src/styles/v3-accessibility.css',
-  'scripts/lib/dossier-generators.js',
-  'scripts/generate-llm-dossiers.js',
-  'scripts/postbuild.js',
-  'scripts/verify-dist.js',
-  'scripts/verify-rendering.js',
-  'public/.well-known/api-catalog',
-  'public/.well-known/agent-card.json',
-  'public/.well-known/mcp/server-card.json',
-  'public/robots.txt',
-  'public/sitemap.xml',
-  'public/site.webmanifest'
+  'package.json', 'package-lock.json', 'data/source.js', 'data/application-profiles.js',
+  'data/portfolio-human.js', 'src/layouts/Layout.astro', 'src/components/SiteNav.astro',
+  'src/components/SiteFooter.astro', 'src/components/ApplicationCv.astro', 'src/pages/index.astro',
+  'src/pages/integrity.astro', 'src/pages/cv.astro', 'src/pages/cv-resume.astro',
+  'src/pages/cv-research.astro', 'src/pages/cv-editorial.astro', 'src/pages/cv-integrity.astro',
+  'src/pages/security.astro', 'src/styles/global.css', 'src/styles/career-v2.css',
+  'src/styles/human-portfolio.css', 'src/styles/integrity.css', 'src/styles/v3-accessibility.css',
+  'scripts/lib/dossier-generators.js', 'scripts/generate-llm-dossiers.js', 'scripts/postbuild.js',
+  'scripts/verify-dist.js', 'scripts/verify-rendering.js', 'public/.well-known/api-catalog',
+  'public/.well-known/agent-card.json', 'public/.well-known/mcp/server-card.json',
+  'public/robots.txt', 'public/sitemap.xml', 'public/site.webmanifest'
 ];
 
 const SCAN_ROOTS = [
-  'data',
-  'src',
-  'package.json',
-  'README.md',
-  'public/.well-known',
-  'public/robots.txt',
-  'public/sitemap.xml',
-  'public/site.webmanifest'
+  'data', 'src', 'package.json', 'README.md', 'public/.well-known',
+  'public/robots.txt', 'public/sitemap.xml', 'public/site.webmanifest'
 ];
 
 const PROHIBITED = [
@@ -75,12 +47,10 @@ const PROHIBITED = [
 ];
 
 let failures = 0;
-
 function fail(file, line, message) {
   failures += 1;
   console.error(`FAIL ${file}:${line} — ${message}`);
 }
-
 function filesUnder(relative) {
   const absolute = path.join(ROOT, relative);
   if (!fs.existsSync(absolute)) return [];
@@ -90,7 +60,6 @@ function filesUnder(relative) {
     return entry.isDirectory() ? filesUnder(child) : [path.join(ROOT, child)];
   });
 }
-
 function scanFile(filePath) {
   if (!/\.(?:astro|js|mjs|json|md|txt|xml|webmanifest)$/.test(filePath) && !/api-catalog$/.test(filePath)) return;
   const relative = path.relative(ROOT, filePath);
@@ -109,7 +78,6 @@ for (const relative of REQUIRED) {
   if (!fs.existsSync(absolute)) fail(relative, 1, 'Required source or configuration file is missing.');
   else if (!fs.statSync(absolute).isFile() || fs.statSync(absolute).size === 0) fail(relative, 1, 'Required file is empty or not a regular file.');
 }
-
 for (const root of SCAN_ROOTS) filesUnder(root).forEach(scanFile);
 
 const identityChecks = [
@@ -133,11 +101,18 @@ if (!String(packageJson.scripts?.deploy || '').startsWith('npm run build')) fail
 if (!String(packageJson.scripts?.build || '').includes('verify-dist.js')) fail('package.json', 1, 'Production build must run generated-output verification.');
 
 const indexSource = fs.readFileSync(path.join(ROOT, 'src/pages/index.astro'), 'utf8');
-for (const marker of ['career-focus', 'career-evidence', 'career-documents', 'homepage-projects']) {
+for (const marker of ['human-capabilities', 'human-work', 'human-documents']) {
   if (!indexSource.includes(`data-testid="${marker}"`)) fail('src/pages/index.astro', 1, `Missing homepage marker ${marker}.`);
 }
-for (const requiredText of ['I investigate', 'Explore role lenses', 'Choose a CV', 'knowledge-integrity & investigations record']) {
-  if (!indexSource.includes(requiredText)) fail('src/pages/index.astro', 1, `Homepage is missing broad portfolio content: ${requiredText}`);
+for (const requiredText of [
+  'I make difficult evidence easier to', 'Three useful verbs', 'Selected work',
+  'Work you can inspect, reuse or challenge.', 'One evidence base. Different application documents.',
+  'Let’s talk about difficult evidence.'
+]) {
+  if (!indexSource.includes(requiredText)) fail('src/pages/index.astro', 1, `Homepage is missing human-centered content: ${requiredText}`);
+}
+for (const rejectedText of ['class="v3-network"', 'Explore role lenses', 'One profile. Four credible lenses.']) {
+  if (indexSource.includes(rejectedText)) fail('src/pages/index.astro', 1, `Homepage still contains rejected design content: ${rejectedText}`);
 }
 
 const integritySource = fs.readFileSync(path.join(ROOT, 'src/pages/integrity.astro'), 'utf8');
