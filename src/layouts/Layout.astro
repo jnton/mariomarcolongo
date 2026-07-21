@@ -15,10 +15,12 @@ const {
   description = "Research, evidence and AI operations portfolio spanning scientific verification, editorial and research programs, knowledge integrity, AI safety and open-science data quality.",
   canonical = "https://mariomarcolongo.com/"
 } = Astro.props;
+
+const htmlClass = canonical === "https://mariomarcolongo.com/" ? "human-portfolio" : undefined;
 ---
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class={htmlClass}>
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
