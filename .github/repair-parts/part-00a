@@ -1,0 +1,49 @@
+ification specialist with eight years of auditable work checking biomedical, technical and structured-data claims across sources, citations, datasets and public knowledge bases. Founder and product owner of Yourself to Science, an open-source research-participation directory indexing more than 55 clinical studies, biobanks, donation programs, registries and other initiatives, with documented verification workflows, machine-readable data, and Zenodo and FAIRsharing records. Paid scientific fact-checker, writer, data visualizer and website operator for Entropy for Life, supporting more than 55 videos and documentaries and four articles. Gray Swan Proving Ground participant since July 2026, with 75 platform-confirmed model breaks and a top-8% position among ranked participants as of July 2026.",
++  summary: "AI evaluation and research verification specialist with eight years of auditable work checking biomedical, technical and structured-data claims across sources, citations, datasets and public knowledge bases. Founder and product owner of Yourself to Science, an open-source research-participation directory indexing more than 55 clinical studies, biobanks, donation programs, registries and other initiatives, with documented verification workflows, machine-readable data, and Zenodo and FAIRsharing records. Paid scientific fact-checker, writer, data visualizer and website operator for Entropy for Life, supporting more than 55 videos and documentaries and four articles. Gray Swan Proving Ground participant since July 2026, with 75 platform-confirmed model breaks and a top-8% position among ranked participants as of July 2026.",
+ 
+   pillars: [
+     {
+-      category: "ADVERSARIAL EVALUATION & SAFETY",
++      category: "MODEL BEHAVIOR EVALUATION",
+       icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>`,
+       title: "AI Evaluation & Model Behavior Testing",
+-      lead: "Systematic boundary probing of frontier LLMs and multimodal architectures across Chat, Image, Tool-Use, and Indirect Prompt Injection.",
+-      desc: "Ranked in the top 8% among ranked participants on the Gray Swan AI Proving Ground as of July 2026, with 75 platform-confirmed model breaks across 156 formal submissions. Rigorously testing instruction hierarchy, refusal resilience, visual prompt injection, and multi-step agentic authorization boundaries.",
++      lead: "Structured, self-directed probing of LLM and multimodal-system behavior across chat, image, tool-use and indirect prompt-injection challenges.",
++      desc: "The Gray Swan Proving Ground public profile reports a top-8% rank band among listed participants as of July 2026, with 75 platform-confirmed model breaks across 156 platform submissions. The record demonstrates sustained evaluation activity; it is not an independent security audit or certification.",
+       highlights: [
+-        { label: "Confirmed Model Breaks", detail: "75 platform-confirmed breaks across 26 listed Proving Ground waves" },
++        { label: "Platform-Confirmed Model Breaks", detail: "75 platform-confirmed breaks across 26 listed Proving Ground waves as of July 2026" },
+         { label: "Evaluation Vectors", detail: "Chat & Alignment, Multimodal/Image, Agentic Tool-Use, and Indirect Prompt Injection" }
+       ]
+     },
+@@ -66,7 +73,7 @@ const MARIO_DOSSIER = {
+       lead: "Eight years of verifiable Wikipedia edits holding up under scrutiny, with formal training in systematic review screening and biomedical literature verification.",
+       desc: "Completed 4,317 auditable Wikimedia contributions across English Wikipedia (1,592), Wikidata (1,249), Italian Wikipedia (752), and Wikimedia Commons (684) under one public CentralAuth account. Paid scientific fact-checker and writer for Entropy for Life, verifying primary literature for 55+ videos and 4 articles across a 480K+ community, formally acknowledged in Giacomo Moro Mauretto's Mondadori book Italiani veri. Certified in Cochrane Crowd & GALENOS systematic review screening.",
+       highlights: [
+-        { label: "Auditable Knowledge Graph Edits", detail: "4,317 verified contributions across Wikimedia projects as of July 2026" },
++        { label: "Auditable Wikimedia Contributions", detail: "4,317 publicly inspectable contributions across Wikimedia projects as of July 2026" },
+         { label: "Scientific Fact-Checking", detail: "55+ videos & 4 articles verified; Cochrane Crowd & GALENOS certified" }
+       ]
+     },
+@@ -74,7 +81,7 @@ const MARIO_DOSSIER = {
+       category: "OPEN SCIENCE & DATA STEWARDSHIP",
+       icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg>`,
+       title: "Open Science Infrastructure & Data Stewardship",
+-      lead: "Conceiving, designing, and operating open FAIRsharing directories, standardized metadata schemas, and public genomic data pipelines.",
++      lead: "Designing and operating an open research-participation directory, standardized metadata interfaces, and a public personal-genomics workflow.",
+       desc: "Founder and technical builder of Yourself to Science™ (yourselftoscience.org), an open-source research-participation directory indexing more than 55 clinical studies, biobanks, donation programs, registries and other initiatives, indexed in FAIRsharing and Zenodo with live machine-readable MCP servers and OpenAPI specs. Donated personal 41× Whole Genome Sequencing raw reads (DNBSEQ-T7) to the public domain (CC0) under ENA BioSample SAMEA121950568 and Study PRJEB109744.",
+       highlights: [
+         { label: "Open Research Cataloging", detail: "55+ clinical studies, biobanks & registries indexed in FAIRsharing & Zenodo" },
+@@ -85,11 +92,11 @@ const MARIO_DOSSIER = {
+       category: "TECHNICAL PRODUCT DELIVERY",
+       icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>`,
+       title: "Technical Product Delivery & Serverless Systems",
+-      lead: "Translating rigorous technical requirements into production-ready web platforms, serverless automations, and AI-assisted engineering workflows.",
+-      desc: "Delivered serverless AWS Lambda and Telegram automation (Wikipedia Link Converter Bot), browser extensions (MDPI Publisher Verification Pipeline), interactive network simulations (Emergent Humanity), and custom WordPress / Cloudflare / OVHCloud web infrastructure. Extensive experience with AI-assisted development workflows, owning requirements, system design, validation, debugging, deployment and maintenance.",
++      lead: "Translating technical requirements into deployed web platforms, serverless automations, and AI-assisted development workflows.",
++      desc: "Delivered serverless AWS Lambda and Telegram automation, browser extensions, interactive network simulations, and WordPress, Cloudflare and OVHCloud web infrastructure. For independently operated systems, defined requirements and workflows, reviewed generated code, tested behavior, debugged failures, deployed releases and maintained services.",
+       highlights: [
+         { label: "Serverless & Web Infrastructure", detail: "AWS Lambda bots, browser extensions, Model Context Protocol (MCP) servers & Cloudflare edge functions" },
+-        { label: "Engineering Ownership", detail: "End-to-end architecture, testing, CI/CD pipelines & personal code verification" }
++        { label: "Technical Delivery Ownership", detail: "Requirements, workflow and system design, testing, CI/CD, deployment, ma
