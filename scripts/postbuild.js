@@ -6,9 +6,12 @@ const ROOT = path.resolve(__dirname, '..');
 const DIST = path.join(ROOT, 'dist');
 const REQUIRED = [
   'index.html',
+  'integrity.html',
   'cv.html',
   'cv-resume.html',
   'cv-research.html',
+  'cv-editorial.html',
+  'cv-integrity.html',
   'security.html',
   'llms.txt',
   'llms-full.txt',
@@ -20,7 +23,16 @@ const REQUIRED = [
   'sitemap.xml',
   'site.webmanifest'
 ];
-const ROOT_HTML_MIRRORS = ['index.html', 'cv.html', 'cv-resume.html', 'cv-research.html', 'security.html'];
+const ROOT_HTML_MIRRORS = [
+  'index.html',
+  'integrity.html',
+  'cv.html',
+  'cv-resume.html',
+  'cv-research.html',
+  'cv-editorial.html',
+  'cv-integrity.html',
+  'security.html'
+];
 
 function assertNonEmpty(relativePath) {
   const filePath = path.join(DIST, relativePath);
