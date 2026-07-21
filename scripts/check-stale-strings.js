@@ -5,28 +5,31 @@ const D = require('../data/source.js');
 
 const ROOT = path.resolve(__dirname, '..');
 const EXPECTED = {
-  jobTitle: 'AI Evaluation & Research Verification Specialist',
-  secondaryTitle: 'Model Behavior Evaluation · Scientific Evidence Review · Evaluation Operations · Technical Research',
+  jobTitle: 'AI Safety Evaluation & Research Verification Specialist',
+  secondaryTitle: 'Adversarial Model Testing · Scientific Evidence Review · Evaluation Operations · Data Quality',
   email: 'me@mariomarcolongo.com',
   orcid: '0000-0003-2846-7115',
   ena: 'PRJEB109744',
   version: 'v2026.07.21',
   graySwanId: '6a57be70d15e123775a1e9cf'
 };
+
 const REQUIRED = [
   'package.json',
   'package-lock.json',
   'data/source.js',
+  'data/application-profiles.js',
   'src/layouts/Layout.astro',
   'src/components/SiteNav.astro',
   'src/components/SiteFooter.astro',
+  'src/components/ApplicationCv.astro',
   'src/pages/index.astro',
   'src/pages/cv.astro',
   'src/pages/cv-resume.astro',
+  'src/pages/cv-research.astro',
   'src/pages/security.astro',
   'src/styles/global.css',
-  'src/styles/cv.css',
-  'src/styles/security.css',
+  'src/styles/career-v2.css',
   'scripts/lib/dossier-generators.js',
   'scripts/generate-llm-dossiers.js',
   'scripts/postbuild.js',
@@ -39,7 +42,18 @@ const REQUIRED = [
   'public/sitemap.xml',
   'public/site.webmanifest'
 ];
-const SCAN_ROOTS = ['data', 'src', 'package.json', 'README.md', 'public/.well-known', 'public/robots.txt', 'public/sitemap.xml', 'public/site.webmanifest'];
+
+const SCAN_ROOTS = [
+  'data',
+  'src',
+  'package.json',
+  'README.md',
+  'public/.well-known',
+  'public/robots.txt',
+  'public/sitemap.xml',
+  'public/site.webmanifest'
+];
+
 const PROHIBITED = [
   ['independently verified policy or alignment boundary failure', 'Unsupported independent-verification claim'],
   ['tracking boundary resilience across major model architecture updates', 'Unsupported architecture-update inference'],
@@ -47,10 +61,15 @@ const PROHIBITED = [
   ['Released under CC BY 4.0 / Open Science', 'Incorrect blanket licence'],
   ['biobanking platform', 'Incorrect Yourself to Science description'],
   ['Model Behavior & Safety Case Study', 'Outdated evaluation-page positioning'],
-  ['Model Behavior &amp; Safety Case Study', 'Outdated evaluation-page positioning'],
   ['AI Evaluation & Scientific Research Verification Specialist', 'Competing primary title'],
-  ['Scientific AI Evaluation & Research Data Specialist', 'Competing primary title']
+  ['Scientific AI Evaluation & Research Data Specialist', 'Competing primary title'],
+  ['codebase navigation and modification', 'Unsupported independent-development implication'],
+  ['Founder & Technical Product Builder', 'Unsupported builder title'],
+  ['Product Owner & Technical Builder', 'Unsupported builder title'],
+  ['Creator & Systems Builder', 'Unsupported builder title'],
+  ['C2 Reading/Listening, B2 Writing/Speaking', 'Unnecessary language subscore emphasis']
 ];
+
 let failures = 0;
 
 function fail(file, line, message) {
@@ -110,23 +129,21 @@ if (!String(packageJson.scripts?.deploy || '').startsWith('npm run build')) fail
 if (!String(packageJson.scripts?.build || '').includes('verify-dist.js')) fail('package.json', 1, 'Production build must run generated-output verification.');
 
 const indexSource = fs.readFileSync(path.join(ROOT, 'src/pages/index.astro'), 'utf8');
-for (const marker of ['homepage-pillars', 'homepage-projects', 'homepage-stats', 'homepage-visualization']) {
-  if (!indexSource.includes(`data-testid="${marker}"`)) fail('src/pages/index.astro', 1, `Missing raw-HTML test marker ${marker}.`);
+for (const marker of ['career-focus', 'career-evidence', 'career-documents']) {
+  if (!indexSource.includes(`data-testid="${marker}"`)) fail('src/pages/index.astro', 1, `Missing homepage marker ${marker}.`);
 }
-for (const expression of ['D.pillars.map(', 'D.projects.map(', 'D.stats.map(']) {
-  if (!indexSource.includes(expression)) fail('src/pages/index.astro', 1, `Homepage must server-render canonical content via ${expression}`);
+for (const requiredText of ['AI Safety Application CV', 'Research Verification & Data Quality CV', 'Master CV & Evidence Record']) {
+  if (!indexSource.includes(requiredText)) fail('src/pages/index.astro', 1, `Homepage is missing document positioning text: ${requiredText}`);
 }
 
 const securitySource = fs.readFileSync(path.join(ROOT, 'src/pages/security.astro'), 'utf8');
-for (const requiredText of ['Model Behavior Evaluation Record & Methodology', 'Limitations and Interpretation', 'Platform-Reported Activity']) {
+for (const requiredText of ['Model behavior evaluation record.', 'What the record demonstrates', 'Limitations and interpretation']) {
   if (!securitySource.includes(requiredText)) fail('src/pages/security.astro', 1, `Evaluation record is missing required text: ${requiredText}`);
 }
 
-const footerSource = fs.readFileSync(path.join(ROOT, 'src/components/SiteFooter.astro'), 'utf8');
-if (!footerSource.includes("copyCanonicalText('/llms-full.txt'")) fail('src/components/SiteFooter.astro', 1, 'Footer copy action must fetch the canonical complete dossier.');
 const navSource = fs.readFileSync(path.join(ROOT, 'src/components/SiteNav.astro'), 'utf8');
-for (const requiredText of ['aria-pressed="false"', 'Switch to dark theme', 'Switch to light theme', 'Evaluation Record']) {
-  if (!navSource.includes(requiredText)) fail('src/components/SiteNav.astro', 1, `Navigation is missing required accessibility/positioning text: ${requiredText}`);
+for (const requiredText of ['aria-pressed="false"', 'Switch to dark theme', 'Switch to light theme', 'Application CV', 'Master CV']) {
+  if (!navSource.includes(requiredText)) fail('src/components/SiteNav.astro', 1, `Navigation is missing required text: ${requiredText}`);
 }
 
 if (failures) {
