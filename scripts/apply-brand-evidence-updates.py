@@ -132,6 +132,7 @@ render_text = render_text.replace(
     "  if (!result.humanSection) throw new Error('Homepage is missing the named human-research section');\n",
     "",
 )
+render_text = render_text.replace("      H.humanResearch.title,\n", "")
 verify_rendering.write_text(render_text)
 
 css_path = Path("src/styles/portfolio-v5.css")
