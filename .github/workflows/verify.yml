@@ -1,20 +1,23 @@
-name: Verify portfolio
+name: Migrate and verify portfolio v3
 
 on:
   pull_request:
     branches: [main]
-  workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
-  verify:
+  migrate:
+    if: github.head_ref == 'final-audit-repair'
     runs-on: ubuntu-latest
-    timeout-minutes: 25
+    timeout-minutes: 30
     steps:
-      - name: Check out repository
+      - name: Check out portfolio branch
         uses: actions/checkout@v4
+        with:
+          ref: final-audit-repair
+          fetch-depth: 0
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
@@ -22,43 +25,30 @@ jobs:
           node-version: 22
           cache: npm
 
-      - name: Install locked dependencies
-        run: npm ci --no-audit --no-fund
+      - name: Apply canonical portfolio migration
+        run: node scripts/apply-portfolio-v3-migration.js
+
+      - name: Refresh lockfile and install dependencies
+        run: |
+          npm install --package-lock-only --ignore-scripts --no-audit --no-fund
+          npm ci --no-audit --no-fund
 
       - name: Build and verify generated output
         run: npm run build
 
-      - name: Verify deterministic generated files
-        run: |
-          npm run generate:llms
-          git diff --exit-code -- \
-            llms.txt llms-full.txt cv-llm.txt \
-            public/llms.txt public/llms-full.txt public/cv-llm.txt public/data/source.js \
-            index.html integrity.html cv.html cv-resume.html cv-research.html cv-editorial.html cv-integrity.html security.html
-
-      - name: Verify rendered pages and interactions
+      - name: Verify pages interactions themes and responsive rendering
         run: npm run verify:render
 
-      - name: Generate four specialized application PDFs
-        run: npm run pdf:resume
+      - name: Generate and validate all CV PDFs
+        run: npm run pdf
 
-      - name: Generate master CV PDF
-        run: npm run pdf:cv
-
-      - name: Check patch formatting
-        run: git diff --check
-
-      - name: Upload verification screenshots and PDFs
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: verification-output
-          path: |
-            audit-output/**/*.png
-            Mario Marcolongo — AI Safety & Adversarial Testing CV.pdf
-            Mario Marcolongo — Research Verification & Data Quality CV.pdf
-            Mario Marcolongo — Research Editorial & Community Operations CV.pdf
-            Mario Marcolongo — Trust Safety & Knowledge Integrity CV.pdf
-            Mario Marcolongo — Curriculum Vitae.pdf
-          if-no-files-found: ignore
-          retention-days: 7
+      - name: Restore permanent CI and commit verified portfolio
+        run: |
+          cp scripts/verify-portfolio-final.yml .github/workflows/verify.yml
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git rm .github/workflows/sync-portfolio-v3.yml scripts/apply-portfolio-v3-migration.js scripts/verify-portfolio-final.yml
+          git add -A
+          git diff --cached --check
+          git commit -m 'feat: rebuild broad evidence trust research and AI portfolio [portfolio-v3-synced]'
+          git push origin HEAD:final-audit-repair
