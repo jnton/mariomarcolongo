@@ -1,0 +1,137 @@
+"Empirical safety evaluation, boundary testing, and scorecard on the Gray Swan Proving Ground (Top 8% among ranked participants as of July 2026, 75 platform-confirmed model breaks across 156 total submissions)."
+-  canonical="https://mariomarcolongo.com/security.html"
+->
+-  <Fragment slot="head">
+-    <script is:inline src="/data/source.js"></script>
+-    <script type="application/ld+json">
++const title = "Model Behavior Evaluation Record & Methodology — Mario Marcolongo";
++const description = "Public record of self-directed model-behavior evaluation on the Gray Swan Proving Ground, including platform-reported activity, testing areas, methodology, and evidence limitations as of July 2026.";
++const profileUrl = D.identity.grayswanUrl;
++const asOf = D.redTeamActivity.asOf || D.identity.evaluationAsOf || "July 2026";
++const publicLabels = D.redTeamActivity.publicLabels || [];
++
++const evaluationJsonLd = {
++  "@context": "https://schema.org",
++  "@type": "WebPage",
++  "@id": "https://mariomarcolongo.com/security.html#webpage",
++  name: title,
++  description,
++  url: "https://mariomarcolongo.com/security.html",
++  dateModified: "2026-07-21",
++  author: { "@id": "https://mariomarcolongo.com/#person" },
++  about: [
++    {
++      "@type": "Thing",
++      name: "Model behavior evaluation",
++      description: "Self-directed testing of instruction handling and policy boundaries across chat, multimodal inputs, agentic tool-use and indirect prompt injection."
++    },
+     {
+-      "@context": "https://schema.org",
+-      "@type": "WebPage",
+-      "@id": "https://mariomarcolongo.com/security.html#webpage",
+-      "name": "Model Behavior Evaluation Record & Methodology — Mario Marcolongo",
+-      "description": "Empirical safety evaluation, boundary testing, and scorecard on the Gray Swan Proving Ground (Top 8% among ranked participants as of July 2026, 75 platform-confirmed model breaks across 156 total submissions).",
+-      "url": "https://mariomarcolongo.com/security.html",
+-      "author": { "@id": "https://mariomarcolongo.com/#person" },
+-      "about": [
+-        {
+-          "@type": "Thing",
+-          "name": "Model Behavior & Adversarial Safety Evaluation",
+-          "description": "Systematic boundary probing of frontier LLMs and multimodal architectures across Chat, Image, Tool-Use, and Indirect Prompt Injection."
+-        },
+-        {
+-          "@type": "Organization",
+-          "name": "Gray Swan AI Proving Ground",
+-          "url": "https://app.grayswan.ai/arena/user/6a57be70d15e123775a1e9cf"
+-        }
+-      ]
++      "@type": "Organization",
++      name: "Gray Swan Proving Ground",
++      url: profileUrl
+     }
+-    </script>
++  ]
++};
++
++const testingAreas = [
++  {
++    title: "Chat and Multi-Turn Instruction Handling",
++    body: "Testing how models preserve instruction hierarchy, contextual constraints and refusal behavior across single-turn and extended dialogue."
++  },
++  {
++    title: "Multimodal and Vision-Language Inputs",
++    body: "Testing interactions between textual instructions and information embedded in images, diagrams or visual typography."
++  },
++  {
++    title: "Agentic Tool-Use and Function Selection",
++    body: "Testing whether tool selection and function calls remain aligned with the user’s intended task when external or nested context is present."
++  },
++  {
++    title: "Indirect Prompt Injection and Untrusted Context",
++    body: "Testing how models handle adversarial instructions found in retrieved documents, web pages or user-provided files."
++  }
++];
++
++const labelInterpretations = {
++  "indirect-function-call": "A platform category associated with attempts to influence function selection through indirect or nested instructions.",
++  "weak-password-change": "A platform category associated with authorization and workflow controls for a security-sensitive account action."
++};
++---
++
++<Layout title={title} description={description} canonical="https://mariomarcolongo.com/security.html">
++  <Fragment slot="head">
++    <script type="application/ld+json" set:html={JSON.stringify(evaluationJsonLd)}></script>
+   </Fragment>
+ 
+   <SiteNav activePage="security" />
+ 
+-  <div class="security-case-study">
++  <div class="security-record">
+     <a href="/" class="security-back-link">← Back to Portfolio & Overview</a>
+ 
+     <header class="security-header">
+-      <div class="security-meta-tag">Adversarial Evaluation & Policy Robustness · Evaluation Record</div>
++      <div class="security-meta-tag">Independent Model-Behavior Evaluation · Public Record</div>
+       <h1 class="security-title">Model Behavior Evaluation Record & Methodology</h1>
+       <p class="security-lead">
+-        Systematic boundary probing, empirical safety evaluation, and policy consistency auditing across frontier LLMs and multimodal architectures on the Gray Swan Proving Ground.
++        Public record of self-directed model-behavior evaluation on the Gray Swan Proving Ground, summarizing platform-reported activity, testing areas, methodology, and evidence limitations as of July 2026.
+       </p>
++    </header>
+ 
+-      <div class="security-box" style="margin-top: 28px;">
+-        <div class="security-box-title">Practitioner & Verification Record</div>
++    <section class="security-section" id="scope">
++      <h2 class="security-section-title">Scope and Evidence Boundary</h2>
++      <p class="security-section-desc">
++        This page summarizes Mario Marcolongo’s self-directed participation in the Gray Swan Proving Ground. Aggregate counts and ranking are platform-reported figures visible through the linked public profile as of July 2026. They should not be interpreted as an independent security audit, formal certification, proof of model-wide vulnerability, or independent reproduction of every platform-confirmed result.
++      </p>
++      <div class="security-box">
++        <div class="security-box-title">Identity and Public Profile</div>
+         <div class="security-box-body">
+-          Practitioner: <strong>{D.identity.name}</strong> · Gray Swan Practitioner ID: <a href="https://app.grayswan.ai/arena/user/6a57be70d15e123775a1e9cf" target="_blank" rel="noopener noreferrer" style="color: var(--accent); font-weight: 600;">6a57be70d15e123775a1e9cf ↗</a> · ORCID: <a href="https://orcid.org/0000-0003-2846-7115" target="_blank" rel="noopener noreferrer" style="color: var(--accent); font-weight: 600;">{D.identity.orcid} ↗</a>
++          <span>Mario Marcolongo</span>
++          <span aria-hidden="true"> · </span>
++          <a href={profileUrl} target="_blank" rel="noopener noreferrer">Gray Swan public profile ↗</a>
++          <span aria-hidden="true"> · </span>
++          <a href={D.identity.orcidUrl} target="_blank" rel="noopener noreferrer">ORCID identity record ↗</a>
+         </div>
+       </div>
+-    </header>
++    </section>
+ 
+-    <!-- SCORECARD & METRICS -->
+-    <section class="security-section" id="scorecard">
+-      <h2 class="security-section-title">Proving Ground Scorecard & Metrics</h2>
++    <section class="security-section" id="activity">
++      <h2 class="security-section-title">Platform-Reported Activity</h2>
+       <p class="security-section-desc">
+-        Empirical evaluation record across structured testing waves. Every confirmed break represents an independently verified policy or alignment boundary failure under adversarial conditions.
++        The figures below reproduce aggregate activity displayed by the Gray Swan Proving Ground as of July 2026. “Platform-confirmed” describes the platform’s status label and does not mean independent third-party validation.
+       </p>
+-
+       <div class="security-metrics-grid">
+-        <div class="security-metric-card">
+-          <div class="security-metric-value">Top 8%</div>
+-          <div class="security-metric-label">Gray Swan Proving Ground Percentile</div>
+-          <div class="security-metric-detail">Among ranked Gray Swan Proving Ground participants as of 
