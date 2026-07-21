@@ -1,8 +1,8 @@
 {
   "name": "mariomarcolongo",
-  "version": "2026.07.1",
+  "version": "2026.07.2",
   "private": true,
-  "description": "AI safety evaluation, adversarial model testing, research verification and data-quality portfolio with specialized application CVs",
+  "description": "Research, evidence and AI operations portfolio spanning scientific verification, editorial and research programs, knowledge integrity, AI safety and open-science data quality",
   "scripts": {
     "lint": "node scripts/check-stale-strings.js",
     "dev": "node scripts/check-stale-strings.js && node scripts/generate-llm-dossiers.js && astro dev",
