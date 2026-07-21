@@ -1,4 +1,4 @@
-name: Apply and verify final repair
+name: Verify portfolio
 
 on:
   pull_request:
@@ -6,128 +6,55 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
-  repair-and-verify:
+  verify:
     runs-on: ubuntu-latest
-    timeout-minutes: 25
+    timeout-minutes: 20
     steps:
-      - name: Check out repair branch
+      - name: Check out repository
         uses: actions/checkout@v4
-        with:
-          ref: final-audit-repair
-          fetch-depth: 0
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 22
+          cache: npm
 
-      - name: Confirm repair activation
-        run: |
-          test -f .github/repair-ready
-          cp .github/workflows/verify.yml /tmp/verify-workflow-original.yml
-
-      - name: Reconstruct repair patch
-        run: |
-          cat .github/repair-parts/part-* > /tmp/source-repair.patch
-          sha256sum /tmp/source-repair.patch | tee /tmp/source-repair.sha256
-
-      - name: Verify repair patch checksum
-        run: echo '27a76f20e2f1e4acb884f20e3bf545c1bf8fec534e762c58934a88a11d67e0a1  /tmp/source-repair.patch' | sha256sum -c -
-
-      - name: Restore expected verification-workflow baseline
-        run: git show 9e01792d174a33b7846b9fa6b1d1433c003b7d88:.github/workflows/verify.yml > .github/workflows/verify.yml
-
-      - name: Validate repair patch context
-        run: git apply --check /tmp/source-repair.patch
-
-      - name: Apply repair patch
-        run: git apply /tmp/source-repair.patch
-
-      - name: Apply verified mobile overflow correction
-        run: |
-          echo '885951554a4287cae38f53fb71d655e8f968c1d756c394dd2f72c856d6d10dac  .github/mobile-overflow.patch' | sha256sum -c -
-          git apply --check .github/mobile-overflow.patch
-          git apply .github/mobile-overflow.patch
-
-      - name: Apply verified résumé pagination correction
-        run: |
-          echo 'e605bebea61394fb1fcfb81cd6f221d367fc7fbf5a246d7a1e856a4b0cc90da3  .github/resume-pagination.patch' | sha256sum -c -
-          git apply --check .github/resume-pagination.patch
-          git apply .github/resume-pagination.patch
-
-      - name: Generate lockfile and clean install
-        run: |
-          npm install --package-lock-only --ignore-scripts --no-audit --no-fund
-          npm ci --no-audit --no-fund
+      - name: Install locked dependencies
+        run: npm ci --no-audit --no-fund
 
       - name: Build and verify generated output
-        shell: bash
-        run: |
-          set -o pipefail
-          mkdir -p audit-output
-          npm run build 2>&1 | tee audit-output/build.log
+        run: npm run build
 
       - name: Verify deterministic generated files
-        shell: bash
         run: |
-          set -euo pipefail
-          generated=(
-            llms.txt llms-full.txt cv-llm.txt
-            public/llms.txt public/llms-full.txt public/cv-llm.txt public/data/source.js
-            index.html cv.html cv-resume.html security.html
-          )
-          sha256sum "${generated[@]}" > /tmp/generated-before.sha256
           npm run generate:llms
-          sha256sum "${generated[@]}" > /tmp/generated-after.sha256
-          diff -u /tmp/generated-before.sha256 /tmp/generated-after.sha256
+          git diff --exit-code -- \
+            llms.txt llms-full.txt cv-llm.txt \
+            public/llms.txt public/llms-full.txt public/cv-llm.txt public/data/source.js \
+            index.html cv.html cv-resume.html security.html
 
       - name: Verify rendered pages
-        shell: bash
-        run: |
-          set -o pipefail
-          npm run verify:render 2>&1 | tee audit-output/render.log
+        run: npm run verify:render
 
-      - name: Generate and validate résumé PDF
+      - name: Generate résumé PDF
         run: npm run pdf:resume
 
       - name: Generate full CV PDF
         run: npm run pdf:cv
 
-      - name: Stage verified site and code tree
-        shell: bash
-        run: |
-          set -euo pipefail
-          git diff --check
-          printf '\naudit-output/\n' >> .git/info/exclude
-          cp /tmp/verify-workflow-original.yml .github/workflows/verify.yml
-          rm -rf .github/repair-parts
-          rm -f .github/repair-ready .github/mobile-overflow.patch .github/resume-pagination.patch
-          git add -A
-          git diff --cached --check
-          git diff --cached --quiet -- .github/workflows/verify.yml .github/workflows/apply-final-repair.yml
-          git status --short
+      - name: Check patch formatting
+        run: git diff --check
 
-      - name: Commit and push verified site tree
-        run: |
-          git config user.name 'github-actions[bot]'
-          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git commit -m 'fix: complete portfolio audit and release hardening'
-          git push origin HEAD:final-audit-repair
-
-      - name: Upload diagnostics and verification artifacts
+      - name: Upload verification screenshots and PDFs
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: final-verification-output
+          name: verification-output
           path: |
-            /tmp/source-repair.patch
-            /tmp/source-repair.sha256
-            /tmp/generated-before.sha256
-            /tmp/generated-after.sha256
-            audit-output/**
+            audit-output/**/*.png
             Mario Marcolongo — 2-Page Application Résumé.pdf
             Mario Marcolongo — Curriculum Vitae.pdf
           if-no-files-found: ignore
