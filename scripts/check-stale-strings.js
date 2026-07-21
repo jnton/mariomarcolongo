@@ -21,9 +21,10 @@ const REQUIRED = [
   'src/pages/integrity.astro', 'src/pages/cv.astro', 'src/pages/cv-resume.astro',
   'src/pages/cv-research.astro', 'src/pages/cv-editorial.astro', 'src/pages/cv-integrity.astro',
   'src/pages/security.astro', 'src/styles/global.css', 'src/styles/career-v2.css',
-  'src/styles/human-portfolio.css', 'src/styles/integrity.css', 'src/styles/v3-accessibility.css',
-  'scripts/lib/dossier-generators.js', 'scripts/generate-llm-dossiers.js', 'scripts/postbuild.js',
-  'scripts/verify-dist.js', 'scripts/verify-rendering.js', 'public/.well-known/api-catalog',
+  'src/styles/portfolio-human-v2.css', 'src/styles/nav-editorial.css', 'src/styles/integrity.css',
+  'src/styles/v3-accessibility.css', 'scripts/lib/dossier-generators.js',
+  'scripts/generate-llm-dossiers.js', 'scripts/postbuild.js', 'scripts/verify-dist.js',
+  'scripts/verify-rendering.js', 'public/.well-known/api-catalog',
   'public/.well-known/agent-card.json', 'public/.well-known/mcp/server-card.json',
   'public/robots.txt', 'public/sitemap.xml', 'public/site.webmanifest'
 ];
@@ -105,14 +106,18 @@ for (const marker of ['human-capabilities', 'human-work', 'human-documents']) {
   if (!indexSource.includes(`data-testid="${marker}"`)) fail('src/pages/index.astro', 1, `Missing homepage marker ${marker}.`);
 }
 for (const requiredText of [
-  'I make difficult evidence easier to', 'Three useful verbs', 'Selected work',
-  'Work you can inspect, reuse or challenge.', 'One evidence base. Different application documents.',
-  'Let’s talk about difficult evidence.'
+  'I work on difficult problems where', 'Scale, failure modes, systems and evidence.',
+  'Small tools that solve real problems.', 'Interactive analysis and public visual explanation.',
+  'Useful when the problem is strange, ambiguous or uncomfortable.',
+  'One evidence base. Four high-upside application routes.', 'Bring me the difficult problem.'
 ]) {
-  if (!indexSource.includes(requiredText)) fail('src/pages/index.astro', 1, `Homepage is missing human-centered content: ${requiredText}`);
+  if (!indexSource.includes(requiredText)) fail('src/pages/index.astro', 1, `Homepage is missing outcome-led content: ${requiredText}`);
 }
-for (const rejectedText of ['class="v3-network"', 'Explore role lenses', 'One profile. Four credible lenses.']) {
-  if (indexSource.includes(rejectedText)) fail('src/pages/index.astro', 1, `Homepage still contains rejected design content: ${rejectedText}`);
+for (const rejectedText of [
+  'class="v3-network"', 'Explore role lenses', 'One profile. Four credible lenses.',
+  'Pencil_Fascist_Tuberculosis', 'Alessandro Lanzoni'
+]) {
+  if (indexSource.includes(rejectedText)) fail('src/pages/index.astro', 1, `Homepage still contains rejected or de-prioritized content: ${rejectedText}`);
 }
 
 const integritySource = fs.readFileSync(path.join(ROOT, 'src/pages/integrity.astro'), 'utf8');
@@ -126,7 +131,7 @@ for (const requiredText of ['Model behavior evaluation record.', 'What the recor
 }
 
 const navSource = fs.readFileSync(path.join(ROOT, 'src/components/SiteNav.astro'), 'utf8');
-for (const requiredText of ['aria-pressed="false"', 'Switch to dark theme', 'Switch to light theme', 'Work Samples', 'CVs', 'Master CV']) {
+for (const requiredText of ['aria-pressed="false"', 'Switch to dark theme', 'Switch to light theme', 'Products', 'Visuals', 'CVs', 'Email']) {
   if (!navSource.includes(requiredText)) fail('src/components/SiteNav.astro', 1, `Navigation is missing required text: ${requiredText}`);
 }
 
