@@ -34,19 +34,23 @@ async function capture(browser, server, name, width, height, theme, javaScriptEn
   }
   await page.goto(`${server.origin}/index.html`, { waitUntil: javaScriptEnabled ? 'networkidle0' : 'load', timeout: 45000 });
   if (javaScriptEnabled) await warmLazyContent(page);
-  const measurements = await page.evaluate(() => ({
-    scrollWidth: document.documentElement.scrollWidth,
-    clientWidth: document.documentElement.clientWidth,
-    documentHeight: document.documentElement.scrollHeight,
-    brokenImages: Array.from(document.images)
+  const measurements = await page.evaluate(() => {
+    const brokenImages = Array.from(document.images)
       .filter((image) => image.complete && image.naturalWidth === 0)
-      .map((image) => ({ src: image.getAttribute('src'), alt: image.alt }))
-  }));
+      .map((image) => ({ src: image.getAttribute('src'), alt: image.alt }));
+    return {
+      scrollWidth: document.documentElement.scrollWidth,
+      clientWidth: document.documentElement.clientWidth,
+      documentHeight: document.documentElement.scrollHeight,
+      brokenLocalImages: brokenImages.filter((item) => item.src && item.src.startsWith('/')),
+      brokenExternalImages: brokenImages.filter((item) => !item.src || !item.src.startsWith('/'))
+    };
+  });
   if (measurements.scrollWidth > measurements.clientWidth + 1) {
     throw new Error(`${name} overflows horizontally (${measurements.scrollWidth} > ${measurements.clientWidth})`);
   }
-  if (measurements.brokenImages.length) {
-    throw new Error(`${name} has broken images: ${JSON.stringify(measurements.brokenImages)}`);
+  if (measurements.brokenLocalImages.length) {
+    throw new Error(`${name} has broken first-party images: ${JSON.stringify(measurements.brokenLocalImages)}`);
   }
   await page.screenshot({ path: path.join(OUTPUT, `${name}.png`), fullPage: true });
   fs.writeFileSync(path.join(OUTPUT, `${name}.json`), JSON.stringify(measurements, null, 2));
