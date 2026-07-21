@@ -1,7 +1,6 @@
 #!/usr/bin/env node
 const fs = require('node:fs');
 const path = require('node:path');
-const P = require('../data/application-profiles.js');
 const H = require('../data/portfolio-human.js');
 const { startStaticServer } = require('./lib/static-server.js');
 const { launchBrowser } = require('./lib/browser.js');
@@ -52,37 +51,54 @@ async function assertPage(page, route, theme, viewport) {
 
 async function verifyHomepageInteractions(page) {
   const interactionResult = await page.evaluate(() => {
-    const track = document.querySelector('[data-artifact-track]');
-    const next = document.querySelector('[data-artifact-next]');
+    const track = document.querySelector('[data-gallery-track]');
+    const next = document.querySelector('[data-gallery-next]');
     const before = track ? track.scrollLeft : null;
     if (next) next.click();
     return new Promise((resolve) => setTimeout(() => resolve({
-      capabilityCount: document.querySelectorAll('.human-capability').length,
-      storyCount: document.querySelectorAll('.human-story').length,
-      artifactCount: document.querySelectorAll('.human-artifact').length,
-      roleCount: document.querySelectorAll('.human-fit-card').length,
-      hasCollage: Boolean(document.querySelector('.human-collage')),
-      hasProtocol: Boolean(document.querySelector('.human-protocol')),
+      proofCount: document.querySelectorAll('.pv4-proof-card').length,
+      storyCount: document.querySelectorAll('.pv4-story').length,
+      productCount: document.querySelectorAll('.pv4-product').length,
+      platformCount: document.querySelectorAll('.pv4-platform').length,
+      styleCount: document.querySelectorAll('.pv4-style-card').length,
+      galleryCount: document.querySelectorAll('.pv4-gallery-item').length,
+      roleCount: document.querySelectorAll('.pv4-fit-card').length,
+      stageThumbCount: document.querySelectorAll('.pv4-stage-thumb').length,
+      hasStageMain: Boolean(document.querySelector('.pv4-stage-main')),
+      hasAudienceVisual: Boolean(document.querySelector('.pv4-audience')),
+      hasEditorialNav: Boolean(document.querySelector('.nav-editorial .nav-shell')),
       before,
       after: track ? track.scrollLeft : null
     }), 500));
   });
 
-  if (interactionResult.capabilityCount !== H.capabilities.length) {
-    throw new Error(`Homepage must render ${H.capabilities.length} capabilities`);
+  if (interactionResult.proofCount !== H.proofMetrics.length) {
+    throw new Error(`Homepage must render ${H.proofMetrics.length} proof metrics`);
   }
   if (interactionResult.storyCount !== H.stories.length) {
-    throw new Error(`Homepage must render ${H.stories.length} work stories`);
+    throw new Error(`Homepage must render ${H.stories.length} outcome stories`);
   }
-  if (interactionResult.artifactCount < 5) throw new Error('Homepage must render the public artifact gallery');
+  if (interactionResult.productCount !== H.products.length) {
+    throw new Error(`Homepage must render ${H.products.length} shipped products`);
+  }
+  if (interactionResult.platformCount !== H.visualizationPlatforms.length) {
+    throw new Error(`Homepage must render ${H.visualizationPlatforms.length} visualization platforms`);
+  }
+  if (interactionResult.styleCount !== H.operatingStyle.length) {
+    throw new Error(`Homepage must render ${H.operatingStyle.length} operating-style signals`);
+  }
+  if (interactionResult.galleryCount < 5) throw new Error('Homepage must render the open visualization gallery');
   if (interactionResult.roleCount !== H.roleFamilies.length) {
     throw new Error(`Homepage must render ${H.roleFamilies.length} role-family documents`);
   }
-  if (!interactionResult.hasCollage || !interactionResult.hasProtocol) {
-    throw new Error('Homepage is missing the real-work collage or focus-group protocol visual');
+  if (interactionResult.stageThumbCount !== H.heroProjects.length - 1 || !interactionResult.hasStageMain) {
+    throw new Error('Homepage selected-work stage is incomplete');
+  }
+  if (!interactionResult.hasAudienceVisual || !interactionResult.hasEditorialNav) {
+    throw new Error('Homepage is missing the audience-scale visual or editorial navigation');
   }
   if (interactionResult.before !== null && interactionResult.after !== null && interactionResult.after <= interactionResult.before) {
-    throw new Error('Homepage artifact carousel control did not move the gallery');
+    throw new Error('Homepage visualization control did not move the gallery');
   }
 }
 
@@ -155,8 +171,11 @@ async function main() {
     await noJs.goto(`${staticServer.origin}/index.html`, { waitUntil: 'load', timeout: 45000 });
     const expectedNoJsText = [
       H.headline,
-      ...H.capabilities.map((item) => item.title),
+      ...H.proofMetrics.map((item) => item.label),
       ...H.stories.map((story) => story.title),
+      ...H.products.map((product) => product.title),
+      ...H.visualizationPlatforms.map((platform) => platform.title),
+      ...H.operatingStyle.map((item) => item.title),
       ...H.roleFamilies.map((role) => role.title)
     ];
     const noJsResult = await noJs.evaluate((expected) => {
@@ -175,7 +194,7 @@ async function main() {
     if (noJsResult.missing.length) throw new Error(`No-JS homepage is missing: ${noJsResult.missing.join(', ')}`);
     if (noJsResult.tests.some((item) => !item.exists || item.children === 0)) throw new Error(`No-JS homepage has an empty required container: ${JSON.stringify(noJsResult.tests)}`);
     if (noJsResult.evidenceLinks === 0) throw new Error('No-JS homepage has no external evidence links');
-    if (noJsResult.scrollWidth > noJsResult.clientWidth + 1) throw new Error('No-JS mobile homepage overflows horizontally');
+    if (noJsResult.scrollWidth > noJsResult.clientWidth + 1) throw new Error(`No-JS mobile homepage overflows horizontally (${noJsResult.scrollWidth} > ${noJsResult.clientWidth})`);
     await noJs.screenshot({ path: path.join(OUTPUT, 'index-no-js-mobile.png'), fullPage: true });
     await noJs.close();
 
