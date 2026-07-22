@@ -1,0 +1,58 @@
+name: Apply portfolio case study
+
+on:
+  push:
+    branches:
+      - feature/research-integrity-case-study
+    paths:
+      - .github/portfolio-patch.py
+      - .github/workflows/apply-portfolio-case-study.yml
+
+permissions:
+  contents: write
+
+jobs:
+  patch-build-and-commit:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout feature branch
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
+        with:
+          ref: feature/research-integrity-case-study
+          fetch-depth: 0
+          persist-credentials: true
+
+      - name: Setup Node.js
+        uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e
+        with:
+          node-version: '24'
+          cache: npm
+          cache-dependency-path: package.json
+
+      - name: Apply audited content patch
+        run: python3 .github/portfolio-patch.py
+
+      - name: Install build dependencies without lifecycle scripts
+        run: npm install --ignore-scripts --no-audit --no-fund
+
+      - name: Build Astro portfolio and generated dossiers
+        run: npm run build
+
+      - name: Verify generated case study
+        run: |
+          test -s dist/projects/research-integrity/index.html
+          grep -Fq 'Research-integrity tooling across the browser and Zotero.' dist/projects/research-integrity/index.html
+          grep -Fq 'Technical Case Study' dist/index.html
+          grep -Fq 'Research Integrity Suite' dist/cv.html
+
+      - name: Commit generated portfolio update
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A
+          if git diff --cached --quiet; then
+            echo 'No changes to commit.'
+            exit 0
+          fi
+          git commit -m 'feat: add research-integrity portfolio case study'
+          git push origin HEAD:feature/research-integrity-case-study
