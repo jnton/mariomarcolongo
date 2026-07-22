@@ -7,12 +7,20 @@ on:
     paths:
       - .github/portfolio-patch.py
       - .github/workflows/apply-portfolio-case-study.yml
+  pull_request:
+    branches:
+      - main
+    types: [opened, synchronize, reopened]
+    paths:
+      - .github/portfolio-patch.py
+      - .github/workflows/apply-portfolio-case-study.yml
 
 permissions:
   contents: write
 
 jobs:
   patch-build-and-commit:
+    if: github.event_name == 'push' || github.event.pull_request.head.repo.full_name == github.repository
     runs-on: ubuntu-24.04
     steps:
       - name: Checkout feature branch
