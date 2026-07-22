@@ -48,8 +48,8 @@ jobs:
 
       - name: Verify generated case study
         run: |
-          test -s dist/projects/research-integrity/index.html
-          grep -Fq 'Research-integrity tooling across the browser and Zotero.' dist/projects/research-integrity/index.html
+          test -s dist/projects/research-integrity.html
+          grep -Fq 'Research-integrity tooling across the browser and Zotero.' dist/projects/research-integrity.html
           grep -Fq 'Technical Case Study' dist/index.html
           grep -Fq 'Research Integrity Suite' dist/cv.html
 
