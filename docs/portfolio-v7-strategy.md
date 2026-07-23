@@ -1,35 +1,46 @@
 # Portfolio v7 strategy
 
-## Memory target
+## Public scope
 
-The page is designed to leave one sentence in the visitor's memory:
+The homepage is organized around three distinct areas of work:
 
-> Mario turns ambiguous claims into inspectable systems.
+1. AI model-behavior evaluation.
+2. Scientific fact-checking for public communication.
+3. Research information systems and data quality.
 
-Every major section advances that idea instead of repeating the same metrics, screenshots or role labels.
+The page does not force these areas into one invented discipline. Each area has its own description, case study, evidence, and limits.
 
 ## Attention architecture
 
-1. The hero introduces an interactive evidence engine: ambiguity → test → verify → operate.
-2. Three proof figures appear once and are not repeated as decorative social proof.
-3. Three large case narratives show situation, move, result and evidence boundary.
-4. The working lab demonstrates range through deliberately different interaction models rather than equal cards.
-5. The autism-genetics visualization receives one full-width visual climax.
-6. The operating profile leads with useful working traits; autism is optional context disclosed later.
-7. The application section recommends one default CV and treats the other documents as targeted alternatives.
+1. The hero names the three scopes directly.
+2. The interactive panel switches between scope definitions rather than presenting one universal method.
+3. Three proof figures appear once and correspond to the three scopes.
+4. The selected-work section presents one project from each area.
+5. MDPI Filter and the protein explorer appear as supporting projects, not as additional professional identities.
+6. The scientific visualization is shown as a specific public artifact with a source record.
+7. Working preferences are described without disclosing a diagnosis.
+8. The application section recommends one default CV and keeps the other documents as targeted alternatives.
+
+## Language rule
+
+Copy should describe the actual task in ordinary professional language. Avoid aphorisms, legal metaphors, invented umbrella concepts, and sentences assembled from unrelated parts of the experience. Terms such as fact-checking, licensing, provenance, evaluation, and operations must retain their specific meanings.
+
+## Autism disclosure
+
+Autism is not disclosed on the public homepage. The diagnosis has a negative screening tradeoff and is not required to explain the demonstrated work. Relevant working preferences can be stated directly without attaching them to a diagnosis.
 
 ## Mobile attention model
 
-Desktop uses a long-form editorial sequence. On narrow screens, the case studies, working lab, operating principles and targeted CVs become horizontal snap rails. This preserves the full evidence while preventing a repetitive 16,000-pixel vertical card stack and makes each swipe a deliberate change of subject.
+Desktop uses a long-form editorial sequence. On narrow screens, case studies, supporting projects, working principles, and targeted CVs become horizontal snap rails. This preserves the evidence while avoiding an excessively repetitive vertical card stack.
 
 ## Motion rule
 
-Animation must clarify method, state or interaction. The evidence path, engine stages, case diagrams and product micro-demos each represent a real behavior. Reduced-motion preferences and no-JavaScript access remain supported.
+Animation must clarify state or interaction. Reduced-motion preferences and no-JavaScript access remain supported.
 
 ## Current product context
 
-MDPI Filter is represented as a cross-surface research-integrity product family with a multi-browser extension and Zotero plugin. Future rebranding and expansion beyond MDPI are not presented as shipped features.
+MDPI Filter is represented as a browser extension and Zotero plugin for identifying MDPI references while avoiding ambiguous matches. Future rebranding and expansion beyond MDPI are not presented as shipped features.
 
 ## Verification scope
 
-Release checks cover all eight public routes at desktop, tablet and mobile dimensions in light and dark themes; all routes also receive mobile no-JavaScript checks. Lighthouse audits run separately for every route in mobile and desktop modes, including contrast and touch-target checks on the homepage and CV layouts. The four targeted application CVs must remain exactly two A4 pages, and generation fails when flowing content reaches or crosses the fixed page footer rather than treating page count alone as proof of a valid layout.
+Release checks cover all eight public routes at desktop, tablet, and mobile dimensions in light and dark themes; all routes also receive mobile no-JavaScript checks. Lighthouse audits run separately for every route in mobile and desktop modes. The four targeted application CVs must remain exactly two A4 pages, and generation fails when flowing content reaches or crosses the fixed page footer.
