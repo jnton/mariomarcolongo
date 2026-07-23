@@ -18,6 +18,10 @@ Every major section advances that idea instead of repeating the same metrics, sc
 6. The operating profile leads with useful working traits; autism is optional context disclosed later.
 7. The application section recommends one default CV and treats the other documents as targeted alternatives.
 
+## Mobile attention model
+
+Desktop uses a long-form editorial sequence. On narrow screens, the case studies, working lab, operating principles and targeted CVs become horizontal snap rails. This preserves the full evidence while preventing a repetitive 16,000-pixel vertical card stack and makes each swipe a deliberate change of subject.
+
 ## Motion rule
 
 Animation must clarify method, state or interaction. The evidence path, engine stages, case diagrams and product micro-demos each represent a real behavior. Reduced-motion preferences and no-JavaScript access remain supported.
