@@ -95,8 +95,8 @@ for (const needle of [
   ...H.workingPrinciples.map((item) => item.title),
   ...H.applicationDocuments.map((item) => item.title),
   'data-testid="human-capabilities"', 'data-testid="human-work"', 'data-testid="human-documents"',
-  'Selected work', 'Research tools', 'Scientific visualization',
-  'Choose the CV that matches the role.', 'Open to AI evaluation and scientific research-quality roles.',
+  'Areas of work', 'One project from each area.', 'Supporting projects', 'Scientific visualization',
+  'Choose the CV that matches the role.', 'Open to AI evaluation, scientific evidence, and research-information roles.',
   'Zotero plugin', 'Protein by bodyweight by country'
 ]) assertContains(indexText, needle, 'dist/index.html');
 for (const obsolete of [
