@@ -23,12 +23,16 @@ const REQUIRED = [
   'src/pages/cv-research.astro', 'src/pages/cv-editorial.astro', 'src/pages/cv-integrity.astro',
   'src/pages/security.astro', 'src/styles/global.css', 'src/styles/career-v2.css',
   'src/styles/portfolio-v7.css', 'src/styles/portfolio-v7-mobile.css',
-  'src/styles/portfolio-v7-safety.css', 'src/styles/nav-editorial.css', 'src/styles/integrity.css',
+  'src/styles/portfolio-v7-safety.css', 'src/styles/portfolio-v8.css',
+  'src/styles/nav-editorial.css', 'src/styles/integrity.css',
   'src/styles/v3-accessibility.css', 'scripts/lib/dossier-generators.js',
   'scripts/generate-llm-dossiers.js', 'scripts/postbuild.js', 'scripts/verify-dist.js',
   'scripts/verify-rendering.js', 'public/.well-known/api-catalog',
   'public/.well-known/agent-card.json', 'public/.well-known/mcp/server-card.json',
-  'public/robots.txt', 'public/sitemap.xml', 'public/site.webmanifest'
+  'public/robots.txt', 'public/sitemap.xml', 'public/site.webmanifest',
+  'public/media/work/entropy-h5n1.png', 'public/media/work/yourself-to-science-800.webp',
+  'public/media/work/mdpi-filter-1-800.webp', 'public/media/work/mdpi-filter-2-800.webp',
+  'public/media/work/wikimedia-clinical-overlap.svg'
 ];
 
 const SCAN_ROOTS = [
@@ -128,19 +132,27 @@ for (const marker of ['human-capabilities', 'human-work', 'human-documents']) {
 }
 for (const requiredText of [
   'I test AI systems and verify scientific claims.',
-  'Areas of work',
-  'One project from each area.',
-  'Supporting projects',
-  'Scientific visualization',
-  'Choose the CV that matches the role.',
-  'Open to AI evaluation, scientific evidence, and research-information roles.'
+  'Two primary areas. One supporting capability.',
+  'Real artifacts, not portfolio illustrations.',
+  'MDPI Filter now works in the browser and in Zotero.',
+  'A diagram that became a reusable public reference.',
+  'Start with the role you are hiring for.',
+  'AI evaluation and scientific evidence roles.'
 ]) {
-  if (!homepageSource.includes(requiredText)) fail('src/pages/index.astro', 1, `Homepage is missing scoped portfolio content: ${requiredText}`);
+  if (!homepageSource.includes(requiredText)) fail('src/pages/index.astro', 1, `Homepage is missing artifact-led portfolio content: ${requiredText}`);
+}
+for (const requiredMedia of [
+  '/media/work/model-behavior-record.svg', '/media/work/entropy-h5n1.png',
+  '/media/work/yourself-to-science-800.webp', '/media/work/mdpi-filter-1-800.webp',
+  '/media/work/mdpi-filter-2-800.webp', '/media/work/wikimedia-clinical-overlap.svg'
+]) {
+  if (!homepageSource.includes(requiredMedia)) fail('src/pages/index.astro', 1, `Homepage is missing real work media: ${requiredMedia}`);
 }
 for (const rejectedText of [
   'class="v3-network"', 'Explore role lenses', 'One profile. Four credible lenses.',
   'Pencil_Fascist_Tuberculosis', 'Alessandro Lanzoni', 'class="portfolio-v4"',
-  'class="portfolio-v5"', 'class="p5-work-mosaic"', 'Public analysis across three platforms.'
+  'class="portfolio-v5"', 'class="portfolio-v7"', 'class="v7-engine"',
+  'class="p5-work-mosaic"', 'Public analysis across three platforms.'
 ]) {
   if (indexSource.includes(rejectedText)) fail('src/pages/index.astro', 1, `Homepage still contains rejected content: ${rejectedText}`);
 }
