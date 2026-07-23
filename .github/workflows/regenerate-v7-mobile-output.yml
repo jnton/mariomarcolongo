@@ -1,0 +1,53 @@
+name: Regenerate portfolio v7 mobile output
+
+on:
+  push:
+    branches: [human-centered-redesign]
+    paths:
+      - 'src/**'
+      - 'data/**'
+      - 'scripts/**'
+      - '.github/workflows/regenerate-v7-mobile-output.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  regenerate:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - name: Check out redesign branch
+        uses: actions/checkout@v4
+        with:
+          ref: human-centered-redesign
+          fetch-depth: 0
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - name: Install locked dependencies
+        run: npm ci --no-audit --no-fund
+      - name: Build deterministic public output
+        run: npm run build
+      - name: Commit generated mirrors and remove this one-shot workflow
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          rm .github/workflows/regenerate-v7-mobile-output.yml
+          git add \
+            index.html integrity.html security.html cv.html \
+            cv-resume.html cv-research.html cv-editorial.html cv-integrity.html \
+            llms.txt llms-full.txt cv-llm.txt \
+            public/llms.txt public/llms-full.txt public/cv-llm.txt public/data/source.js \
+            .github/workflows/regenerate-v7-mobile-output.yml
+          if git diff --cached --quiet; then
+            echo "No deterministic output changed."
+            exit 0
+          fi
+          git commit -m "build: regenerate portfolio v7 mobile output"
+          git push origin HEAD:human-centered-redesign
