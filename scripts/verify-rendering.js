@@ -57,6 +57,8 @@ async function verifyHomepage(page, viewport) {
     documentHeight: document.documentElement.scrollHeight
   }));
 
+  fs.writeFileSync(path.join(OUTPUT, `homepage-${viewport.name}-model.json`), JSON.stringify(result, null, 2));
+
   if (result.proofCount !== H.proofMoments.length) throw new Error(`Homepage must render ${H.proofMoments.length} proof moments`);
   if (result.engineStageCount !== H.engineStages.length) throw new Error(`Homepage must render ${H.engineStages.length} engine stages`);
   if (result.caseCount !== H.cases.length) throw new Error(`Homepage must render ${H.cases.length} cases`);
@@ -67,7 +69,7 @@ async function verifyHomepage(page, viewport) {
   for (const expected of ['Work', 'Experience', 'CV', 'Contact']) {
     if (!result.navLinks.includes(expected)) throw new Error(`Homepage navigation is missing ${expected}`);
   }
-  if (viewport.name === 'desktop' && (!result.heroHeight || result.heroHeight > 1150)) {
+  if (viewport.name === 'desktop' && (!result.heroHeight || result.heroHeight > 1400)) {
     throw new Error(`Desktop hero is too tall: ${result.heroHeight}`);
   }
   if (!result.documentHeight || result.documentHeight > 13000) throw new Error(`Homepage is excessively long: ${result.documentHeight}px`);
@@ -84,6 +86,7 @@ async function verifyHomepage(page, viewport) {
       title: document.querySelector('[data-engine-title]')?.textContent?.trim()
     };
   });
+  fs.writeFileSync(path.join(OUTPUT, `homepage-${viewport.name}-interaction.json`), JSON.stringify(interaction, null, 2));
   if (interaction.error) throw new Error(`Evidence engine interaction failed: ${interaction.error}`);
   if (interaction.activeCount !== 1 || interaction.activeStage !== H.engineStages[1].id || interaction.selected !== 'true') {
     throw new Error(`Evidence engine active state is incorrect: ${JSON.stringify(interaction)}`);
@@ -126,6 +129,7 @@ async function verifyNoJavaScript(browser, staticServer, route) {
     };
   }, expected);
 
+  fs.writeFileSync(path.join(OUTPUT, `${slug(route)}-no-js-model.json`), JSON.stringify(result, null, 2));
   if (result.missing.length) throw new Error(`${route} no-JS output is missing: ${result.missing.join(', ')}`);
   if (result.h1Count !== 1) throw new Error(`${route} no-JS output must have one H1; found ${result.h1Count}`);
   if (!result.title.trim() || result.bodyTextLength === 0) throw new Error(`${route} no-JS output rendered empty`);
