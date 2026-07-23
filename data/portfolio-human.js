@@ -1,7 +1,7 @@
 const PORTFOLIO_HUMAN = {
-  eyebrow: "AI evaluation · scientific fact-checking · research information systems",
-  headline: "I test AI systems, verify scientific claims, and organize research information.",
-  introduction: "This portfolio is divided into three areas. AI evaluation covers model-behavior testing. Scientific fact-checking covers primary-source review for public communication. Research information systems covers the design and operation of structured public records and tools. Each project states its own scope, my contribution, and its limits.",
+  eyebrow: "AI evaluation · scientific fact-checking",
+  headline: "I test AI systems and verify scientific claims.",
+  introduction: "My two primary areas are AI model-behavior evaluation and scientific fact-checking. Research information systems are a supporting area: I apply the same evidence and data-quality discipline to maintained public records and tools. The cases below keep these scopes separate.",
 
   proofMoments: [
     {
@@ -49,7 +49,7 @@ const PORTFOLIO_HUMAN = {
       label: "Research systems",
       title: "Turn scattered information into maintained records.",
       body: "Define inclusion rules, provenance fields, update procedures, and public interfaces for research information that is otherwise difficult to find or verify.",
-      signal: "Scope: research data and public information tools",
+      signal: "Supporting scope: research data and public information tools",
       examples: "Directories · metadata · APIs · public datasets"
     }
   ],
@@ -80,7 +80,7 @@ const PORTFOLIO_HUMAN = {
       number: "02",
       label: "Scientific fact-checking",
       title: "Checking whether sources support a public scientific claim.",
-      lead: "Finding a paper is only the beginning. The relevant question is whether its methods and results support the wording used in a script or article.",
+      lead: "The task is to determine whether a study's methods and results support the exact wording proposed for publication.",
       situation: "Science communication often compresses limited, uncertain, or conflicting research into a short statement for a general audience.",
       action: "I break the statement into checkable claims, review the primary literature, trace disagreements between sources, and explain the needed correction or qualification to the production team.",
       result: "Paid fact-checking integrated into an ongoing publishing workflow covering videos, documentaries, and articles.",
