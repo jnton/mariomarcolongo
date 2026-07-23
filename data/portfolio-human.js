@@ -136,7 +136,7 @@ const PORTFOLIO_HUMAN = {
 
   mdpiFilter: {
     label: "Current product",
-    title: "MDPI Filter now works in the browser and in Zotero.",
+    title: "MDPI Filter now works in the browser and as a Zotero plugin.",
     body: "The current product identifies MDPI references across literature-search and reference-management workflows while avoiding ambiguous title-based matches. The broader rebrand and expansion to retractions, comments and other research-integrity signals are future work, not shipped functionality.",
     meta: "Chrome · Edge · Firefox · Safari source · Zotero 7–9",
     href: "https://github.com/orgs/mdpi-filter/repositories",
