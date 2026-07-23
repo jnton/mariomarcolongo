@@ -8,6 +8,7 @@ const ROOT = path.resolve(__dirname, '..');
 const DIST = path.join(ROOT, 'dist');
 const OUTPUT = path.join(ROOT, 'audit-v4');
 
+// Warm the complete narrative before capture so lazy assets and scroll-triggered reveals are audited in their settled state.
 async function warmLazyContent(page) {
   await page.evaluate(async () => {
     const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
