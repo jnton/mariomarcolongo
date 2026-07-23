@@ -7,15 +7,14 @@ import D from "../../data/source.js";
 import H from "../../data/portfolio-human.js";
 import { buildProfileGraph } from "../lib/structured-data.js";
 
-const pageTitle = "Mario Marcolongo — Evidence, Evaluation & Research Systems";
-const pageDescription = "AI model-behavior evaluation, scientific verification, research systems, knowledge integrity and public data products.";
+const pageTitle = "Mario Marcolongo — AI Evaluation & Scientific Research Quality";
+const pageDescription = "Portfolio focused on AI model-behavior evaluation, scientific verification, research quality and evidence-based tools.";
 const profileJsonLd = buildProfileGraph(D, "https://mariomarcolongo.com/", pageTitle);
 
 const selectedExperience = [
   D.experience.find((item) => item.role?.includes("Model-Behavior")),
   D.experience.find((item) => item.org?.includes("Entropy for Life")),
-  D.experience.find((item) => item.org?.includes("Yourself to Science")),
-  D.experience.find((item) => item.role?.includes("Focus-Group"))
+  D.experience.find((item) => item.org?.includes("Yourself to Science"))
 ].filter(Boolean);
 
 const firstStage = H.engineStages[0];
@@ -35,8 +34,8 @@ const firstStage = H.engineStages[0];
         <h1 id="portfolio-title">{H.headline}</h1>
         <p class="v7-hero-lede">{H.introduction}</p>
         <div class="v7-actions">
-          <a class="v7-button v7-button-primary" href="#selected-work">Follow the evidence</a>
-          <a class="v7-button" href="#applications">Choose a targeted CV</a>
+          <a class="v7-button v7-button-primary" href="#selected-work">View selected work</a>
+          <a class="v7-button" href="#applications">Open targeted CVs</a>
         </div>
         <p class="v7-availability">Italy · EU work authorization · worldwide relocation and international contracting</p>
       </div>
@@ -44,8 +43,8 @@ const firstStage = H.engineStages[0];
       <div class="v7-engine" data-engine data-reveal aria-labelledby="engine-title">
         <div class="v7-engine-glow" aria-hidden="true"></div>
         <div class="v7-engine-header">
-          <span>Evidence engine</span>
-          <span class="v7-engine-status" aria-hidden="true">LIVE METHOD</span>
+          <span>How I approach the work</span>
+          <span class="v7-engine-status" aria-hidden="true">PROCESS</span>
         </div>
 
         <div class="v7-engine-path" aria-hidden="true">
@@ -94,10 +93,10 @@ const firstStage = H.engineStages[0];
     <section class="v7-section v7-cases" id="selected-work" data-testid="human-work" aria-labelledby="selected-work-title">
       <header class="v7-section-head" data-reveal>
         <div>
-          <div class="v7-kicker">Three difficult problems</div>
-          <h2 id="selected-work-title">One method. Three very different systems.</h2>
+          <div class="v7-kicker">Selected work</div>
+          <h2 id="selected-work-title">Three examples of evaluation and research-quality work.</h2>
         </div>
-        <p>The numbers appear once. The rest of the page shows the reasoning, decisions and evidence boundaries behind them.</p>
+        <p>Each case explains the problem, what I did, the result and the limits of the evidence.</p>
       </header>
 
       <div class="v7-case-stack" data-testid="human-capabilities">
@@ -113,11 +112,11 @@ const firstStage = H.engineStages[0];
 
               <dl class="v7-case-decisions">
                 <div>
-                  <dt>Situation</dt>
+                  <dt>Problem</dt>
                   <dd>{item.situation}</dd>
                 </div>
                 <div>
-                  <dt>Move</dt>
+                  <dt>What I did</dt>
                   <dd>{item.action}</dd>
                 </div>
                 <div>
@@ -127,7 +126,7 @@ const firstStage = H.engineStages[0];
               </dl>
 
               <aside class="v7-boundary">
-                <span>Evidence boundary</span>
+                <span>What this evidence does not prove</span>
                 <p>{item.boundary}</p>
               </aside>
 
@@ -160,10 +159,10 @@ const firstStage = H.engineStages[0];
     <section class="v7-section v7-lab" id="lab" aria-labelledby="lab-title">
       <header class="v7-section-head" data-reveal>
         <div>
-          <div class="v7-kicker">Working lab</div>
-          <h2 id="lab-title">Small systems that reveal how I think.</h2>
+          <div class="v7-kicker">Research tools</div>
+          <h2 id="lab-title">Tools built around evidence and data quality.</h2>
         </div>
-        <p>Each object has a different job, interaction model and failure surface. They are not arranged as four identical portfolio cards.</p>
+        <p>These projects extend the same work into literature workflows and public data exploration.</p>
       </header>
 
       <div class="v7-lab-grid">
@@ -182,19 +181,6 @@ const firstStage = H.engineStages[0];
                 <div class="v7-demo-chart">
                   <span style="--h:38%"></span><span style="--h:57%"></span><span style="--h:74%"></span><span style="--h:49%"></span><span style="--h:86%"></span>
                   <i></i>
-                </div>
-              )}
-              {item.interaction === "convert" && (
-                <div class="v7-demo-convert">
-                  <code>it.wikipedia.org/wiki/Autismo</code>
-                  <span>→</span>
-                  <code>en.wikipedia.org/wiki/Autism</code>
-                </div>
-              )}
-              {item.interaction === "network" && (
-                <div class="v7-demo-network">
-                  {Array.from({ length: 8 }).map((_, nodeIndex) => <i style={`--node:${nodeIndex}`}></i>)}
-                  <span></span>
                 </div>
               )}
             </div>
@@ -242,10 +228,6 @@ const firstStage = H.engineStages[0];
             <p>{item.body}</p>
           </article>
         ))}
-        <details class="v7-disclosure" data-reveal>
-          <summary>{H.workingStyle.disclosureTitle}</summary>
-          <p>{H.workingStyle.disclosureBody}</p>
-        </details>
       </div>
     </section>
 
@@ -253,9 +235,9 @@ const firstStage = H.engineStages[0];
       <header class="v7-section-head" data-reveal>
         <div>
           <div class="v7-kicker">Experience</div>
-          <h2 id="experience-title">The concise record.</h2>
+          <h2 id="experience-title">Relevant experience.</h2>
         </div>
-        <p>Enough context to understand the trajectory; the targeted CVs carry the full application detail.</p>
+        <p>A short overview; the targeted CVs contain the full detail.</p>
       </header>
       <div class="v7-experience-list">
         {selectedExperience.map((item) => (
@@ -273,10 +255,10 @@ const firstStage = H.engineStages[0];
     <section class="v7-section v7-applications" id="applications" data-testid="human-documents" aria-labelledby="applications-title">
       <header class="v7-section-head" data-reveal>
         <div>
-          <div class="v7-kicker">Application route</div>
-          <h2 id="applications-title">Start with the role, not the archive.</h2>
+          <div class="v7-kicker">Application documents</div>
+          <h2 id="applications-title">Choose the CV that matches the role.</h2>
         </div>
-        <p>The first document is the default for the strongest immediate high-upside lane. The others are deliberate alternatives, not four equal guesses.</p>
+        <p>The AI evaluation CV is the default. The others are tailored to scientific AI, knowledge integrity or research operations.</p>
       </header>
 
       <div class="v7-documents">
@@ -293,9 +275,9 @@ const firstStage = H.engineStages[0];
 
     <section class="v7-contact" id="contact" aria-labelledby="contact-title" data-reveal>
       <div>
-        <span>Available for the right problem</span>
-        <h2 id="contact-title">Bring me the claim that does not quite survive inspection.</h2>
-        <p>AI evaluation, scientific-AI quality, research operations, knowledge integrity and high-autonomy technical-program paths.</p>
+        <span>Current focus</span>
+        <h2 id="contact-title">Open to AI evaluation and scientific research-quality roles.</h2>
+        <p>Especially model-behavior evaluation, scientific AI quality, research operations and knowledge integrity.</p>
       </div>
       <div class="v7-actions">
         <a class="v7-button v7-button-light" href={`mailto:${D.identity.email}`}>Email Mario</a>
