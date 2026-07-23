@@ -21,8 +21,7 @@ const REQUIRED = [
   'src/pages/integrity.astro', 'src/pages/cv.astro', 'src/pages/cv-resume.astro',
   'src/pages/cv-research.astro', 'src/pages/cv-editorial.astro', 'src/pages/cv-integrity.astro',
   'src/pages/security.astro', 'src/styles/global.css', 'src/styles/career-v2.css',
-  'src/styles/portfolio-v5.css', 'src/styles/portfolio-v6-overrides.css',
-  'src/styles/nav-editorial.css', 'src/styles/integrity.css',
+  'src/styles/portfolio-v7.css', 'src/styles/nav-editorial.css', 'src/styles/integrity.css',
   'src/styles/v3-accessibility.css', 'scripts/lib/dossier-generators.js',
   'scripts/generate-llm-dossiers.js', 'scripts/postbuild.js', 'scripts/verify-dist.js',
   'scripts/verify-rendering.js', 'public/.well-known/api-catalog',
@@ -48,7 +47,10 @@ const PROHIBITED = [
   ['C2 Reading/Listening, B2 Writing/Speaking', 'Unnecessary language subscore emphasis'],
   ['Institutional and individual attribution is withheld', 'Outdated focus-group attribution status'],
   ['Scale, failure modes, systems and evidence.', 'Rejected oversized portfolio-v4 heading'],
-  ['Useful when the problem is strange, ambiguous or uncomfortable.', 'Rejected self-promotional portfolio-v4 heading']
+  ['Useful when the problem is strange, ambiguous or uncomfortable.', 'Rejected self-promotional portfolio-v4 heading'],
+  ['Autistic, direct and unusually comfortable with difficult problems.', 'Rejected diagnosis-first portfolio headline'],
+  ['Evidence for the next role—and the path after it.', 'Rejected repetitive portfolio-v5 heading'],
+  ['Discuss a difficult problem.', 'Rejected generic portfolio-v5 contact heading']
 ];
 
 let failures = 0;
@@ -119,17 +121,19 @@ for (const marker of ['human-capabilities', 'human-work', 'human-documents']) {
   if (!indexSource.includes(`data-testid="${marker}"`)) fail('src/pages/index.astro', 1, `Missing homepage marker ${marker}.`);
 }
 for (const requiredText of [
-  'Evidence for the next role—and the path after it.',
-  'Public tools with a clear job to do.', 'Three inspectable public artifacts.',
-  'Built for teams that reward independent judgment.',
-  'Use the version matched to the role.', 'Discuss a difficult problem.'
+  'I turn ambiguous claims into inspectable systems.',
+  'Three difficult problems',
+  'Working lab',
+  'Featured public artifact',
+  'Start with the role, not the archive.',
+  'Bring me the claim that does not quite survive inspection.'
 ]) {
-  if (!indexSource.includes(requiredText)) fail('src/pages/index.astro', 1, `Homepage is missing current portfolio content: ${requiredText}`);
+  if (!indexSource.includes(requiredText)) fail('src/pages/index.astro', 1, `Homepage is missing portfolio-v7 content: ${requiredText}`);
 }
 for (const rejectedText of [
   'class="v3-network"', 'Explore role lenses', 'One profile. Four credible lenses.',
   'Pencil_Fascist_Tuberculosis', 'Alessandro Lanzoni', 'class="portfolio-v4"',
-  'Public analysis across three platforms.'
+  'class="portfolio-v5"', 'class="p5-work-mosaic"', 'Public analysis across three platforms.'
 ]) {
   if (indexSource.includes(rejectedText)) fail('src/pages/index.astro', 1, `Homepage still contains rejected content: ${rejectedText}`);
 }
