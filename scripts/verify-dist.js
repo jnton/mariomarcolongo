@@ -87,36 +87,43 @@ const indexText = normalizeHtmlText(index);
 for (const needle of [
   H.headline,
   ...H.proofMoments.flatMap((item) => [item.value, item.label]),
-  ...H.engineStages.flatMap((item) => [item.label, item.title]),
+  ...H.scopes.map((item) => item.title),
   ...H.cases.map((item) => item.title),
-  ...H.lab.map((item) => item.title),
+  H.mdpiFilter.title,
   H.featuredArtifact.title,
+  ...H.visualArtifacts.map((item) => item.title),
   H.workingStyle.title,
   ...H.workingPrinciples.map((item) => item.title),
   ...H.applicationDocuments.map((item) => item.title),
   'data-testid="human-capabilities"', 'data-testid="human-work"', 'data-testid="human-documents"',
-  'Areas of work', 'One project from each area.', 'Supporting projects', 'Scientific visualization',
-  'Choose the CV that matches the role.', 'Open to AI evaluation, scientific evidence, and research-information roles.',
+  'Two primary areas. One supporting capability.', 'Real artifacts, not portfolio illustrations.',
+  'Start with the role you are hiring for.', 'AI evaluation and scientific evidence roles.',
   'Zotero plugin', 'Protein by bodyweight by country'
 ]) assertContains(indexText, needle, 'dist/index.html');
 for (const obsolete of [
-  'class="portfolio-v4"', 'class="portfolio-v5"', 'class="v3-network"', 'class="p5-work-mosaic"',
+  'class="portfolio-v4"', 'class="portfolio-v5"', 'class="portfolio-v7"',
+  'class="v3-network"', 'class="v7-engine', 'class="p5-work-mosaic"',
   'Scale, failure modes, systems and evidence.', 'Useful when the problem is strange, ambiguous or uncomfortable.',
   'One evidence base. Four high-upside application routes.', 'Evidence for the next role—and the path after it.',
   'Autistic, direct and unusually comfortable with difficult problems.', 'I am autistic.',
   'The hard part is rarely finding a paper.', 'Discuss a difficult problem.',
   'Pencil_Fascist_Tuberculosis', 'Alessandro Lanzoni', 'Public analysis across three platforms.',
   '/media/work/model-behavior-method.svg', '/media/work/entropy-social-proof.svg',
-  'Special:ListFiles/Digressivo', 'https://jnton.github.io/emergent-humanity/'
+  'Special:ListFiles/Digressivo'
 ]) assertNotContains(index, obsolete, 'dist/index.html');
-assertContains(index, 'class="portfolio-v7"', 'dist/index.html');
-assertContains(index, 'class="v7-engine', 'dist/index.html');
-assertContains(index, 'class="v7-case-stack"', 'dist/index.html');
-assertContains(index, 'class="v7-lab-grid"', 'dist/index.html');
-assertContains(index, '/media/work/wikimedia-clinical-overlap.svg', 'dist/index.html');
+assertContains(index, 'class="portfolio-v8"', 'dist/index.html');
+assertContains(index, 'class="v8-hero-gallery"', 'dist/index.html');
+assertContains(index, 'class="v8-case-stack"', 'dist/index.html');
+assertContains(index, 'class="v8-product"', 'dist/index.html');
+for (const media of [
+  '/media/work/model-behavior-record.svg', '/media/work/entropy-h5n1.png',
+  '/media/work/yourself-to-science-800.webp', '/media/work/mdpi-filter-1-800.webp',
+  '/media/work/mdpi-filter-2-800.webp', '/media/work/wikimedia-clinical-overlap.svg',
+  '/media/work/tableau-mortality-800.webp', '/media/work/flourish-oesophageal-cancer.svg'
+]) assertContains(index, media, 'dist/index.html');
 assertContains(index, 'https://github.com/orgs/mdpi-filter/repositories', 'dist/index.html');
 assertContains(index, 'https://jnton.github.io/protein-by-bodyweight-country/', 'dist/index.html');
-pass('Scoped homepage narrative checked');
+pass('Artifact-led homepage checked');
 
 const applicationProfiles = [
   ['resume', P.aiSafety], ['research', P.researchQuality], ['editorial', P.editorialCommunity], ['integrityCv', P.integrity]
