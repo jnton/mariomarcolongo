@@ -8,19 +8,18 @@ const ROOT = path.resolve(__dirname, '..');
 const DIST = path.join(ROOT, 'dist');
 const OUTPUT = path.join(ROOT, 'audit-v4');
 
-// Warm the complete narrative before capture so lazy assets and scroll-triggered reveals are audited in their settled state.
 async function warmLazyContent(page) {
   await page.evaluate(async () => {
     const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
     const step = Math.max(420, Math.floor(window.innerHeight * 0.78));
     for (let y = 0; y < document.documentElement.scrollHeight; y += step) {
       window.scrollTo(0, y);
-      await delay(90);
+      await delay(100);
     }
     window.scrollTo(0, document.documentElement.scrollHeight);
-    await delay(700);
+    await delay(850);
     window.scrollTo(0, 0);
-    await delay(300);
+    await delay(350);
   });
 }
 
@@ -36,7 +35,7 @@ async function capture(browser, server, name, width, height, theme) {
     const brokenImages = Array.from(document.images)
       .filter((image) => image.complete && image.naturalWidth === 0)
       .map((image) => ({ src: image.getAttribute('src'), alt: image.alt }));
-    const contact = document.querySelector('.v7-contact');
+    const contact = document.querySelector('.v8-contact');
     const contactStyle = contact ? getComputedStyle(contact) : null;
     return {
       scrollWidth: document.documentElement.scrollWidth,
@@ -45,6 +44,10 @@ async function capture(browser, server, name, width, height, theme) {
       contactExists: Boolean(contact),
       contactOpacity: contactStyle ? Number.parseFloat(contactStyle.opacity) : null,
       contactHeight: contact ? Math.round(contact.getBoundingClientRect().height) : null,
+      heroImages: document.querySelectorAll('.v8-hero-shot img').length,
+      caseImages: document.querySelectorAll('.v8-case-media img').length,
+      productImages: document.querySelectorAll('.v8-product-shot img').length,
+      totalPortfolioImages: document.querySelectorAll('.portfolio-v8 img').length,
       brokenLocalImages: brokenImages.filter((item) => item.src && item.src.startsWith('/')),
       brokenExternalImages: brokenImages.filter((item) => !item.src || !item.src.startsWith('/'))
     };
@@ -59,6 +62,9 @@ async function capture(browser, server, name, width, height, theme) {
   }
   if (!measurements.contactExists || measurements.contactOpacity < 0.95 || !measurements.contactHeight) {
     throw new Error(`${name} has a hidden or missing contact conversion section: ${JSON.stringify(measurements)}`);
+  }
+  if (measurements.heroImages < 4 || measurements.caseImages < 3 || measurements.productImages < 2 || measurements.totalPortfolioImages < 12) {
+    throw new Error(`${name} does not render the expected real-work media: ${JSON.stringify(measurements)}`);
   }
   if (measurements.brokenLocalImages.length) {
     throw new Error(`${name} has broken first-party images: ${JSON.stringify(measurements.brokenLocalImages)}`);
