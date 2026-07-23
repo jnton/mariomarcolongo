@@ -1,222 +1,204 @@
 const PORTFOLIO_HUMAN = {
-  eyebrow: "AI evaluation · scientific evidence · research operations",
-  headline: "I evaluate model behavior, verify scientific evidence, and operate research systems.",
-  introduction: "My strongest work combines exploratory AI evaluation, paid primary-source verification and ownership of public research workflows. I am targeting roles where careful judgment, evidence quality and operational follow-through can grow into higher-value evaluation, safety and technical-program responsibility.",
+  eyebrow: "AI evaluation · scientific evidence · research systems",
+  headline: "I turn ambiguous claims into inspectable systems.",
+  introduction: "I work where evidence is incomplete, incentives are messy and the result still has to survive scrutiny. I test model behavior, verify scientific claims and turn uncertain research workflows into public, maintainable systems.",
 
-  proofs: [
+  proofMoments: [
     {
       value: "75",
-      label: "Platform-confirmed model breaks",
-      detail: "156 submissions across 26 listed Gray Swan testing waves as of July 2026.",
+      label: "platform-confirmed model breaks",
+      detail: "Gray Swan Proving Ground · July 2026",
       href: "/security.html"
     },
     {
       value: "55+",
-      label: "Scientific productions supported",
-      detail: "Paid primary-literature research and fact-checking for videos and documentaries, plus four articles.",
+      label: "scientific productions supported",
+      detail: "Paid primary-source verification for Entropy for Life",
       href: "https://www.youtube.com/@entropyforlife"
     },
     {
       value: "55+",
-      label: "Research initiatives indexed",
-      detail: "Clinical studies, biobanks, registries and donation programs in Yourself to Science.",
+      label: "research routes made inspectable",
+      detail: "Yourself to Science catalogue and provenance workflow",
       href: "https://yourselftoscience.org/"
-    },
-    {
-      value: "70+",
-      label: "Public data visualizations",
-      detail: "Biomedical, epidemiological and public-policy work across Wikimedia, Tableau and Flourish.",
-      href: "https://public.tableau.com/app/profile/mario.marcolongo/vizzes"
     }
   ],
 
-  heroWork: [
+  engineStages: [
     {
-      title: "Model-behavior evaluation",
-      label: "AI evaluation and safeguards operations",
-      domain: "Adversarial evaluation",
-      metric: "75",
-      metricLabel: "platform-confirmed breaks",
-      tags: ["156 submissions", "26 waves"],
-      href: "/security.html",
-      linkLabel: "Internal evidence record",
-      theme: "cobalt"
+      id: "ambiguity",
+      number: "01",
+      label: "Ambiguity",
+      title: "Find the claim that can fail.",
+      body: "Separate the visible request from hidden assumptions, incentives, missing context and plausible failure modes.",
+      signal: "What is actually uncertain?",
+      examples: "Model behavior · scientific claims · research participation"
     },
     {
-      title: "Paid scientific verification",
-      label: "Entropy for Life",
-      domain: "Public science production",
-      metric: "55+",
-      metricLabel: "productions supported",
-      tags: ["266K YouTube", "159K Instagram"],
-      href: "https://www.youtube.com/@entropyforlife",
-      linkLabel: "Official YouTube channel",
-      theme: "coral"
+      id: "test",
+      number: "02",
+      label: "Test",
+      title: "Vary the path, not just the wording.",
+      body: "Probe alternate contexts, sources, interaction surfaces and edge cases until the important boundary becomes observable.",
+      signal: "What changes the outcome?",
+      examples: "Multimodal inputs · conflicting literature · incomplete records"
     },
     {
-      title: "Yourself to Science",
-      label: "Research and product operations",
-      domain: "Open research infrastructure",
-      metric: "55+",
-      metricLabel: "research routes indexed",
-      tags: ["FAIRsharing", "Zenodo"],
-      href: "https://yourselftoscience.org/",
-      linkLabel: "Official product website",
-      theme: "moss"
+      id: "verify",
+      number: "03",
+      label: "Verify",
+      title: "Preserve the evidence boundary.",
+      body: "Record what was observed, what a platform reported, what can be reproduced and what remains an inference.",
+      signal: "What can another person inspect?",
+      examples: "Primary sources · provenance · archived snapshots"
     },
     {
-      title: "MDPI Filter",
-      label: "Chrome and Edge research tooling",
-      domain: "Browser product",
-      metric: "2",
-      metricLabel: "public browser stores",
-      tags: ["Literature search", "Citation detection"],
-      href: "https://chromewebstore.google.com/detail/mdpi-filter/comknkeimaaadpiopddjoknflbmjeccp",
-      linkLabel: "Chrome Web Store listing",
-      theme: "slate"
+      id: "operate",
+      number: "04",
+      label: "Operate",
+      title: "Make the result survive contact with reality.",
+      body: "Turn the finding into a maintained workflow, public record, product decision or system that remains useful after the initial insight.",
+      signal: "What still works next month?",
+      examples: "Catalogue operations · release pipelines · public interfaces"
     }
   ],
 
-  flagships: [
+  cases: [
     {
       id: "model-behavior",
-      label: "AI evaluation and model behavior",
-      title: "Adversarial testing with explicit evidence boundaries",
-      summary: "I explore instruction handling, multimodal inputs, agentic tool use and indirect prompt injection, preserving reproduction notes while separating platform-confirmed outcomes from independent security claims.",
-      proof: "75 platform-confirmed breaks · 156 submissions · 26 listed waves",
-      metric: "75",
-      metricLabel: "platform-confirmed breaks",
-      visualEyebrow: "Gray Swan activity · July 2026",
-      details: ["156 submissions", "26 listed waves"],
-      destination: "Internal case record with live profile and archived verification snapshot",
-      theme: "cobalt",
+      number: "01",
+      label: "Model behavior",
+      title: "From an ambiguous failure to an inspectable evaluation record.",
+      lead: "Adversarial testing is useful only when the evidence survives the excitement of the break.",
+      situation: "Instruction hierarchy, multimodal inputs, tool use and indirect prompt injection create failures that are easy to overstate and hard to compare.",
+      action: "I vary attack paths, preserve reproduction notes and separate observed behavior from platform labels, independent verification and model-wide claims.",
+      result: "A public evaluation record with methodology, limitations, live platform evidence and an archival fallback.",
+      boundary: "The record supports evaluation judgment and persistence; it is not presented as a penetration test or senior red-team engineering credential.",
       href: "/security.html",
-      linkLabel: "View the evaluation record"
+      linkLabel: "Open the evaluation record",
+      theme: "signal",
+      visualTitle: "Boundary map",
+      visualLines: [
+        ["Observed", "Directly recorded behavior"],
+        ["Platform-confirmed", "Gray Swan status"],
+        ["Not claimed", "Independent severity or model-wide impact"]
+      ]
     },
     {
-      id: "entropy",
-      label: "Paid scientific verification",
-      title: "Primary-source checking inside a multi-platform public production workflow",
-      summary: "For Entropy for Life, I investigate biomedical and evolutionary claims, identify weak or conflicting evidence and communicate corrections to a non-specialist production team.",
-      proof: "55+ videos and documentaries · four articles · public presence across seven official social platforms",
-      metric: "55+",
-      metricLabel: "productions supported",
-      visualEyebrow: "Paid scientific verification",
-      details: ["266K YouTube", "159K Instagram", "4.1K Telegram"],
-      destination: "Official Entropy for Life channel; project-scale figures are attributed, not treated as unique audience",
-      theme: "coral",
+      id: "scientific-verification",
+      number: "02",
+      label: "Scientific verification",
+      title: "From a confident claim to a defensible production decision.",
+      lead: "The hard part is rarely finding a paper. It is deciding what the paper actually licenses you to say.",
+      situation: "Public science production compresses uncertain, conflicting and domain-specific evidence into language that must remain accurate and understandable.",
+      action: "I decompose claims, inspect primary literature, trace disagreement and communicate corrections to a non-specialist production team.",
+      result: "Paid verification integrated into an ongoing multi-platform publishing workflow, including videos, documentaries and articles.",
+      boundary: "Audience figures belong to Entropy for Life and are not presented as my personal reach or unique audience.",
       href: "https://www.youtube.com/@entropyforlife",
-      linkLabel: "Open the official channel"
+      linkLabel: "Open the official channel",
+      theme: "evidence",
+      visualTitle: "Claim audit",
+      visualLines: [
+        ["Claim", "What the script wants to say"],
+        ["Sources", "Primary evidence and conflict"],
+        ["Decision", "Keep, qualify, correct or remove"]
+      ]
     },
     {
-      id: "yourself-to-science",
-      label: "Research and product operations",
-      title: "A public system for discovering ways to participate in research",
-      summary: "I founded and operate Yourself to Science, defining inclusion rules, verification and provenance fields, open licensing, public datasets and the requirements used for AI-assisted implementation.",
-      proof: "55+ initiatives · FAIRsharing and Zenodo records · public machine-readable interfaces",
-      metric: "55+",
-      metricLabel: "research initiatives",
-      visualEyebrow: "Open research participation",
-      details: ["FAIRsharing", "Zenodo", "Machine-readable data"],
-      destination: "Official Yourself to Science catalogue",
-      theme: "moss",
+      id: "research-system",
+      number: "03",
+      label: "Research system",
+      title: "From scattered opportunities to a verifiable public route into research.",
+      lead: "A directory becomes infrastructure only when inclusion, provenance and maintenance are explicit.",
+      situation: "Research participation opportunities are distributed across institutions, use inconsistent terminology and frequently lack stable, machine-readable records.",
+      action: "I defined inclusion rules, verification fields, provenance, licensing and public data requirements, then operate the catalogue and its technical workflow.",
+      result: "Yourself to Science: a public research-participation system with FAIRsharing and Zenodo records and machine-readable interfaces.",
+      boundary: "Implementation is AI-assisted; I own requirements, verification, functional testing, deployment diagnosis and operations rather than claiming unaided software development.",
       href: "https://yourselftoscience.org/",
-      linkLabel: "Explore the catalogue"
+      linkLabel: "Explore Yourself to Science",
+      theme: "system",
+      visualTitle: "Provenance chain",
+      visualLines: [
+        ["Discover", "Institutional opportunity"],
+        ["Verify", "Eligibility, status and source"],
+        ["Publish", "Human and machine-readable record"]
+      ]
     }
   ],
 
-  humanResearch: {
-    label: "Participant-sensitive research experience",
-    title: "Structured remote facilitation with autistic participants",
-    organization: "Department of Developmental Psychology and Socialisation (DPSS), University of Padua",
-    supervisor: "Supervised by Marta Panzeri",
-    period: "November 2022–2025 · volunteer research collaboration",
-    summary: "Co-facilitated recorded Zoom focus groups on sexuality, relationships and sensory experiences; contributed structured prompts, participant-sensitive pacing, two-person handoffs, recruitment, literature research and technical preparation.",
-    capabilities: [
-      "Structured discussion guides and scripted prompts",
-      "Two-person handoffs and live recovery",
-      "Participant-sensitive communication and privacy boundaries"
-    ],
-    links: [
-      { label: "Marta Panzeri — official profile", href: "https://dpss.unipd.it/en/node/239" },
-      { label: "Department", href: "https://www.unipd.it/en/dpss" },
-      { label: "Public thesis context", href: "https://thesis.unipd.it/handle/20.500.12608/51396" }
-    ]
+  lab: [
+    {
+      id: "mdpi-filter",
+      label: "Research-integrity tooling",
+      title: "MDPI Filter",
+      body: "A cross-surface identification system for literature searches, publisher references and Zotero libraries. Current public products include the multi-browser extension and a Zotero plugin with exact-evidence matching and false-positive avoidance.",
+      meta: "Chrome · Edge · Firefox · Safari source · Zotero 7–9",
+      href: "https://github.com/orgs/mdpi-filter/repositories",
+      linkLabel: "Open the product repositories",
+      interaction: "filter"
+    },
+    {
+      id: "protein-explorer",
+      label: "Reproducible data product",
+      title: "Protein by bodyweight by country",
+      body: "An interactive explorer combining protein supply, estimated bodyweight and GDP context while keeping ecological assumptions and methodological warnings visible.",
+      meta: "FAOSTAT · NCD-RisC · World Bank · shareable views",
+      href: "https://jnton.github.io/protein-by-bodyweight-country/",
+      linkLabel: "Launch the live explorer",
+      interaction: "chart"
+    },
+    {
+      id: "wikipedia-bot",
+      label: "Production operations",
+      title: "English Wikipedia Link Converter",
+      body: "A Telegram bot running on AWS Lambda across private chats, groups and inline mode, with release automation, canary validation and operational recovery workflows.",
+      meta: "AWS Lambda · ARM64 · GitHub Actions · Telegram",
+      href: "https://t.me/ToEnWikipediaBot",
+      linkLabel: "Open the live bot",
+      interaction: "convert"
+    },
+    {
+      id: "emergent-humanity",
+      label: "Interactive narrative",
+      title: "Emergent Humanity",
+      body: "A 16-chapter browser essay and simulation about signal, noise, echo chambers and collective memory, designed as an interactive system rather than a static article.",
+      meta: "Network simulation · sound opt-in · agent metadata",
+      href: "https://jnton.github.io/emergent-humanity/",
+      linkLabel: "Enter the narrative",
+      interaction: "network"
+    }
+  ],
+
+  featuredArtifact: {
+    label: "Featured public artifact",
+    title: "Autism genetics, drawn as an inspectable overlap.",
+    body: "A self-authored vector diagram showing overlapping monogenic phenotypes across autism, dystonia, epilepsy and schizophrenia. It is the strongest single example of my scientific visual reasoning because the source, structure, reuse and authorship can all be inspected directly.",
+    image: "/media/work/wikimedia-clinical-overlap.svg",
+    alt: "Euler diagram of overlapping clinical phenotypes in genes associated with autism spectrum disorder, dystonia, epilepsy and schizophrenia",
+    href: "https://commons.wikimedia.org/wiki/File:Overlapping_clinical_phenotypes_in_genes_associated_with_monogenic_forms_of_autism_spectrum_disorder_(ASD),_dystonia,_epilepsy_and_schizophrenia.svg",
+    linkLabel: "Inspect the Wikimedia source record"
   },
 
-  products: [
-    {
-      title: "MDPI Filter",
-      label: "Chrome and Edge extension",
-      body: "Highlights or hides MDPI results across literature-search tools and identifies linked references inside publisher pages.",
-      image: "/media/work/mdpi-filter-2-800.webp",
-      alt: "MDPI Filter browser-extension popup and detected references",
-      href: "https://chromewebstore.google.com/detail/mdpi-filter/comknkeimaaadpiopddjoknflbmjeccp"
-    },
-    {
-      title: "English Wikipedia Link Converter",
-      label: "AWS Lambda and Telegram",
-      body: "Converts non-English Wikipedia links to their English equivalents in private chats, groups and inline mode.",
-      image: "/media/work/telegram-bot-avatar.jpg",
-      alt: "Official profile icon of the English Wikipedia Link Converter Telegram bot",
-      href: "https://t.me/ToEnWikipediaBot"
-    },
-    {
-      title: "Emergent Humanity",
-      label: "Interactive network narrative",
-      body: "A browser-based narrative and simulation about signal, noise, echo chambers and collective memory.",
-      image: "/media/work/emergent-humanity-800.webp",
-      alt: "Emergent Humanity interactive network narrative",
-      href: "https://jnton.github.io/emergent-humanity/"
-    }
-  ],
-
-  visualization: [
-    {
-      title: "Tableau Public",
-      body: "Interactive statistical work covering mortality, demography, health and public policy.",
-      image: "/media/work/tableau-mortality-800.webp",
-      alt: "Tableau mortality analysis by age in Italy",
-      href: "https://public.tableau.com/app/profile/mario.marcolongo/vizzes"
-    },
-    {
-      title: "Flourish",
-      body: "Interactive public visual storytelling, including global cancer-incidence mapping.",
-      image: "/media/work/flourish-oesophageal-cancer.svg",
-      alt: "Global map of age-standardized oesophageal cancer incidence",
-      href: "https://public.flourish.studio/visualisation/17745490/"
-    },
-    {
-      title: "Autism genetics visualization",
-      body: "A directly inspectable, self-authored SVG showing overlapping monogenic phenotypes across autism, dystonia, epilepsy and schizophrenia.",
-      image: "/media/work/wikimedia-clinical-overlap.svg",
-      alt: "Euler diagram of overlapping clinical phenotypes in genes associated with autism spectrum disorder, dystonia, epilepsy and schizophrenia",
-      href: "https://commons.wikimedia.org/wiki/File:Overlapping_clinical_phenotypes_in_genes_associated_with_monogenic_forms_of_autism_spectrum_disorder_(ASD),_dystonia,_epilepsy_and_schizophrenia.svg"
-    }
-  ],
-
   workingStyle: {
-    label: "Neurodivergent working profile",
-    title: "Autistic, direct and unusually comfortable with difficult problems.",
-    body: "I work best in high-autonomy teams that reward independent judgment, explicit assumptions, deep focus and ownership of outcomes. The useful signal is not an edgy personality label: it is a demonstrated willingness to question consensus, enter unusual domains and state exactly where the evidence stops."
+    label: "Operating profile",
+    title: "Independent judgment, explicit assumptions, low-deference work.",
+    body: "I am most useful in high-autonomy environments that reward deep focus, direct disagreement, difficult domains and ownership beyond the initial analysis.",
+    disclosureTitle: "Why I work this way",
+    disclosureBody: "I am autistic. In practice, that means I prefer explicit expectations, direct feedback, sustained focus and problems with enough structure to investigate but enough ambiguity to matter. The work on this page is the evidence; the diagnosis is context."
   },
 
   workingPrinciples: [
     {
       title: "Contrarian, not careless",
-      body: "Challenge consensus and weak claims while keeping hypotheses, observed evidence and verified conclusions separate."
+      body: "Question consensus without confusing novelty with truth."
     },
     {
-      title: "Direct communication",
-      body: "Prefer explicit constraints, plain disagreement and inspectable decisions over consensus theatre or ambiguous ownership."
+      title: "Direct, not theatrical",
+      body: "State constraints, disagreement and uncertainty plainly."
     },
     {
-      title: "High ownership",
-      body: "Move from a missing workflow to requirements, coordination, functional testing, deployment diagnosis and maintenance."
-    },
-    {
-      title: "Comfort with unusual domains",
-      body: "Work seriously on adversarial AI behavior, public genomics, sensitive research topics and difficult provenance questions."
+      title: "Own the afterlife",
+      body: "Treat deployment, maintenance and evidence preservation as part of the work."
     }
   ],
 
@@ -224,22 +206,26 @@ const PORTFOLIO_HUMAN = {
     {
       title: "AI Evaluation & Model Behavior",
       description: "Evaluation operations, model behavior, safeguards support, adversarial QA and trust-and-safety testing.",
-      href: "/cv-resume.html"
+      href: "/cv-resume.html",
+      recommendedFor: "AI evaluation and safeguards roles"
     },
     {
       title: "Scientific AI Quality & Research Data",
       description: "Scientific evidence review, provenance, research operations, metadata and domain-expert quality work.",
-      href: "/cv-research.html"
+      href: "/cv-research.html",
+      recommendedFor: "Scientific AI and research-data roles"
     },
     {
       title: "Trust, Safety & Knowledge Integrity",
       description: "OSINT support, source provenance, content integrity and public-record investigation.",
-      href: "/cv-integrity.html"
+      href: "/cv-integrity.html",
+      recommendedFor: "Integrity and investigation roles"
     },
     {
       title: "Research, Editorial & Community Operations",
-      description: "A bridge document for editorial coordination, evidence synthesis and participant-facing research roles.",
-      href: "/cv-editorial.html"
+      description: "Editorial coordination, evidence synthesis and participant-facing research operations.",
+      href: "/cv-editorial.html",
+      recommendedFor: "Editorial and research-operations roles"
     }
   ]
 };
