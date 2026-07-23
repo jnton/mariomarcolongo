@@ -60,12 +60,12 @@ async function verifyHomepage(page, viewport) {
   fs.writeFileSync(path.join(OUTPUT, `homepage-${viewport.name}-model.json`), JSON.stringify(result, null, 2));
 
   if (result.proofCount !== H.proofMoments.length) throw new Error(`Homepage must render ${H.proofMoments.length} proof moments`);
-  if (result.engineStageCount !== H.engineStages.length) throw new Error(`Homepage must render ${H.engineStages.length} engine stages`);
+  if (result.engineStageCount !== H.engineStages.length) throw new Error(`Homepage must render ${H.engineStages.length} work-area stages`);
   if (result.caseCount !== H.cases.length) throw new Error(`Homepage must render ${H.cases.length} cases`);
   if (result.labCount !== H.lab.length) throw new Error(`Homepage must render ${H.lab.length} lab items`);
   if (result.principleCount !== H.workingPrinciples.length) throw new Error(`Homepage must render ${H.workingPrinciples.length} working principles`);
   if (result.documentCount !== H.applicationDocuments.length) throw new Error(`Homepage must render ${H.applicationDocuments.length} application documents`);
-  if (result.disclosureCount !== 1) throw new Error('Homepage must render one optional autism disclosure');
+  if (result.disclosureCount !== 0) throw new Error('Homepage must not render a diagnosis disclosure');
   for (const expected of ['Work', 'Experience', 'CV', 'Contact']) {
     if (!result.navLinks.includes(expected)) throw new Error(`Homepage navigation is missing ${expected}`);
   }
@@ -87,12 +87,12 @@ async function verifyHomepage(page, viewport) {
     };
   });
   fs.writeFileSync(path.join(OUTPUT, `homepage-${viewport.name}-interaction.json`), JSON.stringify(interaction, null, 2));
-  if (interaction.error) throw new Error(`Evidence engine interaction failed: ${interaction.error}`);
+  if (interaction.error) throw new Error(`Work-area interaction failed: ${interaction.error}`);
   if (interaction.activeCount !== 1 || interaction.activeStage !== H.engineStages[1].id || interaction.selected !== 'true') {
-    throw new Error(`Evidence engine active state is incorrect: ${JSON.stringify(interaction)}`);
+    throw new Error(`Work-area active state is incorrect: ${JSON.stringify(interaction)}`);
   }
   if (interaction.title !== H.engineStages[1].title) {
-    throw new Error(`Evidence engine output did not update: ${JSON.stringify(interaction)}`);
+    throw new Error(`Work-area output did not update: ${JSON.stringify(interaction)}`);
   }
 }
 
