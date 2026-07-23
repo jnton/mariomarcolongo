@@ -51,6 +51,8 @@ const PROHIBITED = [
   ['Scale, failure modes, systems and evidence.', 'Rejected oversized portfolio-v4 heading'],
   ['Useful when the problem is strange, ambiguous or uncomfortable.', 'Rejected self-promotional portfolio-v4 heading'],
   ['Autistic, direct and unusually comfortable with difficult problems.', 'Rejected diagnosis-first portfolio headline'],
+  ['I am autistic.', 'Diagnosis disclosure should not appear on the public homepage'],
+  ['The hard part is rarely finding a paper.', 'Rejected aphoristic scientific-verification copy'],
   ['Evidence for the next role—and the path after it.', 'Rejected repetitive portfolio-v5 heading'],
   ['Discuss a difficult problem.', 'Rejected generic portfolio-v5 contact heading']
 ];
@@ -125,14 +127,14 @@ for (const marker of ['human-capabilities', 'human-work', 'human-documents']) {
   if (!indexSource.includes(`data-testid="${marker}"`)) fail('src/pages/index.astro', 1, `Missing homepage marker ${marker}.`);
 }
 for (const requiredText of [
-  'I turn ambiguous claims into inspectable systems.',
-  'Three difficult problems',
-  'Working lab',
-  'Featured public artifact',
-  'Start with the role, not the archive.',
-  'Bring me the claim that does not quite survive inspection.'
+  'I test AI systems and verify scientific claims.',
+  'Selected work',
+  'Research tools',
+  'Scientific visualization',
+  'Choose the CV that matches the role.',
+  'Open to AI evaluation and scientific research-quality roles.'
 ]) {
-  if (!homepageSource.includes(requiredText)) fail('src/pages/index.astro', 1, `Homepage is missing portfolio-v7 content: ${requiredText}`);
+  if (!homepageSource.includes(requiredText)) fail('src/pages/index.astro', 1, `Homepage is missing scoped portfolio content: ${requiredText}`);
 }
 for (const rejectedText of [
   'class="v3-network"', 'Explore role lenses', 'One profile. Four credible lenses.',
