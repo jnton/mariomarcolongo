@@ -30,6 +30,8 @@ const DOCUMENTS = [
 
 async function generateResumePdfs() {
   const distDir = path.resolve(process.cwd(), 'dist');
+  const auditDir = path.resolve(process.cwd(), 'audit-output');
+  fs.mkdirSync(auditDir, { recursive: true });
   for (const document of DOCUMENTS) {
     const htmlPath = path.join(distDir, document.route);
     if (!fs.existsSync(htmlPath)) throw new Error(`dist/${document.route} not found. Run npm run build first.`);
@@ -37,6 +39,7 @@ async function generateResumePdfs() {
 
   const staticServer = await startStaticServer(distDir);
   const browser = await launchBrowser();
+  const failures = [];
 
   try {
     for (const document of DOCUMENTS) {
@@ -70,10 +73,12 @@ async function generateResumePdfs() {
         };
       }));
 
+      const fitPath = path.join(auditDir, `${document.route.replace(/\.html$/, '')}-print-fit.json`);
+      fs.writeFileSync(fitPath, JSON.stringify({ label: document.label, route: document.route, pages: fit }, null, 2));
       const collisions = fit.filter((item) => item.clearance < 6);
       console.log(`${document.label} print-fit: ${JSON.stringify(fit)}`);
       if (collisions.length) {
-        throw new Error(`${document.label} content collides with the footer or is clipped: ${JSON.stringify(collisions)}`);
+        failures.push(`${document.label} content collides with the footer or is clipped: ${JSON.stringify(collisions)}`);
       }
 
       const outPath = path.resolve(process.cwd(), document.output);
@@ -89,12 +94,16 @@ async function generateResumePdfs() {
       const pageCount = pdf.getPageCount();
       console.log(`${document.label} PDF page count: ${pageCount}`);
       console.log(`${document.label} PDF path: ${outPath}`);
-      if (pageCount !== 2) throw new Error(`${document.label} must be exactly 2 pages; generated ${pageCount}.`);
+      if (pageCount !== 2) failures.push(`${document.label} must be exactly 2 pages; generated ${pageCount}.`);
       await page.close();
     }
   } finally {
     await browser.close();
     await staticServer.close();
+  }
+
+  if (failures.length) {
+    throw new Error(`Targeted CV verification failed:\n- ${failures.join('\n- ')}`);
   }
 }
 
