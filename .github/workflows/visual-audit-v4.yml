@@ -6,7 +6,7 @@ on:
     paths:
       - scripts/capture-homepage-v4.js
       - src/pages/index.astro
-      - src/styles/portfolio-v5.css
+      - src/styles/portfolio-v7.css
       - src/styles/nav-editorial.css
       - data/portfolio-human.js
       - public/media/work/**
