@@ -127,12 +127,13 @@ for (const marker of ['human-capabilities', 'human-work', 'human-documents']) {
   if (!indexSource.includes(`data-testid="${marker}"`)) fail('src/pages/index.astro', 1, `Missing homepage marker ${marker}.`);
 }
 for (const requiredText of [
-  'I test AI systems and verify scientific claims.',
-  'Selected work',
-  'Research tools',
+  'I test AI systems, verify scientific claims, and organize research information.',
+  'Areas of work',
+  'One project from each area.',
+  'Supporting projects',
   'Scientific visualization',
   'Choose the CV that matches the role.',
-  'Open to AI evaluation and scientific research-quality roles.'
+  'Open to AI evaluation, scientific evidence, and research-information roles.'
 ]) {
   if (!homepageSource.includes(requiredText)) fail('src/pages/index.astro', 1, `Homepage is missing scoped portfolio content: ${requiredText}`);
 }
