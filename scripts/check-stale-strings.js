@@ -16,7 +16,8 @@ const EXPECTED = {
 
 const REQUIRED = [
   'package.json', 'package-lock.json', 'data/source.js', 'data/application-profiles.js',
-  'data/portfolio-human.js', 'src/layouts/Layout.astro', 'src/components/SiteNav.astro',
+  'data/portfolio-human.js', 'data/recent-application-evidence.js',
+  'src/layouts/Layout.astro', 'src/components/SiteNav.astro',
   'src/components/SiteFooter.astro', 'src/components/ApplicationCv.astro', 'src/pages/index.astro',
   'src/pages/integrity.astro', 'src/pages/cv.astro', 'src/pages/cv-resume.astro',
   'src/pages/cv-research.astro', 'src/pages/cv-editorial.astro', 'src/pages/cv-integrity.astro',
@@ -117,6 +118,8 @@ if (!String(packageJson.scripts?.deploy || '').startsWith('npm run build')) fail
 if (!String(packageJson.scripts?.build || '').includes('verify-dist.js')) fail('package.json', 1, 'Production build must run generated-output verification.');
 
 const indexSource = fs.readFileSync(path.join(ROOT, 'src/pages/index.astro'), 'utf8');
+const portfolioSource = fs.readFileSync(path.join(ROOT, 'data/portfolio-human.js'), 'utf8');
+const homepageSource = `${indexSource}\n${portfolioSource}`;
 for (const marker of ['human-capabilities', 'human-work', 'human-documents']) {
   if (!indexSource.includes(`data-testid="${marker}"`)) fail('src/pages/index.astro', 1, `Missing homepage marker ${marker}.`);
 }
@@ -128,7 +131,7 @@ for (const requiredText of [
   'Start with the role, not the archive.',
   'Bring me the claim that does not quite survive inspection.'
 ]) {
-  if (!indexSource.includes(requiredText)) fail('src/pages/index.astro', 1, `Homepage is missing portfolio-v7 content: ${requiredText}`);
+  if (!homepageSource.includes(requiredText)) fail('src/pages/index.astro', 1, `Homepage is missing portfolio-v7 content: ${requiredText}`);
 }
 for (const rejectedText of [
   'class="v3-network"', 'Explore role lenses', 'One profile. Four credible lenses.',
