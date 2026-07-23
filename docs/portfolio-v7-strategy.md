@@ -2,20 +2,21 @@
 
 ## Public scope
 
-The homepage is organized around three distinct areas of work:
+The homepage has two primary areas of work:
 
 1. AI model-behavior evaluation.
 2. Scientific fact-checking for public communication.
-3. Research information systems and data quality.
+
+Research information systems and data quality are a supporting area. They show how the same verification discipline is applied to maintained public records and tools, but they are not presented as a third equal professional identity.
 
 The page does not force these areas into one invented discipline. Each area has its own description, case study, evidence, and limits.
 
 ## Attention architecture
 
-1. The hero names the three scopes directly.
+1. The hero names the two primary areas directly and identifies research systems as supporting work.
 2. The interactive panel switches between scope definitions rather than presenting one universal method.
-3. Three proof figures appear once and correspond to the three scopes.
-4. The selected-work section presents one project from each area.
+3. Three proof figures appear once and correspond to the two primary areas and the supporting research system.
+4. The selected-work section presents one case for each scope while retaining their different status.
 5. MDPI Filter and the protein explorer appear as supporting projects, not as additional professional identities.
 6. The scientific visualization is shown as a specific public artifact with a source record.
 7. Working preferences are described without disclosing a diagnosis.
