@@ -1,7 +1,7 @@
 const PORTFOLIO_HUMAN = {
-  eyebrow: "AI evaluation · scientific research quality",
-  headline: "I test AI systems and verify scientific claims.",
-  introduction: "My work focuses on two related problems: finding where AI behavior fails, and checking whether scientific claims are supported by the evidence. I document the result clearly and build practical tools or workflows around it.",
+  eyebrow: "AI evaluation · scientific fact-checking · research information systems",
+  headline: "I test AI systems, verify scientific claims, and organize research information.",
+  introduction: "This portfolio is divided into three areas. AI evaluation covers model-behavior testing. Scientific fact-checking covers primary-source review for public communication. Research information systems covers the design and operation of structured public records and tools. Each project states its own scope, my contribution, and its limits.",
 
   proofMoments: [
     {
@@ -12,54 +12,45 @@ const PORTFOLIO_HUMAN = {
     },
     {
       value: "55+",
-      label: "scientific productions supported",
-      detail: "Paid primary-source verification for Entropy for Life",
+      label: "scientific productions fact-checked",
+      detail: "Paid primary-source review for Entropy for Life",
       href: "https://www.youtube.com/@entropyforlife"
     },
     {
       value: "55+",
-      label: "research opportunities verified",
-      detail: "Yourself to Science catalogue and provenance workflow",
+      label: "research opportunities indexed",
+      detail: "Yourself to Science catalogue and verification workflow",
       href: "https://yourselftoscience.org/"
     }
   ],
 
   engineStages: [
     {
-      id: "ambiguity",
+      id: "ai-evaluation",
       number: "01",
-      label: "Define",
-      title: "Clarify the question.",
-      body: "Identify the exact claim, the missing context and the assumptions that could change the answer.",
-      signal: "What are we trying to establish?",
-      examples: "Model behavior · scientific claims · research participation"
+      label: "AI evaluation",
+      title: "Test model behavior under defined conditions.",
+      body: "Design adversarial and edge-case interactions, record what the model does, and distinguish direct observations from platform-confirmed outcomes or broader interpretations.",
+      signal: "Scope: model behavior and evaluation operations",
+      examples: "Chat · multimodal inputs · tool use · indirect prompt injection"
     },
     {
-      id: "test",
+      id: "scientific-fact-checking",
       number: "02",
-      label: "Test",
-      title: "Check how the result changes.",
-      body: "Vary the context, source, input or interaction path until the important boundary becomes visible.",
-      signal: "What changes the outcome?",
-      examples: "Multimodal inputs · conflicting literature · incomplete records"
+      label: "Fact-checking",
+      title: "Check whether the sources support the claim.",
+      body: "Trace a proposed statement to primary literature, compare conflicting evidence, and recommend whether the wording should be kept, qualified, corrected, or removed.",
+      signal: "Scope: scientific evidence for public communication",
+      examples: "Biology · medicine · public health"
     },
     {
-      id: "verify",
+      id: "research-information",
       number: "03",
-      label: "Document",
-      title: "Record what the evidence supports.",
-      body: "Separate direct observations, platform reports, reproducible findings and conclusions that remain uncertain.",
-      signal: "What can another person inspect?",
-      examples: "Primary sources · provenance · archived snapshots"
-    },
-    {
-      id: "operate",
-      number: "04",
-      label: "Apply",
-      title: "Turn the result into useful work.",
-      body: "Use the finding to improve a decision, workflow, public record or tool, and keep it maintainable after the initial analysis.",
-      signal: "What should change in practice?",
-      examples: "Editorial decisions · catalogue operations · product releases"
+      label: "Research systems",
+      title: "Turn scattered information into maintained records.",
+      body: "Define inclusion rules, provenance fields, update procedures, and public interfaces for research information that is otherwise difficult to find or verify.",
+      signal: "Scope: research data and public information tools",
+      examples: "Directories · metadata · APIs · public datasets"
     }
   ],
 
@@ -68,60 +59,60 @@ const PORTFOLIO_HUMAN = {
       id: "model-behavior",
       number: "01",
       label: "AI evaluation",
-      title: "Documenting AI failures without overstating them.",
-      lead: "Finding a failure is only useful when another person can understand what happened and what the evidence supports.",
-      situation: "Instruction hierarchy, multimodal inputs, tool use and indirect prompt injection can produce failures that are difficult to compare and easy to exaggerate.",
-      action: "I vary the attack path, preserve reproduction notes and distinguish observed behavior from platform labels, independent verification and broader claims about a model.",
-      result: "A public evaluation record with methodology, limitations, live platform evidence and an archival fallback.",
-      boundary: "This demonstrates evaluation judgment and persistent testing. It is not presented as a penetration test or a senior red-team engineering credential.",
+      title: "Testing model behavior and documenting the result.",
+      lead: "A model failure is useful only when the test conditions and the limits of the result are clear.",
+      situation: "Instruction hierarchy, multimodal inputs, tool use, and indirect prompt injection can produce failures that are difficult to compare and easy to overstate.",
+      action: "I vary the interaction path, preserve reproduction notes, and separate what I observed from platform labels, independent verification, and model-wide conclusions.",
+      result: "A public evaluation record with methodology, limitations, live platform evidence, and an archival fallback.",
+      boundary: "This demonstrates evaluation judgment and sustained testing. It is not a penetration test and does not establish senior red-team engineering experience.",
       href: "/security.html",
       linkLabel: "Open the evaluation record",
       theme: "signal",
-      visualTitle: "Evidence levels",
+      visualTitle: "Result classification",
       visualLines: [
-        ["Observed", "Directly recorded behavior"],
-        ["Platform-confirmed", "Gray Swan status"],
+        ["Observed", "Behavior recorded in the test"],
+        ["Platform-confirmed", "Status reported by Gray Swan"],
         ["Not claimed", "Independent severity or model-wide impact"]
       ]
     },
     {
       id: "scientific-verification",
       number: "02",
-      label: "Scientific verification",
-      title: "Checking scientific claims before publication.",
-      lead: "Finding a relevant paper is only the first step. The real task is deciding whether the evidence supports the exact claim being made.",
-      situation: "Science communication often compresses uncertain, conflicting and domain-specific evidence into language that must still be accurate and understandable.",
-      action: "I break claims into testable parts, inspect primary literature, trace disagreements between sources and communicate corrections to a non-specialist production team.",
-      result: "Paid verification integrated into an ongoing publishing workflow covering videos, documentaries and articles.",
-      boundary: "Audience figures belong to Entropy for Life and are not presented as my personal reach or unique audience.",
+      label: "Scientific fact-checking",
+      title: "Checking whether sources support a public scientific claim.",
+      lead: "Finding a paper is only the beginning. The relevant question is whether its methods and results support the wording used in a script or article.",
+      situation: "Science communication often compresses limited, uncertain, or conflicting research into a short statement for a general audience.",
+      action: "I break the statement into checkable claims, review the primary literature, trace disagreements between sources, and explain the needed correction or qualification to the production team.",
+      result: "Paid fact-checking integrated into an ongoing publishing workflow covering videos, documentaries, and articles.",
+      boundary: "My role is evidence review and editorial recommendation. Final wording, production, and publication decisions remain with the editorial team.",
       href: "https://www.youtube.com/@entropyforlife",
       linkLabel: "Open the official channel",
       theme: "evidence",
       visualTitle: "Claim review",
       visualLines: [
-        ["Claim", "The exact statement under review"],
-        ["Evidence", "Primary sources and disagreement"],
-        ["Decision", "Keep, qualify, correct or remove"]
+        ["Claim", "The statement proposed for publication"],
+        ["Evidence", "Primary sources, methods, and disagreement"],
+        ["Recommendation", "Keep, qualify, correct, or remove"]
       ]
     },
     {
       id: "research-system",
       number: "03",
-      label: "Research operations",
-      title: "Building a reliable directory of research-participation opportunities.",
-      lead: "A public directory is useful only when entries are checked, sourced and kept up to date.",
-      situation: "Research-participation opportunities are distributed across institutions, use inconsistent terminology and often lack stable, machine-readable records.",
-      action: "I defined the inclusion rules, verification fields, provenance, licensing and public-data requirements, then built the operating workflow around them.",
-      result: "Yourself to Science: a public catalogue with FAIRsharing and Zenodo records and machine-readable interfaces.",
-      boundary: "Implementation is AI-assisted. I own requirements, verification, functional testing, deployment diagnosis and operations rather than claiming unaided software development.",
+      label: "Research information system",
+      title: "Building a maintained directory of research opportunities.",
+      lead: "A useful directory needs clear inclusion rules, source records, and an update process.",
+      situation: "Research-participation opportunities are distributed across institutions, described with inconsistent terminology, and often lack stable machine-readable records.",
+      action: "I defined the inclusion criteria, verification fields, provenance model, licensing boundaries, update workflow, and public-data requirements, then coordinated the AI-assisted implementation and ongoing operation.",
+      result: "Yourself to Science, a public catalogue with FAIRsharing and Zenodo records and machine-readable interfaces.",
+      boundary: "My contribution covers requirements, information architecture, verification, functional testing, deployment diagnosis, and operations. I do not present the implementation as unaided software development.",
       href: "https://yourselftoscience.org/",
       linkLabel: "Explore Yourself to Science",
       theme: "system",
-      visualTitle: "Verification flow",
+      visualTitle: "Record workflow",
       visualLines: [
-        ["Find", "Institutional opportunity"],
-        ["Check", "Eligibility, status and source"],
-        ["Publish", "Human and machine-readable record"]
+        ["Find", "Institutional research opportunity"],
+        ["Verify", "Eligibility, status, and source"],
+        ["Publish", "Human- and machine-readable record"]
       ]
     }
   ],
@@ -131,7 +122,7 @@ const PORTFOLIO_HUMAN = {
       id: "mdpi-filter",
       label: "Research-integrity tooling",
       title: "MDPI Filter",
-      body: "A browser extension and Zotero plugin that identify MDPI references while avoiding ambiguous matches. The current product focuses on accurate identification across literature-search and reference-management workflows.",
+      body: "A browser extension and Zotero plugin that identify MDPI references in search results and libraries while avoiding title-based false positives.",
       meta: "Chrome · Edge · Firefox · Safari source · Zotero 7–9",
       href: "https://github.com/orgs/mdpi-filter/repositories",
       linkLabel: "Open the product repositories",
@@ -141,7 +132,7 @@ const PORTFOLIO_HUMAN = {
       id: "protein-explorer",
       label: "Reproducible data product",
       title: "Protein by bodyweight by country",
-      body: "An interactive explorer combining protein supply, estimated bodyweight and GDP context, with the ecological assumptions and methodological limits kept visible.",
+      body: "An interactive explorer combining protein supply, estimated bodyweight, and GDP data, with the ecological assumptions and methodological limits stated alongside the results.",
       meta: "FAOSTAT · NCD-RisC · World Bank · shareable views",
       href: "https://jnton.github.io/protein-by-bodyweight-country/",
       linkLabel: "Launch the live explorer",
@@ -151,57 +142,57 @@ const PORTFOLIO_HUMAN = {
 
   featuredArtifact: {
     label: "Scientific visualization",
-    title: "A scientific diagram with an inspectable source record.",
-    body: "This vector diagram shows overlapping monogenic phenotypes across autism, dystonia, epilepsy and schizophrenia. The source file, structure, authorship and reuse history are all publicly inspectable on Wikimedia Commons.",
+    title: "A diagram of overlapping clinical phenotypes.",
+    body: "I designed this vector diagram to show overlap among monogenic conditions associated with autism, dystonia, epilepsy, and schizophrenia. The Wikimedia record provides the source file, authorship, revision history, and reuse information.",
     image: "/media/work/wikimedia-clinical-overlap.svg",
     alt: "Euler diagram of overlapping clinical phenotypes in genes associated with autism spectrum disorder, dystonia, epilepsy and schizophrenia",
     href: "https://commons.wikimedia.org/wiki/File:Overlapping_clinical_phenotypes_in_genes_associated_with_monogenic_forms_of_autism_spectrum_disorder_(ASD),_dystonia,_epilepsy_and_schizophrenia.svg",
-    linkLabel: "Inspect the Wikimedia source record"
+    linkLabel: "Open the Wikimedia record"
   },
 
   workingStyle: {
-    label: "How I work",
-    title: "Independent, careful and direct.",
-    body: "I work best with clear goals, room to investigate and responsibility for the final result. I prefer direct feedback and explicit decisions over vague alignment or performative certainty."
+    label: "Working preferences",
+    title: "Clear goals, direct feedback, and responsibility for the result.",
+    body: "I work best when the objective and decision rights are explicit, feedback is direct, and I can follow a problem through investigation, documentation, release, and maintenance."
   },
 
   workingPrinciples: [
     {
-      title: "Question assumptions",
-      body: "Check whether the premise is supported before optimizing around it."
+      title: "Separate observation from interpretation",
+      body: "State what was directly observed before drawing a broader conclusion."
     },
     {
-      title: "State uncertainty clearly",
-      body: "Separate what is observed, reported, inferred or still unknown."
+      title: "Make assumptions visible",
+      body: "Document the definitions, exclusions, and judgments that affect the result."
     },
     {
-      title: "Finish the operational work",
-      body: "Include documentation, maintenance and follow-up in the job."
+      title: "Plan for maintenance",
+      body: "Treat updates, provenance, and operational recovery as part of the work."
     }
   ],
 
   applicationDocuments: [
     {
       title: "AI Evaluation & Model Behavior",
-      description: "Evaluation operations, model behavior, safeguards support, adversarial QA and trust-and-safety testing.",
+      description: "Model-behavior testing, adversarial QA, evaluation operations, and evidence-bound reporting.",
       href: "/cv-resume.html",
       recommendedFor: "AI evaluation and safeguards roles"
     },
     {
       title: "Scientific AI Quality & Research Data",
-      description: "Scientific evidence review, provenance, research operations, metadata and domain-expert quality work.",
+      description: "Scientific evidence review, research-data quality, provenance, metadata, and research operations.",
       href: "/cv-research.html",
       recommendedFor: "Scientific AI and research-data roles"
     },
     {
       title: "Trust, Safety & Knowledge Integrity",
-      description: "OSINT support, source provenance, content integrity and public-record investigation.",
+      description: "Source provenance, public-record research, content integrity, and investigation support.",
       href: "/cv-integrity.html",
       recommendedFor: "Integrity and investigation roles"
     },
     {
       title: "Research, Editorial & Community Operations",
-      description: "Editorial coordination, evidence synthesis and participant-facing research operations.",
+      description: "Scientific fact-checking, editorial coordination, evidence synthesis, and participant-facing research operations.",
       href: "/cv-editorial.html",
       recommendedFor: "Editorial and research-operations roles"
     }
