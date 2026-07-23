@@ -103,7 +103,8 @@ async function verifyNoJavaScript(browser, staticServer, route) {
     ? [
         H.headline,
         ...H.proofMoments.map((item) => item.label),
-        ...H.engineStages.map((item) => item.title),
+        ...H.engineStages.map((item) => item.label),
+        H.engineStages[0].title,
         ...H.cases.map((item) => item.title),
         ...H.lab.map((item) => item.title),
         H.featuredArtifact.title,
