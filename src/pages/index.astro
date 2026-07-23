@@ -7,8 +7,8 @@ import D from "../../data/source.js";
 import H from "../../data/portfolio-human.js";
 import { buildProfileGraph } from "../lib/structured-data.js";
 
-const pageTitle = "Mario Marcolongo — AI Evaluation & Scientific Research Quality";
-const pageDescription = "Portfolio focused on AI model-behavior evaluation, scientific verification, research quality and evidence-based tools.";
+const pageTitle = "Mario Marcolongo — AI Evaluation, Scientific Fact-Checking & Research Systems";
+const pageDescription = "Portfolio covering AI model-behavior evaluation, scientific fact-checking and research information systems.";
 const profileJsonLd = buildProfileGraph(D, "https://mariomarcolongo.com/", pageTitle);
 
 const selectedExperience = [
@@ -43,15 +43,15 @@ const firstStage = H.engineStages[0];
       <div class="v7-engine" data-engine data-reveal aria-labelledby="engine-title">
         <div class="v7-engine-glow" aria-hidden="true"></div>
         <div class="v7-engine-header">
-          <span>How I approach the work</span>
-          <span class="v7-engine-status" aria-hidden="true">PROCESS</span>
+          <span>Areas of work</span>
+          <span class="v7-engine-status" aria-hidden="true">3 SCOPES</span>
         </div>
 
         <div class="v7-engine-path" aria-hidden="true">
           <span></span>
         </div>
 
-        <div class="v7-engine-stages" role="tablist" aria-label="Evidence workflow">
+        <div class="v7-engine-stages" style="grid-template-columns: repeat(3, minmax(0, 1fr));" role="tablist" aria-label="Areas of work">
           {H.engineStages.map((stage, index) => (
             <button
               class={`v7-engine-stage ${index === 0 ? "is-active" : ""}`}
@@ -94,9 +94,9 @@ const firstStage = H.engineStages[0];
       <header class="v7-section-head" data-reveal>
         <div>
           <div class="v7-kicker">Selected work</div>
-          <h2 id="selected-work-title">Three examples of evaluation and research-quality work.</h2>
+          <h2 id="selected-work-title">One project from each area.</h2>
         </div>
-        <p>Each case explains the problem, what I did, the result and the limits of the evidence.</p>
+        <p>These are separate types of work. Each case describes the specific problem, my contribution, the result, and the limits of what the evidence establishes.</p>
       </header>
 
       <div class="v7-case-stack" data-testid="human-capabilities">
@@ -126,7 +126,7 @@ const firstStage = H.engineStages[0];
               </dl>
 
               <aside class="v7-boundary">
-                <span>What this evidence does not prove</span>
+                <span>Scope and limits</span>
                 <p>{item.boundary}</p>
               </aside>
 
@@ -159,10 +159,10 @@ const firstStage = H.engineStages[0];
     <section class="v7-section v7-lab" id="lab" aria-labelledby="lab-title">
       <header class="v7-section-head" data-reveal>
         <div>
-          <div class="v7-kicker">Research tools</div>
-          <h2 id="lab-title">Tools built around evidence and data quality.</h2>
+          <div class="v7-kicker">Supporting projects</div>
+          <h2 id="lab-title">Tools and data products adjacent to the core work.</h2>
         </div>
-        <p>These projects extend the same work into literature workflows and public data exploration.</p>
+        <p>These projects show practical implementation in literature workflows and public data exploration. They are supporting evidence, not additional professional scopes.</p>
       </header>
 
       <div class="v7-lab-grid">
@@ -258,7 +258,7 @@ const firstStage = H.engineStages[0];
           <div class="v7-kicker">Application documents</div>
           <h2 id="applications-title">Choose the CV that matches the role.</h2>
         </div>
-        <p>The AI evaluation CV is the default. The others are tailored to scientific AI, knowledge integrity or research operations.</p>
+        <p>The AI evaluation CV is the default. The others are tailored to scientific AI, knowledge integrity, or research and editorial operations.</p>
       </header>
 
       <div class="v7-documents">
@@ -276,8 +276,8 @@ const firstStage = H.engineStages[0];
     <section class="v7-contact" id="contact" aria-labelledby="contact-title" data-reveal>
       <div>
         <span>Current focus</span>
-        <h2 id="contact-title">Open to AI evaluation and scientific research-quality roles.</h2>
-        <p>Especially model-behavior evaluation, scientific AI quality, research operations and knowledge integrity.</p>
+        <h2 id="contact-title">Open to AI evaluation, scientific evidence, and research-information roles.</h2>
+        <p>Especially model-behavior evaluation, scientific fact-checking, research-data quality, and knowledge-integrity work.</p>
       </div>
       <div class="v7-actions">
         <a class="v7-button v7-button-light" href={`mailto:${D.identity.email}`}>Email Mario</a>
