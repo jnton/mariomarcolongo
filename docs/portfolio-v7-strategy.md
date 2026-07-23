@@ -45,3 +45,5 @@ MDPI Filter is represented as a browser extension and Zotero plugin for identify
 ## Verification scope
 
 Release checks cover all eight public routes at desktop, tablet, and mobile dimensions in light and dark themes; all routes also receive mobile no-JavaScript checks. Lighthouse audits run separately for every route in mobile and desktop modes. The four targeted application CVs must remain exactly two A4 pages, and generation fails when flowing content reaches or crosses the fixed page footer.
+
+The generated public mirrors must match the source copy before the redesign can be approved for release.
