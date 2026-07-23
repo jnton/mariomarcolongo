@@ -36,10 +36,15 @@ async function capture(browser, server, name, width, height, theme) {
     const brokenImages = Array.from(document.images)
       .filter((image) => image.complete && image.naturalWidth === 0)
       .map((image) => ({ src: image.getAttribute('src'), alt: image.alt }));
+    const contact = document.querySelector('.v7-contact');
+    const contactStyle = contact ? getComputedStyle(contact) : null;
     return {
       scrollWidth: document.documentElement.scrollWidth,
       clientWidth: document.documentElement.clientWidth,
       documentHeight: document.documentElement.scrollHeight,
+      contactExists: Boolean(contact),
+      contactOpacity: contactStyle ? Number.parseFloat(contactStyle.opacity) : null,
+      contactHeight: contact ? Math.round(contact.getBoundingClientRect().height) : null,
       brokenLocalImages: brokenImages.filter((item) => item.src && item.src.startsWith('/')),
       brokenExternalImages: brokenImages.filter((item) => !item.src || !item.src.startsWith('/'))
     };
@@ -51,6 +56,9 @@ async function capture(browser, server, name, width, height, theme) {
 
   if (measurements.scrollWidth > measurements.clientWidth + 1) {
     throw new Error(`${name} overflows horizontally (${measurements.scrollWidth} > ${measurements.clientWidth})`);
+  }
+  if (!measurements.contactExists || measurements.contactOpacity < 0.95 || !measurements.contactHeight) {
+    throw new Error(`${name} has a hidden or missing contact conversion section: ${JSON.stringify(measurements)}`);
   }
   if (measurements.brokenLocalImages.length) {
     throw new Error(`${name} has broken first-party images: ${JSON.stringify(measurements.brokenLocalImages)}`);
