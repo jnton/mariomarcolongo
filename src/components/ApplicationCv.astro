@@ -3,6 +3,7 @@ import Layout from "../layouts/Layout.astro";
 import SiteNav from "./SiteNav.astro";
 import SiteFooter from "./SiteFooter.astro";
 import "../styles/career-v2.css";
+import RECENT_APPLICATION_EVIDENCE from "../../data/recent-application-evidence.js";
 
 export interface Props {
   profile: any;
@@ -15,6 +16,8 @@ export interface Props {
 const { profile, shared, canonical, alternateHref, alternateLabel } = Astro.props;
 const firstPageExperience = profile.experience.slice(0, 2);
 const secondPageExperience = profile.experience.slice(2);
+const recentEvidence = RECENT_APPLICATION_EVIDENCE[profile.id]?.evidence || {};
+const evidence = profile.evidence.map((item, index) => recentEvidence[index] || item);
 const pageTitle = `Mario Marcolongo — ${profile.title}`;
 const pageDescription = `Specialized two-page application CV for ${profile.title.toLowerCase()} roles.`;
 ---
@@ -41,7 +44,7 @@ const pageDescription = `Specialized two-page application CV for ${profile.title
       </div>
       <div class="application-guide-actions">
         <a class="btn" href={alternateHref}>{alternateLabel}</a>
-        <a class="btn" href="/#documents">All application CVs</a>
+        <a class="btn" href="/#applications">All application CVs</a>
         <a class="btn" href="/cv.html">Master CV</a>
         <button class="btn btn-primary" type="button" onclick="window.print()">Print / Save PDF</button>
       </div>
@@ -139,7 +142,7 @@ const pageDescription = `Specialized two-page application CV for ${profile.title
         <section class="application-section">
           <h2 class="application-section-title">Additional evidence</h2>
           <div class="application-evidence">
-            {profile.evidence.map((item) => (
+            {evidence.map((item) => (
               <article>
                 <h3><a href={item.link} target={item.link.startsWith("http") ? "_blank" : undefined} rel={item.link.startsWith("http") ? "noopener noreferrer" : undefined}>{item.title}</a></h3>
                 <p>{item.body}</p>
