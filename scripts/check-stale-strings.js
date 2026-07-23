@@ -127,7 +127,7 @@ for (const marker of ['human-capabilities', 'human-work', 'human-documents']) {
   if (!indexSource.includes(`data-testid="${marker}"`)) fail('src/pages/index.astro', 1, `Missing homepage marker ${marker}.`);
 }
 for (const requiredText of [
-  'I test AI systems, verify scientific claims, and organize research information.',
+  'I test AI systems and verify scientific claims.',
   'Areas of work',
   'One project from each area.',
   'Supporting projects',
