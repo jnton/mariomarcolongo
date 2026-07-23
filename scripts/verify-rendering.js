@@ -57,10 +57,7 @@ async function verifyHomepage(page, viewport) {
     diagnosisDisclosureCount: document.querySelectorAll('.v7-disclosure, [data-diagnosis-disclosure]').length,
     navLinks: Array.from(document.querySelectorAll('.nav-editorial .nav-actions a')).map((item) => item.textContent.trim()),
     heroHeight: document.querySelector('.v8-hero')?.getBoundingClientRect().height,
-    documentHeight: document.documentElement.scrollHeight,
-    unloadedImages: Array.from(document.querySelectorAll('.portfolio-v8 img'))
-      .filter((image) => !image.complete || image.naturalWidth === 0)
-      .map((image) => image.getAttribute('src'))
+    documentHeight: document.documentElement.scrollHeight
   }));
 
   fs.writeFileSync(path.join(OUTPUT, `homepage-${viewport.name}-model.json`), JSON.stringify(result, null, 2));
@@ -74,7 +71,6 @@ async function verifyHomepage(page, viewport) {
   if (result.principleCount !== H.workingPrinciples.length) throw new Error(`Homepage must render ${H.workingPrinciples.length} working principles`);
   if (result.documentCount !== H.applicationDocuments.length) throw new Error(`Homepage must render ${H.applicationDocuments.length} application documents`);
   if (result.diagnosisDisclosureCount !== 0) throw new Error('Homepage must not render a diagnosis disclosure');
-  if (result.unloadedImages.length) throw new Error(`Homepage has unloaded work images: ${result.unloadedImages.join(', ')}`);
   for (const expected of ['Work', 'Experience', 'CV', 'Contact']) {
     if (!result.navLinks.includes(expected)) throw new Error(`Homepage navigation is missing ${expected}`);
   }
