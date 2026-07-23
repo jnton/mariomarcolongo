@@ -134,7 +134,7 @@ for (const requiredText of [
   'I test AI systems and verify scientific claims.',
   'Two primary areas. One supporting capability.',
   'Real artifacts, not portfolio illustrations.',
-  'MDPI Filter now works in the browser and in Zotero.',
+  'MDPI Filter now works in the browser and as a Zotero plugin.',
   'A diagram that became a reusable public reference.',
   'Start with the role you are hiring for.',
   'AI evaluation and scientific evidence roles.'
