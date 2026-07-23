@@ -32,4 +32,4 @@ MDPI Filter is represented as a cross-surface research-integrity product family 
 
 ## Verification scope
 
-Release checks cover all eight public routes at desktop, tablet and mobile dimensions in light and dark themes; all routes also receive mobile no-JavaScript checks. Lighthouse audits run separately for every route in mobile and desktop modes. The four targeted application CVs must remain exactly two A4 pages, and generation now fails when flowing content reaches or crosses the fixed page footer rather than treating page count alone as proof of a valid layout.
+Release checks cover all eight public routes at desktop, tablet and mobile dimensions in light and dark themes; all routes also receive mobile no-JavaScript checks. Lighthouse audits run separately for every route in mobile and desktop modes, including contrast and touch-target checks on the homepage and CV layouts. The four targeted application CVs must remain exactly two A4 pages, and generation fails when flowing content reaches or crosses the fixed page footer rather than treating page count alone as proof of a valid layout.
