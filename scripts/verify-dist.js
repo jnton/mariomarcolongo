@@ -96,7 +96,7 @@ for (const needle of [
   ...H.workingPrinciples.map((item) => item.title),
   ...H.applicationDocuments.map((item) => item.title),
   'data-testid="human-capabilities"', 'data-testid="human-work"', 'data-testid="human-documents"',
-  'Two primary areas. One supporting capability.', 'Real artifacts, not portfolio illustrations.',
+  'Where I can contribute.', 'Selected work, shown through the actual output.',
   'Start with the role you are hiring for.', 'AI evaluation and scientific evidence roles.',
   'Zotero plugin', 'Protein by bodyweight by country'
 ]) assertContains(indexText, needle, 'dist/index.html');

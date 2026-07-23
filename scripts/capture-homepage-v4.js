@@ -17,9 +17,9 @@ async function warmLazyContent(page) {
       await delay(100);
     }
     window.scrollTo(0, document.documentElement.scrollHeight);
-    await delay(850);
+    await delay(1600);
     window.scrollTo(0, 0);
-    await delay(350);
+    await delay(700);
   });
 }
 

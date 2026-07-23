@@ -86,7 +86,7 @@ const isExternal = (href) => href.startsWith("http");
     <section class="v8-scope-band" aria-labelledby="scope-title" data-reveal>
       <header>
         <div class="v8-kicker">Professional scope</div>
-        <h2 id="scope-title">Two primary areas. One supporting capability.</h2>
+        <h2 id="scope-title">Where I can contribute.</h2>
       </header>
       <div class="v8-scope-grid">
         {H.scopes.map((scope) => (
@@ -103,7 +103,7 @@ const isExternal = (href) => href.startsWith("http");
       <header class="v8-section-head" data-reveal>
         <div>
           <div class="v8-kicker">Selected work</div>
-          <h2 id="selected-work-title">Real artifacts, not portfolio illustrations.</h2>
+          <h2 id="selected-work-title">Selected work, shown through the actual output.</h2>
         </div>
         <p>Each case shows the actual public output, my contribution and the boundary of what that work demonstrates.</p>
       </header>
@@ -187,7 +187,7 @@ const isExternal = (href) => href.startsWith("http");
         <div class="v8-kicker">{H.featuredArtifact.label}</div>
         <h2 id="artifact-title">{H.featuredArtifact.title}</h2>
         <p>{H.featuredArtifact.body}</p>
-        <a class="v8-text-link v8-text-link-light" href={H.featuredArtifact.href} target="_blank" rel="noopener noreferrer">
+        <a class="v8-text-link" href={H.featuredArtifact.href} target="_blank" rel="noopener noreferrer">
           {H.featuredArtifact.linkLabel}<span aria-hidden="true">↗</span>
         </a>
       </div>
@@ -210,7 +210,7 @@ const isExternal = (href) => href.startsWith("http");
     <section class="v8-more" aria-labelledby="more-title" data-reveal>
       <div>
         <div class="v8-kicker">More public work</div>
-        <h2 id="more-title">Useful breadth, kept out of the main story.</h2>
+        <h2 id="more-title">Additional tools and experiments.</h2>
       </div>
       <nav aria-label="More public projects">
         {H.moreWork.map((item) => (

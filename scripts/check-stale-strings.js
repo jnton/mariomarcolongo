@@ -132,8 +132,8 @@ for (const marker of ['human-capabilities', 'human-work', 'human-documents']) {
 }
 for (const requiredText of [
   'I test AI systems and verify scientific claims.',
-  'Two primary areas. One supporting capability.',
-  'Real artifacts, not portfolio illustrations.',
+  'Where I can contribute.',
+  'Selected work, shown through the actual output.',
   'MDPI Filter now works in the browser and as a Zotero plugin.',
   'A diagram that became a reusable public reference.',
   'Start with the role you are hiring for.',
