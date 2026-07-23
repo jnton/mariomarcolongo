@@ -92,22 +92,22 @@ for (const needle of [
   ...H.lab.map((item) => item.title),
   H.featuredArtifact.title,
   H.workingStyle.title,
-  H.workingStyle.disclosureTitle,
   ...H.workingPrinciples.map((item) => item.title),
   ...H.applicationDocuments.map((item) => item.title),
   'data-testid="human-capabilities"', 'data-testid="human-work"', 'data-testid="human-documents"',
-  'Three difficult problems', 'Working lab', 'Featured public artifact',
-  'Start with the role, not the archive.', 'Bring me the claim that does not quite survive inspection.',
+  'Selected work', 'Research tools', 'Scientific visualization',
+  'Choose the CV that matches the role.', 'Open to AI evaluation and scientific research-quality roles.',
   'Zotero plugin', 'Protein by bodyweight by country'
 ]) assertContains(indexText, needle, 'dist/index.html');
 for (const obsolete of [
   'class="portfolio-v4"', 'class="portfolio-v5"', 'class="v3-network"', 'class="p5-work-mosaic"',
   'Scale, failure modes, systems and evidence.', 'Useful when the problem is strange, ambiguous or uncomfortable.',
   'One evidence base. Four high-upside application routes.', 'Evidence for the next role—and the path after it.',
-  'Autistic, direct and unusually comfortable with difficult problems.', 'Discuss a difficult problem.',
+  'Autistic, direct and unusually comfortable with difficult problems.', 'I am autistic.',
+  'The hard part is rarely finding a paper.', 'Discuss a difficult problem.',
   'Pencil_Fascist_Tuberculosis', 'Alessandro Lanzoni', 'Public analysis across three platforms.',
   '/media/work/model-behavior-method.svg', '/media/work/entropy-social-proof.svg',
-  'Special:ListFiles/Digressivo'
+  'Special:ListFiles/Digressivo', 'https://jnton.github.io/emergent-humanity/'
 ]) assertNotContains(index, obsolete, 'dist/index.html');
 assertContains(index, 'class="portfolio-v7"', 'dist/index.html');
 assertContains(index, 'class="v7-engine', 'dist/index.html');
@@ -116,9 +116,7 @@ assertContains(index, 'class="v7-lab-grid"', 'dist/index.html');
 assertContains(index, '/media/work/wikimedia-clinical-overlap.svg', 'dist/index.html');
 assertContains(index, 'https://github.com/orgs/mdpi-filter/repositories', 'dist/index.html');
 assertContains(index, 'https://jnton.github.io/protein-by-bodyweight-country/', 'dist/index.html');
-assertContains(index, 'https://jnton.github.io/emergent-humanity/', 'dist/index.html');
-assertContains(index, 'I am autistic.', 'dist/index.html');
-pass('Portfolio-v7 evidence narrative checked');
+pass('Scoped homepage narrative checked');
 
 const applicationProfiles = [
   ['resume', P.aiSafety], ['research', P.researchQuality], ['editorial', P.editorialCommunity], ['integrityCv', P.integrity]
