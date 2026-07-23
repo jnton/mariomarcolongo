@@ -1,7 +1,7 @@
 const PORTFOLIO_HUMAN = {
-  eyebrow: "AI evaluation · scientific evidence · research systems",
-  headline: "I turn ambiguous claims into inspectable systems.",
-  introduction: "I work where evidence is incomplete, incentives are messy and the result still has to survive scrutiny. I test model behavior, verify scientific claims and turn uncertain research workflows into public, maintainable systems.",
+  eyebrow: "AI evaluation · scientific research quality",
+  headline: "I test AI systems and verify scientific claims.",
+  introduction: "My work focuses on two related problems: finding where AI behavior fails, and checking whether scientific claims are supported by the evidence. I document the result clearly and build practical tools or workflows around it.",
 
   proofMoments: [
     {
@@ -18,7 +18,7 @@ const PORTFOLIO_HUMAN = {
     },
     {
       value: "55+",
-      label: "research routes made inspectable",
+      label: "research opportunities verified",
       detail: "Yourself to Science catalogue and provenance workflow",
       href: "https://yourselftoscience.org/"
     }
@@ -28,38 +28,38 @@ const PORTFOLIO_HUMAN = {
     {
       id: "ambiguity",
       number: "01",
-      label: "Ambiguity",
-      title: "Find the claim that can fail.",
-      body: "Separate the visible request from hidden assumptions, incentives, missing context and plausible failure modes.",
-      signal: "What is actually uncertain?",
+      label: "Define",
+      title: "Clarify the question.",
+      body: "Identify the exact claim, the missing context and the assumptions that could change the answer.",
+      signal: "What are we trying to establish?",
       examples: "Model behavior · scientific claims · research participation"
     },
     {
       id: "test",
       number: "02",
       label: "Test",
-      title: "Vary the path, not just the wording.",
-      body: "Probe alternate contexts, sources, interaction surfaces and edge cases until the important boundary becomes observable.",
+      title: "Check how the result changes.",
+      body: "Vary the context, source, input or interaction path until the important boundary becomes visible.",
       signal: "What changes the outcome?",
       examples: "Multimodal inputs · conflicting literature · incomplete records"
     },
     {
       id: "verify",
       number: "03",
-      label: "Verify",
-      title: "Preserve the evidence boundary.",
-      body: "Record what was observed, what a platform reported, what can be reproduced and what remains an inference.",
+      label: "Document",
+      title: "Record what the evidence supports.",
+      body: "Separate direct observations, platform reports, reproducible findings and conclusions that remain uncertain.",
       signal: "What can another person inspect?",
       examples: "Primary sources · provenance · archived snapshots"
     },
     {
       id: "operate",
       number: "04",
-      label: "Operate",
-      title: "Make the result survive contact with reality.",
-      body: "Turn the finding into a maintained workflow, public record, product decision or system that remains useful after the initial insight.",
-      signal: "What still works next month?",
-      examples: "Catalogue operations · release pipelines · public interfaces"
+      label: "Apply",
+      title: "Turn the result into useful work.",
+      body: "Use the finding to improve a decision, workflow, public record or tool, and keep it maintainable after the initial analysis.",
+      signal: "What should change in practice?",
+      examples: "Editorial decisions · catalogue operations · product releases"
     }
   ],
 
@@ -67,17 +67,17 @@ const PORTFOLIO_HUMAN = {
     {
       id: "model-behavior",
       number: "01",
-      label: "Model behavior",
-      title: "From an ambiguous failure to an inspectable evaluation record.",
-      lead: "Adversarial testing is useful only when the evidence survives the excitement of the break.",
-      situation: "Instruction hierarchy, multimodal inputs, tool use and indirect prompt injection create failures that are easy to overstate and hard to compare.",
-      action: "I vary attack paths, preserve reproduction notes and separate observed behavior from platform labels, independent verification and model-wide claims.",
+      label: "AI evaluation",
+      title: "Documenting AI failures without overstating them.",
+      lead: "Finding a failure is only useful when another person can understand what happened and what the evidence supports.",
+      situation: "Instruction hierarchy, multimodal inputs, tool use and indirect prompt injection can produce failures that are difficult to compare and easy to exaggerate.",
+      action: "I vary the attack path, preserve reproduction notes and distinguish observed behavior from platform labels, independent verification and broader claims about a model.",
       result: "A public evaluation record with methodology, limitations, live platform evidence and an archival fallback.",
-      boundary: "The record supports evaluation judgment and persistence; it is not presented as a penetration test or senior red-team engineering credential.",
+      boundary: "This demonstrates evaluation judgment and persistent testing. It is not presented as a penetration test or a senior red-team engineering credential.",
       href: "/security.html",
       linkLabel: "Open the evaluation record",
       theme: "signal",
-      visualTitle: "Boundary map",
+      visualTitle: "Evidence levels",
       visualLines: [
         ["Observed", "Directly recorded behavior"],
         ["Platform-confirmed", "Gray Swan status"],
@@ -88,39 +88,39 @@ const PORTFOLIO_HUMAN = {
       id: "scientific-verification",
       number: "02",
       label: "Scientific verification",
-      title: "From a confident claim to a defensible production decision.",
-      lead: "The hard part is rarely finding a paper. It is deciding what the paper actually licenses you to say.",
-      situation: "Public science production compresses uncertain, conflicting and domain-specific evidence into language that must remain accurate and understandable.",
-      action: "I decompose claims, inspect primary literature, trace disagreement and communicate corrections to a non-specialist production team.",
-      result: "Paid verification integrated into an ongoing multi-platform publishing workflow, including videos, documentaries and articles.",
+      title: "Checking scientific claims before publication.",
+      lead: "Finding a relevant paper is only the first step. The real task is deciding whether the evidence supports the exact claim being made.",
+      situation: "Science communication often compresses uncertain, conflicting and domain-specific evidence into language that must still be accurate and understandable.",
+      action: "I break claims into testable parts, inspect primary literature, trace disagreements between sources and communicate corrections to a non-specialist production team.",
+      result: "Paid verification integrated into an ongoing publishing workflow covering videos, documentaries and articles.",
       boundary: "Audience figures belong to Entropy for Life and are not presented as my personal reach or unique audience.",
       href: "https://www.youtube.com/@entropyforlife",
       linkLabel: "Open the official channel",
       theme: "evidence",
-      visualTitle: "Claim audit",
+      visualTitle: "Claim review",
       visualLines: [
-        ["Claim", "What the script wants to say"],
-        ["Sources", "Primary evidence and conflict"],
+        ["Claim", "The exact statement under review"],
+        ["Evidence", "Primary sources and disagreement"],
         ["Decision", "Keep, qualify, correct or remove"]
       ]
     },
     {
       id: "research-system",
       number: "03",
-      label: "Research system",
-      title: "From scattered opportunities to a verifiable public route into research.",
-      lead: "A directory becomes infrastructure only when inclusion, provenance and maintenance are explicit.",
-      situation: "Research participation opportunities are distributed across institutions, use inconsistent terminology and frequently lack stable, machine-readable records.",
-      action: "I defined inclusion rules, verification fields, provenance, licensing and public data requirements, then operate the catalogue and its technical workflow.",
-      result: "Yourself to Science: a public research-participation system with FAIRsharing and Zenodo records and machine-readable interfaces.",
-      boundary: "Implementation is AI-assisted; I own requirements, verification, functional testing, deployment diagnosis and operations rather than claiming unaided software development.",
+      label: "Research operations",
+      title: "Building a reliable directory of research-participation opportunities.",
+      lead: "A public directory is useful only when entries are checked, sourced and kept up to date.",
+      situation: "Research-participation opportunities are distributed across institutions, use inconsistent terminology and often lack stable, machine-readable records.",
+      action: "I defined the inclusion rules, verification fields, provenance, licensing and public-data requirements, then built the operating workflow around them.",
+      result: "Yourself to Science: a public catalogue with FAIRsharing and Zenodo records and machine-readable interfaces.",
+      boundary: "Implementation is AI-assisted. I own requirements, verification, functional testing, deployment diagnosis and operations rather than claiming unaided software development.",
       href: "https://yourselftoscience.org/",
       linkLabel: "Explore Yourself to Science",
       theme: "system",
-      visualTitle: "Provenance chain",
+      visualTitle: "Verification flow",
       visualLines: [
-        ["Discover", "Institutional opportunity"],
-        ["Verify", "Eligibility, status and source"],
+        ["Find", "Institutional opportunity"],
+        ["Check", "Eligibility, status and source"],
         ["Publish", "Human and machine-readable record"]
       ]
     }
@@ -131,7 +131,7 @@ const PORTFOLIO_HUMAN = {
       id: "mdpi-filter",
       label: "Research-integrity tooling",
       title: "MDPI Filter",
-      body: "A cross-surface identification system for literature searches, publisher references and Zotero libraries. Current public products include the multi-browser extension and a Zotero plugin with exact-evidence matching and false-positive avoidance.",
+      body: "A browser extension and Zotero plugin that identify MDPI references while avoiding ambiguous matches. The current product focuses on accurate identification across literature-search and reference-management workflows.",
       meta: "Chrome · Edge · Firefox · Safari source · Zotero 7–9",
       href: "https://github.com/orgs/mdpi-filter/repositories",
       linkLabel: "Open the product repositories",
@@ -141,38 +141,18 @@ const PORTFOLIO_HUMAN = {
       id: "protein-explorer",
       label: "Reproducible data product",
       title: "Protein by bodyweight by country",
-      body: "An interactive explorer combining protein supply, estimated bodyweight and GDP context while keeping ecological assumptions and methodological warnings visible.",
+      body: "An interactive explorer combining protein supply, estimated bodyweight and GDP context, with the ecological assumptions and methodological limits kept visible.",
       meta: "FAOSTAT · NCD-RisC · World Bank · shareable views",
       href: "https://jnton.github.io/protein-by-bodyweight-country/",
       linkLabel: "Launch the live explorer",
       interaction: "chart"
-    },
-    {
-      id: "wikipedia-bot",
-      label: "Production operations",
-      title: "English Wikipedia Link Converter",
-      body: "A Telegram bot running on AWS Lambda across private chats, groups and inline mode, with release automation, canary validation and operational recovery workflows.",
-      meta: "AWS Lambda · ARM64 · GitHub Actions · Telegram",
-      href: "https://t.me/ToEnWikipediaBot",
-      linkLabel: "Open the live bot",
-      interaction: "convert"
-    },
-    {
-      id: "emergent-humanity",
-      label: "Interactive narrative",
-      title: "Emergent Humanity",
-      body: "A 16-chapter browser essay and simulation about signal, noise, echo chambers and collective memory, designed as an interactive system rather than a static article.",
-      meta: "Network simulation · sound opt-in · agent metadata",
-      href: "https://jnton.github.io/emergent-humanity/",
-      linkLabel: "Enter the narrative",
-      interaction: "network"
     }
   ],
 
   featuredArtifact: {
-    label: "Featured public artifact",
-    title: "Autism genetics, drawn as an inspectable overlap.",
-    body: "A self-authored vector diagram showing overlapping monogenic phenotypes across autism, dystonia, epilepsy and schizophrenia. It is the strongest single example of my scientific visual reasoning because the source, structure, reuse and authorship can all be inspected directly.",
+    label: "Scientific visualization",
+    title: "A scientific diagram with an inspectable source record.",
+    body: "This vector diagram shows overlapping monogenic phenotypes across autism, dystonia, epilepsy and schizophrenia. The source file, structure, authorship and reuse history are all publicly inspectable on Wikimedia Commons.",
     image: "/media/work/wikimedia-clinical-overlap.svg",
     alt: "Euler diagram of overlapping clinical phenotypes in genes associated with autism spectrum disorder, dystonia, epilepsy and schizophrenia",
     href: "https://commons.wikimedia.org/wiki/File:Overlapping_clinical_phenotypes_in_genes_associated_with_monogenic_forms_of_autism_spectrum_disorder_(ASD),_dystonia,_epilepsy_and_schizophrenia.svg",
@@ -180,25 +160,23 @@ const PORTFOLIO_HUMAN = {
   },
 
   workingStyle: {
-    label: "Operating profile",
-    title: "Independent judgment, explicit assumptions, low-deference work.",
-    body: "I am most useful in high-autonomy environments that reward deep focus, direct disagreement, difficult domains and ownership beyond the initial analysis.",
-    disclosureTitle: "Why I work this way",
-    disclosureBody: "I am autistic. In practice, that means I prefer explicit expectations, direct feedback, sustained focus and problems with enough structure to investigate but enough ambiguity to matter. The work on this page is the evidence; the diagnosis is context."
+    label: "How I work",
+    title: "Independent, careful and direct.",
+    body: "I work best with clear goals, room to investigate and responsibility for the final result. I prefer direct feedback and explicit decisions over vague alignment or performative certainty."
   },
 
   workingPrinciples: [
     {
-      title: "Contrarian, not careless",
-      body: "Question consensus without confusing novelty with truth."
+      title: "Question assumptions",
+      body: "Check whether the premise is supported before optimizing around it."
     },
     {
-      title: "Direct, not theatrical",
-      body: "State constraints, disagreement and uncertainty plainly."
+      title: "State uncertainty clearly",
+      body: "Separate what is observed, reported, inferred or still unknown."
     },
     {
-      title: "Own the afterlife",
-      body: "Treat deployment, maintenance and evidence preservation as part of the work."
+      title: "Finish the operational work",
+      body: "Include documentation, maintenance and follow-up in the job."
     }
   ],
 
