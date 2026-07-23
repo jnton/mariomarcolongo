@@ -2,27 +2,23 @@
 import Layout from "../layouts/Layout.astro";
 import SiteNav from "../components/SiteNav.astro";
 import SiteFooter from "../components/SiteFooter.astro";
-import "../styles/portfolio-v5.css";
-import "../styles/portfolio-v6-overrides.css";
+import "../styles/portfolio-v7.css";
 import D from "../../data/source.js";
 import H from "../../data/portfolio-human.js";
 import { buildProfileGraph } from "../lib/structured-data.js";
 
-const pageTitle = "Mario Marcolongo — AI Evaluation, Scientific Evidence & Research Operations";
-const pageDescription = "AI model-behavior evaluation, paid scientific verification, research and product operations, knowledge integrity and public data quality.";
+const pageTitle = "Mario Marcolongo — Evidence, Evaluation & Research Systems";
+const pageDescription = "AI model-behavior evaluation, scientific verification, research systems, knowledge integrity and public data products.";
 const profileJsonLd = buildProfileGraph(D, "https://mariomarcolongo.com/", pageTitle);
-
-const responsiveSource = (src) => src.endsWith("-800.webp")
-  ? `${src.replace("-800.webp", "-400.webp")} 400w, ${src} 800w`
-  : undefined;
 
 const selectedExperience = [
   D.experience.find((item) => item.role?.includes("Model-Behavior")),
   D.experience.find((item) => item.org?.includes("Entropy for Life")),
   D.experience.find((item) => item.org?.includes("Yourself to Science")),
-  D.experience.find((item) => item.role?.includes("Focus-Group")),
-  D.experience.find((item) => item.org?.includes("Wikipedia"))
+  D.experience.find((item) => item.role?.includes("Focus-Group"))
 ].filter(Boolean);
+
+const firstStage = H.engineStages[0];
 ---
 
 <Layout title={pageTitle} description={pageDescription} canonical="https://mariomarcolongo.com/">
@@ -32,212 +28,335 @@ const selectedExperience = [
 
   <SiteNav activePage="home" />
 
-  <main class="portfolio-v5" id="content">
-    <section class="p5-hero" aria-labelledby="portfolio-title">
-      <div class="p5-hero-copy">
-        <div class="p5-kicker">{H.eyebrow}</div>
+  <main class="portfolio-v7" id="content">
+    <section class="v7-hero" aria-labelledby="portfolio-title">
+      <div class="v7-hero-copy" data-reveal>
+        <div class="v7-kicker">{H.eyebrow}</div>
         <h1 id="portfolio-title">{H.headline}</h1>
-        <p>{H.introduction}</p>
-        <div class="p5-actions">
-          <a class="p5-button p5-button-primary" href="#selected-work">View selected work</a>
-          <a class="p5-button" href="#applications">Choose a targeted CV</a>
+        <p class="v7-hero-lede">{H.introduction}</p>
+        <div class="v7-actions">
+          <a class="v7-button v7-button-primary" href="#selected-work">Follow the evidence</a>
+          <a class="v7-button" href="#applications">Choose a targeted CV</a>
         </div>
-        <p class="p5-availability">Based in Italy · EU work authorization · open to worldwide relocation and international contracting</p>
+        <p class="v7-availability">Italy · EU work authorization · worldwide relocation and international contracting</p>
       </div>
 
-      <div class="p5-work-mosaic" aria-label="Selected public work and link destinations">
-        {H.heroWork.map((item, index) => (
-          <a
-            class={`p5-work-tile p5-work-tile-${item.theme}`}
-            href={item.href}
-            target={item.href.startsWith("http") ? "_blank" : undefined}
-            rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}
-          >
-            <div class="p5-work-visual" aria-hidden="true">
-              <span class="p5-work-index">{String(index + 1).padStart(2, "0")}</span>
-              <span class="p5-work-domain">{item.domain}</span>
-              <strong class="p5-work-metric">{item.metric}</strong>
-              <span class="p5-work-metric-label">{item.metricLabel}</span>
-              <div class="p5-work-tags">
-                {item.tags.map((tag) => <span>{tag}</span>)}
-              </div>
-            </div>
-            <div class="p5-work-caption">
-              <strong>{item.title}</strong>
-              <span>{item.label}</span>
-              <small>{item.linkLabel} →</small>
-            </div>
+      <div class="v7-engine" data-engine data-reveal aria-labelledby="engine-title">
+        <div class="v7-engine-glow" aria-hidden="true"></div>
+        <div class="v7-engine-header">
+          <span>Evidence engine</span>
+          <span class="v7-engine-status" aria-hidden="true">LIVE METHOD</span>
+        </div>
+
+        <div class="v7-engine-path" aria-hidden="true">
+          <span></span>
+        </div>
+
+        <div class="v7-engine-stages" role="tablist" aria-label="Evidence workflow">
+          {H.engineStages.map((stage, index) => (
+            <button
+              class={`v7-engine-stage ${index === 0 ? "is-active" : ""}`}
+              type="button"
+              role="tab"
+              aria-selected={index === 0 ? "true" : "false"}
+              aria-controls="engine-output"
+              data-stage={stage.id}
+              data-title={stage.title}
+              data-body={stage.body}
+              data-signal={stage.signal}
+              data-examples={stage.examples}
+            >
+              <span>{stage.number}</span>
+              <strong>{stage.label}</strong>
+            </button>
+          ))}
+        </div>
+
+        <article class="v7-engine-output" id="engine-output" aria-live="polite">
+          <span class="v7-engine-question" data-engine-signal>{firstStage.signal}</span>
+          <h2 id="engine-title" data-engine-title>{firstStage.title}</h2>
+          <p data-engine-body>{firstStage.body}</p>
+          <small data-engine-examples>{firstStage.examples}</small>
+        </article>
+      </div>
+
+      <div class="v7-proof-strip" aria-label="Selected public evidence" data-reveal>
+        {H.proofMoments.map((item) => (
+          <a href={item.href} target={item.href.startsWith("http") ? "_blank" : undefined} rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}>
+            <strong>{item.value}</strong>
+            <span>{item.label}</span>
+            <small>{item.detail}</small>
           </a>
         ))}
       </div>
     </section>
 
-    <section class="p5-proof-grid" aria-label="Selected evidence">
-      {H.proofs.map((item) => (
-        <a class="p5-proof" href={item.href} target={item.href.startsWith("http") ? "_blank" : undefined} rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}>
-          <strong>{item.value}</strong>
-          <span>{item.label}</span>
-          <small>{item.detail}</small>
-        </a>
-      ))}
-    </section>
-
-    <section class="p5-section" id="selected-work" data-testid="human-work" aria-labelledby="selected-work-title">
-      <div class="p5-section-head">
+    <section class="v7-section v7-cases" id="selected-work" data-testid="human-work" aria-labelledby="selected-work-title">
+      <header class="v7-section-head" data-reveal>
         <div>
-          <div class="p5-kicker">Selected work</div>
-          <h2 id="selected-work-title">Evidence for the next role—and the path after it.</h2>
+          <div class="v7-kicker">Three difficult problems</div>
+          <h2 id="selected-work-title">One method. Three very different systems.</h2>
         </div>
-        <p>AI evaluation and model behavior lead the portfolio, followed by paid scientific verification and research/product operations. Senior red-team engineering remains a longer-term path requiring stronger independent coding and security evidence.</p>
-      </div>
+        <p>The numbers appear once. The rest of the page shows the reasoning, decisions and evidence boundaries behind them.</p>
+      </header>
 
-      <div class="p5-flagship-grid" data-testid="human-capabilities">
-        {H.flagships.map((item) => (
-          <article class="p5-flagship">
-            <div class="p5-flagship-media">
-              <div class={`p5-case-cover p5-case-cover-${item.theme}`}>
-                <span class="p5-case-eyebrow">{item.visualEyebrow}</span>
-                <strong>{item.metric}</strong>
-                <span>{item.metricLabel}</span>
-                <div class="p5-case-details">
-                  {item.details.map((detail) => <span class="p5-case-detail">{detail}</span>)}
-                </div>
-                <span class="p5-case-destination">{item.destination}</span>
+      <div class="v7-case-stack" data-testid="human-capabilities">
+        {H.cases.map((item) => (
+          <article class={`v7-case v7-case-${item.theme}`} data-case={item.id} data-reveal>
+            <div class="v7-case-copy">
+              <div class="v7-case-index">
+                <span>{item.number}</span>
+                <strong>{item.label}</strong>
               </div>
-            </div>
-            <div class="p5-flagship-body">
-              <div class="p5-card-label">{item.label}</div>
               <h3>{item.title}</h3>
-              <p>{item.summary}</p>
-              <p class="p5-proof-line">{item.proof}</p>
-              <a class="p5-link" href={item.href} target={item.href.startsWith("http") ? "_blank" : undefined} rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}>{item.linkLabel}</a>
-            </div>
-          </article>
-        ))}
-      </div>
-    </section>
+              <p class="v7-case-lead">{item.lead}</p>
 
-    <section class="p5-section" id="products" aria-labelledby="products-title">
-      <div class="p5-section-head">
-        <div>
-          <div class="p5-kicker">Products and systems</div>
-          <h2 id="products-title">Public tools with a clear job to do.</h2>
-        </div>
-        <p>These projects show requirements definition, functional testing, deployment diagnosis and operational maintenance. They do not imply unaided software development.</p>
-      </div>
-      <div class="p5-products">
-        {H.products.map((item) => (
-          <article class={`p5-product ${item.title.includes("Wikipedia") ? "p5-product-bot" : ""}`}>
-            <img src={item.image} srcset={responsiveSource(item.image)} sizes="(max-width: 680px) 86vw, (max-width: 980px) 48vw, 380px" alt={item.alt} width="760" height="480" loading="lazy" decoding="async" />
-            <div class="p5-product-body">
-              <div class="p5-product-label">{item.label}</div>
-              <h3>{item.title}</h3>
-              <p>{item.body}</p>
-              <a class="p5-link" href={item.href} target="_blank" rel="noopener noreferrer">Open official project</a>
-            </div>
-          </article>
-        ))}
-      </div>
-    </section>
+              <dl class="v7-case-decisions">
+                <div>
+                  <dt>Situation</dt>
+                  <dd>{item.situation}</dd>
+                </div>
+                <div>
+                  <dt>Move</dt>
+                  <dd>{item.action}</dd>
+                </div>
+                <div>
+                  <dt>Result</dt>
+                  <dd>{item.result}</dd>
+                </div>
+              </dl>
 
-    <section class="p5-section" id="visuals" aria-labelledby="visuals-title">
-      <div class="p5-section-head">
-        <div>
-          <div class="p5-kicker">Data and visual analysis</div>
-          <h2 id="visuals-title">Three inspectable public artifacts.</h2>
-        </div>
-        <p>Each card opens a specific work or a deliberately curated portfolio. The Wikimedia link now points to the strongest autism-related visualization rather than an undifferentiated upload history.</p>
-      </div>
-      <div class="p5-visuals">
-        {H.visualization.map((item) => (
-          <article class="p5-visual">
-            <img src={item.image} srcset={responsiveSource(item.image)} sizes="(max-width: 680px) 86vw, (max-width: 980px) 48vw, 380px" alt={item.alt} width="760" height="480" loading="lazy" decoding="async" />
-            <div class="p5-visual-body">
-              <h3>{item.title}</h3>
-              <p>{item.body}</p>
-              <a class="p5-link" href={item.href} target="_blank" rel="noopener noreferrer">View the public artifact</a>
+              <aside class="v7-boundary">
+                <span>Evidence boundary</span>
+                <p>{item.boundary}</p>
+              </aside>
+
+              <a class="v7-text-link" href={item.href} target={item.href.startsWith("http") ? "_blank" : undefined} rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}>
+                {item.linkLabel}<span aria-hidden="true">↗</span>
+              </a>
+            </div>
+
+            <div class="v7-case-visual" aria-label={item.visualTitle}>
+              <div class="v7-case-visual-head">
+                <span>{item.visualTitle}</span>
+                <i aria-hidden="true"></i>
+              </div>
+              <div class="v7-case-lines">
+                {item.visualLines.map((line, index) => (
+                  <div class="v7-case-line" style={`--line-index:${index}`}>
+                    <span>{String(index + 1).padStart(2, "0")}</span>
+                    <strong>{line[0]}</strong>
+                    <small>{line[1]}</small>
+                  </div>
+                ))}
+              </div>
+              <div class="v7-case-pulse" aria-hidden="true"><span></span></div>
             </div>
           </article>
         ))}
       </div>
     </section>
 
-    <section class="p5-section" id="operating-style" aria-labelledby="operating-style-title">
-      <div class="p5-section-head">
+    <section class="v7-section v7-lab" id="lab" aria-labelledby="lab-title">
+      <header class="v7-section-head" data-reveal>
         <div>
-          <div class="p5-kicker">Operating profile</div>
-          <h2 id="operating-style-title">Built for teams that reward independent judgment.</h2>
+          <div class="v7-kicker">Working lab</div>
+          <h2 id="lab-title">Small systems that reveal how I think.</h2>
         </div>
-        <p>This is the defensible version of the “unusual person” signal: direct reasoning, low deference to weak consensus, comfort with sensitive or ambiguous problems and explicit ownership of outcomes.</p>
-      </div>
-      <div class="p5-operating-layout">
-        <article class="p5-operating-disclosure">
-          <span>{H.workingStyle.label}</span>
-          <h3>{H.workingStyle.title}</h3>
-          <p>{H.workingStyle.body}</p>
-        </article>
-        <div class="p5-principles" aria-label="Working principles">
-          {H.workingPrinciples.map((item) => (
-            <article class="p5-principle">
+        <p>Each object has a different job, interaction model and failure surface. They are not arranged as four identical portfolio cards.</p>
+      </header>
+
+      <div class="v7-lab-grid">
+        {H.lab.map((item, index) => (
+          <article class={`v7-lab-item v7-lab-${item.interaction} ${index === 0 ? "v7-lab-featured" : ""}`} data-reveal>
+            <div class="v7-lab-demo" aria-hidden="true">
+              {item.interaction === "filter" && (
+                <div class="v7-demo-filter">
+                  <span class="is-checked">DOI verified</span>
+                  <span>Publisher signal</span>
+                  <span class="is-muted">Ambiguous title skipped</span>
+                  <i></i>
+                </div>
+              )}
+              {item.interaction === "chart" && (
+                <div class="v7-demo-chart">
+                  <span style="--h:38%"></span><span style="--h:57%"></span><span style="--h:74%"></span><span style="--h:49%"></span><span style="--h:86%"></span>
+                  <i></i>
+                </div>
+              )}
+              {item.interaction === "convert" && (
+                <div class="v7-demo-convert">
+                  <code>it.wikipedia.org/wiki/Autismo</code>
+                  <span>→</span>
+                  <code>en.wikipedia.org/wiki/Autism</code>
+                </div>
+              )}
+              {item.interaction === "network" && (
+                <div class="v7-demo-network">
+                  {Array.from({ length: 8 }).map((_, nodeIndex) => <i style={`--node:${nodeIndex}`}></i>)}
+                  <span></span>
+                </div>
+              )}
+            </div>
+            <div class="v7-lab-copy">
+              <span>{item.label}</span>
               <h3>{item.title}</h3>
               <p>{item.body}</p>
-            </article>
-          ))}
-        </div>
+              <small>{item.meta}</small>
+              <a class="v7-text-link" href={item.href} target="_blank" rel="noopener noreferrer">{item.linkLabel}<span aria-hidden="true">↗</span></a>
+            </div>
+          </article>
+        ))}
       </div>
     </section>
 
-    <section class="p5-section" id="experience" aria-labelledby="experience-title">
-      <div class="p5-section-head">
-        <div>
-          <div class="p5-kicker">Experience</div>
-          <h2 id="experience-title">A concise record, with deeper evidence available.</h2>
-        </div>
-        <p>The focus-group collaboration is named and verifiable here, but kept proportional to its role as supporting evidence for participant-facing research and trust-and-safety work.</p>
+    <section class="v7-artifact" aria-labelledby="artifact-title" data-reveal>
+      <div class="v7-artifact-copy">
+        <div class="v7-kicker">{H.featuredArtifact.label}</div>
+        <h2 id="artifact-title">{H.featuredArtifact.title}</h2>
+        <p>{H.featuredArtifact.body}</p>
+        <a class="v7-text-link" href={H.featuredArtifact.href} target="_blank" rel="noopener noreferrer">
+          {H.featuredArtifact.linkLabel}<span aria-hidden="true">↗</span>
+        </a>
       </div>
-      <div class="p5-experience-list">
+      <a class="v7-artifact-visual" href={H.featuredArtifact.href} target="_blank" rel="noopener noreferrer" aria-label={H.featuredArtifact.linkLabel}>
+        <img src={H.featuredArtifact.image} alt={H.featuredArtifact.alt} width="900" height="600" loading="lazy" decoding="async" />
+        <span aria-hidden="true">Inspect source</span>
+      </a>
+    </section>
+
+    <section class="v7-section v7-profile" id="operating-style" aria-labelledby="profile-title">
+      <header class="v7-section-head" data-reveal>
+        <div>
+          <div class="v7-kicker">{H.workingStyle.label}</div>
+          <h2 id="profile-title">{H.workingStyle.title}</h2>
+        </div>
+        <p>{H.workingStyle.body}</p>
+      </header>
+
+      <div class="v7-profile-grid">
+        {H.workingPrinciples.map((item, index) => (
+          <article data-reveal>
+            <span>{String(index + 1).padStart(2, "0")}</span>
+            <h3>{item.title}</h3>
+            <p>{item.body}</p>
+          </article>
+        ))}
+        <details class="v7-disclosure" data-reveal>
+          <summary>{H.workingStyle.disclosureTitle}</summary>
+          <p>{H.workingStyle.disclosureBody}</p>
+        </details>
+      </div>
+    </section>
+
+    <section class="v7-section v7-experience" id="experience" aria-labelledby="experience-title">
+      <header class="v7-section-head" data-reveal>
+        <div>
+          <div class="v7-kicker">Experience</div>
+          <h2 id="experience-title">The concise record.</h2>
+        </div>
+        <p>Enough context to understand the trajectory; the targeted CVs carry the full application detail.</p>
+      </header>
+      <div class="v7-experience-list">
         {selectedExperience.map((item) => (
-          <article class="p5-experience">
+          <article data-reveal>
             <time>{item.period}</time>
             <div>
               <h3>{item.role}</h3>
-              <p><strong>{item.org}</strong> · {item.tag}. {item.resumeBullets?.[0] || item.bullets?.[0]}</p>
+              <p><strong>{item.org}</strong> · {item.resumeBullets?.[0] || item.bullets?.[0]}</p>
             </div>
           </article>
         ))}
       </div>
     </section>
 
-    <section class="p5-section" id="applications" data-testid="human-documents" aria-labelledby="applications-title">
-      <div class="p5-section-head">
+    <section class="v7-section v7-applications" id="applications" data-testid="human-documents" aria-labelledby="applications-title">
+      <header class="v7-section-head" data-reveal>
         <div>
-          <div class="p5-kicker">Application documents</div>
-          <h2 id="applications-title">Use the version matched to the role.</h2>
+          <div class="v7-kicker">Application route</div>
+          <h2 id="applications-title">Start with the role, not the archive.</h2>
         </div>
-        <p>The first document targets the strongest immediate high-upside lane. Scientific-AI quality and knowledge integrity are parallel routes; editorial/community operations remains a bridge option.</p>
-      </div>
-      <div class="p5-documents">
-        {H.applicationDocuments.map((item) => (
-          <a class="p5-document" href={item.href}>
+        <p>The first document is the default for the strongest immediate high-upside lane. The others are deliberate alternatives, not four equal guesses.</p>
+      </header>
+
+      <div class="v7-documents">
+        {H.applicationDocuments.map((item, index) => (
+          <a class={`v7-document ${index === 0 ? "is-recommended" : ""}`} href={item.href} data-reveal>
+            <span>{index === 0 ? "Recommended default" : item.recommendedFor}</span>
             <h3>{item.title}</h3>
             <p>{item.description}</p>
-            <span class="p5-link">Open CV →</span>
+            <small>Open CV <i aria-hidden="true">→</i></small>
           </a>
         ))}
       </div>
     </section>
 
-    <section class="p5-contact" id="contact" aria-labelledby="contact-title">
+    <section class="v7-contact" id="contact" aria-labelledby="contact-title" data-reveal>
       <div>
-        <h2 id="contact-title">Discuss a difficult problem.</h2>
-        <p>Open to AI evaluation, model-quality and safety operations, scientific AI quality, research operations and knowledge-integrity roles where evidence, direct judgment and operational ownership matter.</p>
+        <span>Available for the right problem</span>
+        <h2 id="contact-title">Bring me the claim that does not quite survive inspection.</h2>
+        <p>AI evaluation, scientific-AI quality, research operations, knowledge integrity and high-autonomy technical-program paths.</p>
       </div>
-      <div class="p5-actions">
-        <a class="p5-button" href={`mailto:${D.identity.email}`}>Email Mario</a>
-        <a class="p5-button" href={D.identity.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      <div class="v7-actions">
+        <a class="v7-button v7-button-light" href={`mailto:${D.identity.email}`}>Email Mario</a>
+        <a class="v7-button v7-button-ghost" href={D.identity.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a>
       </div>
     </section>
   </main>
 
   <SiteFooter version={D.identity.buildVersion} />
+
+  <script is:inline>
+    (() => {
+      document.documentElement.classList.add("v7-js");
+
+      const engine = document.querySelector("[data-engine]");
+      if (engine) {
+        const buttons = [...engine.querySelectorAll("[data-stage]")];
+        const title = engine.querySelector("[data-engine-title]");
+        const body = engine.querySelector("[data-engine-body]");
+        const signal = engine.querySelector("[data-engine-signal]");
+        const examples = engine.querySelector("[data-engine-examples]");
+
+        const activate = (button) => {
+          buttons.forEach((item) => {
+            const active = item === button;
+            item.classList.toggle("is-active", active);
+            item.setAttribute("aria-selected", active ? "true" : "false");
+          });
+          engine.dataset.activeStage = button.dataset.stage || "";
+          if (title) title.textContent = button.dataset.title || "";
+          if (body) body.textContent = button.dataset.body || "";
+          if (signal) signal.textContent = button.dataset.signal || "";
+          if (examples) examples.textContent = button.dataset.examples || "";
+        };
+
+        buttons.forEach((button) => {
+          button.addEventListener("click", () => activate(button));
+          button.addEventListener("mouseenter", () => activate(button));
+          button.addEventListener("focus", () => activate(button));
+        });
+
+        engine.addEventListener("pointermove", (event) => {
+          const rect = engine.getBoundingClientRect();
+          engine.style.setProperty("--pointer-x", `${event.clientX - rect.left}px`);
+          engine.style.setProperty("--pointer-y", `${event.clientY - rect.top}px`);
+        });
+      }
+
+      if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-visible");
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.12 });
+        document.querySelectorAll("[data-reveal]").forEach((element) => observer.observe(element));
+      } else {
+        document.querySelectorAll("[data-reveal]").forEach((element) => element.classList.add("is-visible"));
+      }
+    })();
+  </script>
 </Layout>
