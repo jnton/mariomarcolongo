@@ -1,4 +1,4 @@
-name: Regenerate portfolio v8 output
+name: Polish and regenerate portfolio v8
 
 on:
   push:
@@ -20,22 +20,57 @@ jobs:
         with:
           node-version: 22
           cache: npm
+      - name: Apply final editorial polish
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          replacements = {
+              Path('src/pages/index.astro'): {
+                  'Two primary areas. One supporting capability.': 'Where I can contribute.',
+                  'Real artifacts, not portfolio illustrations.': 'Selected work, shown through the actual output.',
+                  'Useful breadth, kept out of the main story.': 'Additional tools and experiments.',
+                  'class="v8-text-link v8-text-link-light"': 'class="v8-text-link"',
+              },
+              Path('scripts/check-stale-strings.js'): {
+                  "'Two primary areas. One supporting capability.',": "'Where I can contribute.',",
+                  "'Real artifacts, not portfolio illustrations.',": "'Selected work, shown through the actual output.',",
+              },
+              Path('scripts/verify-dist.js'): {
+                  "'Two primary areas. One supporting capability.', 'Real artifacts, not portfolio illustrations.',": "'Where I can contribute.', 'Selected work, shown through the actual output.',",
+              },
+              Path('scripts/capture-homepage-v4.js'): {
+                  'await delay(850);': 'await delay(1600);',
+                  'await delay(350);': 'await delay(700);',
+              },
+          }
+
+          for path, changes in replacements.items():
+              text = path.read_text()
+              for old, new in changes.items():
+                  if old not in text:
+                      raise SystemExit(f'Missing expected text in {path}: {old}')
+                  text = text.replace(old, new)
+              path.write_text(text)
+          PY
       - run: npm ci --no-audit --no-fund
       - run: npm run build
-      - name: Commit deterministic generated files
+      - name: Commit source polish and deterministic outputs
         shell: bash
         run: |
           set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add \
+            src/pages/index.astro scripts/check-stale-strings.js scripts/verify-dist.js scripts/capture-homepage-v4.js \
             index.html integrity.html security.html cv.html \
             cv-resume.html cv-research.html cv-editorial.html cv-integrity.html \
             llms.txt llms-full.txt cv-llm.txt \
             public/llms.txt public/llms-full.txt public/cv-llm.txt
           if git diff --cached --quiet; then
-            echo "Generated outputs are already current."
+            echo "Source and generated outputs are already current."
           else
-            git commit -m "build: refresh portfolio v8 generated outputs"
+            git commit -m "polish: refine artifact-led portfolio language and captures"
             git push origin HEAD:human-centered-redesign
           fi
