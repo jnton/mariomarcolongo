@@ -53,6 +53,29 @@ async function generateResumePdfs() {
         }
       }, process.env.CV_PHONE || '');
 
+      const fit = await page.evaluate(() => Array.from(document.querySelectorAll('.application-page')).map((applicationPage, index) => {
+        const pageRect = applicationPage.getBoundingClientRect();
+        const footer = applicationPage.querySelector('.application-footer-note');
+        const footerRect = footer?.getBoundingClientRect();
+        const flowChildren = Array.from(applicationPage.children).filter((child) => !child.classList.contains('application-footer-note'));
+        const contentBottom = Math.max(...flowChildren.map((child) => child.getBoundingClientRect().bottom), pageRect.top);
+        const footerTop = footerRect?.top ?? pageRect.bottom;
+        const clearance = footerTop - contentBottom;
+        return {
+          page: index + 1,
+          contentBottom: Math.round(contentBottom - pageRect.top),
+          footerTop: Math.round(footerTop - pageRect.top),
+          clearance: Math.round(clearance),
+          pageHeight: Math.round(pageRect.height)
+        };
+      }));
+
+      const collisions = fit.filter((item) => item.clearance < 6);
+      console.log(`${document.label} print-fit: ${JSON.stringify(fit)}`);
+      if (collisions.length) {
+        throw new Error(`${document.label} content collides with the footer or is clipped: ${JSON.stringify(collisions)}`);
+      }
+
       const outPath = path.resolve(process.cwd(), document.output);
       await page.pdf({
         printBackground: true,
