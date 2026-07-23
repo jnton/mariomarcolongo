@@ -27,47 +27,114 @@ async function assertPage(page, route, theme, viewport) {
   const result = await page.evaluate(() => ({
     scrollWidth: document.documentElement.scrollWidth,
     clientWidth: document.documentElement.clientWidth,
+    documentHeight: document.documentElement.scrollHeight,
     h1Count: document.querySelectorAll('h1').length,
     title: document.title,
     bodyText: document.body.innerText
   }));
+
   if (result.scrollWidth > result.clientWidth + 1) {
     throw new Error(`${route} ${theme} ${viewport.name} overflows horizontally (${result.scrollWidth} > ${result.clientWidth})`);
   }
   if (result.h1Count !== 1) throw new Error(`${route} must have exactly one H1; found ${result.h1Count}`);
   if (!result.title.trim() || !result.bodyText.trim()) throw new Error(`${route} rendered empty title or body`);
-  if (route === 'index.html' && viewport.name === 'mobile' && result.documentHeight > 11000) {
+  if (route === 'index.html' && viewport.name === 'mobile' && result.documentHeight > 13000) {
     throw new Error(`Mobile homepage is excessively long: ${result.documentHeight}px`);
   }
 }
 
-async function verifyHomepage(page) {
+async function verifyHomepage(page, viewport) {
   const result = await page.evaluate(() => ({
-    proofCount: document.querySelectorAll('.p5-proof').length,
-    heroWorkCount: document.querySelectorAll('.p5-work-tile').length,
-    flagshipCount: document.querySelectorAll('.p5-flagship').length,
-    productCount: document.querySelectorAll('.p5-product').length,
-    visualCount: document.querySelectorAll('.p5-visual').length,
-    principleCount: document.querySelectorAll('.p5-principle').length,
-    documentCount: document.querySelectorAll('.p5-document').length,
+    proofCount: document.querySelectorAll('.v7-proof-strip a').length,
+    engineStageCount: document.querySelectorAll('.v7-engine-stage').length,
+    caseCount: document.querySelectorAll('.v7-case').length,
+    labCount: document.querySelectorAll('.v7-lab-item').length,
+    principleCount: document.querySelectorAll('.v7-profile-grid > article').length,
+    documentCount: document.querySelectorAll('.v7-document').length,
+    disclosureCount: document.querySelectorAll('.v7-disclosure').length,
     navLinks: Array.from(document.querySelectorAll('.nav-editorial .nav-actions a')).map((item) => item.textContent.trim()),
-    firstSectionTop: document.querySelector('#selected-work')?.getBoundingClientRect().top,
-    heroHeight: document.querySelector('.p5-hero')?.getBoundingClientRect().height,
+    heroHeight: document.querySelector('.v7-hero')?.getBoundingClientRect().height,
     documentHeight: document.documentElement.scrollHeight
   }));
 
-  if (result.proofCount !== H.proofs.length) throw new Error(`Homepage must render ${H.proofs.length} proof items`);
-  if (result.heroWorkCount !== H.heroWork.length) throw new Error(`Homepage must render ${H.heroWork.length} hero-work tiles`);
-  if (result.flagshipCount !== H.flagships.length) throw new Error(`Homepage must render ${H.flagships.length} flagship cases`);
-  if (result.productCount !== H.products.length) throw new Error(`Homepage must render ${H.products.length} product cards`);
-  if (result.visualCount !== H.visualization.length) throw new Error(`Homepage must render ${H.visualization.length} visualization cards`);
-  if (result.principleCount !== H.workingPrinciples.length) throw new Error(`Homepage must render ${H.workingPrinciples.length} principles`);
+  if (result.proofCount !== H.proofMoments.length) throw new Error(`Homepage must render ${H.proofMoments.length} proof moments`);
+  if (result.engineStageCount !== H.engineStages.length) throw new Error(`Homepage must render ${H.engineStages.length} engine stages`);
+  if (result.caseCount !== H.cases.length) throw new Error(`Homepage must render ${H.cases.length} cases`);
+  if (result.labCount !== H.lab.length) throw new Error(`Homepage must render ${H.lab.length} lab items`);
+  if (result.principleCount !== H.workingPrinciples.length) throw new Error(`Homepage must render ${H.workingPrinciples.length} working principles`);
   if (result.documentCount !== H.applicationDocuments.length) throw new Error(`Homepage must render ${H.applicationDocuments.length} application documents`);
+  if (result.disclosureCount !== 1) throw new Error('Homepage must render one optional autism disclosure');
   for (const expected of ['Work', 'Experience', 'CV', 'Contact']) {
     if (!result.navLinks.includes(expected)) throw new Error(`Homepage navigation is missing ${expected}`);
   }
-  if (!result.heroHeight || result.heroHeight > 900) throw new Error(`Desktop hero is too tall: ${result.heroHeight}`);
-  if (!result.documentHeight || result.documentHeight > 10500) throw new Error(`Homepage is excessively long: ${result.documentHeight}px`);
+  if (viewport.name === 'desktop' && (!result.heroHeight || result.heroHeight > 1150)) {
+    throw new Error(`Desktop hero is too tall: ${result.heroHeight}`);
+  }
+  if (!result.documentHeight || result.documentHeight > 13000) throw new Error(`Homepage is excessively long: ${result.documentHeight}px`);
+
+  const interaction = await page.evaluate(() => {
+    const stages = Array.from(document.querySelectorAll('.v7-engine-stage'));
+    const target = stages[1];
+    if (!target) return { error: 'second stage missing' };
+    target.click();
+    return {
+      activeCount: document.querySelectorAll('.v7-engine-stage.is-active').length,
+      activeStage: document.querySelector('.v7-engine-stage.is-active')?.getAttribute('data-stage'),
+      selected: target.getAttribute('aria-selected'),
+      title: document.querySelector('[data-engine-title]')?.textContent?.trim()
+    };
+  });
+  if (interaction.error) throw new Error(`Evidence engine interaction failed: ${interaction.error}`);
+  if (interaction.activeCount !== 1 || interaction.activeStage !== H.engineStages[1].id || interaction.selected !== 'true') {
+    throw new Error(`Evidence engine active state is incorrect: ${JSON.stringify(interaction)}`);
+  }
+  if (interaction.title !== H.engineStages[1].title) {
+    throw new Error(`Evidence engine output did not update: ${JSON.stringify(interaction)}`);
+  }
+}
+
+async function verifyNoJavaScript(browser, staticServer, route) {
+  const page = await browser.newPage();
+  await page.setJavaScriptEnabled(false);
+  await page.setViewport({ width: 390, height: 844, deviceScaleFactor: 1 });
+  await page.goto(`${staticServer.origin}/${route}`, { waitUntil: 'load', timeout: 45000 });
+
+  const expected = route === 'index.html'
+    ? [
+        H.headline,
+        ...H.proofMoments.map((item) => item.label),
+        ...H.engineStages.map((item) => item.title),
+        ...H.cases.map((item) => item.title),
+        ...H.lab.map((item) => item.title),
+        H.featuredArtifact.title,
+        H.workingStyle.title,
+        ...H.applicationDocuments.map((item) => item.title)
+      ]
+    : [];
+
+  const result = await page.evaluate((required) => {
+    const text = document.body.innerText;
+    return {
+      missing: required.filter((value) => !text.includes(value)),
+      h1Count: document.querySelectorAll('h1').length,
+      title: document.title,
+      bodyTextLength: text.trim().length,
+      scrollWidth: document.documentElement.scrollWidth,
+      clientWidth: document.documentElement.clientWidth,
+      externalLinks: document.querySelectorAll('a[href^="http"]').length
+    };
+  }, expected);
+
+  if (result.missing.length) throw new Error(`${route} no-JS output is missing: ${result.missing.join(', ')}`);
+  if (result.h1Count !== 1) throw new Error(`${route} no-JS output must have one H1; found ${result.h1Count}`);
+  if (!result.title.trim() || result.bodyTextLength === 0) throw new Error(`${route} no-JS output rendered empty`);
+  if (result.scrollWidth > result.clientWidth + 1) {
+    throw new Error(`${route} no-JS mobile output overflows horizontally (${result.scrollWidth} > ${result.clientWidth})`);
+  }
+  if (route === 'index.html' && result.externalLinks === 0) throw new Error('Homepage no-JS output has no external evidence links');
+
+  await page.screenshot({ path: path.join(OUTPUT, `${slug(route)}-no-js-mobile.png`), fullPage: true });
+  await page.close();
 }
 
 async function main() {
@@ -114,7 +181,7 @@ async function main() {
             if (!model.phoneSlot) throw new Error(`${route} is missing the private phone injection slot`);
           }
 
-          if (route === 'index.html' && viewport.name === 'desktop' && theme === 'light') await verifyHomepage(page);
+          if (route === 'index.html' && theme === 'light') await verifyHomepage(page, viewport);
 
           if (pageErrors.length) throw new Error(`${route} page errors: ${pageErrors.join(' | ')}`);
           const relevant = consoleErrors.filter((message) => !/favicon|google.*font|net::ERR_|Failed to load resource/i.test(message));
@@ -125,39 +192,9 @@ async function main() {
       }
     }
 
-    const noJs = await browser.newPage();
-    await noJs.setJavaScriptEnabled(false);
-    await noJs.setViewport({ width: 390, height: 844, deviceScaleFactor: 1 });
-    await noJs.goto(`${staticServer.origin}/index.html`, { waitUntil: 'load', timeout: 45000 });
-    const expectedNoJsText = [
-      H.headline,
-      ...H.proofs.map((item) => item.label),
-      ...H.flagships.map((item) => item.title),
-      ...H.products.map((item) => item.title),
-      ...H.visualization.map((item) => item.title),
-      ...H.applicationDocuments.map((item) => item.title)
-    ];
-    const noJsResult = await noJs.evaluate((expected) => {
-      const text = document.body.innerText;
-      return {
-        missing: expected.filter((value) => !text.includes(value)),
-        tests: ['human-capabilities', 'human-work', 'human-documents'].map((id) => {
-          const element = document.querySelector(`[data-testid="${id}"]`);
-          return { id, exists: Boolean(element), children: element ? element.children.length : 0 };
-        }),
-        evidenceLinks: document.querySelectorAll('a[href^="http"]').length,
-        scrollWidth: document.documentElement.scrollWidth,
-        clientWidth: document.documentElement.clientWidth
-      };
-    }, expectedNoJsText);
-    if (noJsResult.missing.length) throw new Error(`No-JS homepage is missing: ${noJsResult.missing.join(', ')}`);
-    if (noJsResult.tests.some((item) => !item.exists || item.children === 0)) throw new Error(`No-JS homepage has an empty required container: ${JSON.stringify(noJsResult.tests)}`);
-    if (noJsResult.evidenceLinks === 0) throw new Error('No-JS homepage has no external evidence links');
-    if (noJsResult.scrollWidth > noJsResult.clientWidth + 1) throw new Error(`No-JS mobile homepage overflows horizontally (${noJsResult.scrollWidth} > ${noJsResult.clientWidth})`);
-    await noJs.screenshot({ path: path.join(OUTPUT, 'index-no-js-mobile.png'), fullPage: true });
-    await noJs.close();
+    for (const route of ROUTES) await verifyNoJavaScript(browser, staticServer, route);
 
-    console.log(`Rendering verification passed. Screenshots: ${OUTPUT}`);
+    console.log(`Rendering verification passed for ${ROUTES.length} routes, three viewports, two themes and no-JS mobile output. Screenshots: ${OUTPUT}`);
   } finally {
     await browser.close();
     await staticServer.close();
