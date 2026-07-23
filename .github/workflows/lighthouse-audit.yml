@@ -17,7 +17,7 @@ concurrency:
 jobs:
   audit:
     runs-on: ubuntu-latest
-    timeout-minutes: 35
+    timeout-minutes: 60
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -32,7 +32,7 @@ jobs:
           npm run verify:render
           npm run pdf
 
-      - name: Run production-like Lighthouse audits
+      - name: Run production-like Lighthouse audits on every public route
         shell: bash
         run: |
           set -euo pipefail
@@ -46,32 +46,63 @@ jobs:
           done
           curl -fsS http://127.0.0.1:4173/index.html >/dev/null
           export CHROME_PATH="$(node -e "console.log(require('puppeteer').executablePath())")"
-          npx --yes lighthouse@12.8.2 http://127.0.0.1:4173/index.html \
-            --quiet --chrome-flags='--headless --no-sandbox --disable-dev-shm-usage' \
-            --only-categories=performance,accessibility,best-practices,seo \
-            --output=json --output-path=lighthouse-output/mobile.json
-          npx --yes lighthouse@12.8.2 http://127.0.0.1:4173/index.html \
-            --quiet --preset=desktop --chrome-flags='--headless --no-sandbox --disable-dev-shm-usage' \
-            --only-categories=performance,accessibility,best-practices,seo \
-            --output=json --output-path=lighthouse-output/desktop.json
+
+          routes=(
+            index.html
+            integrity.html
+            cv.html
+            cv-resume.html
+            cv-research.html
+            cv-editorial.html
+            cv-integrity.html
+            security.html
+          )
+
+          for route in "${routes[@]}"; do
+            key="${route%.html}"
+            for mode in mobile desktop; do
+              preset=()
+              if [[ "$mode" == "desktop" ]]; then preset=(--preset=desktop); fi
+              npx --yes lighthouse@12.8.2 "http://127.0.0.1:4173/${route}" \
+                --quiet "${preset[@]}" \
+                --chrome-flags='--headless --no-sandbox --disable-dev-shm-usage' \
+                --only-categories=performance,accessibility,best-practices,seo \
+                --output=json --output-path="lighthouse-output/${key}-${mode}.json"
+            done
+          done
+
           node - <<'NODE'
           const fs = require('node:fs');
+          const routes = [
+            'index', 'integrity', 'cv', 'cv-resume',
+            'cv-research', 'cv-editorial', 'cv-integrity', 'security'
+          ];
           const categories = ['performance', 'accessibility', 'best-practices', 'seo'];
           let failed = false;
-          const summary = ['# Lighthouse audit', '', '| Mode | Performance | Accessibility | Best practices | SEO |', '|---|---:|---:|---:|---:|'];
-          for (const mode of ['mobile', 'desktop']) {
-            const report = JSON.parse(fs.readFileSync(`lighthouse-output/${mode}.json`, 'utf8'));
-            const scores = Object.fromEntries(categories.map((key) => [key, Math.round(report.categories[key].score * 100)]));
-            const diagnostics = Object.entries(report.audits)
-              .filter(([, audit]) => typeof audit.score === 'number' && audit.score < 1 && !['notApplicable', 'informative', 'manual'].includes(audit.scoreDisplayMode))
-              .map(([id, audit]) => ({ id, score: audit.score, title: audit.title }));
-            fs.writeFileSync(`lighthouse-output/${mode}-scores.json`, JSON.stringify(scores, null, 2));
-            fs.writeFileSync(`lighthouse-output/${mode}-diagnostics.json`, JSON.stringify(diagnostics, null, 2));
-            console.log(`${mode}:`, scores);
-            summary.push(`| ${mode} | ${scores.performance} | ${scores.accessibility} | ${scores['best-practices']} | ${scores.seo} |`);
-            if (categories.some((key) => scores[key] !== 100)) failed = true;
+          const summary = [
+            '# Lighthouse audit — every public route', '',
+            '| Route | Mode | Performance | Accessibility | Best practices | SEO |',
+            '|---|---|---:|---:|---:|---:|'
+          ];
+
+          for (const route of routes) {
+            for (const mode of ['mobile', 'desktop']) {
+              const name = `${route}-${mode}`;
+              const report = JSON.parse(fs.readFileSync(`lighthouse-output/${name}.json`, 'utf8'));
+              const scores = Object.fromEntries(categories.map((key) => [key, Math.round(report.categories[key].score * 100)]));
+              const diagnostics = Object.entries(report.audits)
+                .filter(([, audit]) => typeof audit.score === 'number' && audit.score < 1 && !['notApplicable', 'informative', 'manual'].includes(audit.scoreDisplayMode))
+                .map(([id, audit]) => ({ id, score: audit.score, title: audit.title }));
+              fs.writeFileSync(`lighthouse-output/${name}-scores.json`, JSON.stringify(scores, null, 2));
+              fs.writeFileSync(`lighthouse-output/${name}-diagnostics.json`, JSON.stringify(diagnostics, null, 2));
+              console.log(`${name}:`, scores);
+              summary.push(`| ${route}.html | ${mode} | ${scores.performance} | ${scores.accessibility} | ${scores['best-practices']} | ${scores.seo} |`);
+              if (categories.some((key) => scores[key] !== 100)) failed = true;
+            }
           }
+
           if (process.env.GITHUB_STEP_SUMMARY) fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, `${summary.join('\n')}\n`);
+          fs.writeFileSync('lighthouse-output/summary.md', `${summary.join('\n')}\n`);
           if (failed) process.exit(1);
           NODE
 
