@@ -30,7 +30,7 @@ const REQUIRED = [
   'scripts/verify-rendering.js', 'public/.well-known/api-catalog',
   'public/.well-known/agent-card.json', 'public/.well-known/mcp/server-card.json',
   'public/robots.txt', 'public/sitemap.xml', 'public/site.webmanifest',
-  'public/media/work/entropy-h5n1.png', 'public/media/work/yourself-to-science-800.webp',
+  'public/media/work/model-behavior-profile.svg', 'public/media/work/yourself-to-science-800.webp',
   'public/media/work/mdpi-filter-1-800.webp', 'public/media/work/mdpi-filter-2-800.webp',
   'public/media/work/wikimedia-clinical-overlap.svg'
 ];
@@ -58,7 +58,10 @@ const PROHIBITED = [
   ['I am autistic.', 'Diagnosis disclosure should not appear on the public homepage'],
   ['The hard part is rarely finding a paper.', 'Rejected aphoristic scientific-verification copy'],
   ['Evidence for the next role—and the path after it.', 'Rejected repetitive portfolio-v5 heading'],
-  ['Discuss a difficult problem.', 'Rejected generic portfolio-v5 contact heading']
+  ['Discuss a difficult problem.', 'Rejected generic portfolio-v5 contact heading'],
+  ['/media/work/model-behavior-record.svg', 'Rejected synthetic Gray Swan social-preview graphic'],
+  ['/media/work/entropy-h5n1.png', 'Rejected H5N1 homepage visual'],
+  ['value: "75"', 'Stale Gray Swan break count in homepage data']
 ];
 
 let failures = 0;
@@ -137,12 +140,14 @@ for (const requiredText of [
   'MDPI Filter now works in the browser and as a Zotero plugin.',
   'A diagram that became a reusable public reference.',
   'Start with the role you are hiring for.',
-  'AI evaluation and scientific evidence roles.'
+  'AI evaluation and scientific evidence roles.',
+  '#77 on the Proving Ground leaderboard',
+  'Fact-checking scientific scripts before publication.'
 ]) {
-  if (!homepageSource.includes(requiredText)) fail('src/pages/index.astro', 1, `Homepage is missing artifact-led portfolio content: ${requiredText}`);
+  if (!homepageSource.includes(requiredText)) fail('src/pages/index.astro', 1, `Homepage is missing current artifact-led portfolio content: ${requiredText}`);
 }
 for (const requiredMedia of [
-  '/media/work/model-behavior-record.svg', '/media/work/entropy-h5n1.png',
+  '/media/work/model-behavior-profile.svg', 'https://entropyforlife.it/wp-content/uploads/2024/10/Dashboard-1-5-png.webp',
   '/media/work/yourself-to-science-800.webp', '/media/work/mdpi-filter-1-800.webp',
   '/media/work/mdpi-filter-2-800.webp', '/media/work/wikimedia-clinical-overlap.svg'
 ]) {
@@ -163,7 +168,7 @@ for (const requiredText of ['evidence trail survives scrutiny', 'Evidence bounda
 }
 
 const securitySource = fs.readFileSync(path.join(ROOT, 'src/pages/security.astro'), 'utf8');
-for (const requiredText of ['AI evaluation and model-behavior record.', 'What the record demonstrates', 'Limitations and interpretation', 'archive.is/inkFs', 'Open live Gray Swan profile']) {
+for (const requiredText of ['AI evaluation and model-behavior record.', 'What the record demonstrates', 'Limitations and interpretation', 'Open live Gray Swan profile']) {
   if (!securitySource.includes(requiredText)) fail('src/pages/security.astro', 1, `Evaluation record is missing required text: ${requiredText}`);
 }
 
