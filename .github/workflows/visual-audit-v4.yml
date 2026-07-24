@@ -6,36 +6,81 @@ on:
     paths:
       - scripts/capture-homepage-v4.js
       - src/pages/index.astro
+      - src/pages/evidence/**
       - src/styles/portfolio-v8.css
       - src/styles/portfolio-v9-overrides.css
       - src/styles/nav-editorial.css
       - data/portfolio-human.js
       - public/media/work/**
+      - .github/tmp/gray-swan-profile.b64.*
       - .github/workflows/visual-audit-v4.yml
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   audit:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 25
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.ref || github.ref_name }}
+          fetch-depth: 0
       - uses: actions/setup-node@v4
         with:
           node-version: 22
           cache: npm
       - run: npm ci --no-audit --no-fund
+
+      - name: Materialize the real Gray Swan screenshot
+        shell: bash
+        run: |
+          set -euo pipefail
+          cat .github/tmp/gray-swan-profile.b64.* | base64 --decode > public/media/work/model-behavior-profile.jpg
+          test -s public/media/work/model-behavior-profile.jpg
+          python - <<'PY'
+          from pathlib import Path
+          paths = [
+              Path('data/portfolio-human.js'),
+              Path('scripts/check-stale-strings.js'),
+              Path('scripts/verify-dist.js'),
+              Path('src/pages/evidence/gray-swan-2026-07-24.astro'),
+          ]
+          for path in paths:
+              text = path.read_text()
+              text = text.replace('/media/work/model-behavior-profile.svg', '/media/work/model-behavior-profile.jpg')
+              text = text.replace('public/media/work/model-behavior-profile.svg', 'public/media/work/model-behavior-profile.jpg')
+              path.write_text(text)
+          for chunk in Path('.github/tmp').glob('gray-swan-profile.b64.*'):
+              chunk.unlink()
+          PY
+
       - name: Build and retain diagnostics
         shell: bash
         run: |
           mkdir -p audit-v4
           set -o pipefail
           npm run build 2>&1 | tee audit-v4/build.log
+
       - name: Capture scrolled homepage states
         run: node scripts/capture-homepage-v4.js
+
+      - name: Commit the implemented screenshot and generated output
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "No visual-source changes to commit."
+          else
+            git commit -m "fix: use the real Gray Swan platform screenshot"
+            git push origin HEAD:human-centered-redesign
+          fi
+
       - name: Upload visual audit
         if: always()
         uses: actions/upload-artifact@v4
