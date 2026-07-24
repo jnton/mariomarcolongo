@@ -1,0 +1,362 @@
+name: Apply portfolio v9 visual and evidence fix
+
+on:
+  push:
+    branches: [human-centered-redesign]
+    paths:
+      - .github/workflows/apply-portfolio-v9-fix.yml
+
+permissions:
+  contents: write
+
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: human-centered-redesign
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci --no-audit --no-fund
+
+      - name: Capture real public work images
+        shell: bash
+        run: |
+          node --input-type=module <<'NODE'
+          import fs from 'node:fs';
+          import puppeteer from 'puppeteer';
+
+          fs.mkdirSync('public/media/work', { recursive: true });
+          const browser = await puppeteer.launch({
+            headless: true,
+            args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage']
+          });
+
+          async function captureViewport({ url, output, locateText, fallbackSelector = 'main' }) {
+            const page = await browser.newPage();
+            await page.setViewport({ width: 1440, height: 920, deviceScaleFactor: 1 });
+            await page.setUserAgent('Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 Chrome/126 Safari/537.36');
+            await page.goto(url, { waitUntil: 'networkidle2', timeout: 90000 });
+            await page.evaluate(() => {
+              for (const selector of ['.cky-consent-container', '#cookie-law-info-bar', '.cookie-notice-container', '.cmplz-cookiebanner', '.vector-sticky-header']) {
+                document.querySelectorAll(selector).forEach((node) => node.remove());
+              }
+            });
+            if (locateText) {
+              await page.evaluate((needle) => {
+                const nodes = Array.from(document.querySelectorAll('h1,h2,h3,article,a,span'));
+                const match = nodes.find((node) => (node.textContent || '').trim().includes(needle));
+                if (match) match.scrollIntoView({ block: 'center', inline: 'nearest' });
+              }, locateText);
+            } else {
+              const target = await page.$(fallbackSelector);
+              if (target) await target.evaluate((node) => node.scrollIntoView({ block: 'start' }));
+            }
+            await new Promise((resolve) => setTimeout(resolve, 2200));
+            await page.screenshot({ path: output, type: 'png', fullPage: false });
+            await page.close();
+          }
+
+          await captureViewport({
+            url: 'https://entropyforlife.it/autore/mario-marcolongo/',
+            output: 'public/media/work/entropy-published-work.png',
+            locateText: 'Lunghezza squali bianchi'
+          });
+          await captureViewport({
+            url: 'https://it.wikipedia.org/w/index.php?title=Oscar_Giannino&diff=prev&oldid=133702639',
+            output: 'public/media/work/wikipedia-giannino-diff.png',
+            locateText: 'Caso giudiziario RAI'
+          });
+          await captureViewport({
+            url: 'https://en.wikipedia.org/wiki/Nebula_Genomics#Privacy_concerns',
+            output: 'public/media/work/wikipedia-nebula-privacy.png',
+            locateText: 'Privacy concerns'
+          });
+          await captureViewport({
+            url: 'https://en.wikipedia.org/wiki/Syndromic_autism',
+            output: 'public/media/work/wikipedia-syndromic-autism.png',
+            locateText: 'Syndromic autism'
+          });
+
+          await browser.close();
+          NODE
+
+      - name: Apply current evidence and visual changes
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re
+
+          def replace(path, old, new, count=None):
+              p = Path(path)
+              text = p.read_text()
+              if old not in text:
+                  raise SystemExit(f'Missing expected text in {path}: {old[:120]}')
+              text = text.replace(old, new, -1 if count is None else count)
+              p.write_text(text)
+
+          # Homepage data: real Gray Swan profile, current counts, no H5N1 visual.
+          p = Path('data/portfolio-human.js')
+          text = p.read_text()
+          replacements = {
+            'value: "75",\n      label: "platform-confirmed model breaks",\n      detail: "Gray Swan Proving Ground · July 2026"': 'value: "105",\n      label: "leaderboard-counted model breaks",\n      detail: "#77 · top 7% · 24 July 2026"',
+            'title: "Public model-behavior record",\n      image: "/media/work/model-behavior-record.svg",\n      alt: "Visual summary of Mario Marcolongo\'s public model-behavior evaluation record"': 'title: "Gray Swan Proving Ground profile",\n      image: "/media/work/model-behavior-profile.svg",\n      alt: "Gray Swan Arena profile screenshot showing Mario Marcolongo ranked number 77 in Proving Ground, top 7 percent"',
+            'title: "H5N1 evidence tracker",\n      image: "/media/work/entropy-h5n1.png",\n      alt: "Screenshot of an Entropy for Life H5N1 scientific article and evidence tracker"': 'title: "Published scientific work",\n      image: "/media/work/entropy-published-work.png",\n      alt: "Entropy for Life author page showing published scientific work by Mario Marcolongo"',
+            'title: "Testing model behavior and documenting the result.",': 'title: "Finding model failures across four evaluation surfaces.",',
+            'lead: "I use repeated, varied interactions to find failures and record what the available evidence actually establishes.",': 'lead: "Across 26 public challenge waves, I tested chat, image, agent and indirect prompt-injection behavior and preserved a dated public record of the result.",',
+            'result: "A public record covering 156 submissions and 75 platform-confirmed breaks across 26 listed Gray Swan waves as of July 2026.",': 'result: "#77 on the Proving Ground leaderboard, top 7%, with 105 leaderboard-counted breaks across 232 Proving Ground submissions on 24 July 2026.",',
+            'image: "/media/work/model-behavior-record.svg",\n      alt: "Public record summarizing Gray Swan model-behavior evaluation activity",\n      imageCaption: "Public aggregate record · methodology, activity table and limitations"': 'image: "/media/work/model-behavior-profile.svg",\n      alt: "Gray Swan Arena profile screenshot showing Mario Marcolongo\'s current Proving Ground rank and activity",\n      imageCaption: "Real platform profile · #77 · top 7% · dated snapshot"',
+            'title: "Checking whether evidence supports the wording proposed for publication.",': 'title: "Fact-checking scientific scripts before publication.",',
+            'lead: "The task is specific: determine whether a study\'s methods and results support the exact claim in a script or article.",': 'lead: "In a small recurring production team, I check whether the primary literature supports the wording proposed for a video, documentary or article.",',
+            'action: "I break the statement into checkable claims, review primary literature, trace disagreements between sources and explain the correction or qualification needed to the production team.",': 'action: "I break statements into checkable claims, review primary literature, trace disagreements between sources and communicate corrections or qualifications directly to Giacomo Moro Mauretto and the video editor.",',
+            'image: "/media/work/entropy-h5n1.png",\n      alt: "Screenshot of an Entropy for Life article with scientific evidence tracking",\n      imageCaption: "Published work · primary-source review and scientific writing"': 'image: "/media/work/entropy-published-work.png",\n      alt: "Screenshot of Mario Marcolongo\'s published work on Entropy for Life",\n      imageCaption: "Real published output · scientific writing and source review"'
+          }
+          for old, new in replacements.items():
+              if old not in text:
+                  raise SystemExit(f'Missing portfolio replacement: {old[:100]}')
+              text = text.replace(old, new)
+          p.write_text(text)
+
+          # Shared dossier and public mirror.
+          for source_path in ['data/source.js', 'public/data/source.js']:
+              p = Path(source_path)
+              text = p.read_text()
+              text = text.replace('grayswanArchiveUrl: "https://archive.is/inkFs"', 'grayswanArchiveUrl: "/evidence/gray-swan-2026-07-24/"')
+              text = text.replace('evaluationAsOf: "July 2026"', 'evaluationAsOf: "24 July 2026"')
+              text = text.replace('top-8% rank band among listed participants as of July 2026, with 75 platform-confirmed model breaks across 156 submissions', '#77 on the Proving Ground leaderboard (top 7%) on 24 July 2026, with 105 leaderboard-counted breaks across 232 Proving Ground submissions')
+              text = text.replace('75 breaks across 26 listed Proving Ground waves as of July 2026', '105 leaderboard-counted breaks across 26 listed Proving Ground waves on 24 July 2026')
+              text = text.replace('{ value: "75", label: "Platform-Confirmed Model Breaks", detail: "Gray Swan Proving Ground snapshot across 26 listed waves as of July 2026" }', '{ value: "105", label: "Leaderboard-Counted Model Breaks", detail: "#77 · top 7% · 26 Proving Ground waves · 24 July 2026" }')
+              text = text.replace('{ value: "156", label: "Model-Evaluation Submissions", detail: "Repeated activity across chat, image, agentic tool-use and indirect prompt-injection challenges" }', '{ value: "232", label: "Proving Ground Submissions", detail: "242 total Arena submissions shown separately on the dated profile snapshot" }')
+              text = text.replace('The public profile reports 156 platform submissions and 75 platform-confirmed model breaks across 26 listed waves.', 'The dated public record shows #77 on the Proving Ground leaderboard, top 7%, with 105 leaderboard-counted breaks across 232 Proving Ground submissions and 26 listed waves.')
+              text = text.replace('"75 Platform-Confirmed Model Breaks: Aggregate platform total across 26 listed waves as of July 2026",\n        "156 Platform Submissions: Repeated activity across multiple testing surfaces"', '"105 Leaderboard-Counted Model Breaks: #77 and top 7% on the dated Proving Ground snapshot",\n        "232 Proving Ground Submissions: 242 total Arena submissions are shown separately"')
+              text = text.replace('asOf: "July 2026",\n    rankBand: "Top 8%",\n    submissions: 156,\n    previousChats: 736,\n    confirmedBreaks: 75,', 'asOf: "24 July 2026",\n    rankBand: "#77 · Top 7%",\n    submissions: 232,\n    totalArenaSubmissions: 242,\n    previousChats: 953,\n    confirmedBreaks: 105,\n    profileReportedBreaks: 106,')
+              waves = '''waves: [
+      { wave: 1, breaks: 14, available: 67 },
+      { wave: 2, breaks: 10, available: 72 },
+      { wave: 3, breaks: 10, available: 72 },
+      { wave: 4, breaks: 2, available: 46 },
+      { wave: 5, breaks: 6, available: 72 },
+      { wave: 6, breaks: 10, available: 72 },
+      { wave: 7, breaks: 2, available: 64 },
+      { wave: 8, breaks: 0, available: 67 },
+      { wave: 9, breaks: 0, available: 67 },
+      { wave: 10, breaks: 3, available: 67 },
+      { wave: 11, breaks: 2, available: 67 },
+      { wave: 12, breaks: 3, available: 67 },
+      { wave: 13, breaks: 0, available: 67 },
+      { wave: 14, breaks: 0, available: 67 },
+      { wave: 15, breaks: 8, available: 67 },
+      { wave: 16, breaks: 3, available: 67 },
+      { wave: 17, breaks: 14, available: 75 },
+      { wave: 18, breaks: 0, available: 75 },
+      { wave: 19, breaks: 0, available: 56 },
+      { wave: 20, breaks: 0, available: 56 },
+      { wave: 21, breaks: 0, available: 56 },
+      { wave: 22, breaks: 6, available: 56 },
+      { wave: 23, breaks: 3, available: 57 },
+      { wave: 24, breaks: 2, available: 56 },
+      { wave: 25, breaks: 3, available: 55 },
+      { wave: 26, breaks: 4, available: 56 }
+    ]'''
+              text, n = re.subn(r'waves: \[\n(?:\s*\{ wave:.*\n){26}\s*\]', waves, text, count=1)
+              if n != 1:
+                  raise SystemExit(f'Could not replace waves in {source_path}')
+              text = text.replace('Recorded 75 platform-confirmed model breaks across 156 submissions and 26 listed waves; top-8% rank band among listed participants as of July 2026.', 'Reached #77 on the Proving Ground leaderboard (top 7%) with 105 leaderboard-counted breaks across 232 Proving Ground submissions and 26 listed waves on 24 July 2026.')
+              text = text.replace('Recorded 75 platform-confirmed model breaks across 156 submissions and 26 listed waves; ranked in the top 8% among listed participants as of July 2026.', 'Reached #77 on the Proving Ground leaderboard (top 7%) with 105 leaderboard-counted breaks across 232 Proving Ground submissions and 26 listed waves on 24 July 2026.')
+              p.write_text(text)
+
+          # Application CVs.
+          p = Path('data/application-profiles.js')
+          text = p.read_text()
+          text = text.replace('Gray Swan Proving Ground participant with 75 platform-confirmed model breaks across 156 submissions and a top-8% rank band among listed participants as of July 2026.', 'Gray Swan Proving Ground participant ranked #77 (top 7%) on 24 July 2026, with 105 leaderboard-counted breaks across 232 Proving Ground submissions and 26 waves.')
+          text = text.replace('{ value: "75", label: "Platform-confirmed model breaks", detail: "Across 26 listed Gray Swan testing waves" }', '{ value: "105", label: "Leaderboard-counted model breaks", detail: "#77 · top 7% · 26 Proving Ground waves" }')
+          text = text.replace('{ value: "156", label: "Platform submissions", detail: "Chat, multimodal, tool-use and indirect injection" }', '{ value: "232", label: "Proving Ground submissions", detail: "242 total Arena submissions shown separately" }')
+          text = text.replace('Recorded 75 platform-confirmed model breaks across 156 submissions and 26 listed waves; ranked in the top 8% among listed participants as of July 2026.', 'Reached #77 on the Proving Ground leaderboard (top 7%) with 105 leaderboard-counted breaks across 232 submissions and 26 listed waves on 24 July 2026.')
+          text = text.replace('{ value: "75", label: "Platform-confirmed model breaks", detail: "Adversarial testing across multiple AI modalities" }', '{ value: "105", label: "Leaderboard-counted model breaks", detail: "#77 · top 7% · four evaluation surfaces" }')
+          text = text.replace('Recorded 75 platform-confirmed model breaks across 156 submissions while documenting the limitations of the public record.', 'Reached #77 on the Proving Ground leaderboard (top 7%) with 105 leaderboard-counted breaks across 232 Proving Ground submissions, while documenting the limitations and the profile/leaderboard discrepancy.')
+          text = text.replace('Co-developed and co-facilitated a structured remote focus-group process for autistic participants discussing sensitive sexuality and relationship topics, supervised by Marta Panzeri at the University of Padua Department of Developmental Psychology and Socialisation (DPSS), including recruitment, session protocols, Zoom logistics and two-person moderation handoffs.', 'Co-developed and facilitated approximately 4–5 structured remote focus-group sessions, typically lasting 1–2 hours, with autistic participants discussing sensitive sexuality and relationship topics under Marta Panzeri at the University of Padua DPSS.')
+          text = text.replace('Co-facilitated recorded Zoom focus groups with autistic participants discussing sensitive sexuality and relationship topics, using clear expectations, respectful pacing and non-judgmental follow-up.', 'Served as lead or co-facilitator across approximately 4–5 recorded Zoom focus-group sessions, typically lasting 1–2 hours, with autistic participants discussing sensitive sexuality and relationship topics.')
+          text = text.replace('Co-developed a standardized discussion guide, scripted prompts and session procedures; worked in a two-person facilitation team using live handoffs and recovery when prompts were missed or a facilitator needed support.', 'Co-developed the protocol, including pseudonymous naming, explicit recorded consent, optional captions and written-chat participation, timed turn-taking, scripted prompts, recording boundaries and two-person facilitation handoffs.')
+          text = text.replace('Supported participant recruitment, bibliographic research, technical session preparation and coordination with Marta Panzeri, researchers and a second autistic volunteer facilitator. Public attribution is included with permission; participant information remains confidential.', 'Supported participant recruitment, bibliographic research, technical preparation and protocol feedback from an autistic perspective; coordinated with Marta Panzeri, researchers and a second autistic volunteer facilitator. Participant information remains confidential.')
+          p.write_text(text)
+
+          # Security page: current dated evidence and no archive.is language.
+          p = Path('src/pages/security.astro')
+          text = p.read_text()
+          text = text.replace('const asOf = D.redTeamActivity.asOf || "July 2026";', 'const asOf = D.redTeamActivity.asOf || "24 July 2026";')
+          text = text.replace('const archiveUrl = D.identity.grayswanArchiveUrl || "https://archive.is/inkFs";', 'const archiveUrl = D.identity.grayswanArchiveUrl || "/evidence/gray-swan-2026-07-24/";')
+          text = text.replace('dateModified: "2026-07-21"', 'dateModified: "2026-07-24"')
+          text = text.replace('<small>Across 26 listed waves · {asOf}</small>', '<small>#77 on the Proving Ground leaderboard · {asOf}</small>')
+          text = text.replace('<span>Platform submissions</span>', '<span>Proving Ground submissions</span>')
+          text = text.replace('<span>Rank band among listed participants</span>', '<span>Proving Ground rank</span>')
+          text = text.replace('The live Gray Swan profile is the primary destination. A user-created archive.is snapshot is retained as a verification fallback for recruiters, automated readers and archival crawlers when the platform page cannot be accessed; Internet Archive could not save it.', 'The live Gray Swan profile is the primary destination. The dated evidence page preserves the real profile screenshot and explains the platform discrepancy between the profile aggregate of 106 and the independently reconcilable leaderboard, category and wave total of 105.')
+          text = text.replace('<div class="evaluation-step">VERIFICATION FALLBACK</div>\n          <h3>Archived Gray Swan profile snapshot</h3>\n          <p>Preserved copy of the public participant page used to verify aggregate counts, rank band and visible activity when the live platform is unavailable or blocks automated access.</p>\n          <p><a class="p5-link" href={archiveUrl} target="_blank" rel="noopener noreferrer">Open archive.is snapshot ↗</a></p>', '<div class="evaluation-step">DATED PROFILE EVIDENCE</div>\n          <h3>24 July 2026 profile snapshot</h3>\n          <p>Real platform screenshot preserving #77, top 7%, 232 Proving Ground submissions, 242 total Arena submissions and the visible 105/106 break-count discrepancy.</p>\n          <p><a class="p5-link" href={archiveUrl}>Open the dated evidence page →</a></p>')
+          p.write_text(text)
+
+          # Add a real evidence page using the existing embedded profile screenshot.
+          evidence = Path('src/pages/evidence/gray-swan-2026-07-24.astro')
+          evidence.parent.mkdir(parents=True, exist_ok=True)
+          evidence.write_text('''---
+import Layout from "../../layouts/Layout.astro";
+import SiteNav from "../../components/SiteNav.astro";
+import SiteFooter from "../../components/SiteFooter.astro";
+import "../../styles/career-v2.css";
+import D from "../../../data/source.js";
+const title = "Gray Swan Proving Ground Evidence — 24 July 2026";
+const description = "Dated screenshot and interpretation notes for Mario Marcolongo's Gray Swan Proving Ground profile.";
+---
+<Layout title={title} description={description} canonical="https://mariomarcolongo.com/evidence/gray-swan-2026-07-24/">
+  <SiteNav activePage="security" />
+  <main class="evaluation-shell">
+    <section class="evaluation-hero">
+      <div>
+        <div class="evaluation-eyebrow">Dated platform snapshot · 24 July 2026</div>
+        <h1 class="evaluation-title">Gray Swan Proving Ground evidence.</h1>
+        <p class="evaluation-lede">The screenshot preserves a time-sensitive public result: #77 on the Proving Ground leaderboard, top 7%, with 232 Proving Ground submissions. The leaderboard, four category totals and 26 wave totals reconcile to 105 breaks; the profile aggregate displayed 106.</p>
+        <div class="career-actions">
+          <a class="btn btn-primary" href={D.identity.grayswanUrl} target="_blank" rel="noopener noreferrer">Open live Gray Swan profile ↗</a>
+          <a class="btn" href="/security.html">Read the evaluation record</a>
+        </div>
+      </div>
+      <aside class="evaluation-scope-note"><strong>Evidence boundary</strong><p>This is a user-preserved screenshot of Gray Swan's public interface, not a Gray Swan-issued certificate or independent reproduction of every accepted submission.</p></aside>
+    </section>
+    <section class="evaluation-section">
+      <div class="evaluation-section-head"><h2>The real platform view</h2><p>The screenshot is shown directly rather than restyled as a synthetic social-media card.</p></div>
+      <figure style="margin:0"><img src="/media/work/model-behavior-profile.svg" alt="Gray Swan profile screenshot showing Mario Marcolongo ranked 77, top 7 percent" width="1750" height="875" style="display:block;width:100%;height:auto;border:1px solid rgba(127,127,127,.3);border-radius:18px"><figcaption style="margin-top:12px;color:var(--muted);line-height:1.6">Profile aggregate: 106 breaks. Reconciled leaderboard/category/wave total: 105. Portfolio headline uses 105.</figcaption></figure>
+    </section>
+    <section class="evaluation-metrics" aria-label="Dated platform metrics">
+      <article class="evaluation-metric"><strong>#77</strong><span>Proving Ground rank</span><small>Top 7% · time-sensitive snapshot</small></article>
+      <article class="evaluation-metric"><strong>105</strong><span>Leaderboard-counted breaks</span><small>26 wave totals also sum to 105</small></article>
+      <article class="evaluation-metric"><strong>232</strong><span>Proving Ground submissions</span><small>242 total Arena submissions shown on profile</small></article>
+    </section>
+  </main>
+  <SiteFooter version={D.identity.buildVersion} />
+</Layout>
+''')
+
+          # Make the public-source work page use inspectable Wikimedia examples and real screenshots.
+          p = Path('src/pages/integrity.astro')
+          text = p.read_text()
+          start = text.index('const records = [')
+          end = text.index('\n];', start) + 3
+          records = '''const records = [
+  {
+    id: "giannino",
+    number: "01",
+    category: "Public-record chronology",
+    title: "Oscar Giannino and the RAI legal case",
+    context: "A sourced Italian Wikipedia section reconstructing a multi-stage legal dispute from the original 2008 reporting through criminal proceedings, appellate reasoning, the Court of Cassation reversal and the later civil outcome.",
+    work: [
+      "Located contemporary reporting, court-related coverage and archived copies of sources that had disappeared or changed.",
+      "Separated the criminal, appellate, Cassation and civil stages instead of collapsing them into one outcome.",
+      "Attributed disputed interpretations to the relevant court or publication and preserved the chronology.",
+      "Published the work under an inspectable account and edit history."
+    ],
+    demonstrates: ["Archived-web retrieval", "Timeline reconstruction", "Source triangulation", "Attribution discipline"],
+    limitations: "This is public encyclopedic research about a public figure. It is not covert collection, private-person tracking or a substitute for reviewing the underlying judgments directly.",
+    href: "https://it.wikipedia.org/w/index.php?title=Oscar_Giannino&diff=prev&oldid=133702639",
+    linkLabel: "Inspect the contribution",
+    image: "/media/work/wikipedia-giannino-diff.png",
+    alt: "Screenshot of the Oscar Giannino Wikipedia contribution and legal-case section"
+  },
+  {
+    id: "nebula",
+    number: "02",
+    category: "Company and privacy research",
+    title: "Nebula Genomics privacy concerns",
+    context: "A public section bringing together technical, company and third-party sources about consumer-genomics privacy, data access and the limits of blockchain-based privacy claims.",
+    work: [
+      "Compared company claims with external reporting and scientific or technical context.",
+      "Distinguished identifiable genomic data risks from broader marketing language.",
+      "Organized the findings into a neutral, source-linked explanation for a general audience.",
+      "Maintained wording suitable for collaborative review on a living public page."
+    ],
+    demonstrates: ["Company research", "Claim comparison", "Privacy-risk synthesis", "Neutral reporting"],
+    limitations: "The section is a public-source synthesis, not a security audit of Nebula Genomics or legal advice about its privacy practices.",
+    href: "https://en.wikipedia.org/wiki/Nebula_Genomics#Privacy_concerns",
+    linkLabel: "Inspect the section",
+    image: "/media/work/wikipedia-nebula-privacy.png",
+    alt: "Screenshot of the Nebula Genomics privacy concerns section on Wikipedia"
+  },
+  {
+    id: "syndromic",
+    number: "03",
+    category: "Scientific knowledge architecture",
+    title: "Syndromic autism",
+    context: "A scientific topic first developed within the broader autism article and then moved into a stand-alone English Wikipedia page when the material warranted its own scope and structure.",
+    work: [
+      "Synthesized biomedical literature across genetic syndromes, definitions and clinical distinctions.",
+      "Separated syndromic autism from broader autism coverage and designed a coherent stand-alone article structure.",
+      "Controlled terminology and scope across overlapping clinical and genetic concepts.",
+      "Worked within public revision, sourcing and collaborative editorial processes."
+    ],
+    demonstrates: ["Literature synthesis", "Taxonomy design", "Scope control", "Collaborative editing"],
+    limitations: "A public article and revision history demonstrate research and editorial work, not clinical authority or authorship of every later revision.",
+    href: "https://en.wikipedia.org/wiki/Syndromic_autism",
+    linkLabel: "Inspect the article",
+    image: "/media/work/wikipedia-syndromic-autism.png",
+    alt: "Screenshot of the Syndromic autism article on English Wikipedia"
+  }
+];'''
+          text = text[:start] + records + text[end:]
+          text = text.replace('Four different investigation surfaces.', 'Three inspectable public-source investigations.')
+          text = text.replace('Historical objects, fast-moving health information, research entities and collaborative knowledge bases require different sources. The common discipline is traceability.', 'The examples cover a living public figure, a genomics company and a biomedical concept. Each has a public source trail and a different evidentiary boundary.')
+          text = text.replace('<p class="integrity-context">{record.context}</p>', '<p class="integrity-context">{record.context}</p>\n              <a class="integrity-record-media" href={record.href} target="_blank" rel="noopener noreferrer"><img src={record.image} alt={record.alt} width="1200" height="720" loading="lazy" decoding="async" /></a>')
+          p.write_text(text)
+
+          # Image treatment: screenshots should look like evidence, not synthetic social cards.
+          p = Path('src/styles/portfolio-v8.css')
+          css = p.read_text()
+          css = css.replace(''' .v8-hero-shot-1 img {
+  object-fit: contain;
+  background: #0f1721;
+}'''.lstrip(), '''.v8-hero-shot-1 img {
+  object-fit: cover;
+  object-position: center top;
+  background: #090b0d;
+}''')
+          css = css.replace('''.v8-case-blue .v8-case-media img {
+  object-fit: contain;
+  padding: 4%;
+  background: #101a28;
+}''', '''.v8-case-blue .v8-case-media img {
+  object-fit: cover;
+  object-position: center top;
+  padding: 0;
+  background: #090b0d;
+}''')
+          p.write_text(css)
+
+          p = Path('src/styles/integrity.css')
+          css = p.read_text()
+          css += '''\n.integrity-record-media{display:block;margin:24px 0 28px;overflow:hidden;border:1px solid var(--v3-line);border-radius:18px;background:var(--v3-panel);box-shadow:0 20px 55px rgba(0,0,0,.12)}\n.integrity-record-media img{display:block;width:100%;height:auto;max-height:560px;object-fit:cover;object-position:top}\n'''
+          p.write_text(css)
+
+          # Tests and required assets.
+          replace('scripts/check-stale-strings.js', "'public/media/work/entropy-h5n1.png'", "'public/media/work/entropy-published-work.png'")
+          replace('scripts/check-stale-strings.js', "'/media/work/model-behavior-record.svg', '/media/work/entropy-h5n1.png'", "'/media/work/model-behavior-profile.svg', '/media/work/entropy-published-work.png'")
+          replace('scripts/check-stale-strings.js', "'archive.is/inkFs'", "'/evidence/gray-swan-2026-07-24/'")
+          replace('scripts/verify-dist.js', "'/media/work/model-behavior-record.svg', '/media/work/entropy-h5n1.png'", "'/media/work/model-behavior-profile.svg', '/media/work/entropy-published-work.png'")
+          replace('scripts/verify-dist.js', "'archive.is/inkFs'", "'/evidence/gray-swan-2026-07-24/'")
+          replace('scripts/verify-dist.js', "'75', '156'", "'105', '232'")
+          PY
+
+      - name: Build and verify
+        run: |
+          npm run build
+          npm run verify:render
+
+      - name: Commit implemented changes
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "fix: replace synthetic previews with current public evidence"
+          git push origin HEAD:human-centered-redesign
