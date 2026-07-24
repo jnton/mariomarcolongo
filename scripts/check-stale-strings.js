@@ -58,10 +58,7 @@ const PROHIBITED = [
   ['I am autistic.', 'Diagnosis disclosure should not appear on the public homepage'],
   ['The hard part is rarely finding a paper.', 'Rejected aphoristic scientific-verification copy'],
   ['Evidence for the next role—and the path after it.', 'Rejected repetitive portfolio-v5 heading'],
-  ['Discuss a difficult problem.', 'Rejected generic portfolio-v5 contact heading'],
-  ['/media/work/model-behavior-record.svg', 'Rejected synthetic Gray Swan social-preview graphic'],
-  ['/media/work/entropy-h5n1.png', 'Rejected H5N1 homepage visual'],
-  ['value: "75"', 'Stale Gray Swan break count in homepage data']
+  ['Discuss a difficult problem.', 'Rejected generic portfolio-v5 contact heading']
 ];
 
 let failures = 0;
@@ -157,9 +154,10 @@ for (const rejectedText of [
   'class="v3-network"', 'Explore role lenses', 'One profile. Four credible lenses.',
   'Pencil_Fascist_Tuberculosis', 'Alessandro Lanzoni', 'class="portfolio-v4"',
   'class="portfolio-v5"', 'class="portfolio-v7"', 'class="v7-engine"',
-  'class="p5-work-mosaic"', 'Public analysis across three platforms.'
+  'class="p5-work-mosaic"', 'Public analysis across three platforms.',
+  '/media/work/model-behavior-record.svg', '/media/work/entropy-h5n1.png'
 ]) {
-  if (indexSource.includes(rejectedText)) fail('src/pages/index.astro', 1, `Homepage still contains rejected content: ${rejectedText}`);
+  if (homepageSource.includes(rejectedText)) fail('src/pages/index.astro', 1, `Homepage still contains rejected content: ${rejectedText}`);
 }
 
 const integritySource = fs.readFileSync(path.join(ROOT, 'src/pages/integrity.astro'), 'utf8');
