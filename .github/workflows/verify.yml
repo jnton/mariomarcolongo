@@ -6,15 +6,18 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   verify:
     runs-on: ubuntu-latest
     timeout-minutes: 25
     steps:
-      - name: Check out repository
+      - name: Check out repository branch
         uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.ref || github.ref_name }}
+          fetch-depth: 0
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
@@ -25,12 +28,164 @@ jobs:
       - name: Install locked dependencies
         run: npm ci --no-audit --no-fund
 
+      - name: Apply one-time current evidence update
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re
+
+          marker = Path('.github/.portfolio-v9-source-applied')
+          if marker.exists():
+              print('Current evidence update already applied.')
+              raise SystemExit(0)
+
+          def require_replace(text, old, new, label):
+              if old not in text:
+                  raise SystemExit(f'Missing expected text for {label}: {old[:100]}')
+              return text.replace(old, new)
+
+          for source_path in ['data/source.js', 'public/data/source.js']:
+              p = Path(source_path)
+              text = p.read_text()
+              text = require_replace(text,
+                  'grayswanArchiveUrl: "https://archive.is/inkFs"',
+                  'grayswanArchiveUrl: "/evidence/gray-swan-2026-07-24/"',
+                  source_path)
+              text = require_replace(text,
+                  'evaluationAsOf: "July 2026"',
+                  'evaluationAsOf: "24 July 2026"',
+                  source_path)
+              text = require_replace(text,
+                  'The Gray Swan Proving Ground public profile reports a top-8% rank band among listed participants as of July 2026, with 75 platform-confirmed model breaks across 156 submissions.',
+                  'The dated Gray Swan Proving Ground record shows #77 on the leaderboard (top 7%) on 24 July 2026, with 105 leaderboard-counted breaks across 232 Proving Ground submissions.',
+                  source_path)
+              text = require_replace(text,
+                  '{ label: "Platform-Confirmed Activity", detail: "75 breaks across 26 listed Proving Ground waves as of July 2026" }',
+                  '{ label: "Leaderboard-Counted Activity", detail: "#77 · top 7% · 105 breaks across 26 waves on 24 July 2026" }',
+                  source_path)
+              text = require_replace(text,
+                  '{ value: "75", label: "Platform-Confirmed Model Breaks", detail: "Gray Swan Proving Ground snapshot across 26 listed waves as of July 2026" }',
+                  '{ value: "105", label: "Leaderboard-Counted Model Breaks", detail: "#77 · top 7% · 26 Proving Ground waves · 24 July 2026" }',
+                  source_path)
+              text = require_replace(text,
+                  '{ value: "156", label: "Model-Evaluation Submissions", detail: "Repeated activity across chat, image, agentic tool-use and indirect prompt-injection challenges" }',
+                  '{ value: "232", label: "Proving Ground Submissions", detail: "242 total Arena submissions shown separately on the dated profile" }',
+                  source_path)
+              text = require_replace(text,
+                  'The public profile reports 156 platform submissions and 75 platform-confirmed model breaks across 26 listed waves.',
+                  'The dated record shows #77 on the Proving Ground leaderboard, top 7%, with 105 leaderboard-counted breaks across 232 Proving Ground submissions and 26 listed waves.',
+                  source_path)
+              text = require_replace(text,
+                  '"75 Platform-Confirmed Model Breaks: Aggregate platform total across 26 listed waves as of July 2026",\n        "156 Platform Submissions: Repeated activity across multiple testing surfaces"',
+                  '"105 Leaderboard-Counted Model Breaks: #77 and top 7% on the dated Proving Ground snapshot",\n        "232 Proving Ground Submissions: 242 total Arena submissions are shown separately"',
+                  source_path)
+              text = require_replace(text,
+                  'asOf: "July 2026",\n    rankBand: "Top 8%",\n    submissions: 156,\n    previousChats: 736,\n    confirmedBreaks: 75,',
+                  'asOf: "24 July 2026",\n    rankBand: "#77 · Top 7%",\n    submissions: 232,\n    totalArenaSubmissions: 242,\n    previousChats: 953,\n    confirmedBreaks: 105,\n    profileReportedBreaks: 106,',
+                  source_path)
+
+              waves = '''waves: [
+      { wave: 1, breaks: 14, available: 67 },
+      { wave: 2, breaks: 10, available: 72 },
+      { wave: 3, breaks: 10, available: 72 },
+      { wave: 4, breaks: 2, available: 46 },
+      { wave: 5, breaks: 6, available: 72 },
+      { wave: 6, breaks: 10, available: 72 },
+      { wave: 7, breaks: 2, available: 64 },
+      { wave: 8, breaks: 0, available: 67 },
+      { wave: 9, breaks: 0, available: 67 },
+      { wave: 10, breaks: 3, available: 67 },
+      { wave: 11, breaks: 2, available: 67 },
+      { wave: 12, breaks: 3, available: 67 },
+      { wave: 13, breaks: 0, available: 67 },
+      { wave: 14, breaks: 0, available: 67 },
+      { wave: 15, breaks: 8, available: 67 },
+      { wave: 16, breaks: 3, available: 67 },
+      { wave: 17, breaks: 14, available: 75 },
+      { wave: 18, breaks: 0, available: 75 },
+      { wave: 19, breaks: 0, available: 56 },
+      { wave: 20, breaks: 0, available: 56 },
+      { wave: 21, breaks: 0, available: 56 },
+      { wave: 22, breaks: 6, available: 56 },
+      { wave: 23, breaks: 3, available: 57 },
+      { wave: 24, breaks: 2, available: 56 },
+      { wave: 25, breaks: 3, available: 55 },
+      { wave: 26, breaks: 4, available: 56 }
+    ]'''
+              text, n = re.subn(r'waves: \[\n(?:\s*\{ wave:.*\n){26}\s*\]', waves, text, count=1)
+              if n != 1:
+                  raise SystemExit(f'Could not replace wave table in {source_path}')
+
+              text = require_replace(text,
+                  'Recorded 75 platform-confirmed model breaks across 156 submissions and 26 listed waves; top-8% rank band among listed participants as of July 2026.',
+                  'Reached #77 on the Proving Ground leaderboard (top 7%) with 105 leaderboard-counted breaks across 232 Proving Ground submissions and 26 listed waves on 24 July 2026.',
+                  source_path)
+              text = require_replace(text,
+                  '"Co-facilitated recorded Zoom focus groups with autistic participants discussing sensitive sexuality and relationship topics, using clear expectations, respectful pacing and non-judgmental follow-up to support participant comfort.",',
+                  '"Served as lead or co-facilitator across approximately 4–5 recorded Zoom focus-group sessions, typically lasting 1–2 hours, with autistic participants discussing sensitive sexuality and relationship topics.",',
+                  source_path)
+              text = require_replace(text,
+                  '"Co-developed a standardized discussion guide, scripted prompts and session procedures; worked in a two-person facilitation team using live handoffs and recovery when prompts were missed or a facilitator needed support.",',
+                  '"Co-developed the protocol, including pseudonymous naming, explicit recorded consent, optional captions and written-chat participation, timed turn-taking, scripted prompts, recording boundaries and two-person facilitation handoffs.",',
+                  source_path)
+              text = require_replace(text,
+                  '"Supported participant recruitment, bibliographic research, technical session preparation and coordination with Marta Panzeri, the research team and a second autistic volunteer facilitator.",',
+                  '"Supported participant recruitment, bibliographic research, technical preparation and protocol feedback from an autistic perspective; coordinated with Marta Panzeri, researchers and a second autistic volunteer facilitator.",',
+                  source_path)
+              text = require_replace(text,
+                  '"Co-facilitated recorded Zoom focus groups with autistic participants on sensitive sexuality and relationship topics, using structured prompts, respectful pacing and non-judgmental follow-up.",',
+                  '"Led or co-facilitated approximately 4–5 recorded remote sessions, typically lasting 1–2 hours, with autistic participants discussing sensitive sexuality and relationship topics.",',
+                  source_path)
+              text = require_replace(text,
+                  '"Co-developed session guides and worked in a two-person moderation team with live handoffs, recovery when prompts were missed, participant recruitment and technical coordination."',
+                  '"Co-developed accessible consent and participation procedures, scripted prompts, timed turns, recording boundaries and two-person facilitation handoffs; supported recruitment and bibliographic research."',
+                  source_path)
+              p.write_text(text)
+
+          p = Path('data/application-profiles.js')
+          text = p.read_text()
+          replacements = {
+              'Gray Swan Proving Ground participant with 75 platform-confirmed model breaks across 156 submissions and a top-8% rank band among listed participants as of July 2026.': 'Gray Swan Proving Ground participant ranked #77 (top 7%) on 24 July 2026, with 105 leaderboard-counted breaks across 232 Proving Ground submissions and 26 waves.',
+              '{ value: "75", label: "Platform-confirmed model breaks", detail: "Across 26 listed Gray Swan testing waves" }': '{ value: "105", label: "Leaderboard-counted model breaks", detail: "#77 · top 7% · 26 Proving Ground waves" }',
+              '{ value: "156", label: "Platform submissions", detail: "Chat, multimodal, tool-use and indirect injection" }': '{ value: "232", label: "Proving Ground submissions", detail: "242 total Arena submissions shown separately" }',
+              'Recorded 75 platform-confirmed model breaks across 156 submissions and 26 listed waves; ranked in the top 8% among listed participants as of July 2026.': 'Reached #77 on the Proving Ground leaderboard (top 7%) with 105 leaderboard-counted breaks across 232 submissions and 26 listed waves on 24 July 2026.',
+              '{ value: "75", label: "Platform-confirmed model breaks", detail: "Adversarial testing across multiple AI modalities" }': '{ value: "105", label: "Leaderboard-counted model breaks", detail: "#77 · top 7% · four evaluation surfaces" }',
+              'Recorded 75 platform-confirmed model breaks across 156 submissions while documenting the limitations of the public record.': 'Reached #77 on the Proving Ground leaderboard (top 7%) with 105 leaderboard-counted breaks across 232 Proving Ground submissions, while documenting the limitations and the profile/leaderboard discrepancy.',
+              'Co-developed and co-facilitated a structured remote focus-group process for autistic participants discussing sensitive sexuality and relationship topics, supervised by Marta Panzeri at the University of Padua Department of Developmental Psychology and Socialisation (DPSS), including recruitment, session protocols, Zoom logistics and two-person moderation handoffs.': 'Co-developed and facilitated approximately 4–5 structured remote focus-group sessions, typically lasting 1–2 hours, with autistic participants discussing sensitive sexuality and relationship topics under Marta Panzeri at the University of Padua DPSS.',
+              'Co-facilitated recorded Zoom focus groups with autistic participants discussing sensitive sexuality and relationship topics, using clear expectations, respectful pacing and non-judgmental follow-up.': 'Served as lead or co-facilitator across approximately 4–5 recorded Zoom focus-group sessions, typically lasting 1–2 hours, with autistic participants discussing sensitive sexuality and relationship topics.',
+              'Co-developed a standardized discussion guide, scripted prompts and session procedures; worked in a two-person facilitation team using live handoffs and recovery when prompts were missed or a facilitator needed support.': 'Co-developed the protocol, including pseudonymous naming, explicit recorded consent, optional captions and written-chat participation, timed turn-taking, scripted prompts, recording boundaries and two-person facilitation handoffs.',
+              'Supported participant recruitment, bibliographic research, technical session preparation and coordination with Marta Panzeri, researchers and a second autistic volunteer facilitator. Public attribution is included with permission; participant information remains confidential.': 'Supported participant recruitment, bibliographic research, technical preparation and protocol feedback from an autistic perspective; coordinated with Marta Panzeri, researchers and a second autistic volunteer facilitator. Participant information remains confidential.'
+          }
+          for old, new in replacements.items():
+              if old not in text:
+                  raise SystemExit(f'Missing application-profile text: {old[:100]}')
+              text = text.replace(old, new)
+          p.write_text(text)
+
+          marker.write_text('Applied by Verify portfolio workflow on the human-centered-redesign branch.\n')
+          PY
+
       - name: Build and verify generated output
         shell: bash
         run: |
           mkdir -p audit-output
           set -o pipefail
           npm run build 2>&1 | tee audit-output/build.log
+
+      - name: Commit refreshed evidence and generated files
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "No generated or source changes to commit."
+          else
+            git commit -m "content: update Gray Swan, focus-group and targeted CV evidence"
+            git push origin HEAD:human-centered-redesign
+          fi
 
       - name: Diagnose mobile layout
         run: node scripts/diagnose-mobile-overflow.js | tee audit-output/mobile-overflow.json
