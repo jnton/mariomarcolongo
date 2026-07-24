@@ -5,9 +5,9 @@ const PORTFOLIO_HUMAN = {
 
   proofMoments: [
     {
-      value: "75",
-      label: "platform-confirmed model breaks",
-      detail: "Gray Swan Proving Ground · July 2026",
+      value: "105",
+      label: "leaderboard-counted model breaks",
+      detail: "#77 · top 7% · 24 July 2026",
       href: "/security.html"
     },
     {
@@ -28,17 +28,17 @@ const PORTFOLIO_HUMAN = {
     {
       id: "model-record",
       label: "AI evaluation",
-      title: "Public model-behavior record",
-      image: "/media/work/model-behavior-record.svg",
-      alt: "Visual summary of Mario Marcolongo's public model-behavior evaluation record",
+      title: "Gray Swan Proving Ground profile",
+      image: "/media/work/model-behavior-profile.svg",
+      alt: "Gray Swan Arena profile screenshot showing Mario Marcolongo ranked number 77 in Proving Ground, top 7 percent",
       href: "/security.html"
     },
     {
       id: "entropy",
       label: "Scientific fact-checking",
-      title: "H5N1 evidence tracker",
-      image: "/media/work/entropy-h5n1.png",
-      alt: "Screenshot of an Entropy for Life H5N1 scientific article and evidence tracker",
+      title: "Published scientific work",
+      image: "https://entropyforlife.it/wp-content/uploads/2024/10/Dashboard-1-5-png.webp",
+      alt: "Published scientific visualization by Mario Marcolongo for Entropy for Life",
       href: "https://entropyforlife.it/autore/mario-marcolongo/"
     },
     {
@@ -87,32 +87,32 @@ const PORTFOLIO_HUMAN = {
       id: "model-behavior",
       number: "01",
       label: "AI evaluation",
-      title: "Testing model behavior and documenting the result.",
-      lead: "I use repeated, varied interactions to find failures and record what the available evidence actually establishes.",
+      title: "Finding model failures across four evaluation surfaces.",
+      lead: "Across 26 public challenge waves, I tested chat, image, agent and indirect prompt-injection behavior and preserved a dated public record of the result.",
       action: "I vary the interaction path, preserve reproduction notes and distinguish direct observations from platform labels, independent verification and model-wide conclusions.",
-      result: "A public record covering 156 submissions and 75 platform-confirmed breaks across 26 listed Gray Swan waves as of July 2026.",
+      result: "#77 on the Proving Ground leaderboard, top 7%, with 105 leaderboard-counted breaks across 232 Proving Ground submissions on 24 July 2026.",
       boundary: "This supports model-evaluation and adversarial-QA work. It is not presented as penetration testing or senior red-team engineering.",
       href: "/security.html",
       linkLabel: "Open the evaluation record",
-      image: "/media/work/model-behavior-record.svg",
-      alt: "Public record summarizing Gray Swan model-behavior evaluation activity",
-      imageCaption: "Public aggregate record · methodology, activity table and limitations",
+      image: "/media/work/model-behavior-profile.svg",
+      alt: "Gray Swan Arena profile screenshot showing Mario Marcolongo's current Proving Ground rank and activity",
+      imageCaption: "Real platform profile · #77 · top 7% · dated snapshot",
       tone: "blue"
     },
     {
       id: "scientific-verification",
       number: "02",
       label: "Scientific fact-checking",
-      title: "Checking whether evidence supports the wording proposed for publication.",
-      lead: "The task is specific: determine whether a study's methods and results support the exact claim in a script or article.",
-      action: "I break the statement into checkable claims, review primary literature, trace disagreements between sources and explain the correction or qualification needed to the production team.",
+      title: "Fact-checking scientific scripts before publication.",
+      lead: "In a small recurring production team, I check whether the primary literature supports the wording proposed for a video, documentary or article.",
+      action: "I break statements into checkable claims, review primary literature, trace disagreements between sources and communicate corrections or qualifications directly to Giacomo Moro Mauretto and the video editor.",
       result: "Paid fact-checking integrated into an ongoing workflow covering more than 55 videos and documentaries and four published articles.",
       boundary: "My role is evidence review and editorial recommendation. Final wording, production and publication decisions remain with the editorial team.",
       href: "https://entropyforlife.it/autore/mario-marcolongo/",
       linkLabel: "Open the published work",
-      image: "/media/work/entropy-h5n1.png",
-      alt: "Screenshot of an Entropy for Life article with scientific evidence tracking",
-      imageCaption: "Published work · primary-source review and scientific writing",
+      image: "https://entropyforlife.it/wp-content/uploads/2024/10/Dashboard-1-5-png.webp",
+      alt: "Published scientific visualization by Mario Marcolongo for Entropy for Life",
+      imageCaption: "Real published output · scientific writing and source review",
       tone: "red"
     },
     {
