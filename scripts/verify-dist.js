@@ -117,7 +117,7 @@ assertContains(index, 'class="v8-hero-gallery"', 'dist/index.html');
 assertContains(index, 'class="v8-case-stack"', 'dist/index.html');
 assertContains(index, 'class="v8-product"', 'dist/index.html');
 for (const media of [
-  '/media/work/model-behavior-profile.svg', 'https://entropyforlife.it/wp-content/uploads/2024/10/Dashboard-1-5-png.webp',
+  '/media/work/model-behavior-profile.jpg', 'https://entropyforlife.it/wp-content/uploads/2024/10/Dashboard-1-5-png.webp',
   '/media/work/yourself-to-science-800.webp', '/media/work/mdpi-filter-1-800.webp',
   '/media/work/mdpi-filter-2-800.webp', '/media/work/wikimedia-clinical-overlap.svg',
   '/media/work/tableau-mortality-800.webp', '/media/work/flourish-oesophageal-cancer.svg'

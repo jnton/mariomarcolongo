@@ -30,7 +30,7 @@ const REQUIRED = [
   'scripts/verify-rendering.js', 'public/.well-known/api-catalog',
   'public/.well-known/agent-card.json', 'public/.well-known/mcp/server-card.json',
   'public/robots.txt', 'public/sitemap.xml', 'public/site.webmanifest',
-  'public/media/work/model-behavior-profile.svg', 'public/media/work/yourself-to-science-800.webp',
+  'public/media/work/model-behavior-profile.jpg', 'public/media/work/yourself-to-science-800.webp',
   'public/media/work/mdpi-filter-1-800.webp', 'public/media/work/mdpi-filter-2-800.webp',
   'public/media/work/wikimedia-clinical-overlap.svg'
 ];
@@ -144,7 +144,7 @@ for (const requiredText of [
   if (!homepageSource.includes(requiredText)) fail('src/pages/index.astro', 1, `Homepage is missing current artifact-led portfolio content: ${requiredText}`);
 }
 for (const requiredMedia of [
-  '/media/work/model-behavior-profile.svg', 'https://entropyforlife.it/wp-content/uploads/2024/10/Dashboard-1-5-png.webp',
+  '/media/work/model-behavior-profile.jpg', 'https://entropyforlife.it/wp-content/uploads/2024/10/Dashboard-1-5-png.webp',
   '/media/work/yourself-to-science-800.webp', '/media/work/mdpi-filter-1-800.webp',
   '/media/work/mdpi-filter-2-800.webp', '/media/work/wikimedia-clinical-overlap.svg'
 ]) {

@@ -29,7 +29,7 @@ const PORTFOLIO_HUMAN = {
       id: "model-record",
       label: "AI evaluation",
       title: "Gray Swan Proving Ground profile",
-      image: "/media/work/model-behavior-profile.svg",
+      image: "/media/work/model-behavior-profile.jpg",
       alt: "Gray Swan Arena profile screenshot showing Mario Marcolongo ranked number 77 in Proving Ground, top 7 percent",
       href: "/security.html"
     },
@@ -94,7 +94,7 @@ const PORTFOLIO_HUMAN = {
       boundary: "This supports model-evaluation and adversarial-QA work. It is not presented as penetration testing or senior red-team engineering.",
       href: "/security.html",
       linkLabel: "Open the evaluation record",
-      image: "/media/work/model-behavior-profile.svg",
+      image: "/media/work/model-behavior-profile.jpg",
       alt: "Gray Swan Arena profile screenshot showing Mario Marcolongo's current Proving Ground rank and activity",
       imageCaption: "Real platform profile · #77 · top 7% · dated snapshot",
       tone: "blue"
