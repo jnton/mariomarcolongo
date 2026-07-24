@@ -7,6 +7,7 @@ on:
       - scripts/capture-homepage-v4.js
       - src/pages/index.astro
       - src/styles/portfolio-v8.css
+      - src/styles/portfolio-v9-overrides.css
       - src/styles/nav-editorial.css
       - data/portfolio-human.js
       - public/media/work/**
@@ -27,7 +28,12 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci --no-audit --no-fund
-      - run: npm run build
+      - name: Build and retain diagnostics
+        shell: bash
+        run: |
+          mkdir -p audit-v4
+          set -o pipefail
+          npm run build 2>&1 | tee audit-v4/build.log
       - name: Capture scrolled homepage states
         run: node scripts/capture-homepage-v4.js
       - name: Upload visual audit
