@@ -65,6 +65,11 @@ const replacements = [
     "55+ Videos & 4 Articles",
     "59+ Documented Projects",
   ],
+  // Final safety normalizations for legacy fallback wording variants.
+  ["75+ confirmed model breaks", "106 platform-recorded challenge breaks in the archived 24 July 2026 snapshot"],
+  ["75+ platform-confirmed model breaks", "106 platform-recorded challenge breaks in the archived 24 July 2026 snapshot"],
+  ["top 8%", "top 7%"],
+  ["Top 8%", "Top 7%"],
 ];
 
 function patchText(text) {
