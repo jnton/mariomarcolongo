@@ -36,11 +36,23 @@ jobs:
       - name: Verify Gray Swan evidence link
         run: grep -R --fixed-strings "gray-swan-profile-2026-07-24.html" dist public/llms.txt public/llms-full.txt public/cv-llm.txt
 
-      - name: Reject stale top-8-percent claim
+      - name: Reject stale top-8-percent claim in HTML
         shell: bash
         run: |
           set -euo pipefail
-          ! grep -R --include='*.html' --include='*.txt' --include='*.js' --fixed-strings "top 8%" dist public/llms.txt public/llms-full.txt public/cv-llm.txt
+          ! grep -R --include='*.html' --fixed-strings "top 8%" dist
+
+      - name: Reject stale top-8-percent claim in JavaScript
+        shell: bash
+        run: |
+          set -euo pipefail
+          ! grep -R --include='*.js' --fixed-strings "top 8%" dist
+
+      - name: Reject stale top-8-percent claim in dossiers
+        shell: bash
+        run: |
+          set -euo pipefail
+          ! grep --fixed-strings "top 8%" public/llms.txt public/llms-full.txt public/cv-llm.txt
 
       - name: Reject stale 75-break claim
         shell: bash
