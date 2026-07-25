@@ -16,16 +16,14 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
   audit:
     runs-on: ubuntu-latest
-    timeout-minutes: 25
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
-        with:
-          ref: human-centered-redesign
       - uses: actions/setup-node@v4
         with:
           node-version: 22
@@ -39,23 +37,6 @@ jobs:
           npm run build 2>&1 | tee audit-v4/build.log
       - name: Capture scrolled homepage states
         run: node scripts/capture-homepage-v4.js
-      - name: Commit deterministic generated output
-        shell: bash
-        run: |
-          set -euo pipefail
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add \
-            index.html integrity.html security.html cv.html \
-            cv-resume.html cv-research.html cv-editorial.html cv-integrity.html \
-            llms.txt llms-full.txt cv-llm.txt \
-            public/llms.txt public/llms-full.txt public/cv-llm.txt public/data/source.js
-          if git diff --cached --quiet; then
-            echo "Generated outputs are already current."
-          else
-            git commit -m "build: refresh contribution archives and homepage output"
-            git push origin HEAD:human-centered-redesign
-          fi
       - name: Upload visual audit
         if: always()
         uses: actions/upload-artifact@v4
