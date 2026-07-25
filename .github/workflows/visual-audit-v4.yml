@@ -35,20 +35,27 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          python - <<'PY'
+          mkdir -p audit-v4
+          python - <<'PY' 2>&1 | tee audit-v4/materialize.log
           import base64
           from pathlib import Path
 
-          svg = Path('public/media/work/gray-swan-profile-2026-07-24.svg').read_text()
+          source = Path('public/media/work/gray-swan-profile-2026-07-24.svg')
+          print(f'source exists={source.exists()} size={source.stat().st_size if source.exists() else 0}')
+          svg = source.read_text()
           marker = 'href="data:image/jpeg;base64,'
+          print(f'marker found={marker in svg}')
           if marker not in svg:
               raise SystemExit('Embedded Gray Swan JPEG was not found')
           payload = svg.split(marker, 1)[1].split('"', 1)[0]
+          print(f'payload length={len(payload)} remainder={len(payload) % 4} prefix={payload[:16]!r} suffix={payload[-16:]!r}')
+          payload += '=' * (-len(payload) % 4)
+          decoded = base64.b64decode(payload, validate=False)
           image_path = Path('public/media/work/gray-swan-profile-2026-07-24.jpg')
-          image_path.write_bytes(base64.b64decode(payload))
+          image_path.write_bytes(decoded)
+          print(f'Extracted {image_path.stat().st_size} bytes to {image_path}')
           if image_path.stat().st_size == 0:
               raise SystemExit('Extracted Gray Swan image is empty')
-          print(f'Extracted {image_path.stat().st_size} bytes to {image_path}')
 
           portfolio = Path('data/portfolio-human.js')
           text = portfolio.read_text()
@@ -75,7 +82,6 @@ jobs:
       - name: Build and retain diagnostics
         shell: bash
         run: |
-          mkdir -p audit-v4
           set -o pipefail
           npm run build 2>&1 | tee audit-v4/build.log
       - name: Capture scrolled homepage states
