@@ -7,8 +7,8 @@ import D from "../../data/source.js";
 
 const title = "AI Evaluation & Model Behavior Record — Mario Marcolongo";
 const description = "Concise public record of self-directed model-behavior evaluation on the Gray Swan Proving Ground, including scope, methodology, platform-reported activity, archived evidence and limitations.";
-const asOf = D.redTeamActivity.asOf || "July 2026";
-const archiveUrl = D.identity.grayswanArchiveUrl || "https://archive.is/inkFs";
+const asOf = D.redTeamActivity.asOf || "24 July 2026";
+const archiveUrl = D.identity.grayswanArchiveUrl || "/evidence/gray-swan-2026-07-24/";
 
 const areas = [
   {
@@ -55,7 +55,7 @@ const evaluationJsonLd = {
   name: title,
   description,
   url: "https://mariomarcolongo.com/security.html",
-  dateModified: "2026-07-21",
+  dateModified: "2026-07-24",
   author: { "@id": "https://mariomarcolongo.com/#person" },
   about: { "@type": "Thing", name: "AI evaluation and model behavior" },
   citation: [D.identity.grayswanUrl, archiveUrl]
@@ -93,17 +93,17 @@ const evaluationJsonLd = {
     <section class="evaluation-metrics" aria-label="Platform-reported activity">
       <article class="evaluation-metric">
         <strong>{D.redTeamActivity.confirmedBreaks}</strong>
-        <span>Platform-confirmed model breaks</span>
-        <small>Across 26 listed waves · {asOf}</small>
+        <span>Leaderboard-counted breaks</span>
+        <small>#77 on the Proving Ground leaderboard · {asOf}</small>
       </article>
       <article class="evaluation-metric">
         <strong>{D.redTeamActivity.submissions}</strong>
-        <span>Platform submissions</span>
+        <span>Proving Ground submissions</span>
         <small>Repeated activity across multiple testing surfaces</small>
       </article>
       <article class="evaluation-metric">
         <strong>{D.redTeamActivity.rankBand}</strong>
-        <span>Rank band among listed participants</span>
+        <span>Proving Ground rank</span>
         <small>Time-sensitive platform snapshot · {asOf}</small>
       </article>
     </section>
@@ -143,15 +143,15 @@ const evaluationJsonLd = {
     <section class="evaluation-section" id="public-evidence">
       <div class="evaluation-section-head">
         <h2>Publicly inspectable evidence</h2>
-        <p>The live Gray Swan profile is the primary destination. A user-created archive.is snapshot is retained as a verification fallback for recruiters, automated readers and archival crawlers when the platform page cannot be accessed; Internet Archive could not save it.</p>
+        <p>The live Gray Swan profile is the primary source. A dated evidence page preserves the real platform screenshot and explains why the portfolio uses the independently reconcilable total of 105 rather than the profile aggregate of 106.</p>
       </div>
 
       <div class="evaluation-grid">
         <article class="evaluation-card">
-          <div class="evaluation-step">VERIFICATION FALLBACK</div>
-          <h3>Archived Gray Swan profile snapshot</h3>
-          <p>Preserved copy of the public participant page used to verify aggregate counts, rank band and visible activity when the live platform is unavailable or blocks automated access.</p>
-          <p><a class="p5-link" href={archiveUrl} target="_blank" rel="noopener noreferrer">Open archive.is snapshot ↗</a></p>
+          <div class="evaluation-step">DATED PROFILE EVIDENCE</div>
+          <h3>24 July 2026 platform snapshot</h3>
+          <p>Real platform screenshot preserving #77, top 7%, 232 Proving Ground submissions, 242 total Arena submissions and the visible 105/106 discrepancy.</p>
+          <p><a class="p5-link" href={archiveUrl}>Open the dated evidence page →</a></p>
         </article>
         {(D.redTeamActivity.publicLabels || []).map((label) => (
           <article class="evaluation-card">
@@ -169,7 +169,7 @@ const evaluationJsonLd = {
             <thead>
               <tr>
                 <th scope="col">Wave</th>
-                <th scope="col">Platform-confirmed breaks</th>
+                <th scope="col">Leaderboard-counted breaks</th>
                 <th scope="col">Available challenges shown</th>
               </tr>
             </thead>
@@ -193,11 +193,11 @@ const evaluationJsonLd = {
         <p>This record supports applications to AI evaluation, safeguards operations, trust & safety and adversarial QA roles. It does not yet establish the application-security, independent Python development or automated-framework experience expected from senior AI red-team engineers.</p>
       </div>
       <ul class="evaluation-list">
-        <li>“Platform-confirmed” describes Gray Swan’s status, not independent third-party reproduction.</li>
+        <li>The portfolio uses 105 because the leaderboard, four category totals and 26 wave totals agree; the dated profile aggregate displayed 106.</li>
         <li>The public source does not expose complete prompts, outputs, model versions or adjudication materials for every result.</li>
         <li>Counts and rankings are snapshots and may change after {asOf}.</li>
         <li>No claim is made that every recorded result represents a security vulnerability or model-wide failure.</li>
-        <li>The next evidence milestone is a public, reproducible evaluation dataset and automated test harness built with independently understood code.</li>
+        <li>The next evidence milestone is a public evaluation dataset with explicit rubrics, reproducible test cases and calibration with another evaluator.</li>
       </ul>
     </section>
   </div>

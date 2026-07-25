@@ -160,9 +160,8 @@ pass('Master CV positioning checked');
 const securityText = normalizeHtmlText(pages.security);
 for (const needle of [
   'AI evaluation and model-behavior record.', 'What the record demonstrates', 'Evaluation approach',
-  'Limitations and interpretation', 'Platform-confirmed model breaks', 'indirect-function-call',
-  'weak-password-change', 'complete 26-wave activity table', 'archive.is/inkFs',
-  'Open live Gray Swan profile', 'verification fallback'
+  'Limitations and interpretation', 'Leaderboard-counted breaks', 'complete 26-wave activity table',
+  '/evidence/gray-swan-2026-07-24/', 'Open live Gray Swan profile', '105/106'
 ]) assertContains(securityText, needle, 'dist/security.html');
 for (const needle of [
   'independently verified policy or alignment boundary failure',

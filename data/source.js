@@ -14,8 +14,8 @@ const MARIO_DOSSIER = {
     centralAuth: "https://commons.wikimedia.org/wiki/Special:CentralAuth/Digressivo",
     grayswanId: "6a57be70d15e123775a1e9cf",
     grayswanUrl: "https://app.grayswan.ai/arena/user/6a57be70d15e123775a1e9cf",
-    grayswanArchiveUrl: "https://archive.is/inkFs",
-    evaluationAsOf: "July 2026",
+    grayswanArchiveUrl: "/evidence/gray-swan-2026-07-24/",
+    evaluationAsOf: "24 July 2026",
     jobTitle: "AI Evaluation & Research Operations Specialist",
     secondaryTitle: "Model Behavior · Scientific Evidence · Knowledge Integrity · Open Science & Data Quality",
     headline: "I evaluate model behavior, verify scientific evidence, and operate research systems.",
@@ -59,9 +59,9 @@ const MARIO_DOSSIER = {
       icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>`,
       title: "Model Behavior & Adversarial Testing",
       lead: "Structured, self-directed probing of LLM and multimodal-system behavior across chat, image, tool-use and indirect prompt-injection challenges.",
-      desc: "The Gray Swan Proving Ground public profile reports a top-8% rank band among listed participants as of July 2026, with 75 platform-confirmed model breaks across 156 submissions. The record demonstrates sustained evaluation activity; it is not an independent security audit or certification.",
+      desc: "The dated Gray Swan Proving Ground record shows #77 on the leaderboard (top 7%) on 24 July 2026, with 105 leaderboard-counted breaks across 232 Proving Ground submissions. The record demonstrates sustained evaluation activity; it is not an independent security audit or certification.",
       highlights: [
-        { label: "Platform-Confirmed Activity", detail: "75 breaks across 26 listed Proving Ground waves as of July 2026" },
+        { label: "Leaderboard-Counted Activity", detail: "#77 · top 7% · 105 breaks across 26 waves on 24 July 2026" },
         { label: "Testing Surfaces", detail: "Chat, multimodal/image, agentic tool-use and indirect prompt injection" }
       ]
     },
@@ -101,8 +101,8 @@ const MARIO_DOSSIER = {
   ],
 
   stats: [
-    { value: "75", label: "Platform-Confirmed Model Breaks", detail: "Gray Swan Proving Ground snapshot across 26 listed waves as of July 2026" },
-    { value: "156", label: "Model-Evaluation Submissions", detail: "Repeated activity across chat, image, agentic tool-use and indirect prompt-injection challenges" },
+    { value: "105", label: "Leaderboard-Counted Model Breaks", detail: "#77 · top 7% · 26 Proving Ground waves · 24 July 2026" },
+    { value: "232", label: "Proving Ground Submissions", detail: "242 total Arena submissions shown separately on the dated profile" },
     { value: "55+", label: "Research Initiatives Indexed", detail: "Clinical studies, biobanks, donation programs, registries and other research initiatives" },
     { value: "55+ Videos & 4 Articles", label: "Paid Scientific Verification", detail: "Primary-source research and fact-checking for Entropy for Life" },
     { value: "4,317", label: "Auditable Wikimedia Contributions", detail: "Public contributions across Wikipedia, Wikidata and Wikimedia Commons as of July 2026" }
@@ -113,7 +113,7 @@ const MARIO_DOSSIER = {
       id: "ai-red-teaming",
       title: "Model Behavior & Adversarial Evaluation",
       oneLiner: "Public aggregate record of self-directed model-behavior evaluation across chat, multimodal, agentic tool-use and indirect prompt-injection challenges.",
-      description: "Self-directed model-behavior evaluation conducted through the Gray Swan Proving Ground. The public profile reports 156 platform submissions and 75 platform-confirmed model breaks across 26 listed waves. Aggregate counts and selected public labels are presented with explicit evidence limitations; complete prompts, outputs, model versions and adjudication materials are not reproduced.",
+      description: "Self-directed model-behavior evaluation conducted through the Gray Swan Proving Ground. The dated record shows #77 on the Proving Ground leaderboard, top 7%, with 105 leaderboard-counted breaks across 232 Proving Ground submissions and 26 listed waves. Aggregate counts and selected public labels are presented with explicit evidence limitations; complete prompts, outputs, model versions and adjudication materials are not reproduced.",
       role: "Model-Behavior Evaluator",
       tech: ["Adversarial Evaluation", "Prompt Injection", "Agentic Tool-Use", "Multimodal Safety", "Evidence-Bound Reporting"],
       links: {
@@ -121,8 +121,8 @@ const MARIO_DOSSIER = {
         profile: "https://app.grayswan.ai/arena/user/6a57be70d15e123775a1e9cf"
       },
       highlights: [
-        "75 Platform-Confirmed Model Breaks: Aggregate platform total across 26 listed waves as of July 2026",
-        "156 Platform Submissions: Repeated activity across multiple testing surfaces",
+        "105 Leaderboard-Counted Model Breaks: #77 and top 7% on the dated Proving Ground snapshot",
+        "232 Proving Ground Submissions: 242 total Arena submissions are shown separately",
         "Evidence Boundary: Platform-reported outcomes are separated from independent verification or security-certification claims"
       ]
     },
@@ -276,19 +276,22 @@ const MARIO_DOSSIER = {
 
   redTeamActivity: {
     platform: "Gray Swan AI Proving Ground",
-    asOf: "July 2026",
-    rankBand: "Top 8%",
-    submissions: 156,
-    previousChats: 736,
-    confirmedBreaks: 75,
-    publicLabels: ["indirect-function-call", "weak-password-change"],
+    asOf: "24 July 2026",
+    rankBand: "#77 · Top 7%",
+    leaderboardRank: 77,
+    submissions: 232,
+    totalArenaSubmissions: 242,
+    previousChats: 953,
+    confirmedBreaks: 105,
+    profileReportedBreaks: 106,
+    publicLabels: ["damage-property", "toxic-plant", "package-theft-image"],
     waves: [
       { wave: 1, breaks: 14, available: 67 },
       { wave: 2, breaks: 10, available: 72 },
       { wave: 3, breaks: 10, available: 72 },
-      { wave: 4, breaks: 0, available: 46 },
-      { wave: 5, breaks: 5, available: 72 },
-      { wave: 6, breaks: 3, available: 72 },
+      { wave: 4, breaks: 2, available: 46 },
+      { wave: 5, breaks: 6, available: 72 },
+      { wave: 6, breaks: 10, available: 72 },
       { wave: 7, breaks: 2, available: 64 },
       { wave: 8, breaks: 0, available: 67 },
       { wave: 9, breaks: 0, available: 67 },
@@ -299,16 +302,16 @@ const MARIO_DOSSIER = {
       { wave: 14, breaks: 0, available: 67 },
       { wave: 15, breaks: 8, available: 67 },
       { wave: 16, breaks: 3, available: 67 },
-      { wave: 17, breaks: 0, available: 75 },
+      { wave: 17, breaks: 14, available: 75 },
       { wave: 18, breaks: 0, available: 75 },
       { wave: 19, breaks: 0, available: 56 },
       { wave: 20, breaks: 0, available: 56 },
       { wave: 21, breaks: 0, available: 56 },
       { wave: 22, breaks: 6, available: 56 },
-      { wave: 23, breaks: 0, available: 57 },
+      { wave: 23, breaks: 3, available: 57 },
       { wave: 24, breaks: 2, available: 56 },
       { wave: 25, breaks: 3, available: 55 },
-      { wave: 26, breaks: 1, available: 56 }
+      { wave: 26, breaks: 4, available: 56 }
     ]
   },
 
@@ -344,12 +347,12 @@ const MARIO_DOSSIER = {
       },
       bullets: [
         "Conduct self-directed testing of LLM instruction handling, policy boundaries and edge cases across chat, image, agentic tool-use and indirect prompt-injection settings.",
-        "Recorded 75 platform-confirmed model breaks across 156 submissions and 26 listed waves; top-8% rank band among listed participants as of July 2026.",
+        "Reached #77 on the Proving Ground leaderboard (top 7%) with 105 leaderboard-counted breaks across 232 Proving Ground submissions and 26 listed waves on 24 July 2026.",
         "Document platform-reported outcomes conservatively, separating public evidence from independent verification, security certification or model-wide conclusions."
       ],
       resumeBullets: [
         "Conduct self-directed adversarial testing across chat, multimodal, agentic tool-use and indirect prompt-injection settings.",
-        "Recorded 75 platform-confirmed model breaks across 156 submissions and 26 listed waves; top-8% rank band among listed participants as of July 2026."
+        "Reached #77 on the Proving Ground leaderboard (top 7%) with 105 leaderboard-counted breaks across 232 Proving Ground submissions and 26 listed waves on 24 July 2026."
       ]
     },
     {
@@ -364,7 +367,7 @@ const MARIO_DOSSIER = {
       },
       bullets: [
         "Conduct bibliographic research and verify primary literature for more than 55 videos and documentaries and four articles.",
-        "Identify unsupported claims, conflicting evidence and source-quality problems and communicate corrections to a non-specialist production team.",
+        "Identify unsupported claims, conflicting evidence and source-quality problems and communicate corrections within a small recurring team consisting primarily of Giacomo Moro Mauretto, the video editor and me.",
         "Manage OVHCloud hosting, DNS, SSL, WordPress configuration, layout and functionality changes, and technical SEO.",
         "Formally acknowledged in Giacomo Moro Mauretto’s Mondadori book Italiani veri for scientific-literature research and error detection."
       ],
@@ -384,14 +387,14 @@ const MARIO_DOSSIER = {
         thesisContext: "https://thesis.unipd.it/handle/20.500.12608/51396"
       },
       bullets: [
-        "Co-facilitated recorded Zoom focus groups with autistic participants discussing sensitive sexuality and relationship topics, using clear expectations, respectful pacing and non-judgmental follow-up to support participant comfort.",
-        "Co-developed a standardized discussion guide, scripted prompts and session procedures; worked in a two-person facilitation team using live handoffs and recovery when prompts were missed or a facilitator needed support.",
-        "Supported participant recruitment, bibliographic research, technical session preparation and coordination with Marta Panzeri, the research team and a second autistic volunteer facilitator.",
+        "Served as lead or co-facilitator across approximately 4–5 recorded Zoom focus-group sessions, typically lasting 1–2 hours, with autistic participants discussing sensitive sexuality and relationship topics.",
+        "Co-developed the protocol, including pseudonymous naming, explicit recorded consent, optional captions and written-chat participation, timed turn-taking, scripted prompts, recording boundaries and two-person facilitation handoffs.",
+        "Supported participant recruitment, bibliographic research, technical preparation and protocol feedback from an autistic perspective; coordinated with Marta Panzeri, researchers and a second autistic volunteer facilitator.",
         "Public attribution to Marta Panzeri and the Department of Developmental Psychology and Socialisation is included with permission; no participant information or confidential session content is disclosed."
       ],
       resumeBullets: [
-        "Co-facilitated recorded Zoom focus groups with autistic participants on sensitive sexuality and relationship topics, using structured prompts, respectful pacing and non-judgmental follow-up.",
-        "Co-developed session guides and worked in a two-person moderation team with live handoffs, recovery when prompts were missed, participant recruitment and technical coordination."
+        "Led or co-facilitated approximately 4–5 recorded remote sessions, typically lasting 1–2 hours, with autistic participants discussing sensitive sexuality and relationship topics.",
+        "Co-developed accessible consent and participation procedures, scripted prompts, timed turns, recording boundaries and two-person facilitation handoffs; supported recruitment and bibliographic research."
       ]
     },
     {

@@ -4,7 +4,7 @@ const APPLICATION_PROFILES = {
     documentLabel: "Specialized Application CV",
     title: "AI Evaluation & Model Behavior Specialist",
     subtitle: "Model behavior testing · adversarial QA · evidence-bound reporting · evaluation operations",
-    summary: "AI evaluation and research-verification specialist with sustained self-directed model-behavior testing across chat, image, agentic tool-use and indirect prompt-injection challenges. Gray Swan Proving Ground participant with 75 platform-confirmed model breaks across 156 submissions and a top-8% rank band among listed participants as of July 2026. Brings eight years of auditable claim verification, paid scientific fact-checking, structured research workflows and clear evidence-bound reporting.",
+    summary: "AI evaluation and research-verification specialist with sustained self-directed model-behavior testing across chat, image, agentic tool-use and indirect prompt-injection challenges. Gray Swan Proving Ground participant ranked #77 (top 7%) on 24 July 2026, with 105 leaderboard-counted breaks across 232 Proving Ground submissions and 26 waves. Brings eight years of auditable claim verification, paid scientific fact-checking, structured research workflows and clear evidence-bound reporting.",
     fit: [
       "AI evaluation and safeguards operations",
       "AI content red teaming and adversarial QA",
@@ -12,8 +12,8 @@ const APPLICATION_PROFILES = {
       "Human-data quality, grading and evaluation operations"
     ],
     strengths: [
-      { value: "75", label: "Platform-confirmed model breaks", detail: "Across 26 listed Gray Swan testing waves" },
-      { value: "156", label: "Platform submissions", detail: "Chat, multimodal, tool-use and indirect injection" },
+      { value: "105", label: "Leaderboard-counted model breaks", detail: "#77 · top 7% · 26 Proving Ground waves" },
+      { value: "232", label: "Proving Ground submissions", detail: "242 total Arena submissions shown separately" },
       { value: "55+", label: "Videos and documentaries checked", detail: "Paid primary-source verification for Entropy for Life" },
       { value: "4,317", label: "Auditable Wikimedia contributions", detail: "Eight years of inspectable claim and source work" }
     ],
@@ -28,7 +28,7 @@ const APPLICATION_PROFILES = {
         ],
         bullets: [
           "Conduct self-directed testing of LLM instruction handling, policy boundaries and edge cases across chat, image, agentic tool-use and indirect prompt-injection settings.",
-          "Recorded 75 platform-confirmed model breaks across 156 submissions and 26 listed waves; ranked in the top 8% among listed participants as of July 2026.",
+          "Reached #77 on the Proving Ground leaderboard (top 7%) with 105 leaderboard-counted breaks across 232 submissions and 26 listed waves on 24 July 2026.",
           "Document public evidence conservatively, separating platform-reported outcomes from independent verification, model-wide conclusions or security certification."
         ]
       },
@@ -42,7 +42,7 @@ const APPLICATION_PROFILES = {
         ],
         bullets: [
           "Conduct bibliographic research and verify primary literature for more than 55 videos and documentaries and four published articles.",
-          "Identify unsupported claims, conflicting evidence and source-quality problems, then communicate corrections clearly to a non-specialist production team.",
+          "Identify unsupported claims, conflicting evidence and source-quality problems, then communicate corrections in a small recurring production team consisting primarily of Giacomo Moro Mauretto, the video editor and me.",
           "Formally acknowledged in Giacomo Moro Mauretto's Mondadori book Italiani veri for scientific-literature research and error detection."
         ]
       },
@@ -179,7 +179,7 @@ const APPLICATION_PROFILES = {
     documentLabel: "Specialized Application CV",
     title: "Research, Editorial & Community Operations Specialist",
     subtitle: "Evidence synthesis · editorial coordination · research programs · community engagement · AI-enabled workflows",
-    summary: "Research, editorial and community-operations specialist with paid experience supporting scientific content production, primary-source fact-checking, professional writing and web operations. Co-developed and co-facilitated a structured remote focus-group process for autistic participants discussing sensitive sexuality and relationship topics, supervised by Marta Panzeri at the University of Padua Department of Developmental Psychology and Socialisation (DPSS), including recruitment, session protocols, Zoom logistics and two-person moderation handoffs. Also contributed evidence research to more than 55 videos and documentaries and four published articles and founded an open research-participation directory covering more than 55 initiatives.",
+    summary: "Research, editorial and community-operations specialist with paid experience supporting scientific content production, primary-source fact-checking, professional writing and web operations. Co-developed and facilitated approximately 4–5 structured remote focus-group sessions, typically lasting 1–2 hours, with autistic participants discussing sensitive sexuality and relationship topics under Marta Panzeri at the University of Padua DPSS. Also contributed evidence research to more than 55 videos and documentaries and four published articles and founded an open research-participation directory covering more than 55 initiatives.",
     fit: [
       "Assistant editor and editorial operations",
       "Evidence-synthesis program coordination",
@@ -202,7 +202,7 @@ const APPLICATION_PROFILES = {
           { label: "Video archive", url: "https://www.youtube.com/playlist?list=PLMJaM7iJky4pKj6voGlUNHBnGdTj9rJNh" }
         ],
         bullets: [
-          "Support an ongoing science-communication production workflow by researching primary literature, checking claims and communicating corrections for more than 55 videos and documentaries and four articles.",
+          "Support a small recurring science-communication team by researching primary literature, checking claims and communicating corrections for more than 55 videos and documentaries and four articles.",
           "Write and co-author public-facing scientific content, maintain source documentation and translate complex evidence into clear editorial recommendations.",
           "Manage the project website, hosting, DNS, SSL, WordPress configuration, technical SEO and day-to-day troubleshooting."
         ]
@@ -217,9 +217,9 @@ const APPLICATION_PROFILES = {
           { label: "Thesis context", url: "https://thesis.unipd.it/handle/20.500.12608/51396" }
         ],
         bullets: [
-          "Co-facilitated recorded Zoom focus groups with autistic participants discussing sensitive sexuality and relationship topics, using clear expectations, respectful pacing and non-judgmental follow-up.",
-          "Co-developed a standardized discussion guide, scripted prompts and session procedures; worked in a two-person facilitation team using live handoffs and recovery when prompts were missed or a facilitator needed support.",
-          "Supported participant recruitment, bibliographic research, technical session preparation and coordination with Marta Panzeri, researchers and a second autistic volunteer facilitator. Public attribution is included with permission; participant information remains confidential."
+          "Served as lead or co-facilitator across approximately 4–5 recorded Zoom focus-group sessions, typically lasting 1–2 hours, with autistic participants discussing sensitive sexuality and relationship topics.",
+          "Co-developed the protocol, including pseudonymous naming, explicit recorded consent, optional captions and written-chat participation, timed turn-taking, scripted prompts, recording boundaries and two-person facilitation handoffs.",
+          "Supported participant recruitment, bibliographic research, technical preparation and protocol feedback from an autistic perspective; coordinated with Marta Panzeri, researchers and a second autistic volunteer facilitator. Participant information remains confidential."
         ]
       },
       {
@@ -278,7 +278,7 @@ const APPLICATION_PROFILES = {
     strengths: [
       { value: "8 years", label: "Public source-work record", detail: "Wikipedia, Wikidata and Wikimedia Commons" },
       { value: "4,317", label: "Auditable contributions", detail: "Claims, citations, metadata and media records" },
-      { value: "75", label: "Platform-confirmed model breaks", detail: "Adversarial testing across multiple AI modalities" },
+      { value: "105", label: "Leaderboard-counted model breaks", detail: "#77 · top 7% · four evaluation surfaces" },
       { value: "55+", label: "Scientific productions checked", detail: "Health and biology evidence verification" }
     ],
     experience: [
@@ -320,7 +320,7 @@ const APPLICATION_PROFILES = {
         ],
         bullets: [
           "Test instruction hierarchy, policy boundaries, indirect prompt injection and agentic tool-use behavior across repeated adversarial scenarios.",
-          "Recorded 75 platform-confirmed model breaks across 156 submissions while documenting the limitations of the public record.",
+          "Reached #77 on the Proving Ground leaderboard (top 7%) with 105 leaderboard-counted breaks across 232 Proving Ground submissions, while documenting the limitations and the profile/leaderboard discrepancy.",
           "Apply threat-oriented thinking and evidence capture to ambiguous system behavior without claiming application-security or penetration-testing expertise."
         ]
       }
