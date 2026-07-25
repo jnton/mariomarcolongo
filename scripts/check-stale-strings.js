@@ -139,7 +139,10 @@ for (const requiredText of [
   'Start with the role you are hiring for.',
   'AI evaluation and scientific evidence roles.',
   '#77 on the Proving Ground leaderboard',
-  'Fact-checking scientific scripts before publication.'
+  'Fact-checking scientific productions before publication.',
+  'At least 59 published outputs supported',
+  'PLMJaM7iJky4pKj6voGlUNHBnGdTj9rJNh',
+  'PLUXju4zC0Sks'
 ]) {
   if (!homepageSource.includes(requiredText)) fail('src/pages/index.astro', 1, `Homepage is missing current artifact-led portfolio content: ${requiredText}`);
 }
@@ -152,7 +155,7 @@ for (const requiredMedia of [
 }
 for (const rejectedText of [
   'class="v3-network"', 'Explore role lenses', 'One profile. Four credible lenses.',
-  'Pencil_Fascist_Tuberculosis', 'Alessandro Lanzoni', 'class="portfolio-v4"',
+  'Pencil_Fascist_Tuberculosis', 'class="portfolio-v4"',
   'class="portfolio-v5"', 'class="portfolio-v7"', 'class="v7-engine"',
   'class="p5-work-mosaic"', 'Public analysis across three platforms.',
   '/media/work/model-behavior-record.svg', '/media/work/entropy-h5n1.png'
