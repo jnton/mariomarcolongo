@@ -52,6 +52,10 @@ jobs:
           text = text.replace("'/media/work/model-behavior-profile.jpg', 'https://entropyforlife.it", "'/media/work/gray-swan-profile-2026-07-24.svg', 'https://entropyforlife.it")
           checks.write_text(text)
 
+          verify = Path('scripts/verify-dist.js')
+          text = verify.read_text().replace("'/media/work/model-behavior-profile.jpg', 'https://entropyforlife.it", "'/media/work/gray-swan-profile-2026-07-24.svg', 'https://entropyforlife.it")
+          verify.write_text(text)
+
           css = Path('src/styles/portfolio-v9-overrides.css')
           text = css.read_text().replace('aspect-ratio: 1400 / 929;', 'aspect-ratio: 2 / 1;')
           css.write_text(text)
@@ -71,7 +75,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add \
-            data/portfolio-human.js scripts/check-stale-strings.js src/styles/portfolio-v9-overrides.css \
+            data/portfolio-human.js scripts/check-stale-strings.js scripts/verify-dist.js src/styles/portfolio-v9-overrides.css \
             index.html integrity.html security.html cv.html \
             cv-resume.html cv-research.html cv-editorial.html cv-integrity.html \
             llms.txt llms-full.txt cv-llm.txt \
