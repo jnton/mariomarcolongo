@@ -11,10 +11,10 @@ const PORTFOLIO_HUMAN = {
       href: "/security.html"
     },
     {
-      value: "55+",
-      label: "scientific productions fact-checked",
-      detail: "Paid primary-source review for Entropy for Life",
-      href: "https://www.youtube.com/@entropyforlife"
+      value: "59+",
+      label: "published scientific outputs supported",
+      detail: "55+ video/documentary productions · 4 articles",
+      href: "https://www.youtube.com/playlist?list=PLMJaM7iJky4pKj6voGlUNHBnGdTj9rJNh"
     },
     {
       value: "4,317",
@@ -95,24 +95,40 @@ const PORTFOLIO_HUMAN = {
       href: "/security.html",
       linkLabel: "Open the evaluation record",
       image: "/media/work/model-behavior-profile.jpg",
-      alt: "Gray Swan Arena profile screenshot showing Mario Marcolongo's current Proving Ground rank and activity",
-      imageCaption: "Real platform profile · #77 · top 7% · dated snapshot",
+      alt: "Gray Swan Arena profile screenshot showing Mario Marcolongo's Proving Ground rank, percentile, break count and activity",
+      imageCaption: "Real platform profile · #77 · top 7% · dated 24 July 2026",
       tone: "blue"
     },
     {
       id: "scientific-verification",
       number: "02",
       label: "Scientific fact-checking",
-      title: "Fact-checking scientific scripts before publication.",
-      lead: "In a small recurring production team, I check whether the primary literature supports the wording proposed for a video, documentary or article.",
-      action: "I break statements into checkable claims, review primary literature, trace disagreements between sources and communicate corrections or qualifications directly to Giacomo Moro Mauretto and the video editor.",
-      result: "Paid fact-checking integrated into an ongoing workflow covering more than 55 videos and documentaries and four published articles.",
-      boundary: "My role is evidence review and editorial recommendation. Final wording, production and publication decisions remain with the editorial team.",
-      href: "https://entropyforlife.it/autore/mario-marcolongo/",
-      linkLabel: "Open the published work",
+      title: "Fact-checking scientific productions before publication.",
+      lead: "In a small recurring production team, I verify the evidence behind YouTube videos, documentaries and articles before publication.",
+      action: "Fact-checking is the recurring component. Depending on the production, I also contribute to script development, data visualization, slide creation and thumbnail direction or design, and I attribute those roles per item rather than treating every output as identical.",
+      result: "At least 59 published outputs supported: 55+ video and documentary productions indexed through the YouTube contribution playlist, plus four articles. A separate playlist records thumbnail work.",
+      boundary: "Final wording, editing and publication remain with the team. Thumbnail work varies by item: some are predominantly or entirely mine, some were produced with Alessandro Lanzoni, and some followed my direction.",
+      href: "https://www.youtube.com/playlist?list=PLMJaM7iJky4pKj6voGlUNHBnGdTj9rJNh",
+      linkLabel: "Open the YouTube contribution playlist",
+      mediaHref: "https://entropyforlife.it/autore/mario-marcolongo/",
+      mediaLinkLabel: "Open the published article and visualization archive",
+      links: [
+        {
+          label: "YouTube contribution playlist",
+          href: "https://www.youtube.com/playlist?list=PLMJaM7iJky4pKj6voGlUNHBnGdTj9rJNh"
+        },
+        {
+          label: "Four published articles",
+          href: "https://entropyforlife.it/autore/mario-marcolongo/"
+        },
+        {
+          label: "Thumbnail-work playlist",
+          href: "https://www.youtube.com/playlist?list=PLUXju4zC0Sks"
+        }
+      ],
       image: "https://entropyforlife.it/wp-content/uploads/2024/10/Dashboard-1-5-png.webp",
       alt: "Published scientific visualization by Mario Marcolongo for Entropy for Life",
-      imageCaption: "Real published output · scientific writing and source review",
+      imageCaption: "Published output · article, data visualization and source review",
       tone: "red"
     },
     {
