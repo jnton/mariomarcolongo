@@ -113,10 +113,10 @@ const isExternal = (href) => href.startsWith("http");
           <article class={`v8-case v8-case-${item.tone} ${index % 2 ? "is-reversed" : ""}`} data-case={item.id} data-reveal>
             <a
               class="v8-case-media"
-              href={item.href}
-              target={isExternal(item.href) ? "_blank" : undefined}
-              rel={isExternal(item.href) ? "noopener noreferrer" : undefined}
-              aria-label={item.linkLabel}
+              href={item.mediaHref || item.href}
+              target={isExternal(item.mediaHref || item.href) ? "_blank" : undefined}
+              rel={isExternal(item.mediaHref || item.href) ? "noopener noreferrer" : undefined}
+              aria-label={item.mediaLinkLabel || item.linkLabel}
             >
               <picture>
                 {item.imageSet && <source srcset={item.imageSet} sizes="(max-width: 760px) 92vw, 720px" />}
@@ -145,14 +145,18 @@ const isExternal = (href) => href.startsWith("http");
               </dl>
 
               <p class="v8-scope-note"><strong>Scope:</strong> {item.boundary}</p>
-              <a
-                class="v8-text-link"
-                href={item.href}
-                target={isExternal(item.href) ? "_blank" : undefined}
-                rel={isExternal(item.href) ? "noopener noreferrer" : undefined}
-              >
-                {item.linkLabel}<span aria-hidden="true">↗</span>
-              </a>
+              <div class="v8-case-links" aria-label={`${item.label} evidence links`}>
+                {(item.links || [{ label: item.linkLabel, href: item.href }]).map((link) => (
+                  <a
+                    class="v8-text-link"
+                    href={link.href}
+                    target={isExternal(link.href) ? "_blank" : undefined}
+                    rel={isExternal(link.href) ? "noopener noreferrer" : undefined}
+                  >
+                    {link.label}<span aria-hidden="true">↗</span>
+                  </a>
+                ))}
+              </div>
             </div>
           </article>
         ))}
