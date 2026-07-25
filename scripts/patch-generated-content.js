@@ -103,7 +103,9 @@ const targets = [
   "public/cv-llm.txt",
 ].map((relativePath) => path.join(ROOT, relativePath));
 
-targets.push(...walk(path.join(ROOT, "dist"), new Set([".html", ".txt", ".md"])));
+targets.push(
+  ...walk(path.join(ROOT, "dist"), new Set([".html", ".txt", ".md", ".js"])),
+);
 
 let changed = 0;
 for (const target of targets) {
