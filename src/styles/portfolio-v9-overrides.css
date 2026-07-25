@@ -20,14 +20,14 @@
   background: #090b0d;
 }
 
-/* The platform screenshot should read as evidence, not as a tall social-preview poster. */
+/* Preserve the complete dated profile so rank, percentile, points and break counts remain visible. */
 .v8-case-blue {
   align-items: start;
 }
 
 .v8-case-blue .v8-case-media {
   min-height: 0;
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 1400 / 929;
 }
 
 .v8-case-blue .v8-case-media picture,
@@ -37,8 +37,8 @@
 }
 
 .v8-case-blue .v8-case-media img {
-  object-fit: cover;
-  object-position: center top;
+  object-fit: contain;
+  object-position: center center;
   padding: 0;
   background: #090b0d;
 }
@@ -52,6 +52,17 @@
 .v8-hero-shot-1 {
   border-color: rgba(255, 255, 255, 0.16);
   background: #090b0d;
+}
+
+.v8-case-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 24px;
+  align-items: center;
+}
+
+.v8-case-links .v8-text-link {
+  margin: 0;
 }
 
 [data-theme="dark"] .v8-hero-shot,
@@ -71,10 +82,15 @@
 
 @media (max-width: 720px) {
   .v8-case-blue .v8-case-media {
-    aspect-ratio: 1 / 0.78;
+    aspect-ratio: 1400 / 929;
   }
 
   .v8-case-blue .v8-case-media img {
-    object-position: 58% top;
+    object-position: center center;
+  }
+
+  .v8-case-links {
+    display: grid;
+    gap: 12px;
   }
 }
