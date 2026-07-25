@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
 
 concurrency:
   group: lighthouse-${{ github.workflow }}-${{ github.ref }}
@@ -20,11 +20,17 @@ jobs:
     timeout-minutes: 60
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.ref || github.ref_name }}
+          fetch-depth: 0
       - uses: actions/setup-node@v4
         with:
           node-version: 22
           cache: npm
       - run: npm ci --no-audit --no-fund
+
+      - name: Apply current evidence migration
+        run: node scripts/apply-current-evidence.js
 
       - name: Build and verify all public outputs
         run: |
@@ -32,7 +38,21 @@ jobs:
           npm run verify:render
           npm run pdf
 
-      - name: Run production-like Lighthouse audits on every public route
+      - name: Commit current evidence and deterministic outputs
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "Current evidence and generated outputs are already synchronized."
+          else
+            git commit -m "content: synchronize current portfolio and CV evidence"
+            git push origin HEAD:human-centered-redesign
+          fi
+
+      - name: Run production-like Lighthouse audits on every established public route
         shell: bash
         run: |
           set -euo pipefail
@@ -80,7 +100,7 @@ jobs:
           const categories = ['performance', 'accessibility', 'best-practices', 'seo'];
           let failed = false;
           const summary = [
-            '# Lighthouse audit — every public route', '',
+            '# Lighthouse audit — every established public route', '',
             '| Route | Mode | Performance | Accessibility | Best practices | SEO |',
             '|---|---|---:|---:|---:|---:|'
           ];
