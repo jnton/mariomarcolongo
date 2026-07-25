@@ -16,69 +16,25 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
   audit:
     runs-on: ubuntu-latest
-    timeout-minutes: 25
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
-        with:
-          ref: human-centered-redesign
       - uses: actions/setup-node@v4
         with:
           node-version: 22
           cache: npm
       - run: npm ci --no-audit --no-fund
-      - name: Materialize the legible dated Gray Swan metric crop
+      - name: Preserve Gray Swan source asset
         shell: bash
         run: |
-          set -euo pipefail
           mkdir -p audit-v4
-          python - <<'PY' 2>&1 | tee audit-v4/materialize.log
-          import base64
-          from pathlib import Path
-
-          source = Path('public/media/work/gray-swan-profile-2026-07-24.svg')
-          print(f'source exists={source.exists()} size={source.stat().st_size if source.exists() else 0}')
-          svg = source.read_text()
-          marker = 'href="data:image/jpeg;base64,'
-          print(f'marker found={marker in svg}')
-          if marker not in svg:
-              raise SystemExit('Embedded Gray Swan JPEG was not found')
-          payload = svg.split(marker, 1)[1].split('"', 1)[0]
-          print(f'payload length={len(payload)} remainder={len(payload) % 4} prefix={payload[:16]!r} suffix={payload[-16:]!r}')
-          payload += '=' * (-len(payload) % 4)
-          decoded = base64.b64decode(payload, validate=False)
-          image_path = Path('public/media/work/gray-swan-profile-2026-07-24.jpg')
-          image_path.write_bytes(decoded)
-          print(f'Extracted {image_path.stat().st_size} bytes to {image_path}')
-          if image_path.stat().st_size == 0:
-              raise SystemExit('Extracted Gray Swan image is empty')
-
-          portfolio = Path('data/portfolio-human.js')
-          text = portfolio.read_text()
-          text = text.replace('/media/work/model-behavior-profile.jpg', '/media/work/gray-swan-profile-2026-07-24.jpg')
-          portfolio.write_text(text)
-
-          checks = Path('scripts/check-stale-strings.js')
-          text = checks.read_text()
-          text = text.replace(
-              "'public/media/work/model-behavior-profile.jpg', 'public/media/work/yourself-to-science-800.webp',",
-              "'public/media/work/model-behavior-profile.jpg', 'public/media/work/gray-swan-profile-2026-07-24.jpg', 'public/media/work/yourself-to-science-800.webp',"
-          )
-          text = text.replace("'/media/work/model-behavior-profile.jpg', 'https://entropyforlife.it", "'/media/work/gray-swan-profile-2026-07-24.jpg', 'https://entropyforlife.it")
-          checks.write_text(text)
-
-          verify = Path('scripts/verify-dist.js')
-          text = verify.read_text().replace("'/media/work/model-behavior-profile.jpg', 'https://entropyforlife.it", "'/media/work/gray-swan-profile-2026-07-24.jpg', 'https://entropyforlife.it")
-          verify.write_text(text)
-
-          css = Path('src/styles/portfolio-v9-overrides.css')
-          text = css.read_text().replace('aspect-ratio: 1400 / 929;', 'aspect-ratio: 2 / 1;')
-          css.write_text(text)
-          PY
+          cp public/media/work/gray-swan-profile-2026-07-24.svg audit-v4/gray-swan-profile-2026-07-24.svg
+          sha256sum audit-v4/gray-swan-profile-2026-07-24.svg > audit-v4/gray-swan-profile-2026-07-24.sha256
       - name: Build and retain diagnostics
         shell: bash
         run: |
@@ -86,21 +42,6 @@ jobs:
           npm run build 2>&1 | tee audit-v4/build.log
       - name: Capture scrolled homepage states
         run: node scripts/capture-homepage-v4.js
-      - name: Commit source and deterministic generated output
-        shell: bash
-        run: |
-          set -euo pipefail
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add \
-            public/media/work/gray-swan-profile-2026-07-24.jpg \
-            data/portfolio-human.js scripts/check-stale-strings.js scripts/verify-dist.js src/styles/portfolio-v9-overrides.css \
-            index.html integrity.html security.html cv.html \
-            cv-resume.html cv-research.html cv-editorial.html cv-integrity.html \
-            llms.txt llms-full.txt cv-llm.txt \
-            public/llms.txt public/llms-full.txt public/cv-llm.txt public/data/source.js
-          git commit -m "fix: show the dated Gray Swan rank and percentile crop"
-          git push origin HEAD:human-centered-redesign
       - name: Upload visual audit
         if: always()
         uses: actions/upload-artifact@v4
