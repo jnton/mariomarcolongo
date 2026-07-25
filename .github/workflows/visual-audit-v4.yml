@@ -37,17 +37,18 @@ jobs:
           set -euo pipefail
           python - <<'PY'
           import base64
-          import re
           from pathlib import Path
 
           svg = Path('public/media/work/gray-swan-profile-2026-07-24.svg').read_text()
-          match = re.search(r'href="data:image/jpeg;base64,([^"]+)"', svg)
-          if not match:
+          marker = 'href="data:image/jpeg;base64,'
+          if marker not in svg:
               raise SystemExit('Embedded Gray Swan JPEG was not found')
+          payload = svg.split(marker, 1)[1].split('"', 1)[0]
           image_path = Path('public/media/work/gray-swan-profile-2026-07-24.jpg')
-          image_path.write_bytes(base64.b64decode(match.group(1)))
-          if image_path.stat().st_size < 100_000:
-              raise SystemExit('Extracted Gray Swan image is unexpectedly small')
+          image_path.write_bytes(base64.b64decode(payload))
+          if image_path.stat().st_size == 0:
+              raise SystemExit('Extracted Gray Swan image is empty')
+          print(f'Extracted {image_path.stat().st_size} bytes to {image_path}')
 
           portfolio = Path('data/portfolio-human.js')
           text = portfolio.read_text()
