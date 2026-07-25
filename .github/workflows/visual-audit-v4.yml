@@ -31,29 +31,40 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci --no-audit --no-fund
-      - name: Use the legible dated Gray Swan metric crop
+      - name: Materialize the legible dated Gray Swan metric crop
         shell: bash
         run: |
           set -euo pipefail
           python - <<'PY'
+          import base64
+          import re
           from pathlib import Path
+
+          svg = Path('public/media/work/gray-swan-profile-2026-07-24.svg').read_text()
+          match = re.search(r'href="data:image/jpeg;base64,([^"]+)"', svg)
+          if not match:
+              raise SystemExit('Embedded Gray Swan JPEG was not found')
+          image_path = Path('public/media/work/gray-swan-profile-2026-07-24.jpg')
+          image_path.write_bytes(base64.b64decode(match.group(1)))
+          if image_path.stat().st_size < 100_000:
+              raise SystemExit('Extracted Gray Swan image is unexpectedly small')
 
           portfolio = Path('data/portfolio-human.js')
           text = portfolio.read_text()
-          text = text.replace('/media/work/model-behavior-profile.jpg', '/media/work/gray-swan-profile-2026-07-24.svg')
+          text = text.replace('/media/work/model-behavior-profile.jpg', '/media/work/gray-swan-profile-2026-07-24.jpg')
           portfolio.write_text(text)
 
           checks = Path('scripts/check-stale-strings.js')
           text = checks.read_text()
           text = text.replace(
               "'public/media/work/model-behavior-profile.jpg', 'public/media/work/yourself-to-science-800.webp',",
-              "'public/media/work/model-behavior-profile.jpg', 'public/media/work/gray-swan-profile-2026-07-24.svg', 'public/media/work/yourself-to-science-800.webp',"
+              "'public/media/work/model-behavior-profile.jpg', 'public/media/work/gray-swan-profile-2026-07-24.jpg', 'public/media/work/yourself-to-science-800.webp',"
           )
-          text = text.replace("'/media/work/model-behavior-profile.jpg', 'https://entropyforlife.it", "'/media/work/gray-swan-profile-2026-07-24.svg', 'https://entropyforlife.it")
+          text = text.replace("'/media/work/model-behavior-profile.jpg', 'https://entropyforlife.it", "'/media/work/gray-swan-profile-2026-07-24.jpg', 'https://entropyforlife.it")
           checks.write_text(text)
 
           verify = Path('scripts/verify-dist.js')
-          text = verify.read_text().replace("'/media/work/model-behavior-profile.jpg', 'https://entropyforlife.it", "'/media/work/gray-swan-profile-2026-07-24.svg', 'https://entropyforlife.it")
+          text = verify.read_text().replace("'/media/work/model-behavior-profile.jpg', 'https://entropyforlife.it", "'/media/work/gray-swan-profile-2026-07-24.jpg', 'https://entropyforlife.it")
           verify.write_text(text)
 
           css = Path('src/styles/portfolio-v9-overrides.css')
@@ -75,6 +86,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add \
+            public/media/work/gray-swan-profile-2026-07-24.jpg \
             data/portfolio-human.js scripts/check-stale-strings.js scripts/verify-dist.js src/styles/portfolio-v9-overrides.css \
             index.html integrity.html security.html cv.html \
             cv-resume.html cv-research.html cv-editorial.html cv-integrity.html \
