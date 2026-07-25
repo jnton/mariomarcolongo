@@ -1,0 +1,59 @@
+name: Portfolio CI
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  build-and-verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build production site
+        run: npm run build
+
+      - name: Verify dated Gray Swan evidence
+        shell: bash
+        run: |
+          set -euo pipefail
+          grep -R --fixed-strings "#77 · Top 7%" dist public/llms.txt public/llms-full.txt public/cv-llm.txt
+          grep -R --fixed-strings "106 platform-recorded challenge breaks" dist public/llms.txt public/llms-full.txt public/cv-llm.txt
+          grep -R --fixed-strings "gray-swan-profile-2026-07-24.html" dist public/llms.txt public/llms-full.txt public/cv-llm.txt
+          ! grep -R --fixed-strings "top 8%" dist public/llms.txt public/llms-full.txt public/cv-llm.txt
+          ! grep -R --fixed-strings "75+ confirmed model breaks" dist public/llms.txt public/llms-full.txt public/cv-llm.txt
+
+      - name: Verify Entropy for Life evidence separation
+        shell: bash
+        run: |
+          set -euo pipefail
+          grep -R --fixed-strings "59+ Documented Projects" dist public/llms.txt public/llms-full.txt public/cv-llm.txt
+          grep -R --fixed-strings "55+ YouTube Projects" dist public/llms-full.txt public/cv-llm.txt
+          grep -R --fixed-strings "4 Co-Authored Articles" dist public/llms-full.txt public/cv-llm.txt
+          grep -R --fixed-strings "Selected Thumbnails" dist public/llms-full.txt public/cv-llm.txt
+          grep -R --fixed-strings "PLMJaM7iJky4pKj6voGlUNHBnGdTj9rJNh" dist public/llms-full.txt public/cv-llm.txt
+          grep -R --fixed-strings "PLUXju4zC0Sks" dist public/llms-full.txt public/cv-llm.txt
+
+      - name: Verify evidence files are deployed
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -s dist/evidence/gray-swan-profile-2026-07-24.html
+          test -s dist/evidence/gray-swan-profile-2026-07-24.json
