@@ -107,7 +107,7 @@ const PORTFOLIO_HUMAN = {
       lead: "In a small recurring production team, I verify the evidence behind YouTube videos, documentaries and articles before publication.",
       action: "Fact-checking is the recurring component. Depending on the production, I also contribute to script development, data visualization, slide creation and thumbnail direction or design, and I attribute those roles per item rather than treating every output as identical.",
       result: "At least 59 published outputs supported: 55+ video and documentary productions indexed through the YouTube contribution playlist, plus four articles. A separate playlist records thumbnail work.",
-      boundary: "Final wording, editing and publication remain with the team. Thumbnail work varies by item: some are predominantly or entirely mine, some were produced with Alessandro Lanzoni, and some followed my direction.",
+      boundary: "Final wording, editing and publication remain with the team. The current thumbnail playlist includes work created predominantly or entirely by me and work developed collaboratively with the video editor; direction-only thumbnails are not yet included.",
       href: "https://www.youtube.com/playlist?list=PLMJaM7iJky4pKj6voGlUNHBnGdTj9rJNh",
       linkLabel: "Open the YouTube contribution playlist",
       mediaHref: "https://entropyforlife.it/autore/mario-marcolongo/",
