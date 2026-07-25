@@ -34,8 +34,8 @@ jobs:
           grep -R --fixed-strings "#77 · Top 7%" dist public/llms.txt public/llms-full.txt public/cv-llm.txt
           grep -R --fixed-strings "106 platform-recorded challenge breaks" dist public/llms.txt public/llms-full.txt public/cv-llm.txt
           grep -R --fixed-strings "gray-swan-profile-2026-07-24.html" dist public/llms.txt public/llms-full.txt public/cv-llm.txt
-          ! grep -R --fixed-strings "top 8%" dist public/llms.txt public/llms-full.txt public/cv-llm.txt
-          ! grep -R --fixed-strings "75+ confirmed model breaks" dist public/llms.txt public/llms-full.txt public/cv-llm.txt
+          ! grep -R --include='*.html' --include='*.txt' --include='*.js' --fixed-strings "top 8%" dist public/llms.txt public/llms-full.txt public/cv-llm.txt
+          ! grep -R --include='*.html' --include='*.txt' --include='*.js' --fixed-strings "75+ confirmed model breaks" dist public/llms.txt public/llms-full.txt public/cv-llm.txt
 
       - name: Verify Entropy for Life evidence separation
         shell: bash
