@@ -41,6 +41,11 @@ const DOCUMENTS = [
     route: 'cv-orcid.html',
     output: 'Mario Marcolongo — ORCID Member Support Technical Specialist CV.pdf',
     label: 'ORCID Member Support Technical Specialist CV'
+  },
+  {
+    route: 'cv-tiktok-search-evaluator.html',
+    output: 'Mario Marcolongo — TikTok Italian Search Evaluator CV.pdf',
+    label: 'TikTok Italian Search Evaluator CV'
   }
 ];
 
