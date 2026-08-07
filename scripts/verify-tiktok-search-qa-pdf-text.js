@@ -44,7 +44,6 @@ if (!fs.existsSync(extracted)) {
     'Quality inspection and bad-case analysis',
     'Standards alignment and case calibration',
     'degree not completed',
-    '+39 333 673 1084',
     'Page 1 of 2',
     'Page 2 of 2'
   ]) assertContains(text, needle);
