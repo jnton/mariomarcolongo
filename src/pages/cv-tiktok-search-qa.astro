@@ -1,0 +1,15 @@
+---
+import ApplicationCv from "../components/ApplicationCv.astro";
+import career from "../../data/tiktok-search-qa-positioning.mjs";
+
+const { P } = career;
+---
+
+<ApplicationCv
+  profile={P.tiktokSearchQa}
+  shared={P.tiktokSearchQaShared}
+  canonical="https://mariomarcolongo.com/cv-tiktok-search-qa.html"
+  alternateHref="/cv-resume.html"
+  alternateLabel="AI Evaluation CV"
+  noIndex={true}
+/>
