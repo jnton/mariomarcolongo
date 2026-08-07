@@ -32,7 +32,21 @@ jobs:
           set -o pipefail
           npm run build 2>&1 | tee audit-output/build.log
 
-      - name: Verify application-specific CVs
+      - name: Verify TikTok Search Operations QA CV
+        run: node scripts/verify-tiktok-search-qa-cv.js
+
+      - name: Generate and verify TikTok Search Operations QA PDF
+        shell: bash
+        run: |
+          node scripts/generate-tiktok-search-qa-pdf.js
+          if ! command -v pdftotext >/dev/null 2>&1; then
+            sudo apt-get update
+            sudo apt-get install -y poppler-utils
+          fi
+          pdftotext -layout "Mario Marcolongo — TikTok Search Operations QA Italian CV.pdf" audit-output/tiktok-search-qa-extracted.txt
+          node scripts/verify-tiktok-search-qa-pdf-text.js
+
+      - name: Verify established application-specific CVs
         run: |
           node scripts/verify-orcid-cv.js
           node scripts/verify-giskard-cv.js
@@ -99,6 +113,7 @@ jobs:
             cv-editorial.html
             cv-integrity.html
             cv-orcid.html
+            cv-tiktok-search-qa.html
             security.html
             Mario Marcolongo — AI Evaluation & Model Behavior CV.pdf
             Mario Marcolongo — Giskard AI Safety & Security Researcher CV.pdf
@@ -106,6 +121,7 @@ jobs:
             Mario Marcolongo — Research Editorial & Community Operations CV.pdf
             Mario Marcolongo — Trust Safety & Knowledge Integrity CV.pdf
             Mario Marcolongo — ORCID Member Support Technical Specialist CV.pdf
+            Mario Marcolongo — TikTok Search Operations QA Italian CV.pdf
             Mario Marcolongo — Curriculum Vitae.pdf
           if-no-files-found: ignore
           retention-days: 7
